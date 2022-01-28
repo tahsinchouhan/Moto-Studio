@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Home() {
   return (
   <>
+  <h1 className='m-5'>Home page</h1>
   </>
   )
 }

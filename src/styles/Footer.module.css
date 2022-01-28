@@ -1,0 +1,16 @@
+.last-footer{
+    background: #333333;
+    height: 77px;
+}
+/* amazon-div */
+.amazon-div{
+    height: 136px;
+    background: #EDF2F5;
+border: 1px solid #E5E5E5;
+box-sizing: border-box;
+}
+
+.center-footer{
+    background: #FFFFFF;
+    height: 332px;
+}

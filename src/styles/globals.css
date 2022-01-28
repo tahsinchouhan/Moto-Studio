@@ -16,4 +16,5 @@ a {
 }
 
 @import "./Header.module.css";
-@import "./SubHeader.module.css"
+@import "./SubHeader.module.css";
+@import "./Footer.module.css";
