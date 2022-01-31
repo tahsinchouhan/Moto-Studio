@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
+import img1 from "../../../public/Picture/picture.png";
 function CommunityPage() {
   return (
     <>
@@ -20,67 +21,107 @@ function CommunityPage() {
         </div>
         <div>
           <Row>
-            <Col className="image1">
+            <Col md={4} sm={12} className="image1 Gallery">
               <Image
                 src="/Image/image1.png"
                 alt="Picture of the author"
                 width={572}
                 height={381}
-                
               />
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span></span>
+              </div>
             </Col>
-            <Col className="image2">
+            <Col md={4} sm={12} className="image2 Gallery">
               <Image
                 src="/Image/image2.png "
                 alt="Picture of the author"
                 width={572}
                 height={381}
               />
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span></span>
+              </div>
             </Col>
 
-            <Col  className="image3">
+            <Col md={4} sm={12} className="image3 Gallery">
               <Image
                 src="/Image/image3.png "
                 alt="Picture of the author"
                 width={572}
                 height={381}
               />
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span></span>
+              </div>
             </Col>
-           
           </Row>
         </div>
 
-        <div>
-          <Row className="mt-3">
-            <Col className="image4">
+        <div className="image-gap">
+          <Row>
+            <Col md={4} sm={12} className="image4 Gallery">
               <Image
                 src="/Image/image4.png"
                 alt="Picture of the author"
-                width={428}
-                height={418}
+                width={572}
+                height={381}
               />
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span></span>
+              </div>
             </Col>
-            <Col className="image5">
+            <Col md={4} sm={12} className="image5 Gallery">
               <Image
                 src="/Image/image5.png "
                 alt="Picture of the author"
-                width={412}
-                height={422}
+                width={572}
+                height={381}
               />
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span></span>
+              </div>
             </Col>
 
-            <Col className="image6">
+            <Col md={4} sm={12} className="image6 Gallery">
               <Image
                 src="/Image/image6.png "
                 alt="Picture of the author"
-                width={431}
-                height={554}
+                width={572}
+                height={381}
+                className="img-fluid"
               />
+
+              <div className="overlay">
+                <h1 className="d-flex flex-column align-items-center fw-bold"></h1>
+                <span>Amla Murabba</span>
+              </div>
             </Col>
-           
           </Row>
         </div>
       </Container>
+      {/* <div className="FollowW"> <Image
+        src={img1}
+        alt="Picture of the author"
+        className="mt-sm-3 mt-md-5  "
+      />
+      </div> */}
+
+      <div className="Frame1">
+        <Image src={img1} alt="Picture of the author" className="img-fluid" />
+        <a className="Follow">FOLLOW US</a>
+      </div>
+
+      {/* <div className="Footer">
+        <p>
+          Buy all your favourite products from the world’s largest online store
+        </p>
+      </div> */}
     </>
   );
 }
