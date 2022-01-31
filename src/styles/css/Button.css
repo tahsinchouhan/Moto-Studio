@@ -1,0 +1,13 @@
+.visit-the-shop-button {
+  background-color: #dbf8e6 !important;
+  color: #065934 !important;
+  border: none !important;
+}
+
+.visit-the-shop-button:hover {
+  background-color: #065934 !important;
+  color: #dbf8e6 !important;
+  border: none !important;
+  border-radius: 10px;
+  transition: 1s;
+}
