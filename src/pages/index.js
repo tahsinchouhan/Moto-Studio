@@ -1,12 +1,11 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import CollaborateForm from './Collaborate/CollaborateForm';
+import HomeFollowUs from './Home/HomeFollowUs';
 
 export default function Home() {
   return (
   <>
-  <CollaborateForm/>
+  <HomeFollowUs/>
   </>
   )
 }
