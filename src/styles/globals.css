@@ -1,4 +1,8 @@
 @import "../styles/Community.css";
+@import "../styles/css/followUs.css";
+@import "../styles/home-header-img.css";
+
+
 html,
 body {
   padding: 0;
@@ -17,3 +21,8 @@ a {
 }
 
 @import "./Products.css";
+@import "./Header.module.css";
+@import "./SubHeader.module.css";
+@import "./Footer.module.css";
+@import "./Home.module.css";
+@import "./Shop.module.css"
