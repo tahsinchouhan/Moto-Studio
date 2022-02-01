@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch,BsFillCartFill } from "react-icons/bs";
@@ -8,6 +9,7 @@ import logo from "/public/images/CG Herbals Logo.png";
 function Header() {
   return (
     <>
+     
       <div >
         <Navbar className="main-haeder" collapseOnSelect expand="lg" bg="light" >
           <Container>
