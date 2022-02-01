@@ -18,3 +18,5 @@ a {
 @import "./Header.module.css";
 @import "./SubHeader.module.css";
 @import "./Footer.module.css";
+@import "./Home.module.css";
+@import "./Shop.module.css"
