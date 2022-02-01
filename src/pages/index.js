@@ -1,13 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CollaborateForestProduce from './Collaborate/CollaborateForestProduce';
+
+import HomeHeaderImg from './Home/HomeHeaderImg';
 
 export default function Home() {
   return (
   <>
-      <CollaborateForestProduce/>
+      <HomeHeaderImg/>
   </>
   )
 }
