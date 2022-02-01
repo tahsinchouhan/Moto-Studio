@@ -13,6 +13,7 @@ const Footer = () => {
       <CenterFooter/>
       <LastFooter/>
      
+     
      {/* </div> */}
     </div>
   );
