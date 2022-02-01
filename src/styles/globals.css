@@ -1,3 +1,4 @@
+@import "../styles/Community.css";
 @import "../styles/css/followUs.css";
 @import "../styles/home-header-img.css";
 
@@ -19,6 +20,7 @@ a {
   box-sizing: border-box;
 }
 
+@import "./Products.css";
 @import "./Header.module.css";
 @import "./SubHeader.module.css";
 @import "./Footer.module.css";
