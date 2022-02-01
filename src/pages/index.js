@@ -1,14 +1,21 @@
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomeFollowUs from './Home/HomeFollowUs';
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// import styles from "../styles/Home.module.css";
+import Home from "./common/Home";
+import HomeHeaderImg from './Home/HomeHeaderImg';
 import FeaturedProducts from "./home/FeaturedProducts";
 
-export default function Main() {
+export default function index() {
   return (
     <>
-      {/* <h1>Header</h1> */}
-      <FeaturedProducts />
+      <h1 className="m-5">Home pageggg</h1>
+<Home/>
+<HomeHeaderImg/>
+<HomeFollowUs/>
+<FeaturedProducts />
     </>
   );
 }
