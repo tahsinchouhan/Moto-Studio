@@ -1,0 +1,43 @@
+.cllaborate-head-img {
+    background: url(../../Assets/images/1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  
+  .collaborate-header-head {
+    font-family: Lora;
+    font-size: 40px;
+    line-height: 51px;
+    color: #DBF8E6;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .collaborate-forest-hr{
+    width: 48px;
+    opacity: 100% !important;
+    height: 2px;
+    color:  #C4C4C4;
+  }
+
+  .collaborate-header-para{
+    font-family: Lato;
+    font-size: 16px;
+    line-height: 24px;
+    color: #EDF2F5;
+  }
+  
+  @media screen and (max-width:767px) {
+      .cllaborate-head-img {
+          background: url(../../Assets/images/2.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
+        
+      .collaborate-header-head {
+          font-size: 44px;
+      }
+        
+      .collaborate-header-para{
+          color: #eee8e8;
+      }
+  }
