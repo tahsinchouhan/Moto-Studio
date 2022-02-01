@@ -1,13 +1,23 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CollaborateHeader from './collaborate/collaborateHeader';
+import HomeFollowUs from './Home/HomeFollowUs';
+import Head from "next/head";
 
-export default function Home() {
+// import styles from "../styles/Home.module.css";
+import Home from "./common/Home";
+import HomeHeaderImg from './Home/HomeHeaderImg';
+import FeaturedProducts from "./home/FeaturedProducts";
+
+export default function index() {
   return (
-  <>
-  <CollaborateHeader/>
-  </>
-  )
+    <>
+      <h1 className="m-5">Home pageggg</h1>
+<Home/>
+<HomeHeaderImg/>
+<HomeFollowUs/>
+<FeaturedProducts />
+<CollaborateHeader/>
+    </>
+  );
 }

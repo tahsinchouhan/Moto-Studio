@@ -1,4 +1,8 @@
 @import "./collaborateCSS/collaborateHeader.css";
+@import "../styles/css/FeaturedProducts.css";
+@import "../styles/Community.css";
+@import "../styles/css/followUs.css";
+@import "../styles/home-header-img.css";
 
 
 html,
@@ -17,3 +21,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@import "./Products.css";
+@import "./Header.module.css";
+@import "./SubHeader.module.css";
+@import "./Footer.module.css";
+@import "./Home.module.css";
+@import "./Shop.module.css"
