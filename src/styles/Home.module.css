@@ -108,6 +108,14 @@
   margin-left: 0.5rem;
 }
 
+.rectangle-img{
+  position: absolute;
+height: 650px;
+}
+.rectangle-para{
+position: relative;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
