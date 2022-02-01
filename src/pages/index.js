@@ -1,5 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WhoWeAre from './about/WhoWeAre';
 import CollaborateHeader from './collaborate/collaborateHeader';
 import HomeFollowUs from './Home/HomeFollowUs';
 import Head from "next/head";
@@ -18,6 +19,7 @@ export default function index() {
 <HomeFollowUs/>
 <FeaturedProducts />
 <CollaborateHeader/>
+<WhoWeAre/>
     </>
   );
 }
