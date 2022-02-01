@@ -1,5 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CollaborateHeader from './collaborate/collaborateHeader';
 import HomeFollowUs from './Home/HomeFollowUs';
 import Head from "next/head";
 
@@ -16,6 +17,7 @@ export default function index() {
 <HomeHeaderImg/>
 <HomeFollowUs/>
 <FeaturedProducts />
+<CollaborateHeader/>
     </>
   );
 }
