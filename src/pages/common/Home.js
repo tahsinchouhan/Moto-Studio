@@ -5,7 +5,7 @@ import Rectangle from "../../../public/images/Rectangle.png";
 function Home() {
     return (
         <div>
-              <div>
+              {/* <div>
         <div className="rectangle-img">
           <Image src={Rectangle} alt="home" />
         </div>
@@ -18,7 +18,7 @@ function Home() {
             language ocean.
           </p>
         </div>
-      </div>
+      </div> */}
         </div>
     )
 }
