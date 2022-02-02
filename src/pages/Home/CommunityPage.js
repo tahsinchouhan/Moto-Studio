@@ -105,23 +105,14 @@ function CommunityPage() {
           </Row>
         </div>
       </Container>
-      {/* <div className="FollowW"> <Image
-        src={img1}
-        alt="Picture of the author"
-        className="mt-sm-3 mt-md-5  "
-      />
-      </div> */}
+     
 
       <div className="Frame1">
         <Image src={img1} alt="Picture of the author" className="img-fluid" />
         <a className="Follow">FOLLOW US</a>
       </div>
 
-      {/* <div className="Footer">
-        <p>
-          Buy all your favourite products from the world’s largest online store
-        </p>
-      </div> */}
+      
     </>
   );
 }

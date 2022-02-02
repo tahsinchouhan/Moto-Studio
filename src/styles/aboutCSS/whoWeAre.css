@@ -22,11 +22,15 @@
     width:20%;
     height:4px !important;
     color:#065934;
-    
+    opacity: 100% !important;
 }
 
-/* @media screen and (max-width: 767px){
-  .about-who-hr-center{
-    margin-left:
+.about-who-hr{
+  margin-right: 0 !important;
+}
+
+@media screen and (max-width: 767px){
+  .parent{
+    align-items: center;
   }
-} */
+}

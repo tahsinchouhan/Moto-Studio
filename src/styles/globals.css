@@ -1,31 +1,8 @@
-@import "./whoWeAre.css";
-@import "./collaborateCSS/collaborateHeader.css";
-@import "../styles/css/FeaturedProducts.css";
+@import "../styles/aboutCSS/whoWeAre.css";
+@import "../styles/collaborateCSS/collaborateHeader.css";
+@import "../styles/homeCSS/FeaturedProducts.css";
 @import "../styles/Community.css";
-@import "../styles/css/followUs.css";
-@import "../styles/home-header-img.css";
-
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@import "./Products.css";
-@import "./Header.module.css";
-@import "./SubHeader.module.css";
-@import "./Footer.module.css";
-@import "./Home.module.css";
-@import "./Shop.module.css"
+@import "../styles/homeCSS/followUs.css";
+@import "../styles/homeCSS/home-header-img.css";
+@import "../styles/aboutCSS/happy-customer.css";
+@import "../styles/aboutCSS/about-news-room.css";

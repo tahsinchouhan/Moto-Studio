@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import FollowDesk from "../../assets/images/1desk.png";
-import FollowMobile from "../../assets/images/followMobile.png";
+import FollowDesk from "../../assets/images/home/1desk.png";
+import FollowMobile from "../../assets/images/home/followMobile.png";
 import { FaInstagram } from "react-icons/fa";
 
 function HomeFollowUs() {
