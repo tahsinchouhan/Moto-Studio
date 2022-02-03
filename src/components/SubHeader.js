@@ -22,60 +22,41 @@ function SubHeader() {
   };
   return (
     <>
-      <div>
+      <div onMouseLeave={() => shopHandler()}>
         <Navbar className="sub-haeder" collapseOnSelect expand="lg" bg="">
           <Container>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" me-auto mb-2 mb-lg-0 ">
-                <div
-                  // onClick={() => clickShopHandler(1)}
-                  onMouseOver={() => shopHandler(1)}
-                  onMouseLeave={() => shopHandler()}
-                >
-                  <Link href="/">
-                    <a className="sub-nav-link mx-3">Shop All</a>
-                  </Link>
-                </div>
-                <div
-                  // onClick={() => shopHandler(2)}
-                  onMouseOver={() => shopHandler(2)}
-                  onMouseLeave={() => shopHandler()}
-                >
-                  <Link href="#pricing">
-                    <a className="sub-nav-link mx-3">Gourmet Foods</a>
-                  </Link>
-                </div>
-
-                <div
-                  // onClick={() => shopHandler(3)}
-                  onMouseOver={() => shopHandler(3)}
-                  onMouseLeave={() => shopHandler()}
-                >
-                  <Link href="/">
-                    <a className="sub-nav-link mx-3">Beauty Products</a>
-                  </Link>
-                </div>
-
-                <div
-                  // onClick={() => shopHandler(4)}
-                  onMouseOver={() => shopHandler(4)}
-                  onMouseLeave={() => shopHandler()}
-                >
-                  <Link href="#pricing">
-                    <a className="sub-nav-link mx-3">Alternative Medicine</a>
-                  </Link>
-                </div>
-
-                <div
-                  // onClick={() => shopHandler(5)}
-                  onMouseOver={() => shopHandler(5)}
-                  onMouseLeave={() => shopHandler()}
-                >
-                  <Link href="/">
-                    <a className="sub-nav-link mx-3">Health & Personal Care</a>
-                  </Link>
-                </div>
+                <ul className="nav-list">
+                  <li onMouseOver={() => shopHandler(1)}>
+                    <Link href="/">
+                      <a className="sub-nav-link mx-3">Shop All</a>
+                    </Link>
+                  </li>
+                  <li onMouseOver={() => shopHandler(2)}>
+                    <Link href="#pricing">
+                      <a className="sub-nav-link mx-3">Gourmet Foods</a>
+                    </Link>
+                  </li>
+                  <li onMouseOver={() => shopHandler(3)}>
+                    <Link href="/">
+                      <a className="sub-nav-link mx-3">Beauty Products</a>
+                    </Link>
+                  </li>
+                  <li onMouseOver={() => shopHandler(4)}>
+                    <Link href="#pricing">
+                      <a className="sub-nav-link mx-3">Alternative Medicine</a>
+                    </Link>
+                  </li>
+                  <li onMouseOver={() => shopHandler(5)}>
+                    <Link href="/">
+                      <a className="sub-nav-link mx-3">
+                        Health & Personal Care
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
               </Nav>
               <Nav>
                 <Link eventKey={3} href="#memes">
@@ -88,42 +69,42 @@ function SubHeader() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        {showShopAll == 1 ? (
+          <div className="shop-page" onMouseLeave={() => shopHandler()}>
+            <ShopAll />
+          </div>
+        ) : (
+          ""
+        )}
+        {showShopAll == 2 ? (
+          <div className="shop-page" onMouseLeave={() => shopHandler()}>
+            <GourmetFoods />
+          </div>
+        ) : (
+          ""
+        )}
+        {showShopAll == 3 ? (
+          <div className="shop-page">
+            <BeautyProducts />
+          </div>
+        ) : (
+          ""
+        )}
+        {showShopAll == 4 ? (
+          <div className="shop-page">
+            <AlternativeMedicine />
+          </div>
+        ) : (
+          ""
+        )}
+        {showShopAll == 5 ? (
+          <div className="shop-page">
+            <HealthPersonalCare />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      {showShopAll == 1 ? (
-        <div className="shop-page">
-          <ShopAll />
-        </div>
-      ) : (
-        ""
-      )}
-      {showShopAll == 2 ? (
-        <div className="shop-page">
-          <GourmetFoods />
-        </div>
-      ) : (
-        ""
-      )}
-       {showShopAll == 3 ? (
-        <div className="shop-page">
-          <BeautyProducts/>
-        </div>
-      ) : (
-        ""
-      )}
-       {showShopAll == 4 ? (
-        <div className="shop-page">
-          <AlternativeMedicine/>
-        </div>
-      ) : (
-        ""
-      )}
-       {showShopAll == 5 ? (
-        <div className="shop-page">
-          <HealthPersonalCare/>
-        </div>
-      ) : (
-        ""
-      )}
     </>
   );
 }

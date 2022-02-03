@@ -12,7 +12,14 @@ line-height: 17px;
 
 color: #666666;
 }
+.nav-list{
+    display: flex;
+}
 
+.nav-list li{
+    list-style: none;
+    padding-top:10px;
+}
 
 
 
