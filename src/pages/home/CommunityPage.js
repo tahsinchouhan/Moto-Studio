@@ -1,12 +1,12 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
-import image1 from "../../Assets/images/home/image1.png"; 
-import image2 from "../../Assets/images/home/image2.png"; 
-import image3 from "../../Assets/images/home/image3.png"; 
-import image4 from "../../Assets/images/home/image4.png"; 
-import image5 from "../../Assets/images/home/image5.png"; 
-import image6 from "../../Assets/images/home/image6.png"; 
+import image1 from "../../assets/images/home/image1.png"; 
+import image2 from "../../assets/images/home/image2.png"; 
+import image3 from "../../assets/images/home/image3.png"; 
+import image4 from "../../assets/images/home/image4.png"; 
+import image5 from "../../assets/images/home/image5.png"; 
+import image6 from "../../assets/images/home/image6.png"; 
 
 
 

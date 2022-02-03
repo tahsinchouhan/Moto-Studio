@@ -40,13 +40,13 @@ function HomeHeaderImg() {
             <Col md={8} lg={6}className="col-10">
               <Row className="">
                 <Col md={9} className="py-md-5 my-2 ">
-                  <p className="collaborate-header-head mt-md-5 mb-0 text-center text-md-start">
+                  <p className="home-header-head mt-md-5 mb-0 text-center text-md-start">
                   Purity that 
                   </p>
-                  <p className="collaborate-header-head text-center mb-0 text-md-start">
+                  <p className="home-header-head text-center mb-0 text-md-start">
                   is Priceless
                   </p>
-                  <p className="collaborate-header-para text-center text-md-start">
+                  <p className="home-header-para text-center text-md-start">
                   Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean
                   </p>
 

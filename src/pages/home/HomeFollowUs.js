@@ -7,7 +7,8 @@ import { FaInstagram } from "react-icons/fa";
 function HomeFollowUs() {
   return (
     <>
-      <div className="position-parent">
+      <div className="home-follow-container"> 
+      <div className="w-100 position-parent">
         <div className="followDesk-img">
           <Image src={FollowDesk} className="" alt="FollowDesk" />
         </div>
@@ -16,10 +17,11 @@ function HomeFollowUs() {
         </div>
       </div>
       <div className="w-100 text-center">
-      <button className="home-follow-us-button follow-child">
+      <button className=" follow-child">
         <FaInstagram />
         Follow us
       </button>
+      </div>
       </div>
     </>
   );

@@ -9,7 +9,7 @@
   display: none !important;
 }
 
-.collaborate-header-head {
+.home-header-head {
   font-family: Red Hat Display;
   font-weight: bold;
   font-size: 64px;
@@ -24,7 +24,7 @@
   color: #c4c4c4;
 }
 
-.collaborate-header-para {
+.home-header-para {
   font-family: Lato;
   font-size: 16px;
   line-height: 28px;

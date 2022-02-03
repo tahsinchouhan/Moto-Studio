@@ -1,9 +1,8 @@
-@import "../styles/aboutCSS/whoWeAre.css";
+@import "../styles/homeCSS/home.css";
+@import "../styles/aboutCSS/about.css";
 @import "../styles/collaborateCSS/collaborateHeader.css";
-@import "../styles/homeCSS/FeaturedProducts.css";
+
 @import "../styles/Community.css";
-@import "../styles/homeCSS/followUs.css";
-@import "../styles/homeCSS/home-header-img.css";
-@import "../styles/aboutCSS/happy-customer.css";
-@import "../styles/aboutCSS/about-news-room.css";
-@import "../styles/homeCSS/Community.css";
+@import "../styles/buttonCSS/buttonDark.css";
+@import "../styles/shopping/shopping.css";
+

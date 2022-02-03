@@ -5,7 +5,7 @@ import amazonlogo from "../../../public/images/amazon.png";
 
 function AmazonFooter() {
   return (
-    <div>
+    
       <div className="amazon-div">
         <Container>
           <Row>
@@ -25,7 +25,7 @@ function AmazonFooter() {
           </Row>
         </Container>
       </div>
-    </div>
+    
   );
 }
 
