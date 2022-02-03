@@ -23,7 +23,7 @@ a {
 @import "./Footer.module.css";
 @import "./Home.module.css";
 @import "./Shop.module.css";
-
+@import "./infoNewsroom.module.css";
 
 
 @media (min-width: 320px) and (max-width:768px) {

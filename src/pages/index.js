@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import styles from "../styles/Home.module.css";
 import Home from "./common/Home";
 import HomeHeaderImg from './Home/HomeHeaderImg';
+import IntoNewsroom from "./news/IntoNewsroom";
 
 export default function index() {
   return (

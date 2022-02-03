@@ -1,0 +1,117 @@
+.white_select {
+    background: rgba(255,255,255,1) url(../../public/images/leftarrow.png) no-repeat scroll calc(5% + 3px) center/8px auto;
+    width: 100%;
+} 
+
+.select_category {
+    font-size: 9px;
+    border-radius: 10px;
+    padding: 6px 4px;
+    border: 1px solid #d7d7d7;
+    background: #fff;
+    background: rgba(0,0,0,0) url(../../public/images/leftarrow.png) no-repeat scroll calc(5% + 3px) center/8px auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #939598;
+}
+.news-header-div{
+    display: flex;
+    justify-content: center;
+}
+.news-header-hr{
+    width: 54px;
+}
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top:none !important;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+#show>.btn-primary.dropdown-toggle {
+    color: #666666 !important;
+    background-color:none !important;
+    border-color:none !important;
+}
+.dropdown-toggle {
+    color: #666666 !important;
+    background-color:white !important;
+    border-color:white !important;
+}
+.dropdown-toggle:focus{
+    color: #666666 !important;
+    background-color:white !important;
+    border-color:white !important;
+}
+.news-room-card{
+    padding-top: 2rem;
+}
+ /* card */
+ .news-card-title{
+    font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    color: #333333;
+ }
+ .news-date-title{
+     padding-bottom: 10px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #666666;
+ }
+ .news-card-para{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+ }
+ .news-card-btn{
+     width: 134px;
+    height: 43px;
+    border-color: none !important;
+    background: #DBF8E6 !important;
+    outline: none !important;
+    border-radius: 0rem!important;
+    border: none !important;
+ }
+ .news-read-more{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #065934;
+    
+ }
+ .card-body{
+    padding: 1.5rem 3rem !important;
+ }
+ .News-Articles-div{
+
+ }
+ .News-Articles{
+    width: 85%;
+ }
+ .browse-news-articles{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #666666;
+ }
+ .news-icon{
+    color: #FFC24C;
+ }

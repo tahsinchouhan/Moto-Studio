@@ -23,7 +23,7 @@ function Header() {
                 <Link href="/products"><a className="nav-link mx-3">PRODUCTS</a></Link>
                 <Link href="/about"><a className="nav-link mx-3">ABOUT</a></Link>
                 <Link href="/corporate"><a className="nav-link mx-3">CORPORATE</a></Link>
-                <Link href="/news"><a className="nav-link mx-3">NEWS</a></Link>
+                <Link href="/news/IntoNewsroom"><a className="nav-link mx-3">NEWS</a></Link>
                 <Link eventKey={3} href="/contact">
                  <a className="nav-link mx-3"> CONTACT</a>
                 </Link>
