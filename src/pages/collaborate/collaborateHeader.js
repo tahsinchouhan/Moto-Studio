@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 
-function collaborateHeader() {
+function CollaborateHeader() {
   return (
     <>
       <Row className="cllaborate-head-img justify-content-md-end  justify-content-center">
@@ -39,4 +39,4 @@ function collaborateHeader() {
   );
 }
 
-export default collaborateHeader;
+export default CollaborateHeader;

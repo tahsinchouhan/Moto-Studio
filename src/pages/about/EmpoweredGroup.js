@@ -1,35 +1,74 @@
-import React from 'react'
+import React from "react";
+import { Container } from "react-bootstrap";
+import Slider from "react-slick";
+import SGHONE from "../../assets/images/about/SHGONE.png";
+import SGHTWO from "../../assets/images/about/SHGTWO.png";
+import SGHTHREE from "../../assets/images/about/SHGTHREE.png";
 import Image from "next/image";
-import SHGONE from "../../assets/images/about/SHGONE.png"
-import SHGTWO from "../../assets/images/about/SHGTWO.png"
-import SHGTHREE from "../../assets/images/about/SHGTHREE.png"
 
 function EmpoweredGroup() {
-    return (
-        <>
-            <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <Image src={SHGONE} className="d-block W-25 " alt="SHGONE"/>
-                </div>
-                <div className="carousel-item">
-                    <Image src={SHGTWO} className="d-block w-25" alt="SHGTWO"/>
-                </div>
-                <div className="carousel-item">
-                   <Image src={SHGTHREE} className="d-block w-25" alt="SHGTHREE"/>
-                </div>
-              </div>
-          <button classNameName="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-          </button>
-</div>
-        </>
-    )
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  return (
+    <>
+      <Container>
+        <div>
+          <Slider {...settings}>
+            <div className="text-center">
+              <Image src={SGHONE} className="w-75" alt="" />
+            </div>
+            <div className="text-center">
+              <Image src={SGHTWO} className="P-4" alt="" />
+            </div>
+            <div className="text-center">
+              <Image src={SGHTHREE} className="P-4" alt="" />
+            </div>
+            <div className="text-center">
+              <Image src={SGHONE} className="P-4" alt="" />
+            </div>
+            <div className="text-center">
+              <Image src={SGHTWO} className="P-4" alt="" />
+            </div>
+            <div className="text-center">
+              <Image src={SGHTHREE} className="P-4" alt="" />
+            </div>
+          </Slider>
+        </div>
+      </Container>
+    </>
+  );
 }
 
-export default EmpoweredGroup
+export default EmpoweredGroup;

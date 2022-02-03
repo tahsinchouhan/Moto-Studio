@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
+import CollaborateHeader from "./CollaborateHeader";
+import CollaborateForm from "./CollaborateHeader";
 
 function Collaborate() {
-    return (
-        <>
-            <collaborateHeader/>
-            <CollaborateForm/>
-        </>
-    )
+  return (
+    <>
+      <CollaborateHeader />
+      <CollaborateForm />
+    </>
+  );
 }
 
-export default Collaborate
+export default Collaborate;
