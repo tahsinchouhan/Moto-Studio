@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from 'next/image';
 import kissyurveda from "../../../public/images/kisspngyurveda.png"
-import BrahmiChurna from "../../../public/images/BrahmiChurna.png"
+import BrahmiChurna from "../../../public/images/Bramkumari.png"
 import Group from "../../../public/images/Group.png"
 
 function AlternativeMedicine() {
@@ -13,26 +13,21 @@ function AlternativeMedicine() {
           <div className="all-shop-list p-3 m-3">
             <Row >
               <Row>
-                <Col sm={12} md={6} lg={6}>
+                <Col sm={12} md={12} lg={6} className='alternative-div'>
                   <div className="">
                     <Row>
-                        <Col>
-                       <div>
-                       <div>
-                      <Image src={BrahmiChurna} alt="BrahmiChurna" />
-                        </div>
-                        <div className='kissyurveda'>
-                      <Image src={kissyurveda} alt="kissyurveda" />
-                        </div>
+                        <Col sm={12} md={6} lg={6} xl={6} className='alternative-div'>
+                       <div className=''>
+                      <Image src={BrahmiChurna} alt="BrahmiChurna"/>
                        </div>
                         </Col>
-                        <Col>
+                        <Col sm={12} md={6} lg={6} xl={6} >
                         <div>
                   <h6 className="Grocery-foods">Ayurvedic Powders</h6>
                   <div>
                     <Row>
-                      <Col md={6} lg={6}>
-                        <div>
+                      <Col md={12} lg={6} className='alternative-medicine'>
+                        <div >
                           <span className="Wildforest">Ashwagandha Churn</span>
                           <br />
                           <span className="Wildforest">Amla Powder</span>
@@ -43,7 +38,7 @@ function AlternativeMedicine() {
                           <br />
                         </div>
                       </Col>
-                      <Col md={6} lg={6}>
+                      <Col md={12} lg={6} className='alternative-medicine'>
                         <div>
                           <span className="Wildforest">Tikhur Powder</span>
                           <br />
@@ -61,15 +56,15 @@ function AlternativeMedicine() {
                   </div>
                 </Col>
 
-                <Col sm={12} md={6} lg={6}>
+                <Col sm={12} md={12} lg={6} className='alternative-div'>
                   <div>
                    <Row>
-                       <Col>
+                       <Col sm={12} md={6} lg={6} className='alternative-div'>
                        <div>
                       <Image src={Group} alt="Group" />
                     </div>
                        </Col>
-                       <Col>
+                       <Col sm={12} md={6} lg={6} className='alternative-medicine'>
                        <div>
                        <div>
                   <h6 className="Grocery-foods">Ayurvedic Oils</h6>

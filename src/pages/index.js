@@ -9,7 +9,7 @@ export default function index() {
   return (
     <>
       <h1 className="m-5">Home pageggg</h1>
-<Home/>
+{/* <Home/> */}
 <HomeHeaderImg/>
     </>
   );

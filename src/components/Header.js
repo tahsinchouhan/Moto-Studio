@@ -20,9 +20,9 @@ function Header() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
                 <Link href="/"><a className="nav-link mx-3">HOME</a></Link>
-                <Link href="#pricing"><a className="nav-link mx-3">PRODUCTS</a></Link>
+                <Link href="/"><a className="nav-link mx-3">PRODUCTS</a></Link>
                 <Link href="/"><a className="nav-link mx-3">ABOUT</a></Link>
-                <Link href="#pricing"><a className="nav-link mx-3">CORPORATE</a></Link>
+                <Link href="/"><a className="nav-link mx-3">CORPORATE</a></Link>
                 <Link href="/"><a className="nav-link mx-3">NEWS</a></Link>
                 <Link eventKey={3} href="#memes">
                  <a className="nav-link mx-3"> CONTACT</a>

@@ -7,15 +7,14 @@ import LastFooter from "./footer/LastFooter";
 
 const Footer = () => {
   return (
-    <div>
-     {/* <div className={styles.footer}> */}
+    <>
+      <div>
       <AmazonFooter/>
       <CenterFooter/>
-      <LastFooter/>
+      </div>
      
      
-     {/* </div> */}
-    </div>
+    </>
   );
 };
 

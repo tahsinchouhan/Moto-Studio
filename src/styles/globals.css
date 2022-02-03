@@ -22,4 +22,22 @@ a {
 @import "./SubHeader.module.css";
 @import "./Footer.module.css";
 @import "./Home.module.css";
-@import "./Shop.module.css"
+@import "./Shop.module.css";
+
+
+
+@media (min-width: 320px) and (max-width:768px) {
+  .alternative-medicine{
+    text-align: center;
+}
+.amazon-product{
+  padding: 10px 5px;
+}
+.footer-cg-herbal{
+  text-align: start;
+  padding: 10px 90px;
+}
+.Copyright-area{
+padding: 10px 45px;
+}
+}
