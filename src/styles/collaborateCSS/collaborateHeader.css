@@ -1,5 +1,5 @@
 .cllaborate-head-img {
-  background: url(../../Assests/images/Collaborate\ Banner\ 1.png);
+  background: url(../../assets/images/collaborate/CollaborateBanner.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -24,7 +24,7 @@
 
 @media screen and (max-width:767px) {
     .cllaborate-head-img {
-        background: url(../../Assests/images/Collaborate\ Banner\ mobile.png);
+        background: url(../../assets/images/collaborate/Collaborate\ Banner\ mobile.png);
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }

@@ -9,7 +9,7 @@ function ShopAll() {
           <div className="all-shop-list p-3 m-3">
             <Row>
               <Col md={4} lg={4}>
-                <div>
+                <div className="grocery-gourmet-foods">
                   <h6 className="Grocery-foods">Grocery & Gourmet Foods</h6>
                   <div>
                     <Row>
@@ -45,8 +45,8 @@ function ShopAll() {
               {/* <div>
                   <div className="stret-line"></div>
               </div> */}
-              <Col md={2} lg={2}>
-                <div>
+              <Col md={3} lg={3}>
+                <div className="grocery-gourmet-foods">
                   <h6 className="Grocery-foods">Beauty  Products</h6>
                   <div>
                     <span  className="Wildforest">Wildforest Honey</span>
@@ -63,7 +63,7 @@ function ShopAll() {
                 </div>
               </Col>
               <Col md={3} lg={3}>
-                <div>
+                <div className="grocery-gourmet-foods">
                   <h6 className="Grocery-foods">Alternative Medicine</h6>
                   <div>
                     <span  className="Wildforest">Wildforest Honey</span>
@@ -79,7 +79,7 @@ function ShopAll() {
                   </div>
                 </div>
               </Col>
-              <Col md={3} lg={3}>
+              <Col md={2} lg={2}>
                 <div>
                   <h6 className="Grocery-foods">Health&Personal Care</h6>
                   <div>

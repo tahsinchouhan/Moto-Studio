@@ -1,0 +1,47 @@
+.home-empower-img {
+  background: url(../../assets/images/home/homeEmpowerBg.png);
+  background-repeat: no-repeat !important;
+  background-size: 100% 100%;
+}
+
+.home-empower-img-distance {
+  padding: 13% 18%;
+}
+
+.home-empower-img-para {
+  font-family: Lato;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.home-empower-img-text {
+  font-family: Lora;
+  font-size: 66px;
+  line-height: 84px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+  .home-empower-img {
+    background: url(../../assets/images/home/HomeEmpoweredMobile.png);
+    background-repeat: no-repeat !important;
+    background-size: 100% 100%;
+  }
+
+  .home-empower-img-distance {
+    padding: 13% 5%;
+  }
+
+  .home-empower-img-text {
+    font-size: 32px !important;
+    line-height: 41px !important;
+  }
+
+  .home-empower-img-para {
+    font-size: 16px !important;
+    line-height: 28px !important;
+  }
+}

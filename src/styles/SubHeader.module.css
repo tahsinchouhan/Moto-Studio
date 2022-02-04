@@ -11,8 +11,11 @@
      background: #065934 !important;
      color: #FFFFFF;
 }
+.sub-nav-link:hover{
+    color: #FFFFFF;
+}
 a {
-    color: #0d6efd;
+    /* color: #FFFFFF !important; */
     text-decoration:none !important;
 }
 .sub-nav-new{

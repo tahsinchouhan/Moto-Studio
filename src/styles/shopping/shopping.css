@@ -1,0 +1,48 @@
+.shopping-cart-heading {
+  font-size: 32px;
+}
+.shopping-p-size {
+  font-size: 12px;
+  color: #5abf6b;
+}
+.shopping-p2-size {
+  font-size: 15px;
+}
+.shopping-p3-size {
+  font-size: 12px;
+}
+.shopping-p4-size {
+  font-size: 13px;
+}
+.continue-shopping-text{
+  color: #666666 !important;
+
+}
+
+/* -----------------------order-summary-card ................. */
+
+.order-summary-card {
+  background: #efefef;
+  width: 290px;
+  height: 380px;
+}
+.order-summary-text{
+  font-size: 15px;
+}
+.order-summary-p1{
+  font-size: 12px;
+}
+.order-summary-p2{
+  font-size: 13px;
+}
+.free-home-delivery-div{
+height: 27px;
+background: #FFFFFF;
+border: 1px solid #E5E5E5;
+
+}.free-home-delivery-p{
+  font-size: 12px;
+}
+.free-home-delivery-p1{
+  font-size: 13px;
+}

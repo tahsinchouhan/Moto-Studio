@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import BeautyProducts from "../../assets/images/1 (1).png";
-import AlternativeMedicine from "../../assets/images/1 (2).png";
-import HealthPersonalCare from "../../assets/images/1 (3).png";
-import GourmetFoods from "../../assets/images/1 (4).png";
+import BeautyProducts from "../../assets/images/home/1 (1).png";
+import AlternativeMedicine from "../../assets/images/home/1 (2).png";
+import HealthPersonalCare from "../../assets/images/home/1 (3).png";
+import GourmetFoods from "../../assets/images/home/1 (4).png";
 
 function FeaturedProducts() {
   return (

@@ -7,12 +7,17 @@ top: 30px;
 border: 1px solid #E5E5E5;
 }
 .Grocery-foods{
+    text-align: start;
     padding-bottom: 5px;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
 line-height: 19px;
 color: #000000;
+}
+.grocery-gourmet-foods{
+    border-right:1px solid #E5E5E5;
+    padding-left: 4px;
 }
 .Wildforest{
     /* font-family: Lato; */
@@ -29,8 +34,8 @@ color: #000000;
     background: #FFFFFF;
 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
-.vector-img{
-
+.Health-Personal-Care{
+padding-left: 82px;
 }
 
 .honey-img{
@@ -39,6 +44,16 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 .six-list{
     padding-top:27px;
 }
+<<<<<<< HEAD
+=======
+
+.alternative-div{
+    text-align: center;
+}
+.alternative-medicine{
+    text-align: start;
+}
+>>>>>>> 388ed67b8b14b2ba1c74cc03a5911bd7c0e97991
 /* .vector-div{
     width: 100%;
     height: 100px;

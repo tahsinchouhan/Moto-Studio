@@ -5,11 +5,11 @@ function LastFooter() {
   return (
     <div>
       <div className="last-footer">
-        <div className="text-center text-white pt-4">
-          <p>
+        <div className=" Copyright-area text-center text-white">
+          <p className="pt-2">
             Copyright Chhattisgarh Herbals 2021. Designed with
             <span>
-              <BsChevronCompactLeft />3 &nbsp; 
+              <BsChevronCompactLeft />&hearts; &nbsp; 
             </span>
             by Limelight
           </p>
