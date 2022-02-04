@@ -17,7 +17,6 @@ function GourmetFoods() {
                 <div className='text-center'>
                 <div className='vector-img'>
                   <div className="vector-div"></div>
-                  {/* <Image src={Vector} alt="Vector"/> */}
                 </div>
                 <div className='honey-img'>
                  <Image src={honey} alt="honey"/>
@@ -29,7 +28,6 @@ function GourmetFoods() {
               <Col md={3}lg={3}>
                 <div className='text-center'>
                 <div className='vector-img'>
-                 {/* <Image src={VectorOne} alt="honey"/> */}
                 </div>
                 <div className='honey-img'>
                  <Image src={honey} alt="honey"/>

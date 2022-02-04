@@ -2,7 +2,6 @@
 // import HomeFollowUs from './Home/HomeFollowUs';
 // import Head from "next/head";
 // import styles from "../styles/Home.module.css";
-import Home from "./common/Home";
 import HomeHeaderImg from './Home/HomeHeaderImg';
 import IntoNewsroom from "./news/IntoNewsroom";
 // import Home from "./common/Home";
