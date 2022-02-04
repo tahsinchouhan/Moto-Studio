@@ -11,7 +11,7 @@
 .Line {
   height: 2px;
   width: 48px;
-  margin: auto;
+  /* margin: auto; */
 
 }
 
@@ -71,6 +71,7 @@
   .content {
     width: 70% !important;
   }
+  
 }
 @media (max-width: 1200px) {
   .overlay {

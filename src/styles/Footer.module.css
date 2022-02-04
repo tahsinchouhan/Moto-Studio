@@ -1,10 +1,11 @@
 .last-footer{
     background: #333333;
-    height: 77px;
+}
+.Copyright-area{
+    padding: 15px;
 }
 /* amazon-div */
 .amazon-div{
-    height: 136px;
     background: #EDF2F5;
 border: 1px solid #E5E5E5;
 box-sizing: border-box;
@@ -13,4 +14,44 @@ box-sizing: border-box;
 .center-footer{
     background: #FFFFFF;
     height: 332px;
+}
+.amazon-product{
+    padding:40px  10px;
+    font-family: Lora;
+font-style: normal;
+font-weight: 500;
+font-size: 27px;
+line-height: 35px;
+/* identical to box height */
+
+
+color: #000000;
+}
+
+/* footer-center */
+
+.footer-cg-para{
+    font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+color: #666666;
+
+}
+.footer-center-header{
+    font-family: Lora;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 23px;
+color: #333333;
+}
+.footer-cg-herbal{
+    text-align: start;
+}
+.digital-footer{
+    text-align: center;
+}
+.footer-center-icon{
 }
