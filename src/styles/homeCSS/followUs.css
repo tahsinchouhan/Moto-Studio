@@ -1,0 +1,32 @@
+
+.position-parent{
+    position:relative !important;
+}
+
+.follow-child{
+    position: absolute  !important; 
+    margin-top: -15% !important;
+}
+
+@media screen and (max-width:767px) {
+    .followDesk-img{
+        display: none !important;
+    }
+    .followMobile-img{
+        display: block !important;
+    }
+    .follow-child{
+        position: relative !important; 
+        margin-top: 32% !important;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .followDesk-img{
+        display: block !important;
+    }
+    .followMobile-img{
+        display: none !important;
+    }
+ 
+}

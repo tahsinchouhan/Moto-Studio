@@ -1,0 +1,39 @@
+.cllaborate-head-img {
+  background: url(../../assets/images/collaborate/CollaborateBanner.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.collaborate-header-head {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 67px;
+  color: #065934;
+}
+
+.collaborate-header-para{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #666666;
+}
+
+@media screen and (max-width:767px) {
+    .cllaborate-head-img {
+        background: url(../../assets/images/collaborate/Collaborate\ Banner\ mobile.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      
+    .collaborate-header-head {
+        font-size: 44px;
+    }
+      
+    .collaborate-header-para{
+        color: #525151;
+    }
+}

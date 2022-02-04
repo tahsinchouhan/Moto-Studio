@@ -9,7 +9,7 @@ function LastFooter() {
           <p className="pt-2">
             Copyright Chhattisgarh Herbals 2021. Designed with
             <span>
-              <BsChevronCompactLeft />3 &nbsp; 
+              <BsChevronCompactLeft />&hearts; &nbsp; 
             </span>
             by Limelight
           </p>

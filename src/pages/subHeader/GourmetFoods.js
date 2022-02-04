@@ -89,5 +89,3 @@ function GourmetFoods() {
         </>
     )
 }
-
-export default GourmetFoods

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch,BsFillCartFill } from "react-icons/bs";
@@ -8,6 +9,18 @@ import logo from "/public/images/CG Herbals Logo.png";
 function Header() {
   return (
     <>
+      {/* <Container>
+        <Row>
+          <Col sm={8}>sm=8</Col>
+          <Col sm={4}>sm=4</Col>
+        </Row>
+        <Row>
+          <Col sm>sm=true</Col>
+          <Col sm>sm=true</Col>
+          <Col sm>sm=true</Col>
+        </Row>
+      </Container> */}
+     
       <div >
         <Navbar className="main-haeder" collapseOnSelect expand="lg" bg="light" >
           <Container>

@@ -1,13 +1,10 @@
-@import "../styles/home-header-img.css";
+@import "../styles/homeCSS/home.css";
+@import "../styles/aboutCSS/about.css";
+@import "../styles/collaborateCSS/collaborateHeader.css";
 
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import "../styles/buttonCSS/buttonDark.css";
+@import "../styles/shopping/shopping.css";
 
 a {
   color: inherit;

@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+.about-second-heading {
+  font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 51px;
+  color: #000000;
+}
+
+.about-second-para {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+
+.about-who-first-hr{
+    width:20%;
+    height:4px !important;
+    color:#065934;
+    opacity: 100% !important;
+}
+
+.about-who-hr{
+  margin-right: 0 !important;
+}
+
+@media screen and (max-width: 767px){
+  .parent{
+    align-items: center;
+  }
+}
