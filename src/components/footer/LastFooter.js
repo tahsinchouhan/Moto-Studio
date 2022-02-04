@@ -1,5 +1,4 @@
 import React from "react";
-import {BsChevronCompactLeft} from "react-icons/bs";
 
 function LastFooter() {
   return (
@@ -7,11 +6,7 @@ function LastFooter() {
       <div className="last-footer">
         <div className=" Copyright-area text-center text-white">
           <p className="pt-2">
-            Copyright Chhattisgarh Herbals 2021. Designed with
-            <span>
-              <BsChevronCompactLeft />&hearts; &nbsp; 
-            </span>
-            by Limelight
+            Copyright Chhattisgarh Herbals 2021. Designed with &hearts; by Limelight
           </p>
         </div>
       </div>

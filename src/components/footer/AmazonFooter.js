@@ -6,7 +6,7 @@ import amazonlogo from "../../../public/images/amazon.png";
 function AmazonFooter() {
   return (
     
-      <div className="amazon-div">
+      <div className="amazon-div mt-5">
         <Container>
           <Row>
             <Col sm={12} lg={9}>

@@ -2,11 +2,20 @@
 @import "../styles/aboutCSS/about.css";
 @import "../styles/collaborateCSS/collaborate.css";
 @import "../styles/contactCSS/contact.css";
+@import "../styles/shopping/shopping.css";
+@import "../styles/productCSS/product.css";
 
 @import "../styles/buttonCSS/button.css";
 
-@import "../styles/buttonCSS/buttonDark.css";
-@import "../styles/shopping/shopping.css";
+
+
+
+
+
+
+
+
+
 
 a {
   color: inherit;
