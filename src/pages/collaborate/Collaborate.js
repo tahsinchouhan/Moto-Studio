@@ -1,12 +1,15 @@
 import React from "react";
-import CollaborateHeader from "./CollaborateHeader";
-import CollaborateForm from "./CollaborateHeader";
+import CollaborateHeader from "./collaborateHeader";
+import CollaborateForm from "./CollaborateForm";
+import CollaborateForestProduce from "./CollaborateForestProduce";
+
 
 function Collaborate() {
   return (
     <>
       <CollaborateHeader />
       <CollaborateForm />
+      <CollaborateForestProduce/>
     </>
   );
 }

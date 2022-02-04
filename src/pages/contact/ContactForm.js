@@ -5,7 +5,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 function ContactForm() {
   return <>
          <div>
-     <div className="container-fluid">
+     <div className="container-fluid mt-4">
      <Container className="demo1">
         <div className="text-center">
           <h1 className="Contact-Us-heading ">Contact Us</h1>

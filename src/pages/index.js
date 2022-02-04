@@ -5,8 +5,9 @@
 // import Home from "./common/Home";
 // import ButtonDark from "../components/button/ButtonDark";
 
-import Home from "./home/Home";
-// import About from "./about/About";
+// import Home from "./home/Home";
+import About from "./about/About";
+// import Collaborate from './collaborate/Collaborate'
 // import Contact from "./contact/Contact"
 // import Shopping from "./shopping/Shopping";
 
@@ -14,8 +15,9 @@ export default function index() {
   return (
     <>
       {/* <h1 className="m-5">Home pageggg</h1> */}
-      <Home />
-      {/* <About /> */}
+      {/* <Home /> */}
+      <About />
+      {/* <Collaborate/> */}
       {/* <Contact/> */}
       {/* <Shopping /> */}
     </>

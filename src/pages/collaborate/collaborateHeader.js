@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 function CollaborateHeader() {
   return (
     <>
-      <Row className="cllaborate-head-img justify-content-md-end  justify-content-center">
+      <Row className="cllaborate-head-img justify-content-md-end  justify-content-center mb-4">
         <Col md={6} className="col-10">
           <Row className="">
             <Col md={9} className="py-md-5 ">

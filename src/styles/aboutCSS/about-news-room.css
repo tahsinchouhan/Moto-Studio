@@ -5,6 +5,9 @@
   text-align: center !important;
   color: #333333 !important;
 }
+.about-newsroom-gutter{
+  --bs-gutter-x: 0rem !important;
+}
 
 .about-newsroom-hr {
   height: 2px !important;
