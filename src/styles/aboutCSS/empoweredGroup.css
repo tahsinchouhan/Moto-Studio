@@ -10,30 +10,32 @@
   padding: 0;
   transform: translate(0, -50%);
   cursor: pointer;
-  color: #000005 !important;
+  color: #7474da !important;
   border: none;
   outline: none;
-  background: #463d3df7;
+  background: #c0363600;
   opacity: 100% !important;
 }
 
 .slick-prev:before,
 .slick-next:before {
   font-family: "slick";
-  font-size: 20px;
-  line-height: 1;
-  opacity: 0.75;
-  color: #000000 !important;
-  -webkit-font-smoothing: antialiased;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  font-family: "slick";
-  font-size: 20px;
-  line-height: 1;
+  font-size: 34px;
+  line-height: 0;
   opacity: 1 !important;
-  color: #040404 !important;
+  color: #04040466 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.about-carousel-conatiner {
+  padding: 0 10% !important;
+}
+
+.empowered-carousel-text {
+  font-family: Lora;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #333333;
 }

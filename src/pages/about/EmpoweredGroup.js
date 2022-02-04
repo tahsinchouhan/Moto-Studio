@@ -44,25 +44,43 @@ function EmpoweredGroup() {
   return (
     <>
       <Container>
-        <div>
+        <div className="container about-carousel-conatiner mt-5 mb-5">
           <Slider {...settings}>
             <div className="text-center">
-              <Image src={SGHONE} className="w-75" alt="" />
+              <div>
+              <Image src={SGHONE} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 1</p>
+              </div>
             </div>
             <div className="text-center">
-              <Image src={SGHTWO} className="P-4" alt="" />
+              <div>
+              <Image src={SGHTWO} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 2</p>
+              </div>
             </div>
             <div className="text-center">
-              <Image src={SGHTHREE} className="P-4" alt="" />
+              <div>
+              <Image src={SGHTHREE} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 3</p>
+              </div>
             </div>
             <div className="text-center">
-              <Image src={SGHONE} className="P-4" alt="" />
+              <div>
+              <Image src={SGHONE} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 1</p>
+              </div>
             </div>
             <div className="text-center">
-              <Image src={SGHTWO} className="P-4" alt="" />
+              <div>
+              <Image src={SGHTWO} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 2</p>
+              </div>
             </div>
             <div className="text-center">
-              <Image src={SGHTHREE} className="P-4" alt="" />
+              <div>
+              <Image src={SGHTHREE} className="p-5" alt="" />
+              <p className="empowered-carousel-text">SHG Name 3</p>
+              </div>
             </div>
           </Slider>
         </div>

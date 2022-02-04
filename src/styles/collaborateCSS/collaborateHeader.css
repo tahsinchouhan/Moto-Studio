@@ -1,39 +1,37 @@
 .cllaborate-head-img {
   background: url(../../assets/images/collaborate/CollaborateBanner.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
 }
 
 .collaborate-header-head {
-  font-family: Red Hat Display;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 64px;
-  line-height: 67px;
-  color: #065934;
+  font-family: Red Hat Display !important;
+  font-weight: bold !important;
+  font-size: 64px !important;
+  line-height: 67px !important;
+  color: #065934 !important;
+  opacity: 100% !important;
 }
 
 .collaborate-header-para{
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 28px;
-    color: #666666;
+    font-family: Lato !important;
+    font-size: 16px !important;
+    line-height: 28px !important;
+    color: #666666 !important; 
 }
 
 @media screen and (max-width:767px) {
     .cllaborate-head-img {
-        background: url(../../assets/images/collaborate/Collaborate\ Banner\ mobile.png);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background: url(../../assets/images/collaborate/Collaborate\ Banner\ mobile.png) !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
       
     .collaborate-header-head {
-        font-size: 44px;
+        font-size: 44px !important;
     }
       
     .collaborate-header-para{
-        color: #525151;
+        color: #525151 !important;
     }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
 import kissyurveda from "../../../public/images/kisspngyurveda.png";
-import BrahmiChurna from "../../../public/images/Bramkumari.png";
+import BrahmiChurna from "../../../public/images/bramkumari.png";
 import Group from "../../../public/images/Group.png";
 
 function AlternativeMedicine() {

@@ -19,8 +19,10 @@
  
   justify-content: center;
 }
-.Content {
-  width: 50%;
+
+.content {
+  width: 50% !important;
+  text-align: center !important;
 }
 
 .image7:hover {
@@ -52,6 +54,7 @@
   margin-bottom: 17px;
 }
 
+
 @media (max-width: 768px) {
   .image-gap {
     margin-top: 0px;
@@ -63,12 +66,10 @@
     width: 90% !important;
     height: 96% !important;
     display: none;
-  
+  }
 
-  }.Text{
-    font-size: 32px;
-  }.Content {
-    width: 100%;
+  .content {
+    width: 70% !important;
   }
   
 }
@@ -84,6 +85,13 @@
     height: 97%;
   }
 }
+@media (max-width: 444px){
+  .content {
+    width: 95% !important;
+    text-align: left !important;
+  }
+}
+
 
 .Text-name {
   height: 284px;

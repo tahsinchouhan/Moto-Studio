@@ -1,11 +1,11 @@
-.collaborate-head-img {
+.home-head-img {
   background: url(../../assets/images/home/homeHeaderDesk.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 4% 0;
 }
 
-.collaborate-head-img-mobile {
+.home-head-img-mobile {
   display: none !important;
 }
 
@@ -17,7 +17,7 @@
   color: #ffffff;
 }
 
-.collaborate-forest-hr {
+.home-forest-hr {
   width: 48px;
   opacity: 100% !important;
   height: 2px;
@@ -32,16 +32,16 @@
 }
 
 @media screen and (max-width: 767px) {
-  .collaborate-head-img {
+  .home-head-img {
     display: none !important;
   }
 
-  .collaborate-head-img-mobile {
+  .home-head-img-mobile {
     display: block !important;
     /* background: url(../../assets/images/home/homeHeaderMobile.png); */
   }
 
-  .collaborate-header-head-mobile {
+  .home-header-head-mobile {
     font-family: Red Hat Display;
     font-weight: bold;
     font-size: 56px;
@@ -49,7 +49,7 @@
     color: #333333;
   }
 
-  .collaborate-header-para-mobile {
+  .home-header-para-mobile {
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
@@ -58,11 +58,11 @@
     color: #333333;
   }
 
-  .collaborate-header-head {
+  .home-header-head {
     font-size: 44px;
   }
 
-  .collaborate-header-para {
+  .home-header-para {
     color: #2c2c2c;
   }
 }

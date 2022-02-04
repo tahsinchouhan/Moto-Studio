@@ -10,8 +10,8 @@ import Microenterprises from "../../assets/images/about/microenterprises.png";
 function AboutNewsroom() {
   return (
     <>
-      <Row className="d-flex justify-content-center">
-        <Col xs={12} className="mx-auto">
+      <Row className="d-flex about-newsroom-gutter mt-5 justify-content-center">
+        <Col xs={12} className="mx-auto px-0">
           <p className="about-newsroom-heading">Newsroom</p>
           <hr className="about-newsroom-hr " />
         </Col>
