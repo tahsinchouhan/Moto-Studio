@@ -11,7 +11,7 @@
 .Line {
   height: 2px;
   width: 48px;
-  margin: auto;
+  /* margin: auto; */
 
 }
 
@@ -65,7 +65,12 @@
     display: none;
   
 
+  }.Text{
+    font-size: 32px;
+  }.Content {
+    width: 100%;
   }
+  
 }
 @media (max-width: 1200px) {
   .overlay {

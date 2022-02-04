@@ -17,11 +17,11 @@ function CommunityPage() {
       <Container>
         <div className="main-community text-md-center text-start">
           <h1 className="Text">The Community</h1>
-          <hr className="Line my-4 " />
-          <div className="para-div">
+          <hr className="Line my-4 m-md-auto" />
+          <div className="para-div  ">
 
          
-            <p className="Content ">
+            <p className="Content m-md-auto ">
               Far far away, behind the word mountains, far from the countries
               Vokalia and Consonantia, there live the blind texts. Separated
               they live in Bookmarksgrove right at the coast of the Semantics, a
