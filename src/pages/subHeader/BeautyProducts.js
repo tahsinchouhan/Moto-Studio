@@ -11,7 +11,7 @@ function BeautyProducts() {
       <div className="container-fluid">
         <div className="container">
           <div className="all-shop-list p-3 m-3">
-            <Row className="offset-sm-1">
+            <Row className="offset-sm-3">
               {/* <Col > */}
               <Row>
                 <Col md={4} lg={4}>

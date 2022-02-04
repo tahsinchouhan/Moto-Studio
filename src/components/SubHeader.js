@@ -23,7 +23,7 @@ function SubHeader() {
   return (
     <>
       <div onMouseLeave={() => shopHandler()}>
-        <Navbar className="sub-haeder" collapseOnSelect expand="lg" bg="">
+        <Navbar className="sub-haeder d-none d-md-block" collapseOnSelect expand="lg" bg=""  variant="dark">
           <Container>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
