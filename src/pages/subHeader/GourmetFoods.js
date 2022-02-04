@@ -2,8 +2,6 @@ import React from 'react'
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/Image"
 import honey from "../../../public/images/honey.png"
-import Vector from "../../../public/images/Vector.png"
-import VectorOne from "../../../public/images/VectorOne.png"
 
 
 function GourmetFoods() {
@@ -13,7 +11,9 @@ function GourmetFoods() {
         <div className="container">
           <div className="all-shop-list p-3 m-3">
             <Row>
-              <Col md={2}lg={2}>
+              <Col md={8} lg={8}>
+                <Row>
+                <Col md={3}lg={3}>
                 <div className='text-center'>
                 <div className='vector-img'>
                   <div className="vector-div"></div>
@@ -26,7 +26,7 @@ function GourmetFoods() {
                 </div>
                 
               </Col>
-              <Col md={2}lg={2}>
+              <Col md={3}lg={3}>
                 <div className='text-center'>
                 <div className='vector-img'>
                  {/* <Image src={VectorOne} alt="honey"/> */}
@@ -38,7 +38,7 @@ function GourmetFoods() {
                 </div>
                
               </Col>
-              <Col md={2}lg={2}>
+              <Col md={3}lg={3}>
               <div  className='text-center'>
               <div>
                  <Image src={honey} alt="honey"/>
@@ -47,7 +47,7 @@ function GourmetFoods() {
                   </div>
                
               </Col>
-              <Col md={2}lg={2}>
+              <Col md={3}lg={3}>
               <div className='text-center'>
               <div >
                  <Image src={honey} alt="honey"/>
@@ -56,8 +56,12 @@ function GourmetFoods() {
                   </div>
                
               </Col>
-              <Col md={4}lg={4}>
-               <div  className='text-center'>
+
+                </Row>
+              </Col>
+              <Col md={4} lg={4}>
+              <Col md={12}lg={12}>
+               <div  className='Health-Personal-Care'>
                <div className='text-start'>
                   <h6 className="Grocery-foods">Health&Personal Care</h6>
                   <div>
@@ -75,6 +79,9 @@ function GourmetFoods() {
                 </div>
                </div>
               </Col>
+              </Col>
+
+             
             </Row>
           </div>
         </div>
