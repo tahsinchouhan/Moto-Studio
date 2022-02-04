@@ -1,0 +1,43 @@
+.about-header-img {
+  background: url(../../assets/images/about/aboutHeaderDesk.png);
+  background-repeat: no-repeat !important;
+  background-size: 100% 100%;
+}
+
+.about-header-img-distance {
+  padding: 13% 18%;
+}
+
+.about-header-img-text {
+  font-family: Lora;
+  font-size: 40px;
+  line-height: 51px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.about-header-hr {
+  width: 48px !important;
+  color: #fff !important;
+  opacity: 100% !important;
+  height: 2px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .home-empower-img {
+    background: url(../../assets/images/about/aboutHeaderMobile.png);
+    background-repeat: no-repeat !important;
+    background-size: 100% 100%;
+  }
+
+  .about-header-img-text {
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .about-header-img-distance {
+    padding: 13% 5%;
+  }
+}

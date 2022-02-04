@@ -6,8 +6,9 @@
 // import ButtonDark from "../components/button/ButtonDark";
 
 import Home from "./home/Home";
-// import Shopping from "./shopping/Shopping";
 // import About from "./about/About";
+// import Contact from "./contact/Contact"
+// import Shopping from "./shopping/Shopping";
 
 export default function index() {
   return (
@@ -15,6 +16,7 @@ export default function index() {
       {/* <h1 className="m-5">Home pageggg</h1> */}
       <Home />
       {/* <About /> */}
+      {/* <Contact/> */}
       {/* <Shopping /> */}
     </>
   );

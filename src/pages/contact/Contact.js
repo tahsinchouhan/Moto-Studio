@@ -1,5 +1,7 @@
 import React from 'react'
+import HomeFollowUs from '../home/HomeFollowUs'
 import ContactForm from './ContactForm'
+import CollaborateForestProduce from '../collaborate/CollaborateForestProduce'
 
 
 
@@ -7,7 +9,9 @@ import ContactForm from './ContactForm'
 function Contact() {
     return (
         <div>
+            <HomeFollowUs/>
             <ContactForm/>
+            <CollaborateForestProduce/>
         </div>
     )
 }

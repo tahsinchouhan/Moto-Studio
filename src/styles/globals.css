@@ -1,8 +1,8 @@
 @import "../styles/homeCSS/home.css";
 @import "../styles/aboutCSS/about.css";
-@import "../styles/collaborateCSS/collaborateHeader.css";
+@import "../styles/collaborateCSS/collaborate.css";
+@import "../styles/contactCSS/contact.css";
 
-@import "../styles/Community.css";
 @import "../styles/buttonCSS/buttonDark.css";
 @import "../styles/shopping/shopping.css";
 

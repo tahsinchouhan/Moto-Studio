@@ -16,20 +16,22 @@ function FeaturedProducts() {
       <div className="overflow-style">
         <div className="image-div1">
           <div className="mb-5 image-div">
-            <Image
-              src={GourmetFoods}
-              alt="GourmetFoods"
-              className="rounded-circle"
-            />
-            <h5>Gourmet Foods</h5>
+            <div className=" rounded-circle ">
+              <Image
+                src={GourmetFoods}
+                alt="GourmetFoods"
+                className="rounded-circle  hover1 "
+              />
+              <h5>Gourmet Foods</h5>
+            </div>
           </div>
 
           <div className="mb-5 image-div">
             <Image
               src={BeautyProducts}
               alt="BeautyProducts"
-              className="rounded-circle"
-            />{" "}
+              className="rounded-circle hover1"
+            />
             <h5>Beauty Products</h5>
           </div>
 
@@ -37,8 +39,8 @@ function FeaturedProducts() {
             <Image
               src={AlternativeMedicine}
               alt="AlternativeMedicine"
-              className="rounded-circle"
-            />{" "}
+              className="rounded-circle hover1"
+            />
             <h5>
               Alternative <br /> Medicine
             </h5>
@@ -48,8 +50,8 @@ function FeaturedProducts() {
             <Image
               src={HealthPersonalCare}
               alt="HealthPersonalCare"
-              className="rounded-circle"
-            />{" "}
+              className="rounded-circle hover1"
+            />
             <h5>
               Health &amp; <br /> Personal Care
             </h5>

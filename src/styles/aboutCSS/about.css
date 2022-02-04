@@ -1,3 +1,5 @@
-@import "../aboutCSS/about-news-room.css";
+@import "../aboutCSS/about-header.css";
+@import "../aboutCSS/whoWeAre.css";
 @import "../aboutCSS/happy-customer.css";
-@import "../aboutCSS/whoWeAre.css"
+@import "../aboutCSS/empoweredGroup.css";
+@import "../aboutCSS/about-news-room.css";

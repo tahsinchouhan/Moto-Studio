@@ -21,10 +21,15 @@
   overflow-x: auto;
 }
 .image-div {
-  float: right;
-  width: 200px;
+  float: left;
+  width: 200px !important;
 }
 .overflow-style {
   overflow-x: auto;
   text-align: center;
+}
+.hover1:hover{
+ border: 10px solid red !important;
+
+
 }
