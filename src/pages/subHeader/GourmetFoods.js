@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import Image from "next/Image"
-import honey from "../../../public/images/honey.png"
+import Image from "next/image";
+import honey from "../../../public/images/honey.png";
 
 
 function GourmetFoods() {
