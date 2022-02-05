@@ -1,4 +1,4 @@
-.white_select {
+/* .white_select {
     background: rgba(255,255,255,1) url() no-repeat scroll calc(5% + 3px) center/8px auto;
     width: 100%;
 } 
@@ -14,7 +14,7 @@
     -moz-appearance: none;
     appearance: none;
     color: #939598;
-}
+} */
 .news-header-div{
     display: flex;
     justify-content: center;
@@ -98,9 +98,9 @@
  .card-body{
     padding: 1.5rem 3rem !important;
  }
- .News-Articles-div{
+ /* .News-Articles-div{
 
- }
+ } */
  .News-Articles{
     width: 85%;
  }

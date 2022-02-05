@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import Link from "next/link";
 import ShopAll from "../pages/subHeader/shopAll";
 import GourmetFoods from "../pages/subHeader/GourmetFoods";

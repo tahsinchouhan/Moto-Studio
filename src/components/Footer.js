@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from '../styles/Home.module.css'
 import AmazonFooter from "./footer/AmazonFooter";
 import CenterFooter from "./footer/CenterFooter";

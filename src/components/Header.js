@@ -1,10 +1,9 @@
 import React from "react";
-
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container,Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
-import logo from "/public/images/CG Herbals Logo.png";
+import logo from "/public/images/CGHerbalsLogo.png";
 
 function Header() {
   return (
