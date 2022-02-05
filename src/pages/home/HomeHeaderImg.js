@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-<<<<<<< HEAD
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-=======
-import HomeHeaderImage from "../../assets/images/home/homeHeaderMobile.png";
->>>>>>> 9e54ed2f4ee160cce7af22d1e9a4c3ab9ae24fc6
 
 
 function HomeHeaderImg() {
@@ -13,11 +9,7 @@ function HomeHeaderImg() {
   return( <>
 
 <div className="home-head-img-mobile">
-<<<<<<< HEAD
         <Image src={HomeHeader} className='w-100' alt="ss" />
-=======
-        <Image src={HomeHeaderImage} className='w-100' alt="ss" />
->>>>>>> 9e54ed2f4ee160cce7af22d1e9a4c3ab9ae24fc6
         <Container>
           <Row className=" justify-content-md-start justify-content-center">
             <Col md={8} lg={6}className="col-10">
