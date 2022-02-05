@@ -1,0 +1,51 @@
+import Image from "next/image";
+import React from "react";
+import { Col, Container, Form, Row } from "react-bootstrap";
+import image1 from "../../assets/images/product/image1.png";
+function Popup() {
+  return (
+    <>
+      <div className="modal-body">
+        <Container>
+          <div className="popup-div m-auto">
+            <Row className="popup-row w-75 m-auto">
+              <Col Col={8} className="p-4">
+                <h1 className="product-name-text">Product Name</h1>
+                <p className="popup-paragraph1">
+                  Far far away, behind the word mountains, far from the
+                  countries Vokalia and Consonantia, there live the blind texts.
+                </p>
+                <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
+                <ul className="popup-ul fw-bold">
+                  <li>Tea Variety Green</li>
+                  <li>Unflavoured Loose Leaves</li>
+                  <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
+                  <li>Units : 100.0 gram</li>
+                </ul>
+
+                <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
+                <ul className="popup-ul fw-bold">
+                  <li>Tea Variety Green</li>
+                  <li>Unflavoured Loose Leaves</li>
+                  <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
+                  <li>Units : 100.0 gram</li>
+                </ul>
+                <Form.Select className="w-75  select-quantity-text" size="lg">
+                  <option>Select Quantity</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </Form.Select>
+              </Col>
+              <Col Col={6}>
+                <Image src={image1} alt="image1" width={349} height={482} />
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </div>
+    </>
+  );
+}
+
+export default Popup;

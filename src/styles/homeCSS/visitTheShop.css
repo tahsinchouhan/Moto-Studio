@@ -1,0 +1,17 @@
+.WildforestHoney-card-img1 {
+    height: 550px !important;
+    width: 100%;
+  }
+  .VisitTheShop-cards {
+    height: 270px;
+  }
+  .WildforestHoney-card {
+    height: 556px;
+  }
+  
+  @media (max-width: 1200px) {
+    .WildforestHoney-card {
+      height: auto;
+    }
+  }
+  
