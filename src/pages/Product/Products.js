@@ -1,24 +1,25 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
 import { AiFillPlusCircle } from "react-icons/ai";
 import ProductImageOne from "../../assets/images/product/productImageOne.png";
-import ProductImage2 from "../../Assets/images/product/ProductImage2.png";
-import ProductImage3 from "../../Assets/images/product/ProductImage3.png";
-import ProductImage4 from "../../Assets/images/product/ProductImage4.png";
-import ProductImage5 from "../../Assets/images/product/ProductImage5.png";
-import ProductImage6 from "../../Assets/images/product/ProductImage6.png";
-import ProductImage7 from "../../Assets/images/product/ProductImage7.png";
-import ProductImage8 from "../../Assets/images/product/ProductImage8.png";
+import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
+import ProductImageThree from "../../assets/images/product/productImageThree.png";
+import ProductImageFour from "../../assets/images/product/productImageFour.png";
+import ProductImageFive from "../../assets/images/product/productImageFive.png";
+import ProductImageSix from "../../assets/images/product/productImageSix.png";
+
 function Products() {
   return (
     <>
       <div className="all-product-heading">
-        <div className="store-home">
-          <h6>Store Home &gt; </h6>
-        </div>
-        <div className="header">
-          <h1>All Products</h1>
+        <div style={{paddingTop:"26px", paddingBottom:"40px"}}>
+          <div className="store-home">
+            <span>Store Home &gt; </span>
+          </div>
+          <div className="products-header">
+            <h1>All Products</h1>
+          </div>
         </div>
       </div>
       <Row>
@@ -28,7 +29,7 @@ function Products() {
         <Col lg={8}>
           <Row>
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <div>
                   <Image
                     src={ProductImageOne}
@@ -61,9 +62,9 @@ function Products() {
               </div>
             </Col>
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage2}
+                  src={ProductImageTwo}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -93,9 +94,9 @@ function Products() {
             </Col>
 
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage3}
+                  src={ProductImageThree}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -125,9 +126,9 @@ function Products() {
             </Col>
 
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage4}
+                  src={ProductImageFour}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -155,9 +156,9 @@ function Products() {
           </Row>
           <Row style={{ paddingTop: "7%" }}>
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage5}
+                  src={ProductImageFive}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -186,9 +187,9 @@ function Products() {
               </div>
             </Col>
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage6}
+                  src={ProductImageSix}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -218,9 +219,9 @@ function Products() {
             </Col>
 
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage7}
+                  src={ProductImageOne}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -249,9 +250,9 @@ function Products() {
               </div>
             </Col>
             <Col lg={3}>
-              <div style={{ width: "256px", height: "456px" }}>
+              <div className="p-3">
                 <Image
-                  src={ProductImage8}
+                  src={ProductImageTwo}
                   alt="Picture of the author"
                   className="w-100"
                 />
@@ -278,7 +279,7 @@ function Products() {
             </Col>
           </Row>
         </Col>
-        <Col lg={1}>ghgf</Col>
+        <Col lg={1}></Col>
       </Row>
       <div className="text-center">
         <button type="submit" className="load-more-product">

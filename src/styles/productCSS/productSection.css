@@ -1,98 +1,99 @@
 .header {
-    color: #333333;
-    font-family: Lora;
-    font-size: 40px;
-    text-align: center; 
-  }
-  
-  .all-product-heading{
-    background-color:#EDF2F5;
-  
-  
-  }
-  .store-home{
-   color: #666666;
-  font-family: Lato;
-  font-size: 12px;
+  color: #333333;
+  font-family: Lora;
+  font-size: 40px;
   text-align: center;
+
+
+}
+.all-product-heading{
+  background-color:#EDF2F5;
+
+
+}
+.store-home{
+ color: #666666;
+font-family: Lato;
+font-size: 12px;
+text-align: center;
+
+}
+.text {
+  font-family: Lora;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; 
+  letter-spacing: 0em;
+  text-align: left;
+  height: 17px;
+  width: 194px;
+
+  border-radius: nullpx;
+}
+
+.text1 {
+  font-size: 14px;
+}
+
+.Add-to-chart-button {
+  border-radius: 0px !important;
+  background-color: #49dbc9 !important;
+  border: none !important;
+}
+
+.product-Img-mt {
+  margin-top: 98px !important;
+}
+
+.product-Price {
+  color: #7b61ff;
+  height: 16.523406982421875px;
+  width: 44.141414642333984px;
+  border-radius: nullpx;
+}
+.icon {
+  color: #7b61ff;
+  height: 16px;
+  width: 16px;
+  left: 17px;
+  top: 321.77197265625px;
+  border-radius: 0px;
+}
+
+.load-more-product {
+  background: #dbf8e6;
+
+   padding: 13px, 26px, 13px, 26px; 
+  line-height: 17px;
+  line-height: 100%;
+  margin-top: 53px;
+  vertical-align: Top; 
+}
+.products {
+  color: #666666;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  text-align: left;
+  font-family: Lato;
+}
+.sort-by {
+  color: #666666;
+  font-family: Lato;
+  font-style: Medium;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: right;
+  vertical-align: Top;
+}
+.featured {
+  color: #666666;
+  font-family: Lato;
+  font-style: Medium;
+  font-size: 14px;
+  line-height: 17px;
+  line-height: 100%;
+  text-align: Left;
   
-  }
-  .text {
-    font-family: Lora;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; 
-    letter-spacing: 0em;
-    text-align: left;
-    height: 17px;
-    width: 194px;
-  
-    border-radius: nullpx;
-  }
-  
-  .text1 {
-    font-size: 14px;
-  }
-  
-  .Add-to-chart-button {
-    border-radius: 0px !important;
-    background-color: #49dbc9 !important;
-    border: none !important;
-  }
-  
-  .product-Img-mt {
-    margin-top: 98px !important;
-  }
-  
-  .product-Price {
-    color: #7b61ff;
-    height: 16.523406982421875px;
-    width: 44.141414642333984px;
-    border-radius: nullpx;
-  }
-  .icon {
-    color: #7b61ff;
-    height: 16px;
-    width: 16px;
-    left: 17px;
-    top: 321.77197265625px;
-    border-radius: 0px;
-  }
-  
-  .load-more-product {
-    background: #dbf8e6;
-    padding: 13px, 26px, 13px, 26px; 
-    line-height: 17px;
-    line-height: 100%;
-    margin-top: 53px;
-    vertical-align: Top; 
-  }
-  .products {
-    color: #666666;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    text-align: left;
-    font-family: Lato;
-  }
-  .sort-by {
-    color: #666666;
-    font-family: Lato;
-    font-style: Medium;
-    font-size: 10px;
-    line-height: 12px;
-    text-align: right;
-    vertical-align: Top;
-  }
-  .featured {
-    color: #666666;
-    font-family: Lato;
-    font-style: Medium;
-    font-size: 14px;
-    line-height: 17px;
-    line-height: 100%;
-    text-align: Left;
-    
-  }
-  
+}

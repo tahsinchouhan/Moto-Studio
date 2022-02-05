@@ -21,7 +21,7 @@ a {
 @import "./Home.module.css";
 @import "./shopCss/Shop.module.css";
 @import "./newsCss/infoNewsroom.module.css";
-@import "./productCss/Product.module.css";
+
 
 
 @media (min-width: 320px) and (max-width:768px) {
