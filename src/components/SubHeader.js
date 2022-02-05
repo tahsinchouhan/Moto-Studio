@@ -35,7 +35,7 @@ function SubHeader() {
                     </Link>
                   </li>
                   <li onMouseOver={() => shopHandler(2)}>
-                    <Link href="#pricing">
+                    <Link href="/">
                       <a className="sub-nav-link mx-3">Gourmet Foods</a>
                     </Link>
                   </li>

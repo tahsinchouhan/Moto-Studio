@@ -7,8 +7,8 @@ import CollaborateForestProduce from "./CollaborateForestProduce";
 function Collaborate() {
   return (
     <>
-      <CollaborateHeader />
-      <CollaborateForm />
+      <CollaborateHeader/>
+      <CollaborateForm/>
       <CollaborateForestProduce/>
     </>
   );

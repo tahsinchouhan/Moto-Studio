@@ -1,5 +1,5 @@
 .white_select {
-    background: rgba(255,255,255,1) url(../../public/images/leftarrow.png) no-repeat scroll calc(5% + 3px) center/8px auto;
+    background: rgba(255,255,255,1) url() no-repeat scroll calc(5% + 3px) center/8px auto;
     width: 100%;
 } 
 
@@ -9,7 +9,7 @@
     padding: 6px 4px;
     border: 1px solid #d7d7d7;
     background: #fff;
-    background: rgba(0,0,0,0) url(../../public/images/leftarrow.png) no-repeat scroll calc(5% + 3px) center/8px auto;
+    background: rgba(0,0,0,0) url() no-repeat scroll calc(5% + 3px) center/8px auto;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

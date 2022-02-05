@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import {Row, Col,} from "react-bootstrap";
 import Image from "next/image";
 import honey from "../../../public/images/honey.png";
 
@@ -43,7 +43,6 @@ function GourmetFoods() {
                 </div>
                 <span className="Wildforest">Amla Products</span>
                   </div>
-               
               </Col>
               <Col md={3}lg={3}>
               <div className='text-center'>
@@ -52,9 +51,7 @@ function GourmetFoods() {
                 </div>
                 <span className="Wildforest">Cashews</span>
                   </div>
-               
               </Col>
-
                 </Row>
               </Col>
               <Col md={4} lg={4}>
@@ -78,8 +75,6 @@ function GourmetFoods() {
                </div>
               </Col>
               </Col>
-
-             
             </Row>
           </div>
         </div>
@@ -87,3 +82,4 @@ function GourmetFoods() {
         </>
     )
 }
+export default GourmetFoods;

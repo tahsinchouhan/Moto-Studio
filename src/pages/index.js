@@ -20,7 +20,7 @@ export default function index() {
     <>
       {/* <h1 className="m-5">Home pageggg</h1> */}
 {/* <Home/> */}
-{/* <HomeHeaderImg/> */}
+<HomeHeaderImg/>
       {/* <h1 className="m-5">Home pageggg</h1> */}
       {/* <Home /> */}
       <About />

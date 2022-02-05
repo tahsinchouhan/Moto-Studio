@@ -23,7 +23,7 @@ function AboutNewsroom() {
     <div className="card h-100">
     <Image src={Microenterprises} className="w-100 card-img-top" alt="Microinterprises"/>
       <div className="card-body">
-        <h5 classNameName="card-title">Lac Cultivation and Processing</h5>
+        <h5 className="card-title">Lac Cultivation and Processing</h5>
         <small className="about-newsroom-date">Sep 09, 2020</small>
         <p className="card-text about-newsroom-card-para mt-3">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <button className="mb-2">READ MORE</button>
