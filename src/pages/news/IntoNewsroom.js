@@ -3,23 +3,18 @@ import {
   Container,
   Row,
   Col,
-  Navbar,
-  Nav,
-  NavDropdown,
   Dropdown,
   Card,
   Button,
 } from "react-bootstrap";
 import { BsFillCaretRightFill } from "react-icons/bs";
 
-import Image from "next/image";
-import newsroom from "../../../public/images/newsroomimage.png";
 
 function IntoNewsroom() {
   return (
     <>
-      <div>
-        <Container>
+      <div className="into-newsroom-container">
+        <Container className="cg-herbal-container">
           <div className="row">
             <div className="col-lg-12">
               <h1 className="newsroom-header mt-4 text-center">
@@ -47,7 +42,7 @@ function IntoNewsroom() {
                     <Dropdown className="d-inline mx-2">
                       <Dropdown.Toggle id="dropdown-autoclose-true">
                         <span>
-                          <BsFillCaretRightFill />
+                          <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
                         </span>
                         2021
                       </Dropdown.Toggle>
@@ -86,6 +81,50 @@ function IntoNewsroom() {
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />
                     <Card.Body>
+                      <Card.Title className="news-card-title">
+                        Lac Cultivation and Processing
+                      </Card.Title>
+                      <Card.Text>
+                        <span className="news-date-title">Sep 09, 2020</span>
+                        <p className="news-card-para">
+                          Etiam at varius diam, id blandit erat. Suspendisse
+                          eget volutpat risus, id venenatis justo. Fusce
+                          elementum ligula elit. Duis ultricies ultrices nibh, a
+                          tincidunt risus pretium eleifend.
+                        </p>
+                      </Card.Text>
+                      <Button className="news-card-btn">
+                        <span className="news-read-more">READ MORE</span>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+                <div className="news-room-card">
+                  <Card style={{ width: "100% !important" }}>
+                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Body className="news-body ">
+                      <Card.Title className="news-card-title">
+                        Lac Cultivation and Processing
+                      </Card.Title>
+                      <Card.Text>
+                        <span className="news-date-title">Sep 09, 2020</span>
+                        <p className="news-card-para">
+                          Etiam at varius diam, id blandit erat. Suspendisse
+                          eget volutpat risus, id venenatis justo. Fusce
+                          elementum ligula elit. Duis ultricies ultrices nibh, a
+                          tincidunt risus pretium eleifend.
+                        </p>
+                      </Card.Text>
+                      <Button className="news-card-btn">
+                        <span className="news-read-more">READ MORE</span>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+                <div className="news-room-card">
+                  <Card style={{ width: "100% !important" }}>
+                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Body className="news-body">
                       <Card.Title className="news-card-title">
                         Lac Cultivation and Processing
                       </Card.Title>

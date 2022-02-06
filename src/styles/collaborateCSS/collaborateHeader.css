@@ -1,37 +1,71 @@
-.cllaborate-head-img {
+.collaborate-header-img {
   background: url(../../assets/images/collaborate/CollaborateBanner.png);
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 6.35% 0% !important;
+ 
 }
 
-.collaborate-header-head {
-  font-family: Red Hat Display !important;
-  font-weight: bold !important;
-  font-size: 64px !important;
-  line-height: 67px !important;
-  color: #065934 !important;
-  opacity: 100% !important;
+.gutter-collaborate-fix{
+  --bs-gutter-x: 0rem !important;
 }
 
-.collaborate-header-para{
-    font-family: Lato !important;
-    font-size: 16px !important;
-    line-height: 28px !important;
-    color: #666666 !important; 
+.collaborate-header-img-mobile {
+  display: none !important;
 }
 
-@media screen and (max-width:767px) {
-    .cllaborate-head-img {
-        background: url(../../assets/images/collaborate/Collaborate\ Banner\ mobile.png) !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-      
-    .collaborate-header-head {
-        font-size: 44px !important;
-    }
-      
-    .collaborate-header-para{
-        color: #525151 !important;
-    }
+.collaborate-heads-head {
+  font-family: Red Hat Display;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 67px;
+  color: #065934;
+}
+
+.collaborate-heads-para {
+  font-family: Lato;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666666;
+}
+
+@media screen and (max-width: 767px) {
+  .collaborate-header-img {
+    display: none !important;
+  }
+
+  .collaborate-header-img-mobile {
+    display: block !important;
+  }
+
+  .collaborate-heads-head-mobile {
+    font-family: Red Hat Display;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 56px;
+    color: #333333;
+  }
+
+  .collaborate-heads-para-mobile {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    color: #333333;
+  }
+
+  .collaborate-heads-head {
+    font-size: 43px;
+  }
+
+  .collaborate-heads-para {
+    color: #2c2c2c;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .collaborate-heads-head {
+    font-size: 33px;
+  }
 }

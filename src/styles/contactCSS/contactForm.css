@@ -1,7 +1,12 @@
 .demo1 {
     padding-top: 3%;
   }
-  .Contact-Us-heading {
+
+.contact-container{
+  margin: 57px 0px !important;
+}
+
+.Contact-Us-heading {
     font-family: Lora;
     font-size: 40px;
     line-height: 51px;
@@ -12,8 +17,6 @@
   .contact-form-hr {
     color: #c4c4c4;
     opacity: 100% !important;
-    /* margin-left: 50% !important ;
-    margin-right: 50% !important; */
     width: 48px;
     height: 2px;
   }
@@ -32,9 +35,10 @@
   .Contact-Us-form-input {
     height: 56px;
     background-color: #ffffff;
+    border-radius: 0px !important;
   }
   .contac-sent-message {
-    padding: 2% 0px 8% 0px;
+    padding: 2% 0px 0 0px;
   }
   .btn-contact {
     display: flex;

@@ -2,10 +2,11 @@
   background: url(../../assets/images/about/aboutHeaderDesk.png);
   background-repeat: no-repeat !important;
   background-size: 100% 100%;
+  margin-bottom: 6%;
 }
 
 .about-header-img-distance {
-  padding: 13% 18%;
+  padding: 10% 0% !important;
 }
 
 .about-header-img-text {
@@ -14,6 +15,7 @@
   line-height: 51px;
   text-align: center;
   color: #ffffff;
+  margin-bottom: 0% !important;
 }
 
 .about-header-hr {
@@ -35,6 +37,7 @@
     line-height: 41px;
     text-align: center;
     color: #ffffff;
+    
   }
 
   .about-header-img-distance {

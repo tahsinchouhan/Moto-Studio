@@ -1,8 +1,9 @@
 // import Home from "./home/Home";
 // import About from "./about/About";
 // import Collaborate from './collaborate/Collaborate'
-// import Contact from "./contact/Contact"
-import Products from "./Product/Products"
+import Contact from "./contact/Contact"
+// import Products from "./Product/Products"
+// import IntoNewsRoom from "./news/IntoNewsroom"
 // import Shopping from "./shopping/Shopping";
 
 export default function index() {
@@ -11,8 +12,9 @@ export default function index() {
       {/* <Home /> */}
       {/* <About /> */}
       {/* <Collaborate/> */}
-      {/* <Contact/> */}
-      <Products/>
+      <Contact/>
+      {/* <Products/> */}
+      {/* <IntoNewsRoom/> */}
       {/* <Shopping /> */}
     </>
   );

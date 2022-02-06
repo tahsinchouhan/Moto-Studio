@@ -13,7 +13,7 @@ box-sizing: border-box;
 
 .center-footer{
     background: #FFFFFF;
-    height: 332px;
+    /* height: 332px; */
 }
 .amazon-product{
     padding:40px  10px;

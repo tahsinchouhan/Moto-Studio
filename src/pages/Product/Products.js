@@ -17,19 +17,21 @@ function Products() {
           <div className="store-home">
             <span>Store Home &gt; </span>
           </div>
-          <div className="products-header">
+          <div className="products-header text-center">
             <h1>All Products</h1>
           </div>
         </div>
       </div>
-      <Row>
-        <Col lg={3} md={3}>
+      <Row className="justify-content-center">
+        <Col lg={3} md={2} xs={12} className="p-0">
           ggfhgf
         </Col>
-        <Col lg={8}>
-          <Row>
-            <Col lg={3}>
-              <div className="p-3">
+
+
+        <Col lg={8} md={9} xs={12}>
+          <Row className="justify-content-center">
+            <Col lg={3} md={6} sm={8} xs={12} >
+              <div className="p-3 mx-auto">
                 <div>
                   <Image
                     src={ProductImageOne}
@@ -38,19 +40,19 @@ function Products() {
                   />
                 </div>
 
-                <h1 className="text mb-3">Amla Murabba</h1>
-                <p>
+                <h1 className="product-card-text ">Amla Murabba</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
                     </span>
                   </div>
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -61,19 +63,19 @@ function Products() {
                 </div>
               </div>
             </Col>
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageTwo}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Mahua Laddu</h1>
-                <p>
+                <h1 className="product-card-text">Mahua Laddu</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
@@ -81,7 +83,7 @@ function Products() {
                   </div>
 
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -93,19 +95,19 @@ function Products() {
               </div>
             </Col>
 
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageThree}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Wildforest Honey</h1>
-                <p>
+                <h1 className="product-card-text ">Wildforest Honey</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
@@ -113,7 +115,7 @@ function Products() {
                   </div>
 
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -125,24 +127,24 @@ function Products() {
               </div>
             </Col>
 
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageFour}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Mahua Cookies</h1>
-                <p>
+                <h1 className="product-card-text ">Mahua Cookies</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <span className="icon ">
                     <AiFillPlusCircle />
                   </span>
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -154,20 +156,20 @@ function Products() {
               </div>
             </Col>
           </Row>
-          <Row style={{ paddingTop: "7%" }}>
-            <Col lg={3}>
+          <Row style={{ paddingTop: "7%" }}  className="justify-content-center">
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageFive}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Chyawanprash</h1>
-                <p>
+                <h1 className="product-card-text">Chyawanprash</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
@@ -175,7 +177,7 @@ function Products() {
                   </div>
 
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -186,19 +188,19 @@ function Products() {
                 </div>
               </div>
             </Col>
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageSix}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Handmad Green Tea</h1>
-                <p>
+                <h1 className="product-card-text ">Handmad Green Tea</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
@@ -206,7 +208,7 @@ function Products() {
                   </div>
 
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -218,19 +220,19 @@ function Products() {
               </div>
             </Col>
 
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageOne}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Amla Murabba</h1>
-                <p>
+                <h1 className="product-card-text ">Amla Murabba</h1>
+                <p className="product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <div>
                     <span className="icon ">
                       <AiFillPlusCircle />
@@ -238,7 +240,7 @@ function Products() {
                   </div>
 
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -249,24 +251,24 @@ function Products() {
                 </div>
               </div>
             </Col>
-            <Col lg={3}>
+            <Col lg={3} md={6} sm={8} xs={12} >
               <div className="p-3">
                 <Image
                   src={ProductImageTwo}
                   alt="Picture of the author"
                   className="w-100"
                 />
-                <h1 className="text  mb-3">Mahua Laddu</h1>
-                <p className="mt-16">
+                <h1 className="product-card-text">Mahua Laddu</h1>
+                <p className="mt-16 product-card-para w-100">
                   Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
+                  countries Vokalia and Consonantia, there live the blind product-card-texts.
                 </p>
-                <div className="mt-2 mb-2 text1 d-flex ">
+                <div className="mt-2 mb-2 product-card-text1 d-flex ">
                   <span className="icon ">
                     <AiFillPlusCircle />
                   </span>
                   <div>
-                    <span>Product Details</span>
+                    <span className="product-card-details">Product Details</span>
                   </div>
                 </div>
                 <span className="product-Price">₹250</span>
@@ -278,14 +280,16 @@ function Products() {
               </div>
             </Col>
           </Row>
-        </Col>
-        <Col lg={1}></Col>
-      </Row>
-      <div className="text-center">
+          <div className="text-center">
         <button type="submit" className="load-more-product">
           LOAD MORE PRODUCTS
         </button>
       </div>
+        </Col>
+        <Col md={1} className="d-none d-xl-block"></Col>
+
+      </Row>
+      
     </>
   );
 }

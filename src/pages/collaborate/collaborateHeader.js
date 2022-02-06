@@ -1,40 +1,81 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import Image from "next/image";
+import { Row, Col, Container } from "react-bootstrap";
+import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.png";
 
 function CollaborateHeader() {
   return (
     <>
-      <Row className="cllaborate-head-img justify-content-md-end  justify-content-center mb-4">
-        <Col md={6} className="col-10">
-          <Row className="">
-            <Col md={9} className="py-md-5 ">
-              <p className="collaborate-header-head mt-md-5 mb-0 text-center text-md-start">
-                Collaborate
-              </p>
-              <p className="collaborate-header-head text-center text-md-start">
-                {" "}
-                with Us
-              </p>
-              <p className="collaborate-header-para text-center text-md-start">
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in Bookmarksgrove right at the coast of the Semantics,
-                a large language ocean.
-              </p>
-              <div className="my-md-5 d-flex mb-5">
-                <div className="mx-auto mx-md-0">
-                  <button className="d-inline-block me-3">
-                    CONTACT US &nbsp; &gt;
-                  </button>
-                  <button className="d-inline-block">
-                    TENDERS &nbsp; &gt;
-                  </button>
-                </div>
-              </div>
+      <div className="collaborate-header-img-mobile">
+        <Image
+          src={CollaborateHeaderImg}
+          className="w-100"
+          alt="CollaborateHeaderImg"
+        />
+        <Container className="mt-4">
+          <Row className=" justify-content-md-start gutter-collaborate-fix justify-content-center">
+            <Col md={8} lg={6} className="col-10">
+              <Row className="gutter-collaborate-fix">
+                <Col md={9} className="py-md-3 my-2 ">
+                  <p className="collaborate-heads-head-mobile  mb-0 ">
+                    Collaborate
+                  </p>
+                  <p className="collaborate-heads-head-mobile ">with Us</p>
+                  <p className="collaborate-heads-para-mobile ">
+                    Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind
+                    texts. Separated they live in Bookmarksgrove right at the
+                    coast of the Semantics, a large language ocean.
+                  </p>
+                  <div className=" col-10 mt-4">
+                    <button className="mb-md-5  mt-md-3 mb-3 me-3">
+                      CONTACT US &nbsp; &gt;
+                    </button>
+                    <button className="mb-md-5  mt-md-3 mb-0">
+                      SHOP NOW &nbsp; &gt;
+                    </button>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
-        </Col>
-      </Row>
+        </Container>
+      </div>
+
+      <div className="collaborate-header-img">
+        <Container className="mt-4">
+          <Row className=" justify-content-md-end justify-content-center gutter-collaborate-fix">
+            <Col  md={6} className="col-10">
+              <Row className="gutter-collaborate-fix">
+                <Col md={10} className="py-md-4 my-2 ">
+                  <p className="collaborate-heads-head  mb-0 text-center text-md-start">
+                    Collaborate
+                  </p>
+                  <p className="collaborate-heads-head  mb-0 text-center text-md-start">
+                    with Us
+                  </p>
+
+                  <p className="collaborate-heads-para text-center text-md-start">
+                    All products of Chhattisgarh Herbals are powered by
+                    Chhattisgarh Minor Forest Produce Cooperative Federation, an
+                    institution dedicated to uplifting more than 1.2 million
+                    forest dwellers of Chhattisgarh state.
+                  </p>
+
+                  <div className=" col-12">
+                    <button className="mb-lg-5 mt-md-2 mb-0 me-3">
+                      CONTACT US &nbsp; &gt;
+                    </button>
+                    <button className="mb-lg-5 mt-md-2 mb-0">
+                      SHOP NOW &nbsp; &gt;
+                    </button>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

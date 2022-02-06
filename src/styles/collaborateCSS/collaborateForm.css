@@ -1,3 +1,8 @@
+
+.collaborate-form-container{
+  margin-top: 98px !important;
+}
+
 .collaborate-demo {
     padding-top: 3%;
   }
@@ -12,7 +17,7 @@
   .collaborate-hr{
     color: #065934 !important;
     width: 84px !important;
-    height: 4px !important;
+    height: 2px !important;
     opacity: 100% !important;
   }
 
@@ -22,6 +27,7 @@
   .collaborate-Us-form-input {
     height: 56px;
     background-color: #ffffff;
+    border-radius: 0px !important;
   }
   .collaborate-sent-message {
     padding: 2% 0px 8% 0px;
@@ -33,7 +39,7 @@
     background: #BFB2FF !important;
     flex: none;
     flex-grow: 0;
-    margin: 36px 0px 0px 0px;
+    margin: 8px 0px 0px 0px !important;
     height: 54px;
     border-radius: 0px !important;
     white-space: nowrap;
@@ -43,7 +49,7 @@
   }
   
   .collaborate-button:hover {
-    background-color: #7b61ff;
+    background-color: #7b61ff !important;
     border-radius: 10px;
     transition: .6s;
   }
@@ -51,17 +57,28 @@
   @media screen and (max-width:767px){
     .collaborate-button{
       width: 50% !important;
+      height: 44px;
     }
   }
 
   @media screen and (max-width:520px){
     .collaborate-button{
       width: 65% !important;
+      height: 38px;
     }
   }
 
-  @media screen and (max-width:280px){
+  @media screen and (max-width:460px){
     .collaborate-button{
-      width: 80% !important;
+      width: 75% !important;
+      height: 30px;
     }
   }
+
+  @media screen and (max-width:420px){
+    .collaborate-button{
+      width:100% !important;
+      height: 24px;
+    }
+  }
+

@@ -43,48 +43,55 @@ function EmpoweredGroup() {
   };
   return (
     <>
-      <Container>
+      <Container className="about-empowered-container">
+        <div >
+          <p className="about-empowered-heading">Empowered Groups</p>
+          <hr className="about-empowered-top-hr mx-auto mt-3"></hr>
+        </div>
         <div className="container about-carousel-conatiner mt-5 mb-5">
           <Slider {...settings}>
             <div className="text-center">
               <div>
-              <Image src={SGHONE} className="p-5" alt="" />
+              <Image src={SGHONE} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 1</p>
               </div>
             </div>
             <div className="text-center">
               <div>
-              <Image src={SGHTWO} className="p-5" alt="" />
+              <Image src={SGHTWO} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 2</p>
               </div>
             </div>
             <div className="text-center">
               <div>
-              <Image src={SGHTHREE} className="p-5" alt="" />
+              <Image src={SGHTHREE} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 3</p>
               </div>
             </div>
             <div className="text-center">
               <div>
-              <Image src={SGHONE} className="p-5" alt="" />
+              <Image src={SGHONE} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 1</p>
               </div>
             </div>
             <div className="text-center">
               <div>
-              <Image src={SGHTWO} className="p-5" alt="" />
+              <Image src={SGHTWO} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 2</p>
               </div>
             </div>
             <div className="text-center">
               <div>
-              <Image src={SGHTHREE} className="p-5" alt="" />
+              <Image src={SGHTHREE} className="about-empower-carousel-padding" alt="" />
               <p className="empowered-carousel-text">SHG Name 3</p>
               </div>
             </div>
           </Slider>
         </div>
       </Container>
+      <div> 
+      <hr className="about-empower-hr mx-auto "  />
+      </div>
     </>
   );
 }
