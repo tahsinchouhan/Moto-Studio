@@ -1,17 +1,52 @@
 .WildforestHoney-card-img1 {
-    height: 550px !important;
-    width: 100%;
+  height: 550px !important;
+  width: 100%;
+}
+.VisitTheShop-cards {
+  height: 270px;
+  margin: auto;
+}
+.WildforestHoney-card {
+  height: 556px;
+  margin: auto;
+}
+
+@media (max-width: 992px) {
+  .WildforestHoney-card {
+    height: auto;
+    width: 90%;
   }
   .VisitTheShop-cards {
-    height: 270px;
+    width: 90%;
+    height: auto;
   }
-  .WildforestHoney-card {
-    height: 556px;
-  }
+}
+.hover-div {
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  bottom:45%;
+  right: 5%;
+  opacity: 0;
+  width: 102px;
+  height: 34px;
+  font-size: 19px;
+}
+.hover-div1:hover .hover-div {
+  opacity: 100%;
+}
+.icon1-hover:hover {
+  color: #7b61ff;
+}
+.icon2-hover:hover {
+  color: #dd2528;
+}
+.icon3-hover:hover {
+  color: #49dbc9;
+}
+
+.icon1-hover,.icon2-hover,.icon3-hover{
+  color: #E5E5E5;
   
-  @media (max-width: 1200px) {
-    .WildforestHoney-card {
-      height: auto;
-    }
-  }
-  
+}
