@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import AmlaMurabba from "../../assets/images/home/111.png";
-import MahuaLaddu from "../../assets/images/home/222.png";
-import WildforestHoney from "../../assets/images/home/333.png";
-import MahuaCookies from "../../assets/images/home/444.png";
-import Chyawanprash from "../../assets/images/home/555.png";
+import ProductImageOne from "../../assets/images/product/productImageOne.png";
+import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
+import WildforestHoney from "../../../src/assets/images/home/333.png";
+import ProductImageFour from "../../assets/images/product/productImageFour.png";
+import ProductImageFive from "../../assets/images/product/productImageFive.png";
+import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 function VisitTheShop() {
   return (
@@ -13,9 +14,23 @@ function VisitTheShop() {
       <Container className=" mt-5 ">
         <Row>
           <Col lg={3}>
-            <Card className=" VisitTheShop-cards mt-3 ">
-              <Image src={AmlaMurabba} alt="AmlaMurabba" height={257} />
-              <Card.Body>
+            <Card className=" VisitTheShop-cards mt-3 hover-div1">
+              <Image src={ProductImageOne} alt="AmlaMurabba" />
+              <div className=" row hover-div bg-light">
+                <Row>
+                  <Col xs={4}>
+                    <FaEye className="icon1-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaHeart className="icon2-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaShoppingCart className="icon3-hover d-inline" />
+                  </Col>
+                </Row>
+              </div>
+
+              <Card.Body className="p-3">
                 <Card.Title>Amla Murabba</Card.Title>
                 <div className="d-flex justify-content-between">
                   <Card.Text>500g</Card.Text>
@@ -25,7 +40,7 @@ function VisitTheShop() {
             </Card>
 
             <Card className="mt-3 VisitTheShop-cards">
-              <Image src={MahuaLaddu} alt="MahuaLaddu" height={257} />
+              <Image src={ProductImageTwo} alt="MahuaLaddu" />
               <Card.Body>
                 <Card.Title>Mahua Laddu</Card.Title>
                 <div className="d-flex justify-content-between">
@@ -58,7 +73,7 @@ function VisitTheShop() {
           <Col lg={3}>
             {" "}
             <Card className=" mt-3  VisitTheShop-cards">
-              <Image src={MahuaCookies} alt="MahuaCookies" height={257} />
+              <Image src={ProductImageFour} alt="MahuaCookies" />
               <Card.Body>
                 <Card.Title>Mahua Cookies</Card.Title>
                 <div className="d-flex justify-content-between">
@@ -68,7 +83,7 @@ function VisitTheShop() {
               </Card.Body>
             </Card>
             <Card className="mt-3 VisitTheShop-cards">
-              <Image src={Chyawanprash} alt="Chyawanprash" height={257} />
+              <Image src={ProductImageFive} alt="Chyawanprash" />
               <Card.Body>
                 <Card.Title>Chyawanprash</Card.Title>
                 <div className="d-flex justify-content-between">
