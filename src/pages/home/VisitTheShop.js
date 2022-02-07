@@ -39,9 +39,22 @@ function VisitTheShop() {
               </Card.Body>
             </Card>
 
-            <Card className="mt-3 VisitTheShop-cards">
+            <Card className="mt-3 VisitTheShop-cards hover-div1">
               <Image src={ProductImageTwo} alt="MahuaLaddu" />
-              <Card.Body>
+              <div className=" row hover-div bg-light">
+                <Row>
+                  <Col xs={4}>
+                    <FaEye className="icon1-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaHeart className="icon2-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaShoppingCart className="icon3-hover d-inline" />
+                  </Col>
+                </Row>
+              </div>
+              <Card.Body className="p-3">
                 <Card.Title>Mahua Laddu</Card.Title>
                 <div className="d-flex justify-content-between">
                   <Card.Text>500g</Card.Text>
@@ -52,13 +65,26 @@ function VisitTheShop() {
           </Col>
 
           <Col lg={6}>
-            <Card className="WildforestHoney-card mt-3 ">
+            <Card className="WildforestHoney-card mt-3 hover-div1 ">
               <div className="text-center">
                 <Image
                   src={WildforestHoney}
                   alt="WildforestHoney"
                   className="WildforestHoney-card-img1"
                 />
+                <div className=" row hover-div bg-light">
+                <Row>
+                  <Col xs={4}>
+                    <FaEye className="icon1-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaHeart className="icon2-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaShoppingCart className="icon3-hover d-inline" />
+                  </Col>
+                </Row>
+              </div>
               </div>
               <Card.Body className="p-1 mx-2 ">
                 <Card.Title>Wildforest Honey</Card.Title>
@@ -72,9 +98,22 @@ function VisitTheShop() {
 
           <Col lg={3}>
             {" "}
-            <Card className=" mt-3  VisitTheShop-cards">
+            <Card className=" mt-3  VisitTheShop-cards hover-div1">
               <Image src={ProductImageFour} alt="MahuaCookies" />
-              <Card.Body>
+              <div className=" row hover-div bg-light">
+                <Row>
+                  <Col xs={4}>
+                    <FaEye className="icon1-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaHeart className="icon2-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaShoppingCart className="icon3-hover d-inline" />
+                  </Col>
+                </Row>
+              </div>
+              <Card.Body className="p-3">
                 <Card.Title>Mahua Cookies</Card.Title>
                 <div className="d-flex justify-content-between">
                   <Card.Text>500g</Card.Text>
@@ -82,9 +121,22 @@ function VisitTheShop() {
                 </div>
               </Card.Body>
             </Card>
-            <Card className="mt-3 VisitTheShop-cards">
+            <Card className="mt-3 VisitTheShop-cards  hover-div1">
               <Image src={ProductImageFive} alt="Chyawanprash" />
-              <Card.Body>
+              <div className=" row hover-div bg-light">
+                <Row>
+                  <Col xs={4}>
+                    <FaEye className="icon1-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaHeart className="icon2-hover d-inline" />
+                  </Col>
+                  <Col xs={4}>
+                    <FaShoppingCart className="icon3-hover d-inline" />
+                  </Col>
+                </Row>
+              </div>
+              <Card.Body className="p-3">
                 <Card.Title>Chyawanprash</Card.Title>
                 <div className="d-flex justify-content-between">
                   <Card.Text>500g</Card.Text>

@@ -14,7 +14,7 @@ import image6 from "../../assets/images/home/image6.png";
 function CommunityPage() {
   return (
     <>
-      <Container>
+      <Container className="mt-5" >
         <div className="main-community">
           <h1 className="Text text-center">The Community</h1>
           <hr className="Line my-4 " />
