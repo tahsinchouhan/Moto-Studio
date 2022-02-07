@@ -19,11 +19,13 @@ function Products() {
           </div>
           <div className="products-header text-center">
             <h1>All Products</h1>
+           
           </div>
         </div>
       </div>
-      <Row className="justify-content-center">
-        <Col lg={3} md={2} xs={12} className="p-0">
+     
+      <Row>
+        <Col lg={3} md={3}>
           ggfhgf
         </Col>
 

@@ -1,24 +1,22 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
-import image1 from "../../assets/images/home/image1.png"; 
-import image2 from "../../assets/images/home/image2.png"; 
-import image3 from "../../assets/images/home/image3.png"; 
-import image4 from "../../assets/images/home/image4.png"; 
-import image5 from "../../assets/images/home/image5.png"; 
-import image6 from "../../assets/images/home/image6.png"; 
-
-
-
+import Imageone from "../../assets/images/home/Imageone.png";
+import Imagetwo from "../../assets/images/home/Imagetwo.png"; 
+import Imagethree from "../../assets/images/home/Imagethree.png"; 
+import Imagefour from "../../assets/images/home/Imagefour.png"; 
+import Imagefive from "../../assets/images/home/Imagefive.png"; 
+import Imagesix from "../../assets/images/home/Imagesix.png"; 
 
 function CommunityPage() {
   return (
     <>
-      <Container className="mt-5" >
+      <div className="container ">
+        <div className=" Community-container" >
         <div className="main-community">
           <h1 className="Text text-center">The Community</h1>
           <hr className="Line my-4 " />
-          <div className="para-div">
+          <div className="para-divb pb-4">
           <div className="d-flex">
           <p className="content mx-auto">
               Far far away, behind the word mountains, far from the countries
@@ -36,10 +34,10 @@ function CommunityPage() {
         <Row>
           <Col lg={4} md={6} className="image1 Gallery">
             <Image
-              src={image1}
+              src={Imageone}
               alt="Picture of the author"
-              width={572}
-              height={381}
+              className="w-100"
+          
             />
 
             <div className="overlay">
@@ -47,12 +45,10 @@ function CommunityPage() {
             </div>
           </Col>
           <Col lg={4} md={6} className="image1 Gallery">
-            <Image
-              src={image2}
-              
+          <Image
+              src={Imagetwo}
               alt="Picture of the author"
-              width={572}
-              height={381}
+              className="w-100"
             />
             <div className="overlay">
               <p className="Text-name">Premium  <br/> Cashews</p>
@@ -60,11 +56,10 @@ function CommunityPage() {
           </Col>
 
           <Col lg={4} md={6} className="image1 Gallery">
-            <Image
-              src={image3}
+          <Image
+              src={Imagethree}
               alt="Picture of the author"
-              width={572}
-              height={381}
+              className="w-100"
             />
             <div className="overlay">
               <p className="Text-name">Chyawan <br/> Prash </p>
@@ -72,35 +67,31 @@ function CommunityPage() {
           </Col>
 
           <Col lg={4} md={6} className="image1 Gallery">
-            <Image
-              src={image4}
+          <Image
+              src={Imagefour}
               alt="Picture of the author"
-              width={572}
-              height={381}
+              className="w-100"
             />
             <div className="overlay">
-              <p className="Text-name">Mahua  <br/> Laddu</p>
+              <p className="Text-name">Mahua <br/> Laddu</p>
             </div>
           </Col>
           <Col lg={4} md={6} className="image1 Gallery">
-            <Image
-              src={image5}
+          <Image
+              src={Imagefive}
               alt="Picture of the author"
-              width={572}
-              height={381}
+              className="w-100"
             />
             <div className="  overlay">
-              <p className="Text-name">Mahua Cookies</p>
+              <p className="Text-name">Mahua <br/> Cookies</p>
             </div>
           </Col>
 
           <Col lg={4} md={6} className="image1 Gallery">
-            <Image
-              src={image6}
+          <Image
+              src={Imagesix}
               alt="Picture of the author"
-              width={572}
-              height={381}
-              // className="img-fluid "
+              className="w-100"
             />
 
             <div className="overlay align-items-center">
@@ -109,7 +100,8 @@ function CommunityPage() {
             </div>
           </Col>
         </Row>
-      </Container>
+        </div>
+      </div>
     </>
   );
 }
