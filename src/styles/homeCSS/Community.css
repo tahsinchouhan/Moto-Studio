@@ -6,7 +6,6 @@
   font-weight: 400;
   line-height: 51px;
   letter-spacing: 0em;
- 
 }
 
 .Line {
@@ -38,8 +37,8 @@
   top: 0;
   opacity: 0;
   color: #fff;
-  width: 94%;
-  height: 98%;
+  width: 89%;
+  height: 93%;
   /* max-width: 572px;   */
 
   transition: 0.5s ease;
@@ -62,8 +61,6 @@
     height: 30vh !important;
   }
   .overlay {
-    width: 90% !important;
-    height: 96% !important;
     display: none;
   }
 
@@ -71,16 +68,22 @@
     width: 70% !important;
   }
 }
+@media (max-width: 1400px) {
+  .overlay {
+    width: 87% !important;
+    height: 91.5% !important;
+  }
+}
 @media (max-width: 1200px) {
   .overlay {
-    width: 92% !important;
-    height: 98% !important;
+    width: 85% !important;
+    height: 90% !important;
   }
 }
 @media (max-width: 992px) {
   .overlay {
-    width: 93% !important;
-    height: 98% !important;
+    width: 87% !important;
+    height: 91.5% !important;
   }
 }
 @media (max-width: 444px) {
@@ -95,9 +98,9 @@
   width: 273px;
 
   border-radius: nullpx;
-  
+
   font-family: Lora;
-  font-size:40px;
+  font-size: 40px;
   font-style: normal;
   font-weight: 700;
   line-height: 40px;
@@ -107,6 +110,6 @@
   margin-top: 40% !important;
 }
 
-.Community-container{
+.Community-container {
   margin: 58px 0px !important;
-} 
+}
