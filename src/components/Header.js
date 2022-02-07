@@ -54,11 +54,11 @@ function Header() {
                 </NavDropdown>
                 &nbsp; &nbsp;
                 <div className="pt-1">
-                  <Link href="/">
+                  <Link href="#">
                     <BsSearch className />
                   </Link>
                   &nbsp; &nbsp;
-                  <Link href="/">
+                  <Link href="#">
                     <BsFillCartFill />
                   </Link>
                 </div>

@@ -3,12 +3,14 @@
   color: #065934 !important;
   border: none !important;
   border-radius: 0px !important;
+  padding: 11px 24px !important;
+  box-sizing: border-box !important;
 }
 
 .visit-the-shop-button:hover {
   background-color: #065934 !important;
   color: #dbf8e6 !important;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   transition: 1s;
 }

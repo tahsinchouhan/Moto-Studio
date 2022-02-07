@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
+import Button from "../../components/button/ButtonLight"
 import Skill from "../../assets/images/about/skill.png";
 import Cultivation from "../../assets/images/about/cultivation.png";
 import Microenterprises from "../../assets/images/about/microenterprises.png";
@@ -34,7 +35,7 @@ function AboutNewsroom() {
                   lead-in to additional content. This content is a little bit
                   longer.
                 </p>
-                <button className="mb-2 mt-3">READ MORE</button>
+                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
               </div>
             </div>
           </div>
@@ -53,7 +54,7 @@ function AboutNewsroom() {
                   lead-in to additional content. This content is a little bit
                   longer.
                 </p>
-                <button className="mb-2 mt-3">READ MORE</button>
+                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
               </div>
             </div>
           </div>
@@ -68,7 +69,7 @@ function AboutNewsroom() {
                   lead-in to additional content. This content is a little bit
                   longer
                 </p>
-                <button className="mb-2 mt-3">READ MORE</button>
+                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@
     padding-top: 3%;
   }
   .collaborate-Us-heading {
-    font-family: Lora;
+    font-family: 'Lora';
     font-size: 40px;
     line-height: 51px;
     text-align: left !important;
@@ -40,7 +40,7 @@
     flex: none;
     flex-grow: 0;
     margin: 8px 0px 0px 0px !important;
-    height: 54px;
+    height: 44px;
     border-radius: 0px !important;
     white-space: nowrap;
     width: 35%;
@@ -50,8 +50,8 @@
   
   .collaborate-button:hover {
     background-color: #7b61ff !important;
-    border-radius: 10px;
-    transition: .6s;
+    border-radius: 13px !important;
+    transition: .6s !important;
   }
 
   @media screen and (max-width:767px){

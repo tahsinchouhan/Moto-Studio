@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ButtonDark() {
+function ButtonDark(prop) {
     return (
         <>
-            <button className="dark-button px-5">Content</button>
+            <button className="dark-button">{prop.text}</button>
         </>
     )
 }

@@ -33,7 +33,7 @@
     padding-top: 1.7rem;
 }
 .product-category{
-    font-family: Lato;
+    font-family: 'Lato';
 font-style: normal;
 font-weight: 500;
 font-size: 10px;
@@ -41,7 +41,7 @@ line-height: 12px;
 color: #666666;
 }
 .product-category-items{
-    font-family: Lato;
+    font-family: 'Lato';
 font-style: normal;
 font-weight: 500;
 font-size: 14px;

@@ -17,7 +17,7 @@ box-sizing: border-box;
 }
 .amazon-product{
     padding:40px  10px;
-    font-family: Lora;
+    font-family: 'Lora';
 font-style: normal;
 font-weight: 500;
 font-size: 27px;
@@ -31,7 +31,7 @@ color: #000000;
 /* footer-center */
 
 .footer-cg-para{
-    font-family: Lato;
+    font-family: 'Lato';
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
@@ -40,7 +40,7 @@ color: #666666;
 
 }
 .footer-center-header{
-    font-family: Lora;
+    font-family: 'Lora';
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
@@ -53,5 +53,5 @@ color: #333333;
 .digital-footer{
     text-align: center;
 }
-.footer-center-icon{
-}
+/* .footer-center-icon{
+} */

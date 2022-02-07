@@ -17,24 +17,24 @@ function Shopping() {
               <Col>
                 <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
               </Col>
-              <Col xs lg="2">
+              <Col  lg="2">
                 <p className="m-0 shopping-p-size">QUANTITY</p>
               </Col>
-              <Col xs lg="2">
+              <Col  lg="2">
                 <p className="m-0 shopping-p-size">TOTAL</p>
               </Col>
-              <Col xs lg="2">
+              <Col  lg="2">
                 <p className="m-0 shopping-p-size">TOTAL</p>
               </Col>
             </Row>
             <hr />
             <Row>
-              <Col xs lg="6">
+              <Col  lg="6">
                 <Row>
-                  <Col xs lg="6" md="12" sm="12">
+                  <Col  lg="6" md="12" sm="12">
                     <Image src={image1} alt="image1" />
                   </Col>
-                  <Col xs lg="6" md="12">
+                  <Col  lg="6" md="12">
                     <p className="fw-bold shopping-p2-size">
                       Lemongrass Green Tea
                     </p>
@@ -49,26 +49,26 @@ function Shopping() {
                 </Row>
               </Col>
 
-              <Col xs lg="2" className="mt-3">
+              <Col  lg="2" className="mt-3">
                 <p className="m-0 shopping-p3-size">
                   <span className="fw-bold text-danger">REMOVE</span>
                 </p>
               </Col>
-              <Col xs lg="2" className="mt-5">
+              <Col  lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹450.00</p>
               </Col>
-              <Col xs lg="2" className="mt-5">
+              <Col  lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹900.00</p>
               </Col>
             </Row>
             <hr />
             <Row>
-              <Col xs lg="6">
+              <Col  lg="6">
                 <Row>
-                  <Col xs lg="6" md="12" sm="12">
+                  <Col  lg="6" md="12" sm="12">
                     <Image src={image2} alt="image1" />
                   </Col>
-                  <Col xs lg="6" md="12">
+                  <Col  lg="6" md="12">
                     <p className="fw-bold shopping-p2-size">
                       Lemongrass Green Tea
                     </p>
@@ -83,15 +83,15 @@ function Shopping() {
                 </Row>
               </Col>
 
-              <Col xs lg="2" className="mt-3">
+              <Col  lg="2" className="mt-3">
                 <p className="m-0 shopping-p3-size">
                   <span className="fw-bold text-danger">REMOVE</span>
                 </p>
               </Col>
-              <Col xs lg="2" className="mt-5">
+              <Col  lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹450.00</p>
               </Col>
-              <Col xs lg="2" className="mt-5">
+              <Col  lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹900.00</p>
               </Col>
             </Row>

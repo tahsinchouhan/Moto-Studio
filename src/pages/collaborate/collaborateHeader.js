@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Button from "../../components/button/ButtonLight"
 import { Row, Col, Container } from "react-bootstrap";
 import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.png";
 
@@ -28,12 +29,12 @@ function CollaborateHeader() {
                     coast of the Semantics, a large language ocean.
                   </p>
                   <div className=" col-10 mt-4">
-                    <button className="mb-md-5  mt-md-3 mb-3 me-3">
-                      CONTACT US &nbsp; &gt;
-                    </button>
-                    <button className="mb-md-5  mt-md-3 mb-0">
-                      SHOP NOW &nbsp; &gt;
-                    </button>
+                    <div className="mb-md-5  mt-md-3 mb-3 me-3">
+                    <Button className="collaborate-header-contact-button" text="CONTACT US &nbsp; &gt;" />
+                    </div>
+                    <div className="mb-md-5  mt-md-3 mb-3 me-3">
+                    <Button className="collaborate-header-shop-now-button" text="SHOP NOW &nbsp; &gt;" />
+                    </div>
                   </div>
                 </Col>
               </Row>
@@ -56,19 +57,17 @@ function CollaborateHeader() {
                   </p>
 
                   <p className="collaborate-heads-para text-center text-md-start">
-                    All products of Chhattisgarh Herbals are powered by
-                    Chhattisgarh Minor Forest Produce Cooperative Federation, an
-                    institution dedicated to uplifting more than 1.2 million
-                    forest dwellers of Chhattisgarh state.
+                  Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.   
                   </p>
 
                   <div className=" col-12">
-                    <button className="mb-lg-5 mt-md-2 mb-0 me-3">
-                      CONTACT US &nbsp; &gt;
-                    </button>
-                    <button className="mb-lg-5 mt-md-2 mb-0">
-                      SHOP NOW &nbsp; &gt;
-                    </button>
+                    <span className="mb-lg-5 mt-md-2 mb-0 me-5 d-inline-block">
+                    <Button className="collaborate-header-contact-button" text="CONTACT US &nbsp; &gt;" />
+                    </span>
+                    
+                    <span className="mb-lg-5 mt-md-4 mb-0 d-inline-block">
+                    <Button className="collaborate-header-shop-now-button" text="SHOP NOW &nbsp; &gt;" />
+                    </span>
                   </div>
                 </Col>
               </Row>

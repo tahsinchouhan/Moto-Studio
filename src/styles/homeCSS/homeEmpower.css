@@ -8,8 +8,14 @@
   padding: 9.6% 18%;
 }
 
+.home-empower-button{
+  width: 142px !important;
+  height: 43px !important;
+  box-sizing: border-box !important;
+}
+
 .home-empower-img-para {
-  font-family: Lato;
+  font-family: 'Lato';
   font-size: 22px;
   line-height: 26px;
   text-align: center;
@@ -17,7 +23,7 @@
 }
 
 .home-empower-img-text {
-  font-family: Lora;
+  font-family: 'Lora';
   font-size: 66px;
   line-height: 84px;
   text-align: center;
