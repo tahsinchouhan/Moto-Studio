@@ -17,11 +17,13 @@ function Products() {
           <div className="store-home">
             <span>Store Home &gt; </span>
           </div>
-          <div className="products-header">
+          <div className="products-header text-center">
             <h1>All Products</h1>
+           
           </div>
         </div>
       </div>
+     
       <Row>
         <Col lg={3} md={3}>
           ggfhgf
