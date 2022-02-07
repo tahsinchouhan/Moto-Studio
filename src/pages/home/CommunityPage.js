@@ -11,7 +11,8 @@ import Imagesix from "../../assets/images/home/Imagesix.png";
 function CommunityPage() {
   return (
     <>
-      <div className="Community-container">
+      <div className="container ">
+        <div className=" Community-container" >
         <div className="main-community">
           <h1 className="Text text-center">The Community</h1>
           <hr className="Line my-4 " />
@@ -99,6 +100,7 @@ function CommunityPage() {
             </div>
           </Col>
         </Row>
+        </div>
       </div>
     </>
   );
