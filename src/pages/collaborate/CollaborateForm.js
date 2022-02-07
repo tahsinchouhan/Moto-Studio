@@ -4,7 +4,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 function CollaborateForm() {
   return <>
          <div>
-     <div className="container-fluid mt-5">
+     <div className="container-fluid cg-herbal-container collaborate-form-container">
      <Container className="collaborate-demo collaborate-Us-form">
         <div className="">
           <h1 className="collaborate-Us-heading ">Business Enquiries</h1>
@@ -45,11 +45,11 @@ function CollaborateForm() {
                 as="textarea"
                 className=" collaborate-Us-form-input  "
                 placeholder="Message"
-                style={{ height: "229px" }}
+                style={{ height: "181px" }}
               />
             </Col>
           </Row>
-          <div className="collaborate-sent-message text-center mt-3">
+          <div className="collaborate-sent-message text-center ">
             <button className="collaborate-button">SEND MESSAGE</button>
           </div>
         </Form>

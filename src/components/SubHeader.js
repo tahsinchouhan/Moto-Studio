@@ -23,14 +23,14 @@ function SubHeader() {
   return (
     <>
       <div onMouseLeave={() => shopHandler()}>
-        <Navbar className="sub-haeder d-none d-md-block" collapseOnSelect expand="lg" bg=""  variant="dark">
+        <Navbar className="sub-haeder sub-header-padding-fix d-none d-md-block" collapseOnSelect expand="lg" bg=""  variant="dark">
           <Container>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" me-auto mb-2 mb-lg-0 ">
                 <ul className="nav-list">
                   <li onMouseOver={() => shopHandler(1)}>
-                    <Link href="/">
+                    <Link href="/">                                
                       <a className="sub-nav-link mx-3">Shop All</a>
                     </Link>
                   </li>
@@ -58,7 +58,7 @@ function SubHeader() {
                   </li>
                 </ul>
               </Nav>
-              <Nav>
+              <Nav className="sub-header-gift-box">
                 <Link eventKey={3} href="#memes">
                   <a className="sub-nav-link mx-2"> Gift Boxes</a>
                 </Link>

@@ -2,12 +2,13 @@
   background-color: #dbf8e6 !important;
   color: #065934 !important;
   border: none !important;
+  border-radius: 0px !important;
 }
 
 .visit-the-shop-button:hover {
   background-color: #065934 !important;
   color: #dbf8e6 !important;
   border: none !important;
-  border-radius: 10px;
+  border-radius: 10px !important;
   transition: 1s;
 }

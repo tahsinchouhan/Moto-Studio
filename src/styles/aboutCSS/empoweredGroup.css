@@ -28,6 +28,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.about-empowered-container{
+  margin-top: 70px !important;
+}
+
+.about-empowered-heading {
+  font-family: Lora;
+  font-size: 40px;
+  line-height: 51px;
+  text-align: center;
+  color: #333333;
+}
+
+.about-empowered-top-hr{
+  width: 48px !important;
+  color:#C4C4C4 !important;
+  height: 2px !important;
+  opacity: 100% !important;
+}
+
 .about-carousel-conatiner {
   padding: 0 10% !important;
 }
@@ -38,4 +57,16 @@
   line-height: 20px;
   text-align: center;
   color: #333333;
+}
+
+.about-empower-carousel-padding {
+  padding: 9% !important;
+}
+
+.about-empower-hr {
+  color: #c4c4c4;
+  width: 80% !important;
+  height: 2px !important;
+  opacity: 100% !important;
+  margin-top: 88px !important;
 }

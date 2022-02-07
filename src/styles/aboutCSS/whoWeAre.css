@@ -20,7 +20,7 @@
 
 .about-who-first-hr{
     width:20%;
-    height:4px !important;
+    height:3px !important;
     color:#065934;
     opacity: 100% !important;
 }
@@ -32,5 +32,9 @@
 @media screen and (max-width: 767px){
   .parent{
     align-items: center;
+  }
+
+  .about-second-para {
+    font-size: 21px !important;
   }
 }

@@ -1,15 +1,16 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
-function Button() {
+function ButtonLight(prop) {
   return (
     <>
       <div className="text-center">
         <Button className="visit-the-shop-button px-4 py-2 my-5">
-          VISIT THE SHOP
+        {prop.text}
         </Button>
       </div>
     </>
   );
 }
 
-export default Button;
+export default ButtonLight;

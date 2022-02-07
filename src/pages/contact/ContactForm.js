@@ -1,12 +1,16 @@
 
 import React from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import ButtonLight from '../../components/button/ButtonLight';
+
+
+
 
 function ContactForm() {
   return <>
-         <div>
-     <div className="container-fluid mt-4">
-     <Container className="demo1">
+         <div className="contact-container">
+     <div className="container-fluid">
+     <Container className="demo1 ">
         <div className="text-center">
           <h1 className="Contact-Us-heading ">Contact Us</h1>
           <hr className="contact-form-hr mx-auto mb-4" />
@@ -60,7 +64,7 @@ function ContactForm() {
             </Col>
           </Row>
           <div className="contac-sent-message text-center mt-3">
-            <button>SEND MESSAGE</button>
+            <ButtonLight text="SEND MESSAGE"/>
           </div>
         </Form>
       </Container>

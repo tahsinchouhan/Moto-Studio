@@ -4,13 +4,22 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: #DBF8E6;
 }
 .sub-haeder{
      height: 50px;
      background: #065934 !important;
      color: #FFFFFF;
 }
+
+.sub-header-padding-fix{
+    padding-top: 0.2rem !important;
+}
+
+.sub-header-gift-box{
+    margin-bottom: 7px!important;
+}
+
 .sub-nav-link:hover{
     color: #FFFFFF;
 }
@@ -24,5 +33,9 @@ a {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: yellow;
+}
+
+.sub-nav-new:hover{
+    color: yellow !important;
 }

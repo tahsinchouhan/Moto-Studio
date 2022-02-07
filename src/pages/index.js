@@ -3,6 +3,7 @@ import Home from "./home/Home";
 // import Collaborate from './collaborate/Collaborate'
 // import Contact from "./contact/Contact"
 // import Products from "./Product/Products"
+// import IntoNewsRoom from "./news/IntoNewsroom"
 // import Shopping from "./shopping/Shopping";
 
 export default function index() {
@@ -13,6 +14,7 @@ export default function index() {
       {/* <Collaborate/> */}
       {/* <Contact/> */}
       {/* <Products/> */}
+      {/* <IntoNewsRoom/> */}
       {/* <Shopping /> */}
     </>
   );
