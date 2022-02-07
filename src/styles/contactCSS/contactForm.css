@@ -7,7 +7,7 @@
 }
 
 .Contact-Us-heading {
-    font-family: Lora;
+    font-family: 'Lora';
     font-size: 40px;
     line-height: 51px;
     text-align: center !important;
@@ -22,7 +22,7 @@
   }
   
   .contact-para {
-    font-family: Lora;
+    font-family: 'Lora';
     font-size: 18px;
     line-height: 23px;
     text-align: center;

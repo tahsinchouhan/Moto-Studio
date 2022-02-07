@@ -1,13 +1,13 @@
 .product-name-text {
     font-size: 32px;
-    font-family: Lora;
+    font-family: 'Lora';
   }
   .popup-paragraph1 {
     font-size: 12px;
-    font-family: Lato;
+    font-family: 'Lato';
   }
   .popup-paragraph2 {
-    font-family: Lato;
+    font-family: 'Lato';
     font-size: 12px;
     color: #5abf6b;
   }

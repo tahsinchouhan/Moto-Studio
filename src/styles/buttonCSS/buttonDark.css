@@ -3,11 +3,9 @@
     height: 40px;
     border: none;
     color: #FFFFFF;
-    
-
+    width: 100% !important;
 }
 .dark-button:hover{
     background: #5ABF6B;
     height: 42px;
-
 }

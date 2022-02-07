@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Button from "../../components/button/ButtonLight"
 import { Card, Col, Container, Row } from "react-bootstrap";
 import ProductImageOne from "../../assets/images/product/productImageOne.png";
 import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
@@ -159,7 +160,7 @@ function VisitTheShop() {
             </Col>
           </Row>
           <div className="text-center my-5">
-            <button>VISIT THE SHOP &gt;</button>
+          <Button className="home-visit-shop" text="VISIT THE SHOP &nbsp; &gt;" />
           </div>
         </div>
       </Container>

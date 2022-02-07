@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/button/ButtonLight"
 
 function HomeEmpower() {
   return (
@@ -10,7 +11,9 @@ function HomeEmpower() {
           </p>
           <p className="home-empower-img-text">Empowering Tribal Women</p>
           <div className="d-flex">
-            <button className="mx-auto">READ MORE</button>
+           <div className="mx-auto">
+           <Button text="KNOW MORE" className="home-empower-button" />
+           </div>
           </div>
         </div>
       </div>

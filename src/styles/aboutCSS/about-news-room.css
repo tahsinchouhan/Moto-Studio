@@ -3,8 +3,13 @@
   margin-top: 71px !important;
 }
 
+.about-newsroom-button{
+  width: 134px !important;
+  height: 43px !important;
+}
+
 .about-newsroom-heading {
-  font-family: Lora !important;
+  font-family: 'Lora' !important;
   font-size: 40px !important;
   line-height: 51px !important;
   text-align: center !important;
@@ -23,21 +28,21 @@
 }
 
 .about-newsroom-head {
-  font-family: Lora !important;
+  font-family: 'Lora' !important;
   font-size: 18px !important;
   line-height: 23px !important;
   color: #333333 !important;
 }
 
 .about-newsroom-date {
-  font-family: Lato !important;
+  font-family: 'Lato' !important;
   font-size: 14px !important;
   line-height: 17px !important;
   color: #666666 !important;
 }
 
 .about-newsroom-card-para {
-  font-family: Lato !important;
+  font-family: 'Lato' !important;
   font-size: 14px !important;
   line-height: 20px !important;
   color: #333333 !important;

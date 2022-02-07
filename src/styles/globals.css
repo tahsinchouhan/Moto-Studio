@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lora&family=Red+Hat+Display&display=swap');
+
 @import "../styles/homeCSS/home.css";
 @import "../styles/aboutCSS/about.css";
 @import "../styles/collaborateCSS/collaborate.css";
@@ -5,6 +7,11 @@
 @import "../styles/shopping/shopping.css";
 @import "../styles/productCSS/product.css";
 @import "../styles/buttonCSS/button.css";
+
+
+
+
+
 
 
 a {

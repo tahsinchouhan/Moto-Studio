@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import Button from "../../components/button/ButtonLight"
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 
 function HomeHeaderImg() {
@@ -13,20 +14,19 @@ function HomeHeaderImg() {
             <Col md={8} lg={6} className="col-10">
               <Row className="">
                 <Col md={9} className="py-md-5 my-2 ">
-                  <p className="home-header-head-mobile mt-md-5 mb-0 ">
-                    Purity that
+                  <p className="home-header-head-mobile mt-md-5 mt-4 mb-0 ">
+                    Purity that is Priceless
                   </p>
-                  <p className="home-header-head-mobile ">is Priceless</p>
-                  <p className="home-header-para-mobile ">
+                  <p className="home-header-para-mobile mt-3 ">
                     Far far away, behind the word mountains, far from the
                     countries Vokalia and Consonantia, there live the blind
                     texts. Separated they live in Bookmarksgrove right at the
                     coast of the Semantics, a large language ocean
                   </p>
                   <div className="col-10">
-                    <button className="mb-md-5  mt-md-3 mb-0">
-                      SHOP NOW &gt;
-                    </button>
+                    <div className="mb-md-5  mt-md-3 mt-4 mb-0">
+                    <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
+                    </div>
                   </div>
                 </Col>
               </Row>
@@ -54,10 +54,8 @@ function HomeHeaderImg() {
                     coast of the Semantics, a large language ocean
                   </p>
 
-                  <div className=" col-10 text-center text-md-start mx-auto ms-md-0">
-                    <button className="mb-md-5  mt-md-3 mb-0">
-                      SHOP NOW &gt;
-                    </button>
+                  <div className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0">
+                    <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
                   </div>
                 </Col>
               </Row>

@@ -15,7 +15,7 @@
 }
 
 .collaborate-forest-head {
-  font-family: Lora;
+  font-family: 'Lora';
   font-size: 40px;
   line-height: 51px;
   color: #dbf8e6 !important;
@@ -30,7 +30,7 @@
 }
 
 .collaborate-forest-para {
-  font-family: Lato;
+  font-family: 'Lato';
   font-size: 16px;
   line-height: 24px;
   color: #EDF2F5;
@@ -46,7 +46,7 @@
   }
 
   .collaborate-forest-head-mobile {
-    font-family: Red Hat Display;
+    font-family: 'Red Hat Display';
     font-weight: bold;
     font-size: 40px;
     line-height: 56px;
@@ -54,9 +54,7 @@
   }
 
   .collaborate-header-para-mobile {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: normal;
+    font-family: 'Lato';
     font-size: 16px;
     line-height: 28px;
     color: #333333;
