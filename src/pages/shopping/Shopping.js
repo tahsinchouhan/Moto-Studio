@@ -8,10 +8,10 @@ import Link from "next/link";
 function Shopping() {
   return (
     <div>
-      <Container>
+      <Container className="shopping-container">
         <Row>
           <Col lg={8} md={12} className="mb-4">
-            <h1 className="shopping-cart-heading">Shopping Cart</h1>
+            <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>
             <hr />
             <Row>
               <Col>
@@ -31,7 +31,7 @@ function Shopping() {
             <Row>
               <Col xs lg="6">
                 <Row>
-                  <Col xs lg="6" md="12" sm="12" xs="12">
+                  <Col xs lg="6" md="12" sm="12">
                     <Image src={image1} alt="image1" />
                   </Col>
                   <Col xs lg="6" md="12">
@@ -65,7 +65,7 @@ function Shopping() {
             <Row>
               <Col xs lg="6">
                 <Row>
-                  <Col xs lg="6" md="12" sm="12" xs="12">
+                  <Col xs lg="6" md="12" sm="12">
                     <Image src={image2} alt="image1" />
                   </Col>
                   <Col xs lg="6" md="12">
@@ -76,7 +76,7 @@ function Shopping() {
                       QUANTITY &nbsp; <span className="fw-bold ">500g</span>
                     </p>
                     <p className="shopping-p3-size">
-                      Product Code &nbsp;{" "}
+                      Product Code &nbsp;
                       <span className="fw-bold ">192150</span>
                     </p>
                   </Col>
@@ -135,8 +135,9 @@ function Shopping() {
                 </div>
               </div>
               <div className="text-center ">
-                {" "}
-                <button>CHECKOUT</button>
+                <button className="w-100 border-0 checkout-button">
+                  CHECKOUT
+                </button>
               </div>
               <p className="order-summary-p1 mt-3">ADD PROMO CODE</p>
             </div>
