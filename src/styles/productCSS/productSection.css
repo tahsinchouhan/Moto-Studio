@@ -8,6 +8,10 @@
   background-color: #edf2f5;
 }
 
+.product-right-padding{
+  padding-right: 4% !important;
+}
+
 .all-products-container {
   width: 100% !important ;
   box-sizing: border-box !important;
@@ -111,6 +115,10 @@
     box-sizing: border-box !important;
     padding: 0% 2% 14% 2% !important ;
   }
+  .product-right-padding{
+    padding-right: 0% !important;
+  }
+  
 }
 
 .product-card-hover {

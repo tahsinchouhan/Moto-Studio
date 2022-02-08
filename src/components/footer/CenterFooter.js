@@ -41,12 +41,13 @@ function CenterFooter() {
                 <div>
                   <span className="footer-cg-para">Contact Us</span>
                   <br />
+                  <br/>
                   <span className="footer-cg-para">FAQ</span>
-                  <br />
+                  <br /> <br/>
                   <span className="footer-cg-para">Privacy Policy</span>
-                  <br />
+                  <br /> <br/>
                   <span className="footer-cg-para">Terms of Use</span>
-                  <br />
+                  <br /> <br/>
                 </div>
               </div>
             </Col>

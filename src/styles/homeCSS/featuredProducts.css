@@ -13,7 +13,7 @@
 .feature-products-texts {
   font-size: 19px;
   color: #333333;
-  font-family: Lora;
+  font-family: 'Lora';
 }
 @media (max-width: 1200px) {
 }
@@ -26,11 +26,15 @@
 .image-div {
   float: left;
   width: 200px !important;
+ 
 }
 .overflow-style {
   overflow-x: auto;
   text-align: center;
 }
 .hover1:hover {
-  border: 10px solid #5abf6b !important;
+  box-sizing:content-box!important;
+  outline: 10px solid #5abf6b;
+  outline-offset: -10px;
 }
+

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ButtonDark from '../../components/button/ButtonDark'
 import { Col, Container, Row } from "react-bootstrap";
 import image1 from "../../assets/images/shoppingCart/image1.png";
 import image2 from "../../assets/images/shoppingCart/image2.png";
@@ -97,15 +98,15 @@ function Shopping() {
             </Row>
             <hr />
 
-            <Link href="/" className="continue-shopping-text">
-              CONTINUE SHOPPING
+            <Link href="/">
+              <a className="continue-shopping-text">CONTINUE SHOPPING</a>
             </Link>
           </Col>
 
           <Col lg={4} md={12}>
             <div className="order-summary-card p-4">
               <h6 className="fw-bold order-summary-text">ORDER SUMMARY</h6>
-              <hr />
+              <hr className="mt-4" />
 
               <div className="d-flex justify-content-between">
                 <div>
@@ -125,7 +126,7 @@ function Shopping() {
                   </span>
                 </p>
               </div>
-              <hr />
+              <hr className="mt-4" />
               <div className="d-flex justify-content-between">
                 <div>
                   <p className="order-summary-p1">TOTAL COST</p>
@@ -134,10 +135,8 @@ function Shopping() {
                   <p className="fw-bold order-summary-p2"> ₹1150.00</p>
                 </div>
               </div>
-              <div className="text-center ">
-                <button className="w-100 border-0 checkout-button">
-                  CHECKOUT
-                </button>
+              <div className="text-center checkout-button ">
+                <ButtonDark text="CHECKOUT"/>
               </div>
               <p className="order-summary-p1 mt-3">ADD PROMO CODE</p>
             </div>
