@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
@@ -10,8 +10,23 @@ import ProductImageThree from "../../assets/images/product/productImageThree.png
 import ProductImageFour from "../../assets/images/product/productImageFour.png";
 import ProductImageFive from "../../assets/images/product/productImageFive.png";
 import ProductImageSix from "../../assets/images/product/productImageSix.png";
+import Popup from "./PopUp";
+import PopUp from "./PopUp";
 
 function Products() {
+
+  const [showPopuUp, setShowPopUp] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const popupHandler=()=>{
+    setShowPopUp(true)
+  }
+  const closeHander=()=>{
+    setShowPopUp(false)
+    console.log("modallll");
+  }
   return (
     <>
       <div className="all-product-heading">
@@ -24,9 +39,6 @@ function Products() {
           </div>
         </div>
       </div>
-
-      
-
       <Container fluid className="all-products-container">
         <Row>
           <Col lg={3} md={3} className="pt-4 px-5">
@@ -129,10 +141,12 @@ function Products() {
                   <div className="mt-2 mb-2 product-card-text1 d-flex ">
                     <div>
                       <span className="icon ">
-                        <AiFillPlusCircle />
+                        <AiFillPlusCircle  onClick={()=>popupHandler()}/>
                       </span>
                     </div>
                     <div>
+                    <Popup showPopuUp={showPopuUp} close={closeHander}/>
+
                       <span className="product-card-details">
                         Product Details
                       </span>
@@ -231,6 +245,7 @@ function Products() {
                       <AiFillPlusCircle />
                     </span>
                     <div>
+                     
                       <span className="product-card-details">
                         Product Details
                       </span>

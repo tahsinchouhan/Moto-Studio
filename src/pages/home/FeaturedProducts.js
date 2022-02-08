@@ -18,7 +18,7 @@ function FeaturedProducts() {
       <div className="overflow-style">
         <div className="image-div1">
           <div className=" image-div">
-            <div className=" rounded-circle ">
+            <div className=" rounded-circle  ">
               <Image
                 src={GourmetFoods}
                 alt="GourmetFoods"

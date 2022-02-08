@@ -33,7 +33,6 @@ function CollaborateForestProduce() {
                   The Federation ensures that all profits from the sale of these products are ploughed back to these forest dwellers and SHGs as bonus payments, scholarships and insurance, providing a sustainable livelihood for the tribal community of Chhattisgarh.
                   </p>
                       <div className=' col-10 mb-5'>
-                  <button className='mb-md-5  mt-md-3 mb-0'>SHOP NOW  &gt;</button>
                   </div>
                 </Col>
               </Row>

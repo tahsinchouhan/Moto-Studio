@@ -4,7 +4,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 function CollaborateForm() {
   return <>
          <div>
-     <div className="container-fluid cg-herbal-container collaborate-form-container">
+     <div className="container-fluid collaborats-form-container collaborate-form-container">
      <Container className="collaborate-demo collaborate-Us-form">
         <div className="">
           <h1 className="collaborate-Us-heading ">Business Enquiries</h1>

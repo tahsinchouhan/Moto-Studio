@@ -9,9 +9,11 @@ font-weight: 500;
 font-size: 13px;
 line-height: 17px;
 /* identical to box height */
-
-
 color: #666666;
+}
+
+.shopping-icon:after{
+    color: #5ABF6B !important;
 }
 
 .nav-list{

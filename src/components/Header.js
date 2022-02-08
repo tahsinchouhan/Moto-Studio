@@ -58,8 +58,8 @@ function Header() {
                     <BsSearch className />
                   </Link>
                   &nbsp; &nbsp;
-                  <Link href="#">
-                    <BsFillCartFill />
+                  <Link href="/shopping/Shopping" >
+                    <BsFillCartFill className="shopping-icon" />
                   </Link>
                 </div>
               </Nav>
