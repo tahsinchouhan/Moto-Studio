@@ -19,7 +19,7 @@ function CollaborateForestProduce() {
                   <p className="collaborate-forest-head-mobile ">
                   Forest Produce 
                   </p>
-                  <p className="collaborate-forest-head-mobile  mt-md-5 mb-4 ">
+                  <p className="collaborate-forest-head-mobile  mb-4 ">
                  Cooperative Federation
                   </p>
                   <hr className="collaborate-forest-hr"/>

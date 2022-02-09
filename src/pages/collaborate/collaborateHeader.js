@@ -62,11 +62,11 @@ function CollaborateHeader() {
 
                   <div className=" col-12">
                     <span className="mb-lg-5 mt-md-2 mb-0 me-5 d-inline-block">
-                    <Button className="collaborate-header-contact-button" text="CONTACT US &nbsp; &gt;" />
+                    <a href="/contact/Contact"><Button className="collaborate-header-contact-button" text="CONTACT US &nbsp; &gt;" /></a>
                     </span>
                     
                     <span className="mb-lg-5 mt-md-4 mb-0 d-inline-block">
-                    <Button className="collaborate-header-shop-now-button" text="SHOP NOW &nbsp; &gt;" />
+                    <a href="/Product/Products"><Button className="collaborate-header-shop-now-button" text="SHOP NOW &nbsp; &gt;" /></a>
                     </span>
                   </div>
                 </Col>

@@ -1,11 +1,17 @@
-import React from "react";
-import { Container,Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
 import logo from "/public/images/CGHerbalsLogo.png";
 
 function Header() {
+  const [activeIcon, setActiveIcon] = useState(false);
+
+  const iconHandler = () => {
+    setActiveIcon(true);
+    console.log("setActiveIcon");
+  };
   return (
     <>
       <div>
@@ -39,28 +45,37 @@ function Header() {
                 </Link>
               </Nav>
               <Nav>
-                <NavDropdown title="INR" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <div>
+                <select
+                    className="product-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>NRI</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
                 &nbsp; &nbsp;
-                <div className="pt-1">
-                  <Link href="#">
-                    <BsSearch className />
+                <div className="pt-1 d-flex">
+                  <Link href="/">
+                    <a className="cg-header-a-tag">
+                      <BsSearch className />
+                    </a>
                   </Link>
                   &nbsp; &nbsp;
-                  <Link href="/shopping/Shopping" >
-                    <BsFillCartFill className="shopping-icon" />
-                  </Link>
+                  <div onClick={iconHandler}>
+                    <Link href="/shopping/Shopping
+">
+                      <a className="cg-header-a-tag">
+                      <BsFillCartFill
+                          className={`${
+                            activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
+                          }`}
+                        />
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </Nav>
             </Navbar.Collapse>

@@ -49,7 +49,7 @@ function Products() {
             </div>
             <div>
               <h6 className="product-category-text">CATEGORY</h6>
-              <div className="form-check">
+              <div className="form-check mb-3">
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -58,7 +58,7 @@ function Products() {
                 />
                 <label className="form-check-product-item">Grocery &amp; Gourmet Foods</label>
               </div>
-              <div className="form-check">
+              <div className="form-check mb-3">
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -67,7 +67,7 @@ function Products() {
                 />
                 <label className="form-check-product-item">Beauty Products</label>
               </div>
-              <div className="form-check">
+              <div className="form-check mb-3">
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -93,11 +93,11 @@ function Products() {
 
 
 
-<Row className="pt-3">
+<Row className="pt-3 px-lg-0 px-4">
   
         <Col md={12}>
           <div>
-            <div className="product-38">
+            <div className="product-38 ">
               <span className="product-38-product">38 Products</span>
 
               <div className="product-sort-select">

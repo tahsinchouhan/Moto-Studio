@@ -72,7 +72,7 @@
   @media screen and (max-width:520px){
     .collaborate-button{
       width: 65% !important;
-      height: 38px;
+      height: 40px;
     }
     .collaborats-form-container{
       width: 85% !important;
@@ -83,7 +83,7 @@
   @media screen and (max-width:460px){
     .collaborate-button{
       width: 75% !important;
-      height: 30px;
+      height: 39px;
     }
 
     .collaborats-form-container{
@@ -95,7 +95,7 @@
   @media screen and (max-width:420px){
     .collaborate-button{
       width:100% !important;
-      height: 24px;
+      height: 36px;
     }
     
   }

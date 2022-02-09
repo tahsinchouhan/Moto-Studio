@@ -5,6 +5,14 @@
   margin-left: 10.5% !important;
 }
 
+.margin-shop-toggle{
+  margin-top: 11px !important;
+}
+
+.shop-remove{
+  margin-top: 16px !important;
+}
+
 .shopping-cart-heading {
   font-family: "Lora";
   font-size: 32px;
@@ -26,10 +34,13 @@
   font-size: 13px;
   font-family: "Lato";
 }
-.continue-shopping-text {
+.continue-shopping-text{
   color: #666666 !important;
   font-family: "Lato";
   transition: 0.7s !important;
+  text-decoration: underline !important;
+  line-height: 19px ;
+  font-size: 14px;
 }
 
 .continue-shopping-text:hover {
@@ -37,7 +48,6 @@
   font-family: "Lato";
   transition: 0.8s !important;
 }
-
 
 /* -----------------------order-summary-card ................. */
 
@@ -59,11 +69,18 @@
 .order-summary-p2 {
   font-size: 13px;
   font-family: "Lato";
+  color: #333333;
 }
 .free-home-delivery-div {
   height: 27px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 19px;
+  color: #666666;
 }
 .free-home-delivery-p {
   font-size: 12px;
@@ -73,9 +90,47 @@
   font-size: 13px;
   font-family: "Lato";
 }
+
+.free-home-delivery-p2 {
+  padding-left: 25%;
+  font-family: 'Lato';
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 19px;
+text-align: right;
+color: #333333;
+}
 .checkout-button {
   width: 100% !important;
   font-family: "Lato";
   font-size: 14px;
   color: #ffffff;
+}
+
+.shopping-counter {
+  width: 31px;
+  height: 40px;
+  text-align: center;
+  padding-top: 5px;
+}
+.btn-shopping-counter {
+  width: 31px;
+  height: 40px;
+  background: #edf2f5;
+  border: none;
+}
+
+
+@media screen and (max-width:991px){
+  .order-summary-card{
+    margin: 0 auto !important;
+    max-width: 290px;
+  }
+} 
+
+@media screen and (max-width:480px){
+  .shopping-container{
+    margin-left: 0% !important;
+  }
 }
