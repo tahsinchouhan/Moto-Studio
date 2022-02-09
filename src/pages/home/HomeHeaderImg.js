@@ -9,10 +9,10 @@ import { apipath } from '../api/apiPath';
 function HomeHeaderImg() {
 
   const [banner, setBanner] = useState({
-            bannerImg: HomeHeader,
-            bannerTitle: 'Banner Title',
-            bannerDesc: 'Banner Description'
-          });
+    bannerImg: HomeHeader,
+    bannerTitle: 'Banner Title',
+    bannerDesc: 'Banner Description'
+  });
 
   useEffect(() => {
     const fetchData = () => {
@@ -28,13 +28,8 @@ function HomeHeaderImg() {
         }
       }).catch(error => console.log(error))
     }
-
-    setTimeout(() => {
-      fetchData()
-    }, 1000);
+    fetchData();
   }, [])
-
-  console.log(banner);
 
   return (
     <>
