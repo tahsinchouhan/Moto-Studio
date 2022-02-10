@@ -49,9 +49,10 @@
   bottom: 35%;
   right: 10%;
   opacity: 0;
-  width: 102px;
+  /* width: 102px; */
   height: 34px;
   font-size: 19px;
+  padding: 0px !important;
 }
 .hover-div1:hover .hover-div {
   opacity: 100%;

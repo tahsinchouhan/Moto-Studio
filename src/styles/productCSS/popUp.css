@@ -43,9 +43,9 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  padding-right:0rem !important;
-  padding-left: 0rem !important;
-  margin-top: var(--bs-gutter-y);
+  /* padding-right:1rem !important; */
+  /* padding-left: 1rem !important; */
+  /* margin-top: var(--bs-gutter-y); */
 }
 .popup-modal-img>span,.popup-modal-img>span>span,.popup-modal-img>span>span>img{
 height: 482px !important;

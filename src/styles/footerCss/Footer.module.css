@@ -4,7 +4,7 @@
 .Copyright-area{
     padding: 15px;
 }
-/* amazon-div */
+
 .amazon-div{
     background: #EDF2F5;
 border: 1px solid #E5E5E5;
@@ -13,7 +13,7 @@ box-sizing: border-box;
 
 .center-footer{
     background: #FFFFFF;
-    /* height: 332px; */
+    padding: 71px 0px 58px 0px !important; 
 }
 .amazon-product{
     padding:40px  10px;
@@ -22,13 +22,12 @@ font-style: normal;
 font-weight: 500;
 font-size: 27px;
 line-height: 35px;
-/* identical to box height */
+
 
 
 color: #000000;
 }
 
-/* footer-center */
 
 .footer-cg-para{
     font-family: 'Lato';
@@ -37,6 +36,7 @@ font-weight: normal;
 font-size: 14px;
 line-height: 17px;
 color: #666666;
+margin-bottom: 1rem;
 
 }
 .footer-center-header{
@@ -46,12 +46,58 @@ font-weight: 500;
 font-size: 18px;
 line-height: 23px;
 color: #333333;
+margin-bottom: 1.8rem;
+
 }
 .footer-cg-herbal{
     text-align: start;
+    padding: 0px 0px 0px 38px; 
 }
 .digital-footer{
     text-align: center;
 }
-/* .footer-center-icon{
-} */
+.cg-footer-icon{
+    color: #666666;
+    height: 21.88px;
+    width: 21.88px;
+}
+
+.cg-last-footer-para{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #C4C4C4;
+}
+
+.cg-center-div{
+    padding: 0px 61px 0px 128px;
+}
+
+@media screen and (max-width:991px){
+    .cg-center-div {
+        padding: 0px 61px 0px 61px;
+}
+
+.center-texts{text-align:center !important;}
+
+.footer-cg-herbal{
+    text-align: center !important;
+    padding: 30px 0px 0px 0px !important; 
+}
+}
+
+@media screen and (max-width:767px){
+    .cg-center-div {
+        padding: 0px 10px 0px 10px;
+}
+
+.center-texts{text-align:center !important;}
+
+.footer-cg-herbal{
+    text-align: center !important;
+    padding: 30px 0px 0px 0px !important; 
+}
+
+}
