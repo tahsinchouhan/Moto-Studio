@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from 'react'
 import {
   Container,
   Row,
@@ -8,9 +8,26 @@ import {
   Button,
 } from "react-bootstrap";
 import { BsFillCaretRightFill } from "react-icons/bs";
+import { apipath } from '../api/apiPath';
 
 
 function IntoNewsroom() {
+  const [newsData, setNewsData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/newsroom/list`);
+        const objData = await res.json();
+        setNewsData(objData?.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+// console.log(newsData);
+
   return (
     <>
       <div className="into-newsroom-container">
@@ -77,6 +94,28 @@ function IntoNewsroom() {
                 </div>
               </Col>
               <Col md={9} lg={9}>
+                {
+                  newsData.length ? newsData.map(news => {
+                    return <div className="news-room-card" key={news._id}>
+                    <Card style={{ width: "100% !important" }}>
+                      <Card.Img variant="top" src={news?.images[0]?.img || ''} />
+                      <Card.Body>
+                        <Card.Title className="news-card-title">
+                          Lac Cultivation and Processing
+                          {news?.title || 'title'}
+                        </Card.Title>
+                        <Card.Text>
+                          <span className="news-date-title">{new Date(news.date).toDateString()}</span>
+                          <p className="news-card-para">{news?.content}</p>
+                        </Card.Text>
+                        <Button className="news-card-btn">
+                          <span className="news-read-more">READ MORE</span>
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                  }) : <h1>Data Not Found</h1>
+                }
                 <div className="news-room-card">
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />

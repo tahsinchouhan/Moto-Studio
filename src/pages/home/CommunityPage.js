@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from 'react'
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import Imageone from "../../assets/images/home/Imageone.png";
@@ -7,8 +7,26 @@ import Imagethree from "../../assets/images/home/Imagethree.png";
 import Imagefour from "../../assets/images/home/Imagefour.png";
 import Imagefive from "../../assets/images/home/Imagefive.png";
 import Imagesix from "../../assets/images/home/Imagesix.png";
+import { apipath } from '../api/apiPath';
 
 function CommunityPage() {
+  const [community, setCommunity] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/home/community/list`);
+        const objData = await res.json();
+        setCommunity(objData?.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+
+  // console.log(community);
+
   return (
     <>
       <div className="container ">
@@ -31,7 +49,24 @@ function CommunityPage() {
           </div>
 
           <Row>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+          {
+            community.length && community.map(row=>{
+              return <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" key={row?._id}>
+                <Image
+                  src={row?.images?.length ? row?.images[0]?.img || Imageone : Imageone}
+                  alt="Picture of the author"
+                  className="w-100"
+                  width={300}
+                  height={300}
+                  objectFit="cover"
+                />
+                <div className="overlay">
+                  <p className="Text-name">{row?.products?.title || 'Title'}</p>
+                </div>
+              </Col>
+            })
+          }
+            {/* <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
               <Image
                 src={Imageone}
                 alt="Picture of the author"
@@ -107,7 +142,7 @@ function CommunityPage() {
                   Amla <br /> Murabba
                 </p>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </div>

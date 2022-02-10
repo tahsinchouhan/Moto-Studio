@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import Image from "next/image";
-import BeautyProducts from "../../assets/images/home/1 (1).png";
-import AlternativeMedicine from "../../assets/images/home/1 (2).png";
-import HealthPersonalCare from "../../assets/images/home/1 (3).png";
-import GourmetFoods from "../../assets/images/home/1 (4).png";
+// import BeautyProducts from "../../assets/images/home/1 (1).png";
+// import AlternativeMedicine from "../../assets/images/home/1 (2).png";
+// import HealthPersonalCare from "../../assets/images/home/1 (3).png";
+// import GourmetFoods from "../../assets/images/home/1 (4).png";
+import VisitTheShop from '../home/VisitTheShop'
 import { apipath } from '../api/apiPath';
 
 function FeaturedProducts() {
 
-  const [featured, setFeatured] = useState([]);
+  
   const [category, setCategory] = useState([]);
+  const [categoryId, setCategoryId] = useState(null);
 
   useEffect(() => {
     const fetchCategory = () => {
@@ -17,6 +19,7 @@ function FeaturedProducts() {
       .then(response => response.json())
       .then(objData => {
         if(objData?.data?.length){
+          setCategoryId(objData?.data[0]?._id)
           setCategory(objData?.data)
         }
       }).catch(error => console.log(error))
@@ -24,14 +27,8 @@ function FeaturedProducts() {
     fetchCategory();
   }, [])
 
-  const getFeatured = async (id) => {
-    try {
-      const res = await fetch(`${apipath}/api/v1/product/featured/list?query=${id}`);
-      const objData = await res.json();
-      setFeatured(objData?.data)
-    } catch (error) {
-      console.log(error);
-    }
+  const getCategoryId = (id) => {
+    setCategoryId(id)
   }
 
   return (
@@ -47,8 +44,7 @@ function FeaturedProducts() {
         <div className="image-div1">
         {
           category?.length && category?.map(cat => {
-            console.log(cat)
-            return <div className="image-div" key={cat._id} onClick={()=>getFeatured(cat?._id)}>
+            return <div className="image-div" key={cat._id} onClick={()=>getCategoryId(cat?._id)}>
             <div className="rounded-circle">
               <Image
                 src={cat?.images[0]?.img || GourmetFoods}
@@ -75,6 +71,7 @@ function FeaturedProducts() {
 
         </div>
       </div>
+      <VisitTheShop categoryId={categoryId} />
     </>
   );
 }
