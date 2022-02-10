@@ -1,12 +1,31 @@
-import React from "react";
+import { useState, useEffect } from 'react'
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import SGHONE from "../../assets/images/about/SHGONE.png";
 import SGHTWO from "../../assets/images/about/SHGTWO.png";
 import SGHTHREE from "../../assets/images/about/SHGTHREE.png";
 import Image from "next/image";
+import { apipath } from '../api/apiPath';
 
 function EmpoweredGroup() {
+  const [empoeredData, setEmpoeredData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/about/empowerd/list`);
+        const objData = await res.json();
+        if (objData.length) {
+          setEmpoeredData(objData)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+    console.log(empoeredData);
+
   var settings = {
     dots: true,
     infinite: false,
@@ -50,42 +69,16 @@ function EmpoweredGroup() {
         </div>
         <div className="container about-carousel-conatiner mt-5 mb-5">
           <Slider {...settings}>
-            <div className="text-center">
-              <div>
-              <Image src={SGHONE} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 1</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div>
-              <Image src={SGHTWO} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 2</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div>
-              <Image src={SGHTHREE} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 3</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div>
-              <Image src={SGHONE} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 1</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div>
-              <Image src={SGHTWO} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 2</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <div>
-              <Image src={SGHTHREE} className="about-empower-carousel-padding" alt="" />
-              <p className="empowered-carousel-text">SHG Name 3</p>
-              </div>
-            </div>
+            {
+              empoeredData.length && empoeredData.map(row=>{
+                return <div className="text-center" key={row._id}>
+                  <div>
+                    <Image src={row?.images[0]?.img || SGHONE} className="about-empower-carousel-padding rounded-circle" alt={row.title} width={400} height={400} />
+                    <p className="empowered-carousel-text">{row?.title || 'Title'}</p>
+                  </div>
+                </div>
+              })
+            }
           </Slider>
         </div>
       </Container>

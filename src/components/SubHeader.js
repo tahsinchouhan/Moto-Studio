@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import Link from "next/link";
 import ShopAll from "../pages/subHeader/shopAll";
@@ -6,13 +6,31 @@ import GourmetFoods from "../pages/subHeader/GourmetFoods";
 import BeautyProducts from "../pages/subHeader/BeautyProducts";
 import AlternativeMedicine from "../pages/subHeader/AlternativeMedicine";
 import HealthPersonalCare from "../pages/subHeader/HealthPersonalCare";
+import {apipath} from '../pages/api/apiPath';
+import Common from "../pages/subHeader/common";
 
 function SubHeader() {
   const [showShopAll, setShowShopAll] = useState(0);
   const [gourmet, setGourmet] = useState();
+  const [menuData, setMenuData] = useState([])
+  const [subMenu, setSubMenu] = useState([])
 
-  const shopHandler = (index) => {
-    console.log("index", index);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/product`);
+        const objData = await res.json();
+        setMenuData(objData.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+    // console.log(menuData);
+
+  const shopHandler = (index, menu_data) => {
+    setSubMenu(menu_data)
     setShowShopAll(index);
     setGourmet(index);
   };
@@ -29,12 +47,21 @@ function SubHeader() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" me-auto mb-2 mb-lg-0 ">
                 <ul className="nav-list">
-                  <li onMouseOver={() => shopHandler(1)}>
+                  <li onMouseOver={() => shopHandler(1, menuData[0])}>
                     <Link href="/">                                
                       <a className="sub-nav-link mx-3">Shop All</a>
                     </Link>
                   </li>
-                  <li onMouseOver={() => shopHandler(2)}>
+                  {
+                    menuData.length && menuData[1].length && menuData[1].map((menu, index)=>{
+                      return <li key={menu._id} onMouseOver={() => shopHandler(2 + index, menu.menu_data)}>
+                        <Link href="/">
+                          <a className="sub-nav-link mx-3">{menu?.menu_name || menu}</a>
+                        </Link>
+                      </li>
+                    })
+                  }
+                  {/* <li onMouseOver={() => shopHandler(2)}>
                     <Link href="/">
                       <a className="sub-nav-link mx-3">Gourmet Foods</a>
                     </Link>
@@ -55,7 +82,7 @@ function SubHeader() {
                         Health & Personal Care
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </Nav>
               <Nav className="sub-header-gift-box">
@@ -71,35 +98,40 @@ function SubHeader() {
         </Navbar>
         {showShopAll == 1 ? (
           <div className="shop-page" onMouseLeave={() => shopHandler()}>
-            <ShopAll />
+            <ShopAll menuData={subMenu} />
           </div>
         ) : (
           ""
         )}
         {showShopAll == 2 ? (
           <div className="shop-page" onMouseLeave={() => shopHandler()}>
-            <GourmetFoods />
+            {/* <GourmetFoods /> */}
+            <Common menuData={subMenu} />
           </div>
         ) : (
           ""
         )}
         {showShopAll == 3 ? (
           <div className="shop-page">
-            <BeautyProducts />
+            {/* <BeautyProducts /> */}
+            <Common menuData={subMenu} />
+
           </div>
         ) : (
           ""
         )}
         {showShopAll == 4 ? (
           <div className="shop-page">
-            <AlternativeMedicine />
+            {/* <AlternativeMedicine /> */}
+            <Common menuData={subMenu} />
           </div>
         ) : (
           ""
         )}
         {showShopAll == 5 ? (
           <div className="shop-page">
-            <HealthPersonalCare />
+            {/* <HealthPersonalCare /> */}
+            <Common menuData={subMenu} />
           </div>
         ) : (
           ""
