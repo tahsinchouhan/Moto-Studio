@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import Imageone from "../../assets/images/home/Imageone.png";
@@ -7,8 +7,22 @@ import Imagethree from "../../assets/images/home/Imagethree.png";
 import Imagefour from "../../assets/images/home/Imagefour.png";
 import Imagefive from "../../assets/images/home/Imagefive.png";
 import Imagesix from "../../assets/images/home/Imagesix.png";
+import PopUp from "../Product/PopUp";
 
 function CommunityPage() {
+  const [showPopuUp, setShowPopUp] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const popupHandler = () => {
+    setShowPopUp(true);
+    console.log("modallllCC");
+
+  };
+  const closeHander = () => {
+    setShowPopUp(false);
+  };
   return (
     <>
       <div className="container ">
@@ -31,25 +45,29 @@ function CommunityPage() {
           </div>
 
           <Row>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
-              <Image
-                src={Imageone}
-                alt="Picture of the author"
-                className="w-100"
-              />
-
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
+              <div >
+                <Image
+                  src={Imageone}
+                  alt="Picture of the author"
+                  className="w-100"
+                  
+                />
+                <PopUp showPopuUp={showPopuUp} close={closeHander} />
+              </div>
               <div className="overlay">
                 <p className="Text-name">
                   Pure <br /> Wildforest <br /> Honey
                 </p>
               </div>
             </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagetwo}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Premium <br /> Cashews
@@ -57,12 +75,13 @@ function CommunityPage() {
               </div>
             </Col>
 
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagethree}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Chyawan <br /> Prash{" "}
@@ -70,24 +89,26 @@ function CommunityPage() {
               </div>
             </Col>
 
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagefour}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Mahua <br /> Laddu
                 </p>
               </div>
             </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagefive}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="  overlay">
                 <p className="Text-name">
                   Mahua <br /> Cookies

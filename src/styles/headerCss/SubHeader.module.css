@@ -44,7 +44,10 @@ a {
 .sub-nav-new:hover{
     color: yellow !important;
 }
-
+.all-shop-list{
+    display: flex;
+    justify-content: center;
+}
 @media screen and (max-width:1200px){
     .sub-header-gift-box{
     padding-right: 0% !important;

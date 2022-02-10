@@ -35,5 +35,29 @@ color: #666666;
 .ch-header-cart-icon{
     color: #5ABF6B;
 }
+.product-select{
+background-color: transparent !important;
+}
 
-
+/* mobile-view */
+.offcanvas{
+    background-color:#f8f9fa;
+}
+.navbar-expand {
+    flex-wrap: nowrap;
+    justify-content: space-between !important;
+}
+.btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    background-image: transparent url('/public/images/MenuBurger.png');
+    border: 0;
+    border-radius: 0.25rem;
+    opacity: .5;
+}
+.nav-link{
+    color: #666666 !important;
+}

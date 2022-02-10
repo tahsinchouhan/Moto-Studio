@@ -38,6 +38,11 @@ a {
 
 
 @media (min-width: 320px) and (max-width:768px) {
+  
+  .navbar-light .navbar-brand {
+    color: rgba(0,0,0,.9);
+    padding-left: 11px;
+}
   .alternative-medicine{
     text-align: center;
 }
