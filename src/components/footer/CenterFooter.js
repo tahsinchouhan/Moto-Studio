@@ -9,77 +9,77 @@ import LastFooter from "./LastFooter";
 function CenterFooter() {
   return (
     <>
-      <div className="center-footer pt-5">
+      <div className="center-footer ">
         <Container>
+        <div className="cg-center-div">
           <Row>
-            <Col sm={12} lg={4} className="text-center">
+            <Col sm={12} lg={3} className="text-center">
               <div>
                 <Image src={footerlogo} alt="footerlogo" />
               </div>
             </Col>
-            <Col sm={12} md={4} lg={4}>
+            <Col sm={12} md={12} lg={6}>
                 <Row>
-                <Col sm={12} lg={4}>
+                <Col sm={4} md={4} lg={4}>
               <div className="footer-cg-herbal">
-                <h6 className="footer-center-header">SHOP</h6>
+                <h6 className="footer-center-header ">SHOP</h6>
                 <div>
-                  <span className="footer-cg-para">Sweets</span>
-                  <br />
-                  <span className="footer-cg-para">Cookies</span>
-                  <br />
-                  <span className="footer-cg-para">Honey</span>
-                  <br />
-                  <span className="footer-cg-para">Ayurvedic</span>
-                  <br />
+                  <div className="footer-cg-para">Sweets</div>
+                  
+                  <div className="footer-cg-para">Cookies</div>
+                  
+                  <div className="footer-cg-para">Honey</div>
+                  
+                  <div className="footer-cg-para">Ayurvedic</div>
+                  
                 </div>
               </div>
             </Col>
 
-            <Col sm={12} lg={4}>
+            <Col sm={4} md={4} lg={4}>
             <div className="footer-cg-herbal">
                 <h6 className="footer-center-header">SUPPORT</h6>
                 <div>
-                  <span className="footer-cg-para">Contact Us</span>
-                  <br />
-                  <br/>
-                  <span className="footer-cg-para">FAQ</span>
-                  <br /> <br/>
-                  <span className="footer-cg-para">Privacy Policy</span>
-                  <br /> <br/>
-                  <span className="footer-cg-para">Terms of Use</span>
-                  <br /> <br/>
+                  <div className="footer-cg-para">Contact Us</div>
+               
+                  <div className="footer-cg-para">FAQ</div>
+               
+                  <div className="footer-cg-para">Privacy Policy</div>
+               
+                  <div className="footer-cg-para">Terms of Use</div>
+               
                 </div>
               </div>
             </Col>
-            <Col sm={12} lg={4}>
+            <Col sm={4} md={4}  lg={4}>
             <div className="footer-cg-herbal">
                 <h6 className="footer-center-header">MY ACCOUNT</h6>
                 <div>
-                  <span>Sign In</span>
-                  <br />
-                  <span>My Cart</span>
-                  <br />
-                  <span>Checkout</span>
+                  <div className="footer-cg-para">Sign In</div>
+                  <div className="footer-cg-para">My Cart</div>
+                  <div className="footer-cg-para">Checkout</div>
                 </div>
               </div>
             </Col>
                 </Row>
             </Col>
-            <Col sm={12} lg={4}>
-              <div className="footer-cg-herbal">
-                <h6 className="footer-center-header">DIGITAL PRESENCE</h6>
-                <div className="footer-center-icon mt-4">
-                  <GrFacebook /> &nbsp; &nbsp; &nbsp;
-                  <GrInstagram /> &nbsp; &nbsp; &nbsp;
-                  <GrAmazon />
+            <Col sm={12} lg={3}>
+              <div className="footer-cg-herbal ">
+                <h6 className="footer-center-header text-lg-start text-center">DIGITAL PRESENCE</h6>
+                <div className="footer-center-icon  text-lg-start text-center mt-4">
+                  <GrFacebook className="cg-footer-icon" /> &nbsp; &nbsp; &nbsp;
+                  <GrInstagram className="cg-footer-icon"/> &nbsp; &nbsp; &nbsp;
+                  <GrAmazon className="cg-footer-icon"/>
                 </div>
               </div>
             </Col>
           </Row>
+          </div>
         </Container>
+        </div>
       <LastFooter/>
 
-      </div>
+    
     </>
   );
 }

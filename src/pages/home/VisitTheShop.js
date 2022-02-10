@@ -213,15 +213,15 @@ function VisitTheShop({categoryId}) {
             <Col lg={3}>
               <Card className=" VisitTheShop-cards  hover-div1">
                 <Image src={ProductImageOne} alt="AmlaMurabba" />
-                <div className=" row hover-div bg-light">
-                  <Row>
-                    <Col xs={4}>
+                <div className="pe-0 row hover-div bg-light">
+                  <Row className="">
+                    <Col className="ps-2 pe-4 border-end" xs={4}>
                       <FaEye className="icon1-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end"  xs={4}>
                       <FaHeart className="icon2-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-0"  xs={4}>
                       <FaShoppingCart className="icon3-hover d-inline" />
                     </Col>
                   </Row>
@@ -242,13 +242,13 @@ function VisitTheShop({categoryId}) {
                 <Image src={ProductImageTwo} alt="MahuaLaddu" />
                 <div className=" row hover-div bg-light">
                   <Row>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end" xs={4}>
                       <FaEye className="icon1-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end" xs={4}>
                       <FaHeart className="icon2-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-0" xs={4}>
                       <FaShoppingCart className="icon3-hover d-inline" />
                     </Col>
                   </Row>
@@ -275,13 +275,13 @@ function VisitTheShop({categoryId}) {
                   />
                   <div className=" row hover-div bg-light">
                     <Row>
-                      <Col xs={4}>
+                      <Col className="ps-2 pe-4 border-end"   xs={4}>
                         <FaEye className="icon1-hover d-inline" />
                       </Col>
-                      <Col xs={4}>
+                      <Col className="ps-2 pe-4 border-end"   xs={4}>
                         <FaHeart className="icon2-hover d-inline" />
                       </Col>
-                      <Col xs={4}>
+                      <Col className="ps-2 pe-0"   xs={4}>
                         <FaShoppingCart className="icon3-hover d-inline" />
                       </Col>
                     </Row>
@@ -305,13 +305,13 @@ function VisitTheShop({categoryId}) {
                 <Image src={ProductImageFour} alt="MahuaCookies" />
                 <div className=" row hover-div bg-light">
                   <Row>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end"   xs={4}>
                       <FaEye className="icon1-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end"   xs={4}>
                       <FaHeart className="icon2-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-0"   xs={4}>
                       <FaShoppingCart className="icon3-hover d-inline" />
                     </Col>
                   </Row>
@@ -330,13 +330,13 @@ function VisitTheShop({categoryId}) {
                 <Image src={ProductImageFive} alt="Chyawanprash" />
                 <div className=" row hover-div bg-light">
                   <Row>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end" xs={4}>
                       <FaEye className="icon1-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-4 border-end" xs={4}>
                       <FaHeart className="icon2-hover d-inline" />
                     </Col>
-                    <Col xs={4}>
+                    <Col className="ps-2 pe-0" xs={4}>
                       <FaShoppingCart className="icon3-hover d-inline" />
                     </Col>
                   </Row>
