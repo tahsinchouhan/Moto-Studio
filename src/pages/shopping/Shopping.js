@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ButtonDark from '../../components/button/ButtonDark'
+import ButtonDark from "../../components/button/ButtonDark";
 import Image from "next/image";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import image1 from "../../assets/images/shoppingCart/image1.png";
@@ -65,9 +65,23 @@ function Shopping() {
 
               <Col lg="2" className="mt-3">
                 <div className="d-flex">
-                  <button className="btn-shopping-counter" onClick={decrementHandler}> - </button>
-                  <div className="shopping-counter" id="counter">{counter}</div>
-                  <button className="btn-shopping-counter" onClick={incrementHandler}> + </button>
+                  <button
+                    className="btn-shopping-counter"
+                    onClick={decrementHandler}
+                  >
+                    {" "}
+                    -{" "}
+                  </button>
+                  <div className="shopping-counter" id="counter">
+                    {counter}
+                  </div>
+                  <button
+                    className="btn-shopping-counter"
+                    onClick={incrementHandler}
+                  >
+                    {" "}
+                    +{" "}
+                  </button>
                 </div>
                 <p className=" shop-remove shopping-p3-size">
                   <span className="fw-bold text-danger">REMOVE</span>
@@ -78,6 +92,9 @@ function Shopping() {
               </Col>
               <Col lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹900.00</p>
+                <div className="shopping-edit-text">
+                  <p1> EDIT</p1>
+                </div>
               </Col>
             </Row>
             <hr />
@@ -87,7 +104,7 @@ function Shopping() {
                   <Col lg="6" md="12" sm="12">
                     <Image src={image2} alt="image1" />
                   </Col>
-                  <Col  className="margin-shop-toggle" lg="6" md="12">
+                  <Col className="margin-shop-toggle" lg="6" md="12">
                     <p className="fw-bold shopping-p2-size">
                       Lemongrass Green Tea
                     </p>
@@ -103,13 +120,29 @@ function Shopping() {
               </Col>
 
               <Col lg="2" className="mt-3">
-              <div className="d-flex">
-                  <button className="btn-shopping-counter" onClick={decrementHandler}> - </button>
-                  <div className="shopping-counter" id="counter">{counter}</div>
-                  <button className="btn-shopping-counter" onClick={incrementHandler}> + </button>
+                <div className="d-flex">
+                  <button
+                    className="btn-shopping-counter"
+                    onClick={decrementHandler}
+                  >
+                    {" "}
+                    -{" "}
+                  </button>
+                  <div className="shopping-counter" id="counter">
+                    {counter}
+                  </div>
+                  <button
+                    className="btn-shopping-counter"
+                    onClick={incrementHandler}
+                  >
+                    {" "}
+                    +{" "}
+                  </button>
                 </div>
                 <p className=" shop-remove shopping-p3-size">
-                  <span className="fw-bold shop-remove text-danger">REMOVE</span>
+                  <span className="fw-bold shop-remove text-danger">
+                    REMOVE
+                  </span>
                 </p>
               </Col>
               <Col lg="2" className="mt-5">
@@ -117,6 +150,9 @@ function Shopping() {
               </Col>
               <Col lg="2" className="mt-5">
                 <p className="fw-bold shopping-p4-size">₹900.00</p>
+                <div className="shopping-edit-text">
+                  <p1> EDIT</p1>
+                </div>
               </Col>
             </Row>
             <hr />
@@ -129,7 +165,7 @@ function Shopping() {
           <Col lg={4} md={12}>
             <div className="order-summary-card p-4">
               <h6 className="fw-bold order-summary-text">ORDER SUMMARY</h6>
-              <hr className="my-4"  />
+              <hr className="my-4" />
 
               <div className="d-flex justify-content-between">
                 <div>
@@ -144,9 +180,7 @@ function Shopping() {
                 {" "}
                 <p className=" m-0 px-2 pt-1 free-home-delivery-p">
                   FREE HOME DELIVERY{" "}
-                  <span className="fw-bold free-home-delivery-p2 ">
-                    ₹0.00
-                  </span>
+                  <span className="fw-bold free-home-delivery-p2 ">₹0.00</span>
                 </p>
               </div>
               <hr className="my-4" />
@@ -159,9 +193,10 @@ function Shopping() {
                 </div>
               </div>
               <div className="text-center ">
-               
-                <div className="w-100 border-0 checkout-button"> <ButtonDark text="CHECKOUT"/></div>
-               
+                <div className="w-100 border-0 checkout-button">
+                  {" "}
+                  <ButtonDark text="CHECKOUT" />
+                </div>
               </div>
               <p className="order-summary-p1 mt-3">ADD PROMO CODE</p>
             </div>

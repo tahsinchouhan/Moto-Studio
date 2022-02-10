@@ -46,11 +46,11 @@ function Header() {
               </Nav>
               <Nav>
                 <div>
-                <select
+                  <select
                     className="product-select"
                     aria-label="Default select example"
                   >
-                    <option selected>NRI</option>
+                    <option selected>INR</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -65,12 +65,16 @@ function Header() {
                   </Link>
                   &nbsp; &nbsp;
                   <div onClick={iconHandler}>
-                    <Link href="/shopping/Shopping
-">
+                    <Link
+                      href="/shopping/Shopping
+"
+                    >
                       <a className="cg-header-a-tag">
-                      <BsFillCartFill
+                        <BsFillCartFill
                           className={`${
-                            activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
+                            activeIcon
+                              ? "ch-header-cart-icon"
+                              : "cg-header-a-tag"
                           }`}
                         />
                       </a>
