@@ -19,7 +19,7 @@ function PopUp({showPopuUp,close}) {
         <Modal.Body>
        <Container>
          <div className="popup-div m-auto">
-       <Row className="popup-modal-main">
+       <Row className="popup-modal-main p-0">
             <Col xs={12} md={7}>
             <div className="p-5">
             <h1 className="product-name-text">Product Name</h1>
@@ -50,11 +50,12 @@ function PopUp({showPopuUp,close}) {
                 </Form.Select>
             </div>
             </Col>
-            <Col xs={6} md={5} className="popup-modal-img">
-            <div>
-              <Image src={image1} alt="image1" width={349} height={482} />
+            <Col xs={6} md={5} className="popup-modal-img p-0">
+            <div style={{width:"349px" ,height:"482px"}}>
+              <Image src={image1} width={349} height={482} alt="image1"/>
               </div>
             </Col>
+            {/* <Col xs={6} md={1}>x</Col> */}
           </Row>
           </div>
        </Container>

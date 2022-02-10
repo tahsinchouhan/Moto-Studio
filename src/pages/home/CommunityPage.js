@@ -1,3 +1,4 @@
+import React,{useState} from "react";
 import { useState, useEffect } from 'react'
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
@@ -79,12 +80,13 @@ function CommunityPage() {
                 </p>
               </div>
             </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagetwo}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Premium <br /> Cashews
@@ -92,12 +94,13 @@ function CommunityPage() {
               </div>
             </Col>
 
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagethree}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Chyawan <br /> Prash{" "}
@@ -105,24 +108,26 @@ function CommunityPage() {
               </div>
             </Col>
 
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagefour}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="overlay">
                 <p className="Text-name">
                   Mahua <br /> Laddu
                 </p>
               </div>
             </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
+            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
               <Image
                 src={Imagefive}
                 alt="Picture of the author"
                 className="w-100"
               />
+               <PopUp showPopuUp={showPopuUp} close={closeHander} />
               <div className="  overlay">
                 <p className="Text-name">
                   Mahua <br /> Cookies
