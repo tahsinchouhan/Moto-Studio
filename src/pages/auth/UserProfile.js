@@ -3,6 +3,7 @@ import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { BsChevronRight } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import OrderHistory from "./OrderHistory";
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
@@ -109,9 +110,13 @@ function UserProfile() {
                   </div>
                 </div>
               </Col>
-              <Col sm={12} md={6} lg={6}>
-                {profileActive == 0 ? (
+              <Col sm={12} md={9} lg={9}>
+              {profileActive == 0 ? (
                   <>
+                <Row>
+                  <Col sm={12} md={8} lg={8}>
+                  
+                
                     <Formik
                       initialValues={initialValues}
                       validationSchema={validationSchema}
@@ -120,7 +125,7 @@ function UserProfile() {
                       {(formik) => {
                         return (
                           <Form>
-                            <div className="form-div pt-4">
+                            <div className="form-div pt-1">
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="card bg-light">
@@ -267,7 +272,7 @@ function UserProfile() {
                             <div className="form-div pt-4 pb-5">
                               <div className="row">
                                 <div className="col-md-12">
-                                  <div className="card bg-light">
+                                  <div className="userprofile-card bg-light">
                                     <div className="card-body">
                                       <div className="card-heading">
                                         <h4 className=" mb-2">
@@ -362,17 +367,20 @@ function UserProfile() {
                         );
                       }}
                     </Formik>
-                  </>
+                </Col>
+                  <Col sm={12} md={4} lg={4}>
+                    adbl
+                  </Col>
+                </Row>
+                </>
                 ) : (
                   ""
                 )}
                 {profileActive == 1 ? <>monika</> : ""}
-                {profileActive == 2 ? "1234" : ""}
+                {profileActive == 2 ? <><OrderHistory/></> : ""}
                 {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""}
               </Col>
-              <Col sm={12} md={3} lg={3}>
-                {/* lfhlas */}
-              </Col>
+             
             </Row>
           </div>
         </Container>

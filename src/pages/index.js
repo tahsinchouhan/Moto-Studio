@@ -10,8 +10,8 @@ export default function index() {
     <>
       {/* <Home /> */}
       {/* <Popup/> */}
-      <Login/>
-      {/* <UserProfile/> */}
+      {/* <Login/> */}
+      <UserProfile/>
       {/* <ForgotPassword/> */}
     </>
   );
