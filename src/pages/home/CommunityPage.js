@@ -12,8 +12,7 @@ import PopUp from "../product/PopUp";
 function CommunityPage() {
   const [showPopuUp, setShowPopUp] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
 
   const popupHandler = () => {
     setShowPopUp(true);

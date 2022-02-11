@@ -50,3 +50,14 @@
 .popup-modal-img>span,.popup-modal-img>span>span,.popup-modal-img>span>span>img{
 height: 482px !important;
 }
+.btn-popup{
+  position: absolute;
+  z-index: 1;
+  right: -6%;
+  width: 40px;
+  height: 38px;
+}
+svg {
+  vertical-align: start !;
+  
+}

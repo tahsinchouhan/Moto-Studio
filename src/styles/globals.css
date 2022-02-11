@@ -34,6 +34,11 @@ a {
 @import "./Home.module.css";
 @import "./shopCss/Shop.module.css";
 @import "./newsCss/infoNewsroom.module.css";
+@import "./authCss/Login.module.css";
+@import "./authCss/UseProfile.module.css";
+@import "./authCss/Forgot.module.css";
+
+
 
 
 
