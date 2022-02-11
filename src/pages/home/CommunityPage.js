@@ -1,4 +1,3 @@
-import React,{useState} from "react";
 import { useState, useEffect } from 'react'
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";

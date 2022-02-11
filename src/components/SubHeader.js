@@ -38,6 +38,8 @@ function SubHeader() {
   const clickShopHandler = () => {
     setShowShopAll(true);
   };
+  console.log(showShopAll);
+
   return (
     <>
       <div onMouseLeave={() => shopHandler()}>
@@ -96,46 +98,44 @@ function SubHeader() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        {showShopAll == 1 ? (
-          <div className="shop-page" onMouseLeave={() => shopHandler()}>
-            <ShopAll menuData={subMenu} />
+
+        {showShopAll === 1 && showShopAll !== 0 && showShopAll ? (
+          <div className="shop-page" onMouseLeave={() => shopHandler(0, null)}>
+            <ShopAll {...subMenu} />
           </div>
-        ) : (
-          ""
-        )}
-        {showShopAll == 2 ? (
+        ) : ("") }
+        
+        { showShopAll !== 0 && showShopAll !== 1 && showShopAll ? (
+          <div  className="shop-page" onMouseLeave={() => shopHandler(0, null)}><Common menuData={subMenu} /></div>
+        ) : ("") }
+        
+        {/* {showShopAll == 2 ? (
           <div className="shop-page" onMouseLeave={() => shopHandler()}>
-            {/* <GourmetFoods /> */}
-            <Common menuData={subMenu} />
+            <GourmetFoods />
           </div>
-        ) : (
-          ""
-        )}
+        ) : ("")}
+
         {showShopAll == 3 ? (
           <div className="shop-page">
-            {/* <BeautyProducts /> */}
-            <Common menuData={subMenu} />
-
+            <BeautyProducts />
           </div>
         ) : (
           ""
         )}
         {showShopAll == 4 ? (
           <div className="shop-page">
-            {/* <AlternativeMedicine /> */}
-            <Common menuData={subMenu} />
+            <AlternativeMedicine />            
           </div>
         ) : (
           ""
         )}
         {showShopAll == 5 ? (
           <div className="shop-page">
-            {/* <HealthPersonalCare /> */}
-            <Common menuData={subMenu} />
+            <HealthPersonalCare />
           </div>
         ) : (
           ""
-        )}
+        )} */}
       </div>
     </>
   );

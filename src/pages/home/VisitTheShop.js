@@ -7,6 +7,7 @@ import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
 import WildforestHoney from "../../../src/assets/images/home/333.png";
 import ProductImageFour from "../../assets/images/product/productImageFour.png";
 import ProductImageFive from "../../assets/images/product/productImageFive.png";
+import emptyImage from '../../../public/placeholder.jpg';
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from '../api/apiPath';
 
@@ -38,7 +39,7 @@ function VisitTheShop({categoryId}) {
               <Col lg={3}>
                 <Card className="VisitTheShop-cards hover-div1">
                   <Image 
-                    src={featured[0]?.products_id?.images.length ? featured[0]?.products_id?.images[0]?.img || ProductImageOne : ProductImageOne} 
+                    src={featured[0]?.products_id?.images.length ? featured[0]?.products_id?.images[0]?.img || emptyImage : emptyImage} 
                     alt="AmlaMurabba" 
                     width={100}
                     height={180}
@@ -71,7 +72,7 @@ function VisitTheShop({categoryId}) {
 
                 <Card className=" VisitTheShop-cards mt-3 hover-div1">
                   <Image 
-                    src={featured[1]?.products_id?.images.length ? featured[1]?.products_id?.images[0]?.img || ProductImageTwo : ProductImageTwo} 
+                    src={featured[1]?.products_id?.images.length ? featured[1]?.products_id?.images[0]?.img || emptyImage : emptyImage} 
                     alt="MahuaLaddu" 
                     width={100}
                     height={180}
@@ -106,7 +107,7 @@ function VisitTheShop({categoryId}) {
                 <Card className="WildforestHoney-card hover-div1 ">
                   <div className="text-center">
                     <Image 
-                      src={featured[2]?.products_id?.images.length ? featured[2]?.products_id?.images[0]?.img || WildforestHoney : WildforestHoney} 
+                      src={featured[2]?.products_id?.images.length ? featured[2]?.products_id?.images[0]?.img || emptyImage : emptyImage} 
                       alt="WildforestHoney" 
                       width={200}
                       height={360}
@@ -142,7 +143,7 @@ function VisitTheShop({categoryId}) {
                 {" "}
                 <Card className="VisitTheShop-cards hover-div1">
                   <Image 
-                    src={featured[3]?.products_id?.images.length ? featured[3]?.products_id?.images[0]?.img || ProductImageFour : ProductImageFour} 
+                    src={featured[3]?.products_id?.images.length ? featured[3]?.products_id?.images[0]?.img || emptyImage : emptyImage} 
                     alt="AmlaMurabba" 
                     width={100}
                     height={180}
@@ -175,7 +176,7 @@ function VisitTheShop({categoryId}) {
 
                 <Card className=" VisitTheShop-cards mt-3 hover-div1">
                   <Image 
-                    src={featured[4]?.products_id?.images.length ? featured[4]?.products_id?.images[0]?.img || ProductImageFive : ProductImageFive} 
+                    src={featured[4]?.products_id?.images.length ? featured[4]?.products_id?.images[0]?.img || emptyImage : emptyImage} 
                     alt="MahuaLaddu" 
                     width={100}
                     height={180}

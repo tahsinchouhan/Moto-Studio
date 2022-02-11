@@ -4,12 +4,11 @@ import BrahmiChurna from "../../../public/images/bramkumari.png";
 import Image from "next/image";
 
 function Common({ menuData }) {
-  console.log("working", menuData);
   return (
     <Container fluid>
       <Container>
-        <Row className="all-shop-list p-3 m-3">
-          {menuData.length &&
+        <Row className="all-shop-list-change py-3 my-3">
+          {menuData?.length &&
             menuData.map((menu) => {
               return (
                 <Col sm={12} md={4} lg={4} className="alternative-div" key={menu._id}>

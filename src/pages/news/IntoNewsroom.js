@@ -13,20 +13,42 @@ import { apipath } from '../api/apiPath';
 
 function IntoNewsroom() {
   const [newsData, setNewsData] = useState([]);
+  const [dateList, setDateList] = useState([]);
+
+  const filterNews = (month) => {
+    fetchData(month)
+  }
+
+  const fetchData = async (month = '') => {
+    let endpoint ='';
+    if(month !== ''){
+      endpoint = `/api/v1/newsroom/search?month=${month}`;
+    } else {
+      endpoint = `/api/v1/newsroom/list`;
+    }
+    try {
+      const res = await fetch(`${apipath}${endpoint}`);
+      const objData = await res.json();
+      setNewsData(objData?.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchYearData = async () => {
       try {
-        const res = await fetch(`${apipath}/api/v1/newsroom/list`);
+        const res = await fetch(`${apipath}/api/v1/newsroom/dates/list`);
         const objData = await res.json();
-        setNewsData(objData?.data)
+        setDateList(objData?.data)
       } catch (error) {
         console.log(error);
       }
     }
+    fetchYearData();
     fetchData();
   }, [])
-// console.log(newsData);
+
 
   return (
     <>
@@ -56,7 +78,31 @@ function IntoNewsroom() {
                     <hr className="News-Articles"/>
                   </div>
                   <div>
-                    <Dropdown className="d-inline mx-2">
+                  {
+                    dateList.length > 0 && [...new Set(dateList.map(item => item.year))].map(year=>{
+                      return <Dropdown className="d-inline mx-2" key={year}>
+                        <Dropdown.Toggle id="dropdown-autoclose-true">
+                          <span>
+                            <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
+                          </span>
+                          {year}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          {
+                            [...new Set(dateList.map(item => item.month))].filter(value => value === `${value.split('-')[0]}-${year}`).map((month,index)=>{
+                              return <Dropdown.Item href="#" key={index} onClick={()=>filterNews(month)}>
+                                <span>
+                                  <BsFillCaretRightFill className="news-icon"/>
+                                </span>
+                                {month.split('-')[0]}
+                              </Dropdown.Item>
+                            })
+                          }
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    })
+                  }
+                    {/* <Dropdown className="d-inline mx-2">
                       <Dropdown.Toggle id="dropdown-autoclose-true">
                         <span>
                           <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
@@ -89,7 +135,7 @@ function IntoNewsroom() {
                           September
                         </Dropdown.Item>
                       </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
                   </div>
                 </div>
               </Col>

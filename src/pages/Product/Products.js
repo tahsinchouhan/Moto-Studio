@@ -20,6 +20,10 @@ function Products() {
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  // const [filterQuery, setFilterQuery] = useState('');
+  const [checkedState, setCheckedState] = useState(
+    new Array(category.length).fill(false)
+  );
 
   const fetchMoreData = () => {
     fetch(apipath + `/api/v1/products/list?page=${pageNumber}`)
@@ -33,33 +37,55 @@ function Products() {
       .catch((error) => console.log(error));
   };
 
+  const fetchData = async (query = '') => {
+    try {
+      const res = await fetch(`${apipath}/api/v1/product/list?${query.substring(1)}`);
+      const objData = await res.json();
+      setTotalPages(Math.ceil(objData.all_pages));
+      setProductData(objData?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchCategory = () => {
       fetch(`${apipath}/api/v1/category/list`)
         .then((response) => response.json())
         .then((objData) => {
           if (objData?.data?.length) {
+            setCheckedState(new Array(objData?.data.length).fill(false))
             setCategory(objData?.data);
           }
         })
         .catch((error) => console.log(error));
     };
-
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${apipath}/api/v1/product/list`);
-        const objData = await res.json();
-        setTotalPages(Math.ceil(objData.all_pages));
-        setProductData(objData?.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchCategory();
     fetchData();
   }, []);
 
+  console.log('Ajay', checkedState);
+
   // console.log(productData);
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+
+    const query = updatedCheckedState.reduce(
+      (query, currentState, index) => {
+        if (currentState === true) {
+          return query += `&category_id[]=` + category[index]._id;
+        }
+        return query;
+      },
+      ''
+    );
+    fetchData(query);
+  };
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -94,14 +120,16 @@ function Products() {
               <div>
                 <h6 className="product-category-text">CATEGORY</h6>
                 {category.length &&
-                  category.map((cat) => {
+                  category.map((cat, index) => {
                     return (
                       <div className="form-check mb-3" key={cat._id}>
                         <input
                           className="form-check-input"
                           type="checkbox"
-                          value=""
                           id="flexCheckDefault"
+                          value={cat._id}
+                          checked={checkedState[index]}
+                          onChange={() => handleOnChange(index)}
                         />
                         <label className="form-check-product-item">
                           {cat?.category_name || "Category Name"}

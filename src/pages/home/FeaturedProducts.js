@@ -4,11 +4,11 @@ import Image from "next/image";
 // import AlternativeMedicine from "../../assets/images/home/1 (2).png";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
+import emptyImage from '../../../public/placeholder.jpg';
 import VisitTheShop from '../home/VisitTheShop'
 import { apipath } from '../api/apiPath';
 
 function FeaturedProducts() {
-
   
   const [category, setCategory] = useState([]);
   const [categoryId, setCategoryId] = useState(null);
@@ -47,7 +47,7 @@ function FeaturedProducts() {
             return <div className="image-div" key={cat._id} onClick={()=>getCategoryId(cat?._id)}>
             <div className="rounded-circle">
               <Image
-                src={cat?.images[0]?.img || GourmetFoods}
+                src={cat?.images[0]?.img || emptyImage}
                 alt="GourmetFoods"
                 className="rounded-circle hover1"
                 width={160} height={160}
