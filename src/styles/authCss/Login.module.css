@@ -46,6 +46,13 @@
     white-space: nowrap;
   }
 }
+
+@media only screen and (max-width:450px){
+  .login_div {
+    padding: 66px 34px !important;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .btn-submit {
     width: 70%;
@@ -54,4 +61,5 @@
     text-align: center;
     padding-left: 0.5em !important;
   }
+
 }
