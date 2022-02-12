@@ -75,9 +75,6 @@ function ForgotPassword() {
 
                     <div className="text-center">
                     <ButtonDark text="Login" className="btn btn-submit"/>
-                      {/* <button type="submit" className="btn btn-submit" style={{marginBottom:"30px"}}>
-                        <span className="Complete-login">Forgot Password </span>
-                      </button> */}
                     </div>
                   </Form>
                 </div>

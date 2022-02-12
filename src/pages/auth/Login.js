@@ -40,7 +40,7 @@ function Login() {
                   return (
                     <Form>
                       <div className="form-group user-field">
-                        <label htmlFor="email">username / mobile no.</label>
+                        <label htmlFor="email">Username / Mobile no.</label>
                         <Field
                           className="form-control px-2"
                           type="email"
@@ -63,9 +63,7 @@ function Login() {
 
                       <div className="text-center pt-5">
                         <ButtonDark text="Login" className="btn btn-submit"/>
-                        {/* <button type="submit" className="btn btn-submit">
-                          <span className="Complete-login">Login</span>
-                        </button> */}
+                    
                       </div>
                     </Form>
                   );
@@ -78,7 +76,7 @@ function Login() {
             <br />
             <br />
             <Link href="/auth/ForgotPassword">
-              <a className="login-forgot">forgot Password ?</a>
+              <a className="login-forgot">Forgot Password ?</a>
             </Link>
             <br />
             <br />

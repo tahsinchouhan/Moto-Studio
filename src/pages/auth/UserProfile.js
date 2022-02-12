@@ -4,7 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
-import AddCard from "./AddCard";
+import PaymentMethods from "./PaymentMethods";
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
@@ -41,7 +41,7 @@ function UserProfile() {
               </div>
             </div>
             <Row className="pt-4">
-              <Col sm={12} md={3} lg={3}>
+              <Col sm={12} md={12} lg={3}>
                 <div className="user-Detail">
                   <div className="user-detail-profile">
                     <Row>
@@ -111,13 +111,12 @@ function UserProfile() {
                   </div>
                 </div>
               </Col>
-              <Col sm={12} md={9} lg={9}>
+              <Col sm={12} md={12
+              } lg={9}>
               {profileActive == 0 ? (
                   <>
                 <Row>
                   <Col sm={12} md={8} lg={8}>
-                  
-                
                     <Formik
                       initialValues={initialValues}
                       validationSchema={validationSchema}
@@ -377,7 +376,7 @@ function UserProfile() {
                 ) : (
                   ""
                 )}
-                {profileActive == 1 ? <><AddCard/></> : ""}
+                {profileActive == 1 ?  <><PaymentMethods/></>:"" }
                 {profileActive == 2 ? <><OrderHistory/></> : ""}
                 {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""}
               </Col>
