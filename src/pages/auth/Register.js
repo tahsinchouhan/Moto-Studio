@@ -39,7 +39,7 @@ function Register() {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="card bg-light">
-                              <div className="card-body">
+                              <div className="card-body p-4">
                                 <div className="card-heading">
                                   <h4 className=" mb-2">Login Details</h4>
                                 </div>
@@ -61,7 +61,7 @@ function Register() {
                                     className="form-control px-2"
                                     type="number"
                                     name="number"
-                                    placeholder="Enter sandeep number"
+                                    placeholder="Enter mobile number"
                                   />
                                 </div>
                                 <div className="form-group user-field">
@@ -97,7 +97,7 @@ function Register() {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="card bg-light">
-                              <div className="card-body">
+                              <div className="card-body p-4">
                                 <div className="card-heading">
                                   <h4 className=" mb-2">Basic Information</h4>
                                 </div>

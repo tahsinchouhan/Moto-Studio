@@ -11,7 +11,7 @@ function PaymentMethods() {
       <div className="">
         <Row>
           {/* <Col md={3}>jdg</Col> */}
-          <Col sm={12} md={12}>
+          <Col sm={12} md={12} className="mt-5 mt-lg-0" >
             <h3 className="">Preferred Methods</h3>
             <Row>
               <Col sm={12} md={6} lg={6} className="pt-3">
