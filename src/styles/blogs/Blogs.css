@@ -1,0 +1,83 @@
+#blogs-page {
+  margin: 55px 0px;
+}
+
+.blogs-heading-para {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 51px;
+  text-align: center;
+  color: #333333;
+}
+.blogs-heading-hr {
+  margin-top: 10px;
+  width: 48px;
+  height: 2px;
+  color: #c4c4c4;
+  opacity: 100%;
+  margin: 0 auto;
+}
+
+.blogs-calender-hr {
+  width: 209px;
+  color: #e5e5e5;
+  opacity: 100% !important;
+}
+
+.blogs-calender-arrow {
+  color: #5abf6b !important;
+}
+
+.calender-filter-months {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #666666;
+}
+
+.blogs-calender-icon {
+  color: #ffc24c;
+}
+
+.herbal-blogs-card-date-hr {
+  color: #626060;
+  height: 2px !important;
+  opacity: 100% !important;
+  width: 4% !important;
+}
+
+.herbal-blogs-card-date {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 28px;
+  color: #2b2b2b;
+}
+
+.herbal-blogs-card-title {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  color: #333333;
+}
+
+.herbal-blogs-card-text {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: justify !important;
+}
+
+.blog-card-padding{
+    padding: 0rem !important;
+}
