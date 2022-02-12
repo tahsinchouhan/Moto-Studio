@@ -57,7 +57,7 @@ function SubHeader() {
                   {
                     menuData.length && menuData[1].length && menuData[1].map((menu, index)=>{
                       return <li key={menu._id} onMouseOver={() => shopHandler(2 + index, menu.menu_data)}>
-                        <Link href="/">
+                        <Link href={`/Product/Products?activeTab=${index}`}>
                           <a className="sub-nav-link mx-3">{menu?.menu_name || menu}</a>
                         </Link>
                       </li>

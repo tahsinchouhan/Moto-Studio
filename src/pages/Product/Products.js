@@ -11,15 +11,20 @@ import ProductImageOne from "../../assets/images/product/productImageOne.png";
 // import ProductImageFive from "../../assets/images/product/productImageFive.png";
 // import ProductImageSix from "../../assets/images/product/productImageSix.png";
 import Popup from "./PopUp";
-import PopUp from "./PopUp";
+import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
 
 function Products() {
+  
+  const router = useRouter();
+  const { activeTab } = router.query; 
+
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [apiQuery, setApiQuery] = useState('');
   // const [filterQuery, setFilterQuery] = useState('');
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
@@ -49,6 +54,7 @@ function Products() {
   };
 
   useEffect(() => {
+    
     const fetchCategory = () => {
       fetch(`${apipath}/api/v1/category/list`)
         .then((response) => response.json())
@@ -60,21 +66,22 @@ function Products() {
         })
         .catch((error) => console.log(error));
     };
+
     fetchCategory();
     fetchData();
   }, []);
 
-  console.log('Ajay', checkedState);
-
-  // console.log(productData);
-  const handleOnChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-
-    setCheckedState(updatedCheckedState);
-
-    const query = updatedCheckedState.reduce(
+  useEffect(() => {
+    if(activeTab) {
+      const activeCategory = checkedState.map((item, index) =>
+        index === Number(activeTab)
+      );
+      setCheckedState(activeCategory);
+    }
+  }, [category, activeTab])
+  
+  useEffect(() => {
+    const query = checkedState.reduce(
       (query, currentState, index) => {
         if (currentState === true) {
           return query += `&category_id[]=` + category[index]._id;
@@ -84,8 +91,15 @@ function Products() {
       ''
     );
     fetchData(query);
-  };
+  }, [checkedState])
+  
 
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -95,8 +109,8 @@ function Products() {
   };
   const closeHander = () => {
     setShowPopUp(false);
-    console.log("modallll");
   };
+
   return (
     <>
       <div className="all-product-heading">

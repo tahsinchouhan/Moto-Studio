@@ -7,6 +7,7 @@ import HomeFollowUs from "./HomeFollowUs";
 import HomeEmpower from "./HomeEmpower";
 
 function Home() {
+  
   return (
     <div>
       <HomeHeaderImg />
