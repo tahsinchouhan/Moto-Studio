@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
@@ -13,19 +13,20 @@ import ProductImageOne from "../../assets/images/product/productImageOne.png";
 import Popup from "./PopUp";
 import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
+import { CardContext } from '../../components/Layout';
 
 function Products() {
   
   const router = useRouter();
-  const { activeTab } = router.query; 
+  const { activeTab } = router.query;
+  const { user, addToCart } = useContext(CardContext); 
 
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [apiQuery, setApiQuery] = useState('');
-  // const [filterQuery, setFilterQuery] = useState('');
+  
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
   );
@@ -92,7 +93,6 @@ function Products() {
     );
     fetchData(query);
   }, [checkedState])
-  
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -100,6 +100,32 @@ function Products() {
     );
     setCheckedState(updatedCheckedState);
   };
+
+  const addProduct = data => {
+    const params = {
+      cart_items: {
+        product: data._id,
+        quantity: 1,
+        price: data?.price || 0
+      },
+    };
+
+    fetch(apipath + `/api/v1/cart/add-items`, {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        // Authorization: "Bearer " + user.token
+      },
+      body: JSON.stringify(params)
+    })
+    .then((res) => res.json())
+    .then((result) => {
+      console.log('result :>> ', result);
+      if (result?.data?.length) {
+        console.log('result :>> ', result);
+      }
+    }).catch((error) => console.log(error));
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -229,11 +255,12 @@ function Products() {
                         <span className="product-Price">
                           ₹ {product?.price}
                         </span>
-                        <div className="mt-2">
+                        <div className="mt-2"  onClick={() => addProduct(product)}>
                           <ButtonDark
                             type="submit"
                             className="Add-to-cart-button"
                             text="ADD TO CART"
+                           
                           />
                         </div>
                       </div>

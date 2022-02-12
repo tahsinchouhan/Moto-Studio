@@ -16,25 +16,10 @@ function Layout({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addToCart = (data) => {
-    axios
-      .post(
-        apipath + `/api/v1/cart/remove-items`,
-        { product_id, user: userData?.user?._id },
-        {
-          headers: {
-            Authorization: "Bearer " + userData.token,
-          },
-        }
-      )
-      .then((response) => {
-        dispatch({
-          type: "ADD_TO_CART",
-          payload: data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: data,
+    });
   };
 
   const removeItem = (product_id, id) => {

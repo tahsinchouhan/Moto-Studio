@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import Link from "next/link";
 import ShopAll from "../pages/subHeader/shopAll";
-import GourmetFoods from "../pages/subHeader/GourmetFoods";
-import BeautyProducts from "../pages/subHeader/BeautyProducts";
-import AlternativeMedicine from "../pages/subHeader/AlternativeMedicine";
-import HealthPersonalCare from "../pages/subHeader/HealthPersonalCare";
+// import GourmetFoods from "../pages/subHeader/GourmetFoods";
+// import BeautyProducts from "../pages/subHeader/BeautyProducts";
+// import AlternativeMedicine from "../pages/subHeader/AlternativeMedicine";
+// import HealthPersonalCare from "../pages/subHeader/HealthPersonalCare";
 import {apipath} from '../pages/api/apiPath';
-// import Common from "../pages/subHeader/common";
+import Common from "../pages/subHeader/common";
 
 function SubHeader() {
   const [showShopAll, setShowShopAll] = useState(0);
