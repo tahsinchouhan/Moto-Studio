@@ -1,5 +1,6 @@
 import ForgotPassword from "./auth/ForgotPassword";
 import Login from "./auth/Login";
+import Register from "./auth/Register";
 import UserProfile from "./auth/UserProfile";
 import Home from "./home/Home";
 
@@ -10,9 +11,11 @@ export default function index() {
     <>
       {/* <Home /> */}
       {/* <Popup/> */}
-      <Login/>
+      {/* <Login/> */}
+      {/* <Login/> */}
       {/* <UserProfile/> */}
       {/* <ForgotPassword/> */}
+      <Register/>
     </>
   );
 }

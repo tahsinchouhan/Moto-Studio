@@ -1,0 +1,43 @@
+/* payment Methods*/
+.bank-card-detail {
+    white-space: nowrap;
+  }
+  .bank-card {
+    width: 100%;
+    height: 105.21px;
+    background: #f5e1ca;
+    border-radius: 12.5565px !important;
+    padding: 20px 8px;
+  }
+  .Add-New {
+    padding: 10px 0px 0px 0px;
+    font-weight: 600;
+    color: #5abf6b;
+    border-bottom: 1px solid#5abf6b;
+  }
+  .Add-New:hover {
+    color: #5abf6b;
+  }
+  .payment-profile-card {
+    border-radius: 12.5565px !important;
+  }
+  .cg-Other-Methods{
+    padding-top: 40px;
+  }
+  
+.cart-detail-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 19px;
+  color: #5abf6b;
+}
+/* order-history */
+.view-details {
+  width: 100%;
+  height: 41px;
+  background: #49dbc9;
+  border: none;
+  color: #ffff;
+  font-size: 12px;
+}

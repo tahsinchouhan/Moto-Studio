@@ -12,3 +12,23 @@
     border: 1px solid #e5e5e5;
     box-sizing: border-box;
   }
+
+  .bank-card-detail {
+    white-space: nowrap;
+  }
+  .bank-card {
+    width: 100%;
+    height: 105.21px;
+    background: #f5e1ca;
+    border-radius: 12.5565px !important;
+    padding: 20px 8px;
+  }
+  .Add-New {
+    color: #5abf6b;
+  }
+  .Add-New:hover {
+    color: #5abf6b;
+  }
+  .payment-profile-card {
+    border-radius: 12.5565px !important;
+  }

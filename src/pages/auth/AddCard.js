@@ -33,7 +33,7 @@ function AddCard() {
 
   return (
     <div>
-      <div className="py-5">
+      <div className="pt-0 pb-5">
         <div className="atm-card-detail">
           <Formik
             initialValues={initialValues}

@@ -39,6 +39,8 @@ a {
 @import "./authCss/UseProfile.module.css";
 @import "./authCss/Forgot.module.css";
 @import "./authCss/addCard.module.css";
+@import "./authCss/paymentMethod.module.css";
+
 
 
 
