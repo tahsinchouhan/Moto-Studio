@@ -1,12 +1,29 @@
-import React from "react";
+import { useState, useEffect } from 'react'
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
 import Button from "../../components/button/ButtonLight"
 import Skill from "../../assets/images/about/skill.png";
 import Cultivation from "../../assets/images/about/cultivation.png";
 import Microenterprises from "../../assets/images/about/microenterprises.png";
+import { apipath } from '../api/apiPath';
 
 function AboutNewsroom() {
+  const [newsData, setNewsData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/newsroom/list`);
+        const objData = await res.json();
+        setNewsData(objData?.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+// console.log(newsData);
+
   return (
     <>
       <div className="about-newsroom-container">
@@ -20,59 +37,27 @@ function AboutNewsroom() {
 
       <Container>
         <Row className=" row-cols-1 row-cols-md-3 g-4 mt-4 mb-5 justify-content-center">
-          <div className="col-lg-4 col-md-6">
-            <div className="card h-100 border-2">
-              <Image
-                src={Microenterprises}
-                className="w-100 card-img-top"
-                alt="Microinterprises"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Lac Cultivation and Processing</h5>
-                <small className="about-newsroom-date">Sep 09, 2020</small>
-                <p className="card-text about-newsroom-card-para mt-3">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
+          {
+            newsData.length && newsData?.slice(0,3)?.map(news => {
+              return <div className="col-lg-4 col-md-6" key={news._id}>
+                <div className="card h-100 border-2">
+                  <Image
+                    src={news.images[0]?.img || Microenterprises}
+                    className="w-100 card-img-top"
+                    alt="Microinterprises"
+                    width={300}
+                    height={300}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{news.title}</h5>
+                    <small className="about-newsroom-date">{new Date(news.date).toDateString()}</small>
+                    <p className="card-text about-newsroom-card-para mt-3">{news.content}</p>
+                    <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="card h-100 border-2">
-              <Image
-                src={Cultivation}
-                className="w-100 card-img-top"
-                alt="Cultivation"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Microenterprises on the rise</h5>
-                <small className="about-newsroom-date">Aug 24, 2020</small>
-                <p className="card-text about-newsroom-card-para mt-3 ">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="card h-100 border-2">
-              <Image src={Skill} className="w-100 card-img-top" alt="Skill" />
-              <div className="card-body">
-                <h5 className="card-title">Skill Upgradation Training</h5>
-                <small className="about-newsroom-date ">Sep 09, 2020</small>
-                <p className="card-text about-newsroom-card-para mt-3">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer
-                </p>
-                <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
-              </div>
-            </div>
-          </div>
+            })
+          }
         </Row>
       </Container>
     </>

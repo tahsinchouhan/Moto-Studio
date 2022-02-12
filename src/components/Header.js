@@ -58,6 +58,7 @@ function Header() {
                   {/* eslint-disable-next-line  */}
                   {/* <Link href="/blog/Blogs">
                   <a className="nav-link mx-3">BLOGS</a>
+                </Link>  {/* eslint-disable-next-line  *
                 <Link href="/storie/Stoies">
                   <a className="nav-link mx-3">STORIES</a>
                 </Link> */}
@@ -76,7 +77,7 @@ function Header() {
                     className="product-select"
                     aria-label="Default select example"
                   >
-                    <option selected>NRI</option>
+                    <option selected>INR</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -91,12 +92,16 @@ function Header() {
                   </Link>
                   &nbsp; &nbsp;
                   <div onClick={iconHandler}>
-                    <Link href="/shopping/Shopping
-">
+                    <Link
+                      href="/shopping/Shopping
+"
+                    >
                       <a className="cg-header-a-tag">
-                      <BsFillCartFill
+                        <BsFillCartFill
                           className={`${
-                            activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
+                            activeIcon
+                              ? "ch-header-cart-icon"
+                              : "cg-header-a-tag"
                           }`}
                         />
                       </a>

@@ -1,18 +1,35 @@
 import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-function ShopAll() {
+function ShopAll({menu_data}) {
+  console.log(menu_data);
   return (
     <div>
       <div className="container-fluid">
         <div className="container">
-          <div className="all-shop-list p-3 m-3">
+          <div className="all-shop-list-change py-3">
             <Row>
-              <Col md={4} lg={4}>
+              {
+                menu_data.length > 0 ? menu_data.map(sub_menu => {
+                  return <Col md={3} lg={3} key={sub_menu?._id}>
+                    <div className="grocery-gourmet-foods">
+                      <h6 className="Grocery-foods">{sub_menu?.menu_name}</h6>
+                      <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
+                        {
+                          sub_menu?.menu_data?.length && sub_menu?.menu_data?.map(item => {
+                            return <span key={item._id} className="Wildforest">{item?.category_name || ''}</span>
+                          })
+                        }
+                      </div>
+                    </div>
+                  </Col>
+                }) : null
+              }
+              {/* <Col md={4} lg={4}>
                 <div className="grocery-gourmet-foods">
                   <h6 className="Grocery-foods">Grocery & Gourmet Foods</h6>
                   <div>
-                    <Row>
+                    <Row>                  
                       <Col md={6} lg={6}>
                         <div>
                           <span className="Wildforest">Wildforest Honey</span>
@@ -42,9 +59,6 @@ function ShopAll() {
                   </div>
                 </div>
               </Col>
-              {/* <div>
-                  <div className="stret-line"></div>
-              </div> */}
               <Col md={3} lg={3}>
                 <div className="grocery-gourmet-foods">
                   <h6 className="Grocery-foods">Beauty  Products</h6>
@@ -95,7 +109,7 @@ function ShopAll() {
                     <br />
                   </div>
                 </div>
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </div>
