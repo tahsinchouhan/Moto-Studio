@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Container } from 'react-bootstrap'
-
+// import ButtonDark from "../../components/button/ButtonDark"
 function OrderHistory() {
+  const [showViewDetail,setShowViewDetail]=useState(0)
 
     const orderViewHandler=()=>{
+      setShowViewDetail(0)
         console.log("orderViewHandler...");
     }
     return (
@@ -62,12 +64,15 @@ function OrderHistory() {
                   </div>
                   </div>
                   <div className="col col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                  <div onClick={orderViewHandler}>
+                  <div onClick={()=>setShowViewDetail()}>
                     <button className="view-details">VIEW DETAILS</button>
+                    {/* <ButtonDark text="VIEW DETAILS" className="btn btn-submit"/> */}
+
                   </div>
                   </div>
               </div>
               <hr/>
+              {showViewDetail==0?"":"hello monika"}
             </div>
             </Container>
         </div>

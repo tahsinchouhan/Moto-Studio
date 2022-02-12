@@ -4,6 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
+import AddCard from "./AddCard";
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
@@ -376,7 +377,7 @@ function UserProfile() {
                 ) : (
                   ""
                 )}
-                {profileActive == 1 ? <>monika</> : ""}
+                {profileActive == 1 ? <><AddCard/></> : ""}
                 {profileActive == 2 ? <><OrderHistory/></> : ""}
                 {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""}
               </Col>

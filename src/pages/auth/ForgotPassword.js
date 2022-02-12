@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { BsFillLockFill } from "react-icons/bs";
+import ButtonDark from "../../components/button/ButtonDark"
 
 function ForgotPassword() {
 
@@ -73,9 +74,10 @@ function ForgotPassword() {
                    </div>
 
                     <div className="text-center">
-                      <button type="submit" className="btn btn-submit" style={{marginBottom:"30px"}}>
+                    <ButtonDark text="Login" className="btn btn-submit"/>
+                      {/* <button type="submit" className="btn btn-submit" style={{marginBottom:"30px"}}>
                         <span className="Complete-login">Forgot Password </span>
-                      </button>
+                      </button> */}
                     </div>
                   </Form>
                 </div>
