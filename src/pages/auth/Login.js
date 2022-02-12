@@ -4,6 +4,7 @@ import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import ButtonDark from "../../components/button/ButtonDark";
 
 function Login() {
   const validationSchema = Yup.object({
@@ -61,9 +62,10 @@ function Login() {
                       </div>
 
                       <div className="text-center pt-5">
-                        <button type="submit" className="btn btn-submit">
+                        <ButtonDark text="Login" className="btn btn-submit"/>
+                        {/* <button type="submit" className="btn btn-submit">
                           <span className="Complete-login">Login</span>
-                        </button>
+                        </button> */}
                       </div>
                     </Form>
                   );

@@ -38,6 +38,8 @@ a {
 @import "./authCss/Login.module.css";
 @import "./authCss/UseProfile.module.css";
 @import "./authCss/Forgot.module.css";
+@import "./authCss/addCard.module.css";
+
 
 
 

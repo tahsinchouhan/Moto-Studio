@@ -1,0 +1,14 @@
+.user-field {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 28px;
+    color: #626060;
+  }
+  .input-field {
+    width: 100%;
+    height: 56px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+  }
