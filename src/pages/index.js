@@ -1,3 +1,6 @@
+import ForgotPassword from "./auth/ForgotPassword";
+import Login from "./auth/Login";
+import UserProfile from "./auth/UserProfile";
 import Home from "./home/Home";
 
 // import Popup from "../pages/Product/PopUp"
@@ -5,8 +8,11 @@ import Home from "./home/Home";
 export default function index() {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
       {/* <Popup/> */}
+      {/* <Login/> */}
+      <UserProfile/>
+      {/* <ForgotPassword/> */}
     </>
   );
 }

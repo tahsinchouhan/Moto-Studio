@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import Image from "next/image";
-
+import { BsXLg } from "react-icons/bs";
 import { Col, Container, Form, Row,Modal,Button} from "react-bootstrap";
 import image1 from "../../assets/images/product/image1.png";
 
@@ -8,8 +8,9 @@ function PopUp({showPopuUp,close}) {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const btnHamdlerClose = () => setShow(false);
+  const btnHamdlerCloseShow = () => setShow(true);
+
   return (
     <>
     
@@ -51,6 +52,7 @@ function PopUp({showPopuUp,close}) {
             </div>
             </Col>
             <Col xs={6} md={5} className="popup-modal-img p-0">
+             <div  onClick={btnHamdlerClose}> <button className="btn-popup" ><BsXLg/></button></div>
             <div style={{width:"349px" ,height:"482px"}}>
               <Image src={image1} width={349} height={482} alt="image1"/>
               </div>

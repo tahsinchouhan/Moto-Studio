@@ -1,0 +1,21 @@
+.Forgot_div {
+    display: block;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 0px 0px;
+    background: rgb(236, 234, 238);
+    max-width: 623px;
+    margin: 0 auto;
+  }
+  .forgot-para{
+      padding: 20px 66px;
+  }
+  .forgot-input{
+    text-align: center;
+    padding: 0px 66px 17px 66px;
+  }

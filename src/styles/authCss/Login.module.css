@@ -1,0 +1,57 @@
+.login_div {
+  max-width: 623px;
+  height: 387px;
+  background: rgb(236, 234, 238);
+  margin: 0 auto;
+  padding: 66px 78px;
+}
+.btn-submit {
+  width: 205px;
+  height: 56px;
+  color: #fff !important;
+  background-color: #5abf6b !important;
+  border-radius: 0rem !important;
+  padding: 16px 30px !important;
+}
+.login-forgot {
+  height: 28px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+  color: #dd2528 !important;
+  padding: 4%;
+  cursor: pointer;
+}
+
+.forgot-div.span {
+  width: 315px;
+  height: 28px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}
+.forgot-div {
+  padding-bottom: 6%;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .login-forgot {
+    font-size: 17px;
+  }
+  .forgot-div {
+    padding: 25px 25px 51px 25px;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 375px) {
+  .btn-submit {
+    width: 70%;
+  }
+  .form-check {
+    text-align: center;
+    padding-left: 0.5em !important;
+  }
+}
