@@ -12,6 +12,7 @@ import { apipath } from '../api/apiPath';
 function CommunityPage() {
   const [community, setCommunity] = useState([]);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

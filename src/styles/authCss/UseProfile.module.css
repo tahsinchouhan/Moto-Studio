@@ -1,0 +1,10 @@
+.active-color {
+    display: flex;
+    justify-content: space-between;
+    color: #7500d0 !important;
+    font-weight: 600;
+  }
+  .User-Profile {
+    display: flex;
+    justify-content: space-between;
+  }
