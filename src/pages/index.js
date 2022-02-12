@@ -12,6 +12,7 @@ export default function index() {
       {/* <Home /> */}
       {/* <Popup/> */}
       {/* <Login/> */}
+      {/* <Login/> */}
       {/* <UserProfile/> */}
       {/* <ForgotPassword/> */}
       <Register/>

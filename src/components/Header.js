@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Container, Navbar, Nav, NavDropdown,Offcanvas} from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
 import logo from "/public/images/CGHerbalsLogo.png";
 import menubar from "../../public/images/MenuBurger.png";
+import { CardContext } from '../components/Layout';
+
 function Header() {
+  const { user, totalItem } = useContext(CardContext);
+
   const [activeIcon, setActiveIcon] = useState(false);
 
   const [expand, setExpand] = useState(false);
@@ -92,10 +96,7 @@ function Header() {
                   </Link>
                   &nbsp; &nbsp;
                   <div onClick={iconHandler}>
-                    <Link
-                      href="/shopping/Shopping
-"
-                    >
+                    <Link href="/shopping/Shopping">
                       <a className="cg-header-a-tag">
                         <BsFillCartFill
                           className={`${
@@ -103,7 +104,8 @@ function Header() {
                               ? "ch-header-cart-icon"
                               : "cg-header-a-tag"
                           }`}
-                        />
+                        />{" "}
+                        {totalItem}
                       </a>
                     </Link>
                   </div>
