@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import Image from "next/image";
+import HelloUser from "../../assets/images/auth/Saly-8.png";
 import { BsChevronRight } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -129,7 +131,7 @@ function UserProfile() {
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="card bg-light">
-                                    <div className="card-body">
+                                    <div className="card-body p-4">
                                       <div className="card-heading">
                                         <h4 className=" mb-2">User Details</h4>
                                       </div>
@@ -181,7 +183,7 @@ function UserProfile() {
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="card bg-light">
-                                    <div className="card-body">
+                                    <div className="card-body p-4">
                                       <div className="card-heading">
                                         <h4 className=" mb-2">
                                           Basic Information
@@ -273,7 +275,7 @@ function UserProfile() {
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="userprofile-card bg-light">
-                                    <div className="card-body">
+                                    <div className="card-body p-4" >
                                       <div className="card-heading">
                                         <h4 className=" mb-2">
                                           Shipping Information
@@ -369,7 +371,9 @@ function UserProfile() {
                     </Formik>
                 </Col>
                   <Col sm={12} md={4} lg={4}>
-                    adbl
+                   <div className="hello-user-hand d-none d-md-block">
+                   <Image src={HelloUser} />
+                   </div>
                   </Col>
                 </Row>
                 </>

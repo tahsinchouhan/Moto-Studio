@@ -1,3 +1,8 @@
+.form-check {
+  text-align: center;
+  padding-left: 0.1em !important;
+}
+
 .login_div {
   max-width: 623px;
   height: 387px;
@@ -47,9 +52,7 @@ a{
     padding: 25px 25px 51px 25px;
     white-space: nowrap;
   }
-  .order-profile{
-    
-  }
+ 
 }
 
 @media only screen and (max-width:450px){
