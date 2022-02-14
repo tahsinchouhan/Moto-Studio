@@ -13,9 +13,9 @@ export default function index() {
       {/* <Popup/> */}
       {/* <Login/> */}
       {/* <Login/> */}
-      <UserProfile/>
+      {/* <UserProfile/> */}
       {/* <ForgotPassword/> */}
-      {/* <Register/> */}
+      <Register/>
     </>
   );
 }

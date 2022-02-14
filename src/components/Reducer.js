@@ -1,5 +1,13 @@
 export const reducer = (state, action) => {
   
+    if(action.type === 'USER_SIGNIN'){
+        return {
+            ...state,
+            user:action.payload,
+            isLogin: true
+        }
+    }
+
   if(action.type === 'GET_ALL'){
       return {
           ...state,
@@ -10,9 +18,7 @@ export const reducer = (state, action) => {
   if(action.type === 'ADD_TO_CART'){ 
     return {
         ...state,
-        item:state.item.filter((curElem)=>{
-            return curElem._id !== action.payload
-        })
+        item:action.payload
     }
   }
 
@@ -29,7 +35,7 @@ export const reducer = (state, action) => {
       return {
           ...state,
           item:state.item.map((curElem)=>{
-              if(curElem._id === action.payload && !curElem.original){
+              if(curElem._id === action.payload){
                   return {...curElem, quantity:curElem.quantity+1}
               }            
               return curElem

@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
 import ButtonLight from "../../components/button/ButtonLight";
@@ -19,13 +21,16 @@ function Products() {
   
   const router = useRouter();
   const { activeTab } = router.query;
-  const { user, addToCart } = useContext(CardContext); 
+  const { isLogin, user, item, addToCart } = useContext(CardContext); 
+
+  console.log('item :>> ', item);
 
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [show, setShow] = useState(false);
   
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
@@ -102,6 +107,8 @@ function Products() {
   };
 
   const addProduct = data => {
+    if(!isLogin) router.push('/auth/Login');
+    console.log('data :>> ', data);
     const params = {
       cart_items: {
         product: data._id,
@@ -109,20 +116,20 @@ function Products() {
         price: data?.price || 0
       },
     };
-
+    console.log('params :>> ', params);
     fetch(apipath + `/api/v1/cart/add-items`, {
       method: "POST",
       headers: { 
         'Content-Type': 'application/json',
-        // Authorization: "Bearer " + user.token
+        Authorization: "Bearer " + user.token
       },
       body: JSON.stringify(params)
     })
     .then((res) => res.json())
     .then((result) => {
-      console.log('result :>> ', result);
-      if (result?.data?.length) {
-        console.log('result :>> ', result);
+      if (result?.cart) {
+        addToCart(result?.cart?.cart_items)
+        setShow(true)
       }
     }).catch((error) => console.log(error));
   }
@@ -305,6 +312,13 @@ function Products() {
                 </div>
               </Col> */}
             </Row>
+            
+          <ToastContainer className="p-3 position-fixed" position={`bottom-end`}>
+            <Toast className="bg-success text-white rounded" onClose={() => setShow(false)} show={show} delay={3000} autohide >
+              <Toast.Body>Product successfully add to cart!</Toast.Body>
+            </Toast>
+          </ToastContainer>
+
             {totalPages !== pageNumber && (
               <div className="text-center load-more-product">
                 <ButtonLight

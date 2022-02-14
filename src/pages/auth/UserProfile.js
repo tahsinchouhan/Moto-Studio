@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
 import HelloUser from "../../assets/images/auth/Saly-8.png";
@@ -7,10 +7,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
 import PaymentMethods from "./PaymentMethods";
+import { CardContext } from '../../components/Layout';
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(0);
+
+  const { isLogin, user } = useContext(CardContext); 
 
   const userPofileHandler = () => {
     setShowProfile(0);

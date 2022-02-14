@@ -1,7 +1,10 @@
 import React from 'react'
 import Image from "next/image"
 import flower from "../../../public/images/flower.png"
-function Viewpage() {
+
+function Viewpage({productData}) {
+
+  console.log('productData :>> ', productData);
     return (
         <div>
              <div className="row">

@@ -14,10 +14,11 @@ import { apipath } from '../api/apiPath';
 function VisitTheShop({categoryId}) {
   const [featured, setFeatured] = useState([]);
 
+  console.log('categoryId :>> ', categoryId);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${apipath}/api/v1/product/featured/list?query=${categoryId}`);
+        const res = await fetch(`${apipath}/api/v1/product/featured/list?category=${categoryId}`);
         const objData = await res.json();
         setFeatured(objData?.data)
       } catch (error) {
@@ -35,7 +36,7 @@ function VisitTheShop({categoryId}) {
         <div className="visit-the-shop-div ">
           <hr className="visit-the-shop-hr mb-5" />
           {
-            featured.length && <Row>
+            featured?.length && <Row>
               <Col lg={3}>
                 <Card className="VisitTheShop-cards hover-div1">
                   <Image 

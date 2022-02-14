@@ -1,25 +1,145 @@
-import { useState } from "react";
+import { useContext } from "react";
 import ButtonDark from "../../components/button/ButtonDark";
-import Image from "next/image";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import image1 from "../../assets/images/shoppingCart/image1.png";
-import image2 from "../../assets/images/shoppingCart/image2.png";
-import Link from "next/link";
+import { Col, Container, Row } from "react-bootstrap";
+import { CardContext } from '../../components/Layout';
+import Item from "../../components/Item";
+import {apipath} from '../api/apiPath'
+import {useRouter} from 'next/router';
+
+function loadScript(src) {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+}
 
 function Shopping() {
-  const [increment, setIncrement] = useState();
-  const [decrement, setDecrement] = useState();
-  const [counter, setCounter] = useState(0);
 
-  const incrementHandler = () => {
-    setCounter(counter + 1);
-    console.log("setIncrement");
-  };
-  const decrementHandler = () => {
-    setCounter(counter - 1);
-    console.log("setDecrement");
+  const { user, item, totalAmount, totalItem } = useContext(CardContext);
+  const router = useRouter();
+
+  const varifyPayment = async (data) => {
+    try {
+      const response = await fetch(`${apipath}/api/v1/payments/verify`, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (response.status === 200 && result.message === "Payment Successfull!") router.push("/order/OrderConfirmed");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  const displayRazorpay = async (data) => {
+
+    if(data.length === 0) return false;
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!res) {
+      alert("Razorpay SDK failed to load . Are you online!");
+      return;
+    }
+
+    let result = [];
+    let products_id = [];
+
+    data.map((val) => {
+      result.push({
+        products: val.product._id,
+        quantity: val.quantity,
+        price: val.price,
+      });
+      products_id.push(val.product._id)
+    });
+
+    if(data.reduce((a, v) => (a = a + v.price * v.quantity), 0) > 40000) {
+      alert('Amount exceeds the limit rs.40000 for per Transaction')
+      return false
+    }
+
+    // const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
+    //   products: result,
+    //   total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+    //   total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
+    //   total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
+    //   customer_id: userData.user._id,
+    //   address:'Raipur'
+    // })
+
+    const orderPost = await fetch(apipath + "/api/v1/payments/orders",{ 
+      method:"POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) })
+      // { amount: createOrder.data.data.total_amount }
+    });
+    const orderResponse = await orderPost.json();
+
+    const options = {
+      key: "rzp_test_i3mv91RQEsOYo6",
+      currency: orderResponse?.currency || 'INR',
+      amount: orderResponse?.amount?.toString() || '5000',
+      order_id: orderResponse?.id || '',
+      name: "CG HERBAL",
+      description: "",
+      image:
+        "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FPrakashgrag.80b1941a.svg&w=256&q=75",
+      handler: function (response) {
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
+        
+        fetch(`${apipath}/api/v1/order/create`, {
+          method:"POST",
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            user_id: user.userData._id,
+            products: result,
+            address:'Raipur',
+            total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+            total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
+          })
+        })
+        .then(res => res.json())
+        .then(createOrder => {
+          varifyPayment({
+            razorpay_order_id,
+            razorpay_payment_id,
+            razorpay_signature,
+            order_id: createOrder.data._id,
+            products_id,
+            user:user.userData._id
+          });
+        }).catch(err => {
+          console.log('err :>> ', err);
+        })
+      },
+      prefill: {
+        name: user.userData.full_Name || '',
+        email: user.userData?.email || '',
+        contact: user?.userData?.mobile || "",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    paymentObject.open();
+  };
+  
   return (
     <div>
       <Container className="shopping-container">
@@ -42,124 +162,12 @@ function Shopping() {
               </Col>
             </Row>
             <hr />
-            <Row>
-              <Col lg="6">
-                <Row className="san">
-                  <Col lg="6" md="12" sm="12">
-                    <Image src={image1} alt="image1" />
-                  </Col>
-                  <Col className="margin-shop-toggle" lg="6" md="12">
-                    <p className="fw-bold shopping-p2-size">
-                      Lemongrass Green Tea
-                    </p>
-                    <p className="shopping-p3-size">
-                      QUANTITY &nbsp; <span className="fw-bold ">500g</span>
-                    </p>
-                    <p className="shopping-p3-size">
-                      Product Code &nbsp;{" "}
-                      <span className="fw-bold ">192150</span>
-                    </p>
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col lg="2" className="mt-3">
-                <div className="d-flex">
-                  <button
-                    className="btn-shopping-counter"
-                    onClick={decrementHandler}
-                  >
-                    {" "}
-                    -{" "}
-                  </button>
-                  <div className="shopping-counter" id="counter">
-                    {counter}
-                  </div>
-                  <button
-                    className="btn-shopping-counter"
-                    onClick={incrementHandler}
-                  >
-                    {" "}
-                    +{" "}
-                  </button>
-                </div>
-                <p className=" shop-remove shopping-p3-size">
-                  <span className="fw-bold text-danger">REMOVE</span>
-                </p>
-              </Col>
-              <Col lg="2" className="mt-5">
-                <p className="fw-bold shopping-p4-size">₹450.00</p>
-              </Col>
-              <Col lg="2" className="mt-5">
-                <p className="fw-bold shopping-p4-size">₹900.00</p>
-                <div className="shopping-edit-text">
-                  <p1> EDIT</p1>
-                </div>
-              </Col>
-            </Row>
-            <hr />
-            <Row>
-              <Col lg="6">
-                <Row>
-                  <Col lg="6" md="12" sm="12">
-                    <Image src={image2} alt="image1" />
-                  </Col>
-                  <Col className="margin-shop-toggle" lg="6" md="12">
-                    <p className="fw-bold shopping-p2-size">
-                      Lemongrass Green Tea
-                    </p>
-                    <p className="shopping-p3-size">
-                      QUANTITY &nbsp; <span className="fw-bold ">500g</span>
-                    </p>
-                    <p className="shopping-p3-size">
-                      Product Code &nbsp;
-                      <span className="fw-bold ">192150</span>
-                    </p>
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col lg="2" className="mt-3">
-                <div className="d-flex">
-                  <button
-                    className="btn-shopping-counter"
-                    onClick={decrementHandler}
-                  >
-                    {" "}
-                    -{" "}
-                  </button>
-                  <div className="shopping-counter" id="counter">
-                    {counter}
-                  </div>
-                  <button
-                    className="btn-shopping-counter"
-                    onClick={incrementHandler}
-                  >
-                    {" "}
-                    +{" "}
-                  </button>
-                </div>
-                <p className=" shop-remove shopping-p3-size">
-                  <span className="fw-bold shop-remove text-danger">
-                    REMOVE
-                  </span>
-                </p>
-              </Col>
-              <Col lg="2" className="mt-5">
-                <p className="fw-bold shopping-p4-size">₹450.00</p>
-              </Col>
-              <Col lg="2" className="mt-5">
-                <p className="fw-bold shopping-p4-size">₹900.00</p>
-                <div className="shopping-edit-text">
-                  <p1> EDIT</p1>
-                </div>
-              </Col>
-            </Row>
-            <hr />
-
-            <a href="/Product/Products" className="continue-shopping-text ">
-              CONTINUE SHOPPING
-            </a>
+            <div className="card-container card-div" style={{height:'450px',overflow:'auto'}}>
+              {item?.length > 0 && item.map((elem) => {
+                {/* console.log('Ajay', elem) */}
+                return <Item key={elem._id} {...elem} />
+              })}
+            </div>
           </Col>
 
           <Col lg={4} md={12}>
@@ -169,10 +177,10 @@ function Shopping() {
 
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="order-summary-p1">ITEMS-2</p>
+                  <p className="order-summary-p1">ITEMS-{totalItem}</p>
                 </div>
                 <div>
-                  <p className="fw-bold order-summary-p2"> ₹1150.00</p>
+                  <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                 </div>
               </div>
               <p className="order-summary-p1">SHIPPING</p>
@@ -189,13 +197,13 @@ function Shopping() {
                   <p className="order-summary-p1">TOTAL COST</p>
                 </div>
                 <div>
-                  <p className="fw-bold order-summary-p2"> ₹1150.00</p>
+                  <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                 </div>
               </div>
               <div className="text-center ">
-                <div className="w-100 border-0 checkout-button">
+                <div className="w-100 border-0 checkout-button" onClick={()=>displayRazorpay(item)}>
                   {" "}
-                  <ButtonDark text="CHECKOUT" />
+                  <ButtonDark type="button" text="CHECKOUT"/>
                 </div>
               </div>
               <p className="order-summary-p1 mt-3">ADD PROMO CODE</p>
