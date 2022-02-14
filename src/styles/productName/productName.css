@@ -1,0 +1,96 @@
+.product-name-head-text {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 51px;
+  text-align: center;
+  color: #333333;
+}
+
+@media screen and (max-width:767px) {
+    .popup-modal-main{
+        --bs-gutter-x: 0rem !important;
+    }
+}
+
+.product-radio {
+  background-color: #6d6969 !important;
+  opacity: 100% !important;
+  outline: red !important;
+  border-radius: 50% !important;
+}
+
+.product-radio:checked {
+  background-color: #534d4d !important;
+  border-radius: 50% !important;
+}
+
+.product-radio-div {
+  border: 1px solid #d8d8d8;
+  opacity: 100% !important;
+}
+
+.productName-counter-para {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px !important;
+  line-height: 20px !important;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+
+.productName-kg {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 10px;
+  color: #000000;
+}
+
+.productName-counter-no {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.productName-counter-pm-sign {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  background-color: #edf2f5;
+  color: #c4c4c4;
+}
+
+.sanju {
+  padding-right: calc(var(--bs-gutter-x) * 0.1) !important;
+  text-align: center !important;
+}
+
+.productName-shipping-para {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 22px;
+  text-indent: 24px;
+  color: #666666;
+}
+
+.productName-extra-product {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 29px;
+  line-height: 37px;
+  text-align: center;   
+  color: #333333;
+}

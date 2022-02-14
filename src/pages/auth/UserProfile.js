@@ -130,7 +130,7 @@ function UserProfile() {
                       {(formik) => {
                         return (
                           <Form>
-                            <div className="form-div pt-1">
+                            <div className="form-div pt-1 mt-5 mt-lg-0">
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="card bg-light">
