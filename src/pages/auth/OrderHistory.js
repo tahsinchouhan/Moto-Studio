@@ -29,7 +29,7 @@ function OrderHistory() {
       }
     };
     getOrderHistory();
-  }, []);
+  }, [user?.userData?._id]);
 
   const toggleExpander = (id) => {
     fetch(apipath + `/api/v1/order/${id}`)
@@ -79,8 +79,7 @@ function OrderHistory() {
           </div>
           <hr />
           {orderList?.length > 0 &&
-            orderList.map((order) => {
-              console.log(order);
+            orderList.map((order) => {              
               return [
                 <div className="row mb-1 " key={order._id}>
                   <div className="col col-md-3 col-lg-3 col-xl-3">
@@ -112,18 +111,18 @@ function OrderHistory() {
                     </div>
                   </div>
                 </div>,
-                expanded.status && expanded.expandedId === order._id && (<Viewpage productData = {viewDetail} />)
+                expanded.status && expanded.expandedId === order._id && (<Viewpage key={`detail`} productData = {viewDetail} />)
               ]
             })}
 
           <hr />
-          {showViewDetail == 0 ? (
+          {/* {showViewDetail == 0 ? (
             ""
           ) : (
             <>
               <Viewpage />
             </>
-          )}
+          )} */}
         </div>
       </Container>
     </div>

@@ -41,7 +41,7 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => 
                 }}
               >
                 <Image
-                  src={product?.images.length > 0 ? product?.images[0]?.img || emptyImage : emptyImage}
+                  src={product?.images?.length > 0 ? product?.images[0]?.img || emptyImage : emptyImage}
                   alt="title"
                   layout="fill"
                   className="img-fluid"

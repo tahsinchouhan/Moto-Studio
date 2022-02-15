@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
 import HelloUser from "../../assets/images/auth/Saly-8.png";
@@ -8,12 +8,19 @@ import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
 import PaymentMethods from "./PaymentMethods";
 import { CardContext } from '../../components/Layout';
+import Router from 'next/router';
+import TextError from '../../components/TextError';
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(0);
 
-  const { isLogin, user } = useContext(CardContext); 
+  const { isLogin, user } = useContext(CardContext);
+  useEffect(() => {
+    if (!isLogin) {
+      Router.push('/auth/Login')
+    }
+  }, [isLogin])
 
   const userPofileHandler = () => {
     setShowProfile(0);
@@ -27,8 +34,17 @@ function UserProfile() {
   });
 
   const initialValues = {
-    email: "",
-    password: "",
+    full_Name: user?.userData?.full_Name || '',
+    email: user?.userData?.email || '',
+    mobile: user?.userData?.mobile || '',
+    dob: user?.userData?.dob || '',
+    gender: user?.userData?.gender || '',
+    address: user?.userData?.address || '',
+    city: user?.userData?.city || '',
+    pin_code: user?.userData?.pin_code || '',
+    state: user?.userData?.state || '',
+    country: user?.userData?.country || '',
+
   };
   const onSubmit = () => {
     console.log("onSubmit");
@@ -41,7 +57,7 @@ function UserProfile() {
             <div className="row">
               <div className="col-lg-12">
                 <h1 className="register-header mt-4 text-center p-3">
-                  Hello Sandeep
+                  Hello {user?.userData?.full_Name}
                 </h1>
               </div>
             </div>
@@ -143,10 +159,11 @@ function UserProfile() {
                                         <Field
                                           className="form-control px-2"
                                           type="text"
-                                          name="name"
+                                          name="full_Name"
                                           placeholder="Entername"
                                           autoComplete="off"
                                         />
+                                        <ErrorMessage name="full_Name" component={TextError} />
                                       </div>
                                       <div className="form-group user-field">
                                         <label
@@ -158,9 +175,9 @@ function UserProfile() {
                                         <Field
                                           className="form-control px-2"
                                           type="number"
-                                          name="number"
-                                          placeholder="Enter password"
+                                          name="mobile"
                                         />
+                                        <ErrorMessage name="mobile" component={TextError} />
                                       </div>
                                       <div className="form-group user-field">
                                         <label
@@ -203,6 +220,7 @@ function UserProfile() {
                                           placeholder="Entername"
                                           autoComplete="off"
                                         />
+                                        <ErrorMessage name="email" component={TextError} />
                                       </div>
                                       <div className="form-group user-field">
                                         <label htmlFor="dob" className="mt-3">
@@ -214,8 +232,8 @@ function UserProfile() {
                                           id="dob"
                                           name="dob"
                                           autoComplete="off"
-                                          placeholder="Enter password"
                                         />
+                                        <ErrorMessage name="dob" component={TextError} />
                                       </div>
 
                                       <div className="mb-3">
@@ -228,11 +246,11 @@ function UserProfile() {
                                         <div className="row">
                                           <div className="col col-sm-4 col-md-4 px-0">
                                             <div className="form-check">
-                                              <input
+                                              <Field
                                                 className="gender-field"
                                                 type="radio"
                                                 name="gender"
-                                                value="male"
+                                                value="Male"
                                               />
                                               <label className="gender-span mx-1">
                                                 Male
@@ -241,11 +259,11 @@ function UserProfile() {
                                           </div>
                                           <div className="col col-sm-4 col-md-4 px-0">
                                             <div className="form-check">
-                                              <input
+                                              <Field
                                                 className="gender-field"
                                                 type="radio"
                                                 name="gender"
-                                                value="female"
+                                                value="Female"
                                               />
                                               <label className="gender-span mx-1">
                                                 Female
@@ -254,11 +272,11 @@ function UserProfile() {
                                           </div>
                                           <div className="col col-sm-4 col-md-4 px-0">
                                             <div className="form-check">
-                                              <input
+                                              <Field
                                                 className="gender-field"
                                                 type="radio"
                                                 name="gender"
-                                                value="other"
+                                                value="Other"
                                                 // checked={"Other"}
                                               />
                                               <label className="gender-span mx-1">
@@ -289,8 +307,7 @@ function UserProfile() {
                                         <Field
                                           className="form-control px-2"
                                           type="text"
-                                          name="Address"
-                                          placeholder="Entername"
+                                          name="address"
                                           autoComplete="off"
                                         />
                                       </div>
@@ -305,8 +322,8 @@ function UserProfile() {
                                             </label>
                                             <Field
                                               className="form-control px-2"
-                                              type="address"
-                                              name="address"
+                                              type="text"
+                                              name="city"
                                               placeholder="Type here"
                                             />
                                           </Col>
@@ -320,7 +337,7 @@ function UserProfile() {
                                             <Field
                                               className="form-control px-2"
                                               type="number"
-                                              name="number"
+                                              name="pin_code"
                                               placeholder="Enter password"
                                             />
                                           </Col>
@@ -335,17 +352,16 @@ function UserProfile() {
                                             >
                                               State
                                             </label>
-                                            <select defaultValue={''} 
+                                            <Field as="select"
+                                              name="state"
                                               className="form-select"
                                               aria-label="Default select example"
                                             >
-                                              <option value="">
-                                              Select State
-                                              </option>
+                                              <option value="">Select State</option>
                                               <option value="1">Korba</option>
                                               <option value="2">Raipur</option>
                                               <option value="3">Nagpur</option>
-                                            </select>
+                                            </Field>
                                           </Col>
                                           <Col sm={12} md={6}>
                                             <label
@@ -357,7 +373,7 @@ function UserProfile() {
                                             <Field
                                               className="form-control px-2"
                                               type="text"
-                                              name="text"
+                                              name="country"
                                               placeholder="INDIA"
                                             />
                                           </Col>

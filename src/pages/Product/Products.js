@@ -116,7 +116,7 @@ function Products() {
         SKU_Number:data?.SKU_Number || '',
         product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
         quantity: 1,
-        price: data?.price || 0
+        price: data?.price_after_discount || data?.price || 0
       },
     };
     fetch(apipath + `/api/v1/cart/add-items`, {
@@ -262,7 +262,7 @@ function Products() {
                           </div>
                         </div>
                         <span className="product-Price">
-                          ₹ {product?.price}
+                          ₹ {product?.price_after_discount || product?.price }
                         </span>
                         <div className="mt-2"  onClick={() => addProduct(product)}>
                           <ButtonDark
