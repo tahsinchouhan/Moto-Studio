@@ -45,7 +45,9 @@ function Shopping() {
   const promoHandler = data => {
     setPromoValue({
       type: data?.amount ? 'amount' : 'percentage',
-      value : data?.amount || data.percentage
+      value : data?.amount || totalAmount*data.percentage/100,
+      code : data?.code || '',
+      promocode_id:data?._id || ''
     })
     setShow(false)
   }
@@ -88,7 +90,7 @@ function Shopping() {
       products_id.push(val.product._id);
     });
 
-    if (data.reduce((a, v) => (a = a + v.price * v.quantity), 0) > 40000) {
+    if (data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0) > 40000) {
       alert("Amount exceeds the limit rs.40000 for per Transaction");
       return false;
     }
@@ -106,7 +108,7 @@ function Shopping() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+        amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0),
       }),
       // { amount: createOrder.data.data.total_amount }
     });
@@ -131,11 +133,16 @@ function Shopping() {
           body: JSON.stringify({
             user_id: user.userData._id,
             products: result,
+            promocode: promoValue ? {
+              promocode_id: promoValue?.promocode_id || '',
+              value:promoValue?.value || 0,
+              code: promoValue?.code || ''
+            } : null,
             address: "Raipur",
             total_amount: data.reduce(
               (a, v) => (a = a + v.price * v.quantity),
               0
-            ),
+            ) - (promoValue?.value || 0),
             total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
           }),
         })
@@ -237,7 +244,7 @@ function Shopping() {
                   <p className="order-summary-p1">APPLIED PROMO CODE</p>
                 </div>
                 <div>
-                  <p className="fw-bold order-summary-p2">{promoValue.type === 'amount' ? `₹ ${promoValue.value}` :  `${promoValue.value} %` }</p>
+                  <p className="fw-bold order-summary-p2">₹ {promoValue.value}</p>
                 </div>
               </div>
               }
@@ -247,7 +254,7 @@ function Shopping() {
                 </div>
                 <div>
                   {
-                    promoValue ? <p className="fw-bold order-summary-p2"> ₹ {totalAmount - (promoValue.type === 'amount' ? promoValue.value : totalAmount*promoValue.value/100)}</p> : <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
+                    promoValue ? <p className="fw-bold order-summary-p2"> ₹ {totalAmount - promoValue.value}</p> : <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                   }
                 </div>
               </div>

@@ -95,7 +95,7 @@ function Products() {
       ''
     );
     fetchData(query);
-  }, [checkedState])
+  }, [checkedState, category])
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -199,11 +199,11 @@ function Products() {
                   <div className="product-sort-select">
                     <span className="product-sort-by">SORT BY</span>
                     <div>
-                      <select
+                      <select defaultValue={''}
                         className="product-select"
                         aria-label="Default select example"
                       >
-                        <option selected>Featured</option>
+                        <option value="">Featured</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>

@@ -335,11 +335,11 @@ function UserProfile() {
                                             >
                                               State
                                             </label>
-                                            <select
+                                            <select defaultValue={''} 
                                               className="form-select"
                                               aria-label="Default select example"
                                             >
-                                              <option selected>
+                                              <option value="">
                                               Select State
                                               </option>
                                               <option value="1">Korba</option>

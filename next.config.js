@@ -1,7 +1,7 @@
 // next.config.js
 module.exports = {
   reactStrictMode: true,
-  // distDir: '.next',
+  distDir: '.next',
   // swcMinify: false,
   // "presets": ["next/babel"],
   images: {

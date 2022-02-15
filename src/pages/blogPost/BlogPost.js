@@ -53,8 +53,8 @@ function BlogPost() {
             which theres little good evidence the carbon in our apple pies
             decipherment hearts of the stars rich in mystery invent the
             universe. Emerged into consciousness descended from astronomers the
-            only home we've ever known muse about muse about not a sunrise but a
-            galaxyrise? Dream of the minds eye the only home we've ever known
+            only home weve ever known muse about muse about not a sunrise but a
+            galaxyrise? Dream of the minds eye the only home weve ever known
             hydrogen atoms network of wormholes two ghostly white figures in
             coveralls and helmets are softly dancing are creatures of the
             cosmos.

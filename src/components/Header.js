@@ -77,11 +77,11 @@ function Header() {
               </Nav>
               <Nav>
                 <div className="pt-1">
-                <select
+                <select defaultValue={''} 
                     className="product-select"
                     aria-label="Default select example"
                   >
-                    <option selected>INR</option>
+                    <option value="">INR</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>

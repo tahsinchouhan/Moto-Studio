@@ -20,7 +20,7 @@ function OrderHistory() {
         const response = await fetch(apipath + `/api/v1/order/user`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user_id: user?.userData?._id }),
+          body: JSON.stringify({ user_id: user?.userData?._id || '' }),
         });
         const result = await response.json();
         setOrderList(result.data);
