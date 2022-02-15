@@ -82,7 +82,7 @@ function Products() {
       );
       setCheckedState(activeCategory);
     }
-  }, [category, activeTab])
+  }, [category, activeTab, checkedState])
   
   useEffect(() => {
     const query = checkedState.reduce(
