@@ -113,6 +113,8 @@ function Products() {
       user: user.userData._id,
       cart_items: {
         product: data._id,
+        SKU_Number:data?.SKU_Number || '',
+        product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
         quantity: 1,
         price: data?.price || 0
       },

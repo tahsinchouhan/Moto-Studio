@@ -5,7 +5,7 @@ import { CardContext } from "./Layout";
 import emptyImage from "../../public/placeholder.jpg";
 import {apipath} from '../pages/api/apiPath';
 
-const Item = ({ _id, product, quantity, price }) => {
+const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => {
   const { user, removeItem, increament, decreament } = useContext(CardContext);
 
   const deleteItem = (product_id, id) => {
@@ -41,7 +41,7 @@ const Item = ({ _id, product, quantity, price }) => {
                 }}
               >
                 <Image
-                  src={product?.images[0]?.img || emptyImage}
+                  src={product?.images.length > 0 ? product?.images[0]?.img || emptyImage : emptyImage}
                   alt="title"
                   layout="fill"
                   className="img-fluid"
@@ -51,10 +51,10 @@ const Item = ({ _id, product, quantity, price }) => {
             <Col className="margin-shop-toggle" lg="6" md="12">
               <p className="fw-bold shopping-p2-size">{product?.title || ""}</p>
               <p className="shopping-p3-size">
-                QUANTITY &nbsp; <span className="fw-bold ">500g</span>
+                Quantity &nbsp; <span className="fw-bold ">{product_weight || ''}</span>
               </p>
               <p className="shopping-p3-size">
-                Product Code &nbsp; <span className="fw-bold ">192150</span>
+                Product Code &nbsp; <span className="fw-bold ">{SKU_Number || ''}</span>
               </p>
             </Col>
           </Row>
