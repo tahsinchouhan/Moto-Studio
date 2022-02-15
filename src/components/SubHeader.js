@@ -7,7 +7,7 @@ import ShopAll from "../pages/subHeader/shopAll";
 // import AlternativeMedicine from "../pages/subHeader/AlternativeMedicine";
 // import HealthPersonalCare from "../pages/subHeader/HealthPersonalCare";
 import {apipath} from '../pages/api/apiPath';
-import Common from "../pages/subHeader/common";
+import Common from "../pages/subHeader/Common";
 
 function SubHeader() {
   const [showShopAll, setShowShopAll] = useState(0);
