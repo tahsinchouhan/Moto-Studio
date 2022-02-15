@@ -47,7 +47,7 @@ function Shopping() {
       type: data?.amount ? 'amount' : 'percentage',
       value : data?.amount || data.percentage
     })
-    // setShow(false)
+    setShow(false)
   }
   
 
@@ -231,12 +231,24 @@ function Shopping() {
                 </p>
               </div>
               <hr className="my-4" />
+              {
+                promoValue && <div className="d-flex justify-content-between">
+                <div>
+                  <p className="order-summary-p1">APPLIED PROMO CODE</p>
+                </div>
+                <div>
+                  <p className="fw-bold order-summary-p2">{promoValue.type === 'amount' ? `₹ ${promoValue.value}` :  `${promoValue.value} %` }</p>
+                </div>
+              </div>
+              }
               <div className="d-flex justify-content-between">
                 <div>
                   <p className="order-summary-p1">TOTAL COST</p>
                 </div>
                 <div>
-                  <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
+                  {
+                    promoValue ? <p className="fw-bold order-summary-p2"> ₹ {totalAmount - (promoValue.type === 'amount' ? promoValue.value : totalAmount*promoValue.value/100)}</p> : <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
+                  }
                 </div>
               </div>
               <div className="text-center ">
@@ -260,7 +272,7 @@ function Shopping() {
             {
               promoList.length > 0 ? promoList.map(promo => {
                 return <li className="list-group-item d-flex justify-content-between align-items-center">
-                  Description
+                  {promo?.description || 'Description'}
                   <span className="badge bg-primary rounded-pill" onClick={()=>promoHandler(promo)}>{promo?.code || ''}</span>
                 </li>
               }) : ''

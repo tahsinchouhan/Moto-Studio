@@ -94,7 +94,7 @@ function Blogs() {
               <Row className="g-4">
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Honey} />
+                    <Image variant="top" src={Honey} alt="blog image" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; February 02, 2022
@@ -113,7 +113,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Women} />
+                    <Image variant="top" src={Women} alt="image-2" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; January 25, 2022
@@ -133,7 +133,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Tea} />
+                    <Image variant="top" src={Tea} alt="image-3" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; January 16, 2022
@@ -152,7 +152,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Table} />
+                    <Image variant="top" src={Table} alt="img-4" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; December 19, 2021
@@ -171,7 +171,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Honey} />
+                    <Image variant="top" src={Honey} alt="img-5" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; February 02, 2022
@@ -190,7 +190,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Women} />
+                    <Image variant="top" src={Women} alt="img-6" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; January 25, 2022
@@ -210,7 +210,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Tea} />
+                    <Image variant="top" src={Tea} alt="img-7" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; January 16, 2022
@@ -229,7 +229,7 @@ function Blogs() {
                 </Col>
                 <Col xs={12} md={6} className="mt-5">
                   <Card className="h-100 border-0 px-2">
-                    <Image variant="top" src={Table} />
+                    <Image variant="top" src={Table} alt="img-87" />
                     <Card.Body className="blog-card-padding">
                       <p className="herbal-blogs-card-date">
                         &minus;&minus; &nbsp; December 19, 2021

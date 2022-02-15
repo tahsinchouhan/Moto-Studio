@@ -375,7 +375,7 @@ function UserProfile() {
                 </Col>
                   <Col sm={12} md={4} lg={4}>
                    <div className="hello-user-hand d-none d-md-block">
-                   <Image src={HelloUser} />
+                   <Image src={HelloUser} alt="evd" />
                    </div>
                   </Col>
                 </Row>

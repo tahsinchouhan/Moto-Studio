@@ -18,7 +18,7 @@ function BlogPost() {
         {/* -----------blog-post-container------------- */}
 
         <div className="blog-post-content mt-5 ">
-          <Image src={BlogPostImgOne} />
+          <Image src={BlogPostImgOne} alt="cg-herbal" />
 
           <p className="blog-post-blogTitle mt-4">
             How honey is sourced across the world
@@ -26,58 +26,16 @@ function BlogPost() {
 
           <p className="blog-post-blogDate">February 02, 2022</p>
 
-          <p className="blog-post-blogPara">
-            Invent the universe laws of physics Tunguska event made in the
-            interiors of collapsing stars rogue courage of our questions. Cosmic
-            ocean trillion hearts of the stars a very small stage in a vast
-            cosmic arena realm of the galaxies trillion? Concept of the number
-            one the only home we've ever known tendrils of gossamer clouds
-            emerged into consciousness with pretty stories for which there's
-            little good evidence stirred by starlight.
+          <p className="blog-post-blogPara">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto magni voluptas eius eaque voluptatem nobis quisquam maiores necessitatibus eligendi sapiente? Mollitia dolore illum consequatur iusto? Asperiores rem, ducimus accusamus ullam voluptatibus similique tempora, numquam nesciunt deserunt quibusdam debitis. Aperiam quaerat quidem aliquam id veritatis blanditiis tempore a temporibus assumenda pariatur!
           </p>
-          <p className="blog-post-blogPara">
-            With pretty stories for which there's little good evidence the
-            carbon in our apple pies decipherment hearts of the stars rich in
-            mystery invent the universe. Emerged into consciousness descended
-            from astronomers the only home we've ever known muse about muse
-            about not a sunrise but a galaxyrise? Dream of the mind's eye the
-            only home we've ever known hydrogen atoms network of wormholes two
-            ghostly white figures in coveralls and helmets are softly dancing
-            are creatures of the cosmos. Extraplanetary extraordinary claims
-            require extraordinary evidence across the centuries concept of the
-            number one the only home we've ever known rings of Uranus. Colonies
-            stirred by starlight network of wormholes descended from astronomers
-            with pretty stories for which there's little good evidence are
-            creatures of the cosmos.
+          <p className="blog-post-blogPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, alias aut quidem perspiciatis provident dolore ratione, enim minima placeat doloremque vero eveniet dicta error laborum dolor atque nobis? Eos dolorum officiis architecto ipsa, culpa a deserunt tempore? Similique quasi hic, veritatis ut, deleniti officia pariatur laboriosam cum fugiat cupiditate sapiente!
           </p>
-          <p className="blog-post-blogPara">
-            Dispassionate extraterrestrial observer hundreds of thousands invent
-            the universe preserve and cherish that pale blue dot shores of the
-            cosmic ocean great turbulent clouds? Encyclopaedia galactica are
-            creatures of the cosmos hydrogen atoms explorations laws of physics
-            the ash of stellar alchemy. Great turbulent clouds inconspicuous
-            motes of rock and gas another world a still more glorious dawn
-            awaits not a sunrise but a galaxyrise tingling of the spine.
-          </p>
-          <p className="blog-post-blogPara">
-            Dispassionate extraterrestrial observer great turbulent clouds
-            invent the universe a mote of dust suspended in a sunbeam from which
-            we spring intelligent beings and billions upon billions upon
-            billions upon billions upon billions upon billions upon billions.
-          </p>
-          <p className="blog-post-blogPara">
-            Network of wormholes network of wormholes tingling of the spine
-            great turbulent clouds hearts of the stars something incredible is
-            waiting to be known. Circumnavigated rings of Uranus a still more
-            glorious dawn awaits galaxies as a patch of light worldlets.
-            Billions upon billions two ghostly white figures in coveralls and
-            helmets are softly dancing bits of moving fluff shores of the cosmic
-            ocean extraordinary claims require extraordinary evidence radio
-            telescope.
-          </p>
+          <p className="blog-post-blogPara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut distinctio aspernatur a quia iure minus reiciendis itaque? Dolorem, alias? Voluptates atque quas error quaerat, mollitia voluptas eligendi ratione molestiae reprehenderit nostrum nesciunt fugiat animi aut maxime distinctio saepe, laboriosam, necessitatibus possimus exercitationem hic minima rem? Autem deserunt reprehenderit atque corrupti.</p>
+          <p className="blog-post-blogPara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet odio doloribus harum non voluptatem magni sunt rerum beatae odit eius nulla dolores, dolorem dolor earum error cum laboriosam repellendus debitis, minus tempore quod nostrum aut at. Labore eos, distinctio sint et dolore fuga ducimus, voluptas dicta vero hic fugiat voluptatum.</p>
+          <p className="blog-post-blogPara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis exercitationem, eaque sunt accusamus ipsam voluptas debitis suscipit odio doloribus. Exercitationem.</p>
 
           <div className="blog-post-img-two mt-5">
-            <Image src={BlogPostImgTwo} />
+            <Image src={BlogPostImgTwo} alt="ebd" />
           </div>
 
          <div className="my-4">
@@ -86,17 +44,17 @@ function BlogPost() {
             interiors of collapsing stars rogue courage of our questions. Cosmic
             ocean trillion hearts of the stars a very small stage in a vast
             cosmic arena realm of the galaxies trillion? Concept of the number
-            one the only home we've ever known tendrils of gossamer clouds
-            emerged into consciousness with pretty stories for which there's
+            one the only home weve ever known tendrils of gossamer clouds
+            emerged into consciousness with pretty stories for which theres
             little good evidence stirred by starlight.
           </p>
           <p className="blog-post-blogPara">
           With pretty stories for
-            which there's little good evidence the carbon in our apple pies
+            which theres little good evidence the carbon in our apple pies
             decipherment hearts of the stars rich in mystery invent the
             universe. Emerged into consciousness descended from astronomers the
             only home we've ever known muse about muse about not a sunrise but a
-            galaxyrise? Dream of the mind's eye the only home we've ever known
+            galaxyrise? Dream of the minds eye the only home we've ever known
             hydrogen atoms network of wormholes two ghostly white figures in
             coveralls and helmets are softly dancing are creatures of the
             cosmos.

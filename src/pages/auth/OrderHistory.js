@@ -14,21 +14,20 @@ function OrderHistory() {
 
   const { user } = useContext(CardContext);
 
-  const getOrderHistory = async () => {
-    try {
-      const response = await fetch(apipath + `/api/v1/order/user`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: user?.userData?._id }),
-      });
-      const result = await response.json();
-      setOrderList(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getOrderHistory = async () => {
+      try {
+        const response = await fetch(apipath + `/api/v1/order/user`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: user?.userData?._id }),
+        });
+        const result = await response.json();
+        setOrderList(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getOrderHistory();
   }, []);
 

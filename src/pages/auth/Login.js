@@ -20,7 +20,7 @@ function Login() {
     if (isLogin) {
       router.push('/auth/UserProfile')
     }
-  }, [isLogin])
+  }, [])
 
   const initialValues = {
     email: "",

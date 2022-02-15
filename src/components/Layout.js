@@ -60,34 +60,36 @@ function Layout({ children }) {
     });
   };
 
-  const fetchCartData = async (userData) => {
-    try {
-      const response = await fetch(apipath + `/api/v1/cart/get-items`, {
-        method: "POST",
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: "Bearer " + userData.token,
-        },
-        body: JSON.stringify({ user: userData?.user?._id })
-      });
-      const result = await response.json();
-      getAllData(result.data[0].cart_items || []);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchUserData = async (data) => {
-    try {
-      const res = await fetch(apipath + `/api/v1/users/${data.user._id}`)
-      const result = await res.json()
-      userLogin({token:data.token, userData:result.data})
-    } catch (error) {
-      console.log('error :>> ', error);
-    }
-  }
+  
 
   useEffect(() => {
+    const fetchCartData = async (userData) => {
+      try {
+        const response = await fetch(apipath + `/api/v1/cart/get-items`, {
+          method: "POST",
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: "Bearer " + userData.token,
+          },
+          body: JSON.stringify({ user: userData?.user?._id })
+        });
+        const result = await response.json();
+        getAllData(result.data[0].cart_items || []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    const fetchUserData = async (data) => {
+      try {
+        const res = await fetch(apipath + `/api/v1/users/${data.user._id}`)
+        const result = await res.json()
+        userLogin({token:data.token, userData:result.data})
+      } catch (error) {
+        console.log('error :>> ', error);
+      }
+    };
+    
     const getLoginDetails = localStorage.getItem("cg-herbal-userData");
     if (getLoginDetails) {
       const userDetails = JSON.parse(getLoginDetails);
