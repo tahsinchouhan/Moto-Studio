@@ -45,6 +45,8 @@ function Login() {
       const result = await response.json();
       if(result.user && result.token){
         localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
+        // router.push('/auth/UserProfile');
+        router.reload('/auth/UserProfile')
       }
       if(result.error) setMessage('Username or Password Incorrect')
     } catch (error) {

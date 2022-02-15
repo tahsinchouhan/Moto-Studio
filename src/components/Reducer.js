@@ -56,7 +56,8 @@ export const reducer = (state, action) => {
   }
 
   if(action.type === 'TOTAL_QTY'){
-      if(state.item.length === 0) return state
+      if(state.item.length === 0) return {...state,totalItem:0,totalAmount:0}
+      
       let {totalItem, totalAmount} = state.item.reduce( (accum, curVal) => {
           let { price, quantity } = curVal
           accum.totalItem += quantity

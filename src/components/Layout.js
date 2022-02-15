@@ -25,7 +25,7 @@ function Layout({ children }) {
   }
 
   const addToCart = (data) => {
-    console.log(data);
+    console.log('Add', data);
     dispatch({
       type: "ADD_TO_CART",
       payload: data,
@@ -104,7 +104,8 @@ function Layout({ children }) {
       type: "TOTAL_QTY",
     });
   }, [state.item]);
-
+  
+  console.log('state.item :>> ', state);
   return (
     <CardContext.Provider
       value={{

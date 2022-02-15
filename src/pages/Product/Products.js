@@ -23,8 +23,6 @@ function Products() {
   const { activeTab } = router.query;
   const { isLogin, user, item, addToCart } = useContext(CardContext); 
 
-  console.log('item :>> ', item);
-
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -107,16 +105,18 @@ function Products() {
   };
 
   const addProduct = data => {
-    if(!isLogin) router.push('/auth/Login');
-    console.log('data :>> ', data);
+    if(!isLogin) {
+      router.push('/auth/Login');
+      return false
+    } 
     const params = {
+      user: user.userData._id,
       cart_items: {
         product: data._id,
         quantity: 1,
         price: data?.price || 0
       },
     };
-    console.log('params :>> ', params);
     fetch(apipath + `/api/v1/cart/add-items`, {
       method: "POST",
       headers: { 
@@ -128,7 +128,7 @@ function Products() {
     .then((res) => res.json())
     .then((result) => {
       if (result?.cart) {
-        addToCart(result?.cart?.cart_items)
+        addToCart(result.cart.cart_items)
         setShow(true)
       }
     }).catch((error) => console.log(error));

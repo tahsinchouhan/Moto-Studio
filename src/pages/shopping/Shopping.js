@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import ButtonDark from "../../components/button/ButtonDark";
-import { Col, Container, Row } from "react-bootstrap";
-import { CardContext } from '../../components/Layout';
+import { Col, Container, Row, Modal } from "react-bootstrap";
+import { CardContext } from "../../components/Layout";
 import Item from "../../components/Item";
-import {apipath} from '../api/apiPath'
-import {useRouter} from 'next/router';
+import { apipath } from "../api/apiPath";
+import { useRouter } from "next/router";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -21,27 +21,53 @@ function loadScript(src) {
 }
 
 function Shopping() {
-
   const { user, item, totalAmount, totalItem } = useContext(CardContext);
   const router = useRouter();
+
+  const [show, setShow] = useState(false);
+  const [promoList, setPromoList] = useState([]);
+  const [promoValue, setPromoValue] = useState(null);
+
+  const fetchPromoList = async () => {
+    try {
+      const res = await fetch(apipath + `/api/v1/payments/promo-code/list`);
+      const result = await res.json();
+      setPromoList(result?.data)
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchPromoList()
+  }, [])
+
+  const promoHandler = data => {
+    setPromoValue({
+      type: data?.amount ? 'amount' : 'percentage',
+      value : data?.amount || data.percentage
+    })
+    // setShow(false)
+  }
+  
 
   const varifyPayment = async (data) => {
     try {
       const response = await fetch(`${apipath}/api/v1/payments/verify`, {
         method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify(data)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       const result = await response.json();
-      if (response.status === 200 && result.message === "Payment Successfull!") router.push("/order/OrderConfirmed");
+      if (response.status === 200 && result.message === "Payment Successfull!")
+        router.push("/order/OrderConfirmed");
     } catch (error) {
       console.log(error);
     }
   };
 
   const displayRazorpay = async (data) => {
-
-    if(data.length === 0) return false;
+    if (data.length === 0) return false;
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -59,12 +85,12 @@ function Shopping() {
         quantity: val.quantity,
         price: val.price,
       });
-      products_id.push(val.product._id)
+      products_id.push(val.product._id);
     });
 
-    if(data.reduce((a, v) => (a = a + v.price * v.quantity), 0) > 40000) {
-      alert('Amount exceeds the limit rs.40000 for per Transaction')
-      return false
+    if (data.reduce((a, v) => (a = a + v.price * v.quantity), 0) > 40000) {
+      alert("Amount exceeds the limit rs.40000 for per Transaction");
+      return false;
     }
 
     // const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
@@ -76,54 +102,61 @@ function Shopping() {
     //   address:'Raipur'
     // })
 
-    const orderPost = await fetch(apipath + "/api/v1/payments/orders",{ 
-      method:"POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) })
+    const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+      }),
       // { amount: createOrder.data.data.total_amount }
     });
     const orderResponse = await orderPost.json();
 
     const options = {
       key: "rzp_test_i3mv91RQEsOYo6",
-      currency: orderResponse?.currency || 'INR',
-      amount: orderResponse?.amount?.toString() || '5000',
-      order_id: orderResponse?.id || '',
+      currency: orderResponse?.currency || "INR",
+      amount: orderResponse?.amount?.toString() || "5000",
+      order_id: orderResponse?.id || "",
       name: "CG HERBAL",
       description: "",
       image:
         "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FPrakashgrag.80b1941a.svg&w=256&q=75",
       handler: function (response) {
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
-        
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+          response;
+
         fetch(`${apipath}/api/v1/order/create`, {
-          method:"POST",
-          headers: {'Content-Type': 'application/json'},
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             user_id: user.userData._id,
             products: result,
-            address:'Raipur',
-            total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+            address: "Raipur",
+            total_amount: data.reduce(
+              (a, v) => (a = a + v.price * v.quantity),
+              0
+            ),
             total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
+          }),
+        })
+          .then((res) => res.json())
+          .then((createOrder) => {
+            varifyPayment({
+              razorpay_order_id,
+              razorpay_payment_id,
+              razorpay_signature,
+              order_id: createOrder.data._id,
+              products_id,
+              user: user.userData._id,
+            });
           })
-        })
-        .then(res => res.json())
-        .then(createOrder => {
-          varifyPayment({
-            razorpay_order_id,
-            razorpay_payment_id,
-            razorpay_signature,
-            order_id: createOrder.data._id,
-            products_id,
-            user:user.userData._id
+          .catch((err) => {
+            console.log("err :>> ", err);
           });
-        }).catch(err => {
-          console.log('err :>> ', err);
-        })
       },
       prefill: {
-        name: user.userData.full_Name || '',
-        email: user.userData?.email || '',
+        name: user.userData.full_Name || "",
+        email: user.userData?.email || "",
         contact: user?.userData?.mobile || "",
       },
     };
@@ -139,7 +172,7 @@ function Shopping() {
     });
     paymentObject.open();
   };
-  
+
   return (
     <div>
       <Container className="shopping-container">
@@ -162,11 +195,17 @@ function Shopping() {
               </Col>
             </Row>
             <hr />
-            <div className="card-container card-div" style={{height:'450px',overflow:'auto'}}>
-              {item?.length > 0 && item.map((elem) => {
-                {/* console.log('Ajay', elem) */}
-                return <Item key={elem._id} {...elem} />
-              })}
+            <div
+              className="card-container card-div"
+              style={{ height: "450px", overflow: "auto" }}
+            >
+              {item?.length > 0 &&
+                item.map((elem) => {
+                  {
+                    /* console.log('Ajay', elem) */
+                  }
+                  return <Item key={elem._id} {...elem} />;
+                })}
             </div>
           </Col>
 
@@ -201,15 +240,34 @@ function Shopping() {
                 </div>
               </div>
               <div className="text-center ">
-                <div className="w-100 border-0 checkout-button" onClick={()=>displayRazorpay(item)}>
+                <div
+                  className="w-100 border-0 checkout-button"
+                  onClick={() => displayRazorpay(item)}
+                >
                   {" "}
-                  <ButtonDark type="button" text="CHECKOUT"/>
+                  <ButtonDark type="button" text="CHECKOUT" />
                 </div>
               </div>
-              <p className="order-summary-p1 mt-3">ADD PROMO CODE</p>
+              <p className="order-summary-p1 mt-3 hover" onClick={()=>setShow(true)}>ADD PROMO CODE</p>
             </div>
           </Col>
         </Row>
+
+        <Modal show={show} onHide={()=>setShow(false)} centered>
+          <Modal.Body className="py-5">
+            <h5 className="text-center pb-4">Select Promo Code</h5>
+            <ul className="list-group list-group-flush">
+            {
+              promoList.length > 0 ? promoList.map(promo => {
+                return <li className="list-group-item d-flex justify-content-between align-items-center">
+                  Description
+                  <span className="badge bg-primary rounded-pill" onClick={()=>promoHandler(promo)}>{promo?.code || ''}</span>
+                </li>
+              }) : ''
+            }
+            </ul>
+          </Modal.Body>
+        </Modal>
       </Container>
     </div>
   );
