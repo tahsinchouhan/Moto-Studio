@@ -1,18 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
-// import { BsXLg } from 'react-icons/bs';
 import ButtonDark from "../../components/button/ButtonDark";
-import image1 from "../../assets/images/product/image1.png";
+// import image1 from "../../assets/images/product/image1.png";
+import emptyImage from '../../../public/placeholder.jpg';
 import Popup from "../../pages/Product/PopUp";
 import ProductImageOne from "../../assets/images/product/productImageOne.png";
 import { MdLocalShipping } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { useRouter } from "next/router";
+import { apipath } from "../api/apiPath";
+
 
 function ProductDetail() {
     const [showPopuUp, setShowPopUp] = useState(false);
+    const [productData, setProductData] = useState(null);
 
+    const router = useRouter();
+    const { productId } = router.query;
+
+    useEffect(() => {
+      if(!productId) return
+      const fetchData = () => {
+        fetch(`${apipath}/api/v1/product/${productId}`)
+        .then((response) => response.json())
+        .then((result) => {
+          setProductData(result.data)
+          // console.log('result :>> ', result.data);
+        })
+        .catch((error) => console.log(error));
+      }
+      fetchData();
+    }, [productId])
+    
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -32,7 +52,7 @@ function ProductDetail() {
             <span>Store Home &gt; </span>
           </div>
           <div className="products-header text-center">
-            <h1 className="product-name-head-text">Product Name</h1>
+            <h1 className="product-name-head-text">{productData?.title || 'Product Name'}</h1>
           </div>
         </div>
       </div>
@@ -42,80 +62,41 @@ function ProductDetail() {
           <Row className="popup-modal-main p-0">
             <Col xs={12} md={7}>
               <div className="p-3 p-md-2">
-                <h1 className="product-name-text">Product Name</h1>
-                <p className="popup-paragraph1">
-                  Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
-                </p>
+                <h1 className="product-name-text">{productData?.title || 'Product Name'}</h1>
+                <p className="popup-paragraph1">{productData?.sub_title || 'sub_title'}</p>
                 <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
-                <ul className="popup-ul fw-bold">
+                <div className="popup-ul fw-bold mb-5" style={{whiteSpace:'pre-wrap'}}>{productData?.description || 'description'}</div>
+                {/* <ul className="popup-ul fw-bold">
                   <li>Tea Variety Green</li>
                   <li>Unflavoured Loose Leaves</li>
                   <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
                   <li>Units : 100.0 gram</li>
-                </ul>
-
-                <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
-                <ul className="popup-ul fw-bold">
-                  <li>Tea Variety Green</li>
-                  <li>Unflavoured Loose Leaves</li>
-                  <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
-                  <li>Units : 100.0 gram</li>
-                </ul>
+                </ul> */}
 
                 <div className="mb-4">
                   <p className="popup-paragraph2 fw-bold">
                     CHOOSE YOUR QUANTITY
                   </p>
                   <Row className="px-0">
-                    <Col xs={3} sm={3} className="sanju ">
-                      <div className="product-radio-div py-2">
-                        <div className="ss">
-                          <input
-                            className="product-radio "
-                            type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault1"
-                          />
-                          <label className="form-check-label ps-1 productName-kg">
-                            250 g
-                          </label>
+                  {
+                    productData?.weight?.length && productData?.weight?.map(wt => {
+                      return <Col xs={3} sm={3} className="sanju" key={wt?._id}>
+                        <div className="product-radio-div py-2">
+                          <div className="ss">
+                            <input
+                              className="product-radio "
+                              type="radio"
+                              name="flexRadioDefault"
+                              id={wt?._id}
+                            />
+                            <label className="form-check-label ps-1 productName-kg" htmlFor={wt?._id}>
+                              {wt.weight_type?.weight_gram}
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                    </Col>
-                    <Col xs={3} sm={3} className="sanju ">
-                      <div className="product-radio-div  py-2">
-                        <input
-                          className=""
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
-                        />
-                        <label className="form-check-label ps-1 productName-kg">500 g</label>
-                      </div>
-                    </Col>
-                    <Col xs={3} sm={3} className="sanju ">
-                      <div className="product-radio-div  py-2">
-                        <input
-                          className=""
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
-                        />
-                        <label className="form-check-label ps-1 productName-kg">1 kg</label>
-                      </div>
-                    </Col>
-                    <Col xs={3} sm={3} className="sanju ">
-                      <div className="product-radio-div p-2">
-                        <input
-                          className=""
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
-                        />
-                        <label className="form-check-label ps-1 productName-kg">5 kg</label>
-                      </div>
-                    </Col>
+                      </Col>
+                    })
+                  }
                   </Row>
                 </div>
                 <div className="border">
@@ -162,7 +143,7 @@ function ProductDetail() {
             </Col>
             <Col xs={6} md={5} className="popup-modal-img m-auto ">
               <div>
-                <Image src={image1} width={349} height={482} alt="image1" />
+                <Image src={productData?.images?.length ? productData?.images[0]?.img || emptyImage : emptyImage} width={500} height={500} alt="image1" />
               </div>
             </Col>
             {/* <Col xs={6} md={1}>x</Col> */}

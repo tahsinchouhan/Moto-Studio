@@ -104,7 +104,7 @@ function Products() {
     setCheckedState(updatedCheckedState);
   };
 
-  const addProduct = data => {
+  const addProduct = (data) => {
     if(!isLogin) {
       router.push('/auth/Login');
       return false
