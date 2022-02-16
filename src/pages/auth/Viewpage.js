@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import Image from "next/image";
 import flower from "../../../public/images/flower.png";
+import { CardContext } from "../../components/Layout";
 
 function Viewpage({ productData }) {
-  console.log("productData :>> ", productData.doc);
+
+  const { user } = useContext(CardContext);
+
   return (
     <div>
       <div className="row">
@@ -25,14 +28,16 @@ function Viewpage({ productData }) {
       </div>
       <hr />
       {productData?.doc?.products_?.map((product) => {
-        return <div className="row" key={product?._id}>
+        return <div key={product?._id}>
+          <div className="row">
             <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <div className="d-flex p-1">
                 <div>
-                  <Image src={product?.images?.length > 0 ? product?.images[0]?.img || flower : flower} alt="" width={136} height={130} />
+                  <Image src={product.products?.images?.length > 0 ? product.products?.images[0]?.img || flower : flower} alt="" width={136} height={130} />
                 </div>
                 <div className="p-3">
                   <span>{product?.products?.title || ''}</span>
+                  <p className="dreaming-midnight-x1">{product?.products?.category?.category_name}</p>
                   <p className="dreaming-midnight-x1">{product?.products?.SKU_Number}</p>
                 </div>
               </div>
@@ -47,8 +52,31 @@ function Viewpage({ productData }) {
                 <span>₹ {product?.price || ''}</span>
               </div>
             </div>
-          </div>
+        </div>
+        <hr/>
+        </div>
       })}
+
+      <div className="shipping-details border-top border-secondary pt-3 text-muted">
+        <h4 className="fw-bold">Shipping Details:</h4>
+        <div className="d-flex justify-content-between align-items-center flex-wrap">
+          <div>
+            <strong>Recipient:</strong>
+            Name: {user?.userData?.full_Name} <br/> address: {productData?.doc?.address || ''}<br/> mobile: {user?.userData?.mobile} <br/>
+            <strong>Payment Mode: {productData?.doc?.payment_method || ''}</strong>
+          </div>
+          {productData?.doc?.tracking.length > 0 ? (
+            <div>
+              
+            <p>
+              Tracking Code: {productData?.doc?.tracking[0]?.code || ''} <br/>
+              <Link href={productData?.doc?.tracking[0]?.url || ''}>
+                <a className="btn btn-info btn-sm text-white" target="_blank">Track Order</a>
+              </Link>
+            </p>
+            </div>) : null }
+        </div>
+      </div>
     </div>
   );
 }
