@@ -222,7 +222,7 @@ function Products() {
                 productData.map((product) => {
                   return (
                     <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
-                      <div className="p-md-3 p-5 mx-auto product-card-hover">
+                      <div className="p-md-3 p-5 mx-auto product-card-hover" onClick={()=>router.push(`./${product?._id}`)}>
                         <div className="w-100">
                           <Image
                             src={
