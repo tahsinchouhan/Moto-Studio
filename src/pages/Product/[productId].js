@@ -144,7 +144,12 @@ function ProductDetail() {
                     </Col>
                   </Row>
                 </div>
-
+                <br/>
+                <div className="product-Price-1 w-100">
+                  <span className="fs-2">₹{" "}</span>
+                  <span className="fs-2">{productData?.price_after_discount || productData?.price || ""}</span>
+                  <span className="text-muted fs-6 ms-3 text-decoration-line-through">{productData?.price_after_discount !== productData?.price ? "₹ " + productData?.price : ''}</span>
+                </div>
                 <div className="my-3">
                   <Row>
                     {item.some((el) => el.product === productData?._id) ||
@@ -244,8 +249,8 @@ function ProductDetail() {
                         </div>
                       </div>
                       <span className="product-Price">
-                        ₹{" "}
-                        {product?.price_after_discount || product?.price || ""}
+                        <span className="fs-5">₹ {product?.price_after_discount || product?.price }</span>
+                        <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
                       </span>
                       {item.some((el) => el.product === productData?._id) ||
                       item.some((el) => el.product._id === product?._id) ? (

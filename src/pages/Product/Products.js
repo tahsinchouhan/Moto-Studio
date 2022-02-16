@@ -202,7 +202,8 @@ function Products() {
                           </div>
                         </div>
                         <span className="product-Price">
-                          ₹ {product?.price_after_discount || product?.price }
+                          <span className="fs-5">₹ {product?.price_after_discount || product?.price }</span>
+                          <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
                         </span>
                         {item.some((el) => el.product === product?._id) ||
                           item.some((el) => el.product._id === product?._id) ? (
