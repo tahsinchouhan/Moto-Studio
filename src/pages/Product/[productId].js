@@ -1,48 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
-// import image1 from "../../assets/images/product/image1.png";
-import image1 from '../../assets/images/product/placeholder.png';
+import image1 from "../../assets/images/product/placeholder.png";
 import Popup from "../../pages/Product/PopUp";
-import ProductImageOne from "../../assets/images/product/productImageOne.png";
 import { MdLocalShipping } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
-
+import { CardContext } from "../../components/Layout";
 
 function ProductDetail() {
-    const [showPopuUp, setShowPopUp] = useState(false);
-    const [productData, setProductData] = useState(null);
+  const [showPopuUp, setShowPopUp] = useState(false);
+  const [productData, setProductData] = useState(null);
+  const [listData, setListData] = useState([]);
 
-    const router = useRouter();
-    const { productId } = router.query;
+  const router = useRouter();
+  const { productId } = router.query;
 
-    useEffect(() => {
-      if(!productId) return
-      const fetchData = () => {
-        fetch(`${apipath}/api/v1/product/${productId}`)
+  const { addProductToCart, item } = useContext(CardContext);
+
+  const fetchListData = async (category_id) => {
+    try {
+      const res = await fetch(
+        `${apipath}/api/v1/product/list?category_id=${category_id}`
+      );
+      const objData = await res.json();
+      setListData(objData?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!productId) return;
+    const fetchData = () => {
+      fetch(`${apipath}/api/v1/product/${productId}`)
         .then((response) => response.json())
         .then((result) => {
-          setProductData(result.data)
+          setProductData(result.data);
+          fetchListData(result.data.category._id);
           // console.log('result :>> ', result.data);
         })
         .catch((error) => console.log(error));
-      }
-      fetchData();
-    }, [productId])
-    
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
-    const popupHandler = () => {
-      setShowPopUp(true);
     };
-    const closeHander = () => {
-      setShowPopUp(false);
-    };
+    fetchData();
+  }, [productId]);
 
   return (
     <>
@@ -52,7 +55,9 @@ function ProductDetail() {
             <span>Store Home &gt; </span>
           </div>
           <div className="products-header text-center">
-            <h1 className="product-name-head-text">{productData?.title || 'Product Name'}</h1>
+            <h1 className="product-name-head-text">
+              {productData?.title || "Product Name"}
+            </h1>
           </div>
         </div>
       </div>
@@ -62,10 +67,19 @@ function ProductDetail() {
           <Row className="popup-modal-main p-0">
             <Col xs={12} md={7}>
               <div className="p-3 p-md-2">
-                <h1 className="product-name-text">{productData?.title || 'Product Name'}</h1>
-                <p className="popup-paragraph1">{productData?.sub_title || 'sub_title'}</p>
+                <h1 className="product-name-text">
+                  {productData?.title || "Product Name"}
+                </h1>
+                <p className="popup-paragraph1">
+                  {productData?.sub_title || "sub_title"}
+                </p>
                 <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
-                <div className="popup-ul fw-bold mb-5" style={{whiteSpace:'pre-wrap'}}>{productData?.description || 'description'}</div>
+                <div
+                  className="popup-ul fw-bold mb-5"
+                  style={{ whiteSpace: "pre-wrap" }}
+                >
+                  {productData?.description || "description"}
+                </div>
                 {/* <ul className="popup-ul fw-bold">
                   <li>Tea Variety Green</li>
                   <li>Unflavoured Loose Leaves</li>
@@ -78,25 +92,29 @@ function ProductDetail() {
                     CHOOSE YOUR QUANTITY
                   </p>
                   <Row className="px-0">
-                  {
-                    productData?.weight?.length && productData?.weight?.map(wt => {
-                      return <Col xs={3} sm={3} className="sanju" key={wt?._id}>
-                        <div className="product-radio-div py-2">
-                          <div className="ss">
-                            <input
-                              className="product-radio "
-                              type="radio"
-                              name="flexRadioDefault"
-                              id={wt?._id}
-                            />
-                            <label className="form-check-label ps-1 productName-kg" htmlFor={wt?._id}>
-                              {wt.weight_type?.weight_gram}
-                            </label>
-                          </div>
-                        </div>
-                      </Col>
-                    })
-                  }
+                    {productData?.weight?.length &&
+                      productData?.weight?.map((wt) => {
+                        return (
+                          <Col xs={3} sm={3} className="sanju" key={wt?._id}>
+                            <div className="product-radio-div py-2">
+                              <div className="ss cursor-pointer">
+                                <input
+                                  className="product-radio "
+                                  type="radio"
+                                  name="flexRadioDefault"
+                                  id={wt?._id}
+                                />
+                                <label
+                                  className="form-check-label ps-1 productName-kg cursor-pointer"
+                                  htmlFor={wt?._id}
+                                >
+                                  {wt.weight_type?.weight_gram}
+                                </label>
+                              </div>
+                            </div>
+                          </Col>
+                        );
+                      })}
                   </Row>
                 </div>
                 <div className="border">
@@ -129,21 +147,42 @@ function ProductDetail() {
 
                 <div className="my-3">
                   <Row>
-                    <Col xs={6}>
-                      <ButtonDark text="ADD TO CART" />
-                    </Col>
+                    {item.some((el) => el.product === productData?._id) ||
+                    item.some((el) => el.product._id === productData?._id) ? (
+                      <Col xs={6}>
+                        <ButtonDark text="PRODUCT ADDED" />
+                      </Col>
+                    ) : (
+                      <Col
+                        xs={6}
+                        onClick={(e) => {
+                          addProductToCart(productData);
+                        }}
+                      >
+                        <ButtonDark text="ADD TO CART" />
+                      </Col>
+                    )}
                   </Row>
                 </div>
 
                 <p className="productName-shipping-para py-2">
-                    <MdLocalShipping/>  Free shipping across India, and a risk-free quality guarantee!
+                  <MdLocalShipping /> Free shipping across India, and a
+                  risk-free quality guarantee!
                 </p>
-
               </div>
             </Col>
             <Col xs={6} md={5} className="popup-modal-img m-auto ">
               <div>
-                <Image src={productData?.images?.length ? productData?.images[0]?.img || image1 : image1} width={500} height={500} alt="image1" />
+                <Image
+                  src={
+                    productData?.images?.length
+                      ? productData?.images[0]?.img || image1
+                      : image1
+                  }
+                  width={500}
+                  height={500}
+                  alt="image1"
+                />
               </div>
             </Col>
             {/* <Col xs={6} md={1}>x</Col> */}
@@ -151,168 +190,94 @@ function ProductDetail() {
         </div>
       </div>
 
+      <Container>
+        <div className="mb-5">
+          <p className="productName-extra-product">You may also like</p>
+          <Row className="justify-content-center">
+            {listData.length &&
+              listData.slice(0, 4).map((product) => {
+                return (
+                  <Col lg={3} md={6} sm={8} xs={12} key={product._id}>
+                    <div
+                      className="p-md-3 p-5 mx-auto product-card-hover"
+                      onClick={() => router.push(`./${product?._id}`)}
+                    >
+                      <div className="w-100">
+                        <Image
+                          src={
+                            product?.images?.length
+                              ? product?.images[0]?.img || image1
+                              : image1
+                          }
+                          alt={product.title}
+                          className="w-100"
+                          width={400}
+                          height={400}
+                        />
+                      </div>
 
-            <Container>
-            <div className="mb-5">
-            <p className="productName-extra-product">You may also like</p>
-            <Row className="justify-content-center">
-            <Col lg={3} md={6} sm={8} xs={12}>
-                <div className="p-md-3 p-5 mx-auto product-card-hover">
-                  <div className="w-100">
-                    <Image
-                      src={ProductImageOne}
-                      alt="Picture of the author"
-                      className="w-100"
-                    />
-                  </div>
-
-                  <h1 className="product-card-text ">Amla Murabba</h1>
-                  <p className="product-card-para w-100">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    product-card-texts.
-                  </p>
-                  <div className="mt-2 mb-2 product-card-text1 d-flex ">
-                    <div>
-                      <span className="icon ">
-                        <AiFillPlusCircle  onClick={()=>popupHandler()}/>
+                      <h1 className="product-card-text ">
+                        {product?.title || "title"}
+                      </h1>
+                      <p className="product-card-para w-100">
+                        {product?.description || "Description"}
+                      </p>
+                      <div
+                        className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowPopUp(true);
+                        }}
+                      >
+                        <div>
+                          <span className="icon">
+                            <AiFillPlusCircle />
+                          </span>
+                        </div>
+                        <div>
+                          {showPopuUp && (
+                            <Popup data={product} setShowPopUp={setShowPopUp} />
+                          )}
+                          <span className="product-card-details">
+                            Product Details
+                          </span>
+                        </div>
+                      </div>
+                      <span className="product-Price">
+                        ₹{" "}
+                        {product?.price_after_discount || product?.price || ""}
                       </span>
+                      {item.some((el) => el.product === productData?._id) ||
+                      item.some((el) => el.product._id === product?._id) ? (
+                        <div className="mt-2">
+                          <ButtonDark
+                            type="submit"
+                            className="Add-to-cart-button"
+                            text="PRODUCT ADDED"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className="mt-2"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            addProductToCart(product);
+                          }}
+                        >
+                          <ButtonDark
+                            type="submit"
+                            className="Add-to-cart-button"
+                            text="ADD TO CART"
+                          />
+                        </div>
+                      )}
                     </div>
-                    <div>
-                    <Popup showPopuUp={showPopuUp} close={closeHander}/>
-
-                      <span className="product-card-details">
-                        Product Details
-                      </span>
-                    </div>
-                  </div>
-                  <span className="product-Price">₹250</span>
-                  <div className="mt-2">
-                    <ButtonDark type="submit" className="Add-to-cart-button"
-                      text="ADD TO CART" />
-                  </div>
-                </div>
-              </Col> 
-
-              <Col lg={3} md={6} sm={8} xs={12}>
-                <div className="p-md-3 p-5 mx-auto product-card-hover">
-                  <div className="w-100">
-                    <Image
-                      src={ProductImageOne}
-                      alt="Picture of the author"
-                      className="w-100"
-                    />
-                  </div>
-
-                  <h1 className="product-card-text ">Amla Murabba</h1>
-                  <p className="product-card-para w-100">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    product-card-texts.
-                  </p>
-                  <div className="mt-2 mb-2 product-card-text1 d-flex ">
-                    <div>
-                      <span className="icon ">
-                        <AiFillPlusCircle  onClick={()=>popupHandler()}/>
-                      </span>
-                    </div>
-                    <div>
-                    <Popup showPopuUp={showPopuUp} close={closeHander}/>
-
-                      <span className="product-card-details">
-                        Product Details
-                      </span>
-                    </div>
-                  </div>
-                  <span className="product-Price">₹250</span>
-                  <div className="mt-2">
-                    <ButtonDark type="submit" className="Add-to-cart-button"
-                      text="ADD TO CART" />
-                  </div>
-                </div>
-              </Col> 
-
-              <Col lg={3} md={6} sm={8} xs={12}>
-                <div className="p-md-3 p-5 mx-auto product-card-hover">
-                  <div className="w-100">
-                    <Image
-                      src={ProductImageOne}
-                      alt="Picture of the author"
-                      className="w-100"
-                    />
-                  </div>
-
-                  <h1 className="product-card-text ">Amla Murabba</h1>
-                  <p className="product-card-para w-100">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    product-card-texts.
-                  </p>
-                  <div className="mt-2 mb-2 product-card-text1 d-flex ">
-                    <div>
-                      <span className="icon ">
-                        <AiFillPlusCircle  onClick={()=>popupHandler()}/>
-                      </span>
-                    </div>
-                    <div>
-                    <Popup showPopuUp={showPopuUp} close={closeHander}/>
-
-                      <span className="product-card-details">
-                        Product Details
-                      </span>
-                    </div>
-                  </div>
-                  <span className="product-Price">₹250</span>
-                  <div className="mt-2">
-                    <ButtonDark type="submit" className="Add-to-cart-button"
-                      text="ADD TO CART" />
-                  </div>
-                </div>
-              </Col> 
-
-              <Col lg={3} md={6} sm={8} xs={12}>
-                <div className="p-md-3 p-5 mx-auto product-card-hover">
-                  <div className="w-100">
-                    <Image
-                      src={ProductImageOne}
-                      alt="Picture of the author"
-                      className="w-100"
-                    />
-                  </div>
-
-                  <h1 className="product-card-text ">Amla Murabba</h1>
-                  <p className="product-card-para w-100">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    product-card-texts.
-                  </p>
-                  <div className="mt-2 mb-2 product-card-text1 d-flex ">
-                    <div>
-                      <span className="icon ">
-                        <AiFillPlusCircle  onClick={()=>popupHandler()}/>
-                      </span>
-                    </div>
-                    <div>
-                    <Popup showPopuUp={showPopuUp} close={closeHander}/>
-
-                      <span className="product-card-details">
-                        Product Details
-                      </span>
-                    </div>
-                  </div>
-                  <span className="product-Price">₹250</span>
-                  <div className="mt-2">
-                    <ButtonDark type="submit" className="Add-to-cart-button"
-                      text="ADD TO CART" />
-                  </div>
-                </div>
-              </Col> 
-            </Row>
-
+                  </Col>
+                );
+              })}
+          </Row>
         </div>
-
-            </Container>
-      
+      </Container>
     </>
   );
 }

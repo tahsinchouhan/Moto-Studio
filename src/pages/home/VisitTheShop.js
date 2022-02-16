@@ -14,7 +14,6 @@ import { apipath } from '../api/apiPath';
 function VisitTheShop({categoryId}) {
   const [featured, setFeatured] = useState([]);
 
-  console.log('categoryId :>> ', categoryId);
   useEffect(() => {
     const fetchData = async () => {
       try {

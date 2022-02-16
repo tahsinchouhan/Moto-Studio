@@ -1,9 +1,12 @@
 import React, { createContext, useReducer, useEffect, useState } from "react";
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
 import Footer from "./Footer";
 import Header from "./Header";
 import SubHeader from "./SubHeader";
 import { reducer } from "./Reducer";
 import {apipath} from '../pages/api/apiPath';
+import Router from 'next/router'
 
 export const CardContext = createContext();
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
 
 function Layout({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [show, setShow] = useState(false);
 
   const userLogin = data => {
     dispatch({
@@ -60,7 +64,37 @@ function Layout({ children }) {
     });
   };
 
-  
+  const addProductToCart = (data) => {
+    if(!state.isLogin) {
+      Router.push('/auth/Login');
+      return false
+    } 
+    const params = {
+      user: state.user.userData._id,
+      cart_items: {
+        product: data._id,
+        SKU_Number:data?.SKU_Number || '',
+        product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
+        quantity: 1,
+        price: data?.price_after_discount || data?.price || 0
+      },
+    };
+    fetch(apipath + `/api/v1/cart/add-items`, {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + state.user.token
+      },
+      body: JSON.stringify(params)
+    })
+    .then((res) => res.json())
+    .then((result) => {
+      if (result?.cart) {
+        addToCart(result.cart.cart_items)
+        setShow(true)
+      }
+    }).catch((error) => console.log(error));
+  }
 
   useEffect(() => {
     const fetchCartData = async (userData) => {
@@ -107,7 +141,7 @@ function Layout({ children }) {
     });
   }, [state.item]);
   
-  console.log('state.item :>> ', state);
+  // console.log('state.item :>> ', state);
   return (
     <CardContext.Provider
       value={{
@@ -117,6 +151,7 @@ function Layout({ children }) {
         removeItem,
         increament,
         decreament,
+        addProductToCart
         // displayRazorpay,
       }}
     >
@@ -124,6 +159,12 @@ function Layout({ children }) {
       <SubHeader />
       <main>{children}</main>
       <Footer />
+
+      <ToastContainer className="p-3 position-fixed" position={`bottom-end`}>
+        <Toast className="bg-success text-white rounded" onClose={() => setShow(false)} show={show} delay={3000} autohide >
+          <Toast.Body>Product successfully add to cart!</Toast.Body>
+        </Toast>
+      </ToastContainer>
     </CardContext.Provider>
   );
 }

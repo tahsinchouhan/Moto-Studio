@@ -1,17 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { Row, Col, Button, Container } from "react-bootstrap";
-import Toast from 'react-bootstrap/Toast'
-import ToastContainer from 'react-bootstrap/ToastContainer'
+import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
 import ButtonLight from "../../components/button/ButtonLight";
 import { AiFillPlusCircle } from "react-icons/ai";
-import ProductImageOne from "../../assets/images/product/productImageOne.png";
-// import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
-// import ProductImageThree from "../../assets/images/product/productImageThree.png";
-// import ProductImageFour from "../../assets/images/product/productImageFour.png";
-// import ProductImageFive from "../../assets/images/product/productImageFive.png";
-// import ProductImageSix from "../../assets/images/product/productImageSix.png";
+import ProductImageOne from "../../assets/images/product/placeholder.png";
 import Popup from "./PopUp";
 import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
@@ -21,14 +14,13 @@ function Products() {
   
   const router = useRouter();
   const { activeTab } = router.query;
-  const { isLogin, user, addToCart } = useContext(CardContext); 
+  const { addProductToCart, item } = useContext(CardContext); 
 
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [show, setShow] = useState(false);
   
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
@@ -104,48 +96,6 @@ function Products() {
     setCheckedState(updatedCheckedState);
   };
 
-  const addProduct = (data) => {
-    if(!isLogin) {
-      router.push('/auth/Login');
-      return false
-    } 
-    const params = {
-      user: user.userData._id,
-      cart_items: {
-        product: data._id,
-        SKU_Number:data?.SKU_Number || '',
-        product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
-        quantity: 1,
-        price: data?.price_after_discount || data?.price || 0
-      },
-    };
-    fetch(apipath + `/api/v1/cart/add-items`, {
-      method: "POST",
-      headers: { 
-        'Content-Type': 'application/json',
-        Authorization: "Bearer " + user.token
-      },
-      body: JSON.stringify(params)
-    })
-    .then((res) => res.json())
-    .then((result) => {
-      if (result?.cart) {
-        addToCart(result.cart.cart_items)
-        setShow(true)
-      }
-    }).catch((error) => console.log(error));
-  }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const popupHandler = () => {
-    setShowPopUp(true);
-  };
-  const closeHander = () => {
-    setShowPopUp(false);
-  };
-
   return (
     <>
       <div className="all-product-heading">
@@ -171,16 +121,16 @@ function Products() {
                 {category.length &&
                   category.map((cat, index) => {
                     return (
-                      <div className="form-check mb-3" key={cat._id}>
+                      <div className="form-check mb-3 cursor-pointer" key={cat._id}>
                         <input
                           className="form-check-input"
                           type="checkbox"
-                          id="flexCheckDefault"
+                          id={cat?._id}
                           value={cat._id}
                           checked={checkedState[index]}
                           onChange={() => handleOnChange(index)}
                         />
-                        <label className="form-check-product-item">
+                        <label className="form-check-product-item cursor-pointer" htmlFor={cat?._id}>
                           {cat?.category_name || "Category Name"}
                         </label>
                       </div>
@@ -242,20 +192,10 @@ function Products() {
                         <p className="product-card-para w-100">
                           {product?.description}
                         </p>
-                        <div className="mt-2 mb-2 product-card-text1 d-flex ">
+                        <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}>
+                          <div><span className="icon"><AiFillPlusCircle/></span></div>
+                          { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> }
                           <div>
-                            <span className="icon ">
-                              <AiFillPlusCircle
-                                onClick={() => popupHandler()}
-                              />
-                            </span>
-                          </div>
-                          <div>
-                            <Popup
-                              showPopuUp={showPopuUp}
-                              close={closeHander}
-                            />
-
                             <span className="product-card-details">
                               Product Details
                             </span>
@@ -264,14 +204,22 @@ function Products() {
                         <span className="product-Price">
                           ₹ {product?.price_after_discount || product?.price }
                         </span>
-                        <div className="mt-2"  onClick={() => addProduct(product)}>
-                          <ButtonDark
-                            type="submit"
-                            className="Add-to-cart-button"
-                            text="ADD TO CART"
-                           
-                          />
-                        </div>
+                        {item.some((el) => el.product === product?._id) ||
+                          item.some((el) => el.product._id === product?._id) ? (
+                            <div className="mt-2">
+                              <ButtonDark type="submit" className="Add-to-cart-button" text="PRODUCT ADDED"/>
+                            </div>
+                          ) : (
+                            <div
+                              className="mt-2"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                addProductToCart(product);
+                              }}
+                            >
+                              <ButtonDark type="submit" className="Add-to-cart-button" text="ADD TO CART"/>
+                            </div>
+                          )}
                       </div>
                     </Col>
                   );
@@ -314,12 +262,6 @@ function Products() {
                 </div>
               </Col> */}
             </Row>
-            
-          <ToastContainer className="p-3 position-fixed" position={`bottom-end`}>
-            <Toast className="bg-success text-white rounded" onClose={() => setShow(false)} show={show} delay={3000} autohide >
-              <Toast.Body>Product successfully add to cart!</Toast.Body>
-            </Toast>
-          </ToastContainer>
 
             {totalPages !== pageNumber && (
               <div className="text-center load-more-product">

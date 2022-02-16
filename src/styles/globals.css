@@ -29,6 +29,10 @@ a {
   margin: 0 auto;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 @import "./headerCss/Header.module.css";
 @import "./headerCss/SubHeader.module.css";
 @import "./footerCss/Footer.module.css";
