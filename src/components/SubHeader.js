@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import Link from "next/link";
-import ShopAll from "../pages/subHeader/shopAll";
+// import ShopAll from "../pages/subHeader/Shopall";
+import ShopAll from '../components/ShopAll';
 // import GourmetFoods from "../pages/subHeader/GourmetFoods";
 // import BeautyProducts from "../pages/subHeader/BeautyProducts";
 // import AlternativeMedicine from "../pages/subHeader/AlternativeMedicine";
@@ -38,7 +39,6 @@ function SubHeader() {
   const clickShopHandler = () => {
     setShowShopAll(true);
   };
-  console.log(showShopAll);
 
   return (
     <>

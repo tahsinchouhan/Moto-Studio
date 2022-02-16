@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import Image from "next/image";
 import flower from "../../../public/images/flower.png";
 import { CardContext } from "../../components/Layout";
+import Link from "next/link";
 
 function Viewpage({ productData }) {
 

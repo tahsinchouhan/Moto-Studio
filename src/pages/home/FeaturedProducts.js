@@ -4,7 +4,7 @@ import Image from "next/image";
 // import AlternativeMedicine from "../../assets/images/home/1 (2).png";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
-import emptyImage from '../../../public/placeholder.jpg';
+import emptyImage from '../../assets/images/product/placeholder.png';
 import VisitTheShop from '../home/VisitTheShop'
 import { apipath } from '../api/apiPath';
 

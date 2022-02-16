@@ -7,7 +7,7 @@ import ProductImageTwo from "../../assets/images/product/productImageTwo.png";
 import WildforestHoney from "../../../src/assets/images/home/333.png";
 import ProductImageFour from "../../assets/images/product/productImageFour.png";
 import ProductImageFive from "../../assets/images/product/productImageFive.png";
-import emptyImage from '../../../public/placeholder.jpg';
+import emptyImage from '../../assets/images/product/placeholder.png';
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from '../api/apiPath';
 

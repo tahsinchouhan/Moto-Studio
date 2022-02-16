@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import {  Row, Col } from "react-bootstrap";
 
 function ShopAll({menu_data}) {
-  console.log(menu_data);
   return (
     <div>
       <div className="container-fluid">

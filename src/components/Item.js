@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import { CardContext } from "./Layout";
-import emptyImage from "../../public/placeholder.jpg";
+import emptyImage from '../assets/images/product/placeholder.png';
 import {apipath} from '../pages/api/apiPath';
 
 const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => {

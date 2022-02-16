@@ -30,7 +30,7 @@ function OrderHistory() {
       }
     };
     getOrderHistory();
-  }, [user?.userData?._id]);
+  }, [user_id]);
 
   const toggleExpander = (id) => {
     fetch(apipath + `/api/v1/order/${id}`)

@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
 // import image1 from "../../assets/images/product/image1.png";
-import emptyImage from '../../../public/placeholder.jpg';
+import image1 from '../../assets/images/product/placeholder.png';
 import Popup from "../../pages/Product/PopUp";
 import ProductImageOne from "../../assets/images/product/productImageOne.png";
 import { MdLocalShipping } from "react-icons/md";
@@ -143,7 +143,7 @@ function ProductDetail() {
             </Col>
             <Col xs={6} md={5} className="popup-modal-img m-auto ">
               <div>
-                <Image src={productData?.images?.length ? productData?.images[0]?.img || emptyImage : emptyImage} width={500} height={500} alt="image1" />
+                <Image src={productData?.images?.length ? productData?.images[0]?.img || image1 : image1} width={500} height={500} alt="image1" />
               </div>
             </Col>
             {/* <Col xs={6} md={1}>x</Col> */}
