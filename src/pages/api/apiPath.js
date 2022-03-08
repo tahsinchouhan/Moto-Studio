@@ -1,1 +1,1 @@
-export const apipath = 'https://173.249.1.215:7896'
+export const apipath = 'https://api.manchtantra.com'
