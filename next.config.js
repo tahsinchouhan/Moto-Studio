@@ -10,7 +10,8 @@ module.exports = {
       'cg-herbal.s3.amazonaws.com',
       'cg-herbal.s3.ap-south-1.amazonaws.com',
       'prakash-art.s3.amazonaws.com',
-      'prakash-art.s3.ap-south-1.amazonaws.com'
+      'prakash-art.s3.ap-south-1.amazonaws.com',
+      'res.cloudinary.com'
     ],
   },
   
