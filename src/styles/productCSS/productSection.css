@@ -41,6 +41,13 @@
   font-size: 12px;
   line-height: 22px;
   color: #333333;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3; 
+   -webkit-box-orient: vertical;
+   white-space: pre-line;
 }
 
 .product-card-details {

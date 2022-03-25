@@ -83,11 +83,11 @@ function Shopping() {
 
     data.map((val) => {
       result.push({
-        products: val.product._id,
+        products: val.product?._id,
         quantity: val.quantity,
         price: val.price,
       });
-      products_id.push(val.product._id);
+      products_id.push(val.product?._id);
     });
 
     if (data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0) > 40000) {
@@ -117,7 +117,7 @@ function Shopping() {
     const options = {
       key: "rzp_test_i3mv91RQEsOYo6",
       currency: orderResponse?.currency || "INR",
-      amount: orderResponse?.amount?.toString() || "5000",
+      amount: orderResponse?.amount?.toString() || "",
       order_id: orderResponse?.id || "",
       name: "CG HERBAL",
       description: "",

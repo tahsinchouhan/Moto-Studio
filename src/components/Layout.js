@@ -64,18 +64,19 @@ function Layout({ children }) {
     });
   };
 
-  const addProductToCart = (data) => {
+  const addProductToCart = (data, quantity = 1) => {
     if(!state.isLogin) {
       Router.push('/auth/Login');
       return false
     } 
+
     const params = {
       user: state.user.userData._id,
       cart_items: {
         product: data._id,
         SKU_Number:data?.SKU_Number || '',
         product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
-        quantity: 1,
+        quantity: quantity,
         price: data?.price_after_discount || data?.price || 0
       },
     };
@@ -108,7 +109,7 @@ function Layout({ children }) {
           body: JSON.stringify({ user: userData?.user?._id })
         });
         const result = await response.json();
-        getAllData(result.data[0].cart_items || []);
+        getAllData(result.data[0]?.cart_items || []);
       } catch (error) {
         console.log(error);
       }

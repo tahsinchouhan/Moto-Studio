@@ -10,12 +10,14 @@ import PaymentMethods from "./PaymentMethods";
 import { CardContext } from '../../components/Layout';
 import Router from 'next/router';
 import TextError from '../../components/TextError';
+import { useSession, signOut } from "next-auth/react";
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(0);
-
+  const { data: session } = useSession();
   const { isLogin, user } = useContext(CardContext);
+
   useEffect(() => {
     if (!isLogin) {
       Router.push('/auth/Login')
@@ -48,6 +50,12 @@ function UserProfile() {
   };
   const onSubmit = () => {
     console.log("onSubmit");
+  };
+
+  const Logout = () => {
+    if(session) signOut();
+    localStorage.removeItem("cg-herbal-userData");
+    Router.reload("/auth/Login");
   };
   return (
     <>
@@ -151,8 +159,9 @@ function UserProfile() {
                                 <div className="col-md-12">
                                   <div className="card bg-light">
                                     <div className="card-body p-4">
-                                      <div className="card-heading">
+                                      <div className="card-heading d-flex justify-content-between">
                                         <h4 className=" mb-2">User Details</h4>
+                                        <button type="button" onClick={Logout}>SignOut</button>
                                       </div>
                                       <div className="form-group user-field">
                                         <label htmlFor="name">Name</label>

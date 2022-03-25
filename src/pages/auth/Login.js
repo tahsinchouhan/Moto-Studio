@@ -1,26 +1,28 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { apipath } from '../api/apiPath';
-import {useRouter} from "next/router";
+import { apipath } from "../api/apiPath";
+import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import TextError from '../../components/TextError';
+import TextError from "../../components/TextError";
 import * as Yup from "yup";
 import ButtonDark from "../../components/button/ButtonDark";
-import { CardContext } from '../../components/Layout';
+import { CardContext } from "../../components/Layout";
+import { useSession, signIn, getProviders, getSession } from "next-auth/react";
 
-function Login() {
-  
-  const [message, setMessage] = useState(null)
+function Login({ providers, session }) {
+  const [message, setMessage] = useState(null);
   const router = useRouter();
 
-  const { isLogin } = useContext(CardContext); 
+  // const { data: session } = useSession();
+  console.log("session :>> ", session);
+  const { isLogin } = useContext(CardContext);
 
   useEffect(() => {
     if (isLogin) {
-      router.push('/auth/UserProfile')
+      router.push("/auth/UserProfile");
     }
-  }, [isLogin, router])
+  }, [isLogin, router]);
 
   const initialValues = {
     email: "",
@@ -34,21 +36,24 @@ function Login() {
 
   const onSubmit = async (values, onSubmitProps) => {
     try {
+      const options = {redirect: false, email:values.email, password:values.password}
+      const re = await signIn('credentials', options)
+      console.log('re :>> ', re);
       const response = await fetch(apipath + `/api/v1/users/signin`, {
-        method:"POST",
-        headers: {'Content-Type': 'application/json'},
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: values.email,
           password: values.password,
-        })
+        }),
       });
       const result = await response.json();
-      if(result.user && result.token){
+      if (result.user && result.token) {
         localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
         // router.push('/auth/UserProfile');
-        router.reload('/auth/UserProfile')
+        router.reload("/auth/UserProfile");
       }
-      if(result.error) setMessage('Username or Password Incorrect')
+      if (result.error) setMessage("Username or Password Incorrect");
     } catch (error) {
       console.log(error);
       setMessage(error.response.data.message);
@@ -66,7 +71,11 @@ function Login() {
                 <h1 className="text-center m-5">Login</h1>
               </div>
             </div>
-            {message && <div className="text-center text-danger fw-bold fs-5 pb-5">{message}</div> }
+            {message && (
+              <div className="text-center text-danger fw-bold fs-5 pb-5">
+                {message}
+              </div>
+            )}
             <div className="login_div">
               <Formik
                 initialValues={initialValues}
@@ -101,8 +110,34 @@ function Login() {
                       </div>
 
                       <div className="text-center pt-5">
-                        <ButtonDark type="submit" text="Login" className="btn btn-submit"/>
+                        <ButtonDark
+                          type="submit"
+                          text="Login"
+                          className="btn btn-submit"
+                        />
                       </div>
+
+                      <div className="social-login-btn d-flex justify-content-between mt-4">
+                        {Object.values(providers).map((provider) => {
+                          if(provider.id === 'credentials') return false
+                          return <div key={provider.id} className="w-50 text-center">
+                            <button type="button" className="btn btn-outline-primary" onClick={() => signIn(provider.id)}>
+                              Sign in with {provider.name}
+                            </button>
+                          </div>
+                        })}
+                      </div>
+
+                      {/* <div
+                        className="text-center pt-4"
+                        onClick={() => signIn()}
+                      >
+                        <ButtonDark
+                          type="button"
+                          text="Login With Social Account"
+                          className="btn btn-submit"
+                        />
+                      </div> */}
                     </Form>
                   );
                 }}
@@ -130,6 +165,19 @@ function Login() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  // const session = await getSession();
+  const providers = await getProviders();
+  // if (session) {
+  //   return {
+  //     redirect : {destination: "/"}
+  //   }
+  // }
+  return {
+    props: { providers }, // will be passed to the page component as props
+  };
 }
 
 export default Login;

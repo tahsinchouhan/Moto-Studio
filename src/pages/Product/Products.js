@@ -11,7 +11,7 @@ import { apipath } from "../api/apiPath";
 import { CardContext } from '../../components/Layout';
 
 function Products() {
-  
+
   const router = useRouter();
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext); 
@@ -19,7 +19,7 @@ function Products() {
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   
   const [checkedState, setCheckedState] = useState(
@@ -27,7 +27,7 @@ function Products() {
   );
 
   const fetchMoreData = () => {
-    fetch(apipath + `/api/v1/products/list?page=${pageNumber}`)
+    fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
       .then((res) => res.json())
       .then((jsonData) => {
         if (jsonData?.data?.length) {
@@ -172,7 +172,7 @@ function Products() {
                 productData.map((product) => {
                   return (
                     <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
-                      <div className="p-md-3 p-5 mx-auto product-card-hover" onClick={()=>router.push(`./${product?._id}`)}>
+                      <div className="p-md-3 p-5 mx-auto product-card-hover cursor-pointer" onClick={()=>router.push(`./${product?._id}`)}>
                         <div className="w-100">
                           <Image
                             src={
@@ -206,7 +206,7 @@ function Products() {
                           <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
                         </span>
                         {item.some((el) => el.product === product?._id) ||
-                          item.some((el) => el.product._id === product?._id) ? (
+                          item.some((el) => el.product?._id === product?._id) ? (
                             <div className="mt-2">
                               <ButtonDark type="submit" className="Add-to-cart-button" text="PRODUCT ADDED"/>
                             </div>
@@ -265,12 +265,11 @@ function Products() {
             </Row>
 
             {totalPages !== pageNumber && (
-              <div className="text-center load-more-product">
+              <div className="text-center load-more-product" onClick={() => fetchMoreData()}>
                 <ButtonLight
                   type="submit"
                   className=""
                   text="LOAD MORE PRODUCTS"
-                  onClick={() => fetchMoreData()}
                 />
               </div>
             )}

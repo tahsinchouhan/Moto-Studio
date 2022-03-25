@@ -6,17 +6,16 @@ import image1 from "../../assets/images/product/placeholder.png";
 import Popup from "../../pages/Product/PopUp";
 import { MdLocalShipping } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
+import { useRouter } from "next/router";
 
-function ProductDetail() {
+function ProductDetail({ productData }) {
+
   const [showPopuUp, setShowPopUp] = useState(false);
-  const [productData, setProductData] = useState(null);
   const [listData, setListData] = useState([]);
-
-  const router = useRouter();
-  const { productId } = router.query;
+  const [count, setCount] = useState(1);
+  const router = useRouter()
 
   const { addProductToCart, item } = useContext(CardContext);
 
@@ -33,19 +32,8 @@ function ProductDetail() {
   };
 
   useEffect(() => {
-    if (!productId) return;
-    const fetchData = () => {
-      fetch(`${apipath}/api/v1/product/${productId}`)
-        .then((response) => response.json())
-        .then((result) => {
-          setProductData(result.data);
-          fetchListData(result.data.category._id);
-          // console.log('result :>> ', result.data);
-        })
-        .catch((error) => console.log(error));
-    };
-    fetchData();
-  }, [productId]);
+    fetchListData(productData.category._id);
+  }, []);
 
   return (
     <>
@@ -93,7 +81,7 @@ function ProductDetail() {
                   </p>
                   <Row className="px-0">
                     {productData?.weight?.length &&
-                      productData?.weight?.map((wt) => {
+                      productData?.weight?.map((wt, index) => {
                         return (
                           <Col xs={3} sm={3} className="sanju" key={wt?._id}>
                             <div className="product-radio-div py-2">
@@ -103,6 +91,7 @@ function ProductDetail() {
                                   type="radio"
                                   name="flexRadioDefault"
                                   id={wt?._id}
+                                  checked={index === 0}
                                 />
                                 <label
                                   className="form-check-label ps-1 productName-kg cursor-pointer"
@@ -128,40 +117,49 @@ function ProductDetail() {
                     <Col
                       xs={1}
                       sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2"
+                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
+                      onClick={() => setCount(prev => {
+                        return (prev - 1) < 1 ? 1 : (prev -1)
+                      })}
                     >
-                      +
+                      -
                     </Col>
                     <Col xs={1} sm={1}>
-                      <p className="productName-counter-no  my-2">0</p>
+                      <p className="productName-counter-no text-center my-2">{count}</p>
                     </Col>
                     <Col
                       xs={1}
                       sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2"
+                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
+                      onClick={()=>setCount(prev => prev + 1) }
                     >
-                      -
+                      +
                     </Col>
+                   
                   </Row>
                 </div>
                 <br/>
                 <div className="product-Price-1 w-100">
                   <span className="fs-2">₹{" "}</span>
-                  <span className="fs-2">{productData?.price_after_discount || productData?.price || ""}</span>
-                  <span className="text-muted fs-6 ms-3 text-decoration-line-through">{productData?.price_after_discount !== productData?.price ? "₹ " + productData?.price : ''}</span>
+                  <span className="fs-2">{productData?.price_after_discount * count || productData?.price * count || ""}</span>
+                  <span className="text-muted fs-6 ms-3 text-decoration-line-through">{productData?.price_after_discount !== productData?.price ? "₹ " + productData?.price * count : ''}</span>
                 </div>
                 <div className="my-3">
                   <Row>
                     {item.some((el) => el.product === productData?._id) ||
-                    item.some((el) => el.product._id === productData?._id) ? (
+                    item.some((el) => el.product?._id === productData?._id) ? (
                       <Col xs={6}>
-                        <ButtonDark text="PRODUCT ADDED" />
+                        <div className="mt-2" onClick={() => router.push(`/shopping/Shopping`) } >
+                          <ButtonDark
+                            text="VIEW CART"
+                          />
+                        </div>
                       </Col>
                     ) : (
                       <Col
                         xs={6}
                         onClick={(e) => {
-                          addProductToCart(productData);
+                          addProductToCart(productData, count);
                         }}
                       >
                         <ButtonDark text="ADD TO CART" />
@@ -253,12 +251,12 @@ function ProductDetail() {
                         <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
                       </span>
                       {item.some((el) => el.product === productData?._id) ||
-                      item.some((el) => el.product._id === product?._id) ? (
+                      item.some((el) => el.product?._id === product?._id) ? (
                         <div className="mt-2">
                           <ButtonDark
                             type="submit"
                             className="Add-to-cart-button"
-                            text="PRODUCT ADDED"
+                            text="VIEW CART"
                           />
                         </div>
                       ) : (
@@ -288,3 +286,11 @@ function ProductDetail() {
 }
 
 export default ProductDetail;
+
+export async function getServerSideProps(context) {
+  const { productId } = context.query;
+  const response = await fetch(`${apipath}/api/v1/product/${productId}`)
+  const result = await response.json();
+
+  return { props: { productData: result.data } };
+}

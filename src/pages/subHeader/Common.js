@@ -16,7 +16,7 @@ function Common({ menuData }) {
                     <div className="image-block">
                       <Image src={menu?.images?.length ? menu.images[0]?.img || BrahmiChurna : BrahmiChurna } alt={menu?.title || ''} width={100} height={100} />
                     </div>
-                    <div className="sub-menu-block">
+                    <div className="sub-menu-block" style={{overflow:'hidden'}}>
                       <h6 className="Grocery-foods">{menu?.category_name || ''}</h6>
                       <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
                         {
