@@ -9,6 +9,7 @@ import Popup from "./PopUp";
 import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
 import { CardContext } from '../../components/Layout';
+import Skeleton from "../../components/Skeleton";
 
 function Products() {
 
@@ -21,16 +22,19 @@ function Products() {
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(false);
   
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
   );
 
   const fetchMoreData = () => {
+    setLoading(true)
     fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
       .then((res) => res.json())
       .then((jsonData) => {
         if (jsonData?.data?.length) {
+          setLoading(false)
           setProductData((prevState) => [...prevState, ...jsonData?.data]);
           setPageNumber((prevNum) => prevNum + 1);
         }
@@ -39,9 +43,11 @@ function Products() {
   };
 
   const fetchData = async (query = '') => {
+    setLoading(true)
     try {
       const res = await fetch(`${apipath}/api/v1/product/list?${query.substring(1)}`);
       const objData = await res.json();
+      setLoading(false)
       setTotalPages(Math.ceil(objData.all_pages));
       setProductData(objData?.data);
     } catch (error) {
@@ -74,7 +80,9 @@ function Products() {
       );
       setCheckedState(activeCategory);
     }
-  }, [category, activeTab, checkedState])
+    // react-hooks/exhaustive-deps
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, activeTab])
   
   useEffect(() => {
     const query = checkedState.reduce(
@@ -86,7 +94,7 @@ function Products() {
       },
       ''
     );
-    fetchData(query);
+    if (query !== "") fetchData(query);
   }, [checkedState, category])
 
   const handleOnChange = (position) => {
@@ -168,7 +176,7 @@ function Products() {
             </Row>
 
             <Row className="justify-content-start">
-              {productData.length &&
+              {productData.length && !loading ?
                 productData.map((product) => {
                   return (
                     <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
@@ -224,7 +232,12 @@ function Products() {
                       </div>
                     </Col>
                   );
-                })}
+                }) : (
+                  ['1', '2', '3', '4', '5', '6', '7'].map(ele => (<Col key={ele} lg={3} md={6} sm={8} xs={12}>
+                    <Skeleton />
+                  </Col>))
+                )}
+
               {/* <Col lg={3} md={6} sm={8} xs={12}>
                 <div className="p-md-3 p-5 mx-auto product-card-hover">
                   <div className="w-100">

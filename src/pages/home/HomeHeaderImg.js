@@ -1,35 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from "next/image";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../../components/button/ButtonLight"
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import { apipath } from '../api/apiPath';
 
-function HomeHeaderImg() {
-
+function HomeHeaderImg({bannerData}) {
   const [banner, setBanner] = useState({
-    bannerImg: HomeHeader,
-    bannerTitle: 'Banner Title',
-    bannerDesc: 'Banner Description'
+    bannerImg: bannerData[0]?.images[0]?.img || HomeHeader,
+    bannerTitle: bannerData[0]?.title || 'Banner Title',
+    bannerDesc: bannerData[0]?.description || 'Banner Description'
   });
-
-  useEffect(() => {
-    const fetchData = () => {
-      fetch(`${apipath}/api/v1/home/banner/list`)
-      .then(response => response.json())
-      .then(objData => {
-        if(objData?.data?.length){
-          setBanner({
-            bannerImg: objData?.data[0]?.images[0]?.img || HomeHeader,
-            bannerTitle: objData?.data[0]?.title || 'Banner Title',
-            bannerDesc: objData?.data[0]?.description || 'Banner Description'
-          })
-        }
-      }).catch(error => console.log(error))
-    }
-    fetchData();
-  }, [])
 
   return (
     <>
@@ -60,7 +41,7 @@ function HomeHeaderImg() {
       </div>
 
       {/* DeskTop View */}
-      <div className="home-head-img" style={{background:`url(${banner.bannerImg})`,backgroundAttachment:'fixed',backgroundSize:'cover'}}>
+      <div className="home-head-img" style={{backgroundImage:`url(${banner.bannerImg})`, backgroundSize:'cover'}}>
         <div className="cg-herbal-container">
           <Row className=" justify-content-md-start justify-content-center">
             <Col md={8} lg={6} className="col-10">

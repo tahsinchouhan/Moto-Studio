@@ -108,34 +108,6 @@ function SubHeader() {
         { showShopAll !== 0 && showShopAll !== 1 && showShopAll ? (
           <div  className="shop-page" onMouseLeave={() => shopHandler(0, null)}><Common menuData={subMenu} /></div>
         ) : ("") }
-        
-        {/* {showShopAll == 2 ? (
-          <div className="shop-page" onMouseLeave={() => shopHandler()}>
-            <GourmetFoods />
-          </div>
-        ) : ("")}
-
-        {showShopAll == 3 ? (
-          <div className="shop-page">
-            <BeautyProducts />
-          </div>
-        ) : (
-          ""
-        )}
-        {showShopAll == 4 ? (
-          <div className="shop-page">
-            <AlternativeMedicine />            
-          </div>
-        ) : (
-          ""
-        )}
-        {showShopAll == 5 ? (
-          <div className="shop-page">
-            <HealthPersonalCare />
-          </div>
-        ) : (
-          ""
-        )} */}
       </div>
     </>
   );

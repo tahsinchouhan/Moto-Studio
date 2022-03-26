@@ -9,9 +9,10 @@ import { CardContext } from '../components/Layout';
 
 function Header() {
   const { user, totalItem } = useContext(CardContext);
+  console.log('user :>> ', user);
 
   const [activeIcon, setActiveIcon] = useState(false);
-
+  const [viewDropDown, setViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
 
 
@@ -60,12 +61,12 @@ function Header() {
                   <a className="nav-link mx-3">CORPORATE</a>
                 </Link>
                   {/* eslint-disable-next-line  */}
-                  {/* <Link href="/blog/Blogs">
+                  <Link href="/blog/Blogs">
                   <a className="nav-link mx-3">BLOGS</a>
                 </Link>  {/* eslint-disable-next-line  *
                 <Link href="/storie/Stoies">
                   <a className="nav-link mx-3">STORIES</a>
-                </Link> */}
+                </Link>
                     {/* eslint-disable-next-line  */}
                 <Link href="/news/IntoNewsroom">
                   <a className="nav-link mx-3">NEWS</a>
@@ -76,24 +77,14 @@ function Header() {
                 </Link>
               </Nav>
               <Nav>
-                <div className="pt-1">
-                <select defaultValue={''} 
-                    className="product-select"
-                    aria-label="Default select example"
-                  >
-                    <option value="">INR</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                &nbsp; &nbsp;
-                <div className="pt-1 d-flex">
-                  <Link href="/">
-                    <a className="cg-header-a-tag">
-                      <BsSearch className />
-                    </a>
-                  </Link>
+                <div className="pt-1 d-flex align-items-center">
+                {user ? (
+                  <>
+                  <div className="user-profile">
+                    <Link href="/auth/UserProfile">
+                      <a className="nav-Login text-black">{user.userData.full_Name}</a>
+                    </Link>
+                  </div>
                   &nbsp; &nbsp;
                   <div onClick={iconHandler}>
                     <Link href="/shopping/Shopping">
@@ -105,11 +96,39 @@ function Header() {
                               : "cg-header-a-tag"
                           }`}
                         />{" "}
-                        {totalItem}
+                        {totalItem || ''}
                       </a>
                     </Link>
                   </div>
+                </>
+              ) : (
+            <div>
+              <Link href="/auth/Login">
+                <a className="nav-Login text-black">Sign In</a>
+              </Link>
+              <Link href="/auth/Register">
+                <a className="nav-Login btn btn-primary btn-sm ms-2">Sign Up</a>
+              </Link>
+            </div>
+          )}
+                {/* <select defaultValue={''} 
+                    className="product-select"
+                    aria-label="Default select example"
+                  >
+                    <option value="">INR</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select> */}
                 </div>
+                {/* &nbsp; &nbsp;
+                <div className="pt-1 d-flex">
+                  <Link href="/">
+                    <a className="cg-header-a-tag">
+                      <BsSearch className />
+                    </a>
+                  </Link>
+                   */}
               </Nav>
             </Navbar.Collapse>
           </Container>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from "next/image";
 // import BeautyProducts from "../../assets/images/home/1 (1).png";
 // import AlternativeMedicine from "../../assets/images/home/1 (2).png";
@@ -6,30 +6,11 @@ import Image from "next/image";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
 import emptyImage from '../../assets/images/product/placeholder.png';
 import VisitTheShop from '../home/VisitTheShop'
-import { apipath } from '../api/apiPath';
 
-function FeaturedProducts() {
+function FeaturedProducts({ category }) {
   
-  const [category, setCategory] = useState([]);
-  const [categoryId, setCategoryId] = useState(null);
-
-  useEffect(() => {
-    const fetchCategory = () => {
-      fetch(`${apipath}/api/v1/category/list`)
-      .then(response => response.json())
-      .then(objData => {
-        if(objData?.data?.length){
-          setCategoryId(objData?.data[0]?._id)
-          setCategory(objData?.data)
-        }
-      }).catch(error => console.log(error))
-    }
-    fetchCategory();
-  }, [])
-
-  const getCategoryId = (id) => {
-    setCategoryId(id)
-  }
+  const [categoryId, setCategoryId] = useState(category[0]?._id || null);
+  const getCategoryId = (id) => setCategoryId(id)
 
   return (
     <>
@@ -57,18 +38,6 @@ function FeaturedProducts() {
           </div>
           })
         }
-
-          {/* <div className="image-div">
-            <div className=" rounded-circle  ">
-              <Image
-                src={GourmetFoods}
-                alt="GourmetFoods"
-                className="rounded-circle  hover1 "
-              />
-              <p className=" feature-products-texts p-1 ">Gourmet Foods</p>
-            </div>
-          </div> */}
-
         </div>
       </div>
       <VisitTheShop categoryId={categoryId} />

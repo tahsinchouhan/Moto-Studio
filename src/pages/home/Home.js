@@ -10,10 +10,10 @@ import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
 import {apipath} from '../api/apiPath'
 
-function Home() {
+function Home({ category, bannerData }) {
   const { data: session } = useSession();
   const { isLogin } = useContext(CardContext);
-  console.log("sessionData :>> ", session);
+  
   const router = useRouter();
 
   useEffect(() => {
@@ -42,8 +42,8 @@ function Home() {
 
   return (
     <div>
-      <HomeHeaderImg />
-      <FeaturedProducts />
+      <HomeHeaderImg bannerData={bannerData} />
+      <FeaturedProducts category={category} />
       {/* <VisitTheShop/> */}
       <HomeEmpower />
       <CommunityPage />
@@ -53,3 +53,4 @@ function Home() {
 }
 
 export default Home;
+

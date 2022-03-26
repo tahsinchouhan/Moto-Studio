@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import BrahmiChurna from "../../../public/images/bramkumari.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function Common({ menuData }) {
   return (
@@ -9,7 +10,7 @@ function Common({ menuData }) {
       <Container>
         <Row className="all-shop-list-change py-3 my-3">
           {menuData?.length &&
-            menuData.map((menu) => {
+            menuData.map((menu, index) => {
               return (
                 <Col sm={12} md={4} lg={4} className="alternative-div" key={menu._id}>
                   <div className="d-flex gap-3">
@@ -21,7 +22,9 @@ function Common({ menuData }) {
                       <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
                         {
                           menu?.products_data?.length && menu?.products_data?.map(product => {
-                            return <span key={product._id} className="Wildforest">{product?.title || ''}</span>
+                            return <Link href={`/Product/${product._id}`} key={product._id}>
+                              <a className="Wildforest cursor-pointer text-muted">{product?.title || ''}</a>
+                            </Link> 
                           })
                         }
                       </div>

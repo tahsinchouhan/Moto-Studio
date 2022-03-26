@@ -52,18 +52,21 @@ function CommunityPage() {
           <Row>
           {
             community.length && community.map(row=>{
-              return <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" key={row?._id}>
+              return <Col lg={4} md={6} className="image1 Gallery" key={row?._id}>
+              <div className='position-relative' style={{height:'320px', boxSizing:'border-box'}}>
                 <Image
                   src={row?.images?.length ? row?.images[0]?.img || Imageone : Imageone}
                   alt="Picture of the author"
                   className="w-100"
-                  width={300}
-                  height={300}
-                  objectFit="cover"
+                  // width={400}
+                  // height={300}
+                  layout='fill'
+                  objectFit="responsive"
                 />
                 <div className="overlay">
                   <p className="Text-name">{row?.products?.title || 'Title'}</p>
                 </div>
+              </div>
               </Col>
             })
           }
