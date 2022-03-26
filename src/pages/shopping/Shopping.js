@@ -21,9 +21,8 @@ function loadScript(src) {
 }
 
 function Shopping() {
-  const { user, item, totalAmount, totalItem } = useContext(CardContext);
+  const { user, item, totalAmount, totalItem, fetchCartData, clearCart } = useContext(CardContext);
   const router = useRouter();
-
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
   const [promoValue, setPromoValue] = useState(null);
@@ -39,6 +38,11 @@ function Shopping() {
   }
 
   useEffect(() => {
+    const getLoginDetails = localStorage.getItem("cg-herbal-userData");
+    if (getLoginDetails) {
+      const userDetails = JSON.parse(getLoginDetails);
+      fetchCartData(userDetails);
+    }
     fetchPromoList()
   }, [])
 
@@ -52,7 +56,6 @@ function Shopping() {
     setShow(false)
   }
   
-
   const varifyPayment = async (data) => {
     try {
       const response = await fetch(`${apipath}/api/v1/payments/verify`, {
@@ -62,6 +65,8 @@ function Shopping() {
       });
       const result = await response.json();
       if (response.status === 200 && result.message === "Payment Successfull!")
+        // clear cart data
+        clearCart();
         router.push("/order/OrderConfirmed");
     } catch (error) {
       console.log(error);

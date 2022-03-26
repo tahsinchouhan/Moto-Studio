@@ -2,7 +2,7 @@
   "name": "cg-herbal-frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3005",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p 3005",
     "lint": "next lint"

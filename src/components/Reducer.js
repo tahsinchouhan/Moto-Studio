@@ -31,6 +31,13 @@ export const reducer = (state, action) => {
     }
   }
 
+  if(action.type === 'CLEAR_CART'){ 
+    return {
+        ...state,
+        item:[]
+    }
+  }
+
   if(action.type === 'INCREAMENT_ITEM'){
       return {
           ...state,

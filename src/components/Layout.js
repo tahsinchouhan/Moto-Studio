@@ -29,7 +29,6 @@ function Layout({ children }) {
   }
 
   const addToCart = (data) => {
-    console.log('Add', data);
     dispatch({
       type: "ADD_TO_CART",
       payload: data,
@@ -54,6 +53,12 @@ function Layout({ children }) {
     dispatch({
       type: "DECREAMENT_ITEM",
       payload: id,
+    });
+  };
+
+  const clearCart = (id) => {
+    dispatch({
+      type: "CLEAR_CART"
     });
   };
 
@@ -97,24 +102,25 @@ function Layout({ children }) {
     }).catch((error) => console.log(error));
   }
 
+  const fetchCartData = async (userData) => {
+    try {
+      const response = await fetch(apipath + `/api/v1/cart/get-items`, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: "Bearer " + userData?.token,
+        },
+        body: JSON.stringify({ user: userData?.user?._id })
+      });
+      const result = await response.json();
+      getAllData(result.data[0]?.cart_items || []);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   useEffect(() => {
-    const fetchCartData = async (userData) => {
-      try {
-        const response = await fetch(apipath + `/api/v1/cart/get-items`, {
-          method: "POST",
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: "Bearer " + userData.token,
-          },
-          body: JSON.stringify({ user: userData?.user?._id })
-        });
-        const result = await response.json();
-        getAllData(result.data[0]?.cart_items || []);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  
     const fetchUserData = async (data) => {
       try {
         const res = await fetch(apipath + `/api/v1/users/${data.user._id}`)
@@ -152,7 +158,9 @@ function Layout({ children }) {
         removeItem,
         increament,
         decreament,
-        addProductToCart
+        addProductToCart,
+        fetchCartData,
+        clearCart
         // displayRazorpay,
       }}
     >
