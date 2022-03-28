@@ -44,6 +44,7 @@ function Shopping() {
       fetchCartData(userDetails);
     }
     fetchPromoList()
+    // react-hooks/exhaustive-deps
   }, [])
 
   const promoHandler = data => {

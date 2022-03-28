@@ -118,7 +118,7 @@ function Login({ providers, session }) {
                       </div>
 
                       <div className="social-login-btn d-flex justify-content-between mt-4">
-                        {Object.values(providers).map((provider) => {
+                        {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
                           return <div key={provider.id} className="w-50 text-center">
                             <button type="button" className="btn btn-outline-primary" onClick={() => signIn(provider.id)}>
