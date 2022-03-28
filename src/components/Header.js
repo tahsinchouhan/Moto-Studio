@@ -46,7 +46,7 @@ function Header() {
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
                     {/* eslint-disable-next-line  */}
                 <Link href="/">
-                  <a className="nav-link mx-3">HOME</a>
+                  <a className="nav-link mx-3">HOME-1</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
                 <Link href="/Product/Products">
