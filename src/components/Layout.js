@@ -140,6 +140,7 @@ function Layout({ children }) {
     dispatch({
       type: "TOTAL_QTY",
     });
+    // react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
