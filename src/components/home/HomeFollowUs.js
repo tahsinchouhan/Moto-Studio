@@ -1,6 +1,6 @@
 
 import React from "react";
-import Button from "../../components/button/ButtonLight"
+import Button from "../button/ButtonLight"
 import { FaInstagram } from "react-icons/fa";
 
 function HomeFollowUs() {

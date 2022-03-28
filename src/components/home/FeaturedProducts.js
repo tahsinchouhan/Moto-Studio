@@ -5,11 +5,11 @@ import Image from "next/image";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
 import emptyImage from '../../assets/images/product/placeholder.png';
-import VisitTheShop from '../home/VisitTheShop'
+import VisitTheShop from './VisitTheShop'
 
 function FeaturedProducts({ category }) {
-  
-  const [categoryId, setCategoryId] = useState(category[0]?._id || null);
+  const list = category?.length > 0 ? category[0]._id : null || null;
+  const [categoryId, setCategoryId] = useState(list);
   const getCategoryId = (id) => setCategoryId(id)
 
   return (
@@ -24,7 +24,7 @@ function FeaturedProducts({ category }) {
       <div className="overflow-style">
         <div className="image-div1">
         {
-          category?.length && category?.map(cat => {
+          category?.length && category?.map((cat) => {                       
             return <div className="image-div" key={cat._id} onClick={()=>getCategoryId(cat?._id)}>
             <div className="rounded-circle">
               <Image

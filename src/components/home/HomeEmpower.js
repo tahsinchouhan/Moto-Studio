@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import Button from "../../components/button/ButtonLight"
-import { apipath } from '../api/apiPath';
+import Button from "../button/ButtonLight"
+import { apipath } from '../../pages/api/apiPath';
 
 function HomeEmpower() {
   const [impoweredData, setImpoweredData] = useState({
@@ -32,7 +32,7 @@ function HomeEmpower() {
 
   return (
     <>
-      <div className="home-empower-img" style={{background:`url(${impoweredData?.backgroundImg})`,backgroundAttachment:'fixed',backgroundSize:'cover'}}>
+      <div className="home-empower-img">      
         <div className="home-empower-img-distance">
           <p className="home-empower-img-para d-block">
             {/* From the heart of Chhattisgarh */}
@@ -46,6 +46,12 @@ function HomeEmpower() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .home-empower-img {
+          background-image: url(${impoweredData?.backgroundImg});
+          background-size:cover
+        }
+      `}</style>
     </>
   );
 }

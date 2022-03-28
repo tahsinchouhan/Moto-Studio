@@ -1,25 +1,24 @@
 import { useEffect, useContext } from "react";
-import CommunityPage from "./CommunityPage";
-import HomeHeaderImg from "./HomeHeaderImg";
-import FeaturedProducts from "./FeaturedProducts";
-// import VisitTheShop from '../home/VisitTheShop'
-import HomeFollowUs from "./HomeFollowUs";
-import HomeEmpower from "./HomeEmpower";
 import { useSession } from "next-auth/react";
-import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
+import CommunityPage from "../../components/home/CommunityPage";
+import HomeHeaderImg from "../../components/home/HomeHeaderImg";
+import FeaturedProducts from "../../components/home/FeaturedProducts";
+// import VisitTheShop from '../home/VisitTheShop'
+import HomeFollowUs from "../../components/home/HomeFollowUs";
+import HomeEmpower from "../../components/home/HomeEmpower";
+import { CardContext } from "../../components/Layout";
 import {apipath} from '../api/apiPath'
 
 function Home({ category, bannerData }) {
+
   const { data: session } = useSession();
   const { isLogin } = useContext(CardContext);
   
   const router = useRouter();
 
   useEffect(() => {
-    console.log('session :>> ', session);
     if (!isLogin && session) {
-      console.log('Ajay :>> ', 'Ajay');
       fetch(`${apipath}/api/v1/users/social`, {
         method:"POST",
         headers: {
@@ -29,7 +28,6 @@ function Home({ category, bannerData }) {
       })
       .then(res => res.json())
       .then((result) => {
-        console.log('result :>> ', result);
         if (result.user && result.token) {
           localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
           router.reload("/auth/UserProfile");
@@ -38,6 +36,7 @@ function Home({ category, bannerData }) {
         console.log('err :>> ', err);
       });
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogin, session]);
 
   return (
@@ -53,4 +52,3 @@ function Home({ category, bannerData }) {
 }
 
 export default Home;
-

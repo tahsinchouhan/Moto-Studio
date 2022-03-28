@@ -9,7 +9,7 @@ import { CardContext } from '../components/Layout';
 
 function Header() {
   const { user, totalItem } = useContext(CardContext);
-  console.log('user :>> ', user);
+  // console.log('user :>> ', user);
 
   const [activeIcon, setActiveIcon] = useState(false);
   const [viewDropDown, setViewDropDown] = useState(false);
@@ -61,7 +61,7 @@ function Header() {
                   <a className="nav-link mx-3">CORPORATE</a>
                 </Link>
                   {/* eslint-disable-next-line  */}
-                  <Link href="/blog/Blogs">
+                  <Link href="/blogs/Blogs">
                   <a className="nav-link mx-3">BLOGS</a>
                 </Link>  
                 {/* <Link href="/storie/Stoies">

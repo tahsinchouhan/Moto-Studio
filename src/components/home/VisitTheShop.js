@@ -9,7 +9,8 @@ import ProductImageFour from "../../assets/images/product/productImageFour.png";
 import ProductImageFive from "../../assets/images/product/productImageFive.png";
 import emptyImage from '../../assets/images/product/placeholder.png';
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { apipath } from '../api/apiPath';
+import { apipath } from '../../pages/api/apiPath';
+
 
 function VisitTheShop({categoryId}) {
   const [featured, setFeatured] = useState([]);

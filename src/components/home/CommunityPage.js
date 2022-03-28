@@ -7,7 +7,7 @@ import Imagethree from "../../assets/images/home/Imagethree.png";
 import Imagefour from "../../assets/images/home/Imagefour.png";
 import Imagefive from "../../assets/images/home/Imagefive.png";
 import Imagesix from "../../assets/images/home/Imagesix.png";
-import { apipath } from '../api/apiPath';
+import { apipath } from '../../pages/api/apiPath';
 
 function CommunityPage() {
   const [community, setCommunity] = useState([]);

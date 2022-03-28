@@ -1,6 +1,9 @@
 // next.config.js
 module.exports = {
   reactStrictMode: true,
+  eslint: {
+    dirs: [] //['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+  },
   env: {
     GOOGLE_CLIENT_ID: '597197014261-l362ikvagqd00e6av736rl5r8bj1vldu.apps.googleusercontent.com',
     GOOGLE_CLIENT_SECRET:'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',

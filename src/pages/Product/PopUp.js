@@ -5,7 +5,7 @@ import { Col, Container, Form, Row, Modal } from "react-bootstrap";
 import image1 from "../../assets/images/product/image1.png";
 
 function PopUp({ setShowPopUp, data }) {
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
   return (
     <>
       <Modal show={true}>

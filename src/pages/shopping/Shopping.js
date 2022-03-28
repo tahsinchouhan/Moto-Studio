@@ -44,7 +44,7 @@ function Shopping() {
       fetchCartData(userDetails);
     }
     fetchPromoList()
-    // react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const promoHandler = data => {

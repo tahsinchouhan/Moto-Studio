@@ -2,14 +2,15 @@ import { useState } from 'react'
 import Image from "next/image";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import Button from "../../components/button/ButtonLight"
+import Button from "../button/ButtonLight"
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 
 function HomeHeaderImg({bannerData}) {
+
   const [banner, setBanner] = useState({
-    bannerImg: bannerData[0]?.images[0]?.img || HomeHeader,
-    bannerTitle: bannerData[0]?.title || 'Banner Title',
-    bannerDesc: bannerData[0]?.description || 'Banner Description'
+    bannerImg: bannerData?.images[0]?.img || HomeHeader,
+    bannerTitle: bannerData?.title || 'Banner Title',
+    bannerDesc: bannerData?.description || 'Banner Description'
   });
 
   return (
