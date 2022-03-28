@@ -63,11 +63,10 @@ function Header() {
                   {/* eslint-disable-next-line  */}
                   <Link href="/blog/Blogs">
                   <a className="nav-link mx-3">BLOGS</a>
-                </Link>  {/* eslint-disable-next-line  *
-                <Link href="/storie/Stoies">
+                </Link>  
+                {/* <Link href="/storie/Stoies">
                   <a className="nav-link mx-3">STORIES</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
+                </Link> */}
                 <Link href="/news/IntoNewsroom">
                   <a className="nav-link mx-3">NEWS</a>
                 </Link>
