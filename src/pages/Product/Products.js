@@ -200,7 +200,7 @@ function Products() {
                         <p className="product-card-para w-100">
                           {product?.description}
                         </p>
-                        <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}>
+                        {/* <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}>
                           <div><span className="icon"><AiFillPlusCircle/></span></div>
                           { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> }
                           <div>
@@ -208,7 +208,7 @@ function Products() {
                               Product Details
                             </span>
                           </div>
-                        </div>
+                        </div> */}
                         <span className="product-Price">
                           <span className="fs-5">₹ {product?.price_after_discount || product?.price }</span>
                           <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
