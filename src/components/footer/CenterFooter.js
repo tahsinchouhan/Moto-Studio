@@ -1,12 +1,28 @@
-import React from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Image from "next/image";
 import footerlogo from "../../../public/images/footerlogo.png";
 import { GrFacebook, GrInstagram, GrAmazon } from "react-icons/gr";
 import LastFooter from "./LastFooter";
+import { apipath } from "../../pages/api/apiPath";
+import Link from "next/link";
 
 function CenterFooter() {
+
+  const [category, setCategory] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${apipath}/api/v1/category/list`);
+      const result = await response.json();
+      // get only active category
+      const filterData = result?.data.filter(list => list.status)
+      setCategory(filterData)
+    }
+    fetchData()
+  }, [])
+  
   return (
     <>
       <div className="center-footer ">
@@ -22,16 +38,16 @@ function CenterFooter() {
                 <Row>
                 <Col sm={4} md={4} lg={4}>
               <div className="footer-cg-herbal">
+
                 <h6 className="footer-center-header ">SHOP</h6>
-                <div>
-                  <div className="footer-cg-para">Sweets</div>
-                  
-                  <div className="footer-cg-para">Cookies</div>
-                  
-                  <div className="footer-cg-para">Honey</div>
-                  
-                  <div className="footer-cg-para">Ayurvedic</div>
-                  
+                <div className="d-flex flex-column">
+                {
+                  category.length ? category.map((cat,index) => <Link 
+                    href={`/product?activeTab=${index}`} 
+                    key={cat._id}> 
+                    <a className="footer-cg-para">{cat.category_name}</a>
+                  </Link>) : null
+                }
                 </div>
               </div>
             </Col>
@@ -39,15 +55,19 @@ function CenterFooter() {
             <Col sm={4} md={4} lg={4}>
             <div className="footer-cg-herbal">
                 <h6 className="footer-center-header">SUPPORT</h6>
-                <div>
-                  <div className="footer-cg-para">Contact Us</div>
-               
-                  <div className="footer-cg-para">FAQ</div>
-               
-                  <div className="footer-cg-para">Privacy Policy</div>
-               
-                  <div className="footer-cg-para">Terms of Use</div>
-               
+                <div className="d-flex flex-column">
+                  {
+                    [
+                      {title:'Contact', href:'/contact'},
+                      {title:'FAQ', href:'/'},
+                      {title:'Privacy Policy', href:'/'},
+                      {title:'Terms of Use', href:'/'}
+                    ].map((ele,index) => <Link 
+                      href={ele.href} 
+                      key={index}> 
+                      <a className="footer-cg-para">{ele.title}</a>
+                    </Link>)
+                  }
                 </div>
               </div>
             </Col>
@@ -78,8 +98,6 @@ function CenterFooter() {
         </Container>
         </div>
       <LastFooter/>
-
-    
     </>
   );
 }

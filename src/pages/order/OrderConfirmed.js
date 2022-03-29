@@ -17,7 +17,7 @@ function OrderConfirmed() {
                 <p className='px-5'>Your order confirmed. You will receive an order confirmation email/SMS shortly with the expected delivery for your items.</p>
 
                 <div className="mt-5">
-                  <button className="btn btn-lg border me-4" onClick={()=>Router.push('/Product/Products')}>CONTINUE SHOPPING </button>
+                  <button className="btn btn-lg border me-4" onClick={()=>Router.push('/product')}>CONTINUE SHOPPING </button>
                   <button className="btn btn-lg btn-primary ms-4" onClick={()=>Router.push({pathname:'/auth/UserProfile', query: { activeTab: 2  }})}>VIEW ORDER</button>
                 </div>
             </div>

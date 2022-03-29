@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
 import image1 from "../../assets/images/product/placeholder.png";
-import Popup from "../../pages/Product/PopUp";
+import Popup from "./PopUp";
 import { MdLocalShipping } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { apipath } from "../api/apiPath";

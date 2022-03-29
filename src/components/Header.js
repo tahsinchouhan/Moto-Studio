@@ -46,32 +46,32 @@ function Header() {
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
                     {/* eslint-disable-next-line  */}
                 <Link href="/">
-                  <a className="nav-link mx-3">HOME-1</a>
+                  <a className="nav-link mx-3">HOME</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/Product/Products">
+                <Link href="/product">
                   <a className="nav-link mx-3">PRODUCTS</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/about/About">
+                <Link href="/about">
                   <a className="nav-link mx-3">ABOUT</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/collaborate/Collaborate">
+                <Link href="/collaborate">
                   <a className="nav-link mx-3">CORPORATE</a>
                 </Link>
                   {/* eslint-disable-next-line  */}
-                  <Link href="/blogs/Blogs">
+                  <Link href="/blogs">
                   <a className="nav-link mx-3">BLOGS</a>
                 </Link>  
                 {/* <Link href="/storie/Stoies">
                   <a className="nav-link mx-3">STORIES</a>
                 </Link> */}
-                <Link href="/news/IntoNewsroom">
+                <Link href="/news">
                   <a className="nav-link mx-3">NEWS</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link eventKey={3} href="/contact/Contact">
+                <Link eventKey={3} href="/contact">
                   <a className="nav-link mx-3"> CONTACT</a>
                 </Link>
               </Nav>
@@ -164,23 +164,23 @@ function Header() {
                   <a className="nav-link mx-3">HOME</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/Product/Products">
+                <Link href="/product">
                   <a className="nav-link mx-3">PRODUCTS</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/about/About">
+                <Link href="/about">
                   <a className="nav-link mx-3">ABOUT</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/collaborate/Collaborate">
+                <Link href="/collaborate">
                   <a className="nav-link mx-3">CORPORATE</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link href="/news/IntoNewsroom">
+                <Link href="/news">
                   <a className="nav-link mx-3">NEWS</a>
                 </Link>
                     {/* eslint-disable-next-line  */}
-                <Link eventKey={3} href="/contact/Contact">
+                <Link eventKey={3} href="/contact">
                   <a className="nav-link mx-3"> CONTACT</a>
                 </Link>
               </Nav>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import React from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import ButtonLight from '../../components/button/ButtonLight';
-import { apipath } from '../api/apiPath';
+import ButtonLight from './button/ButtonLight';
+import { apipath } from '../pages/api/apiPath';
 
 function ContactForm() {
   const [msg, setMsg] = useState('');
@@ -38,7 +38,6 @@ function ContactForm() {
           body: JSON.stringify(inputText)
         })
         const jsonData = await response.json()
-        console.log(jsonData);
         if (jsonData.data) {
           setMsg("Your Query has been Sent Successfully")
           setInputText({

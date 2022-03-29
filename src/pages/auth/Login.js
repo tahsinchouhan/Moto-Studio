@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+// import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -8,14 +8,14 @@ import TextError from "../../components/TextError";
 import * as Yup from "yup";
 import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
-import { useSession, signIn, getProviders, getSession } from "next-auth/react";
+import { signIn, getProviders } from "next-auth/react";
 
-function Login({ providers, session }) {
+function Login({ providers }) {
   const [message, setMessage] = useState(null);
   const router = useRouter();
 
   // const { data: session } = useSession();
-  console.log("session :>> ", session);
+  console.log("providers :>> ", providers);
   const { isLogin } = useContext(CardContext);
 
   useEffect(() => {
@@ -117,7 +117,7 @@ function Login({ providers, session }) {
                         />
                       </div>
 
-                      <div className="social-login-btn d-flex justify-content-between mt-4">
+                      {/* <div className="social-login-btn d-flex justify-content-between mt-4">
                         {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
                           return <div key={provider.id} className="w-50 text-center">
@@ -126,7 +126,7 @@ function Login({ providers, session }) {
                             </button>
                           </div>
                         })}
-                      </div>
+                      </div> */}
 
                       {/* <div
                         className="text-center pt-4"
@@ -167,17 +167,17 @@ function Login({ providers, session }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  // const session = await getSession();
-  const providers = await getProviders();
-  // if (session) {
-  //   return {
-  //     redirect : {destination: "/"}
-  //   }
-  // }
-  return {
-    props: { providers }, // will be passed to the page component as props
-  };
-}
+// export async function getServerSideProps(context) {
+//   // const session = await getSession();
+//   const providers = await getProviders(context);
+//   // if (session) {
+//   //   return {
+//   //     redirect : {destination: "/"}
+//   //   }
+//   // }
+//   return {
+//     props: { providers }
+//   };
+// }
 
 export default Login;
