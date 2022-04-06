@@ -89,7 +89,8 @@ function Shopping() {
 
     data.map((val) => {
       result.push({
-        products: val.product?._id,
+        product_id: val.product?._id,
+        weight_type: val.weight_type,
         quantity: val.quantity,
         price: val.price,
       });
@@ -201,7 +202,7 @@ function Shopping() {
                 <p className="m-0 shopping-p-size">QUANTITY</p>
               </Col>
               <Col lg="2">
-                <p className="m-0 shopping-p-size">TOTAL</p>
+                <p className="m-0 shopping-p-size">PRICE</p>
               </Col>
               <Col lg="2">
                 <p className="m-0 shopping-p-size">TOTAL</p>

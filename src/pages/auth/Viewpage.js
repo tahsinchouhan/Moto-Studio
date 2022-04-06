@@ -28,18 +28,18 @@ function Viewpage({ productData }) {
         </div>
       </div>
       <hr />
-      {productData?.doc?.products_?.map((product) => {
+      {productData?.products_?.map((product) => {
         return <div key={product?._id}>
           <div className="row">
             <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
-              <div className="d-flex p-1">
+              <div className="d-flex p-1">              
                 <div>
-                  <Image src={product.products?.images?.length > 0 ? product.products?.images[0]?.img || flower : flower} alt="" width={136} height={130} />
+                  <Image src={product.product_id?.images?.length > 0 ? product.product_id?.images[0]?.img || flower : flower} alt="" width={136} height={130} />
                 </div>
                 <div className="p-3">
-                  <span>{product?.products?.title || ''}</span>
-                  <p className="dreaming-midnight-x1">{product?.products?.category?.category_name}</p>
-                  <p className="dreaming-midnight-x1">{product?.products?.SKU_Number}</p>
+                  <span>{product?.product_id?.title || ''}</span>
+                  <p className="dreaming-midnight-x1">{product?.product_id?.category?.category_name}</p>
+                  <p className="dreaming-midnight-x1">{product?.product_id?.SKU_Number}</p>
                 </div>
               </div>
             </div>

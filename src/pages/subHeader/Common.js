@@ -22,7 +22,7 @@ function Common({ menuData }) {
                       <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
                         {
                           menu?.products_data?.length && menu?.products_data?.map(product => {
-                            return <Link href={`/Product/${product._id}`} key={product._id}>
+                            return <Link href={`/product/${product._id}`} key={product._id}>
                               <a className="Wildforest cursor-pointer text-muted">{product?.title || ''}</a>
                             </Link> 
                           })

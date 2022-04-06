@@ -103,7 +103,6 @@ function Products() {
     );
     setCheckedState(updatedCheckedState);
   };
-
   return (
     <>
       <div className="all-product-heading">
@@ -180,7 +179,7 @@ function Products() {
                 productData.map((product) => {
                   return (
                     <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
-                      <div className="p-md-3 p-5 mx-auto product-card-hover cursor-pointer" onClick={()=>router.push(`./${product?._id}`)}>
+                      <div className="p-md-3 p-5 mx-auto product-card-hover cursor-pointer" onClick={()=>router.push(`./product/${product?._id}`)}>
                         <div className="w-100">
                           <Image
                             src={
@@ -210,8 +209,8 @@ function Products() {
                           </div>
                         </div> */}
                         <span className="product-Price">
-                          <span className="fs-5">₹ {product?.price_after_discount || product?.price }</span>
-                          <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
+                          <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
+                          { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
                         </span>
                         {item.some((el) => el.product === product?._id) ||
                           item.some((el) => el.product?._id === product?._id) ? (
@@ -223,7 +222,7 @@ function Products() {
                               className="mt-2"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                addProductToCart(product);
+                                addProductToCart(product, product?.weight[0]);
                               }}
                             >
                               <ButtonDark type="submit" className="Add-to-cart-button" text="ADD TO CART"/>

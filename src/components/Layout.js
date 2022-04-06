@@ -69,7 +69,7 @@ function Layout({ children }) {
     });
   };
 
-  const addProductToCart = (data, quantity = 1) => {
+  const addProductToCart = (data, selectedWeight, quantity = 1) => {
     if(!state.isLogin) {
       Router.push('/auth/Login');
       return false
@@ -80,9 +80,12 @@ function Layout({ children }) {
       cart_items: {
         product: data._id,
         SKU_Number:data?.SKU_Number || '',
-        product_weight: data?.weight[0]?.weight_type?.weight_gram || '',
+        product_weight: selectedWeight?.weight_type?.weight_gram || '',
+        weight_type: selectedWeight?.weight_type?._id,
         quantity: quantity,
-        price: data?.price_after_discount || data?.price || 0
+        price: Number(selectedWeight?.price) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0,
+        discount: Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * quantity) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0,
+        total: Number(selectedWeight?.price * quantity) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * quantity) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0
       },
     };
     fetch(apipath + `/api/v1/cart/add-items`, {

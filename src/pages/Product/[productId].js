@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 function ProductDetail({ productData }) {
 
   const [showPopuUp, setShowPopUp] = useState(false);
+  const [selectedWeight, setSelectedWeight] = useState(productData.weight[0]);
   const [listData, setListData] = useState([]);
   const [count, setCount] = useState(1);
   const router = useRouter()
@@ -30,7 +31,7 @@ function ProductDetail({ productData }) {
       console.log(error);
     }
   };
-
+console.log('selectedWeight :>> ', selectedWeight);
   useEffect(() => {
     fetchListData(productData.category._id);
      // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,7 +93,8 @@ function ProductDetail({ productData }) {
                                   type="radio"
                                   name="flexRadioDefault"
                                   id={wt?._id}
-                                  checked={index === 0}
+                                  onChange={() => setSelectedWeight(wt)}
+                                  defaultChecked={index === 0}
                                 />
                                 <label
                                   className="form-check-label ps-1 productName-kg cursor-pointer"
@@ -107,8 +109,24 @@ function ProductDetail({ productData }) {
                       })}
                   </Row>
                 </div>
-                <div className="border">
-                  <Row>
+                <div className="">
+                <div className="input-group">
+                  <input type="text" className="form-control bg-white rounded-0 fs-6" placeholder="Select No. of units" readOnly/>
+                  <span 
+                    className="input-group-text cursor-pointer px-3" 
+                    onClick={() => setCount(prev => {
+                      return (prev - 1) < 1 ? 1 : (prev -1)
+                    })}>-</span>
+                  <span className="input-group-text bg-white justify-content-center productName-counter-no" style={{width: 50}}> {count} </span>
+                  <span 
+                    className="input-group-text cursor-pointer px-3"
+                    onClick={() => setCount(prev => {
+                      return (prev + 1) > selectedWeight.count ? prev : prev + 1
+                    })}
+                    >+</span>
+                </div>
+
+                  {/* <Row>
                     <Col xs={9} sm={9}>
                       <p className="productName-counter-para  my-2">
                         Select No. of units
@@ -137,13 +155,13 @@ function ProductDetail({ productData }) {
                       +
                     </Col>
                    
-                  </Row>
+                  </Row> */}
                 </div>
                 <br/>
                 <div className="product-Price-1 w-100">
                   <span className="fs-2">₹{" "}</span>
-                  <span className="fs-2">{productData?.price_after_discount * count || productData?.price * count || ""}</span>
-                  <span className="text-muted fs-6 ms-3 text-decoration-line-through">{productData?.price_after_discount !== productData?.price ? "₹ " + productData?.price * count : ''}</span>
+                  <span className="fs-2">{ Number(selectedWeight?.price * count) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * count) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value  ) }</span>
+                  { selectedWeight.discount_value && <span className="text-muted fs-6 ms-3 text-decoration-line-through"> ₹ {selectedWeight.price * count || ""}</span> }
                 </div>
                 <div className="my-3">
                   <Row>
@@ -160,7 +178,7 @@ function ProductDetail({ productData }) {
                       <Col
                         xs={6}
                         onClick={(e) => {
-                          addProductToCart(productData, count);
+                          addProductToCart(productData, selectedWeight, count);
                         }}
                       >
                         <ButtonDark text="ADD TO CART" />
@@ -226,7 +244,7 @@ function ProductDetail({ productData }) {
                       <p className="product-card-para w-100">
                         {product?.description || "Description"}
                       </p>
-                      <div
+                      {/* <div
                         className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -246,11 +264,12 @@ function ProductDetail({ productData }) {
                             Product Details
                           </span>
                         </div>
-                      </div>
+                      </div> */}
                       <span className="product-Price">
-                        <span className="fs-5">₹ {product?.price_after_discount || product?.price }</span>
-                        <span className="fs-6 text-muted ms-2 text-decoration-line-through">{product?.price_after_discount !== product?.price ? "₹ " + product?.price : ''}</span>
+                        <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
+                        { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
                       </span>
+                     
                       {item.some((el) => el.product === productData?._id) ||
                       item.some((el) => el.product?._id === product?._id) ? (
                         <div className="mt-2">
@@ -265,7 +284,7 @@ function ProductDetail({ productData }) {
                           className="mt-2"
                           onClick={(e) => {
                             e.stopPropagation();
-                            addProductToCart(product);
+                            addProductToCart(product, product?.weight[0]);
                           }}
                         >
                           <ButtonDark
