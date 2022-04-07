@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react'
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
 import SGHONE from "../../assets/images/about/SHGONE.png";
-import SGHTWO from "../../assets/images/about/SHGTWO.png";
-import SGHTHREE from "../../assets/images/about/SHGTHREE.png";
 import Image from "next/image";
-import { apipath } from '../api/apiPath';
+import { apipath } from '../../pages/api/apiPath';
 
 function EmpoweredGroup() {
   const [empoeredData, setEmpoeredData] = useState([]);
@@ -24,7 +22,6 @@ function EmpoweredGroup() {
     }
     fetchData();
   }, [])
-    console.log(empoeredData);
 
   var settings = {
     dots: true,

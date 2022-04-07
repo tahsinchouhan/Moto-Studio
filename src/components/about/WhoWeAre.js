@@ -3,7 +3,7 @@ import { Row, Container, Col } from 'react-bootstrap';
 import Image from "next/image";
 import aboutWhoFirst from "../../assets/images/about/aboutWhoFirst.jpg";
 import aboutWhoSecond from "../../assets/images/about/aboutWhoSecond.jpg";
-import { apipath } from '../api/apiPath';
+import { apipath } from '../../pages/api/apiPath';
 
 function WhoWeAre() {
   const [aboutData, setAboutData] = useState([]);

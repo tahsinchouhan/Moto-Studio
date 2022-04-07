@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
-import Button from "../../components/button/ButtonLight"
-import Skill from "../../assets/images/about/skill.png";
-import Cultivation from "../../assets/images/about/cultivation.png";
+import Button from "../button/ButtonLight"
 import Microenterprises from "../../assets/images/about/microenterprises.png";
-import { apipath } from '../api/apiPath';
+import { apipath } from '../../pages/api/apiPath';
 
 function AboutNewsroom() {
   const [newsData, setNewsData] = useState([]);
