@@ -29,11 +29,11 @@ function HomeHeaderImg({bannerData}) {
                   <p className="home-header-para-mobile mt-3 ">
                   {/* {banner.bannerDesc} */}
                   </p>
-                  <div className="col-10">
+                  {/* <div className="col-10">
                     <div className="mb-md-5  mt-md-3 mt-4 mb-0">
                     <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
                     </div>
-                  </div>
+                  </div> */}
                 </Col>
               </Row>
             </Col>
@@ -53,9 +53,9 @@ function HomeHeaderImg({bannerData}) {
                   </p>
                   <p className="home-header-para text-center text-md-start">{banner.bannerDesc}</p>
 
-                  <div className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0">
+                  {/* <div className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0">
                     <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
-                  </div>
+                  </div> */}
                 </Col>
               </Row>
             </Col>

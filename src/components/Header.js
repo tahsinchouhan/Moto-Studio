@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
-import { Container, Navbar, Nav, NavDropdown,Offcanvas} from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Offcanvas} from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
 import logo from "/public/images/CGHerbalsLogo.png";
 import menubar from "../../public/images/MenuBurger.png";
 import { CardContext } from '../components/Layout';
+import { MdAccountCircle } from "react-icons/md";
 
 function Header() {
   const { user, totalItem } = useContext(CardContext);
@@ -30,6 +31,15 @@ function Header() {
     handleClose();
     // router.push('/common/Originals')
   };
+  const menus = [
+    {id:1,title:'HOME',href:'/'},
+    {id:2,title:'PRODUCTS',href:'/product'},
+    {id:3,title:'ABOUT',href:'/about'},
+    {id:4,title:'CORPORATE',href:'/collaborate'},
+    {id:5,title:'BLOGS',href:'/blogs'},
+    {id:6,title:'NEWS',href:'/news'},
+    {id:7,title:'CONTACT',href:'/contact'}
+  ]
   return (
     <>
      {/* Destop-view */}
@@ -41,44 +51,21 @@ function Header() {
                 <Image src={logo} width={107} height={63} alt="logo" />
               </div>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
-                    {/* eslint-disable-next-line  */}
-                <Link href="/">
-                  <a className="nav-link mx-3">HOME</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/product">
-                  <a className="nav-link mx-3">PRODUCTS</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/about">
-                  <a className="nav-link mx-3">ABOUT</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/collaborate">
-                  <a className="nav-link mx-3">CORPORATE</a>
-                </Link>
-                  {/* eslint-disable-next-line  */}
-                  <Link href="/blogs">
-                  <a className="nav-link mx-3">BLOGS</a>
-                </Link>  
-                {/* <Link href="/storie/Stoies">
-                  <a className="nav-link mx-3">STORIES</a>
-                </Link> */}
-                <Link href="/news">
-                  <a className="nav-link mx-3">NEWS</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link eventKey={3} href="/contact">
-                  <a className="nav-link mx-3"> CONTACT</a>
-                </Link>
+                {menus.map(menu => (
+                  <Link href={menu.href} key={menu.id}>
+                    <a className="nav-link mx-3">{menu.title}</a>
+                  </Link>
+                ))}
+                {/* eslint-disable-next-line  */}
               </Nav>
               <Nav>
                 <div className="pt-1 d-flex align-items-center">
                 {user ? (
                   <>
+                  {/* <MdAccountCircle  /> */}
                   <div className="user-profile">
                     <Link href="/auth/UserProfile">
                       <a className="nav-Login text-black">{user.userData.full_Name}</a>
@@ -159,65 +146,13 @@ function Header() {
               </Offcanvas.Header>
               <Offcanvas.Body onClick={handleClose}>
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
-                    {/* eslint-disable-next-line  */}
-                <Link href="/">
-                  <a className="nav-link mx-3">HOME</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/product">
-                  <a className="nav-link mx-3">PRODUCTS</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/about">
-                  <a className="nav-link mx-3">ABOUT</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/collaborate">
-                  <a className="nav-link mx-3">CORPORATE</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link href="/news">
-                  <a className="nav-link mx-3">NEWS</a>
-                </Link>
-                    {/* eslint-disable-next-line  */}
-                <Link eventKey={3} href="/contact">
-                  <a className="nav-link mx-3"> CONTACT</a>
-                </Link>
-              </Nav>
-              {/* <Nav>
-                <div>
-                <select
-                    className="product-select"
-                    aria-label="Default select example"
-                  >
-                    <option selected>NRI</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                &nbsp; &nbsp;
-                <div className="pt-1 d-flex">
-                  <Link href="/">
-                    <a className="cg-header-a-tag">
-                      <BsSearch className />
-                    </a>
-                  </Link>
-                  &nbsp; &nbsp;
-                  <div onClick={iconHandler}>
-                    <Link href="/shopping/Shopping
-">
-                      <a className="cg-header-a-tag">
-                      <BsFillCartFill
-                          className={`${
-                            activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
-                          }`}
-                        />
-                      </a>
+                {menus.map(menu => (
+                    <Link href={menu.href} key={menu.id}>
+                      <a className="nav-link mx-3">{menu.title}</a>
                     </Link>
-                  </div>
-                </div>
-              </Nav> */}
+                  ))}
+                  {/* eslint-disable-next-line  */}
+              </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             {/* </Container> */}

@@ -6,12 +6,35 @@ import Image from "next/image";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
 import emptyImage from '../../assets/images/product/placeholder.png';
 import VisitTheShop from './VisitTheShop'
+import Slider from 'react-slick/lib/slider';
 
 function FeaturedProducts({ category }) {
   const list = category?.length > 0 ? category[0]._id : null || null;
   const [categoryId, setCategoryId] = useState(list);
   const getCategoryId = (id) => setCategoryId(id)
-
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [      
+      {
+        breakpoint: 678,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
     <>
       <h1 className="text-center mb-2 mt-5 feature-products-text">
@@ -23,21 +46,23 @@ function FeaturedProducts({ category }) {
 
       <div className="overflow-style">
         <div className="image-div1">
-        {
-          category?.length && category?.map((cat) => {                       
-            return <div className="image-div" key={cat._id} onClick={()=>getCategoryId(cat?._id)}>
-            <div className="rounded-circle">
-              <Image
-                src={cat?.images[0]?.img || emptyImage}
-                alt="GourmetFoods"
-                className="rounded-circle hover1"
-                width={160} height={160}
-              />
-              <p className=" feature-products-texts p-1 ">{cat?.category_name || 'Category Name'}</p>
+          <Slider {...settings}>
+          {
+            category?.length && category?.map((cat) => {                       
+              return <div className="image-div" key={cat._id} onClick={()=>getCategoryId(cat?._id)}>
+              <div className="rounded-circle">
+                <Image
+                  src={cat?.images[0]?.img || emptyImage}
+                  alt="GourmetFoods"
+                  className="rounded-circle hover1"
+                  width={160} height={160}
+                />
+                <p className=" feature-products-texts p-1 ">{cat?.category_name || 'Category Name'}</p>
+              </div>
             </div>
-          </div>
-          })
-        }
+            })
+          }
+        </Slider>
         </div>
       </div>
       <VisitTheShop categoryId={categoryId} />
