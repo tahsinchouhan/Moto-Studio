@@ -87,7 +87,7 @@ function Header() {
                   <div className="user-profile position-relative">
                     <button className="btn border-0" ref={ref} onClick={() => setViewDropDown(!viewDropDown)}>
                       {/* <MdAccountCircle style={{fontSize:24}} className="cursor-pointer" /> */}
-                      {user.userData.full_Name.split(' ')[0]}
+                      {user?.userData?.full_Name?.split(' ')[0] || 'Profile'}
                     </button>
                     { viewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
                         <li>
