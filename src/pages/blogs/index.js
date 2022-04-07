@@ -36,16 +36,16 @@ function Blogs({blogList}) {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" />  February
                       </span>
-                      February
+                    
                     </Dropdown.Item>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" />  January
                       </span>
-                      January
+                    
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -61,28 +61,28 @@ function Blogs({blogList}) {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" /> December
                       </span>
-                      December
+                      
                     </Dropdown.Item>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" /> November
                       </span>
-                      November
+                      
                     </Dropdown.Item>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" /> October
                       </span>
-                      October
+                      
                     </Dropdown.Item>
                     <Dropdown.Item href="#" className="calender-filter-months">
-                      <span>
-                        <BsFillCaretRightFill className="blogs-calender-icon" />
+                      <span className="text-dark">
+                        <BsFillCaretRightFill className="blogs-calender-icon" /> September
                       </span>
-                      September
+                      
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

@@ -89,7 +89,7 @@ function Login({ providers }) {
                         <label htmlFor="email">Username / Mobile no.</label>
                         <Field
                           className="form-control px-2"
-                          type="email"
+                          type="text"
                           name="email"
                           placeholder="Enter Username"
                           autoComplete="off"

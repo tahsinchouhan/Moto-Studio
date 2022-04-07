@@ -16,7 +16,7 @@ function Header() {
   const [activeIcon, setActiveIcon] = useState(false);
   const [viewDropDown, setViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
-  const ref = useRef();
+  const usermenuRef = useRef();
   const router = useRouter();
 
   const handleClose = () => setExpand(false);
@@ -28,14 +28,18 @@ function Header() {
 
   useEffect(() => {
     const closedDropdown = e => { 
-      if(e.path[0] !== ref.current){
+      console.log('usermenuRef :>> ', viewDropDown);
+      if(viewDropDown && !usermenuRef.current.contains(e.target)){
         setViewDropDown(false)
       }
+      // if(e.path[0] !== usermenuRef.current){
+      //   setViewDropDown(false)
+      // }
     }
-    document.body.addEventListener('click', closedDropdown)
+    document.body.addEventListener('mousedown', closedDropdown)
   
-    return () => document.body.removeEventListener('click', closedDropdown)
-  }, [])
+    return () => document.body.removeEventListener('mousedown', closedDropdown)
+  })
   
 
   const originalHandler = () => {
@@ -84,18 +88,18 @@ function Header() {
                 <div className="pt-1 d-flex align-items-center">
                 {user ? (
                   <>
-                  <div className="user-profile position-relative">
-                    <button className="btn border-0" ref={ref} onClick={() => setViewDropDown(!viewDropDown)}>
+                  <div className="user-profile position-relative" ref={usermenuRef} >
+                    <button className="btn border-0" onClick={() => setViewDropDown(!viewDropDown)}>
                       {/* <MdAccountCircle style={{fontSize:24}} className="cursor-pointer" /> */}
                       {user?.userData?.full_Name?.split(' ')[0] || 'Profile'}
                     </button>
                     { viewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
-                        <li>
+                        <li onClick={()=>setViewDropDown(false)}>
                           <Link href="/auth/UserProfile">
                             <a className="dropdown-item text-black">Your Profile</a>
                           </Link>
                         </li>
-                        <li>
+                        <li onClick={()=>setViewDropDown(false)}>
                           <Link href="/auth/UserProfile">
                             <a className="dropdown-item text-black">Your Order</a>
                           </Link>

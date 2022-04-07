@@ -80,62 +80,30 @@ function IntoNewsroom() {
                   <div>
                   {
                     dateList.length > 0 && [...new Set(dateList.map(item => item.year))].map(year=>{
-                      return <Dropdown className="d-inline mx-2" key={year}>
-                        <Dropdown.Toggle id="dropdown-autoclose-true">
-                          <span>
-                            <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
-                          </span>
-                          {year}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                          {
-                            [...new Set(dateList.map(item => item.month))].filter(value => value === `${value.split('-')[0]}-${year}`).map((month,index)=>{
-                              return <Dropdown.Item href="#" key={index} onClick={()=>filterNews(month)}>
-                                <span>
-                                  <BsFillCaretRightFill className="news-icon"/>
-                                </span>
-                                {month.split('-')[0]}
-                              </Dropdown.Item>
-                            })
-                          }
-                        </Dropdown.Menu>
-                      </Dropdown>
+                      return <div className="blog-calender-2022">
+                        <Dropdown className="d-inline my-2" key={year}>
+                          <Dropdown.Toggle id="dropdown-autoclose-true">
+                            <span>
+                              <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
+                            </span>
+                            {year}
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            {
+                              [...new Set(dateList.map(item => item.month))].filter(value => value === `${value.split('-')[0]}-${year}`).map((month,index)=>{
+                                return <Dropdown.Item href="#" key={index} onClick={()=>filterNews(month)}>
+                                  <span className='text-dark'>
+                                    <BsFillCaretRightFill className="news-icon"/> {month.split('-')[0]}
+                                  </span>
+                                  
+                                </Dropdown.Item>
+                              })
+                            }
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
                     })
                   }
-                    {/* <Dropdown className="d-inline mx-2">
-                      <Dropdown.Toggle id="dropdown-autoclose-true">
-                        <span>
-                          <BsFillCaretRightFill className="into-newsroom-calender-arrow" />
-                        </span>
-                        2021
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item href="#">
-                          <span>
-                            <BsFillCaretRightFill className="news-icon"/>
-                          </span>
-                          December
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#">
-                          <span>
-                            <BsFillCaretRightFill className="news-icon"/>
-                          </span>
-                          Novemer
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#">
-                          <span>
-                            <BsFillCaretRightFill className="news-icon"/>
-                          </span>
-                          October
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#">
-                          <span>
-                            <BsFillCaretRightFill className="news-icon"/>
-                          </span>
-                          September
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown> */}
                   </div>
                 </div>
               </Col>
