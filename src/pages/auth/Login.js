@@ -157,7 +157,7 @@ function Login({ providers }) {
             <span>
               Don’t have a login ID? &nbsp;
               <Link href="/auth/Register">
-                <a>Register Here</a>
+                <a className="text-primary">Register Here</a>
               </Link>
             </span>
           </div>

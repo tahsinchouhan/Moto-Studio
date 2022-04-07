@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Container, Navbar, Nav, NavDropdown, Offcanvas} from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
@@ -6,31 +6,50 @@ import Image from "next/image";
 import logo from "/public/images/CGHerbalsLogo.png";
 import menubar from "../../public/images/MenuBurger.png";
 import { CardContext } from '../components/Layout';
-import { MdAccountCircle } from "react-icons/md";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function Header() {
   const { user, totalItem } = useContext(CardContext);
   // console.log('user :>> ', user);
-
+  const { data: session } = useSession();
   const [activeIcon, setActiveIcon] = useState(false);
   const [viewDropDown, setViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
-
+  const ref = useRef();
+  const router = useRouter();
 
   const handleClose = () => setExpand(false);
   const handleShow = () => setExpand("expanded");
 
   const iconHandler = () => {
     setActiveIcon(true);
-    console.log("setActiveIcon");
   };
 
+  useEffect(() => {
+    const closedDropdown = e => { 
+      if(e.path[0] !== ref.current){
+        setViewDropDown(false)
+      }
+    }
+    document.body.addEventListener('click', closedDropdown)
+  
+    return () => document.body.removeEventListener('click', closedDropdown)
+  }, [])
+  
+
   const originalHandler = () => {
-    console.log("originalll");
     setExpand(false);
     handleClose();
     // router.push('/common/Originals')
   };
+
+  const Logout = () => {
+    if(session) signOut();
+    localStorage.removeItem("cg-herbal-userData");
+    router.reload("/auth/Login");
+  };
+
   const menus = [
     {id:1,title:'HOME',href:'/'},
     {id:2,title:'PRODUCTS',href:'/product'},
@@ -65,11 +84,29 @@ function Header() {
                 <div className="pt-1 d-flex align-items-center">
                 {user ? (
                   <>
-                  {/* <MdAccountCircle  /> */}
-                  <div className="user-profile">
-                    <Link href="/auth/UserProfile">
-                      <a className="nav-Login text-black">{user.userData.full_Name}</a>
-                    </Link>
+                  <div className="user-profile position-relative">
+                    <button className="btn border-0" ref={ref} onClick={() => setViewDropDown(!viewDropDown)}>
+                      {/* <MdAccountCircle style={{fontSize:24}} className="cursor-pointer" /> */}
+                      {user.userData.full_Name.split(' ')[0]}
+                    </button>
+                    { viewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
+                        <li>
+                          <Link href="/auth/UserProfile">
+                            <a className="dropdown-item text-black">Your Profile</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/auth/UserProfile">
+                            <a className="dropdown-item text-black">Your Order</a>
+                          </Link>
+                        </li>
+                        <li onClick={Logout}>
+                          <Link href="/#">
+                            <a className="dropdown-item text-black">Sign Out</a>
+                          </Link>
+                        </li>
+                      </ul>
+                    }
                   </div>
                   &nbsp; &nbsp;
                   <div onClick={iconHandler}>
