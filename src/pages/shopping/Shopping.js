@@ -139,6 +139,7 @@ function Shopping() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             user_id: user.userData._id,
+            email: user.userData.email,
             products: result,
             promocode: promoValue ? {
               promocode_id: promoValue?.promocode_id || '',

@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Field, Form, Formik, ErrorMessage } from "formik";
+import TextError from '../../components/TextError';
 import * as Yup from "yup";
 import { BsFillLockFill } from "react-icons/bs";
 import ButtonDark from "../../components/button/ButtonDark"
+import { apipath } from "../api/apiPath";
 
 function ForgotPassword() {
+
+  const [message, setMessage] = useState('')
 
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Required"),
@@ -15,8 +19,22 @@ function ForgotPassword() {
   const initialValues = {
     email: "",
   };
-  const onSubmit = () => {
-    console.log("onSubmit");
+
+  const onSubmit = async (values) => {
+    try {
+      const res = await fetch(apipath + `/api/v1/users/forgot`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({email: values.email}),
+      });
+      const result = await res.json();
+      if(result) {
+        setMessage(result.message)
+        initialValues.email = ""
+      }
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
   };
   
 
@@ -36,6 +54,7 @@ function ForgotPassword() {
                     <h1 className="m-2 text-center">Forgot - Password</h1>
                   </div>
                 </div>
+                {console.log(formik)}
                 <div className="Forgot_div">
                   <Form>
                     <div className="text-center pt-2">
@@ -58,6 +77,8 @@ function ForgotPassword() {
                       </p>
                     </div>
                     </div>
+                   <div className="text-success text-center fw-bold">{message}</div>
+
                    <div className="forgot-input">
                    <div className="form-group user-field">
                       <label className="pb-1 pt-2 fw-bold" htmlFor="email">
@@ -70,11 +91,12 @@ function ForgotPassword() {
                         placeholder=""
                         autoComplete="off"
                       />
+                      <ErrorMessage name="email" component={TextError} />
                     </div>
                    </div>
 
                     <div className="text-center">
-                    <ButtonDark text="Login" className="btn btn-submit"/>
+                      <ButtonDark type="submit" text="Submit" className="btn btn-submit"/>
                     </div>
                   </Form>
                 </div>

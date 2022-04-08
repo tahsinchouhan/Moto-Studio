@@ -94,7 +94,8 @@ function Products() {
       },
       ''
     );
-    if (query !== "") fetchData(query);
+    // if (query !== "") fetchData(query);
+    fetchData(query);
   }, [checkedState, category])
 
   const handleOnChange = (position) => {
@@ -175,8 +176,8 @@ function Products() {
             </Row>
 
             <Row className="justify-content-start">
-              {productData.length && !loading ?
-                productData.map((product) => {
+              {!loading ?
+                productData.length &&  productData.map((product) => {
                   return (
                     <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
                       <div className="p-md-3 p-5 mx-auto product-card-hover cursor-pointer" onClick={()=>router.push(`./product/${product?._id}`)}>

@@ -30,7 +30,7 @@ function Home({ category, bannerData }) {
       .then((result) => {
         if (result.user && result.token) {
           localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
-          router.reload("/auth/UserProfile");
+          // router.push("/auth/UserProfile");
         }
       }).catch((err) => {
         console.log('err :>> ', err);

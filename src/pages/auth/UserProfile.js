@@ -11,10 +11,13 @@ import { CardContext } from '../../components/Layout';
 import Router from 'next/router';
 import TextError from '../../components/TextError';
 import { useSession, signOut } from "next-auth/react";
+import ButtonDark from "../../components/button/ButtonDark";
+import { apipath } from "../api/apiPath";
 
 function UserProfile() {
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(0);
+  const [message, setMessage] = useState('');
   const { data: session } = useSession();
   const { isLogin, user } = useContext(CardContext);
 
@@ -31,25 +34,44 @@ function UserProfile() {
   };
 
   const validationSchema = Yup.object({
+    full_Name: Yup.string().required("This field is required"),
     email: Yup.string().required("This field is required"),
-    password: Yup.string().required("This field is required"),
+    address: Yup.string().required("This field is required"),
   });
 
   const initialValues = {
     full_Name: user?.userData?.full_Name || '',
     email: user?.userData?.email || '',
+    password: '',
     mobile: user?.userData?.mobile || '',
     dob: user?.userData?.dob || '',
     gender: user?.userData?.gender || '',
     address: user?.userData?.address || '',
-    city: user?.userData?.city || '',
-    pin_code: user?.userData?.pin_code || '',
-    state: user?.userData?.state || '',
-    country: user?.userData?.country || '',
-
   };
-  const onSubmit = () => {
-    console.log("onSubmit");
+
+  
+
+  const onSubmit = async (values) => {
+    console.log('object :>> ', values);
+    try {
+      const res = await fetch(apipath + `/api/v1/users/update/${user?.userData?._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_Name: values.full_Name,
+          password: values.password,
+          dob: values.dob,
+          gender: values.gender,
+          address: values.address,
+        }),
+      });
+      const result = await res.json();
+      if(result) {
+        setMessage('Update Successfully!')
+      }
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
   };
 
 
@@ -179,8 +201,9 @@ function UserProfile() {
                                         </label>
                                         <Field
                                           className="form-control px-2"
-                                          type="number"
+                                          type="text"
                                           name="mobile"
+                                          readOnly
                                         />
                                         <ErrorMessage name="mobile" component={TextError} />
                                       </div>
@@ -220,10 +243,11 @@ function UserProfile() {
                                         </label>
                                         <Field
                                           className="form-control px-2"
-                                          type="text"
+                                          type="email"
                                           name="email"
                                           placeholder="Entername"
                                           autoComplete="off"
+                                          readOnly
                                         />
                                         <ErrorMessage name="email" component={TextError} />
                                       </div>
@@ -297,7 +321,7 @@ function UserProfile() {
                               </div>
                             </div>
 
-                            <div className="form-div pt-4 pb-5">
+                            <div className="form-div pt-4">
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="userprofile-card bg-light">
@@ -308,86 +332,27 @@ function UserProfile() {
                                         </h4>
                                       </div>
                                       <div className="form-group user-field">
-                                        <label htmlFor="Address">Address</label>
-                                        <Field
+                                        <label htmlFor="Address">Enter Full Address</label>
+                                        <Field as ='textarea'
                                           className="form-control px-2"
                                           type="text"
                                           name="address"
-                                          autoComplete="off"
+                                          rows="4"
                                         />
-                                      </div>
-                                      <div className="form-group user-field">
-                                        <Row>
-                                          <Col sm={12} md={6}>
-                                            <label
-                                              htmlFor="address"
-                                              className="mt-3"
-                                            >
-                                              Town/City
-                                            </label>
-                                            <Field
-                                              className="form-control px-2"
-                                              type="text"
-                                              name="city"
-                                              placeholder="Type here"
-                                            />
-                                          </Col>
-                                          <Col sm={12} md={6}>
-                                            <label
-                                              htmlFor="number"
-                                              className="mt-3"
-                                            >
-                                              Pincode
-                                            </label>
-                                            <Field
-                                              className="form-control px-2"
-                                              type="number"
-                                              name="pin_code"
-                                              placeholder="Enter password"
-                                            />
-                                          </Col>
-                                        </Row>
-                                      </div>
-                                      <div className="form-group user-field">
-                                        <Row>
-                                          <Col sm={12} md={6}>
-                                            <label
-                                              htmlFor="text"
-                                              className="mt-3"
-                                            >
-                                              State
-                                            </label>
-                                            <Field as="select"
-                                              name="state"
-                                              className="form-select"
-                                              aria-label="Default select example"
-                                            >
-                                              <option value="">Select State</option>
-                                              <option value="1">Korba</option>
-                                              <option value="2">Raipur</option>
-                                              <option value="3">Nagpur</option>
-                                            </Field>
-                                          </Col>
-                                          <Col sm={12} md={6}>
-                                            <label
-                                              htmlFor="text"
-                                              className="mt-3"
-                                            >
-                                              Country
-                                            </label>
-                                            <Field
-                                              className="form-control px-2"
-                                              type="text"
-                                              name="country"
-                                              placeholder="INDIA"
-                                            />
-                                          </Col>
-                                        </Row>
+                                         <ErrorMessage name="address" component={TextError} />
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                            </div>
+                            <div className="text-center mb-4">
+                              <ButtonDark
+                                type="submit"
+                                text="Update"
+                                className="btn btn-submit"
+                              />
+                            <span className="text-success">{message}</span>
                             </div>
                           </Form>
                         );

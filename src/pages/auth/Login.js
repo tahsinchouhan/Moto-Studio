@@ -14,8 +14,9 @@ function Login({ providers }) {
   const [message, setMessage] = useState(null);
   const router = useRouter();
 
+  // console.log('getProvider()', getProviders())
   // const { data: session } = useSession();
-  console.log("providers :>> ", providers);
+  // console.log("providers :>> ", providers);
   const { isLogin } = useContext(CardContext);
 
   useEffect(() => {
@@ -38,7 +39,6 @@ function Login({ providers }) {
     try {
       const options = {redirect: false, email:values.email, password:values.password}
       const re = await signIn('credentials', options)
-      console.log('re :>> ', re);
       const response = await fetch(apipath + `/api/v1/users/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ function Login({ providers }) {
         // router.push('/auth/UserProfile');
         router.reload("/auth/UserProfile");
       }
-      if (result.error) setMessage("Username or Password Incorrect");
+      if (result.error) setMessage(result.message);
     } catch (error) {
       console.log(error);
       setMessage(error.response.data.message);
@@ -117,7 +117,7 @@ function Login({ providers }) {
                         />
                       </div>
 
-                      {/* <div className="social-login-btn d-flex justify-content-between mt-4">
+                      {providers && <div className="social-login-btn d-flex justify-content-center mt-4">
                         {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
                           return <div key={provider.id} className="w-50 text-center">
@@ -126,7 +126,7 @@ function Login({ providers }) {
                             </button>
                           </div>
                         })}
-                      </div> */}
+                      </div> }
 
                       {/* <div
                         className="text-center pt-4"
@@ -167,17 +167,17 @@ function Login({ providers }) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   // const session = await getSession();
-//   const providers = await getProviders(context);
-//   // if (session) {
-//   //   return {
-//   //     redirect : {destination: "/"}
-//   //   }
-//   // }
-//   return {
-//     props: { providers }
-//   };
-// }
+export async function getServerSideProps(context) {
+  // const session = await getSession();
+  const providers = await getProviders(context);
+  // if (session) {
+  //   return {
+  //     redirect : {destination: "/"}
+  //   }
+  // }
+  return {
+    props: { providers }
+  };
+}
 
 export default Login;
