@@ -52,11 +52,7 @@ function UserProfile() {
     console.log("onSubmit");
   };
 
-  const Logout = () => {
-    if(session) signOut();
-    localStorage.removeItem("cg-herbal-userData");
-    Router.reload("/auth/Login");
-  };
+
   return (
     <>
       <div>
@@ -89,7 +85,7 @@ function UserProfile() {
                     <div className="user-Hr">
                       <hr />
                     </div>
-                    <Row>
+                    {/* <Row>
                       <Col>
                         <div
                           className={
@@ -103,10 +99,10 @@ function UserProfile() {
                           <BsChevronRight />
                         </div>
                       </Col>
-                    </Row>
-                    <div className="user-Hr">
+                    </Row> */}
+                    {/* <div className="user-Hr">
                       <hr />
-                    </div>
+                    </div> */}
 
                     <Row>
                       <Col>
@@ -124,6 +120,7 @@ function UserProfile() {
                     <div className="user-Hr">
                       <hr />
                     </div>
+{/*                     
                     <Row>
                       <Col>
                         <div
@@ -136,7 +133,7 @@ function UserProfile() {
                           <BsChevronRight />
                         </div>
                       </Col>
-                    </Row>
+                    </Row> */}
                   </div>
                 </div>
               </Col>
@@ -161,7 +158,6 @@ function UserProfile() {
                                     <div className="card-body p-4">
                                       <div className="card-heading d-flex justify-content-between">
                                         <h4 className=" mb-2">User Details</h4>
-                                        <button type="button" onClick={Logout}>SignOut</button>
                                       </div>
                                       <div className="form-group user-field">
                                         <label htmlFor="name">Name</label>
@@ -398,19 +394,19 @@ function UserProfile() {
                       }}
                     </Formik>
                 </Col>
-                  <Col sm={12} md={4} lg={4}>
+                  {/* <Col sm={12} md={4} lg={4}>
                    <div className="hello-user-hand d-none d-md-block">
                    <Image src={HelloUser} alt="evd" />
                    </div>
-                  </Col>
+                  </Col> */}
                 </Row>
                 </>
                 ) : (
                   ""
                 )}
-                {profileActive == 1 ?  <><PaymentMethods/></>:"" }
+                {/* {profileActive == 1 ?  <><PaymentMethods/></>:"" } */}
                 {profileActive == 2 ? <><OrderHistory/></> : ""}
-                {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""}
+                {/* {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""} */}
               </Col>
              
             </Row>
