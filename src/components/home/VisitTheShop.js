@@ -33,6 +33,73 @@ function VisitTheShop({categoryId}) {
   return (
     <>
       <Container>
+
+        {/* <div className="grid-container">
+        { featured?.length ? featured.slice(0, 5).map((elem,index) => (
+            <div key={index} className={`grid-item-${index} border`}>
+              <Card className="VisitTheShop-cards hover-div1">
+                <Image 
+                  src={elem?.products_id?.images.length ? elem?.products_id?.images[0]?.img || emptyImage : emptyImage} 
+                  alt="AmlaMurabba" 
+                  width={100}
+                  height={180}
+                  objectFit="cover"
+                />
+                <div className=" row hover-div bg-light">
+                  <Row>
+                    <Col xs={4}>
+                      <FaEye className="icon1-hover d-inline" />
+                    </Col>
+                    <Col xs={4}>
+                      <FaHeart className="icon2-hover d-inline" />
+                    </Col>
+                    <Col xs={4}>
+                      <FaShoppingCart className="icon3-hover d-inline" />
+                    </Col>
+                  </Row>
+                </div>
+                <Card.Body className="p-3 pb-0">
+                    <Card.Title className="m-0 visit-card-title">
+                      {elem?.products_id?.title || 'Default Title'}
+                    </Card.Title>
+                    <div className="d-flex justify-content-between">
+                      <Card.Text className="visit-card-weight">{elem?.products_id?.weight[0]?.weight_type?.weight_gram || 0}</Card.Text>
+                      <Card.Text className="visit-card-weight">₹ {elem?.products_id?.price || 0}</Card.Text>
+                    </div>
+                  </Card.Body>
+              </Card>
+            </div>
+        )) : null }
+        </div> */}
+
+        <style jsx>{`
+        .grid-container{
+          display:grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows:minmax(150px, auto);
+          grid-gap: 20px;
+          padding:10px;
+        }
+
+        .grid-item-1 {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+
+        .grid-item-2 {
+          grid-column-start: 2;
+          grid-column-end: 4;
+          grid-row-start: 1;
+          grid-row-end: 3;
+        }
+
+        @media (max-width: 600px) {
+          
+        }
+      `}</style>
+
         <div className="visit-the-shop-div ">
           <hr className="visit-the-shop-hr mb-5" />
           {

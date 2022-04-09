@@ -8,15 +8,17 @@ import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
 import PaymentMethods from "./PaymentMethods";
 import { CardContext } from '../../components/Layout';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import TextError from '../../components/TextError';
 import { useSession, signOut } from "next-auth/react";
 import ButtonDark from "../../components/button/ButtonDark";
 import { apipath } from "../api/apiPath";
 
 function UserProfile() {
+  const router = useRouter();
+  const { activeTab } = router.query;
   const [showProfile, setShowProfile] = useState(0);
-  const [profileActive, setProfileActive] = useState(0);
+  const [profileActive, setProfileActive] = useState(activeTab || 2);
   const [message, setMessage] = useState('');
   const { data: session } = useSession();
   const { isLogin, user } = useContext(CardContext);
@@ -26,6 +28,11 @@ function UserProfile() {
       Router.push('/auth/Login')
     }
   }, [isLogin])
+
+  useEffect(() => {
+    setProfileActive(activeTab)
+  }, [activeTab])
+  
 
   const userPofileHandler = () => {
     setShowProfile(0);
@@ -48,8 +55,6 @@ function UserProfile() {
     gender: user?.userData?.gender || '',
     address: user?.userData?.address || '',
   };
-
-  
 
   const onSubmit = async (values) => {
     console.log('object :>> ', values);

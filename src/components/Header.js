@@ -95,12 +95,12 @@ function Header() {
                     </button>
                     { viewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
                         <li onClick={()=>setViewDropDown(false)}>
-                          <Link href="/auth/UserProfile">
+                          <Link href="/auth/UserProfile?activeTab=0">
                             <a className="dropdown-item text-black">Your Profile</a>
                           </Link>
                         </li>
                         <li onClick={()=>setViewDropDown(false)}>
-                          <Link href="/auth/UserProfile">
+                          <Link href="/auth/UserProfile?activeTab=2">
                             <a className="dropdown-item text-black">Your Order</a>
                           </Link>
                         </li>

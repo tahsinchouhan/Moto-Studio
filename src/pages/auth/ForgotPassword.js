@@ -54,7 +54,7 @@ function ForgotPassword() {
                     <h1 className="m-2 text-center">Forgot - Password</h1>
                   </div>
                 </div>
-                {console.log(formik)}
+                {/* {console.log(formik)} */}
                 <div className="Forgot_div">
                   <Form>
                     <div className="text-center pt-2">
