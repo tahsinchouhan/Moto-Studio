@@ -63,15 +63,15 @@ function Viewpage({ productData }) {
         <div className="d-flex justify-content-between align-items-center flex-wrap">
           <div>
             <strong>Recipient:</strong>
-            Name: {user?.userData?.full_Name} <br/> address: {productData?.doc?.address || ''}<br/> mobile: {user?.userData?.mobile} <br/>
-            <strong>Payment Mode: {productData?.doc?.payment_method || ''}</strong>
+            Name: {user?.full_Name} <br/> address: {user?.address || ''}<br/> mobile: {user?.mobile} <br/>
+            <strong>Payment Mode: {productData?.payment_method || ''}</strong>
           </div>
-          {productData?.doc?.tracking.length > 0 ? (
+          {productData?.tracking.length > 0 ? (
             <div>
               
             <p>
-              Tracking Code: {productData?.doc?.tracking[0]?.code || ''} <br/>
-              <Link href={productData?.doc?.tracking[0]?.url || ''}>
+              Tracking Code: {productData?.tracking[0]?.code || ''} <br/>
+              <Link href={productData?.tracking[0]?.url || ''}>
                 <a className="btn btn-info btn-sm text-white" target="_blank">Track Order</a>
               </Link>
             </p>

@@ -1,29 +1,26 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 // import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { apipath } from "../api/apiPath";
+// import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
 import * as Yup from "yup";
 import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
-import { signIn, getProviders } from "next-auth/react";
+import { signIn, getProviders, getSession } from "next-auth/react";
 
 function Login({ providers }) {
   const [message, setMessage] = useState(null);
   const router = useRouter();
-
-  // console.log('getProvider()', getProviders())
-  // const { data: session } = useSession();
   // console.log("providers :>> ", providers);
-  const { isLogin } = useContext(CardContext);
+  const { authenticating, isLogin, loginRequest, loginSuccess, loginFailure, fetchCartData } = useContext(CardContext);
 
   useEffect(() => {
     if (isLogin) {
       router.push("/auth/UserProfile");
     }
-  }, [isLogin, router]);
+  }, []);
 
   const initialValues = {
     email: "",
@@ -37,23 +34,36 @@ function Login({ providers }) {
 
   const onSubmit = async (values, onSubmitProps) => {
     try {
+      loginRequest()
       const options = {redirect: false, email:values.email, password:values.password}
-      const re = await signIn('credentials', options)
-      const response = await fetch(apipath + `/api/v1/users/signin`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
-      });
-      const result = await response.json();
-      if (result.user && result.token) {
-        localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
-        // router.push('/auth/UserProfile');
-        router.reload("/auth/UserProfile");
+      const result  = await signIn('credentials', options)
+      console.log('login', result)
+      if(!result?.error){
+        const session = await getSession();
+        loginSuccess(session)
+        fetchCartData(session)
+        localStorage.setItem("cg-herbal-userData", JSON.stringify(session));
+        router.replace(`/`)
+      } else {
+        loginFailure(result.error)
+        setMessage(result.error)
       }
-      if (result.error) setMessage(result.message);
+
+      // const response = await fetch(apipath + `/api/v1/users/signin`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     email: values.email,
+      //     password: values.password,
+      //   }),
+      // });
+      // const result = await response.json();
+      // if (result.user && result.token) {
+      //   localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
+      //   // router.push('/auth/UserProfile');
+      //   router.reload("/auth/UserProfile");
+      // }
+      // if (result.error) setMessage(result.message);
     } catch (error) {
       console.log(error);
       setMessage(error.response.data.message);
@@ -112,8 +122,9 @@ function Login({ providers }) {
                       <div className="text-center pt-5">
                         <ButtonDark
                           type="submit"
-                          text="Login"
+                          text={authenticating ? 'Authenticating...' : 'Login'}
                           className="btn btn-submit"
+                          disabled={authenticating}
                         />
                       </div>
 
@@ -168,13 +179,13 @@ function Login({ providers }) {
 }
 
 export async function getServerSideProps(context) {
-  // const session = await getSession();
+  const session = await getSession(context);
   const providers = await getProviders(context);
-  // if (session) {
-  //   return {
-  //     redirect : {destination: "/"}
-  //   }
-  // }
+  if (session) {
+    return {
+      redirect : {destination: "/"}
+    }
+  }
   return {
     props: { providers }
   };

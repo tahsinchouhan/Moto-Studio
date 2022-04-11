@@ -1,5 +1,63 @@
 export const reducer = (state, action) => {
-  
+    if(action.type === 'LOGIN_REQUEST'){
+        return { 
+            ...state,
+            authenticating:true,
+        }
+    }
+
+    if(action.type === 'LOGIN_SUCCESS'){
+        return { 
+            ...state,
+            authenticating:false,
+            user:action.payload.user,
+            isLogin: true
+        }
+    }
+
+    if(action.type === 'LOGIN_FAILURE'){
+        return { 
+            ...state,
+            authenticating:false,
+            isLogin: false,
+            error:action.payload
+        }
+    }
+
+    if(action.type === 'USER_LOGOUT'){
+        return { 
+            ...state,
+            user:null,
+            item:[],
+            authenticating:false,
+            isLogin: false
+        }
+    }
+
+    if(action.type === 'FETCH_REQUEST'){
+        return {
+            ...state,
+            loading:true
+        }
+    }
+
+    if(action.type === 'FETCH_FAILURE'){
+        return {
+            ...state,
+            loading:false,
+            error:action.payload
+        }
+    }
+
+    if(action.type === 'GET_USER_DATA'){
+        return {
+            ...state,
+            user:action.payload,
+            loading:false,
+            isLogin:true
+        }
+    }
+
     if(action.type === 'USER_SIGNIN'){
         return {
             ...state,

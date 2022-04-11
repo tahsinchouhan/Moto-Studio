@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import TextError from '../../components/TextError';
 import * as Yup from "yup";
 import { BsFillLockFill } from "react-icons/bs";
 import ButtonDark from "../../components/button/ButtonDark"
 import { apipath } from "../api/apiPath";
+import { getSession } from "next-auth/react";
 
 function ForgotPassword() {
 
@@ -54,7 +53,7 @@ function ForgotPassword() {
                     <h1 className="m-2 text-center">Forgot - Password</h1>
                   </div>
                 </div>
-                {console.log(formik)}
+                {/* {console.log(formik)} */}
                 <div className="Forgot_div">
                   <Form>
                     <div className="text-center pt-2">
@@ -107,6 +106,18 @@ function ForgotPassword() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (session) {
+    return {
+      redirect : {destination: "/"}
+    }
+  }
+  return {
+    props: { session }
+  };
 }
 
 export default ForgotPassword;

@@ -80,8 +80,8 @@ function IntoNewsroom() {
                   <div>
                   {
                     dateList.length > 0 && [...new Set(dateList.map(item => item.year))].map(year=>{
-                      return <div className="blog-calender-2022">
-                        <Dropdown className="d-inline my-2" key={year}>
+                      return <div className="blog-calender-2022" key={year}>
+                        <Dropdown className="d-inline my-2" >
                           <Dropdown.Toggle id="dropdown-autoclose-true">
                             <span>
                               <BsFillCaretRightFill className="into-newsroom-calender-arrow" />

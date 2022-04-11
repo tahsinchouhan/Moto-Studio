@@ -5,7 +5,7 @@ import { CardContext } from "./Layout";
 import emptyImage from '../assets/images/product/placeholder.png';
 import {apipath} from '../pages/api/apiPath';
 
-const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => {
+const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weight_type }) => {
   const { user, removeItem, increament, decreament } = useContext(CardContext);
 
   const deleteItem = (product_id, id) => {
@@ -25,6 +25,8 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => 
       console.log(err);
     });
   };
+
+  const stockQty = product?.weight?.filter(wt=> wt.weight_type === weight_type)[0].count;
 
   return (
     <>
@@ -56,6 +58,9 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => 
               <p className="shopping-p3-size">
                 Product Code &nbsp; <span className="fw-bold ">{SKU_Number || ''}</span>
               </p>
+              <span className={stockQty === 0 ? `text-danget`: `text-success`}>
+              { stockQty > 0 ? `${stockQty} stock left`: 'out of stock' }
+              </span>
             </Col>
           </Row>
         </Col>
@@ -74,7 +79,7 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight }) => 
             </div>
             <button
               className="btn-shopping-counter"
-              onClick={() => increament(_id)}
+              onClick={() => stockQty > quantity && increament(_id)}
             >
               {" "}
               +{" "}

@@ -1,25 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import Image from "next/image";
-import HelloUser from "../../assets/images/auth/Saly-8.png";
 import { BsChevronRight } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import OrderHistory from "./OrderHistory";
-import PaymentMethods from "./PaymentMethods";
+// import PaymentMethods from "./PaymentMethods";
 import { CardContext } from '../../components/Layout';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import TextError from '../../components/TextError';
-import { useSession, signOut } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import ButtonDark from "../../components/button/ButtonDark";
 import { apipath } from "../api/apiPath";
 
 function UserProfile() {
+  const router = useRouter();
+  const { activeTab } = router.query;
   const [showProfile, setShowProfile] = useState(0);
-  const [profileActive, setProfileActive] = useState(0);
+  const [profileActive, setProfileActive] = useState(activeTab || 0);
   const [message, setMessage] = useState('');
-  const { data: session } = useSession();
-  const { isLogin, user } = useContext(CardContext);
+  const { isLogin, user, loading } = useContext(CardContext);
 
   useEffect(() => {
     if (!isLogin) {
@@ -27,10 +26,13 @@ function UserProfile() {
     }
   }, [isLogin])
 
+  useEffect(() => {
+    setProfileActive(activeTab)
+  }, [activeTab])
+
   const userPofileHandler = () => {
     setShowProfile(0);
     setProfileActive(0);
-    console.log("setProfileActive....");
   };
 
   const validationSchema = Yup.object({
@@ -39,20 +41,20 @@ function UserProfile() {
     address: Yup.string().required("This field is required"),
   });
 
-  const initialValues = {
-    full_Name: user?.userData?.full_Name || '',
-    email: user?.userData?.email || '',
-    password: '',
-    mobile: user?.userData?.mobile || '',
-    dob: user?.userData?.dob || '',
-    gender: user?.userData?.gender || '',
-    address: user?.userData?.address || '',
-  };
-
-  
+  let initialValues = {}
+  if(!loading){
+    initialValues = {
+      full_Name: user?.full_Name || '',
+      email: user?.email || '',
+      password: '',
+      mobile: user?.mobile || '',
+      dob: user?.dob || '',
+      gender: user?.gender || '',
+      address: user?.address || '',
+    };
+  }
 
   const onSubmit = async (values) => {
-    console.log('object :>> ', values);
     try {
       const res = await fetch(apipath + `/api/v1/users/update/${user?.userData?._id}`, {
         method: "PUT",
@@ -73,7 +75,6 @@ function UserProfile() {
       console.log('error :>> ', error);
     }
   };
-
 
   return (
     <>
@@ -370,7 +371,7 @@ function UserProfile() {
                   ""
                 )}
                 {/* {profileActive == 1 ?  <><PaymentMethods/></>:"" } */}
-                {profileActive == 2 ? <><OrderHistory/></> : ""}
+                {profileActive == 2 ? <OrderHistory/> : ""}
                 {/* {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""} */}
               </Col>
              
@@ -380,6 +381,18 @@ function UserProfile() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect : {destination: "/auth/Login"}
+    }
+  }
+  return {
+    props: { session }
+  };
 }
 
 export default UserProfile;

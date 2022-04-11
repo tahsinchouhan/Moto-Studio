@@ -10,8 +10,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function Header() {
-  const { user, totalItem } = useContext(CardContext);
-  // console.log('user :>> ', user);
+  const { totalItem, userLogout } = useContext(CardContext);
   const { data: session } = useSession();
   const [activeIcon, setActiveIcon] = useState(false);
   const [viewDropDown, setViewDropDown] = useState(false);
@@ -28,8 +27,7 @@ function Header() {
 
   useEffect(() => {
     const closedDropdown = e => { 
-      console.log('usermenuRef :>> ', viewDropDown);
-      if(viewDropDown && !usermenuRef.current.contains(e.target)){
+      if(viewDropDown && !usermenuRef?.current?.contains(e.target)){
         setViewDropDown(false)
       }
       // if(e.path[0] !== usermenuRef.current){
@@ -46,12 +44,6 @@ function Header() {
     setExpand(false);
     handleClose();
     // router.push('/common/Originals')
-  };
-
-  const Logout = () => {
-    if(session) signOut();
-    localStorage.removeItem("cg-herbal-userData");
-    router.reload("/auth/Login");
   };
 
   const menus = [
@@ -86,26 +78,31 @@ function Header() {
               </Nav>
               <Nav>
                 <div className="pt-1 d-flex align-items-center">
-                {user ? (
+                {session ? (
                   <>
                   <div className="user-profile position-relative" ref={usermenuRef} >
                     <button className="btn border-0" onClick={() => setViewDropDown(!viewDropDown)}>
                       {/* <MdAccountCircle style={{fontSize:24}} className="cursor-pointer" /> */}
-                      {user?.userData?.full_Name?.split(' ')[0] || 'Profile'}
+                      {session?.user?.name?.split(' ')[0] || 'Profile'}
                     </button>
                     { viewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
                         <li onClick={()=>setViewDropDown(false)}>
-                          <Link href="/auth/UserProfile">
+                          <Link href="/auth/UserProfile?activeTab=0">
                             <a className="dropdown-item text-black">Your Profile</a>
                           </Link>
                         </li>
                         <li onClick={()=>setViewDropDown(false)}>
-                          <Link href="/auth/UserProfile">
+                          <Link href="/auth/UserProfile?activeTab=2">
                             <a className="dropdown-item text-black">Your Order</a>
                           </Link>
                         </li>
-                        <li onClick={Logout}>
-                          <Link href="/#">
+                        <li onClick={() => {
+                            signOut({redirect:false}).then((result) => {
+                              userLogout()
+                              localStorage.removeItem("cg-herbal-userData");
+                            });
+                          }}>
+                          <Link href="#0">
                             <a className="dropdown-item text-black">Sign Out</a>
                           </Link>
                         </li>

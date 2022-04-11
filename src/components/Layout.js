@@ -7,10 +7,14 @@ import SubHeader from "./SubHeader";
 import { reducer } from "./Reducer";
 import {apipath} from '../pages/api/apiPath';
 import Router from 'next/router'
+import { useSession } from "next-auth/react";
 
 export const CardContext = createContext();
 const initialState = {
   user: null,
+  authenticating: false,
+  loading:false,
+  error:null,
   item: [],
   totalAmount: 0,
   totalItem: 0,
@@ -20,6 +24,29 @@ const initialState = {
 function Layout({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState(false);
+
+  const { data: session } = useSession();
+
+  const loginRequest = () => {
+    dispatch({ type: 'LOGIN_REQUEST' })
+  }
+  const loginSuccess = (data) => {
+    dispatch({ type: 'LOGIN_SUCCESS', payload: data })
+  }
+  const loginFailure = (error) => {
+    dispatch({ type: 'LOGIN_FAILURE', payload:error })
+  }
+
+  const userLogout = () => {
+    dispatch({type:'USER_LOGOUT'})
+  }
+
+  const fetchRequest = () => {
+    dispatch({ type: 'FETCH_REQUEST' })
+  }
+  const fetchFailure = (error) => {
+    dispatch({ type: 'FETCH_FAILURE', payload:error })
+  }
 
   const userLogin = data => {
     dispatch({
@@ -76,7 +103,7 @@ function Layout({ children }) {
     } 
 
     const params = {
-      user: state.user.userData._id,
+      user: state.user._id,
       cart_items: {
         product: data._id,
         SKU_Number:data?.SKU_Number || '',
@@ -92,7 +119,7 @@ function Layout({ children }) {
       method: "POST",
       headers: { 
         'Content-Type': 'application/json',
-        Authorization: "Bearer " + state.user.token
+        Authorization: "Bearer " + session.token
       },
       body: JSON.stringify(params)
     })
@@ -122,24 +149,25 @@ function Layout({ children }) {
     }
   };
 
+  useEffect(() => {
+    if(session) {
+      const fetchUserData = async () => {
+        try {
+          fetchRequest()
+          const res = await fetch(apipath + `/api/v1/users/${session.user._id}`)
+          const result = await res.json()
+          dispatch({type: "GET_USER_DATA", payload: result.data});
+        } catch (error) {
+          console.log('error :>> ', error);
+          fetchFailure()
+        }
+      };
+      fetchUserData();
+      fetchCartData(session);
+    }
+  }, [session])
 
   useEffect(() => {
-    const fetchUserData = async (data) => {
-      try {
-        const res = await fetch(apipath + `/api/v1/users/${data.user._id}`)
-        const result = await res.json()
-        userLogin({token:data.token, userData:result.data})
-      } catch (error) {
-        console.log('error :>> ', error);
-      }
-    };
-    
-    const getLoginDetails = localStorage.getItem("cg-herbal-userData");
-    if (getLoginDetails) {
-      const userDetails = JSON.parse(getLoginDetails);
-      fetchUserData(userDetails);
-      fetchCartData(userDetails);
-    }
     dispatch({
       type: "TOTAL_QTY",
     });
@@ -157,6 +185,10 @@ function Layout({ children }) {
     <CardContext.Provider
       value={{
         ...state,
+        loginRequest,
+        loginSuccess,
+        loginFailure,
+        userLogout,
         userLogin,
         addToCart,
         removeItem,

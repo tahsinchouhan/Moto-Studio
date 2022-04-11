@@ -5,6 +5,7 @@ import { CardContext } from "../../components/Layout";
 import Item from "../../components/Item";
 import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -26,6 +27,7 @@ function Shopping() {
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
   const [promoValue, setPromoValue] = useState(null);
+  const { data: session, status } = useSession();
 
   const fetchPromoList = async () => {
     try {
@@ -37,15 +39,14 @@ function Shopping() {
     }
   }
 
+
   useEffect(() => {
-    const getLoginDetails = localStorage.getItem("cg-herbal-userData");
-    if (getLoginDetails) {
-      const userDetails = JSON.parse(getLoginDetails);
-      fetchCartData(userDetails);
+    if (session && status !== 'loading') {
+      fetchCartData(session);
     }
     fetchPromoList()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [status])
 
   const promoHandler = data => {
     setPromoValue({
@@ -128,8 +129,7 @@ function Shopping() {
       order_id: orderResponse?.id || "",
       name: "CG HERBAL",
       description: "",
-      image:
-        "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FPrakashgrag.80b1941a.svg&w=256&q=75",
+      image:"/images/CGHerbalsLogo.png",
       handler: function (response) {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
           response;
@@ -138,15 +138,15 @@ function Shopping() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            user_id: user.userData._id,
-            email: user.userData.email,
+            user_id: user._id,
+            email: user.email,
             products: result,
             promocode: promoValue ? {
               promocode_id: promoValue?.promocode_id || '',
               value:promoValue?.value || 0,
               code: promoValue?.code || ''
             } : null,
-            address: "Raipur",
+            address: user.address,
             total_amount: data.reduce(
               (a, v) => (a = a + v.price * v.quantity),
               0
@@ -162,7 +162,7 @@ function Shopping() {
               razorpay_signature,
               order_id: createOrder.data._id,
               products_id,
-              user: user.userData._id,
+              user: user._id,
             });
           })
           .catch((err) => {
@@ -170,9 +170,9 @@ function Shopping() {
           });
       },
       prefill: {
-        name: user.userData.full_Name || "",
-        email: user.userData?.email || "",
-        contact: user?.userData?.mobile || "",
+        name: user?.full_Name || "",
+        email: user?.email || "",
+        contact: user?.mobile || "",
       },
     };
     const paymentObject = new window.Razorpay(options);

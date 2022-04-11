@@ -13,7 +13,7 @@ function OrderHistory() {
   const [orderList, setOrderList] = useState(null);
 
   const { user } = useContext(CardContext);
-  const user_id = user?.userData?._id || '';
+  const user_id = user?._id || '';
 
   useEffect(() => {
     const getOrderHistory = async () => {

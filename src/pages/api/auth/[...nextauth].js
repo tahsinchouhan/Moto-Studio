@@ -5,29 +5,28 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { apipath } from "../apiPath";
 
 export default NextAuth({
-  // session: {
-  //   jwt: true,
-  // },
+  session: {
+    jwt: true,
+  },
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
-      credentials: {
-        email: { label: "Email", type: "email", placeholder: "jsmith" },
-        password: {  label: "Password", type: "password" }
-      },
       async authorize(credentials, req) {
-        return { id: 1, name: "J Smith", email: "jsmith@example.com" }
-        // const res = await fetch(`${apipath}/api/v1/users/signin`, {
-        //   method: 'POST',
-        //   body: JSON.stringify(credentials),
-        //   headers: { "Content-Type": "application/json" }
-        // })
-        // const user = await res.json()
-        // if (res.ok && user) {
-        //   return user
-        // }
+        const { email, password } = credentials
+        const response = await fetch(apipath + `/api/v1/users/signin`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({email, password})
+        });
+        const user = await response.json();
+        if(user.user) {
+          return user
+          // return { id: 1, name: "J Smith", email: "jsmith@example.com" }
+        }
+         // Return null if user data could not be retrieved
         // return null
+        throw new Error("Email or Password Incorrect")
       }
     }),
     GoogleProvider({
@@ -35,13 +34,13 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       // authorizationUrl:
       //   'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code"
-        }
-      }
+      // authorization: {
+      //   params: {
+      //     prompt: "consent",
+      //     access_type: "offline",
+      //     response_type: "code"
+      //   }
+      // }
     }),
     // FacebookProvider({
     //   clientId: process.env.FACEBOOK_CLIENT_ID,
@@ -54,55 +53,62 @@ export default NextAuth({
     //     }
     //   }
     // })
-
   ],
-  jwt: {
-    encryption: true,
-  },
-  secret: process.env.SECRET,
   callbacks: {
-    async signIn({ user, account, profile }) {
-      const payload = {
-        full_Name: user.name,
-        email: user.email,
-        logged_by: account.provider,
-        logged_id: user.id,
-        is_email_verified: profile.email_verified
+    // async signIn({ user, account, profile }) {
+    //   return true
+    // },
+    async jwt({token, user, account, profile}){
+       // first time jwt callback is run , user object is available
+       if(user && user.user) {
+        token.user = user.user
+        token.token = user.token
       }
-      
-      fetch(`${apipath}/api/v1/users/social`, {
-        method:"POST",
-        headers: {
-          'Content-Type':'application/json'
-        },
-      body:JSON.stringify(payload)
-      })
-      .then(res => res.json())
-      .then((result) => {
-        console.log('result :>> ', result);
-        return result
-      }).catch((err) => {
-        console.log('err :>> ', err);
-      });
-      if (account.provider === "google") {
-        return profile.email_verified && profile.email.endsWith("@gmail.com")
-      }
-      return true
-    },
-    async jwt({token, account}){
       if(account?.access_token){
         token.accessToken = account.access_token;
       }
+
+      if(account?.provider === 'google') {
+        const payload = {
+          full_Name: user.name,
+          email: user.email,
+          logged_by: account?.provider,
+          logged_id: user.id,
+          is_email_verified: profile.email_verified
+        }
+        const res = await fetch(`${apipath}/api/v1/users/social`, {
+          method:"POST",
+          headers: {'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        })
+        const result = await res.json()
+        if(result && result.user) {
+          token.user = result.user
+          token.token = result.token
+        }
+        return token
+      }
       return token;
     },
-    // async credentials( user,acount,profile) {
-    //   return Promise.resolve(true)
-    // },
-    async redirect({url, baseUrl}) {
-      if(url === '/'){
-        return Promise.resolve('/');
+    async session({ session, token }) {
+      // console.log('token :>> ', token);
+      if(token) {
+        session.user = token.user
+        session.token = token.token
       }
-      return Promise.resolve('/');
+      return session
     },
+    // async redirect({url, baseUrl}) {
+    //   if(url === '/'){
+    //     return Promise.resolve('/');
+    //   }
+    //   return Promise.resolve('/');
+    // },
+  },
+  secret: process.env.SECRET,
+  jwt: {
+    // encryption: true,
+    secret: process.env.SECRET,
+    maxAge: 60 * 60 * 24 * 30
   }
 })
