@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import Image from "next/image";
 import flower from "../../../public/images/flower.png";
+import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
 import Link from "next/link";
 
@@ -34,7 +35,7 @@ function Viewpage({ productData }) {
             <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <div className="d-flex p-1">              
                 <div>
-                  <Image src={product.product_id?.images?.length > 0 ? product.product_id?.images[0]?.img || flower : flower} alt="" width={136} height={130} />
+                  <Image src={product.product_id?.images?.length > 0 ? product.product_id?.images[0]?.img || ProductImageOne : ProductImageOne} alt="" width={136} height={130} />
                 </div>
                 <div className="p-3">
                   <span>{product?.product_id?.title || ''}</span>
