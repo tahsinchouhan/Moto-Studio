@@ -165,8 +165,9 @@ console.log('selectedWeight :>> ', selectedWeight);
                 </div>
                 <div className="my-3">
                   <Row>
+                    { console.log(item) }
                     {item.some((el) => el.product === productData?._id) ||
-                    item.some((el) => el.product?._id === productData?._id) ? (
+                    item.some((el) => el.product?._id === productData?._id && el.weight_type === selectedWeight?.weight_type?._id) ? (
                       <Col xs={6}>
                         <div className="mt-2" onClick={() => router.push(`/shopping/Shopping`) } >
                           <ButtonDark

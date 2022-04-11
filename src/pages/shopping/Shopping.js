@@ -156,6 +156,7 @@ function Shopping() {
         })
           .then((res) => res.json())
           .then((createOrder) => {
+            console.log('createOrder :>> ', createOrder);
             varifyPayment({
               razorpay_order_id,
               razorpay_payment_id,

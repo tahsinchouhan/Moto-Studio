@@ -56,7 +56,7 @@ function UserProfile() {
 
   const onSubmit = async (values) => {
     try {
-      const res = await fetch(apipath + `/api/v1/users/update/${user?.userData?._id}`, {
+      const res = await fetch(apipath + `/api/v1/users/update/${user?._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
