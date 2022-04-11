@@ -3,16 +3,16 @@ import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
 import image1 from "../../assets/images/product/placeholder.png";
-import Popup from "./PopUp";
+// import Popup from "./PopUp";
 import { MdLocalShipping } from "react-icons/md";
-import { AiFillPlusCircle } from "react-icons/ai";
+// import { AiFillPlusCircle } from "react-icons/ai";
 import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
 
 function ProductDetail({ productData }) {
 
-  const [showPopuUp, setShowPopUp] = useState(false);
+  // const [showPopuUp, setShowPopUp] = useState(false);
   const [selectedWeight, setSelectedWeight] = useState(productData.weight[0]);
   const [listData, setListData] = useState([]);
   const [count, setCount] = useState(1);
@@ -31,7 +31,7 @@ function ProductDetail({ productData }) {
       console.log(error);
     }
   };
-console.log('selectedWeight :>> ', selectedWeight);
+
   useEffect(() => {
     fetchListData(productData.category._id);
      // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -165,8 +165,7 @@ console.log('selectedWeight :>> ', selectedWeight);
                 </div>
                 <div className="my-3">
                   <Row>
-                    { console.log(item) }
-                    {item.some((el) => el.product === productData?._id) ||
+                    { selectedWeight?.count > 0 ? (item.some((el) => el.product === productData?._id) ||
                     item.some((el) => el.product?._id === productData?._id && el.weight_type === selectedWeight?.weight_type?._id) ? (
                       <Col xs={6}>
                         <div className="mt-2" onClick={() => router.push(`/shopping/Shopping`) } >
@@ -184,7 +183,14 @@ console.log('selectedWeight :>> ', selectedWeight);
                       >
                         <ButtonDark text="ADD TO CART" />
                       </Col>
-                    )}
+                    )) : <Col
+                        xs={6}
+                        onClick={(e) => {
+                          addProductToCart(productData, selectedWeight, count);
+                        }}
+                      >
+                        <ButtonDark text="OUT OF STOCK" disabled />
+                      </Col> }
                   </Row>
                 </div>
 
@@ -271,7 +277,7 @@ console.log('selectedWeight :>> ', selectedWeight);
                         { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
                       </span>
                      
-                      {item.some((el) => el.product === productData?._id) ||
+                      {product?.weight[0]?.count > 0 ? (item.some((el) => el.product === productData?._id) ||
                       item.some((el) => el.product?._id === product?._id) ? (
                         <div className="mt-2">
                           <ButtonDark
@@ -294,7 +300,10 @@ console.log('selectedWeight :>> ', selectedWeight);
                             text="ADD TO CART"
                           />
                         </div>
-                      )}
+                      )) : (<div className="mt-2">
+                          <ButtonDark type="button" text="OUT OF STOCK" disabled/>
+                        </div>)
+                        }
                     </div>
                   </Col>
                 );

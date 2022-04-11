@@ -8,14 +8,14 @@ import {apipath} from '../pages/api/apiPath';
 const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weight_type }) => {
   const { user, removeItem, increament, decreament } = useContext(CardContext);
 
-  const deleteItem = (product_id, id) => {
+  const deleteItem = (product_id, weight_type, id) => {
     fetch(apipath + `/api/v1/cart/remove-items`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
         Authorization: "Bearer " + user.token,
       },
-      body:JSON.stringify({ product_id, user: user?.userData?._id })
+      body:JSON.stringify({ product_id, weight_type, user: user?._id })
     })
     .then(res => res.json())
     .then((result) => {
@@ -88,7 +88,7 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
           <p className=" shop-remove shopping-p3-size">
             <span
               className="fw-bold text-danger"
-              onClick={() => deleteItem(product?._id, _id)}
+              onClick={() => deleteItem(product?._id, weight_type, _id)}
             >
               REMOVE
             </span>

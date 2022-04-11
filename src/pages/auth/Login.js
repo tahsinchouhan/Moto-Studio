@@ -37,7 +37,7 @@ function Login({ providers }) {
       loginRequest()
       const options = {redirect: false, email:values.email, password:values.password}
       const result  = await signIn('credentials', options)
-      console.log('login', result)
+      // console.log('login', result)
       if(!result?.error){
         const session = await getSession();
         loginSuccess(session)

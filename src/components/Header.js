@@ -7,7 +7,6 @@ import logo from "/public/images/CGHerbalsLogo.png";
 import menubar from "../../public/images/MenuBurger.png";
 import { CardContext } from '../components/Layout';
 import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
 
 function Header() {
   const { totalItem, userLogout } = useContext(CardContext);
@@ -16,7 +15,6 @@ function Header() {
   const [viewDropDown, setViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
   const usermenuRef = useRef();
-  const router = useRouter();
 
   const handleClose = () => setExpand(false);
   const handleShow = () => setExpand("expanded");
@@ -30,21 +28,12 @@ function Header() {
       if(viewDropDown && !usermenuRef?.current?.contains(e.target)){
         setViewDropDown(false)
       }
-      // if(e.path[0] !== usermenuRef.current){
-      //   setViewDropDown(false)
-      // }
     }
     document.body.addEventListener('mousedown', closedDropdown)
   
     return () => document.body.removeEventListener('mousedown', closedDropdown)
   })
-  
 
-  const originalHandler = () => {
-    setExpand(false);
-    handleClose();
-    // router.push('/common/Originals')
-  };
 
   const menus = [
     {id:1,title:'HOME',href:'/'},

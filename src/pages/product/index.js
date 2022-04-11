@@ -213,7 +213,8 @@ function Products() {
                           <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
                           { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
                         </span>
-                        {item.some((el) => el.product === product?._id) ||
+                        {product?.weight[0]?.count > 0 ? (
+                          item.some((el) => el.product === product?._id) ||
                           item.some((el) => el.product?._id === product?._id) ? (
                             <div className="mt-2">
                               <ButtonDark type="submit" className="Add-to-cart-button" text="PRODUCT ADDED"/>
@@ -228,7 +229,9 @@ function Products() {
                             >
                               <ButtonDark type="submit" className="Add-to-cart-button" text="ADD TO CART"/>
                             </div>
-                          )}
+                          )) : (<div className="mt-2">
+                              <ButtonDark type="button" text="OUT OF STOCK" disabled/>
+                            </div>) }
                       </div>
                     </Col>
                   );
