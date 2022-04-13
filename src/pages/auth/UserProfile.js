@@ -8,17 +8,19 @@ import OrderHistory from "./OrderHistory";
 import { CardContext } from '../../components/Layout';
 import Router, { useRouter } from 'next/router';
 import TextError from '../../components/TextError';
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import ButtonDark from "../../components/button/ButtonDark";
 import { apipath } from "../api/apiPath";
 
-function UserProfile({session}) {
+function UserProfile() {
   const router = useRouter();
   const { activeTab } = router.query;
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(activeTab || 0);
   const [message, setMessage] = useState('');
   const { user, loading } = useContext(CardContext);
+  const { data: session } = useSession();
+  
 
   useEffect(() => {
     if (!session) {
