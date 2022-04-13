@@ -12,22 +12,22 @@ import { getSession } from "next-auth/react";
 import ButtonDark from "../../components/button/ButtonDark";
 import { apipath } from "../api/apiPath";
 
-function UserProfile() {
+function UserProfile({session}) {
   const router = useRouter();
   const { activeTab } = router.query;
   const [showProfile, setShowProfile] = useState(0);
   const [profileActive, setProfileActive] = useState(activeTab || 0);
   const [message, setMessage] = useState('');
-  const { isLogin, user, loading } = useContext(CardContext);
+  const { user, loading } = useContext(CardContext);
 
   useEffect(() => {
-    if (!isLogin) {
+    if (!session) {
       Router.push('/auth/Login')
     }
-  }, [isLogin])
+  }, [session])
 
   useEffect(() => {
-    setProfileActive(activeTab)
+    setProfileActive(activeTab || 0)
   }, [activeTab])
 
   const userPofileHandler = () => {
@@ -42,6 +42,7 @@ function UserProfile() {
   });
 
   let initialValues = {}
+  if(loading) return <h1>Loading..</h1>
   if(!loading){
     initialValues = {
       full_Name: user?.full_Name || '',
@@ -84,15 +85,16 @@ function UserProfile() {
             <div className="row">
               <div className="col-lg-12">
                 <h1 className="register-header mt-4 text-center p-3">
-                  Hello {user?.userData?.full_Name}
+                  Hello {user?.full_Name}
                 </h1>
               </div>
             </div>
+           
             <Row className="pt-4">
               <Col sm={12} md={12} lg={3}>
                 <div className="user-Detail">
-                  <div className="user-detail-profile">
-                    <Row>
+                  <div className="user-detail-profile d-flex justify-content-evenly d-sm-block">
+                    <Row className="py-2">
                       <Col>
                         <div
                           className={
@@ -101,13 +103,11 @@ function UserProfile() {
                           onClick={() => setProfileActive(0)}
                         >
                           <span>User Profile</span>
-                          <BsChevronRight />
+                          <BsChevronRight className="d-none d-md-block"/>
                         </div>
                       </Col>
                     </Row>
-                    <div className="user-Hr">
-                      <hr />
-                    </div>
+                    <div className="user-Hr d-none d-md-block"><hr /></div>
                     {/* <Row>
                       <Col>
                         <div
@@ -127,7 +127,7 @@ function UserProfile() {
                       <hr />
                     </div> */}
 
-                    <Row>
+                    <Row className="py-2">
                       <Col>
                         <div
                           className={
@@ -136,13 +136,11 @@ function UserProfile() {
                           onClick={() => setProfileActive(2)}
                         >
                           <span>Order History</span>
-                          <BsChevronRight />
+                          <BsChevronRight className="d-none d-md-block" />
                         </div>
                       </Col>
                     </Row>
-                    <div className="user-Hr">
-                      <hr />
-                    </div>
+                    <div className="user-Hr d-none d-md-block"><hr /></div>
 {/*                     
                     <Row>
                       <Col>
@@ -177,6 +175,12 @@ function UserProfile() {
                             <div className="form-div pt-1 mt-5 mt-lg-0">
                               <div className="row">
                                 <div className="col-md-12">
+                                {
+                                  (!initialValues.mobile && !initialValues.address) ? <div className="alert alert-primary" role="alert">
+                                    Please Update your Profile Details.
+                                  </div> : null
+                                }
+                               
                                   <div className="card bg-light">
                                     <div className="card-body p-4">
                                       <div className="card-heading d-flex justify-content-between">
@@ -204,7 +208,7 @@ function UserProfile() {
                                           className="form-control px-2"
                                           type="text"
                                           name="mobile"
-                                          readOnly
+                                          
                                         />
                                         <ErrorMessage name="mobile" component={TextError} />
                                       </div>

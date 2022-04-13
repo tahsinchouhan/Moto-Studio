@@ -4,9 +4,10 @@ import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
 import logo from "/public/images/CGHerbalsLogo.png";
-import menubar from "../../public/images/MenuBurger.png";
+// import menubar from "../../public/images/MenuBurger.png";
 import { CardContext } from '../components/Layout';
 import { useSession, signOut } from "next-auth/react";
+import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai";
 
 function Header() {
   const { totalItem, userLogout } = useContext(CardContext);
@@ -163,32 +164,51 @@ function Header() {
               placement="end"
               // expanded={expand}
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header>
                 {/* {!searchFlag ? (
                   <div className="search-home-img">
                   </div>
                 ) : (
                   <SearchComponent />
                 )} */}
+                <AiOutlineClose style={{width:30, fontSize:28}} onClick={handleClose}/>
               </Offcanvas.Header>
-              <Offcanvas.Body onClick={handleClose}>
-              <Nav className=" mx-auto mb-2 mb-lg-0 ">
+              <Offcanvas.Body>
+              <Nav className="mx-auto mb-2 mb-lg-0 ">
                 {menus.map(menu => (
                     <Link href={menu.href} key={menu.id}>
-                      <a className="nav-link mx-3">{menu.title}</a>
+                      <a className="nav-link mx-3" onClick={handleClose}>{menu.title}</a>
                     </Link>
                   ))}
                   {/* eslint-disable-next-line  */}
+                  {session ? <>
+                    <Link href='/auth/UserProfile'>
+                      <a className="nav-link mx-3" onClick={handleClose}>YOUR PROFILE</a>
+                    </Link> 
+                    <Link href='/shopping/Shopping'>
+                      <a className="nav-link mx-3" onClick={handleClose}>MY CART</a>
+                    </Link> 
+                    <Link href="/auth/Login">
+                      <a className="nav-link mx-3" onClick={() => {
+                        signOut({redirect:false, callbackUrl: "/auth/Login"}).then((result) => {
+                          userLogout()
+                          handleClose()
+                          localStorage.removeItem("cg-herbal-userData");
+                        });
+                      }}>SIGN OUT</a>
+                    </Link>
+                  </> : <Link href='/auth/Login'>
+                      <a className="nav-link mx-3" onClick={handleClose}>SIGNIN</a>
+                    </Link>
+                  } 
               </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             {/* </Container> */}
             <div>
-              <button
-                className="home-menubar-icon"
-                onClick={() => handleShow()}
-              >
-                <Image src={menubar} alt="menubar" width={30} height={15} />
+              <button className="btn home-menubar-icon" onClick={() => handleShow()}>
+                {/* <Image src={menubar} alt="menubar" width={30} height={15} /> */}
+                <AiOutlineMenuFold style={{width:30, fontSize:28}}/>
               </button>
             </div>
           </Navbar>

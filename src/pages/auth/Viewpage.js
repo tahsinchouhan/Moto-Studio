@@ -59,13 +59,13 @@ function Viewpage({ productData }) {
         </div>
       })}
 
-      <div className="shipping-details border-top border-secondary pt-3 text-muted">
+      <div className="shipping-details border-bottom border-secondary pt-3 text-muted">
         <h4 className="fw-bold">Shipping Details:</h4>
         <div className="d-flex justify-content-between align-items-center flex-wrap">
           <div>
-            <strong>Recipient:</strong>
+            <strong>Recipient:</strong><br/>
             Name: {user?.full_Name} <br/> address: {user?.address || ''}<br/> mobile: {user?.mobile} <br/>
-            <strong>Payment Mode: {productData?.payment_method || ''}</strong>
+            <strong>Payment Status: {productData?.payment_status || ''}</strong>
           </div>
           {productData?.tracking.length > 0 ? (
             <div>

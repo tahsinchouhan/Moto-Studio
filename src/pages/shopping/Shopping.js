@@ -157,14 +157,16 @@ function Shopping() {
           .then((res) => res.json())
           .then((createOrder) => {
             console.log('createOrder :>> ', createOrder);
-            varifyPayment({
-              razorpay_order_id,
-              razorpay_payment_id,
-              razorpay_signature,
-              order_id: createOrder.data._id,
-              products_id,
-              user: user._id,
-            });
+            if(!createOrder.error) {
+              varifyPayment({
+                razorpay_order_id,
+                razorpay_payment_id,
+                razorpay_signature,
+                order_id: createOrder.data._id,
+                products_id,
+                user: user._id,
+              });
+            }
           })
           .catch((err) => {
             console.log("err :>> ", err);

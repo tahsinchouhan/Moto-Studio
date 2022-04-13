@@ -3,18 +3,28 @@
   font-size: 0;
   line-height: 0;
   position: absolute;
-  top: 50%;
+  top: 42%;
   display: block;
   width: 20px;
   height: 20px;
   padding: 0;
-  transform: translate(0, -50%);
+  transform: translate(0, -42%);
   cursor: pointer;
   color: #7474da !important;
   border: none;
   outline: none;
   background: #c0363600;
   opacity: 100% !important;
+}
+
+@media screen and (max-width: 480px) {
+  .slick-next {
+    right: 13px;
+  }
+  .slick-prev {
+    left: 0px;
+    z-index: 10;
+  }
 }
 
 .slick-prev:before,

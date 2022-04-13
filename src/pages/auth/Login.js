@@ -131,8 +131,8 @@ function Login({ providers }) {
                       {providers && <div className="social-login-btn d-flex justify-content-center mt-4">
                         {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
-                          return <div key={provider.id} className="w-50 text-center">
-                            <button type="button" className="btn btn-outline-primary" onClick={() => signIn(provider.id)}>
+                          return <div key={provider.id} className="text-center">
+                            <button type="button" className="btn btn-outline-primary" onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
                               Sign in with {provider.name}
                             </button>
                           </div>
