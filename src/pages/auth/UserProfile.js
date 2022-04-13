@@ -64,6 +64,7 @@ function UserProfile() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           full_Name: values.full_Name,
+          mobile:values.mobile,
           password: values.password,
           dob: values.dob,
           gender: values.gender,

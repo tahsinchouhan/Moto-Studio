@@ -84,6 +84,7 @@ export default NextAuth({
         const result = await res.json()
         if(result && result.user) {
           token.user = result.user
+          token.user.name = result.user.full_Name
           token.token = result.token
         }
         return token
