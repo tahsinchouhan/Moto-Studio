@@ -178,7 +178,7 @@ function UserProfile() {
                               <div className="row">
                                 <div className="col-md-12">
                                 {
-                                  (!initialValues.mobile && !initialValues.address) ? <div className="alert alert-primary" role="alert">
+                                  (!initialValues.mobile || !initialValues.address) ? <div className="alert alert-primary" role="alert">
                                     Please Update your Profile Details.
                                   </div> : null
                                 }
