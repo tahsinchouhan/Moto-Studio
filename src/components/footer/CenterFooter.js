@@ -7,10 +7,15 @@ import { GrFacebook, GrInstagram, GrAmazon } from "react-icons/gr";
 import LastFooter from "./LastFooter";
 import { apipath } from "../../pages/api/apiPath";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 function CenterFooter() {
 
   const [category, setCategory] = useState([])
+  
+  const { data: session } = useSession();
+
+  console.log('session', session)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,10 +79,20 @@ function CenterFooter() {
             <Col sm={4} md={4}  lg={4}>
             <div className="footer-cg-herbal">
                 <h6 className="footer-center-header">MY ACCOUNT</h6>
-                <div>
-                  <div className="footer-cg-para">Sign In</div>
-                  <div className="footer-cg-para">My Cart</div>
-                  <div className="footer-cg-para">Checkout</div>
+                <div className="d-flex flex-column">
+                {session ? <>
+                  <Link 
+                    href={`/shopping/Shopping`}> 
+                    <a className="footer-cg-para">My Cart</a>
+                  </Link>
+                  <Link 
+                    href={`/auth/UserProfile?activeTab=2`}> 
+                    <a className="footer-cg-para">My Order</a>
+                  </Link>
+                </> : <Link 
+                  href={`/auth/Login`}> 
+                  <a className="footer-cg-para">Sign In</a>
+                </Link>}
                 </div>
               </div>
             </Col>
