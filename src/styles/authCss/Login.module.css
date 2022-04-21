@@ -5,10 +5,10 @@
 
 .login_div {
   max-width: 623px;
-  height: 387px;
+  /* height: 387px; */
   /* background: rgb(236, 234, 238); */
   margin: 0 auto;
-  padding: 66px 78px;
+  padding: 50px 78px;
 }
 .btn-submit {
   width: 205px;

@@ -5,6 +5,7 @@ import TextError from '../../components/TextError';
 import * as Yup from "yup";
 import { apipath } from '../api/apiPath';
 import {useRouter} from "next/router";
+import Link from "next/link";
 // import Link from "next/link";
 
 function Register() {
@@ -61,17 +62,35 @@ function Register() {
     onSubmitProps.setSubmitting(false);
   };
 
+  const formControl = {
+    borderColor: '#e5e5e5 !important',
+    color: '#666666',
+    outline: 'none',
+    boxShadow: 'none',
+    borderRadius:0,
+    fontSize:16
+}
+
   return (
     <div>
+      <div className="all-product-heading">
+        <div style={{ paddingTop: "26px", paddingBottom: "30px", fontFamily:'Lora' }}>
+          <div className="store-home">
+            <span>Home &gt; </span>
+          </div>
+          <div className="products-header text-center">
+            <h1>Signup Here</h1>
+          </div>
+        </div>
+      </div>
       <Container>
-        <div>
-          <div className="row">
+        <div className="mt-5">
+          {/* <div className="row">
             <div className="col-lg-12">
               <h1 className="register-header m-5 text-center">Register</h1>
             </div>
-          </div>
-          {message && <div className="text-center text-danger fw-bold fs-5 pb-5">{message}</div> }
-          
+          </div> */}
+                  
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -80,73 +99,113 @@ function Register() {
             {(formik) => {
               return (
                 <Form>
-                  <Row className="mb-5">
-                    <Col sm={12} lg={6}>
+                  {message && <div className="text-center text-danger fw-bold fs-5 pb-5">{message}</div> }
+                  <Row className="mb-5 justify-content-center">
+                    <Col md={8} >
                       <div className="form-div pt-1">
                         <div className="row">
-                          <div className="col-md-12">
-                            <div className="card bg-light">
-                              <div className="card-body p-4">
-                                <div className="card-heading">
-                                  <h4 className=" mb-2">Login Details</h4>
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor="name">Name</label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="text"
-                                    name="name"
-                                    placeholder="Entername"
-                                    autoComplete="off"
-                                  />
-                                  <ErrorMessage name="name" component={TextError} />
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor="number" className="mt-3">
-                                    Mobile
-                                  </label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="number"
-                                    name="mobile"
-                                    placeholder="Enter mobile number"
-                                  />
-                                  <ErrorMessage name="mobile" component={TextError} />
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor="password" className="mt-3">
-                                    Password
-                                  </label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Enter password"
-                                  />
-                                  <ErrorMessage name="password" component={TextError} />
-                                </div>
-                                <div className="form-group user-field">
-                                  <label
-                                    htmlFor="confirm password"
-                                    className="mt-3"
-                                  >
-                                    Confirm Password
-                                  </label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="password"
-                                    name="confirm_password"
-                                    placeholder="Enter password"
-                                  />
-                                  <ErrorMessage name="confirm_password" component={TextError} />
-                                </div>
+                          <div className="col-md-6">
+                            <div className="form-group user-field mb-4">
+                              {/* <label htmlFor="name">Name</label> */}
+                              <Field
+                                className="form-control form-control-lg px-2"
+                                type="text"
+                                name="name"
+                                placeholder="Enter Your Full Name"
+                                autoComplete="off"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="name" component={TextError} />
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="form-group user-field  mb-4">
+                              {/* <label htmlFor="email">Email Address</label> */}
+                              <Field
+                                className="form-control form-control-lg px-2"
+                                type="text"
+                                name="email"
+                                placeholder="Email Id"
+                                autoComplete="off"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="email" component={TextError} />
+                            </div>
+                          </div>
+
+                            <div className="col-md-6">
+                              <div className="form-group user-field  mb-4">
+                                {/* <label htmlFor="password" className="mt-3">
+                                  Password
+                                </label> */}
+                                <Field
+                                  className="form-control form-control-lg px-2"
+                                  type="password"
+                                  name="password"
+                                  placeholder="Create password"
+                                  style={formControl}
+                                />
+                                <ErrorMessage name="password" component={TextError} />
                               </div>
                             </div>
+
+                            <div className="col-md-6">
+                              <div className="form-group user-field  mb-4">
+                                {/* <label
+                                  htmlFor="confirm password"
+                                  className="mt-3"
+                                >
+                                  Confirm Password
+                                </label> */}
+                                <Field
+                                  className="form-control form-control-lg px-2"
+                                  type="password"
+                                  name="confirm_password"
+                                  placeholder="Confirm password"
+                                  style={formControl}
+                                />
+                                <ErrorMessage name="confirm_password" component={TextError} />
+                              </div>
+                            </div>
+
+                            <div className="col-md-6">
+                              <div className="form-group user-field  mb-4">
+                                {/* <label htmlFor="number" className="mt-3">
+                                  Mobile
+                                </label> */}
+                                <Field
+                                  className="form-control form-control-lg px-2"
+                                  type="number"
+                                  name="mobile"
+                                  placeholder="Mobile number"
+                                  style={formControl}
+                                />
+                                <ErrorMessage name="mobile" component={TextError} />
+                              </div>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-md-6">
+                            <div className="text-center">
+                              <button  type="submit" className="btn btn-success w-100 py-2 rounded-0">
+                                SIGNUP
+                              </button>                      
+                            </div>
+                          </div>
+                          <div className="col-md-6 d-flex align-items-center">
+                            <span className="fw-bold">
+                              Already Register? &nbsp;
+                              <Link href="/auth/Login">
+                                <a className="text-success">LOGIN NOW</a>
+                              </Link>
+                            </span>
                           </div>
                         </div>
                       </div>
                     </Col>
-                    <Col sm={12} lg={6}>
+                    {/* <Col sm={12} lg={6}>
                       <div className="form-div pt-4 pt-lg-0">
                         <div className="row">
                           <div className="col-md-12">
@@ -234,16 +293,8 @@ function Register() {
                           </div>
                         </div>
                       </div>
-                    </Col>
+                    </Col> */}
                   </Row>
-                  <div className=" register-btn text-center mt-3 mb-5">
-                    <button type="submit" className="btn btn-submit text-white">
-                      <a className="Complete-login">Complete</a>
-                      {/* <Link href="/auth/UserProfile">
-                        <a className="Complete-login">Complete</a>
-                      </Link> */}
-                    </button>
-                  </div>
                 </Form>
               );
             }}

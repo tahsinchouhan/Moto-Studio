@@ -39,7 +39,7 @@ function CenterFooter() {
                 <Image src={footerlogo} alt="footerlogo" />
               </div>
             </Col>
-            <Col sm={12} md={12} lg={6}>
+            <Col sm={12} md={12} lg={6} className="ps-5">
                 <Row>
                 <Col sm={4} md={4} lg={4}>
               <div className="footer-cg-herbal">
@@ -91,7 +91,7 @@ function CenterFooter() {
                   </Link>
                 </> : <Link 
                   href={`/auth/Login`}> 
-                  <a className="footer-cg-para">Sign In</a>
+                  <a className="footer-cg-para">Login</a>
                 </Link>}
                 </div>
               </div>

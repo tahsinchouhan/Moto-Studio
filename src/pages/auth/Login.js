@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
 import { signIn, getProviders, getSession } from "next-auth/react";
+import Image from "next/image";
 
 function Login() {
   const [message, setMessage] = useState(null);
@@ -81,6 +82,15 @@ function Login() {
     onSubmitProps.setSubmitting(false);
   };
 
+  const formControl = {
+      borderColor: '#e5e5e5 !important',
+      color: '#666666',
+      outline: 'none',
+      boxShadow: 'none',
+      borderRadius:0,
+      fontSize:16
+  }
+
   return (
     <div>
     <div className="all-product-heading">
@@ -95,17 +105,7 @@ function Login() {
       </div>
       <div className="container-fluid">
         <div className="login_main">
-          <div>
-            {/* <div className="row ">
-              <div className="col-lg-12 login_header">
-                <h3 className="text-center m-5">Login Here</h3>
-              </div>
-            </div> */}
-            {message && (
-              <div className="text-center text-danger fw-bold fs-5 pb-5">
-                {message}
-              </div>
-            )}
+          <div>           
             <div className="login_div">
               <Formik
                 initialValues={initialValues}
@@ -116,14 +116,20 @@ function Login() {
                   return (
                     <Form>
                       {/* <h3 style={{fontFamily:'Lora', textDecoration: 'underline', marginBottom:'1.5rem'}}>Login Here</h3> */}
+                      {message && (
+                        <div className="text-center text-danger fw-bold fs-5 pb-2">
+                          {message}
+                        </div>
+                      )}
                       <div className="form-group user-field mb-4">
                         {/* <label htmlFor="email">Username / Mobile no.</label> */}
                         <Field
                           className="form-control form-control-lg px-2"
                           type="text"
                           name="email"
-                          placeholder="Enter Mobile / Email"
+                          placeholder="Enter Email / Mobile"
                           autoComplete="off"
+                          style={formControl}
                         />
                         <ErrorMessage name="email" component={TextError} />
                       </div>
@@ -134,12 +140,13 @@ function Login() {
                           type="password"
                           name="password"
                           placeholder="Enter password"
+                          style={formControl}
                         />
                         <ErrorMessage name="password" component={TextError} />
                       </div>
 
                       <div className="text-center">
-                        <button  type="submit" className="btn btn-success w-100 py-2"  disabled={authenticating}>
+                        <button  type="submit" className="btn btn-success w-100 py-2 rounded-0"  disabled={authenticating}>
                         {authenticating ? 'Authenticating...' : 'LOGIN'}
                         </button>                      
                         {/* <ButtonDark
@@ -156,21 +163,35 @@ function Login() {
                         </Link>
                       </div>
 
-                      <div className="divider position-relative">
+                      <div className="divider position-relative mt-5" style={{height:50}}>
                         <hr />
-                        <span className="position-absolute">OR</span>
+                        <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'48%', background:'#ffffff'}}>OR</span>
                       </div>
                     
-                      {providers && <div className="social-login-btn d-flex justify-content-center mt-4">
+                      {providers && <div className="social-login-btn d-flex justify-content-center">
                         {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
-                          return <div key={provider.id} className="text-center">
-                            <button type="button" className="btn btn-outline-primary" onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
-                              Sign in with {provider.name}
+                          return <div key={provider.id} className="shadow w-100 py-3">
+                            <button 
+                              type="button" 
+                              className="border-0 w-100 fw-bold bg-transparent rounded-0" 
+                              style={{fontFamily:'Lora', fontSize:16, display:"flex", justifyContent:"center", alignItems:"center0", gap:"2rem",outline:'none'}}
+                              onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
+                              <Image src="/google.png" width={30} height={30} />
+                              Login with {provider.name}
                             </button>
                           </div>
                         })}
                       </div> }
+
+                      <div className="forgot-div text-center fw-bold mt-5">
+                        <span>
+                          Don’t have Account? &nbsp;
+                          <Link href="/auth/Register">
+                            <a className="text-success">SIGNUP NOW</a>
+                          </Link>
+                        </span>
+                      </div>
 
                       {/* <div
                         className="text-center pt-4"
@@ -187,24 +208,7 @@ function Login() {
                 }}
               </Formik>
             </div>
-          </div>
-
-          <div className="forgot-div text-center">
-            <br />
-            <br />
-            <Link href="/auth/ForgotPassword">
-              <a className="login-forgot">Forgot Password ?</a>
-            </Link>
-            <br />
-            <br />
-
-            <span>
-              Don’t have a login ID? &nbsp;
-              <Link href="/auth/Register">
-                <a className="text-primary">Register Here</a>
-              </Link>
-            </span>
-          </div>
+          </div>                  
         </div>
       </div>
     </div>
