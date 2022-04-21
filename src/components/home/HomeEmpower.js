@@ -28,7 +28,7 @@ function HomeEmpower() {
     fetchData();
   }, [])
 
-  // console.log(impoweredData);
+  console.log(impoweredData);
 
   return (
     <>
@@ -36,7 +36,7 @@ function HomeEmpower() {
         <div className="home-empower-img-distance">
           <p className="home-empower-img-para d-block">
             {/* From the heart of Chhattisgarh */}
-            {impoweredData?.description || 'Description'}
+            { impoweredData?.desc || 'From the heart of Chhattisgarh' }
           </p>
           <p className="home-empower-img-text">{impoweredData?.title || 'Title'}</p>
           <div className="d-flex">

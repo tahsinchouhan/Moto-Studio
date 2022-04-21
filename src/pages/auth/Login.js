@@ -10,10 +10,11 @@ import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
 import { signIn, getProviders, getSession } from "next-auth/react";
 
-function Login({ providers }) {
+function Login() {
   const [message, setMessage] = useState(null);
+  const [providers, setProviders] = useState(null);
   const router = useRouter();
-  // console.log("providers :>> ", providers);
+  // console.log("providers :>> ", providers);  
   const { authenticating, isLogin, loginRequest, loginSuccess, loginFailure, fetchCartData } = useContext(CardContext);
 
   useEffect(() => {
@@ -21,6 +22,15 @@ function Login({ providers }) {
       router.push("/auth/UserProfile");
     }
   }, []);
+
+
+  useEffect(() => {
+    (async () => {
+      const res = await getProviders();
+      setProviders(res);
+    })();
+  }, []);
+
 
   const initialValues = {
     email: "",
@@ -73,14 +83,24 @@ function Login({ providers }) {
 
   return (
     <div>
+    <div className="all-product-heading">
+        <div style={{ paddingTop: "26px", paddingBottom: "30px", fontFamily:'Lora' }}>
+          <div className="store-home">
+            <span>Home &gt; </span>
+          </div>
+          <div className="products-header text-center">
+            <h1>Login Here</h1>
+          </div>
+        </div>
+      </div>
       <div className="container-fluid">
         <div className="login_main">
           <div>
-            <div className="row ">
+            {/* <div className="row ">
               <div className="col-lg-12 login_header">
-                <h1 className="text-center m-5">Login</h1>
+                <h3 className="text-center m-5">Login Here</h3>
               </div>
-            </div>
+            </div> */}
             {message && (
               <div className="text-center text-danger fw-bold fs-5 pb-5">
                 {message}
@@ -95,23 +115,22 @@ function Login({ providers }) {
                 {(formik) => {
                   return (
                     <Form>
-                      <div className="form-group user-field">
-                        <label htmlFor="email">Username / Mobile no.</label>
+                      {/* <h3 style={{fontFamily:'Lora', textDecoration: 'underline', marginBottom:'1.5rem'}}>Login Here</h3> */}
+                      <div className="form-group user-field mb-4">
+                        {/* <label htmlFor="email">Username / Mobile no.</label> */}
                         <Field
-                          className="form-control px-2"
+                          className="form-control form-control-lg px-2"
                           type="text"
                           name="email"
-                          placeholder="Enter Username"
+                          placeholder="Enter Mobile / Email"
                           autoComplete="off"
                         />
                         <ErrorMessage name="email" component={TextError} />
                       </div>
-                      <div className="form-group user-field">
-                        <label htmlFor="password" className="mt-3">
-                          Password
-                        </label>
+                      <div className="form-group user-field mb-4">
+                        {/* <label htmlFor="password" className="mt-3">Password</label> */}
                         <Field
-                          className="form-control px-2"
+                          className="form-control form-control-lg px-2"
                           type="password"
                           name="password"
                           placeholder="Enter password"
@@ -119,15 +138,29 @@ function Login({ providers }) {
                         <ErrorMessage name="password" component={TextError} />
                       </div>
 
-                      <div className="text-center pt-5">
-                        <ButtonDark
-                          type="submit"
+                      <div className="text-center">
+                        <button  type="submit" className="btn btn-success w-100 py-2"  disabled={authenticating}>
+                        {authenticating ? 'Authenticating...' : 'LOGIN'}
+                        </button>                      
+                        {/* <ButtonDark
+                         type="submit" 
                           text={authenticating ? 'Authenticating...' : 'Login'}
                           className="btn btn-submit"
                           disabled={authenticating}
-                        />
+                        /> */}
                       </div>
 
+                      <div className="text-end mt-3">
+                        <Link href="/auth/ForgotPassword">
+                          <a className="login-forgot">Forgot Password ?</a>
+                        </Link>
+                      </div>
+
+                      <div className="divider position-relative">
+                        <hr />
+                        <span className="position-absolute">OR</span>
+                      </div>
+                    
                       {providers && <div className="social-login-btn d-flex justify-content-center mt-4">
                         {Object?.values(providers).map((provider) => {
                           if(provider.id === 'credentials') return false
@@ -178,17 +211,17 @@ function Login({ providers }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  const providers = await getProviders(context);
-  if (session) {
-    return {
-      redirect : {destination: "/"}
-    }
-  }
-  return {
-    props: { providers }
-  };
-}
+// export async function getServerSideProps(context) {
+//   const session = await getSession(context);
+//   const providers = await getProviders(context);
+//   if (session) {
+//     return {
+//       redirect : {destination: "/"}
+//     }
+//   }
+//   return {
+//     props: { providers }
+//   };
+// }
 
 export default Login;

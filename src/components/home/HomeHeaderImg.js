@@ -4,6 +4,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight"
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
+import { useRouter } from 'next/router';
 
 function HomeHeaderImg({bannerData}) {
 
@@ -12,6 +13,8 @@ function HomeHeaderImg({bannerData}) {
     bannerTitle: bannerData?.title || 'Banner Title',
     bannerDesc: bannerData?.description || 'Banner Description'
   });
+
+  const rounter = useRouter()
 
   return (
     <>
@@ -29,11 +32,11 @@ function HomeHeaderImg({bannerData}) {
                   <p className="home-header-para-mobile text-white">
                   {banner.bannerDesc}
                   </p>
-                  {/* <div className="col-10">
-                    <div className="mb-md-5  mt-md-3 mt-4 mb-0">
+                  <div className="col-10">
+                    <div className="mb-md-5  mt-md-3 mt-4 mb-0" onClick={()=>rounter.push('product')}>
                     <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
                     </div>
-                  </div> */}
+                  </div>
                 </Col>
               </Row>
             </Col>
@@ -47,15 +50,15 @@ function HomeHeaderImg({bannerData}) {
           <Row className=" justify-content-md-start justify-content-center">
             <Col md={8} lg={6} className="col-10">
               <Row className="">
-                <Col md={12} className=" my-2 ">
+                <Col md={12} className="my-2">
                   <p className="home-header-head text-center mb-0 text-md-start">
                     {banner.bannerTitle}
                   </p>
                   <p className="home-header-para text-center text-md-start">{banner.bannerDesc}</p>
 
-                  {/* <div className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0">
+                  <div className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0" onClick={()=>rounter.push('product')}>
                     <Button className="home-header-button" text="SHOP NOW &nbsp; &nbsp; &gt;" />
-                  </div> */}
+                  </div>
                 </Col>
               </Row>
             </Col>

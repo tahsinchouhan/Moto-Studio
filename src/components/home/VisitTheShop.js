@@ -10,10 +10,13 @@ import ProductImageFive from "../../assets/images/product/productImageFive.png";
 import emptyImage from '../../assets/images/product/placeholder.png';
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from '../../pages/api/apiPath';
+import { useRouter } from 'next/router';
 
 
 function VisitTheShop({categoryId}) {
   const [featured, setFeatured] = useState([]);
+
+  const router = useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -277,8 +280,8 @@ function VisitTheShop({categoryId}) {
             </Row> : null
           }
           
-          <div className="text-center my-5">
-          <Button className="home-visit-shop" text="VISIT THE SHOP &nbsp; &gt;" />
+          <div className="text-center my-5" onClick={() => router.push('/product')}>
+            <Button className="home-visit-shop" text="VISIT THE SHOP &nbsp; &gt;" />
           </div>
         </div>
       </Container>

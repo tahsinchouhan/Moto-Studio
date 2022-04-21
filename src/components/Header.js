@@ -3,7 +3,8 @@ import { Container, Navbar, Nav, NavDropdown, Offcanvas} from "react-bootstrap";
 import Link from "next/link";
 import { BsSearch, BsFillCartFill } from "react-icons/bs";
 import Image from "next/image";
-import logo from "/public/images/CGHerbalsLogo.png";
+// import logo from "/public/images/CGHerbalsLogo.png";
+import logo from "/public/images/logo.png";
 // import menubar from "../../public/images/MenuBurger.png";
 import { CardContext } from '../components/Layout';
 import { useSession, signOut } from "next-auth/react";
@@ -53,7 +54,7 @@ function Header() {
           <Container>
             <Navbar.Brand href="/">
               <div>
-                <Image src={logo} width={107} height={63} alt="logo" />
+                <Image src={logo} width={107} height={63} alt="logo" priority />
               </div>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -65,7 +66,7 @@ function Header() {
                   </Link>
                 ))}
                 {/* eslint-disable-next-line  */}
-              </Nav>
+              </Nav>             
               <Nav>
                 <div className="pt-1 d-flex align-items-center">
                 {session ? (
@@ -118,12 +119,18 @@ function Header() {
               ) : (
             <div>
               <Link href="/auth/Login">
-                <a className="nav-Login text-black">Sign In</a>
+                <a className="nav-Login text-black">Login</a>
               </Link>
               <Link href="/auth/Register">
-                <a className="nav-Login btn btn-primary btn-sm ms-2">Sign Up</a>
+                <a className="nav-Login btn btn-success btn-sm ms-2 py-2 px-3 signup-btn">Sign Up</a>
               </Link>
+              <style jsx>{`
+              .signup-btn {
+                background-color: #065934 !important;
+              }
+            `}</style>
             </div>
+            
           )}
                 {/* <select defaultValue={''} 
                     className="product-select"
@@ -198,7 +205,7 @@ function Header() {
                       }}>SIGN OUT</a>
                     </Link>
                   </> : <Link href='/auth/Login'>
-                      <a className="nav-link mx-3" onClick={handleClose}>SIGNIN</a>
+                      <a className="nav-link mx-3" onClick={handleClose}>LOGIN</a>
                     </Link>
                   } 
               </Nav>
@@ -213,7 +220,6 @@ function Header() {
             </div>
           </Navbar>
         </div>
-
       </div>
     </>
   );

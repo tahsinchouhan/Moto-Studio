@@ -58,6 +58,12 @@ background-color: transparent !important;
     border-radius: 0.25rem;
     opacity: .5;
 }
+
 .nav-link{
     color: #666666 !important;
+}
+
+
+.nav-link:hover{
+    color: red !important;
 }

@@ -24,9 +24,13 @@ function CommunityPage() {
       }
     }
     fetchData();
+
+    // setCommunity([
+    //   {_id:1, images:[{img:'/Images/Product 1.png'}], products: {title: 'Ajay'}}
+    // ])
   }, [])
 
-  // console.log(community);
+  console.log(community);
 
   return (
     <>
@@ -37,7 +41,7 @@ function CommunityPage() {
             <hr className="Line my-4 " />
             <div className="para-divb pb-4">
               <div className="d-flex">
-                <p className="content mx-auto">
+                <p className="content mx-auto" style={{fontFamily:'Lato'}}>
                   Far far away, behind the word mountains, far from the
                   countries Vokalia and Consonantia, there live the blind texts.
                   Separated they live in Bookmarksgrove right at the coast of
@@ -49,22 +53,22 @@ function CommunityPage() {
             </div>
           </div>
 
-          <Row>
+          <Row className='mx-5'>
           {
             community.length && community.map(row=>{
               return <Col lg={4} md={6} className="image1 Gallery" key={row?._id}>
-              <div className='position-relative' style={{height:'320px', boxSizing:'border-box'}}>
+              <div className='position-relative' style={{height:350, margin:'auto', boxSizing:'border-box'}}>
                 <Image
                   src={row?.images?.length ? row?.images[0]?.img || Imageone : Imageone}
                   alt="Picture of the author"
                   className="w-100"
-                  // width={400}
-                  // height={300}
+                  // width={350}
+                  // height={350}
                   layout='fill'
-                  objectFit="responsive"
+                  // objectFit="contain"
                 />
                 <div className="overlay">
-                  <p className="Text-name">{row?.products?.title || 'Title'}</p>
+                  <p className="Text-name">{row?.products?.title || ''}</p>
                 </div>
               </div>
               </Col>
