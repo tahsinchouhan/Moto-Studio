@@ -62,8 +62,9 @@ function Products() {
         .then((response) => response.json())
         .then((objData) => {
           if (objData?.data?.length) {
-            setCheckedState(new Array(objData?.data.length).fill(false))
-            setCategory(objData?.data);
+            const filteredData = objData?.data.filter(data => data.status === true)
+            setCheckedState(new Array(filteredData.length).fill(false))
+            setCategory(filteredData);
           }
         })
         .catch((error) => console.log(error));
@@ -216,8 +217,12 @@ function Products() {
                         {product?.weight[0]?.count > 0 ? (
                           item.some((el) => el.product === product?._id) ||
                           item.some((el) => el.product?._id === product?._id) ? (
-                            <div className="mt-2">
-                              <ButtonDark type="submit" className="Add-to-cart-button" text="PRODUCT ADDED"/>
+                            <div className="mt-2"
+                             onClick={(e) => {
+                                e.stopPropagation();
+                                router.push('/shopping/Shopping')
+                              }}>
+                              <ButtonDark type="submit" className="active" text="PRODUCT ADDED"/>
                             </div>
                           ) : (
                             <div
@@ -230,7 +235,7 @@ function Products() {
                               <ButtonDark type="submit" className="Add-to-cart-button" text="ADD TO CART"/>
                             </div>
                           )) : (<div className="mt-2">
-                              <ButtonDark type="button" text="OUT OF STOCK" disabled/>
+                              <span style={{color:'#065934'}}>OUT OF STOCK</span>
                             </div>) }
                       </div>
                     </Col>

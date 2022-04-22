@@ -162,6 +162,7 @@ function Layout({ children }) {
       if (result?.cart) {
         addToCart(result.cart.cart_items)
         setShow(true)
+        Router.push('/shopping/Shopping');
       }
     }).catch((error) => console.log(error));
   }

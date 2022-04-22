@@ -125,37 +125,6 @@ function ProductDetail({ productData }) {
                     })}
                     >+</span>
                 </div>
-
-                  {/* <Row>
-                    <Col xs={9} sm={9}>
-                      <p className="productName-counter-para  my-2">
-                        Select No. of units
-                      </p>
-                    </Col>
-
-                    <Col
-                      xs={1}
-                      sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
-                      onClick={() => setCount(prev => {
-                        return (prev - 1) < 1 ? 1 : (prev -1)
-                      })}
-                    >
-                      -
-                    </Col>
-                    <Col xs={1} sm={1}>
-                      <p className="productName-counter-no text-center my-2">{count}</p>
-                    </Col>
-                    <Col
-                      xs={1}
-                      sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
-                      onClick={()=>setCount(prev => prev + 1) }
-                    >
-                      +
-                    </Col>
-                   
-                  </Row> */}
                 </div>
                 <br/>
                 <div className="product-Price-1 w-100">
@@ -208,9 +177,12 @@ function ProductDetail({ productData }) {
                       ? productData?.images[0]?.img || image1
                       : image1
                   }
-                  width={500}
+                  width={700}
                   height={500}
-                  alt="image1"
+                  alt={productData?.title}
+                  unoptimized={true}
+                  loading="eager"
+                  objectFit="cover"
                 />
               </div>
             </Col>

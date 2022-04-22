@@ -94,7 +94,7 @@ function Header() {
               </Nav>             
               <Nav>
                 <div className="pt-1 d-flex align-items-center">
-                  <BsSearch size="1.5em" className="me-3 cursor-pointer" onClick={() => setSearchSideBar(true)} />
+                  <BsSearch size="1.2em" className="me-3 cursor-pointer" onClick={() => setSearchSideBar(true)} />
                 {session ? (
                   <>
                   <div className="user-profile position-relative" ref={usermenuRef} >
@@ -139,7 +139,7 @@ function Header() {
           )}
           <Link href="/shopping/Shopping" onClick={iconHandler}>
             <a className="cg-header-a-tag ps-3 position-relative">
-              <BsFillCartFill size="1.5em" className={`${activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"}`}/>{" "}
+              <BsFillCartFill size="1.2em" className={`${activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"}`}/>{" "}
               {totalItem ?  <span className="total-cart-item">{totalItem || ''}</span> : null }
             </a>
           </Link>  
@@ -218,13 +218,16 @@ function Header() {
         </div>
 
         {/* search sidebar       */}
-        {searchSideBar && <div className="right-sidebar">
-            <BsX size="2rem" color="red" className="cursor-pointer" onClick={()=> setSearchSideBar(false)}/>
-            <div className="sidebar-content h-100 position-relative p-4">
+        {searchSideBar && <div className="right-sidebar">            
+            <div className="sidebar-content h-100 position-relative p-4 mt-4">
               <input type="text" className="form-control rounded-0" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
               <div className="search-icon cursor-pointer">
                 <BsSearch />
               </div>
+              <div className="cursor-pointer cross-icon">
+                <BsX size="2.5rem" onClick={()=> setSearchSideBar(false)}/>
+              </div>
+              
               <div className="item-search-list">
                 {searchData.map(d => {
                   return <div key={d._id} className="d-flex gap-2 p-3 cursor-pointer search-item" 
@@ -268,7 +271,7 @@ function Header() {
             .right-sidebar {
               position: fixed;
               width: 500px;
-              height: 75vh;
+              height: 90vh;
               top: 100px;
               right:0;
               background:white;
@@ -277,6 +280,8 @@ function Header() {
             }
 
             .form-control{
+              padding-left: 2.2rem;
+              width:90%;
               outline:0;
               box-shadow:none;
             }
@@ -288,7 +293,17 @@ function Header() {
 
             .search-icon {
               position: absolute;
-              right: 1.5rem;
+              left: 1.5rem;
+              top: 21px;
+              width: 40px;
+              height: 37px;
+              line-height: 36px;
+              text-align: center;
+            }
+
+            .cross-icon {
+              position: absolute;
+              right: 20px;
               top: 21px;
               width: 40px;
               height: 37px;

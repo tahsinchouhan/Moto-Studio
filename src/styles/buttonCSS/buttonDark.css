@@ -5,6 +5,7 @@
     color: #FFFFFF;
     width: 100% !important;
 }
-.dark-button:hover{
+.dark-button:hover,
+.dark-button.active{
     background: #5ABF6B;
 }
