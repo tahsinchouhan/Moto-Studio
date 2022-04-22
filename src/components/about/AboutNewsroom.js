@@ -45,6 +45,9 @@ function AboutNewsroom() {
                     alt="Microinterprises"
                     width={300}
                     height={300}
+                    unoptimized={true}
+                    loading="eager"
+                    objectFit='cover'
                   />
                   <div className="card-body">
                     <h5 className="card-title">{news.title}</h5>

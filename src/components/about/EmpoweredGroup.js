@@ -70,7 +70,15 @@ function EmpoweredGroup() {
               empoeredData.length && empoeredData.map(row=>{
                 return <div className="text-center" key={row._id}>
                   <div>
-                    <Image src={row?.images[0]?.img || SGHONE} className="about-empower-carousel-padding rounded-circle" alt={row.title} width={400} height={400} />
+                    <Image 
+                      src={row?.images[0]?.img || SGHONE} 
+                      className="about-empower-carousel-padding rounded-circle" 
+                      alt={row.title} 
+                      width={400} height={400} 
+                      objectFit="cover"
+                      unoptimized={true}
+                      loading="eager"
+                      />
                     <p className="empowered-carousel-text">{row?.title || 'Title'}</p>
                   </div>
                 </div>

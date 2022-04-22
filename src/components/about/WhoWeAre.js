@@ -30,7 +30,13 @@ function WhoWeAre() {
             if(index % 2 === 0){
                 return <Row className = "justify-content-center my-5" key={row._id}>
                     <Col xxl={4} lg={5} md={6} sm={8} xs={10}  className="">
-                        <Image src={row?.images[0]?.img || aboutWhoFirst} className="w-100" alt="" width={550} height={400}/>
+                        <Image 
+                          src={row?.images[0]?.img || aboutWhoFirst} 
+                          className="w-100" alt="" 
+                          width={550} height={400}  
+                          unoptimized={true}
+                          loading="eager"
+                        />
                     </Col>
 
                     <Col xxl={4} lg={5} md={6} sm={8} xs={10} className="text-md-start  text-start">
@@ -49,7 +55,13 @@ function WhoWeAre() {
                 </Col>
 
                 <Col xxl={4} lg={5} md={6} sm={8} xs={10} className="order-md-last order-sm-first">
-                    <Image src={row?.images[0]?.img || aboutWhoSecond} className="w-100" alt="" width={550} height={400}/>
+                    <Image 
+                      src={row?.images[0]?.img || aboutWhoSecond} 
+                      className="w-100" alt="" 
+                      width={550} height={400}
+                      unoptimized={true}
+                      loading="eager"
+                    />
                 </Col>
             </Row>
             }

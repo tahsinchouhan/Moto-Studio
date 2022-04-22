@@ -14,23 +14,26 @@ function CommunityPage() {
 
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${apipath}/api/v1/home/community/list`);
-        const objData = await res.json();
-        setCommunity(objData?.data)
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-
-    // setCommunity([
-    //   {_id:1, images:[{img:'/Images/Product 1.png'}], products: {title: 'Ajay'}}
-    // ])
+    // const fetchData = async () => {
+    //   try {
+    //     const res = await fetch(`${apipath}/api/v1/home/community/list`);
+    //     const objData = await res.json();
+    //     setCommunity(objData?.data)
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    // fetchData();
+    
+    setCommunity([
+      {_id:1, images:[{img:'/Image/Product 1.png'}], products: {title: 'Pure Wildforest Honey'}},
+      {_id:2, images:[{img:'/Image/Product 2.png'}], products: {title: 'Premium Cashews'}},
+      {_id:3, images:[{img:'/Image/Product 3.png'}], products: {title: 'Chyawan Prash'}},
+      {_id:4, images:[{img:'/Image/Product 4.png'}], products: {title: 'Mahua Laddu'}},
+      {_id:5, images:[{img:'/Image/Product 5.png'}], products: {title: 'Mahua Cookies'}},
+      {_id:6, images:[{img:'/Image/Product 6.png'}], products: {title: 'Amla Murabba'}}
+    ])
   }, [])
-
-  console.log(community);
 
   return (
     <>
@@ -61,11 +64,13 @@ function CommunityPage() {
                 <Image
                   src={row?.images?.length ? row?.images[0]?.img || Imageone : Imageone}
                   alt="Picture of the author"
-                  className="w-100"
+                  // className="w-100"
                   // width={350}
                   // height={350}
                   layout='fill'
-                  // objectFit="contain"
+                  objectFit="cover"
+                  unoptimized={true}
+                  loading="eager"
                 />
                 <div className="overlay">
                   <p className="Text-name">{row?.products?.title || ''}</p>
@@ -74,87 +79,6 @@ function CommunityPage() {
               </Col>
             })
           }
-            {/* <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
-              <Image
-                src={Imageone}
-                alt="Picture of the author"
-                className="w-100"
-              />
-
-              <div className="overlay">
-                <p className="Text-name">
-                  Pure <br /> Wildforest <br /> Honey
-                </p>
-              </div>
-            </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
-              <Image
-                src={Imagetwo}
-                alt="Picture of the author"
-                className="w-100"
-              />
-               <PopUp showPopuUp={showPopuUp} close={closeHander} />
-              <div className="overlay">
-                <p className="Text-name">
-                  Premium <br /> Cashews
-                </p>
-              </div>
-            </Col>
-
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
-              <Image
-                src={Imagethree}
-                alt="Picture of the author"
-                className="w-100"
-              />
-               <PopUp showPopuUp={showPopuUp} close={closeHander} />
-              <div className="overlay">
-                <p className="Text-name">
-                  Chyawan <br /> Prash{" "}
-                </p>
-              </div>
-            </Col>
-
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
-              <Image
-                src={Imagefour}
-                alt="Picture of the author"
-                className="w-100"
-              />
-               <PopUp showPopuUp={showPopuUp} close={closeHander} />
-              <div className="overlay">
-                <p className="Text-name">
-                  Mahua <br /> Laddu
-                </p>
-              </div>
-            </Col>
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4" onClick={() => popupHandler()}>
-              <Image
-                src={Imagefive}
-                alt="Picture of the author"
-                className="w-100"
-              />
-               <PopUp showPopuUp={showPopuUp} close={closeHander} />
-              <div className="  overlay">
-                <p className="Text-name">
-                  Mahua <br /> Cookies
-                </p>
-              </div>
-            </Col>
-
-            <Col lg={4} md={6} className="image1 Gallery px-4 pb-4">
-              <Image
-                src={Imagesix}
-                alt="Picture of the author"
-                className="w-100"
-              />
-
-              <div className="overlay align-items-center px-4 pb-4 ">
-                <p className="Text-name ">
-                  Amla <br /> Murabba
-                </p>
-              </div>
-            </Col> */}
           </Row>
         </div>
       </div>

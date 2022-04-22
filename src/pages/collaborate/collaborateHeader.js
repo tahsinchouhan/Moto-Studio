@@ -13,6 +13,8 @@ function CollaborateHeader() {
           src={CollaborateHeaderImg}
           className="w-100"
           alt="CollaborateHeaderImg"
+          unoptimized={true}
+          loading="eager"
         />
         <Container className="mt-4">
           <Row className=" justify-content-md-start gutter-collaborate-fix justify-content-center">

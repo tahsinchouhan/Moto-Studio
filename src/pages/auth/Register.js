@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from '../../components/TextError';
@@ -6,12 +6,22 @@ import * as Yup from "yup";
 import { apipath } from '../api/apiPath';
 import {useRouter} from "next/router";
 import Link from "next/link";
+import { getProviders, signIn } from "next-auth/react";
+import Image from "next/image";
 // import Link from "next/link";
 
 function Register() {
-
+  const [providers, setProviders] = useState(null);
   const [message, setMessage] = useState(null)
   const router = useRouter();
+
+  
+  useEffect(() => {
+    (async () => {
+      const res = await getProviders();
+      setProviders(res);
+    })();
+  }, []);
   
   const initialValues = {
     name: "",
@@ -19,8 +29,8 @@ function Register() {
     password: "",
     confirm_password: "",
     email: "",
-    dob: "",
-    gender: "",
+    // dob: "",
+    // gender: "",
   };
 
   const validationSchema = Yup.object({
@@ -32,7 +42,7 @@ function Register() {
     confirm_password: Yup.string().required("This field is required")
      .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     email: Yup.string().email("Invalid email address").required("Required"),
-    dob: Yup.string().required("This field is required"),
+    // dob: Yup.string().required("This field is required"),
     // gender: Yup.string().required("This field is required"),
     // address: Yup.string().required("This field is required"),
   });
@@ -48,8 +58,8 @@ function Register() {
           mobile: values.mobile,
           password: values.password,
           email: values.email,
-          dob: values.dob,
-          gender: values.gender,
+          // dob: values.dob,
+          // gender: values.gender,
           // address: values.address,
         })
       });
@@ -83,14 +93,8 @@ function Register() {
           </div>
         </div>
       </div>
-      <Container>
-        <div className="mt-5">
-          {/* <div className="row">
-            <div className="col-lg-12">
-              <h1 className="register-header m-5 text-center">Register</h1>
-            </div>
-          </div> */}
-                  
+      <Container className="py-5">
+        <div>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -99,8 +103,8 @@ function Register() {
             {(formik) => {
               return (
                 <Form>
-                  {message && <div className="text-center text-danger fw-bold fs-5 pb-5">{message}</div> }
-                  <Row className="mb-5 justify-content-center">
+                  {message && <div className="text-center text-danger fw-bold fs-5 pb-2">{message}</div> }
+                  <Row className="justify-content-center">
                     <Col md={8} >
                       <div className="form-div pt-1">
                         <div className="row">
@@ -120,7 +124,7 @@ function Register() {
                           </div>
 
                           <div className="col-md-6">
-                            <div className="form-group user-field  mb-4">
+                            <div className="form-group user-field mb-4">
                               {/* <label htmlFor="email">Email Address</label> */}
                               <Field
                                 className="form-control form-control-lg px-2"
@@ -202,98 +206,34 @@ function Register() {
                               </Link>
                             </span>
                           </div>
-                        </div>
+                        </div>                        
                       </div>
-                    </Col>
-                    {/* <Col sm={12} lg={6}>
-                      <div className="form-div pt-4 pt-lg-0">
-                        <div className="row">
-                          <div className="col-md-12">
-                            <div className="card bg-light">
-                              <div className="card-body p-4">
-                                <div className="card-heading">
-                                  <h4 className=" mb-2">Basic Information</h4>
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor="email">Email Address</label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="text"
-                                    name="email"
-                                    placeholder="Enter Email Address"
-                                    autoComplete="off"
-                                  />
-                                  <ErrorMessage name="email" component={TextError} />
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor="dob" className="mt-3">
-                                    DOB
-                                  </label>
-                                  <Field
-                                    className="form-control px-2"
-                                    type="date"
-                                    id="dob"
-                                    name="dob"
-                                    autoComplete="off"
-                                    max={new Date().toISOString().split("T")[0]}
-                                    placeholder="dd / mm / yyyy"
-                                  />
-                                  <ErrorMessage name="dob" component={TextError} />
-                                </div>
-                                <div className="form-group user-field">
-                                  <label htmlFor=" gender" className="mt-3">
-                                    Gender
-                                  </label>
+                    </Col>                    
+                  </Row>
 
-                                  <div className="row">
-                                    <div className="col col-sm-4 col-md-4 px-0">
-                                      <div className="form-check">
-                                        <Field
-                                          className="gender-field"
-                                          type="radio"
-                                          name="gender"
-                                          value="Male"
-                                        />
-                                        <label className="gender-span mx-1">
-                                          Male
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div className="col col-sm-4 col-md-4 px-0">
-                                      <div className="form-check">
-                                        <Field
-                                          className="gender-field"
-                                          type="radio"
-                                          name="gender"
-                                          value="Female"
-                                        />
-                                        <label className="gender-span mx-1">
-                                          Female
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div className="col col-sm-4 col-md-4 px-0">
-                                      <div className="form-check">
-                                        <Field
-                                          className="gender-field"
-                                          type="radio"
-                                          name="gender"
-                                          value="Other"
-                                          // checked={"Other"}
-                                        />
-                                        <label className="gender-span mx-1">
-                                          Other
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                  <Row className="justify-content-center">
+                    <Col md={5}>
+                      <div className="divider position-relative mt-5" style={{height:50}}>
+                        <hr />
+                        <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'50%', transform: 'translate(-50%, 0%)', background:'#ffffff'}}>OR</span>
                       </div>
-                    </Col> */}
+
+                        {providers && <div className="social-login-btn d-flex justify-content-center">
+                        {Object?.values(providers).map((provider) => {
+                          if(provider.id === 'credentials') return false
+                          return <div key={provider.id} className="shadow w-100 py-3">
+                            <button 
+                              type="button" 
+                              className="border-0 w-100 fw-bold bg-transparent rounded-0" 
+                              style={{fontFamily:'Lora', fontSize:16, display:"flex", justifyContent:"center", alignItems:"center0", gap:"2rem",outline:'none'}}
+                              onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
+                              <Image src="/google.png" width={30} height={30} />
+                              Login with {provider.name}
+                            </button>
+                          </div>
+                        })}
+                      </div> }
+                    </Col>
                   </Row>
                 </Form>
               );

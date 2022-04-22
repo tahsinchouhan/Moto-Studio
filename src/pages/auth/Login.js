@@ -165,7 +165,7 @@ function Login() {
 
                       <div className="divider position-relative mt-5" style={{height:50}}>
                         <hr />
-                        <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'48%', background:'#ffffff'}}>OR</span>
+                        <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'50%', transform: 'translate(-50%, 0%)', background:'#ffffff'}}>OR</span>
                       </div>
                     
                       {providers && <div className="social-login-btn d-flex justify-content-center">

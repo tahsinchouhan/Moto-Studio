@@ -64,6 +64,7 @@ background-color: transparent !important;
 }
 
 
-.nav-link:hover{
-    color: red !important;
+.nav-link:hover,
+.nav-link.active{
+    color: #198754 !important;
 }

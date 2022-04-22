@@ -9,6 +9,7 @@ import logo from "/public/images/logo.png";
 import { CardContext } from '../components/Layout';
 import { useSession, signOut } from "next-auth/react";
 import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 function Header() {
   const { totalItem, userLogout } = useContext(CardContext);
@@ -17,6 +18,8 @@ function Header() {
   const [viewDropDown, setViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
   const usermenuRef = useRef();
+
+  const router = useRouter();
 
   const handleClose = () => setExpand(false);
   const handleShow = () => setExpand("expanded");
@@ -54,7 +57,14 @@ function Header() {
           <Container>
             <Navbar.Brand href="/">
               <div>
-                <Image src={logo} width={107} height={63} alt="logo" priority />
+                <Image 
+                  src={logo} 
+                  width={160} 
+                  height={80} 
+                  alt="logo" 
+                  unoptimized={true}
+                  loading="eager"
+                  layout="fixed"/>
               </div>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -62,7 +72,7 @@ function Header() {
               <Nav className=" mx-auto mb-2 mb-lg-0 ">
                 {menus.map(menu => (
                   <Link href={menu.href} key={menu.id}>
-                    <a className="nav-link mx-3">{menu.title}</a>
+                    <a className={`nav-link mx-3 ${router.pathname == menu.href ? "active" : ""}`}>{menu.title}</a>
                   </Link>
                 ))}
                 {/* eslint-disable-next-line  */}
@@ -124,6 +134,12 @@ function Header() {
               <Link href="/auth/Register">
                 <a className="nav-Login btn btn-success btn-sm ms-2 py-2 px-3 signup-btn">Sign Up</a>
               </Link>
+              <Link href="/shopping/Shopping" onClick={iconHandler}>
+                <a className="cg-header-a-tag ps-3">
+                  <BsFillCartFill size="1.5em" className={`${activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"}`}/>{" "}
+                  {totalItem || ''}
+                </a>
+              </Link>
               <style jsx>{`
               .signup-btn {
                 background-color: #065934 !important;
@@ -132,15 +148,6 @@ function Header() {
             </div>
             
           )}
-                {/* <select defaultValue={''} 
-                    className="product-select"
-                    aria-label="Default select example"
-                  >
-                    <option value="">INR</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select> */}
                 </div>
                 {/* &nbsp; &nbsp;
                 <div className="pt-1 d-flex">
@@ -160,7 +167,7 @@ function Header() {
           {/* <button onClick={()=>handleShow()}>show</button> */}
           <Navbar bg="light" expanded={expand}>
             <Navbar.Brand href="/" className="Logo_brand">
-              <Image className="Logo_icon" src={logo} alt="logo" />
+              <Image className="Logo_icon" src={logo} alt="logo" unoptimized={true} loading="eager" layout="fixed" />
             </Navbar.Brand>
             <Navbar.Toggle
               aria-controls="offcanvasNavbar"

@@ -99,12 +99,6 @@ export default NextAuth({
       }
       return session
     },
-    // async redirect({url, baseUrl}) {
-    //   if(url === '/'){
-    //     return Promise.resolve('/');
-    //   }
-    //   return Promise.resolve('/');
-    // },
   },
   secret: process.env.SECRET,
   jwt: {

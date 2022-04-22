@@ -7,7 +7,7 @@ function CollaborateForestProduce() {
   return (
     <>
       <div className="collaborate-forest-img-mobile">
-        <Image src={CollaborateForestImg} className='w-100' alt="CollaborateForestImg" />
+        <Image src={CollaborateForestImg} className='w-100' alt="CollaborateForestImg" unoptimized={true} loading="eager"/>
         <Container className="mt-4">
           <Row className=" justify-content-md-start gutter-collaborate-fix justify-content-center">
             <Col md={8} lg={6}className="col-10">

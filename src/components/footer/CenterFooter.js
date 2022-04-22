@@ -36,7 +36,7 @@ function CenterFooter() {
           <Row>
             <Col sm={12} lg={3} className="text-center">
               <div>
-                <Image src={footerlogo} alt="footerlogo" />
+                <Image src={footerlogo} alt="footerlogo"  unoptimized={true} loading="eager" />
               </div>
             </Col>
             <Col sm={12} md={12} lg={6} className="ps-5">
