@@ -97,10 +97,44 @@ function Layout({ children }) {
   };
 
   const addProductToCart = (data, selectedWeight, quantity = 1) => {
-    if(!state.isLogin) {
-      Router.push('/auth/Login');
+    if(!state.isLogin) {   
+      // user login nhi hain to data localstorage me save ho jaye
+      let item = {       
+        product: {
+          _id: data._id,
+          title: data.title,
+          images: data.images,
+          weight: [{
+            weight_type: selectedWeight.weight_type._id,
+            count: selectedWeight.count,
+            price: selectedWeight.price,
+            discount: selectedWeight.discount,
+            discount_value: selectedWeight.discount_value
+          }]
+        },
+        SKU_Number:data?.SKU_Number || '',
+        product_weight: selectedWeight?.weight_type?.weight_gram || '',
+        weight_type: selectedWeight?.weight_type?._id,
+        quantity: quantity,
+        price: Number(selectedWeight?.price) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0,
+        discount: Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * quantity) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0,
+        total: Number(selectedWeight?.price * quantity) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * quantity) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value ) || 0
+      }
+      const localCartData = localStorage.getItem("cg-herbal-cartData");
+      if(localCartData) {
+        localCartData = JSON.parse(localCartData);
+        localCartData.push(item)
+        localStorage.setItem("cg-herbal-cartData", JSON.stringify(localCartData));
+        addToCart(localCartData)
+        setShow(true)
+      } else {
+        localStorage.setItem("cg-herbal-cartData", JSON.stringify([item]));
+        addToCart([item])
+        setShow(true)
+      }
+      Router.push('/shopping/Shopping');
       return false
-    } 
+    }    
 
     const params = {
       user: state.user._id,
@@ -151,6 +185,41 @@ function Layout({ children }) {
 
   useEffect(() => {
     if(session) {
+      // user login hote hi localstorage cart data datbase me save hona chahiye
+      const localCartData = localStorage.getItem("cg-herbal-cartData");
+      if(localCartData) {
+        JSON.parse(localCartData).map(data => {
+          const params = {
+            user: session.user._id,
+            cart_items: {
+              product: data.product._id,
+              SKU_Number:data?.SKU_Number || '',
+              product_weight: data?.product_weight || '',
+              weight_type: data?.weight_type,
+              quantity: data.quantity,
+              price:data.price,
+              discount:data.discount,
+              total: data.total
+            }
+          };
+           fetch(apipath + `/api/v1/cart/add-items`, {
+              method: "POST",
+              headers: { 
+                'Content-Type': 'application/json',
+                Authorization: "Bearer " + session.token
+              },
+              body: JSON.stringify(params)
+            })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result?.cart) {
+                addToCart(result.cart.cart_items)
+              }
+            }).catch((error) => console.log(error));
+        });
+        localStorage.removeItem("cg-herbal-cartData");
+      }
+
       const fetchUserData = async () => {
         try {
           fetchRequest()
@@ -164,6 +233,9 @@ function Layout({ children }) {
       };
       fetchUserData();
       fetchCartData(session);
+    } else {
+      const localCartData = localStorage.getItem("cg-herbal-cartData");
+      getAllData(JSON.parse(localCartData) || []);
     }
   }, [session])
 

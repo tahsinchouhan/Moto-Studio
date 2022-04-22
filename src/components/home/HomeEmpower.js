@@ -28,8 +28,6 @@ function HomeEmpower() {
     fetchData();
   }, [])
 
-  console.log(impoweredData);
-
   return (
     <>
       <div className="home-empower-img">      

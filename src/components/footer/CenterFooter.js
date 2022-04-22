@@ -15,8 +15,6 @@ function CenterFooter() {
   
   const { data: session } = useSession();
 
-  console.log('session', session)
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${apipath}/api/v1/category/list`);

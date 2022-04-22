@@ -39,7 +39,6 @@ function Shopping() {
     }
   }
 
-
   useEffect(() => {
     if (session && status !== 'loading') {
       fetchCartData(session);
@@ -76,6 +75,10 @@ function Shopping() {
   };
 
   const displayRazorpay = async (data) => {
+    if(!user) {
+      router.push('/auth/Login')
+      return
+    }
     if (data.length === 0) return false;
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -221,6 +224,7 @@ function Shopping() {
                 item.map((elem) => {
                   return <Item key={elem._id} {...elem} />;
                 })}
+                <span className="text-decoration-underline cursor-pointer" onClick={() => router.push('/product')}>Continue Shopping</span>
             </div>
           </Col>
 
@@ -286,7 +290,7 @@ function Shopping() {
             <ul className="list-group list-group-flush">
             {
               promoList.length > 0 ? promoList.map(promo => {
-                return <li key={promo._id} className="list-group-item d-flex justify-content-between align-items-center">
+                return <li key={`promo${promo._id}`} className="list-group-item d-flex justify-content-between align-items-center">
                   {promo?.description || 'Description'}
                   <span className="badge bg-primary rounded-pill" onClick={()=>promoHandler(promo)}>{promo?.code || ''}</span>
                 </li>
