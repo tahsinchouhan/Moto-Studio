@@ -111,12 +111,14 @@ function Shopping() {
       router.push('/auth/Login')
       return
     }
+    if (data.length === 0) return false;
+    
     if(!shippingAddress || !addressList) 
     { 
       setStep(1) 
       return;
     }
-    if (data.length === 0) return false;
+
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
