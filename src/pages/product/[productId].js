@@ -53,9 +53,24 @@ function ProductDetail({ productData }) {
       </div>
 
       <div className="my-5 d-flex">
-        <div className="popup-div mx-auto">
-          <Row className="popup-modal-main p-0">
-            <Col xs={12} md={7}>
+        <div className="container popup-div mx-auto">
+          <Row className="popup-modal-main p-0 justify-content-center">
+            <Col xs={6} md={5} className="popup-modal-img">
+              <Image
+                src={
+                  productData?.images?.length
+                    ? productData?.images[0]?.img || image1
+                    : image1
+                }
+                width={500}
+                height={500}
+                alt={productData?.title}
+                unoptimized={true}
+                loading="eager"
+                objectFit="cover"
+              />
+            </Col>
+            <Col xs={12} md={5}>
               <div className="p-3 p-md-2">
                 <h1 className="product-name-text">
                   {productData?.title || "Product Name"}
@@ -125,37 +140,6 @@ function ProductDetail({ productData }) {
                     })}
                     >+</span>
                 </div>
-
-                  {/* <Row>
-                    <Col xs={9} sm={9}>
-                      <p className="productName-counter-para  my-2">
-                        Select No. of units
-                      </p>
-                    </Col>
-
-                    <Col
-                      xs={1}
-                      sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
-                      onClick={() => setCount(prev => {
-                        return (prev - 1) < 1 ? 1 : (prev -1)
-                      })}
-                    >
-                      -
-                    </Col>
-                    <Col xs={1} sm={1}>
-                      <p className="productName-counter-no text-center my-2">{count}</p>
-                    </Col>
-                    <Col
-                      xs={1}
-                      sm={1}
-                      className="productName-counter-pm-sign text-center my-0 py-2 cursor-pointer"
-                      onClick={()=>setCount(prev => prev + 1) }
-                    >
-                      +
-                    </Col>
-                   
-                  </Row> */}
                 </div>
                 <br/>
                 <div className="product-Price-1 w-100">
@@ -171,6 +155,7 @@ function ProductDetail({ productData }) {
                         <div className="mt-2" onClick={() => router.push(`/shopping/Shopping`) } >
                           <ButtonDark
                             text="VIEW CART"
+                            className="active"
                           />
                         </div>
                       </Col>
@@ -200,21 +185,6 @@ function ProductDetail({ productData }) {
                 </p>
               </div>
             </Col>
-            <Col xs={6} md={5} className="popup-modal-img m-auto ">
-              <div>
-                <Image
-                  src={
-                    productData?.images?.length
-                      ? productData?.images[0]?.img || image1
-                      : image1
-                  }
-                  width={500}
-                  height={500}
-                  alt="image1"
-                />
-              </div>
-            </Col>
-            {/* <Col xs={6} md={1}>x</Col> */}
           </Row>
         </div>
       </div>
@@ -245,12 +215,15 @@ function ProductDetail({ productData }) {
                         />
                       </div>
 
-                      <h1 className="product-card-text ">
+                      <h1 className="product-card-text mt-2">
                         {product?.title || "title"}
                       </h1>
-                      <p className="product-card-para w-100">
+                        <p className="product-card-para w-100">
+                          {product?.sub_title}
+                        </p>
+                      {/* <p className="product-card-para w-100">
                         {product?.description || "Description"}
-                      </p>
+                      </p> */}
                       {/* <div
                         className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                         onClick={(e) => {
@@ -282,7 +255,7 @@ function ProductDetail({ productData }) {
                         <div className="mt-2">
                           <ButtonDark
                             type="submit"
-                            className="Add-to-cart-button"
+                            className="Add-to-cart-button active"
                             text="VIEW CART"
                           />
                         </div>
@@ -304,6 +277,31 @@ function ProductDetail({ productData }) {
                           <ButtonDark type="button" text="OUT OF STOCK" disabled/>
                         </div>)
                         }
+                        {/* <div className="mt-3">
+                          <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
+                              <span>Buy it on</span>
+                              <Image 
+                                src={'/images/amz.png'} 
+                                alt="amz" width={59} height={20} unoptimized={true} 
+                                loading="eager"
+                                style={{marginTop: 20}}
+                                />
+                            </button>
+                            <style>{`
+                            .amazon-btn{
+                              background: transparent;
+                              color:#333333;
+                              padding: 0.7rem 0;
+                              font-family:'Lato';
+                              outline:0;
+                              box-shadow: none;
+                            }
+
+                            .amazon-btn:hover{ 
+                              background: #eee;
+                            }
+                            `}</style>
+                        </div> */}
                     </div>
                   </Col>
                 );

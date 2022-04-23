@@ -62,8 +62,9 @@ function Products() {
         .then((response) => response.json())
         .then((objData) => {
           if (objData?.data?.length) {
-            setCheckedState(new Array(objData?.data.length).fill(false))
-            setCategory(objData?.data);
+            const filteredData = objData?.data.filter(data => data.status === true)
+            setCheckedState(new Array(filteredData.length).fill(false))
+            setCategory(filteredData);
           }
         })
         .catch((error) => console.log(error));
@@ -196,19 +197,24 @@ function Products() {
                           />
                         </div>
 
-                        <h1 className="product-card-text ">{product?.title}</h1>
+                        <h1 className="product-card-text mt-2">{product?.title}</h1>
                         <p className="product-card-para w-100">
-                          {product?.description}
+                          {product?.sub_title}
                         </p>
-                        {/* <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}>
-                          <div><span className="icon"><AiFillPlusCircle/></span></div>
-                          { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> }
+                        {/* <p className="product-card-para w-100">
+                          {product?.description}
+                        </p> */}
+                        <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" 
+                        // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
+                        >
+                          <div><span className="icon pe-2"><AiFillPlusCircle/></span></div>
+                          {/* { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> } */}
                           <div>
                             <span className="product-card-details">
                               Product Details
                             </span>
                           </div>
-                        </div> */}
+                        </div>
                         <span className="product-Price">
                           <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
                           { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
@@ -216,8 +222,12 @@ function Products() {
                         {product?.weight[0]?.count > 0 ? (
                           item.some((el) => el.product === product?._id) ||
                           item.some((el) => el.product?._id === product?._id) ? (
-                            <div className="mt-2">
-                              <ButtonDark type="submit" className="Add-to-cart-button" text="PRODUCT ADDED"/>
+                            <div className="mt-2"
+                             onClick={(e) => {
+                                e.stopPropagation();
+                                router.push('/shopping/Shopping')
+                              }}>
+                              <ButtonDark type="submit" className="active" text="PRODUCT ADDED"/>
                             </div>
                           ) : (
                             <div
@@ -227,11 +237,37 @@ function Products() {
                                 addProductToCart(product, product?.weight[0]);
                               }}
                             >
-                              <ButtonDark type="submit" className="Add-to-cart-button" text="ADD TO CART"/>
+                              <ButtonDark type="button" className="Add-to-cart-button" text="ADD TO CART"/>
                             </div>
                           )) : (<div className="mt-2">
-                              <ButtonDark type="button" text="OUT OF STOCK" disabled/>
+                              <span style={{color:'#065934', textAlign:'center', display:'block', padding:'0.3rem'}}>OUT OF STOCK</span>
                             </div>) }
+
+                            {/* <div className="mt-3">
+                              <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
+                                  <span>Buy it on</span>
+                                  <Image 
+                                    src={'/images/amz.png'} 
+                                    alt="amz" width={59} height={20} unoptimized={true} 
+                                    loading="eager"
+                                    style={{marginTop: 20}}
+                                    />
+                                </button>
+                                <style jsx>{`
+                                .amazon-btn{
+                                  background: transparent;
+                                  color:#333333;
+                                  padding: 0.7rem 0;
+                                  font-family:'Lato';
+                                  outline:0;
+                                  box-shadow: none;
+                                }
+
+                                .amazon-btn:hover{ 
+                                  background: #eee;
+                                }
+                                `}</style>
+                            </div> */}
                       </div>
                     </Col>
                   );

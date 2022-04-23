@@ -27,7 +27,7 @@ function Register() {
     name: "",
     mobile: "",
     password: "",
-    confirm_password: "",
+    // confirm_password: "",
     email: "",
     // dob: "",
     // gender: "",
@@ -39,8 +39,8 @@ function Register() {
     password: Yup.string().required("This field is required")
     .min(6, 'Password is too short - should be 6 chars minimum.')
     .max(25, 'Password is too long - should be 25 chars maximum.'),
-    confirm_password: Yup.string().required("This field is required")
-     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+    // confirm_password: Yup.string().required("This field is required")
+    //  .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     email: Yup.string().email("Invalid email address").required("Required"),
     // dob: Yup.string().required("This field is required"),
     // gender: Yup.string().required("This field is required"),
@@ -105,17 +105,17 @@ function Register() {
                 <Form>
                   {message && <div className="text-center text-danger fw-bold fs-5 pb-2">{message}</div> }
                   <Row className="justify-content-center">
-                    <Col md={8} >
+                    <Col md={4} >
                       <div className="form-div pt-1">
                         <div className="row">
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             <div className="form-group user-field mb-4">
                               {/* <label htmlFor="name">Name</label> */}
                               <Field
                                 className="form-control form-control-lg px-2"
                                 type="text"
                                 name="name"
-                                placeholder="Enter Your Full Name"
+                                placeholder="Full Name"
                                 autoComplete="off"
                                 style={formControl}
                               />
@@ -123,14 +123,14 @@ function Register() {
                             </div>
                           </div>
 
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             <div className="form-group user-field mb-4">
                               {/* <label htmlFor="email">Email Address</label> */}
                               <Field
                                 className="form-control form-control-lg px-2"
                                 type="text"
                                 name="email"
-                                placeholder="Email Id"
+                                placeholder="Email Address"
                                 autoComplete="off"
                                 style={formControl}
                               />
@@ -138,7 +138,24 @@ function Register() {
                             </div>
                           </div>
 
-                            <div className="col-md-6">
+                          
+                          <div className="col-md-12">
+                              <div className="form-group user-field  mb-4">
+                                {/* <label htmlFor="number" className="mt-3">
+                                  Mobile
+                                </label> */}
+                                <Field
+                                  className="form-control form-control-lg px-2"
+                                  type="number"
+                                  name="mobile"
+                                  placeholder="Mobile number"
+                                  style={formControl}
+                                />
+                                <ErrorMessage name="mobile" component={TextError} />
+                              </div>
+                          </div>
+
+                            <div className="col-md-12">
                               <div className="form-group user-field  mb-4">
                                 {/* <label htmlFor="password" className="mt-3">
                                   Password
@@ -154,51 +171,17 @@ function Register() {
                               </div>
                             </div>
 
-                            <div className="col-md-6">
-                              <div className="form-group user-field  mb-4">
-                                {/* <label
-                                  htmlFor="confirm password"
-                                  className="mt-3"
-                                >
-                                  Confirm Password
-                                </label> */}
-                                <Field
-                                  className="form-control form-control-lg px-2"
-                                  type="password"
-                                  name="confirm_password"
-                                  placeholder="Confirm password"
-                                  style={formControl}
-                                />
-                                <ErrorMessage name="confirm_password" component={TextError} />
-                              </div>
-                            </div>
-
-                            <div className="col-md-6">
-                              <div className="form-group user-field  mb-4">
-                                {/* <label htmlFor="number" className="mt-3">
-                                  Mobile
-                                </label> */}
-                                <Field
-                                  className="form-control form-control-lg px-2"
-                                  type="number"
-                                  name="mobile"
-                                  placeholder="Mobile number"
-                                  style={formControl}
-                                />
-                                <ErrorMessage name="mobile" component={TextError} />
-                              </div>
-                          </div>
                         </div>
 
                         <div className="row">
-                          <div className="col-md-6">
+                          <div className="col-md-12">
                             <div className="text-center">
                               <button  type="submit" className="btn btn-success w-100 py-2 rounded-0">
                                 SIGNUP
                               </button>                      
                             </div>
                           </div>
-                          <div className="col-md-6 d-flex align-items-center">
+                          <div className="col-md-12 d-flex align-items-center mt-4">
                             <span className="fw-bold">
                               Already Register? &nbsp;
                               <Link href="/auth/Login">
@@ -212,7 +195,7 @@ function Register() {
                   </Row>
 
                   <Row className="justify-content-center">
-                    <Col md={5}>
+                    <Col md={4}>
                       <div className="divider position-relative mt-5" style={{height:50}}>
                         <hr />
                         <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'50%', transform: 'translate(-50%, 0%)', background:'#ffffff'}}>OR</span>
@@ -228,7 +211,7 @@ function Register() {
                               style={{fontFamily:'Lora', fontSize:16, display:"flex", justifyContent:"center", alignItems:"center0", gap:"2rem",outline:'none'}}
                               onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
                               <Image src="/google.png" width={30} height={30} />
-                              Login with {provider.name}
+                              Signup with {provider.name}
                             </button>
                           </div>
                         })}

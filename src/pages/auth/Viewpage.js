@@ -64,7 +64,9 @@ function Viewpage({ productData }) {
         <div className="d-flex justify-content-between align-items-center flex-wrap">
           <div>
             <strong>Recipient:</strong><br/>
-            Name: {user?.full_Name} <br/> address: {user?.address || ''}<br/> mobile: {user?.mobile} <br/>
+            Name: {productData?.shippingAddress.full_name || user?.full_Name} <br/>                         
+            address: {productData?.shippingAddress?.address || user?.address || ''} {productData?.shippingAddress?.city || ''}, {productData?.shippingAddress?.state || ''} - {productData?.shippingAddress?.pincode || ''}<br/>              
+            mobile: {productData?.shippingAddress?.mobile || user?.mobile} <br/>
             <strong>Payment Status: {productData?.payment_status || ''}</strong>
           </div>
           {productData?.tracking.length > 0 ? (
