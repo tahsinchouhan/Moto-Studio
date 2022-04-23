@@ -5,7 +5,7 @@
   opacity: 100% !important;
 }
 .feature-products-text {
-  font-family: 'Lora';
+  font-family: "Lora";
   font-size: 40px;
   color: #333333;
 }
@@ -13,8 +13,54 @@
 .feature-products-texts {
   font-size: 19px;
   color: #333333;
-  font-family: 'Lora';
+  font-family: "Lora";
 }
+
+.featured-products-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.featured-card .text {
+  width: 90% !important;
+  margin-top: 10px;
+}
+
+.featured-card .content {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.featured-card .img {
+  width: 336px;
+  height: 200px;
+  max-width: 300px;
+  position: relative;
+}
+
+.featured-card .img > div {
+  position: unset !important;
+}
+
+.featured-card .img .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
 @media (max-width: 1200px) {
 }
 
@@ -25,19 +71,34 @@
   /* overflow-x: auto; */
   /* white-space: nowrap */
 }
+
+.slick-next {
+  right: 10% !important;
+  z-index: 20;
+}
+
+.slick-prev {
+  left: 10px !important;
+  z-index: 20;
+}
+
 .image-div {
   /* float: left; */
   display: inline-block;
   width: 200px !important;
- 
 }
 .overflow-style {
   /* overflow-x: auto; */
   text-align: center;
 }
 .hover1:hover {
-  box-sizing:content-box!important;
+  box-sizing: content-box !important;
   outline: 10px solid #5abf6b;
   outline-offset: -10px;
 }
 
+@media screen and (max-width: 800px) {
+  .feature-products-text {
+    font-size: 32px;
+  }
+}
