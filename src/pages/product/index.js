@@ -197,19 +197,24 @@ function Products() {
                           />
                         </div>
 
-                        <h1 className="product-card-text ">{product?.title}</h1>
+                        <h1 className="product-card-text mt-2">{product?.title}</h1>
+                        <p className="product-card-para w-100">
+                          {product?.sub_title}
+                        </p>
                         {/* <p className="product-card-para w-100">
                           {product?.description}
                         </p> */}
-                        {/* <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}>
-                          <div><span className="icon"><AiFillPlusCircle/></span></div>
-                          { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> }
+                        <div className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer" 
+                        // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
+                        >
+                          <div><span className="icon pe-2"><AiFillPlusCircle/></span></div>
+                          {/* { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> } */}
                           <div>
                             <span className="product-card-details">
                               Product Details
                             </span>
                           </div>
-                        </div> */}
+                        </div>
                         <span className="product-Price">
                           <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
                           { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
@@ -238,7 +243,7 @@ function Products() {
                               <span style={{color:'#065934', textAlign:'center', display:'block', padding:'0.3rem'}}>OUT OF STOCK</span>
                             </div>) }
 
-                            <div className="mt-3">
+                            {/* <div className="mt-3">
                               <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
                                   <span>Buy it on</span>
                                   <Image 
@@ -262,7 +267,7 @@ function Products() {
                                   background: #eee;
                                 }
                                 `}</style>
-                            </div>
+                            </div> */}
                       </div>
                     </Col>
                   );

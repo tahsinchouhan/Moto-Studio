@@ -17,11 +17,13 @@ function Header() {
   const { data: session } = useSession();
   const [activeIcon, setActiveIcon] = useState(false);
   const [viewDropDown, setViewDropDown] = useState(false);
+  const [connectViewDropDown, setConnectViewDropDown] = useState(false);
   const [expand, setExpand] = useState(false);
   const [searchSideBar, setSearchSideBar] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [searchData, setSearchData] = useState([]);
   const usermenuRef = useRef();
+  const connectmenuRef = useRef();
 
   const router = useRouter();
 
@@ -45,6 +47,11 @@ function Header() {
 
   useEffect(() => {
     const closedDropdown = e => { 
+      if(e.target.innerHTML !== 'CONNECT') {
+        if(connectViewDropDown && !connectmenuRef?.current?.contains(e.target)){
+          setConnectViewDropDown(false)
+        }
+      }
       if(viewDropDown && !usermenuRef?.current?.contains(e.target)){
         setViewDropDown(false)
       }
@@ -62,7 +69,8 @@ function Header() {
     {id:4,title:'CORPORATE',href:'/collaborate'},
     {id:5,title:'BLOGS',href:'/blogs'},
     {id:6,title:'NEWS',href:'/news'},
-    {id:7,title:'CONTACT',href:'/contact'}
+    // {id:7,title:'CONNECT',href:'/#'}
+    // {id:7,title:'CONTACT',href:'/contact'}
   ]
   return (
     <>
@@ -91,6 +99,28 @@ function Header() {
                   </Link>
                 ))}
                 {/* eslint-disable-next-line  */}
+
+                <div className="position-relative" ref={connectmenuRef} >
+                    <button className="bg-transparent border-0 nav-link" onClick={() => setConnectViewDropDown(!connectViewDropDown)}>CONNECT</button>
+                    { connectViewDropDown && <ul className="dropdown-menu show position-absolute shadow rounded">
+                        <li onClick={()=>setConnectViewDropDown(false)}>
+                          <Link href="/connect/consumerProgram">
+                            <a className="dropdown-item text-black">CONSUMER CONNECT PROGRAM</a>
+                          </Link>
+                        </li>
+                        <li onClick={()=>setConnectViewDropDown(false)}>
+                          <Link href="/connect/forestLover">
+                            <a className="dropdown-item text-black">FOREST LOVERS CLUB</a>
+                          </Link>
+                        </li>
+                        <li onClick={()=>setConnectViewDropDown(false)}>
+                          <Link href="/connect/successStory">
+                            <a className="dropdown-item text-black">SUCCESS STORIES</a>
+                          </Link>
+                        </li>
+                      </ul>
+                    }
+                  </div>
               </Nav>             
               <Nav>
                 <div className="pt-1 d-flex align-items-center">

@@ -215,9 +215,12 @@ function ProductDetail({ productData }) {
                         />
                       </div>
 
-                      <h1 className="product-card-text ">
+                      <h1 className="product-card-text mt-2">
                         {product?.title || "title"}
                       </h1>
+                        <p className="product-card-para w-100">
+                          {product?.sub_title}
+                        </p>
                       {/* <p className="product-card-para w-100">
                         {product?.description || "Description"}
                       </p> */}
@@ -274,7 +277,7 @@ function ProductDetail({ productData }) {
                           <ButtonDark type="button" text="OUT OF STOCK" disabled/>
                         </div>)
                         }
-                        <div className="mt-3">
+                        {/* <div className="mt-3">
                           <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
                               <span>Buy it on</span>
                               <Image 
@@ -298,7 +301,7 @@ function ProductDetail({ productData }) {
                               background: #eee;
                             }
                             `}</style>
-                        </div>
+                        </div> */}
                     </div>
                   </Col>
                 );

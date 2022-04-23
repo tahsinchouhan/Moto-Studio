@@ -21,12 +21,12 @@ const refundPolicy = () => {
         Returns Policy
         We do not offer refunds or exchanges for opened products due to hygiene concerns. However, we do offer replacements purely on a case by case basis and it is always our endeavour to help our customers to the best of our ability as the case may be. The genuine cases of damage, leakage, missing product(s), wrong delivery of product(s) will be taken into consideration.
         The customer shall bring the same to our notice within 7 working days from the date of receiving the product(s).
-        All claims for shortages or damages must be reported to customer service at support@cgherbals.in on the day of delivery.
+        All claims for shortages or damages must be reported to customer service at support@cgherbals.org on the day of delivery.
         <br/>
         <br/>
         Cancellation Policy
-        Orders once placed through www.cgherbals.in cannot be cancelled and no refunds will be made once an order has been successfully placed through www.cgherbals.in
-        If you have any questions regarding these Terms and Conditions, please email us at info@cgherbals.in
+        Orders once placed through www.cgherbals.org cannot be cancelled and no refunds will be made once an order has been successfully placed through www.cgherbals.org
+        If you have any questions regarding these Terms and Conditions, please email us at info@cgherbals.org
         Worldwide Copyright © Chhattisgarh Herbal (brand owners of CG Herbals®). All worldwide rights reserved.
 
         </section>

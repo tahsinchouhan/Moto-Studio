@@ -21,7 +21,7 @@ const privacyPolicy = () => {
         – Date of Effect <br />
         – Information We Collect <br />
         – How We Use Your Personally Identifiable Information <br />
-        – Technologies that Allow Us to Customise Your Experience on CG Herbals Online <br />
+        – Technologies that Allow Us to Customise Your Experience on CHHATTISGARH HERBALS <br />
         – Information We Share and Who We Share With <br />
         – How We Protect Personal Information <br />
         – Updates to Our Privacy Policy <br />
@@ -30,54 +30,54 @@ const privacyPolicy = () => {
 
         <section>        
           <h5>DATE OF EFFECT:</h5>
-          This Privacy Policy comes into effect from November 1 2013 <br />
-          Thank you for visiting CG Herbals’ Online Store which is currently located at www.cgherbals.in <br />
+          This Privacy Policy comes into effect from May 1 2022 <br />
+          Thank you for visiting CG Herbals’ Online Store which is currently located at www.cgherbals.org <br />
           Your visit to this website is subject to this Privacy Policy and our Terms and Conditions. <br />
-          We at CG Herbals Online are committed to protecting and safeguarding your privacy.<br />
+          We at CHHATTISGARH HERBALS are committed to protecting and safeguarding your privacy.<br />
 
           This Privacy Policy describes the types of personal information we collect on the CG Herbals website, how we may use that information and with whom we may share it. Our Privacy Policy also describes the measures we take to protect the security of this information as well as how you can access, modify or delete your personal information at any time. It also explains how you can object to the processing of your personal information or to receiving communications about our products and services.
           <br/>
-          This Privacy Policy governs only information provided to CG Herbals Online. It does not govern any other information or communications that may have been collected through CG Herbals’ brick and mortar retail stores or collected in any other manner like promotions, Whatsapp consultations or personal contact programmes, etc.
+          This Privacy Policy governs only information provided to CHHATTISGARH HERBALS. It does not govern any other information or communications that may have been collected through CG Herbals’ brick and mortar retail stores or collected in any other manner like promotions, Whatsapp consultations or personal contact programmes, etc.
           <br /> <br />
           By accepting the Privacy Policy, you expressly consent to our use and disclosure of your personal information in accordance with this Privacy Policy.
         </section>
 
         <section>        
           <h5>Information We Collect:</h5>
-          In general, you can visit the CG Herbals Online without telling us who you are or revealing any personally identifiable information. You can however, also register at our website which enables us to contact you by email, text messages/RCS messages or whatsapp messaging on your mobile phone to inform you about our products or respond to your comments or queries. As part of the registration process, we collect and store your personal information that you may choose to provide us with, such as your name, email address, mobile phone number and date of birth.
+          In general, you can visit the CHHATTISGARH HERBALS without telling us who you are or revealing any personally identifiable information. You can however, also register at our website which enables us to contact you by email, text messages/RCS messages or whatsapp messaging on your mobile phone to inform you about our products or respond to your comments or queries. As part of the registration process, we collect and store your personal information that you may choose to provide us with, such as your name, email address, mobile phone number and date of birth.
           <br /><br />
 
           The technology that we use also allows us to collect aggregate information that does not identify you personally but lets us know your technology usage like the Uniform Resource Locater, Internet Protocol address, your operating system and browser type, etc. We may collect, compile, store, publish, promote, report, or otherwise disclose or use any such aggregate information which does not personally identify you. If any such aggregate information is correlated to you, it will be protected like any other personally identifiable information as described under this Privacy Policy.
           <br /><br />
           Credit Card , Debit Card and Banking Information   <br />
-          CG Herbals Online does not collect or store Credit Card or Debit Card or banking information. Such information may be provided by you during the purchase transaction. However this data does not come to CG Herbals Online. It is directly transmitted through the payment gateway provider to the payment network or bank . No information is stored by CG Herbals Online.
+          CHHATTISGARH HERBALS does not collect or store Credit Card or Debit Card or banking information. Such information may be provided by you during the purchase transaction. However this data does not come to CHHATTISGARH HERBALS. It is directly transmitted through the payment gateway provider to the payment network or bank . No information is stored by CHHATTISGARH HERBALS.
         </section>
 
         <section>        
           <h5> Data Hosting</h5>
-          The website is hosted with third party data hosting specialists. Information collected is kept on servers owned and managed by data hosting companies, which may be in India or overseas including the United States of America. The companies being used by CG Herbals Online are PCI compliant and have data security processes in place. However CG Herbals is not liable for any data theft or breach of security at the data centres hosting the website and holding consumer data.
+          The website is hosted with third party data hosting specialists. Information collected is kept on servers owned and managed by data hosting companies, which may be in India or overseas including the United States of America. The companies being used by CHHATTISGARH HERBALS are PCI compliant and have data security processes in place. However CG Herbals is not liable for any data theft or breach of security at the data centres hosting the website and holding consumer data.
           <br /><br />
           How We Use Your Personally Identifiable Information
         </section>
 
         <section>        
           <h5> Marketing Emails</h5>
-         The information you have chosen to provide may be used by CG Herbals Online to create and deliver to you emails such as our newsletters, surveys or other email messages containing product and event information, cosmetics tips or promotions. If at any time you decide that you would not like to receive these emails, you may select the ‘Unsubscribe’ link on the email or edit your information and consent to receive email and other communication in the ‘Profile’ section for registered users.
+         The information you have chosen to provide may be used by CHHATTISGARH HERBALS to create and deliver to you emails such as our newsletters, surveys or other email messages containing product and event information, cosmetics tips or promotions. If at any time you decide that you would not like to receive these emails, you may select the ‘Unsubscribe’ link on the email or edit your information and consent to receive email and other communication in the ‘Profile’ section for registered users.
         </section>
 
         <section>        
           <h5>Text Messages/Whatsapp</h5>
-           If you have chosen to leave your mobile phone number on CG Herbals Online, you may receive text message/SMS alerts/Whatsapp messages containing product and event information, cosmetics tips or promotions on your mobile phone. Please note that CG Herbals Online will never send you any unsolicited text message on your mobile phone. CG Herbals Online does not charge any fee for you to receive any text message from us. However, your mobile service provider may charge you for sending and/or receiving text messages and air-time, as well as any other standard applicable rates charged by your mobile service provider.
+           If you have chosen to leave your mobile phone number on CHHATTISGARH HERBALS, you may receive text message/SMS alerts/Whatsapp messages containing product and event information, cosmetics tips or promotions on your mobile phone. Please note that CHHATTISGARH HERBALS will never send you any unsolicited text message on your mobile phone. CHHATTISGARH HERBALS does not charge any fee for you to receive any text message from us. However, your mobile service provider may charge you for sending and/or receiving text messages and air-time, as well as any other standard applicable rates charged by your mobile service provider.
         </section>
 
         <section>        
           <h5>Telephone calls</h5>
-           If you have chosen to leave your mobile phone number or landline number on CG Herbals Online, you may receive phone calls containing product and event information, cosmetics tips or promotions on your mobile phone or landline phone.
+           If you have chosen to leave your mobile phone number or landline number on CHHATTISGARH HERBALS, you may receive phone calls containing product and event information, cosmetics tips or promotions on your mobile phone or landline phone.
         </section>
 
         <section>        
           <h5>Communications to Serve You</h5>
-           If you have chosen to provide us with your contact information, we may provide you with service related announcements by any means, including email, concerning the website or contact you regarding your customer service requests or questions. For example, all registered users will receive a welcoming email to confirm their registration. These types of communications are necessary to serve you, respond to your concerns and to provide the high level of customer service that CG Herbals Online offers its customers.
+           If you have chosen to provide us with your contact information, we may provide you with service related announcements by any means, including email, concerning the website or contact you regarding your customer service requests or questions. For example, all registered users will receive a welcoming email to confirm their registration. These types of communications are necessary to serve you, respond to your concerns and to provide the high level of customer service that CHHATTISGARH HERBALS offers its customers.
         </section>
 
         <section>        
@@ -87,7 +87,7 @@ const privacyPolicy = () => {
 
         <section>        
           <h5>Special Events, Questionnaires and Surveys</h5>
-            On occasion, CG Herbals Online may sponsor special events (such as contests, promotions or other offerings), questionnaires and surveys. There may be specific rules applicable to these promotions that explain how any personal information you provide will be processed. We strongly suggest you review any applicable rules before participating. To the extent any special event, questionnaire or survey is not subject to specific rules, the processing of personal information is governed by this Privacy Policy and the purposes it sets forth.
+            On occasion, CHHATTISGARH HERBALS may sponsor special events (such as contests, promotions or other offerings), questionnaires and surveys. There may be specific rules applicable to these promotions that explain how any personal information you provide will be processed. We strongly suggest you review any applicable rules before participating. To the extent any special event, questionnaire or survey is not subject to specific rules, the processing of personal information is governed by this Privacy Policy and the purposes it sets forth.
         </section>
 
         <section>        
@@ -96,8 +96,8 @@ const privacyPolicy = () => {
         </section>
 
         <section>        
-          <h5> Technologies that Allow Us to Customise Your Experience on CG Herbals Online</h5>
-           We use various technologies to collect information relating to your visit to our website, such as the Uniform Resource Locater (URL) that referred you to our website, Internet Protocol address, browser type, browser language, the date and time of your request, etc. This enables us to enhance and customise your experience on our website. For example, we may collect the Internet Protocol (IP) address identifying your computer or device and indicating your geographic region for statistical purposes. In some instances, we may use these technologies in combination with the personally identifiable information you provide on the website. These technologies may provide a variety of information such as whether you have visited CG Herbals Online before. They also may enable you to save your preferences. Each technology is explained below.
+          <h5> Technologies that Allow Us to Customise Your Experience on CHHATTISGARH HERBALS</h5>
+           We use various technologies to collect information relating to your visit to our website, such as the Uniform Resource Locater (URL) that referred you to our website, Internet Protocol address, browser type, browser language, the date and time of your request, etc. This enables us to enhance and customise your experience on our website. For example, we may collect the Internet Protocol (IP) address identifying your computer or device and indicating your geographic region for statistical purposes. In some instances, we may use these technologies in combination with the personally identifiable information you provide on the website. These technologies may provide a variety of information such as whether you have visited CHHATTISGARH HERBALS before. They also may enable you to save your preferences. Each technology is explained below.
         </section>
 
         <section>        
@@ -117,7 +117,7 @@ const privacyPolicy = () => {
 
         <section>        
           <h5> CG Herbals Affiliates</h5>
-           We may share your personal information with our Affiliates that distribute and market CG Herbals products. Our Affiliates may use this information in accordance with this Privacy Policy including, if you have so chosen, sending you product information, cosmetic tips or promotions. If you prefer that we not share your personal information with our Affiliates, please do not provide it to us. We are unable to offer the benefits of CG Herbals Online to anyone who does not consent to the sharing of their personal information with our Affiliates.
+           We may share your personal information with our Affiliates that distribute and market CG Herbals products. Our Affiliates may use this information in accordance with this Privacy Policy including, if you have so chosen, sending you product information, cosmetic tips or promotions. If you prefer that we not share your personal information with our Affiliates, please do not provide it to us. We are unable to offer the benefits of CHHATTISGARH HERBALS to anyone who does not consent to the sharing of their personal information with our Affiliates.
         </section>
 
         <section>        
@@ -145,12 +145,12 @@ const privacyPolicy = () => {
 
         <section>        
           <h5> Children’s Privacy</h5>
-           The CG Herbals Online website is not designed for persons under the age of 13 and we do not knowingly collect personally identifiable information from anyone under the age of 13. If you are under 13 years of age, you may browse CG Herbals Online, but please do not provide your personal information to us. For example, you cannot register. If we become aware that we have inadvertently received personal information from a visitor under the age of 13 on the website, we will delete the information from our records.
+           The CHHATTISGARH HERBALS website is not designed for persons under the age of 13 and we do not knowingly collect personally identifiable information from anyone under the age of 13. If you are under 13 years of age, you may browse CHHATTISGARH HERBALS, but please do not provide your personal information to us. For example, you cannot register. If we become aware that we have inadvertently received personal information from a visitor under the age of 13 on the website, we will delete the information from our records.
         </section>
 
         <section>        
           <h5> How We Protect Personal Information</h5>
-           We maintain reasonable safeguards for this website to protect against unauthorised disclosure, use, alteration or destruction of the personal information you provide on CG Herbals Online. If you have any questions about security at our Site, you can email us at info@cgherbals.in .
+           We maintain reasonable safeguards for this website to protect against unauthorised disclosure, use, alteration or destruction of the personal information you provide on CHHATTISGARH HERBALS. If you have any questions about security at our Site, you can email us at info@cgherbals.org .
         </section>
 
         <section>        
@@ -161,7 +161,7 @@ const privacyPolicy = () => {
         
         <section>        
           <h5> Comments</h5>
-        We have taken great efforts to ensure that your visit to CG Herbals Online is an excellent and fruitful one and that your privacy is constantly respected. If you have any questions, comments or concerns about our privacy practices, please contact us by email at info@cgherbals.in .
+        We have taken great efforts to ensure that your visit to CHHATTISGARH HERBALS is an excellent and fruitful one and that your privacy is constantly respected. If you have any questions, comments or concerns about our privacy practices, please contact us by email at info@cgherbals.org .
         <br/>
         Worldwide Copyright © Chhattisgarh Herbals . (brand owners of CG Herbals). All worldwide rights reserved.
         </section>
