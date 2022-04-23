@@ -47,6 +47,9 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
                   alt="title"
                   layout="fill"
                   className="img-fluid"
+                  unoptimized={true}
+                  loading="eager"
+                  objectFit="cover"
                 />
               </div>
             </Col>
@@ -100,9 +103,9 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
         </Col>
         <Col lg="2" className="mt-5">
           <p className="fw-bold shopping-p4-size">₹ {quantity * price}</p>
-          <div className="shopping-edit-text mt-5">
+          {/* <div className="shopping-edit-text mt-5">
             <p1> EDIT</p1>
-          </div>
+          </div> */}
         </Col>
       </Row>
       <hr />

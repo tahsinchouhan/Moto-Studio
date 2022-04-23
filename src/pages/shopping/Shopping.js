@@ -7,6 +7,10 @@ import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import TextError from '../../components/TextError';
+import * as Yup from "yup";
+
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -27,7 +31,35 @@ function Shopping() {
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
   const [promoValue, setPromoValue] = useState(null);
+  const [shippingAddress, setShippingAddress] = useState(null);
+  const [step, setStep] = useState(0);
+  const [addressList, setAddressList] = useState(false);
   const { data: session, status } = useSession();
+
+  const initialValues = {
+    full_name: shippingAddress?.full_name || "",
+    mobile: shippingAddress?.mobile || "",
+    pincode: shippingAddress?.pincode || "",
+    address: shippingAddress?.address || "",
+    area: shippingAddress?.area || "",
+    landmark: shippingAddress?.landmark || "",
+    city: shippingAddress?.city || "",
+    state: shippingAddress?.state || ""
+  };
+
+  const validationSchema = Yup.object({
+    full_name: Yup.string().required("This field is required"),
+    mobile: Yup.string().required("This field is required").min(10).max(10),   
+    pincode: Yup.string().required("This field is required").min(6).max(6),
+    address: Yup.string().required("This field is required"),
+    city: Yup.string().required("This field is required"),
+    state: Yup.string().required("This field is required")
+  });
+
+  const onSubmit = async (values, onSubmitProps) => {
+   setShippingAddress(values)
+   setAddressList(true)
+  };
 
   const fetchPromoList = async () => {
     try {
@@ -78,6 +110,11 @@ function Shopping() {
     if(!user) {
       router.push('/auth/Login')
       return
+    }
+    if(!shippingAddress || !addressList) 
+    { 
+      setStep(1) 
+      return;
     }
     if (data.length === 0) return false;
     const res = await loadScript(
@@ -150,6 +187,7 @@ function Shopping() {
               code: promoValue?.code || ''
             } : null,
             address: user.address,
+            shippingAddress: shippingAddress,
             total_amount: data.reduce(
               (a, v) => (a = a + v.price * v.quantity),
               0
@@ -194,39 +232,202 @@ function Shopping() {
     paymentObject.open();
   };
 
+  const formControl = {
+    borderColor: '#e5e5e5 !important',
+    color: '#666666',
+    outline: 'none',
+    boxShadow: 'none',
+    borderRadius:0,
+    fontSize:16
+}
+
   return (
     <div>
       <Container className="shopping-container">
         <Row className="p-3">
-          <Col lg={8} md={12} className="mb-4 ">
-            <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>
-            <hr />
-            <Row>
-              <Col>
-                <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
-              </Col>
-              <Col lg="2">
-                <p className="m-0 shopping-p-size">QUANTITY</p>
-              </Col>
-              <Col lg="2">
-                <p className="m-0 shopping-p-size">PRICE</p>
-              </Col>
-              <Col lg="2">
-                <p className="m-0 shopping-p-size">TOTAL</p>
-              </Col>
-            </Row>
-            <hr />
-            <div
-              className="card-container card-div"
-              style={{ height: "450px", overflow: "auto" }}
-            >
-              {item?.length > 0 &&
-                item.map((elem) => {
-                  return <Item key={elem._id} {...elem} />;
-                })}
-                <span className="text-decoration-underline cursor-pointer" onClick={() => router.push('/product')}>Continue Shopping</span>
-            </div>
-          </Col>
+         
+          {step === 0 && 
+            <Col lg={8} md={12} className="mb-4 ">
+              <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>             
+              <hr />
+              <Row>
+                <Col>
+                  <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
+                </Col>
+                <Col lg="2">
+                  <p className="m-0 shopping-p-size">QUANTITY</p>
+                </Col>
+                <Col lg="2">
+                  <p className="m-0 shopping-p-size">PRICE</p>
+                </Col>
+                <Col lg="2">
+                  <p className="m-0 shopping-p-size">TOTAL</p>
+                </Col>
+              </Row>
+              <hr />
+              <div
+                className="card-container card-div"
+                style={{ height: "450px", overflow: "auto" }}
+              >
+                {item?.length > 0 &&
+                  item.map((elem) => {
+                    return <Item key={elem._id} {...elem} />;
+                  })}
+                  <span className="text-decoration-underline cursor-pointer" onClick={() => router.push('/product')}>Continue Shopping</span>
+              </div>
+            </Col>
+          }
+          {step === 1 && 
+            <Col lg={8} md={12} className="mb-4 ">
+              <h1 className="shopping-cart-heading mb-4">Shipping Address</h1>
+              {/* <hr /> */}
+              <div className="card-container card-div" >
+              { !addressList ? 
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={onSubmit}
+                >
+                  {(formik) => {
+                    return (
+                      <Form>
+                        <Row>
+                          <Col>
+                            <div className="form-group user-field mb-4">
+                            {/* <label htmlFor="name">Name</label> */}
+                            <Field
+                              className="Contact-Us-form-input form-control"
+                              type="text"
+                              name="full_name"
+                              placeholder="Full name"
+                              autoComplete="off"
+                              style={formControl}
+                            />
+                            <ErrorMessage name="full_name" component={TextError} />
+                          </div>
+                          </Col>
+                          <Col>
+                            <div className="col-md-12">
+                              <div className="form-group user-field mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="number"
+                                  name="mobile"
+                                  placeholder="Mobile Number"
+                                  style={formControl}
+                                />
+                                <ErrorMessage name="mobile" component={TextError} />
+                              </div>
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="form-group user-field mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="text"
+                                name="address"
+                                placeholder="Address"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="address" component={TextError} />
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="form-group user-field  mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="text"
+                                name="area"
+                                placeholder="Localaty / Area (Optional)"
+                                style={formControl}
+                              />
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="form-group user-field  mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="text"
+                                name="landmark"
+                                placeholder="Landmark (Optional)"
+                                style={formControl}
+                              />
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="form-group user-field  mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="number"
+                                name="pincode"
+                                placeholder="Pincode"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="pincode" component={TextError} />
+                            </div>
+                          </Col>
+                          <Col>
+                            <div className="form-group user-field  mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="text"
+                                name="city"
+                                placeholder="City"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="city" component={TextError} />
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="form-group user-field  mb-4">
+                              <Field
+                                className="Contact-Us-form-input form-control"
+                                type="text"
+                                name="state"
+                                placeholder="State"
+                                style={formControl}
+                              />
+                              <ErrorMessage name="state" component={TextError} />
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <div className="col-md-4">
+                          <div className="form-group user-field my-4">
+                            <ButtonDark type="submit" text="SAVE ADDRESS" />
+                          </div>
+                        </div>
+                      </Form>
+                    )
+                  }}
+                </Formik> : (
+                  <div className="shipping-address">
+                    <h5 className="mb-3">Shipping to</h5>
+                    <div className="d-flex justify-content-between">
+                      <div className="address-details" style={{lineHeight:0.3}}>
+                        <p><strong>Recipient: </strong>{shippingAddress.full_name}</p>
+                        <p><strong>Address: </strong>{shippingAddress.address} {shippingAddress.city}, {shippingAddress.state} - {shippingAddress.pincode}</p>
+                        <p><strong>Mobile: </strong>{shippingAddress.mobile}</p>
+                      </div>
+                      <div><button className="btn btn-success rounded-0" onClick={() => { setStep(1); setAddressList(false) } }>Change</button></div>
+                    </div>
+                  </div>
+                )
+              }
+              </div>
+            </Col>
+          }
 
           <Col lg={4} md={12}>
             <div className="order-summary-card p-4">
@@ -270,7 +471,7 @@ function Shopping() {
                   }
                 </div>
               </div>
-              <div className="text-center ">
+              <div className="text-center">
                 <div
                   className="w-100 border-0 checkout-button"
                   onClick={() => displayRazorpay(item)}

@@ -62,9 +62,10 @@ function CenterFooter() {
                   {
                     [
                       {title:'Contact', href:'/contact'},
-                      {title:'FAQ', href:'/'},
-                      {title:'Privacy Policy', href:'/'},
-                      {title:'Terms of Use', href:'/'}
+                      {title:'Privacy Policy', href:'/privacy-policy'},
+                      {title:'Terms of Service', href:'/terms-of-service'},
+                      {title:'Shipping Policy', href:'/shipping-policy'},
+                      {title:'Refund Policy', href:'/refund-policy'}
                     ].map((ele,index) => <Link 
                       href={ele.href} 
                       key={index}> 

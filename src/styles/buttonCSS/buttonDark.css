@@ -4,6 +4,7 @@
     border: none;
     color: #FFFFFF;
     width: 100% !important;
+    font-family: 'Lato', serif;
 }
 .dark-button:hover,
 .dark-button.active{

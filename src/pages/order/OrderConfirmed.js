@@ -18,9 +18,15 @@ function OrderConfirmed() {
 
                 <div className="mt-5">
                   <button className="btn btn-lg border me-4" onClick={()=>Router.push('/product')}>CONTINUE SHOPPING </button>
-                  <button className="btn btn-lg btn-primary ms-4" onClick={()=>Router.push({pathname:'/auth/UserProfile', query: { activeTab: 2  }})}>VIEW ORDER</button>
+                  <button className="btn btn-lg btn-success rounded-0 ms-4" onClick={()=>Router.push({pathname:'/auth/UserProfile', query: { activeTab: 2  }})}>VIEW ORDER</button>
                 </div>
             </div>
+            <style jsx>{`
+             .card-body {
+               font-family: 'Lora';
+             }
+            `}           
+            </style>
         </div>
     )
 }
