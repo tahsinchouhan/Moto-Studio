@@ -8,9 +8,11 @@ import Imagefour from "../../assets/images/home/Imagefour.png";
 import Imagefive from "../../assets/images/home/Imagefive.png";
 import Imagesix from "../../assets/images/home/Imagesix.png";
 import { apipath } from "../../pages/api/apiPath";
+import { useRouter } from "next/router";
 
 function CommunityPage() {
   const [community, setCommunity] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -26,32 +28,32 @@ function CommunityPage() {
 
     setCommunity([
       {
-        _id: 1,
+        _id: "620e6e923d3e6fe4d14acf48",
         images: [{ img: "/Image/Product 1.png" }],
         products: { title: "Pure Wildforest Honey" },
       },
       {
-        _id: 2,
+        _id: "6256b2e0e150e5b74cce9dff",
         images: [{ img: "/Image/Product 2.png" }],
         products: { title: "Premium Cashews" },
       },
       {
-        _id: 3,
+        _id: "620e5ca63d3e6fe4d14acc3b3",
         images: [{ img: "/Image/Product 3.png" }],
         products: { title: "Chyawan Prash" },
       },
       {
-        _id: 4,
+        _id: "620e609e3d3e6fe4d14acd02",
         images: [{ img: "/Image/Product 4.png" }],
         products: { title: "Mahua Laddu" },
       },
       {
-        _id: 5,
+        _id: "6256b32ee150e5b74cce9eb3",
         images: [{ img: "/Image/Product 5.png" }],
         products: { title: "Mahua Cookies" },
       },
       {
-        _id: 6,
+        _id: "620e5e023d3e6fe4d14acca2",
         images: [{ img: "/Image/Product 6.png" }],
         products: { title: "Amla Murabba" },
       },
@@ -93,6 +95,7 @@ function CommunityPage() {
                         margin: "auto",
                         boxSizing: "border-box",
                       }}
+                      onClick={() => router.push(`/product/${row?._id}`)}
                     >
                       <Image
                         src={

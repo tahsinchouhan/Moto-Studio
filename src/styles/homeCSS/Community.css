@@ -73,9 +73,9 @@
   .Frame1 {
     height: 30vh !important;
   }
-  .overlay {
+  /* .overlay {
     display: none;
-  }
+  } */
 
   .content {
     width: 70% !important;
