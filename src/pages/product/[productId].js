@@ -40,7 +40,7 @@ function ProductDetail({ productData }) {
     <>
       <div className="all-product-heading">
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
-          <div className="store-home">
+          <div className="store-home" onClick={() => router.push("/product")}>
             <span>Store Home &gt; </span>
           </div>
           <div className="products-header text-center">
@@ -244,10 +244,10 @@ function ProductDetail({ productData }) {
                 return (
                   <Col lg={3} md={6} sm={8} xs={12} key={product._id}>
                     <div
-                      className="p-sm-2 p-md-3 p-5 mx-auto product-card-hover"
+                      className="p-lg-5 mx-auto product-card-hover cursor-pointer"
                       onClick={() => router.push(`./${product?._id}`)}
                     >
-                      <div className="w-100">
+                      <div className="w-100 product-card-img">
                         <Image
                           src={
                             product?.images?.length
@@ -321,7 +321,7 @@ function ProductDetail({ productData }) {
                           </div>
                         ) : (
                           <div
-                            className="mt-2"
+                            className="mt-3"
                             onClick={(e) => {
                               e.stopPropagation();
                               addProductToCart(product, product?.weight[0]);

@@ -108,7 +108,7 @@ function Products() {
     <>
       <div className="all-product-heading">
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
-          <div className="store-home">
+          <div className="store-home" onClick={() => router.push("/product")}>
             <span>Store Home &gt; </span>
           </div>
           <div className="products-header text-center">
@@ -182,14 +182,14 @@ function Products() {
               </Col>
             </Row>
 
-            <Row className="justify-content-start">
+            <Row className="justify-content-center justify-content-lg-start">
               {!loading
                 ? productData.length &&
                   productData.map((product) => {
                     return (
                       <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
                         <div
-                          className="p-lg-5 mx-auto product-card-hover cursor-pointer"
+                          className="p-lg-2 mx-auto product-card-hover cursor-pointer"
                           onClick={() =>
                             router.push(`./product/${product?._id}`)
                           }

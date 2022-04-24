@@ -78,7 +78,7 @@ function Header() {
     { id: 4, title: "CORPORATE", href: "/collaborate" },
     { id: 5, title: "BLOGS", href: "/blogs" },
     { id: 6, title: "NEWS", href: "/news" },
-    // {id:7,title:'CONNECT',href:'/#'}
+    { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
     // {id:7,title:'CONTACT',href:'/contact'}
   ];
   return (

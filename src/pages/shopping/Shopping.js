@@ -257,8 +257,8 @@ function Shopping() {
           {step === 0 && (
             <Col lg={8} md={12} className="mb-4 text-center">
               <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>
-              <hr />
-              <Row>
+              <hr className="d-none d-lg-flex" />
+              <Row className="d-none d-lg-flex">
                 <Col>
                   <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
                 </Col>

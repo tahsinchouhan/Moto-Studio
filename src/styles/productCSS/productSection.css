@@ -163,6 +163,7 @@
 }
 
 .product-card-hover {
+  border: 1px solid !important;
   border-color: #fff !important;
 }
 
