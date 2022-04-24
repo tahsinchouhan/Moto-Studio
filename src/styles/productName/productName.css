@@ -8,10 +8,10 @@
   color: #333333;
 }
 
-@media screen and (max-width:767px) {
-    .popup-modal-main{
-        --bs-gutter-x: 0rem !important;
-    }
+@media screen and (max-width: 767px) {
+  .popup-modal-main {
+    --bs-gutter-x: 0rem !important;
+  }
 }
 
 .product-radio {
@@ -81,7 +81,7 @@
   font-weight: normal;
   font-size: 12px;
   line-height: 22px;
-  text-indent: 24px;
+  /* text-indent: 24px; */
   color: #666666;
 }
 
@@ -91,6 +91,12 @@
   font-weight: normal;
   font-size: 29px;
   line-height: 37px;
-  text-align: center;   
+  text-align: center;
   color: #333333;
+}
+
+@media screen and (max-width: 720px) {
+  .sanju {
+    width: 30% !important;
+  }
 }
