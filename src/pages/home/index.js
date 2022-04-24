@@ -42,6 +42,7 @@ function Home({ category, bannerData }) {
       <HomeHeaderImg bannerData={bannerData} />
       <FeaturedProducts category={category} />
       {/* <VisitTheShop /> */}
+
       <HomeEmpower />
       <CommunityPage />
       <HomeFollowUs />

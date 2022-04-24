@@ -12,7 +12,7 @@ import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from "../../pages/api/apiPath";
 import { useRouter } from "next/router";
 
-function VisitTheShop({ categoryId }) {
+function VisitTheShop({ categoryId = "61effaa01a880a62b8284274" }) {
   const [featured, setFeatured] = useState([]);
 
   const router = useRouter();
@@ -99,6 +99,12 @@ function VisitTheShop({ categoryId }) {
           }
 
           @media (max-width: 600px) {
+            .grid-item-2 {
+              grid-column-start: 1;
+              grid-column-end: 1;
+              grid-row-start: 2;
+              grid-row-end: 3;
+            }
           }
         `}</style>
 
@@ -107,7 +113,14 @@ function VisitTheShop({ categoryId }) {
           {featured?.length ? (
             <Row>
               <Col lg={3}>
-                <Card className="VisitTheShop-cards hover-div1">
+                <Card
+                  className="VisitTheShop-cards hover-div1"
+                  onClick={() =>
+                    router.push(
+                      `./product/${featured[0]?.products_id?._id || ""}`
+                    )
+                  }
+                >
                   <Image
                     src={
                       featured[0]?.products_id?.images.length
@@ -149,7 +162,14 @@ function VisitTheShop({ categoryId }) {
                   </Card.Body>
                 </Card>
 
-                <Card className=" VisitTheShop-cards mt-3 hover-div1">
+                <Card
+                  className="VisitTheShop-cards mt-3 hover-div1"
+                  onClick={() =>
+                    router.push(
+                      `./product/${featured[1]?.products_id?._id || ""}`
+                    )
+                  }
+                >
                   <Image
                     src={
                       featured[1]?.products_id?.images.length
@@ -192,7 +212,14 @@ function VisitTheShop({ categoryId }) {
               </Col>
 
               <Col lg={6}>
-                <Card className="WildforestHoney-card hover-div1 ">
+                <Card
+                  className="WildforestHoney-card hover-div1 "
+                  onClick={() =>
+                    router.push(
+                      `./product/${featured[2]?.products_id?._id || ""}`
+                    )
+                  }
+                >
                   <div className="text-center">
                     <Image
                       src={
@@ -239,7 +266,14 @@ function VisitTheShop({ categoryId }) {
 
               <Col lg={3}>
                 {" "}
-                <Card className="VisitTheShop-cards hover-div1">
+                <Card
+                  className="VisitTheShop-cards hover-div1"
+                  onClick={() =>
+                    router.push(
+                      `./product/${featured[3]?.products_id?._id || ""}`
+                    )
+                  }
+                >
                   <Image
                     src={
                       featured[3]?.products_id?.images.length
@@ -280,7 +314,14 @@ function VisitTheShop({ categoryId }) {
                     </div>
                   </Card.Body>
                 </Card>
-                <Card className=" VisitTheShop-cards mt-3 hover-div1">
+                <Card
+                  className=" VisitTheShop-cards mt-3 hover-div1"
+                  onClick={() =>
+                    router.push(
+                      `./product/${featured[4]?.products_id?._id || ""}`
+                    )
+                  }
+                >
                   <Image
                     src={
                       featured[4]?.products_id?.images.length

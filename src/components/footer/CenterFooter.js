@@ -63,16 +63,22 @@ function CenterFooter() {
                     </div>
                   </Col>
 
-<<<<<<< HEAD
                   <Col sm={4} md={4} lg={4}>
                     <div className="footer-cg-herbal">
                       <h6 className="footer-center-header">SUPPORT</h6>
                       <div className="d-flex flex-column">
                         {[
                           { title: "Contact", href: "/contact" },
-                          { title: "FAQ", href: "/" },
-                          { title: "Privacy Policy", href: "/" },
-                          { title: "Terms of Use", href: "/" },
+                          { title: "Privacy Policy", href: "/privacy-policy" },
+                          {
+                            title: "Terms of Service",
+                            href: "/terms-of-service",
+                          },
+                          {
+                            title: "Shipping Policy",
+                            href: "/shipping-policy",
+                          },
+                          { title: "Refund Policy", href: "/refund-policy" },
                         ].map((ele, index) => (
                           <Link href={ele.href} key={index}>
                             <a className="footer-cg-para">{ele.title}</a>
@@ -102,61 +108,6 @@ function CenterFooter() {
                       </div>
                     </div>
                   </Col>
-=======
-                <h6 className="footer-center-header ">SHOP</h6>
-                <div className="d-flex flex-column">
-                {
-                  category.length ? category.map((cat,index) => <Link 
-                    href={`/product?activeTab=${index}`} 
-                    key={cat._id}> 
-                    <a className="footer-cg-para">{cat.category_name}</a>
-                  </Link>) : null
-                }
-                </div>
-              </div>
-            </Col>
-
-            <Col sm={4} md={4} lg={4}>
-            <div className="footer-cg-herbal">
-                <h6 className="footer-center-header">SUPPORT</h6>
-                <div className="d-flex flex-column">
-                  {
-                    [
-                      {title:'Contact', href:'/contact'},
-                      {title:'Privacy Policy', href:'/privacy-policy'},
-                      {title:'Terms of Service', href:'/terms-of-service'},
-                      {title:'Shipping Policy', href:'/shipping-policy'},
-                      {title:'Refund Policy', href:'/refund-policy'}
-                    ].map((ele,index) => <Link 
-                      href={ele.href} 
-                      key={index}> 
-                      <a className="footer-cg-para">{ele.title}</a>
-                    </Link>)
-                  }
-                </div>
-              </div>
-            </Col>
-            <Col sm={4} md={4}  lg={4}>
-            <div className="footer-cg-herbal">
-                <h6 className="footer-center-header">MY ACCOUNT</h6>
-                <div className="d-flex flex-column">
-                {session ? <>
-                  <Link 
-                    href={`/shopping/Shopping`}> 
-                    <a className="footer-cg-para">My Cart</a>
-                  </Link>
-                  <Link 
-                    href={`/auth/UserProfile?activeTab=2`}> 
-                    <a className="footer-cg-para">My Order</a>
-                  </Link>
-                </> : <Link 
-                  href={`/auth/Login`}> 
-                  <a className="footer-cg-para">Login</a>
-                </Link>}
-                </div>
-              </div>
-            </Col>
->>>>>>> 35fd613207e7068c222e313d5572f4f5c523d9e3
                 </Row>
               </Col>
               <Col sm={12} lg={3}>

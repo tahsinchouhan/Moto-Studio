@@ -8,19 +8,12 @@ import emptyImage from "../../assets/images/product/placeholder.png";
 import VisitTheShop from "./VisitTheShop";
 import Slider from "react-slick/lib/slider";
 import { apipath } from "../../pages/api/apiPath";
-import FeaturedProductCard from "./FeaturedProductCard";
 
 function FeaturedProducts({ category }) {
   const list = category?.length > 0 ? category[0]._id : null || null;
   const [categoryId, setCategoryId] = useState(list);
-  const [featuredProducts, setFeaturedProducts] = useState([]);
   const getCategoryId = (id) => setCategoryId(id);
-
-  useEffect(() => {
-    getFeaturedProducts();
-  }, []);
-
-  // console.log(featuredProducts);
+  console.log(list);
 
   const settings = {
     dots: false,
@@ -44,16 +37,6 @@ function FeaturedProducts({ category }) {
         },
       },
     ],
-  };
-
-  const getFeaturedProducts = async () => {
-    try {
-      const res = await fetch(`${apipath}/api/v1/product/featured/list`);
-      const data = await res.json();
-      setFeaturedProducts(data.data);
-    } catch (error) {
-      console.log(error.message);
-    }
   };
 
   return (
@@ -95,19 +78,6 @@ function FeaturedProducts({ category }) {
               })}
           </Slider>
         </div>
-      </div>
-
-      <div className="featured-products-card-wrapper">
-        {featuredProducts?.length > 0 &&
-          featuredProducts?.map((product) => (
-            <FeaturedProductCard
-              key={product._id}
-              img={product.products_id.images[0].img}
-              title={product.products_id.title}
-              price={product.products_id.price}
-              weight={product.products_id.weight[0].weight_type.weight_gram}
-            />
-          ))}
       </div>
 
       <VisitTheShop categoryId={categoryId} />
