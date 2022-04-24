@@ -36,6 +36,15 @@
   /* margin-bottom: 1.5rem !important; */
 }
 
+.product-card-hover .product-card-img > span {
+  width: 100% !important;
+}
+
+.product-card-hover {
+  height: 100% !important;
+  width: 100% !important;
+}
+
 .product-card-para {
   font-family: "Lato";
   font-size: 12px;
@@ -125,6 +134,31 @@
   }
   .product-right-padding {
     padding-right: 0% !important;
+  }
+
+  .product-card-hover {
+    padding: 1.8rem;
+  }
+
+  .product-card-text {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .product-card-para {
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  .dark-button {
+    height: 55px !important;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .product-card-details {
+    font-size: 16px;
+    line-height: 30px;
   }
 }
 

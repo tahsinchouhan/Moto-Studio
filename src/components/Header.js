@@ -72,7 +72,7 @@ function Header() {
   });
 
   const menus = [
-    { id: 1, title: "HOME", href: "/" },
+    { id: 1, title: "HOME", href: "/", icon: "" },
     { id: 2, title: "PRODUCTS", href: "/product" },
     { id: 3, title: "ABOUT", href: "/about" },
     { id: 4, title: "CORPORATE", href: "/collaborate" },
@@ -328,7 +328,28 @@ function Header() {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             {/* </Container> */}
-            <div>
+            <div className="d-flex align-items-center">
+              <span
+                className="mobile-search-icon"
+                onClick={() => setSearchSideBar(!searchSideBar)}
+              >
+                <BsSearch style={{ width: 30, fontSize: "22px" }} />
+              </span>
+
+              <Link href="/shopping/Shopping" onClick={iconHandler}>
+                <a className="mobile-cart-icon">
+                  <BsFillCartFill
+                    style={{ width: 30, fontSize: "22px" }}
+                    className={`${
+                      activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
+                    }`}
+                  />{" "}
+                  {totalItem ? (
+                    <span className="total-cart-item">{totalItem || ""}</span>
+                  ) : null}
+                </a>
+              </Link>
+
               <button
                 className="btn home-menubar-icon"
                 onClick={() => handleShow()}
