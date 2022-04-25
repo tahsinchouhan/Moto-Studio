@@ -6,11 +6,11 @@ import HomeHeaderImg from "../../components/home/HomeHeaderImg";
 import FeaturedProducts from "../../components/home/FeaturedProducts";
 import HomeFollowUs from "../../components/home/HomeFollowUs";
 import HomeEmpower from "../../components/home/HomeEmpower";
+import VisitTheShop from "../../components/home/VisitTheShop";
 // import { CardContext } from "../../components/Layout";
 // import {apipath} from '../api/apiPath'
 
 function Home({ category, bannerData }) {
-
   // const { data: session } = useSession();
   // const { isLogin } = useContext(CardContext);
   // const router = useRouter();
@@ -41,7 +41,8 @@ function Home({ category, bannerData }) {
     <div>
       <HomeHeaderImg bannerData={bannerData} />
       <FeaturedProducts category={category} />
-      {/* <VisitTheShop/> */}
+      {/* <VisitTheShop /> */}
+
       <HomeEmpower />
       <CommunityPage />
       <HomeFollowUs />

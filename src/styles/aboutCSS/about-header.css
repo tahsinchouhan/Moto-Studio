@@ -10,7 +10,7 @@
 }
 
 .about-header-img-text {
-  font-family: 'Lora';
+  font-family: "Lora";
   font-size: 40px;
   line-height: 51px;
   text-align: center;
@@ -37,10 +37,19 @@
     line-height: 41px;
     text-align: center;
     color: #ffffff;
-    
+  }
+
+  .about-second-heading {
+    font-size: 32px !important;
+    margin: 1rem 0 0;
   }
 
   .about-header-img-distance {
     padding: 13% 5%;
+  }
+
+  .mobile-layout {
+    align-items: center !important;
+    flex-flow: column-reverse !important;
   }
 }

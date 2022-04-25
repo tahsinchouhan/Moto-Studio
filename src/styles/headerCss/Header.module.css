@@ -1,70 +1,104 @@
-.main-haeder{
-height: 107px !important;
-background-color: transparent;
+.main-haeder {
+  height: 107px !important;
+  background-color: transparent;
 }
-.nav-link{
-    font-family: 'Lora';
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
-line-height: 17px;
-/* identical to box height */
-color: #666666;
-}
-
-.shopping-icon:after{
-    color: #5ABF6B !important;
+.nav-link {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #666666;
 }
 
-.nav-list{
-    display: flex;
+.mobile-search-icon,
+.mobile-cart-icon {
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
 }
 
-.nav-list li{
-    list-style: none;
-    padding-top:10px;
+.shopping-icon:after {
+  color: #5abf6b !important;
 }
 
+.nav-list {
+  display: flex;
+}
 
-.cg-header-a-tag{
-    color: #666666 !important;
+.nav-list li {
+  list-style: none;
+  padding-top: 10px;
 }
-.cg-header-a-tag:hover{
-    color: #666666 !important;
+
+.cg-header-a-tag {
+  color: #666666 !important;
 }
-.ch-header-cart-icon{
-    color: #5ABF6B;
+.cg-header-a-tag:hover {
+  color: #666666 !important;
 }
-.product-select{
-background-color: transparent !important;
+.ch-header-cart-icon {
+  color: #5abf6b;
+}
+.product-select {
+  background-color: transparent !important;
 }
 
 /* mobile-view */
-.offcanvas{
-    background-color:#f8f9fa;
+.offcanvas {
+  background-color: #f8f9fa;
 }
 .navbar-expand {
-    flex-wrap: nowrap;
-    justify-content: space-between !important;
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
 }
 .btn-close {
-    box-sizing: content-box;
-    width: 1em;
-    height: 1em;
-    padding: 0.25em 0.25em;
-    color: #000;
-    background-image: transparent url('/public/images/MenuBurger.png');
-    border: 0;
-    border-radius: 0.25rem;
-    opacity: .5;
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  color: #000;
+  background-image: transparent url("/public/images/MenuBurger.png");
+  border: 0;
+  border-radius: 0.25rem;
+  opacity: 0.5;
 }
 
-.nav-link{
-    color: #666666 !important;
+.nav-link {
+  color: #666666 !important;
 }
-
 
 .nav-link:hover,
-.nav-link.active{
-    color: #198754 !important;
+.nav-link.active {
+  color: #198754 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .right-sidebar {
+    top: 72px !important;
+    width: 100% !important;
+  }
+
+  .total-cart-item {
+    width: 18px !important;
+    height: 19px !important;
+    font-size: 11px;
+    line-height: normal !important;
+    top: -2px !important;
+    left: 25px !important;
+  }
+
+  .cg-header-a-tag {
+    color: #000 !important;
+  }
+
+  .offcanvas-header {
+    flex-flow: row-reverse;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    padding: 1.3rem 0;
+  }
 }

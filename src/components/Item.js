@@ -2,48 +2,56 @@ import React, { useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import { CardContext } from "./Layout";
-import emptyImage from '../assets/images/product/placeholder.png';
-import {apipath} from '../pages/api/apiPath';
+import emptyImage from "../assets/images/product/placeholder.png";
+import { apipath } from "../pages/api/apiPath";
 
-const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weight_type }) => {
+const Item = ({
+  _id,
+  product,
+  quantity,
+  price,
+  SKU_Number,
+  product_weight,
+  weight_type,
+}) => {
   const { user, removeItem, increament, decreament } = useContext(CardContext);
 
   const deleteItem = (product_id, weight_type, id) => {
     fetch(apipath + `/api/v1/cart/remove-items`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: "Bearer " + user.token,
       },
-      body:JSON.stringify({ product_id, weight_type, user: user?._id })
+      body: JSON.stringify({ product_id, weight_type, user: user?._id }),
     })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result);
-      removeItem(id);
-    }).catch((err) => {
-      console.log(err);
-    });
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        removeItem(id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const stockQty = product?.weight?.filter(wt=> wt.weight_type === weight_type)[0].count;
+  const stockQty = product?.weight?.filter(
+    (wt) => wt.weight_type === weight_type
+  )[0].count;
 
   return (
     <>
-      <Row className="mx-0">
+      <Row className="mx-0" style={{ textAlign: "center" }}>
         <Col lg="6">
           <Row className="san">
             <Col lg="6" md="12" sm="12">
-              <div
-                className="product-img"
-                style={{
-                  position: "relative",
-                  width: "130px",
-                  height: "110px",
-                }}
-              >
+              <div className="shop-product-img">
                 <Image
-                  src={product?.images?.length > 0 ? product?.images[0]?.img || emptyImage : emptyImage}
+                  src={
+                    product?.images?.length > 0
+                      ? product?.images[0]?.img || emptyImage
+                      : emptyImage
+                  }
                   alt="title"
                   layout="fill"
                   className="img-fluid"
@@ -56,13 +64,15 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
             <Col className="margin-shop-toggle" lg="6" md="12">
               <p className="fw-bold shopping-p2-size">{product?.title || ""}</p>
               <p className="shopping-p3-size">
-                Quantity &nbsp; <span className="fw-bold ">{product_weight || ''}</span>
+                Quantity &nbsp;{" "}
+                <span className="fw-bold ">{product_weight || ""}</span>
               </p>
               <p className="shopping-p3-size">
-                Product Code &nbsp; <span className="fw-bold ">{SKU_Number || ''}</span>
+                Product Code &nbsp;{" "}
+                <span className="fw-bold ">{SKU_Number || ""}</span>
               </p>
-              <span className={stockQty === 0 ? `text-danget`: `text-success`}>
-              { stockQty > 0 ? `${stockQty} stock left`: 'out of stock' }
+              <span className={stockQty === 0 ? `text-danget` : `text-success`}>
+                {stockQty > 0 ? `${stockQty} stock left` : "out of stock"}
               </span>
             </Col>
           </Row>
@@ -88,7 +98,7 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
               +{" "}
             </button>
           </div>
-          <p className=" shop-remove shopping-p3-size">
+          <p className=" shop-remove shopping-p3-size text-start text-lg-center">
             <span
               className="fw-bold text-danger"
               onClick={() => deleteItem(product?._id, weight_type, _id)}
@@ -98,10 +108,12 @@ const Item = ({ _id, product, quantity, price, SKU_Number, product_weight, weigh
           </p>
         </Col>
 
-        <Col lg="2" className="mt-5">
+        <Col lg="2" className="mt-0 mt-lg-5 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size">PRICE</span>
           <p className="fw-bold shopping-p4-size">₹ {price}</p>
         </Col>
-        <Col lg="2" className="mt-5">
+        <Col lg="2" className="mt-0 mt-lg-5 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           <p className="fw-bold shopping-p4-size">₹ {quantity * price}</p>
           {/* <div className="shopping-edit-text mt-5">
             <p1> EDIT</p1>

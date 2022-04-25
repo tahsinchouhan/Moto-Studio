@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import TextError from '../../components/TextError';
+import TextError from "../../components/TextError";
 import * as Yup from "yup";
 
 function loadScript(src) {
@@ -26,7 +26,8 @@ function loadScript(src) {
 }
 
 function Shopping() {
-  const { user, item, totalAmount, totalItem, fetchCartData, clearCart } = useContext(CardContext);
+  const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
+    useContext(CardContext);
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
@@ -44,51 +45,51 @@ function Shopping() {
     area: shippingAddress?.area || "",
     landmark: shippingAddress?.landmark || "",
     city: shippingAddress?.city || "",
-    state: shippingAddress?.state || ""
+    state: shippingAddress?.state || "",
   };
 
   const validationSchema = Yup.object({
     full_name: Yup.string().required("This field is required"),
-    mobile: Yup.string().required("This field is required").min(10).max(10),   
+    mobile: Yup.string().required("This field is required").min(10).max(10),
     pincode: Yup.string().required("This field is required").min(6).max(6),
     address: Yup.string().required("This field is required"),
     city: Yup.string().required("This field is required"),
-    state: Yup.string().required("This field is required")
+    state: Yup.string().required("This field is required"),
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-   setShippingAddress(values)
-   setAddressList(true)
+    setShippingAddress(values);
+    setAddressList(true);
   };
 
   const fetchPromoList = async () => {
     try {
       const res = await fetch(apipath + `/api/v1/payments/promo-code/list`);
       const result = await res.json();
-      setPromoList(result?.data)
+      setPromoList(result?.data);
     } catch (error) {
-      console.log('error :>> ', error);
+      console.log("error :>> ", error);
     }
-  }
+  };
 
   useEffect(() => {
-    if (session && status !== 'loading') {
+    if (session && status !== "loading") {
       fetchCartData(session);
     }
-    fetchPromoList()
+    fetchPromoList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
+  }, [status]);
 
-  const promoHandler = data => {
+  const promoHandler = (data) => {
     setPromoValue({
-      type: data?.amount ? 'amount' : 'percentage',
-      value : data?.amount || totalAmount*data.percentage/100,
-      code : data?.code || '',
-      promocode_id:data?._id || ''
-    })
-    setShow(false)
-  }
-  
+      type: data?.amount ? "amount" : "percentage",
+      value: data?.amount || (totalAmount * data.percentage) / 100,
+      code: data?.code || "",
+      promocode_id: data?._id || "",
+    });
+    setShow(false);
+  };
+
   const varifyPayment = async (data) => {
     try {
       const response = await fetch(`${apipath}/api/v1/payments/verify`, {
@@ -100,22 +101,21 @@ function Shopping() {
       if (response.status === 200 && result.message === "Payment Successfull!")
         // clear cart data
         clearCart();
-        router.push("/order/OrderConfirmed");
+      router.push("/order/OrderConfirmed");
     } catch (error) {
       console.log(error);
     }
   };
 
   const displayRazorpay = async (data) => {
-    if(!user) {
-      router.push('/auth/Login')
-      return
+    if (!user) {
+      router.push("/auth/Login");
+      return;
     }
     if (data.length === 0) return false;
-    
-    if(!shippingAddress || !addressList) 
-    { 
-      setStep(1) 
+
+    if (!shippingAddress || !addressList) {
+      setStep(1);
       return;
     }
 
@@ -140,7 +140,11 @@ function Shopping() {
       products_id.push(val.product?._id);
     });
 
-    if (data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0) > 40000) {
+    if (
+      data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+        (promoValue?.value || 0) >
+      40000
+    ) {
       alert("Amount exceeds the limit rs.40000 for per Transaction");
       return false;
     }
@@ -158,7 +162,9 @@ function Shopping() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0),
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+          (promoValue?.value || 0),
       }),
       // { amount: createOrder.data.data.total_amount }
     });
@@ -171,7 +177,7 @@ function Shopping() {
       order_id: orderResponse?.id || "",
       name: "CG HERBAL",
       description: "",
-      image:"/images/CGHerbalsLogo.png",
+      image: "/images/CGHerbalsLogo.png",
       handler: function (response) {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
           response;
@@ -183,24 +189,25 @@ function Shopping() {
             user_id: user._id,
             email: user.email,
             products: result,
-            promocode: promoValue ? {
-              promocode_id: promoValue?.promocode_id || '',
-              value:promoValue?.value || 0,
-              code: promoValue?.code || ''
-            } : null,
+            promocode: promoValue
+              ? {
+                  promocode_id: promoValue?.promocode_id || "",
+                  value: promoValue?.value || 0,
+                  code: promoValue?.code || "",
+                }
+              : null,
             address: user.address,
             shippingAddress: shippingAddress,
-            total_amount: data.reduce(
-              (a, v) => (a = a + v.price * v.quantity),
-              0
-            ) - (promoValue?.value || 0),
+            total_amount:
+              data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+              (promoValue?.value || 0),
             total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
           }),
         })
           .then((res) => res.json())
           .then((createOrder) => {
-            console.log('createOrder :>> ', createOrder);
-            if(!createOrder.error) {
+            console.log("createOrder :>> ", createOrder);
+            if (!createOrder.error) {
               varifyPayment({
                 razorpay_order_id,
                 razorpay_payment_id,
@@ -235,24 +242,23 @@ function Shopping() {
   };
 
   const formControl = {
-    borderColor: '#e5e5e5 !important',
-    color: '#666666',
-    outline: 'none',
-    boxShadow: 'none',
-    borderRadius:0,
-    fontSize:16
-}
+    borderColor: "#e5e5e5 !important",
+    color: "#666666",
+    outline: "none",
+    boxShadow: "none",
+    borderRadius: 0,
+    fontSize: 16,
+  };
 
   return (
     <div>
       <Container className="shopping-container">
         <Row className="p-3">
-         
-          {step === 0 && 
-            <Col lg={8} md={12} className="mb-4 ">
-              <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>             
-              <hr />
-              <Row>
+          {step === 0 && (
+            <Col lg={8} md={12} className="mb-4 text-center">
+              <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>
+              <hr className="d-none d-lg-flex" />
+              <Row className="d-none d-lg-flex">
                 <Col>
                   <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
                 </Col>
@@ -275,161 +281,207 @@ function Shopping() {
                   item.map((elem) => {
                     return <Item key={elem._id} {...elem} />;
                   })}
-                  <span className="text-decoration-underline cursor-pointer" onClick={() => router.push('/product')}>Continue Shopping</span>
+                <span
+                  className="text-decoration-underline cursor-pointer"
+                  onClick={() => router.push("/product")}
+                >
+                  Continue Shopping
+                </span>
               </div>
             </Col>
-          }
-          {step === 1 && 
+          )}
+          {step === 1 && (
             <Col lg={8} md={12} className="mb-4 ">
               <h1 className="shopping-cart-heading mb-4">Shipping Address</h1>
               {/* <hr /> */}
-              <div className="card-container card-div" >
-              { !addressList ? 
-                <Formik
-                  initialValues={initialValues}
-                  validationSchema={validationSchema}
-                  onSubmit={onSubmit}
-                >
-                  {(formik) => {
-                    return (
-                      <Form>
-                        <Row>
-                          <Col>
-                            <div className="form-group user-field mb-4">
-                            {/* <label htmlFor="name">Name</label> */}
-                            <Field
-                              className="Contact-Us-form-input form-control"
-                              type="text"
-                              name="full_name"
-                              placeholder="Full name"
-                              autoComplete="off"
-                              style={formControl}
-                            />
-                            <ErrorMessage name="full_name" component={TextError} />
-                          </div>
-                          </Col>
-                          <Col>
-                            <div className="col-md-12">
+              <div className="card-container card-div">
+                {!addressList ? (
+                  <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmit}
+                  >
+                    {(formik) => {
+                      return (
+                        <Form>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                                {/* <label htmlFor="name">Name</label> */}
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="full_name"
+                                  placeholder="Full name"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="full_name"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
+                              <div className="col-md-12">
+                                <div className="form-group user-field mb-4">
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="number"
+                                    name="mobile"
+                                    placeholder="Mobile Number"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="mobile"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </div>
+                            </Col>
+                          </Row>
+
+                          <Row>
+                            <Col>
                               <div className="form-group user-field mb-4">
                                 <Field
                                   className="Contact-Us-form-input form-control"
-                                  type="number"
-                                  name="mobile"
-                                  placeholder="Mobile Number"
+                                  type="text"
+                                  name="address"
+                                  placeholder="Address"
                                   style={formControl}
                                 />
-                                <ErrorMessage name="mobile" component={TextError} />
+                                <ErrorMessage
+                                  name="address"
+                                  component={TextError}
+                                />
                               </div>
-                            </div>
-                          </Col>
-                        </Row>
+                            </Col>
+                          </Row>
 
-                        <Row>
-                          <Col>
-                            <div className="form-group user-field mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="text"
-                                name="address"
-                                placeholder="Address"
-                                style={formControl}
-                              />
-                              <ErrorMessage name="address" component={TextError} />
-                            </div>
-                          </Col>
-                        </Row>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="area"
+                                  placeholder="Localaty / Area (Optional)"
+                                  style={formControl}
+                                />
+                              </div>
+                            </Col>
 
-                        <Row>
-                          <Col>
-                            <div className="form-group user-field  mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="text"
-                                name="area"
-                                placeholder="Localaty / Area (Optional)"
-                                style={formControl}
-                              />
-                            </div>
-                          </Col>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="landmark"
+                                  placeholder="Landmark (Optional)"
+                                  style={formControl}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
 
-                          <Col>
-                            <div className="form-group user-field  mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="text"
-                                name="landmark"
-                                placeholder="Landmark (Optional)"
-                                style={formControl}
-                              />
-                            </div>
-                          </Col>
-                        </Row>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="number"
+                                  name="pincode"
+                                  placeholder="Pincode"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="pincode"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="city"
+                                  placeholder="City"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="city"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
 
-                        <Row>
-                          <Col>
-                            <div className="form-group user-field  mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="number"
-                                name="pincode"
-                                placeholder="Pincode"
-                                style={formControl}
-                              />
-                              <ErrorMessage name="pincode" component={TextError} />
-                            </div>
-                          </Col>
-                          <Col>
-                            <div className="form-group user-field  mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="text"
-                                name="city"
-                                placeholder="City"
-                                style={formControl}
-                              />
-                              <ErrorMessage name="city" component={TextError} />
-                            </div>
-                          </Col>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="state"
+                                  placeholder="State"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="state"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
 
-                          <Col>
-                            <div className="form-group user-field  mb-4">
-                              <Field
-                                className="Contact-Us-form-input form-control"
-                                type="text"
-                                name="state"
-                                placeholder="State"
-                                style={formControl}
-                              />
-                              <ErrorMessage name="state" component={TextError} />
+                          <div className="col-md-4">
+                            <div className="form-group user-field my-4">
+                              <ButtonDark type="submit" text="SAVE ADDRESS" />
                             </div>
-                          </Col>
-                        </Row>
-
-                        <div className="col-md-4">
-                          <div className="form-group user-field my-4">
-                            <ButtonDark type="submit" text="SAVE ADDRESS" />
                           </div>
-                        </div>
-                      </Form>
-                    )
-                  }}
-                </Formik> : (
+                        </Form>
+                      );
+                    }}
+                  </Formik>
+                ) : (
                   <div className="shipping-address">
                     <h5 className="mb-3">Shipping to</h5>
                     <div className="d-flex justify-content-between">
-                      <div className="address-details" style={{lineHeight:0.3}}>
-                        <p><strong>Recipient: </strong>{shippingAddress.full_name}</p>
-                        <p><strong>Address: </strong>{shippingAddress.address} {shippingAddress.city}, {shippingAddress.state} - {shippingAddress.pincode}</p>
-                        <p><strong>Mobile: </strong>{shippingAddress.mobile}</p>
+                      <div
+                        className="address-details"
+                        style={{ lineHeight: 0.3 }}
+                      >
+                        <p>
+                          <strong>Recipient: </strong>
+                          {shippingAddress.full_name}
+                        </p>
+                        <p>
+                          <strong>Address: </strong>
+                          {shippingAddress.address} {shippingAddress.city},{" "}
+                          {shippingAddress.state} - {shippingAddress.pincode}
+                        </p>
+                        <p>
+                          <strong>Mobile: </strong>
+                          {shippingAddress.mobile}
+                        </p>
                       </div>
-                      <div><button className="btn btn-success rounded-0" onClick={() => { setStep(1); setAddressList(false) } }>Change</button></div>
+                      <div>
+                        <button
+                          className="btn btn-success rounded-0"
+                          onClick={() => {
+                            setStep(1);
+                            setAddressList(false);
+                          }}
+                        >
+                          Change
+                        </button>
+                      </div>
                     </div>
                   </div>
-                )
-              }
+                )}
               </div>
             </Col>
-          }
+          )}
 
           <Col lg={4} md={12}>
             <div className="order-summary-card p-4">
@@ -453,24 +505,31 @@ function Shopping() {
                 </p>
               </div>
               <hr className="my-4" />
-              {
-                promoValue && <div className="d-flex justify-content-between">
-                <div>
-                  <p className="order-summary-p1">APPLIED PROMO CODE</p>
+              {promoValue && (
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <p className="order-summary-p1">APPLIED PROMO CODE</p>
+                  </div>
+                  <div>
+                    <p className="fw-bold order-summary-p2">
+                      ₹ {promoValue.value}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="fw-bold order-summary-p2">₹ {promoValue.value}</p>
-                </div>
-              </div>
-              }
+              )}
               <div className="d-flex justify-content-between">
                 <div>
                   <p className="order-summary-p1">TOTAL COST</p>
                 </div>
                 <div>
-                  {
-                    promoValue ? <p className="fw-bold order-summary-p2"> ₹ {totalAmount - promoValue.value}</p> : <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
-                  }
+                  {promoValue ? (
+                    <p className="fw-bold order-summary-p2">
+                      {" "}
+                      ₹ {totalAmount - promoValue.value}
+                    </p>
+                  ) : (
+                    <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
+                  )}
                 </div>
               </div>
               <div className="text-center">
@@ -482,23 +541,38 @@ function Shopping() {
                   <ButtonDark type="button" text="CHECKOUT" />
                 </div>
               </div>
-              <p className="order-summary-p1 mt-3 hover" onClick={()=>setShow(true)}>ADD PROMO CODE</p>
+              <p
+                className="order-summary-p1 mt-3 hover"
+                onClick={() => setShow(true)}
+              >
+                ADD PROMO CODE
+              </p>
             </div>
           </Col>
         </Row>
 
-        <Modal show={show} onHide={()=>setShow(false)} centered>
+        <Modal show={show} onHide={() => setShow(false)} centered>
           <Modal.Body className="py-5">
             <h5 className="text-center pb-4">Select Promo Code</h5>
             <ul className="list-group list-group-flush">
-            {
-              promoList.length > 0 ? promoList.map(promo => {
-                return <li key={`promo${promo._id}`} className="list-group-item d-flex justify-content-between align-items-center">
-                  {promo?.description || 'Description'}
-                  <span className="badge bg-primary rounded-pill" onClick={()=>promoHandler(promo)}>{promo?.code || ''}</span>
-                </li>
-              }) : ''
-            }
+              {promoList.length > 0
+                ? promoList.map((promo) => {
+                    return (
+                      <li
+                        key={`promo${promo._id}`}
+                        className="list-group-item d-flex justify-content-between align-items-center"
+                      >
+                        {promo?.description || "Description"}
+                        <span
+                          className="badge bg-primary rounded-pill"
+                          onClick={() => promoHandler(promo)}
+                        >
+                          {promo?.code || ""}
+                        </span>
+                      </li>
+                    );
+                  })
+                : ""}
             </ul>
           </Modal.Body>
         </Modal>

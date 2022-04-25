@@ -11,12 +11,11 @@ import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
 
 function ProductDetail({ productData }) {
-
   // const [showPopuUp, setShowPopUp] = useState(false);
   const [selectedWeight, setSelectedWeight] = useState(productData.weight[0]);
   const [listData, setListData] = useState([]);
   const [count, setCount] = useState(1);
-  const router = useRouter()
+  const router = useRouter();
 
   const { addProductToCart, item } = useContext(CardContext);
 
@@ -34,14 +33,14 @@ function ProductDetail({ productData }) {
 
   useEffect(() => {
     fetchListData(productData.category._id);
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <div className="all-product-heading">
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
-          <div className="store-home">
+          <div className="store-home" onClick={() => router.push("/product")}>
             <span>Store Home &gt; </span>
           </div>
           <div className="products-header text-center">
@@ -52,10 +51,10 @@ function ProductDetail({ productData }) {
         </div>
       </div>
 
-      <div className="my-5 d-flex">
-        <div className="container popup-div mx-auto">
+      <div className="my-lg-5 d-flex">
+        <div className="container popup-div mx-auto p-0">
           <Row className="popup-modal-main p-0 justify-content-center">
-            <Col xs={6} md={5} className="popup-modal-img">
+            <Col md={5} className="popup-modal-img">
               <Image
                 src={
                   productData?.images?.length
@@ -79,12 +78,11 @@ function ProductDetail({ productData }) {
                   {productData?.sub_title || "sub_title"}
                 </p>
                 <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
-                <div
-                  className="popup-ul fw-bold mb-5"
-                  style={{ whiteSpace: "pre-wrap" }}
-                >
-                  {productData?.description || "description"}
-                </div>
+                <ul className="popup-ul mb-4 p-0 ps-3">
+                  {productData?.description.split("•").map((item, index) => {
+                    if (item) return <li key={index}>{item}</li>;
+                  }) || "description"}
+                </ul>
                 {/* <ul className="popup-ul fw-bold">
                   <li>Tea Variety Green</li>
                   <li>Unflavoured Loose Leaves</li>
@@ -125,63 +123,111 @@ function ProductDetail({ productData }) {
                   </Row>
                 </div>
                 <div className="">
-                <div className="input-group">
-                  <input type="text" className="form-control bg-white rounded-0 fs-6" placeholder="Select No. of units" readOnly/>
-                  <span 
-                    className="input-group-text cursor-pointer px-3" 
-                    onClick={() => setCount(prev => {
-                      return (prev - 1) < 1 ? 1 : (prev -1)
-                    })}>-</span>
-                  <span className="input-group-text bg-white justify-content-center productName-counter-no" style={{width: 50}}> {count} </span>
-                  <span 
-                    className="input-group-text cursor-pointer px-3"
-                    onClick={() => setCount(prev => {
-                      return (prev + 1) > selectedWeight.count ? prev : prev + 1
-                    })}
-                    >+</span>
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control bg-white rounded-0 fs-6"
+                      placeholder="Select No. of units"
+                      readOnly
+                    />
+                    <span
+                      className="input-group-text cursor-pointer px-3"
+                      onClick={() =>
+                        setCount((prev) => {
+                          return prev - 1 < 1 ? 1 : prev - 1;
+                        })
+                      }
+                    >
+                      -
+                    </span>
+                    <span
+                      className="input-group-text bg-white justify-content-center productName-counter-no"
+                      style={{ width: 50 }}
+                    >
+                      {" "}
+                      {count}{" "}
+                    </span>
+                    <span
+                      className="input-group-text cursor-pointer px-3"
+                      onClick={() =>
+                        setCount((prev) => {
+                          return prev + 1 > selectedWeight.count
+                            ? prev
+                            : prev + 1;
+                        })
+                      }
+                    >
+                      +
+                    </span>
+                  </div>
                 </div>
-                </div>
-                <br/>
+                <br />
                 <div className="product-Price-1 w-100">
-                  <span className="fs-2">₹{" "}</span>
-                  <span className="fs-2">{ Number(selectedWeight?.price * count) - Number(selectedWeight.discount === 'percentage' ? (selectedWeight?.price * count) * (selectedWeight.discount_value / 100) : selectedWeight.discount_value  ) }</span>
-                  { selectedWeight.discount_value && <span className="text-muted fs-6 ms-3 text-decoration-line-through"> ₹ {selectedWeight.price * count || ""}</span> }
+                  <span className="fs-2">₹ </span>
+                  <span className="fs-2">
+                    {Number(selectedWeight?.price * count) -
+                      Number(
+                        selectedWeight.discount === "percentage"
+                          ? selectedWeight?.price *
+                              count *
+                              (selectedWeight.discount_value / 100)
+                          : selectedWeight.discount_value
+                      )}
+                  </span>
+                  {selectedWeight.discount_value && (
+                    <span className="text-muted fs-6 ms-3 text-decoration-line-through">
+                      {" "}
+                      ₹ {selectedWeight.price * count || ""}
+                    </span>
+                  )}
                 </div>
-                <div className="my-3">
+                <div className="mt-3">
                   <Row>
-                    { selectedWeight?.count > 0 ? (item.some((el) => el.product === productData?._id) ||
-                    item.some((el) => el.product?._id === productData?._id && el.weight_type === selectedWeight?.weight_type?._id) ? (
-                      <Col xs={6}>
-                        <div className="mt-2" onClick={() => router.push(`/shopping/Shopping`) } >
-                          <ButtonDark
-                            text="VIEW CART"
-                            className="active"
-                          />
-                        </div>
-                      </Col>
+                    {selectedWeight?.count > 0 ? (
+                      item.some((el) => el.product === productData?._id) ||
+                      item.some(
+                        (el) =>
+                          el.product?._id === productData?._id &&
+                          el.weight_type === selectedWeight?.weight_type?._id
+                      ) ? (
+                        <Col xs={6}>
+                          <div
+                            className="mt-2"
+                            onClick={() => router.push(`/shopping/Shopping`)}
+                          >
+                            <ButtonDark text="VIEW CART" className="active" />
+                          </div>
+                        </Col>
+                      ) : (
+                        <Col
+                          lg={6}
+                          onClick={(e) => {
+                            addProductToCart(
+                              productData,
+                              selectedWeight,
+                              count
+                            );
+                          }}
+                        >
+                          <ButtonDark text="ADD TO CART" />
+                        </Col>
+                      )
                     ) : (
                       <Col
-                        xs={6}
-                        onClick={(e) => {
-                          addProductToCart(productData, selectedWeight, count);
-                        }}
-                      >
-                        <ButtonDark text="ADD TO CART" />
-                      </Col>
-                    )) : <Col
-                        xs={6}
+                        lg={6}
                         onClick={(e) => {
                           addProductToCart(productData, selectedWeight, count);
                         }}
                       >
                         <ButtonDark text="OUT OF STOCK" disabled />
-                      </Col> }
+                      </Col>
+                    )}
                   </Row>
                 </div>
 
                 <p className="productName-shipping-para py-2">
-                  <MdLocalShipping /> Free shipping across India, and a
-                  risk-free quality guarantee!
+                  <MdLocalShipping className="me-1" /> Free shipping across
+                  India, and a risk-free quality guarantee!
                 </p>
               </div>
             </Col>
@@ -198,10 +244,10 @@ function ProductDetail({ productData }) {
                 return (
                   <Col lg={3} md={6} sm={8} xs={12} key={product._id}>
                     <div
-                      className="p-md-3 p-5 mx-auto product-card-hover"
+                      className="p-lg-5 mx-auto product-card-hover cursor-pointer"
                       onClick={() => router.push(`./${product?._id}`)}
                     >
-                      <div className="w-100">
+                      <div className="w-100 product-card-img">
                         <Image
                           src={
                             product?.images?.length
@@ -218,9 +264,9 @@ function ProductDetail({ productData }) {
                       <h1 className="product-card-text mt-2">
                         {product?.title || "title"}
                       </h1>
-                        <p className="product-card-para w-100">
-                          {product?.sub_title}
-                        </p>
+                      <p className="product-card-para w-100">
+                        {product?.sub_title}
+                      </p>
                       {/* <p className="product-card-para w-100">
                         {product?.description || "Description"}
                       </p> */}
@@ -246,38 +292,58 @@ function ProductDetail({ productData }) {
                         </div>
                       </div> */}
                       <span className="product-Price">
-                        <span className="fs-5">₹ {Number(product?.weight[0]?.price) - Number(product?.weight[0].discount === 'percentage' ? (product?.weight[0]?.price) * (product?.weight[0].discount_value / 100) : product?.weight[0].discount_value  ) }</span>
-                        { product?.weight[0].discount_value && <span className="fs-6 text-muted ms-2 text-decoration-line-through">₹ {product?.weight[0]?.price}</span> }
+                        <span className="fs-5">
+                          ₹{" "}
+                          {Number(product?.weight[0]?.price) -
+                            Number(
+                              product?.weight[0].discount === "percentage"
+                                ? product?.weight[0]?.price *
+                                    (product?.weight[0].discount_value / 100)
+                                : product?.weight[0].discount_value
+                            )}
+                        </span>
+                        {product?.weight[0].discount_value && (
+                          <span className="fs-6 text-muted ms-2 text-decoration-line-through">
+                            ₹ {product?.weight[0]?.price}
+                          </span>
+                        )}
                       </span>
-                     
-                      {product?.weight[0]?.count > 0 ? (item.some((el) => el.product === productData?._id) ||
-                      item.some((el) => el.product?._id === product?._id) ? (
+
+                      {product?.weight[0]?.count > 0 ? (
+                        item.some((el) => el.product === productData?._id) ||
+                        item.some((el) => el.product?._id === product?._id) ? (
+                          <div className="mt-2">
+                            <ButtonDark
+                              type="submit"
+                              className="Add-to-cart-button active"
+                              text="VIEW CART"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className="mt-3"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              addProductToCart(product, product?.weight[0]);
+                            }}
+                          >
+                            <ButtonDark
+                              type="submit"
+                              className="Add-to-cart-button"
+                              text="ADD TO CART"
+                            />
+                          </div>
+                        )
+                      ) : (
                         <div className="mt-2">
                           <ButtonDark
-                            type="submit"
-                            className="Add-to-cart-button active"
-                            text="VIEW CART"
+                            type="button"
+                            text="OUT OF STOCK"
+                            disabled
                           />
                         </div>
-                      ) : (
-                        <div
-                          className="mt-2"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            addProductToCart(product, product?.weight[0]);
-                          }}
-                        >
-                          <ButtonDark
-                            type="submit"
-                            className="Add-to-cart-button"
-                            text="ADD TO CART"
-                          />
-                        </div>
-                      )) : (<div className="mt-2">
-                          <ButtonDark type="button" text="OUT OF STOCK" disabled/>
-                        </div>)
-                        }
-                        {/* <div className="mt-3">
+                      )}
+                      {/* <div className="mt-3">
                           <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
                               <span>Buy it on</span>
                               <Image 
@@ -317,7 +383,7 @@ export default ProductDetail;
 
 export async function getServerSideProps(context) {
   const { productId } = context.query;
-  const response = await fetch(`${apipath}/api/v1/product/${productId}`)
+  const response = await fetch(`${apipath}/api/v1/product/${productId}`);
   const result = await response.json();
 
   return { props: { productData: result.data } };

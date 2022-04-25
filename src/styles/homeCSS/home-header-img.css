@@ -9,14 +9,18 @@
   display: none !important;
 }
 
-.home-header-button{
+.home-head-text-mobile {
+  display: none !important;
+}
+
+.home-header-button {
   width: 159px !important;
- height: 43px !important;
- box-sizing: border-box !important;
+  height: 43px !important;
+  box-sizing: border-box !important;
 }
 
 .home-header-head {
-  font-family: 'Red Hat Display';
+  font-family: "Red Hat Display";
   font-weight: bold;
   font-size: 64px;
   line-height: 67px;
@@ -31,7 +35,7 @@
 }
 
 .home-header-para {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 16px;
   line-height: 28px;
   color: #ffffff;
@@ -47,16 +51,22 @@
     /* background: url(../../assets/images/home/homeHeaderMobile.png); */
   }
 
+  .home-head-text-mobile {
+    display: block !important;
+  }
+
   .home-header-head-mobile {
-    font-family: 'Red Hat Display';
+    font-family: "Red Hat Display";
     font-weight: bold;
     font-size: 56px;
     line-height: 56px;
     color: #333333;
+    width: 70%;
+    margin-bottom: 4px !important;
   }
 
   .home-header-para-mobile {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-style: normal;
     font-weight: normal;
     font-size: 16px;

@@ -1,6 +1,10 @@
+.main-community {
+  padding: 0 2rem;
+}
+
 .Text {
   color: #333333;
-
+  text-align: center;
   font-family: Lora;
   font-size: 40px;
   font-weight: 400;
@@ -38,7 +42,7 @@
   opacity: 0;
   transition: .5s ease;
   background-color: #008CBA; */
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,9 +73,9 @@
   .Frame1 {
     height: 30vh !important;
   }
-  .overlay {
+  /* .overlay {
     display: none;
-  }
+  } */
 
   .content {
     width: 70% !important;
@@ -100,6 +104,16 @@
     width: 95% !important;
     text-align: left !important;
   }
+
+  .Text {
+    text-align: left !important;
+    margin: 0 !important;
+    font-size: 32px;
+  }
+
+  .Line {
+    margin: 0 0 0 3px !important;
+  }
 }
 
 .Text-name {
@@ -108,7 +122,7 @@
 
   /* border-radius: nullpx; */
 
-  font-family: 'Lora';
+  font-family: "Lora";
   font-size: 40px;
   font-style: normal;
   font-weight: 700;

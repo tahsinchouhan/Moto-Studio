@@ -8,7 +8,7 @@
   margin: 0 8%;
 }
 
-.home-visit-shop{
+.home-visit-shop {
   width: 179px;
   height: 43px;
 }
@@ -36,6 +36,12 @@
     width: 90%;
     height: auto;
     margin-bottom: 8%;
+  }
+}
+
+@media (max-width: 722px) {
+  .visit-the-shop-div {
+    margin: 0 !important;
   }
 }
 @media (min-width: 992px) and (max-width: 1399px) {
