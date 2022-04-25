@@ -258,15 +258,18 @@ function ProductDetail({ productData }) {
                           className="w-100"
                           width={400}
                           height={400}
+                          unoptimized={true}
+                          loading="eager"
+                          objectFit="cover"
                         />
                       </div>
 
                       <h1 className="product-card-text mt-2">
                         {product?.title || "title"}
                       </h1>
-                      <p className="product-card-para w-100">
+                      {/* <p className="product-card-para w-100">
                         {product?.sub_title}
-                      </p>
+                      </p> */}
                       {/* <p className="product-card-para w-100">
                         {product?.description || "Description"}
                       </p> */}
@@ -321,7 +324,7 @@ function ProductDetail({ productData }) {
                           </div>
                         ) : (
                           <div
-                            className="mt-3"
+                            className="mt-2"
                             onClick={(e) => {
                               e.stopPropagation();
                               addProductToCart(product, product?.weight[0]);
@@ -335,12 +338,17 @@ function ProductDetail({ productData }) {
                           </div>
                         )
                       ) : (
-                        <div className="mt-2">
-                          <ButtonDark
-                            type="button"
-                            text="OUT OF STOCK"
-                            disabled
-                          />
+                        <div className="mt-3">
+                          <span
+                            style={{
+                              color: "#065934",
+                              textAlign: "center",
+                              display: "block",
+                              padding: "0.3rem",
+                            }}
+                          >
+                            OUT OF STOCK
+                          </span>
                         </div>
                       )}
                       {/* <div className="mt-3">

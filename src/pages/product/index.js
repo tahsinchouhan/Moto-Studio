@@ -130,7 +130,7 @@ function Products() {
                   category.map((cat, index) => {
                     return (
                       <div
-                        className="form-check mb-3 cursor-pointer"
+                        className="form-check mb-3 ps-4 cursor-pointer"
                         key={cat._id}
                       >
                         <input
