@@ -93,7 +93,7 @@ function Register() {
           </div>
         </div>
       </div>
-      <Container className="py-5">
+      <Container className="py-5" style={{fontFamily:'Lora'}}>
         <div>
           <Formik
             initialValues={initialValues}

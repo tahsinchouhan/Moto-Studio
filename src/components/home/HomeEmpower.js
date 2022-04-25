@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Button from "../button/ButtonLight"
 import { apipath } from '../../pages/api/apiPath';
+import { useRouter } from 'next/router';
 
 function HomeEmpower() {
   const [impoweredData, setImpoweredData] = useState({
@@ -8,6 +9,8 @@ function HomeEmpower() {
     title: 'Title',
     desc: 'Description'
   });
+
+  const router = useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,8 +41,8 @@ function HomeEmpower() {
           </p>
           <p className="home-empower-img-text">{impoweredData?.title || 'Title'}</p>
           <div className="d-flex">
-           <div className="mx-auto">
-           <Button text="KNOW MORE" className="home-empower-button" />
+           <div className="mx-auto" onClick={() => router.push('/collaborate')}>
+            <Button text="KNOW MORE" className="home-empower-button" />
            </div>
           </div>
         </div>

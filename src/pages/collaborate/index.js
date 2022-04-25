@@ -3,8 +3,7 @@ import CollaborateHeader from "./collaborateHeader";
 import CollaborateForm from "./CollaborateForm";
 import CollaborateForestProduce from "./CollaborateForestProduce";
 
-
-function Collaborate() {
+export default function Collaborate() {
   return (
     <>
       <CollaborateHeader/>
@@ -13,5 +12,3 @@ function Collaborate() {
     </>
   );
 }
-
-export default Collaborate;

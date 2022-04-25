@@ -11,7 +11,7 @@ import { CardContext } from "../../components/Layout";
 import { signIn, getProviders, getSession } from "next-auth/react";
 import Image from "next/image";
 
-function Login() {
+export default function Login() {
   const [message, setMessage] = useState(null);
   const [providers, setProviders] = useState(null);
   const router = useRouter();
@@ -227,5 +227,3 @@ function Login() {
 //     props: { providers }
 //   };
 // }
-
-export default Login;

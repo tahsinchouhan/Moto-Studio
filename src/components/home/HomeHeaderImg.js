@@ -40,7 +40,7 @@ function HomeHeaderImg({ bannerData }) {
                 <div className="col-10">
                   <div
                     className="mb-md-5  mt-md-3 mt-4 mb-0"
-                    onClick={() => router.push("product")}
+                    onClick={() => router.push("/product")}
                   >
                     <Button
                       className="home-header-button"
@@ -76,7 +76,7 @@ function HomeHeaderImg({ bannerData }) {
 
                   <div
                     className=" col-10 text-center text-md-start mx-auto ms-md-0 mb-md-5  mt-md-4 mb-0"
-                    onClick={() => rounter.push("product")}
+                    onClick={() => router.push("/product")}
                   >
                     <Button
                       className="home-header-button"

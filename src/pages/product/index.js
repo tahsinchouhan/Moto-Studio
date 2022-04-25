@@ -11,11 +11,17 @@ import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import Skeleton from "../../components/Skeleton";
 
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+
+
 function Products() {
   const router = useRouter();
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext);
 
+  const [price, setPrice] = useState([0, 1000]);
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -26,6 +32,9 @@ function Products() {
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
   );
+
+  // const createSliderWithTooltip = Slider.createSliderWithTooltip;
+  // const Range = createSliderWithTooltip(Slider.Range);
 
   const fetchMoreData = () => {
     setLoading(true);
@@ -93,10 +102,11 @@ function Products() {
         return (query += `&category_id[]=` + category[index]._id);
       }
       return query;
-    }, "");
+    }, "");   
+    query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     // if (query !== "") fetchData(query);
     fetchData(query);
-  }, [checkedState, category]);
+  }, [checkedState, category, price]);
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -150,7 +160,20 @@ function Products() {
                       </div>
                     );
                   })}
-              </div>
+              </div> 
+              <Slider 
+                range 
+                allowCross={false} 
+                defaultValue={price}
+                min={0}
+                max={1000}
+                marks={{
+                  1: `₹ ${price[0]}`,
+                  1000: `₹ ${price[1]}`
+                }}
+                value={price}
+                onChange={(price) => setPrice(price)}
+                />          
             </div>
           </Col>
 
@@ -160,7 +183,7 @@ function Products() {
                 {/* <div> */}
                 <div className="product-38">
                   <span className="product-38-product">
-                    {productData.length} Products
+                    {productData?.length} Products
                   </span>
                   <div className="product-sort-select">
                     <span className="product-sort-by">SORT BY</span>
@@ -184,7 +207,7 @@ function Products() {
 
             <Row className="justify-content-center justify-content-lg-start">
               {!loading
-                ? productData.length &&
+                ? productData?.length &&
                   productData.map((product) => {
                     return (
                       <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>

@@ -131,6 +131,8 @@ function VisitTheShop({ categoryId = "61effaa01a880a62b8284274" }) {
                     width={100}
                     height={180}
                     objectFit="cover"
+                    unoptimized={true}
+                    loading="eager"
                   />
                   <div className=" row hover-div bg-light">
                     <Row>
@@ -180,6 +182,8 @@ function VisitTheShop({ categoryId = "61effaa01a880a62b8284274" }) {
                     width={100}
                     height={180}
                     objectFit="cover"
+                    unoptimized={true}
+                    loading="eager"
                   />
                   <div className=" row hover-div bg-light">
                     <Row>
@@ -232,6 +236,8 @@ function VisitTheShop({ categoryId = "61effaa01a880a62b8284274" }) {
                       width={200}
                       height={360}
                       objectFit="contain"
+                      unoptimized={true}
+                      loading="eager"
                     />
                     <div className=" row hover-div bg-light">
                       <Row>
