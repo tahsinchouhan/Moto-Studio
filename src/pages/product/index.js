@@ -197,10 +197,13 @@ function Products() {
                           />
                         </div>
 
-                        <h1 className="product-card-text mt-2">{product?.title}</h1>
+                        <h1 className="product-card-text mt-2">
+                          {product?.title}
+                        </h1>
                         <p className="product-card-para w-100">
                           {product?.sub_title}
                         </p>
+                        
                         {/* <p className="product-card-para w-100">
                           {product?.description}
                         </p> */}

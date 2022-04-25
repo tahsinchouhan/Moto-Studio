@@ -33,13 +33,13 @@
   text-align: left;
   height: 17px;
   border-radius: nullpx;
-  /* margin-bottom: 1.5rem !important; */
+  margin-bottom: 1.5rem !important;
 }
 
 .product-card-para {
   font-family: "Lato";
   font-size: 12px;
-  line-height: 22px;
+  line-height: 15px;
   color: #333333;
   overflow: hidden;
    text-overflow: ellipsis;
@@ -48,6 +48,8 @@
     line-clamp: 3; 
    -webkit-box-orient: vertical;
    white-space: pre-line;
+   height: 50px;
+   overflow: hidden;
 }
 
 .product-card-details {
