@@ -41,7 +41,7 @@ function Header() {
   };
 
   useEffect(() => {
-    if(!searchText) return;
+    // if(!searchText) return;
     const fetchSearchData = async () => {
       const res = await fetch(
         apipath + `/api/v1/product/list/search?search=${searchText}`

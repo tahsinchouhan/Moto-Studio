@@ -29,7 +29,7 @@ const forestLover = () => {
     console.log('e :>> ', e);
     try {
       if (first_name && last_name && email && mobile) {
-        const response = await fetch(apipath + '/api/v1/forestlover/create', {
+        const response = await fetch(apipath + '/api/v1/volunteer/create', {
           method: "post",
           headers: {
             'Content-Type': "application/json",
