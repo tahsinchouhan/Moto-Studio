@@ -78,7 +78,7 @@ function Header() {
     { id: 4, title: "CORPORATE", href: "/collaborate" },
     { id: 5, title: "BLOGS", href: "/blogs" },
     { id: 6, title: "NEWS", href: "/news" },
-    { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
+    // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
     // {id:7,title:'CONTACT',href:'/contact'}
   ];
   return (
@@ -286,6 +286,41 @@ function Header() {
                       </a>
                     </Link>
                   ))}
+                  <div className="position-relative mx-3" ref={connectmenuRef}>
+                    <button
+                      className="bg-transparent border-0 nav-link"
+                      onClick={() =>
+                        setConnectViewDropDown(!connectViewDropDown)
+                      }
+                    >
+                      CONNECT
+                    </button>
+                    {connectViewDropDown && (
+                      <ul className="dropdown-menu show position-absolute shadow rounded">
+                        <li onClick={() => setConnectViewDropDown(false)}>
+                          <Link href="/connect/consumerProgram">
+                            <a className="dropdown-item text-black">
+                              CONSUMER CONNECT PROGRAM
+                            </a>
+                          </Link>
+                        </li>
+                        <li onClick={() => setConnectViewDropDown(false)}>
+                          <Link href="/connect/forestLover">
+                            <a className="dropdown-item text-black">
+                              FOREST LOVERS CLUB
+                            </a>
+                          </Link>
+                        </li>
+                        <li onClick={() => setConnectViewDropDown(false)}>
+                          <Link href="/connect/successStory">
+                            <a className="dropdown-item text-black">
+                              SUCCESS STORIES
+                            </a>
+                          </Link>
+                        </li>
+                      </ul>
+                    )}
+                  </div>
                   {/* eslint-disable-next-line  */}
                   {session ? (
                     <>

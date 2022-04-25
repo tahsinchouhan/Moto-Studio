@@ -1,0 +1,192 @@
+.consumer-program-banner {
+  background-color: #c9e340;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4rem 0 0;
+}
+
+.consumer-program-banner .text {
+  width: 40%;
+  padding-left: 4rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+}
+
+.consumer-program-banner .img {
+  width: 984px;
+  position: relative;
+}
+
+.consumer-program-banner .img > span {
+  position: unset !important;
+}
+
+.consumer-program-banner .img .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: 100% !important;
+}
+
+.consumer-program-banner .text h2 {
+  font-family: "Lora", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 11px;
+  line-height: 51px;
+}
+
+.consumer-program-banner .text p {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+}
+
+.consumer-program-banner .text button,
+.consumer-program-form button {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #065934;
+  background-color: #dbf8e6;
+  padding: 13px 26px;
+  border: none;
+  outline: none;
+}
+
+.consumer-program-banner .text button:hover,
+.consumer-program-banner .text button:active,
+.consumer-program-form button:hover,
+.consumer-program-form button:active {
+  background-color: #5abf6b;
+  color: #fff;
+}
+
+.consumer-program-content h2 {
+  font-family: "Lora", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 11px;
+  line-height: 51px;
+  text-align: center;
+  margin: 4rem 0 0;
+}
+
+.consumer-program-content hr {
+  width: 48px;
+  height: 0px;
+  border: 1px solid #c4c4c4;
+  margin: 0.9rem auto 4rem;
+}
+
+.consumer-program-content p {
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  color: #333333;
+}
+
+.consumer-program-form {
+  text-align: center;
+  margin: 0 0 4rem;
+}
+
+.consumer-program-form .input-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.consumer-program-form .input-item label {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.consumer-program-form .input-item {
+  width: 35%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.consumer-program-form .input-item input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  font-family: "Mulish", sans-serif;
+}
+
+.consumer-program-form .input-item input::placeholder {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 770px) {
+  .consumer-program-banner {
+    flex-direction: column-reverse;
+    text-align: center;
+    width: 100%;
+    padding: 2rem 1.2rem 0;
+  }
+
+  .consumer-program-banner .text {
+    width: 100%;
+    margin: 2rem 0 !important;
+    padding: 0 2rem !important;
+  }
+
+  .consumer-program-banner .text h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .consumer-program-banner .text p {
+    font-size: 16px;
+  }
+
+  .consumer-program-banner .img {
+    width: 90%;
+  }
+
+  .consumer-program-content h2 {
+    margin: 2rem 0 0;
+  }
+
+  .consumer-program-content hr {
+    margin: 0.9rem auto 2rem;
+  }
+
+  .consumer-program-content p {
+    font-size: 16px;
+    width: 80%;
+    text-align: justify;
+    margin: 0 auto 2rem;
+  }
+
+  .consumer-program-form .input-container {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .consumer-program-form .input-container .input-item {
+    width: 100%;
+  }
+}
