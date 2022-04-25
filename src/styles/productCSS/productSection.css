@@ -33,7 +33,7 @@
   text-align: left;
   height: fit-content;
   border-radius: nullpx;
-  /* margin-bottom: 1.5rem !important; */
+  margin-bottom: 1.5rem !important;
 }
 
 .product-card-hover .product-card-img > span {
@@ -48,16 +48,17 @@
 .product-card-para {
   font-family: "Lato";
   font-size: 12px;
-  line-height: 22px;
-  height: fit-content;
+  line-height: 15px;
   color: #333333;
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  white-space: pre-line;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3; 
+   -webkit-box-orient: vertical;
+   white-space: pre-line;
+   height: 50px;
+   overflow: hidden;
 }
 
 .product-card-details {
