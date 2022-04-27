@@ -3,7 +3,7 @@ import Button from "../button/ButtonLight"
 import { apipath } from '../../pages/api/apiPath';
 import { useRouter } from 'next/router';
 
-function HomeEmpower() {
+function HomeEmpower({ impowerData }) {
   const [impoweredData, setImpoweredData] = useState({
     backgroundImg: '',
     title: 'Title',
@@ -13,22 +13,28 @@ function HomeEmpower() {
   const router = useRouter()
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${apipath}/api/v1/about/empowerd/list`);
-        const objData = await res.json();
-        if (objData.length) {
-          setImpoweredData({
-            backgroundImg: objData[0]?.images[0]?.img || '',
-            title: objData[0]?.title || 'Title',
-            desc: objData[0]?.description || 'Description'
-          })
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
+    setImpoweredData({
+      backgroundImg: impowerData[0]?.images[0]?.img || '',
+      title: impowerData[0]?.title || 'Title',
+      desc: impowerData[0]?.description || 'Description'
+    })
+
+    // const fetchData = async () => {
+    //   try {
+    //     const res = await fetch(`${apipath}/api/v1/about/empowerd/list`);
+    //     const objData = await res.json();
+    //     if (objData.length) {
+    //       setImpoweredData({
+    //         backgroundImg: objData[0]?.images[0]?.img || '',
+    //         title: objData[0]?.title || 'Title',
+    //         desc: objData[0]?.description || 'Description'
+    //       })
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    // fetchData();
   }, [])
 
   return (

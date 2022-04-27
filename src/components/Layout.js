@@ -21,7 +21,7 @@ const initialState = {
   isLogin: false
 };
 
-function Layout({ children }) {
+function Layout({ children  }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState(false);
 

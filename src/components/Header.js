@@ -41,13 +41,15 @@ function Header() {
   };
 
   useEffect(() => {
-    // if(!searchText) return;
+    if(!searchText) {
+      setSearchData([])
+      return; 
+    }
     const fetchSearchData = async () => {
       const res = await fetch(
         apipath + `/api/v1/product/list/search?search=${searchText}`
       );
       const data = await res.json();
-      console.log("data", data);
       setSearchData(data.listData);
     };
     fetchSearchData();

@@ -7,7 +7,7 @@ import { Row, Col } from "react-bootstrap";
 import { apipath } from "../api/apiPath";
 
 function BlogPost({ blogData }) {
-  console.log('blogData :>> ', blogData);
+  // console.log('blogData :>> ', blogData);
   return (
     <>
       <div id="blog-post-page">

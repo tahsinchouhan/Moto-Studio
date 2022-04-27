@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import Imageone from "../../assets/images/home/Imageone.png";
-import Imagetwo from "../../assets/images/home/Imagetwo.png";
-import Imagethree from "../../assets/images/home/Imagethree.png";
-import Imagefour from "../../assets/images/home/Imagefour.png";
-import Imagefive from "../../assets/images/home/Imagefive.png";
-import Imagesix from "../../assets/images/home/Imagesix.png";
-import { apipath } from "../../pages/api/apiPath";
+// import Imagetwo from "../../assets/images/home/Imagetwo.png";
+// import Imagethree from "../../assets/images/home/Imagethree.png";
+// import Imagefour from "../../assets/images/home/Imagefour.png";
+// import Imagefive from "../../assets/images/home/Imagefive.png";
+// import Imagesix from "../../assets/images/home/Imagesix.png";
+// import { apipath } from "../../pages/api/apiPath";
 import { useRouter } from "next/router";
 
 function CommunityPage() {

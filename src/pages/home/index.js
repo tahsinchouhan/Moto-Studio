@@ -6,11 +6,12 @@ import HomeHeaderImg from "../../components/home/HomeHeaderImg";
 import FeaturedProducts from "../../components/home/FeaturedProducts";
 import HomeFollowUs from "../../components/home/HomeFollowUs";
 import HomeEmpower from "../../components/home/HomeEmpower";
-import VisitTheShop from "../../components/home/VisitTheShop";
+// import VisitTheShop from "../../components/home/VisitTheShop";
 // import { CardContext } from "../../components/Layout";
 // import {apipath} from '../api/apiPath'
 
-function Home({ category, bannerData }) {
+function Home({ category, bannerData, impowerData, feturedData }) {
+
   // const { data: session } = useSession();
   // const { isLogin } = useContext(CardContext);
   // const router = useRouter();
@@ -40,10 +41,10 @@ function Home({ category, bannerData }) {
   return (
     <div>
       <HomeHeaderImg bannerData={bannerData} />
-      <FeaturedProducts category={category} />
+      <FeaturedProducts category={category} feturedData={feturedData} />
       {/* <VisitTheShop /> */}
 
-      <HomeEmpower />
+      <HomeEmpower impowerData={impowerData} />
       <CommunityPage />
       <HomeFollowUs />
     </div>

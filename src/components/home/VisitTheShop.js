@@ -12,12 +12,13 @@ import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from "../../pages/api/apiPath";
 import { useRouter } from "next/router";
 
-function VisitTheShop({ categoryId = "61effaa01a880a62b8284274" }) {
-  const [featured, setFeatured] = useState([]);
-
+function VisitTheShop({ categoryId, feturedData}) {
+  const [featured, setFeatured] = useState(feturedData?.data || []);
+  // console.log('feturedData :>> ', feturedData.data);
   const router = useRouter();
 
   useEffect(() => {
+    if(!categoryId) return false;
     const fetchData = async () => {
       try {
         const res = await fetch(
