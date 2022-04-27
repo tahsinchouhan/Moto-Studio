@@ -239,7 +239,8 @@ function ProductDetail({ productData }) {
         <div className="mb-5">
           <p className="productName-extra-product">You may also like</p>
           <Row className="justify-content-center">
-            {listData.length > 0 &&
+            {listData &&
+              listData.length > 0 &&
               listData.slice(0, 4).map((product) => {
                 return (
                   <Col lg={3} md={6} sm={8} xs={12} key={product._id}>
