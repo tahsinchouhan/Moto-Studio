@@ -247,7 +247,7 @@ function Shopping() {
     outline: "none",
     boxShadow: "none",
     borderRadius: 0,
-    fontSize: 16,
+    fontSize: 16
   };
 
   return (
