@@ -29,32 +29,33 @@ function CommunityPage() {
     setCommunity([
       {
         _id: "620e6e923d3e6fe4d14acf48",
-        images: [{ img: "/Image/Product 1.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_1_oab2j3.png" }],
+       
         products: { title: "Pure Wildforest Honey" },
       },
       {
         _id: "6256b2e0e150e5b74cce9dff",
-        images: [{ img: "/Image/Product 2.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_2_vo1ixi.png" }],
         products: { title: "Premium Cashews" },
       },
       {
         _id: "620e5ca63d3e6fe4d14acc3b3",
-        images: [{ img: "/Image/Product 3.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_3_lixc7e.png" }],
         products: { title: "Chyawan Prash" },
       },
       {
         _id: "620e609e3d3e6fe4d14acd02",
-        images: [{ img: "/Image/Product 4.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_4_xr4vvh.png" }],
         products: { title: "Mahua Laddu" },
       },
       {
         _id: "6256b32ee150e5b74cce9eb3",
-        images: [{ img: "/Image/Product 5.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041704/cgherbal/about/Product_5_ha2qn1.png" }],
         products: { title: "Mahua Cookies" },
       },
       {
         _id: "620e5e023d3e6fe4d14acca2",
-        images: [{ img: "/Image/Product 6.png" }],
+        images: [{ img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041704/cgherbal/about/Product_6_nbmoas.png" }],
         products: { title: "Amla Murabba" },
       },
     ]);
