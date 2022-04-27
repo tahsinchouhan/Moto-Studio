@@ -34,7 +34,7 @@
   border-radius: nullpx;
   /* margin-bottom: 1.5rem !important; */
   height: 40px;
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .product-card-hover .product-card-img > span {
@@ -52,14 +52,14 @@
   line-height: 15px;
   color: #333333;
   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
-    line-clamp: 3; 
-   -webkit-box-orient: vertical;
-   white-space: pre-line;
-   height: 50px;
-   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
+  height: 50px;
+  overflow: hidden;
 }
 
 .product-card-details {
@@ -145,8 +145,10 @@
   .product-card-text {
     font-size: 22px;
     line-height: 28px;
+    height: auto;
   }
   .product-card-para {
+    height: auto;
     font-size: 16px;
     line-height: 30px;
   }
