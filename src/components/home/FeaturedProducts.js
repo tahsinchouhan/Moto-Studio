@@ -65,8 +65,8 @@ function FeaturedProducts({ category, feturedData }) {
                         className="rounded-circle hover1"
                         width={160}
                         height={160}
-                        unoptimized={true}
-                        loading="eager"
+                        // unoptimized={true}
+                        // loading="eager"
                       />
                       <p className=" feature-products-texts p-1 ">
                         {cat?.category_name || "Category Name"}

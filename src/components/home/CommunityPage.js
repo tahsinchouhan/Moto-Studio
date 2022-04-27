@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
-import Imageone from "../../assets/images/home/Imageone.png";
+import Imageone from "../../assets/images/home/444.png";
 // import Imagetwo from "../../assets/images/home/Imagetwo.png";
 // import Imagethree from "../../assets/images/home/Imagethree.png";
 // import Imagefour from "../../assets/images/home/Imagefour.png";
@@ -110,8 +110,8 @@ function CommunityPage() {
                         // height={350}
                         layout="fill"
                         objectFit="cover"
-                        unoptimized={true}
-                        loading="eager"
+                        // unoptimized={true}
+                        // loading="eager"
                       />
                       <div className="overlay">
                         <p className="Text-name">
