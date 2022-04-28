@@ -270,7 +270,7 @@ function Products() {
                                     : product?.weight[0]?.discount_value
                                 )}
                             </span>
-                            {product?.weight[0].discount_value && (
+                            {product?.weight[0]?.discount_value && (
                               <span className="fs-5 text-muted ms-2 text-decoration-line-through">
                                 ₹ {product?.weight[0]?.price}
                               </span>

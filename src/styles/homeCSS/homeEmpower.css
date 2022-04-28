@@ -1,5 +1,5 @@
 .home-empower-img {
-  background: url(../../assets/images/home/homeEmpowerBg.png);
+  /* background: url(../../assets/images/home/homeEmpowerBg.png); */
   background-repeat: no-repeat !important;
   background-size: 100% 100% !important;
 }
@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 767px) {
   .home-empower-img {
-    background: url(../../assets/images/home/HomeEmpoweredMobile.png) !important;
+    /* background: url(../../assets/images/home/HomeEmpoweredMobile.png) !important; */
     background-repeat: no-repeat !important;
     background-size: 100% 100% !important;
   }

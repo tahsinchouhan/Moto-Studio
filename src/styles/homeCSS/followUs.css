@@ -21,7 +21,7 @@
   
   @media screen and (max-width: 480px) {
     .home-follow-us-img {
-      background: url(../../assets/images/home/followMobile.png);
+      /* background: url(../../assets/images/home/followMobile.png); */
       background-repeat: no-repeat !important;
       background-size: 100% 100%;
     }
