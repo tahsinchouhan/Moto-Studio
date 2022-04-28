@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -6,12 +6,29 @@ import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 import { useRouter } from "next/router";
 
-function HomeHeaderImg({ bannerData }) {
+function HomeHeaderImg() {
   const [banner, setBanner] = useState({
-    bannerImg: bannerData?.images[0]?.img || HomeHeader,
-    bannerTitle: bannerData?.title || "Banner Title",
-    bannerDesc: bannerData?.description || "Banner Description",
+    bannerImg: HomeHeader,
+    bannerTitle: "Banner Title",
+    bannerDesc: "Banner Description",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${apipath}/api/v1/home/banner/list`);
+        const objData = await res.json();
+          setBanner({
+            bannerImg: objData.data[0]?.images[0]?.img || HomeHeader,
+            bannerTitle: objData.data[0]?.title || 'Banner Title',
+            bannerDesc: objData.data[0]?.description || 'Banner Description'
+          })
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
 
   const router = useRouter();
 

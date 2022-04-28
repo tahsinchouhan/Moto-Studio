@@ -9,8 +9,8 @@ import VisitTheShop from "./VisitTheShop";
 import Slider from "react-slick/lib/slider";
 import { apipath } from "../../pages/api/apiPath";
 
-function FeaturedProducts({ category, feturedData }) {
-  const list = null // category?.length > 0 ? category[0]._id : null || null;
+function FeaturedProducts({ category }) {
+  const list = category?.length > 0 ? category[0]._id : null || null;
   const [categoryId, setCategoryId] = useState(list);
   const getCategoryId = (id) => setCategoryId(id);
 
@@ -79,7 +79,7 @@ function FeaturedProducts({ category, feturedData }) {
         </div>
       </div>
 
-      <VisitTheShop categoryId={categoryId} feturedData={feturedData} />
+      <VisitTheShop categoryId={categoryId} />
     </>
   );
 }

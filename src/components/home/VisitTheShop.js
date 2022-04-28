@@ -12,8 +12,8 @@ import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { apipath } from "../../pages/api/apiPath";
 import { useRouter } from "next/router";
 
-function VisitTheShop({ categoryId, feturedData}) {
-  const [featured, setFeatured] = useState(feturedData?.data || []);
+function VisitTheShop({ categoryId }) {
+  const [featured, setFeatured] = useState([]);
   // console.log('feturedData :>> ', feturedData.data);
   const router = useRouter();
 

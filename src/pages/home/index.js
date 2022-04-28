@@ -10,7 +10,7 @@ import HomeEmpower from "../../components/home/HomeEmpower";
 // import { CardContext } from "../../components/Layout";
 // import {apipath} from '../api/apiPath'
 
-function Home({ category, bannerData, impowerData, feturedData }) {
+function Home({ category }) {
 
   // const { data: session } = useSession();
   // const { isLogin } = useContext(CardContext);
@@ -40,11 +40,11 @@ function Home({ category, bannerData, impowerData, feturedData }) {
 
   return (
     <div>
-      <HomeHeaderImg bannerData={bannerData} />
-      <FeaturedProducts category={category} feturedData={feturedData} />
+      <HomeHeaderImg />
+      <FeaturedProducts category={category} />
       {/* <VisitTheShop /> */}
 
-      <HomeEmpower impowerData={impowerData} />
+      <HomeEmpower />
       <CommunityPage />
       <HomeFollowUs />
     </div>
