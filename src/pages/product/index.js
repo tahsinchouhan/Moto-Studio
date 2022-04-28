@@ -102,8 +102,10 @@ function Products() {
         return (query += `&category_id[]=` + category[index]._id);
       }
       return query;
-    }, "");   
-    query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+    }, "");  
+    if(price[0] !== 0 && price[0] !== 10000) {
+      query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+    }
     // if (query !== "") fetchData(query);
     fetchData(query);
   }, [checkedState, category, price]);
@@ -166,10 +168,10 @@ function Products() {
                 allowCross={false} 
                 defaultValue={price}
                 min={0}
-                max={1000}
+                max={10000}
                 marks={{
-                  1: `₹ ${price[0]}`,
-                  1000: `₹ ${price[1]}`
+                  0: `₹ ${price[0]}`,
+                  10000: `₹ ${price[1]}`
                 }}
                 value={price}
                 onChange={(price) => setPrice(price)}
