@@ -21,7 +21,7 @@ function Products() {
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext);
 
-  const [price, setPrice] = useState([0, 1000]);
+  const [price, setPrice] = useState([0, 100000]);
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
