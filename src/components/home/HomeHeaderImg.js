@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 import { useRouter } from "next/router";
+import { apipath } from "../../pages/api/apiPath";
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({

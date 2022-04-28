@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import {  Row, Col } from "react-bootstrap";
 
@@ -9,14 +10,16 @@ function ShopAll({menu_data}) {
           <div className="all-shop-list-change py-3">
             <Row>
               {
-                menu_data?.length > 0 ? menu_data.map(sub_menu => {
+                menu_data?.length > 0 ? menu_data.map((sub_menu,index) => {
                   return <Col md={3} lg={3} key={sub_menu?._id}>
                     <div className="grocery-gourmet-foods">
                       <h6 className="Grocery-foods">{sub_menu?.menu_name}</h6>
                       <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
                         {
                           sub_menu?.menu_data?.length && sub_menu?.menu_data?.map(item => {
-                            return <span key={item._id} className="Wildforest">{item?.category_name || ''}</span>
+                            return <Link key={item._id} href={`/product?activeTab=${index}`}>
+                                <a className="Wildforest text-black">{item?.category_name || ''}</a>
+                              </Link>
                           })
                         }
                       </div>
