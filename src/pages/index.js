@@ -1,8 +1,15 @@
+import Head from "next/head";
 import { apipath } from "./api/apiPath";
 import Home from "./home";
 
 export default function index({ category }) {
-  return <Home category={category} />
+  return <>
+   <Head>
+      <title>CG HERBAL</title>
+      <meta property="og:title" content="cg herbal" key="title" />
+    </Head>
+    <Home category={category} />
+  </>
 }
 
 export async function getServerSideProps(context) {

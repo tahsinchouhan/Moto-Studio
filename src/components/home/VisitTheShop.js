@@ -236,6 +236,7 @@ function VisitTheShop({ categoryId }) {
                       alt="WildforestHoney"
                       width={580}
                       height={460}
+                      loading="lazy"
                       // layout="fill"
                       // objectFit="contain"
                       // unoptimized={true}
@@ -291,6 +292,7 @@ function VisitTheShop({ categoryId }) {
                     alt="AmlaMurabba"
                     width={100}
                     height={180}
+                    loading="lazy"
                     objectFit="cover"
                   />
                   <div className=" row hover-div bg-light">
@@ -339,6 +341,7 @@ function VisitTheShop({ categoryId }) {
                     alt="MahuaLaddu"
                     width={100}
                     height={180}
+                    loading="lazy"
                     objectFit="cover"
                   />
                   <div className=" row hover-div bg-light">

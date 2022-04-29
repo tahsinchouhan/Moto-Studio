@@ -65,6 +65,7 @@ function FeaturedProducts({ category }) {
                         className="rounded-circle hover1"
                         width={160}
                         height={160}
+                        loading="lazy"
                         // unoptimized={true}
                         // loading="eager"
                       />
