@@ -218,7 +218,7 @@ function VisitTheShop({ categoryId }) {
 
               <Col lg={6}>
                 <Card
-                  className="WildforestHoney-card hover-div1 "
+                  className="WildforestHoney-card hover-div1"
                   onClick={() =>
                     router.push(
                       `./product/${featured[2]?.products_id?._id || ""}`
@@ -234,11 +234,12 @@ function VisitTheShop({ categoryId }) {
                           : emptyImage
                       }
                       alt="WildforestHoney"
-                      width={200}
-                      height={360}
-                      objectFit="contain"
-                      unoptimized={true}
-                      loading="eager"
+                      width={580}
+                      height={460}
+                      // layout="fill"
+                      // objectFit="contain"
+                      // unoptimized={true}
+                      // loading="eager"
                     />
                     <div className=" row hover-div bg-light">
                       <Row>
