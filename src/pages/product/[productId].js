@@ -9,6 +9,7 @@ import { MdLocalShipping } from "react-icons/md";
 import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function ProductDetail({ productData }) {
   // const [showPopuUp, setShowPopUp] = useState(false);
@@ -40,9 +41,14 @@ function ProductDetail({ productData }) {
     <>
       <div className="all-product-heading">
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
-          <div className="store-home" onClick={() => router.push("/product")}>
-            <span>Store Home &gt; </span>
+          <div className="store-home">
+          <Link href={"/"}>
+            <span className="cursor-pointer">Home</span>
+          </Link>
+            <span>/ {productData?.category?.category_name}</span>
+            <span>/ {productData?.sub_category?.category_name}</span>
           </div>
+          
           <div className="products-header text-center">
             <h1 className="product-name-head-text">
               {productData?.title || "Product Name"}
