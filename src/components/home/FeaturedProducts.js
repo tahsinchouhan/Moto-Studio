@@ -14,6 +14,8 @@ function FeaturedProducts({ category }) {
   const [categoryId, setCategoryId] = useState(list);
   const getCategoryId = (id) => setCategoryId(id);
 
+
+  let categories  = category.filter((cat, index) => index < 3)
   const settings = {
     dots: false,
     infinite: false,
@@ -50,8 +52,8 @@ function FeaturedProducts({ category }) {
       <div className="overflow-style">
         <div className="image-div1">
           <Slider {...settings}>
-            {category?.length &&
-              category?.map((cat) => {
+            {categories?.length &&
+              categories?.map((cat) => {
                 return (
                   <div
                     className="image-div"

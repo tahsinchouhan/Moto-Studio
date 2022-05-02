@@ -1,5 +1,5 @@
 .dark-button{
-    background: #49DBC9;
+    background: #5ABF6B;
     height: 40px;
     border: none;
     color: #FFFFFF;
@@ -9,4 +9,7 @@
 .dark-button:hover,
 .dark-button.active{
     background: #5ABF6B;
+}
+.dark-button.disabled{
+    background: #E5E5E5;
 }

@@ -21,14 +21,24 @@ function SubHeader() {
       try {
         const res = await fetch(`${apipath}/api/v1/product`);
         const objData = await res.json();
-        setMenuData(objData.data)
+
+        let newobj =  JSON.stringify(objData.data);
+        newobj = JSON.parse(newobj);
+
+        newobj[0].menu_data = newobj[0].menu_data.filter((ele,ind) => ind < 3)
+        newobj[1] = newobj[1].filter((ele,ind) => ind < 3)
+        
+        // console.log('old',objData.data)
+        // console.log('new',newobj)
+
+        // setMenuData(objData.data)
+        setMenuData(newobj)
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
   }, [])
-    // console.log(menuData);
 
   const shopHandler = (index, menu_data) => {
     setSubMenu(menu_data)
@@ -87,14 +97,14 @@ function SubHeader() {
                   </li> */}
                 </ul>
               </Nav>
-              <Nav className="sub-header-gift-box">
+              {/* <Nav className="sub-header-gift-box">
                 <Link eventKey={3} href="#memes">
                   <a className="sub-nav-link mx-2"> Gift Boxes</a>
                 </Link>
                 <Link eventKey={3} href="#memes">
                   <a className="sub-nav-new">NEW!</a>
                 </Link>
-              </Nav>
+              </Nav> */}
             </Navbar.Collapse>
           </Container>
         </Navbar>

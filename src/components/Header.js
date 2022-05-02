@@ -135,21 +135,21 @@ function Header() {
                     <ul className="dropdown-menu show position-absolute shadow rounded">
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/consumerProgram">
-                          <a className="dropdown-item text-black">
+                          <a className=" nav-link mx-3">
                             CONSUMER CONNECT PROGRAM
                           </a>
                         </Link>
                       </li>
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/forestLover">
-                          <a className="dropdown-item text-black">
+                          <a className=" nav-link mx-3">
                             FOREST LOVERS CLUB
                           </a>
                         </Link>
                       </li>
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/successStory">
-                          <a className="dropdown-item text-black">
+                          <a className=" nav-link mx-3">
                             SUCCESS STORIES
                           </a>
                         </Link>

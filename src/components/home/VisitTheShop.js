@@ -115,7 +115,7 @@ function VisitTheShop({ categoryId }) {
             <Row>
               <Col lg={3}>
                 <Card
-                  className="VisitTheShop-cards hover-div1"
+                  className="VisitTheShop-cards"
                   onClick={() =>
                     router.push(
                       `./product/${featured[0]?.products_id?._id || ""}`
@@ -166,7 +166,7 @@ function VisitTheShop({ categoryId }) {
                 </Card>
 
                 <Card
-                  className="VisitTheShop-cards mt-3 hover-div1"
+                  className="VisitTheShop-cards mt-3"
                   onClick={() =>
                     router.push(
                       `./product/${featured[1]?.products_id?._id || ""}`
@@ -218,7 +218,7 @@ function VisitTheShop({ categoryId }) {
 
               <Col lg={6}>
                 <Card
-                  className="WildforestHoney-card hover-div1"
+                  className="WildforestHoney-card"
                   onClick={() =>
                     router.push(
                       `./product/${featured[2]?.products_id?._id || ""}`
@@ -276,7 +276,7 @@ function VisitTheShop({ categoryId }) {
               <Col lg={3}>
                 {" "}
                 <Card
-                  className="VisitTheShop-cards hover-div1"
+                  className="VisitTheShop-cards"
                   onClick={() =>
                     router.push(
                       `./product/${featured[3]?.products_id?._id || ""}`
@@ -325,7 +325,7 @@ function VisitTheShop({ categoryId }) {
                   </Card.Body>
                 </Card>
                 <Card
-                  className=" VisitTheShop-cards mt-3 hover-div1"
+                  className=" VisitTheShop-cards mt-3"
                   onClick={() =>
                     router.push(
                       `./product/${featured[4]?.products_id?._id || ""}`

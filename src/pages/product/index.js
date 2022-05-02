@@ -212,7 +212,7 @@ function Products() {
                 ? productData?.length &&
                   productData.map((product) => {
                     return (
-                      <Col lg={3} md={6} sm={8} xs={12} key={product?._id}>
+                      <Col lg={3} md={6} sm={8} xs={12} key={product?._id} style={{margin: "2em 0em"}}>
                         <div
                           className="p-lg-2 mx-auto product-card-hover cursor-pointer"
                           onClick={() =>
@@ -234,16 +234,21 @@ function Products() {
                             />
                           </div>
 
-                        <h1 className="product-card-text mt-2">
+                        <h1 className="product-card-text mt-2" 
+                        style={{
+                           whiteSpace: "nowrap",
+                           overflow: "hidden",
+                           textOverflow: "ellipsis",
+                        }}>
                           {product?.title}
                         </h1>
-                        <p className="product-card-para w-100">
-                          {product?.sub_title}
-                        </p>
-                        
                         {/* <p className="product-card-para w-100">
-                          {product?.description}
+                          {product?.sub_title}
                         </p> */}
+                        
+                        <p className="product-card-para w-100">
+                          {product?.description}
+                        </p>
                           <div
                             className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                             // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
@@ -318,10 +323,14 @@ function Products() {
                                   color: "#065934",
                                   textAlign: "center",
                                   display: "block",
-                                  padding: "0.3rem",
                                 }}
                               >
-                                OUT OF STOCK
+                                <ButtonDark
+                                  type="button"
+                                  className="Add-to-cart-button disabled"
+                                  text="OUT OF STOCK"
+                                  disabled={true}
+                                />
                               </span>
                             </div>
                           )}
