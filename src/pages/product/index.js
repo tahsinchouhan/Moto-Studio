@@ -234,14 +234,17 @@ function Products() {
                             />
                           </div>
 
-                        <h1 className="product-card-text mt-2" 
+                        <p className="product-card-text mt-2" 
                         style={{
                            whiteSpace: "nowrap",
                            overflow: "hidden",
                            textOverflow: "ellipsis",
+                           fontWeight: "400",
+                           size: "16px",
+                           marginBottom: "0px",
                         }}>
                           {product?.title}
-                        </h1>
+                        </p>
                         {/* <p className="product-card-para w-100">
                           {product?.sub_title}
                         </p> */}
