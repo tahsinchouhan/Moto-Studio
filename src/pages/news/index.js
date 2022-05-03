@@ -107,10 +107,13 @@ function IntoNewsroom() {
                   </div>
                 </div>
               </Col>
-              <Col md={9} lg={9}>
+              <Col xs={12} sm={12} lg={8} >
+                <Row className="g-4">
                 {
                   newsData.length ? newsData.map(news => {
-                    return <div className="news-room-card" key={news._id}>
+                    return (
+                    // <div className="news-room-card" key={news._id}>
+                    <Col key={news._id} xs={12} md={6} className="mt-5">
                     <Card style={{ width: "100% !important" }}>
                       <Card.Img variant="top" src={news?.images[0]?.img || ''} />
                       <Card.Body>
@@ -127,10 +130,13 @@ function IntoNewsroom() {
                         </Button>
                       </Card.Body>
                     </Card>
-                  </div>
+                  {/* </div> */}
+                  </Col>
+                  )
                   }) : <h1>Data Not Found</h1>
                 }
-                <div className="news-room-card">
+                {/* <div className="news-room-card"> */}
+                <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />
                     <Card.Body>
@@ -151,8 +157,10 @@ function IntoNewsroom() {
                       </Button>
                     </Card.Body>
                   </Card>
-                </div>
-                <div className="news-room-card">
+                {/* </div> */}
+                </Col>
+                {/* <div className="news-room-card"> */}
+                <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />
                     <Card.Body className="news-body ">
@@ -173,8 +181,10 @@ function IntoNewsroom() {
                       </Button>
                     </Card.Body>
                   </Card>
-                </div>
-                <div className="news-room-card">
+                {/* </div> */}
+                </Col>
+                {/* <div className="news-room-card"> */}
+                <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />
                     <Card.Body className="news-body">
@@ -195,8 +205,10 @@ function IntoNewsroom() {
                       </Button>
                     </Card.Body>
                   </Card>
-                </div>
-                <div className="news-room-card">
+                {/* </div> */}
+                </Col>
+                {/* <div className="news-room-card"> */}
+                <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
                     <Card.Img variant="top" src="/images/newsroomimage.png" />
                     <Card.Body className="news-body">
@@ -217,7 +229,9 @@ function IntoNewsroom() {
                       </Button>
                     </Card.Body>
                   </Card>
-                </div>
+                {/* </div> */}
+                </Col>
+                </Row>
               </Col>
             </Row>
           </div>
