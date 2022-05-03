@@ -89,12 +89,14 @@ function Header() {
       {/* Destop-view */}
       <div>
         <Navbar
-          className="main-haeder d-none d-md-block"
+          className="main-header d-none d-md-block"
           collapseOnSelect
           bg="light"
           expanded={expand}
         >
-          <Container>
+          <Container style={{
+            maxWidth: "1140px"
+            }}>
             <Navbar.Brand href="/">
               <div>
                 <Image
