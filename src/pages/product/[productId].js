@@ -5,7 +5,7 @@ import ButtonDark from "../../components/button/ButtonDark";
 import image1 from "../../assets/images/product/placeholder.png";
 // import Popup from "./PopUp";
 import { MdLocalShipping } from "react-icons/md";
-// import { AiFillPlusCircle } from "react-icons/ai";
+import { AiFillPlusCircle } from "react-icons/ai";
 import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
@@ -276,10 +276,10 @@ function ProductDetail({ productData }) {
                       {/* <p className="product-card-para w-100">
                         {product?.sub_title}
                       </p> */}
-                      {/* <p className="product-card-para w-100">
+                      <p className="product-card-para w-100">
                         {product?.description || "Description"}
-                      </p> */}
-                      {/* <div
+                      </p>
+                      <div
                         className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -292,14 +292,14 @@ function ProductDetail({ productData }) {
                           </span>
                         </div>
                         <div>
-                          {showPopuUp && (
+                          {/* {showPopuUp && (
                             <Popup data={product} setShowPopUp={setShowPopUp} />
-                          )}
+                          )} */}
                           <span className="product-card-details">
                             Product Details
                           </span>
                         </div>
-                      </div> */}
+                      </div>
                       <span className="product-Price">
                         <span className="fs-5">
                           ₹{" "}
@@ -325,7 +325,7 @@ function ProductDetail({ productData }) {
                             <ButtonDark
                               type="submit"
                               className="Add-to-cart-button active"
-                              text="VIEW CART"
+                              text="ADD TO CART"
                             />
                           </div>
                         ) : (

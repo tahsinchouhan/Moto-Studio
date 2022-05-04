@@ -78,6 +78,8 @@ function HomeHeaderImg() {
         style={{
           backgroundImage: `url(${banner.bannerImg})`,
           backgroundSize: "cover",
+          imageRendering: "-webkit-optimize-contrast",
+          imageRendering: "crisp-edges",
         }}
       >
         <div className="cg-herbal-container">

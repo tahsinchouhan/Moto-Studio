@@ -75,7 +75,8 @@ function Products() {
               (data) => data.status === true
             );
             setCheckedState(new Array(filteredData.length).fill(false));
-            setCategory(filteredData);
+            let newfilteredData = filteredData.filter((data,ind) => ind < 3)
+            setCategory(newfilteredData);
           }
         })
         .catch((error) => console.log(error));

@@ -22,8 +22,12 @@
   margin: auto;
 }
 .WildforestHoney-card {
-  height: 556px;
+  height: auto;
   margin: auto;
+}
+
+.centered  span{
+  height: 29.3em !important;
 }
 
 @media (max-width: 992px) {

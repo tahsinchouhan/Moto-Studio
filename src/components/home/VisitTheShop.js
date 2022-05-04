@@ -225,7 +225,7 @@ function VisitTheShop({ categoryId }) {
                     )
                   }
                 >
-                  <div className="text-center">
+                  <div className="text-center centered">
                     <Image
                       src={
                         featured[2]?.products_id?.images.length
@@ -256,7 +256,7 @@ function VisitTheShop({ categoryId }) {
                       </Row>
                     </div>
                   </div>
-                  <Card.Body className="p-3 pb-0 mx-2 ">
+                  <Card.Body className="p-3 pb-0 ">
                     <Card.Title className="m-0 visit-card-title">
                       {featured[2]?.products_id?.title || "Default Title"}
                     </Card.Title>

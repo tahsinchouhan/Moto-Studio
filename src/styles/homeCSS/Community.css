@@ -59,7 +59,7 @@
 }
 
 .Gallery:hover .overlay {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 .image1 {
   position: relative;

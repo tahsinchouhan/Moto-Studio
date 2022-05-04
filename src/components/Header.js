@@ -134,7 +134,10 @@ function Header() {
                     CONNECT
                   </button>
                   {connectViewDropDown && (
-                    <ul className="dropdown-menu show position-absolute shadow rounded">
+                    <ul className="dropdown-menu show position-absolute shadow rounded"
+                    style={{
+                      width: "16.5em"
+                    }}>
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/consumerProgram">
                           <a className=" nav-link mx-3">
@@ -181,7 +184,10 @@ function Header() {
                           {session?.user?.name?.split(" ")[0] || "Profile"}
                         </button>
                         {viewDropDown && (
-                          <ul className="dropdown-menu show position-absolute shadow rounded">
+                          <ul className="dropdown-menu show position-absolute shadow rounded"
+                          style={{
+                            width: "16.5em"
+                          }}>
                             <li onClick={() => setViewDropDown(false)}>
                               <Link href="/auth/UserProfile?activeTab=0">
                                 <a className="dropdown-item text-black">
@@ -301,7 +307,10 @@ function Header() {
                       CONNECT
                     </button>
                     {connectViewDropDown && (
-                      <ul className="dropdown-menu show position-absolute shadow rounded">
+                      <ul className="dropdown-menu show position-absolute shadow rounded"
+                      style={{
+                        width: "16.5em",
+                      }}>
                         <li onClick={() => setConnectViewDropDown(false)}>
                           <Link href="/connect/consumerProgram">
                             <a className="dropdown-item text-black">
