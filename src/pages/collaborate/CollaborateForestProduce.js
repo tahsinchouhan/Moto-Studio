@@ -39,9 +39,9 @@ function CollaborateForestProduce() {
             </Col>
           </Row>
         </Container>
-            </div>
+      </div>
             
-            <div className="collaborate-forest-img">
+      <div className="collaborate-forest-img">
         <Container className="mt-4">
           <Row className=" justify-content-md-start justify-content-center gutter-collaborate-fix">
             <Col md={8} lg={6}className="col-10">
@@ -72,7 +72,7 @@ function CollaborateForestProduce() {
             </Col>
           </Row>
         </Container>
-            </div>
+      </div>
     </>
   );
 }

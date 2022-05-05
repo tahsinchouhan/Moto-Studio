@@ -5,6 +5,12 @@
   padding: 10% 0;
 }
 
+@media screen and (min-width: 1200px) {
+  .home-head-img{
+    height: 480px
+  }
+}
+
 .home-head-img-mobile {
   display: none !important;
 }

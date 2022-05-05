@@ -3,7 +3,12 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 0.5% 0% !important;
- 
+}
+
+@media screen and (min-width: 1200px) {
+  .collaborate-forest-img{
+    height: 800px;
+  }
 }
 
 .gutter-collaborate-fix{

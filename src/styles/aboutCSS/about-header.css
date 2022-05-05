@@ -5,6 +5,12 @@
   margin-bottom: 6%;
 }
 
+@media screen and (min-width: 1200px) {
+  .about-header-img{
+    height: 450px
+  }
+}
+
 .about-header-img-distance {
   padding: 10% 0% !important;
 }
