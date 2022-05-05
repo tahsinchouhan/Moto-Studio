@@ -10,6 +10,20 @@
   padding: 4rem 0;
 }
 
+@media screen and (min-width: 1200px) {
+  .forest-lover-banner {
+    background: url("../../assets/images/connect/forestLoverClub.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 76vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+}
+
 .forest-lover-banner .text {
   width: 100%;
   text-align: center;

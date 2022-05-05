@@ -7,6 +7,18 @@
   padding: 4rem 0 0;
 }
 
+@media screen and (min-width: 1200px) {
+  .consumer-program-banner {
+    background-color: #c9e340;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4rem 0 0;
+    height: 650px;
+  }
+}
+
 .consumer-program-banner .text {
   width: 40%;
   padding-left: 4rem;
