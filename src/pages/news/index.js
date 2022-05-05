@@ -115,7 +115,7 @@ function IntoNewsroom() {
                     // <div className="news-room-card" key={news._id}>
                     <Col key={news._id} xs={12} md={6} className="mt-5">
                     <Card style={{ width: "100% !important" }}>
-                      <Card.Img variant="top" src={news?.images[0]?.img || ''} />
+                      <Card.Img variant="top" src={news?.images[0]?.img || ''} style={{height: "300px"}}/>
                       <Card.Body>
                         <Card.Title className="news-card-title">
                           Lac Cultivation and Processing
@@ -138,7 +138,7 @@ function IntoNewsroom() {
                 {/* <div className="news-room-card"> */}
                 <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
-                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Img variant="top" src="/images/newsroomimage.png" style={{height: "300px"}}/>
                     <Card.Body>
                       <Card.Title className="news-card-title">
                         Lac Cultivation and Processing
@@ -162,7 +162,7 @@ function IntoNewsroom() {
                 {/* <div className="news-room-card"> */}
                 <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
-                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Img variant="top" src="/images/newsroomimage.png" style={{height: "300px"}}/>
                     <Card.Body className="news-body ">
                       <Card.Title className="news-card-title">
                         Lac Cultivation and Processing
@@ -186,7 +186,7 @@ function IntoNewsroom() {
                 {/* <div className="news-room-card"> */}
                 <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
-                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Img variant="top" src="/images/newsroomimage.png" style={{height: "300px"}}/>
                     <Card.Body className="news-body">
                       <Card.Title className="news-card-title">
                         Lac Cultivation and Processing
@@ -210,7 +210,7 @@ function IntoNewsroom() {
                 {/* <div className="news-room-card"> */}
                 <Col xs={12} md={6} className="mt-5">
                   <Card style={{ width: "100% !important" }}>
-                    <Card.Img variant="top" src="/images/newsroomimage.png" />
+                    <Card.Img variant="top" src="/images/newsroomimage.png" style={{height: "300px"}}/>
                     <Card.Body className="news-body">
                       <Card.Title className="news-card-title">
                         Lac Cultivation and Processing

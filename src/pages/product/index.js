@@ -251,7 +251,7 @@ function Products() {
                         </p> */}
                         
                         <p className="product-card-para w-100">
-                          {product?.description}
+                          {product?.description.slice(0,100).concat('...')}
                         </p>
                           <div
                             className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"

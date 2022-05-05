@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
+import HerbalRemedies from "../../../public/Image/HerbalRemedies.png"
+import GreenCare from "../../../public/Image/GreenCare.png"
+import SummerCoolers from "../../../public/Image/SummerCoolers.png"
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -109,6 +113,41 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
+      <Row className="BannerBottomImagesRow">
+        <Col md={8} lg={4} className="BannerBottomImages">
+        <Link href={`/product?activeTab=0`}>
+          <div className="SubImageContainer">
+            <Image src={HerbalRemedies} className="w-100" alt="ss" width={1200} height={800} />
+            <p className="bottom-left">
+              Herbal Remedies
+            </p>
+          </div>
+        </Link>
+        </Col>
+        <Col md={8} lg={4} className="BannerBottomImages">
+        <Link href={`/product?activeTab=1`}>
+        {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
+          <div className="SubImageContainer">
+            <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} />
+            <p className="bottom-left green">
+              Green Care
+            </p>
+          </div>
+        </Link>
+        </Col>
+        <Col md={8} lg={4} className="BannerBottomImages">
+        <Link href={`/product?activeTab=2`}>
+        {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
+          <div className="SubImageContainer">
+            <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} />
+            <p className="bottom-left">
+              Summer Coolers
+            </p>
+          </div>
+        </Link>
+        </Col>
+      </Row>
+      
     </>
   );
 }
