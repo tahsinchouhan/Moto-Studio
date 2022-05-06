@@ -5,9 +5,9 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import HerbalRemedies from "../../../public/Image/HerbalRemedies.png"
-import GreenCare from "../../../public/Image/GreenCare.png"
-import SummerCoolers from "../../../public/Image/SummerCoolers.png"
+import HerbalRemedies from "../../../public/Image/HerbalRemedies.svg";
+import GreenCare from "../../../public/Image/GreenCare.svg";
+import SummerCoolers from "../../../public/Image/SummerCoolers.svg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -23,17 +23,17 @@ function HomeHeaderImg() {
       try {
         const res = await fetch(`${apipath}/api/v1/home/banner/list`);
         const objData = await res.json();
-          setBanner({
-            bannerImg: objData.data[0]?.images[0]?.img || HomeHeader,
-            bannerTitle: objData.data[0]?.title || 'Banner Title',
-            bannerDesc: objData.data[0]?.description || 'Banner Description'
-          })
+        setBanner({
+          bannerImg: objData.data[0]?.images[0]?.img || HomeHeader,
+          bannerTitle: objData.data[0]?.title || "Banner Title",
+          bannerDesc: objData.data[0]?.description || "Banner Description",
+        });
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchData();
-  }, [])
+  }, []);
 
   const router = useRouter();
 
@@ -61,7 +61,7 @@ function HomeHeaderImg() {
                 <p className="home-header-para-mobile">{banner.bannerDesc}</p>
                 <div className="col-10">
                   <div
-                    className="mb-md-5  mt-md-3 mt-4 mb-0"
+                    className="mb-md-5  mt-md-3 mb-0"
                     onClick={() => router.push("/product")}
                   >
                     <Button
@@ -115,39 +115,50 @@ function HomeHeaderImg() {
       </div>
       <Row className="BannerBottomImagesRow">
         <Col md={8} lg={4} className="BannerBottomImages">
-        <Link href={`/product?activeTab=0`}>
-          <div className="SubImageContainer">
-            <Image src={HerbalRemedies} className="w-100" alt="ss" width={1200} height={800} />
-            <p className="bottom-left">
-              Herbal Remedies
-            </p>
-          </div>
-        </Link>
+          <Link href={`/product?activeTab=0`}>
+            <div className="SubImageContainer">
+              <Image
+                src={HerbalRemedies}
+                className="w-100"
+                alt="ss"
+                width={1200}
+                height={800}
+              />
+              <p className="bottom-left">Herbal Remedies</p>
+            </div>
+          </Link>
         </Col>
         <Col md={8} lg={4} className="BannerBottomImages">
-        <Link href={`/product?activeTab=1`}>
-        {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
-          <div className="SubImageContainer">
-            <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} />
-            <p className="bottom-left green">
-              Green Care
-            </p>
-          </div>
-        </Link>
+          <Link href={`/product?activeTab=1`}>
+            {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
+            <div className="SubImageContainer">
+              <Image
+                src={GreenCare}
+                className="w-100"
+                alt="ss"
+                width={1200}
+                height={800}
+              />
+              <p className="bottom-left green">Green Care</p>
+            </div>
+          </Link>
         </Col>
         <Col md={8} lg={4} className="BannerBottomImages">
-        <Link href={`/product?activeTab=2`}>
-        {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
-          <div className="SubImageContainer">
-            <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} />
-            <p className="bottom-left">
-              Summer Coolers
-            </p>
-          </div>
-        </Link>
+          <Link href={`/product?activeTab=2`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
+            <div className="SubImageContainer">
+              <Image
+                src={SummerCoolers}
+                className="w-100"
+                alt="ss"
+                width={1200}
+                height={800}
+              />
+              <p className="bottom-left">Summer Coolers</p>
+            </div>
+          </Link>
         </Col>
       </Row>
-      
     </>
   );
 }

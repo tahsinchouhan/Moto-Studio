@@ -5,7 +5,8 @@
   opacity: 100% !important;
 }
 .feature-products-text {
-  font-family: "Lora";
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
   font-size: 40px;
   color: #333333;
 }
@@ -13,7 +14,8 @@
 .feature-products-texts {
   font-size: 19px;
   color: #333333;
-  font-family: "Lora";
+  font-family: "Lora", sans-serif;
+  font-weight: 400;
 }
 
 .featured-products-card-wrapper {

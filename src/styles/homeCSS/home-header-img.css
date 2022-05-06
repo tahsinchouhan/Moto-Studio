@@ -6,8 +6,8 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .home-head-img{
-    height: 480px
+  .home-head-img {
+    /* height: 480px; */
   }
 }
 
@@ -30,7 +30,7 @@
   font-weight: bold;
   font-size: 64px;
   line-height: 67px;
-  color: #ffffff;
+  color: #ffe5b3;
 }
 
 .home-forest-hr {
@@ -45,6 +45,7 @@
   font-size: 16px;
   line-height: 28px;
   color: #ffffff;
+  margin: 2rem 0;
 }
 
 @media screen and (max-width: 767px) {
@@ -86,7 +87,7 @@
 
   .home-header-para {
     color: #2c2c2c;
-  } 
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -95,13 +96,23 @@
   }
 }
 
+.BannerBottomImages {
+  height: 264px;
+}
+
 .BannerBottomImagesRow > * {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
 .BannerBottomImages img {
+  object-fit: cover;
   transition: 0.5s all ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -ms-transform: translateZ(0); /* IE 9 */
+  -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+  transform: translateZ(0);
 }
 
 .BannerBottomImages:hover img {
@@ -112,16 +123,33 @@
   position: relative;
   text-align: center;
   color: white;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+.SubImageContainer > span {
+  position: unset !important;
+  width: 100%;
+}
+/*
+.SubImageContainer .sub-img {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: 100% !important;
+} */
+
 .bottom-left {
   position: absolute;
   bottom: 8px;
   left: 16px;
-  size: 24px;
+  font-size: 24px;
   line-height: 29px;
-  font: "Lora"
+  font-weight: 700;
+  font-family: "Lora", sans-serif;
 }
 
 .green {
-  color: #338A27
+  color: #338a27;
 }
