@@ -6,12 +6,12 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .collaborate-header-img{
-    height: 500px;
+  .collaborate-header-img {
+    /* height: 500px; */
   }
 }
 
-.gutter-collaborate-fix{
+.gutter-collaborate-fix {
   --bs-gutter-x: 0rem !important;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .collaborate-heads-head {
-  font-family: 'Red Hat Display';
+  font-family: "Red Hat Display";
   font-weight: bold;
   font-size: 64px;
   line-height: 67px;
@@ -28,7 +28,7 @@
 }
 
 .collaborate-heads-para {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 16px;
   line-height: 28px;
   color: #666666;
@@ -44,7 +44,7 @@
   }
 
   .collaborate-heads-head-mobile {
-    font-family: 'Red Hat Display';
+    font-family: "Red Hat Display";
     font-weight: bold;
     font-size: 40px;
     line-height: 56px;
@@ -52,7 +52,7 @@
   }
 
   .collaborate-heads-para-mobile {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -69,13 +69,13 @@
   }
 }
 
-.collaborate-header-contact-button{
+.collaborate-header-contact-button {
   width: 168px !important;
   height: 43px !important;
   box-sizing: border-box !important;
 }
 
-.collaborate-header-shop-now-button{
+.collaborate-header-shop-now-button {
   width: 144px !important;
   height: 43px !important;
   box-sizing: border-box !important;

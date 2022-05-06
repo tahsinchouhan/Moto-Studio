@@ -6,12 +6,12 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .collaborate-forest-img{
-    height: 800px;
+  .collaborate-forest-img {
+    /* height: 800px; */
   }
 }
 
-.gutter-collaborate-fix{
+.gutter-collaborate-fix {
   --bs-gutter-x: 0rem !important;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .collaborate-forest-head {
-  font-family: 'Lora';
+  font-family: "Lora";
   font-size: 40px;
   line-height: 51px;
   color: #dbf8e6 !important;
@@ -35,10 +35,10 @@
 }
 
 .collaborate-forest-para {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: 16px;
   line-height: 24px;
-  color: #EDF2F5;
+  color: #edf2f5;
 }
 
 @media screen and (max-width: 767px) {
@@ -51,7 +51,7 @@
   }
 
   .collaborate-forest-head-mobile {
-    font-family: 'Red Hat Display';
+    font-family: "Red Hat Display";
     font-weight: bold;
     font-size: 25px;
     line-height: 36px;
@@ -59,7 +59,7 @@
   }
 
   .collaborate-header-para-mobile {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-size: 16px;
     line-height: 28px;
     color: #333333;
