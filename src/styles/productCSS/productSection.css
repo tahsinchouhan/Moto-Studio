@@ -164,11 +164,15 @@
     font-size: 16px;
     line-height: 30px;
   }
+  .product-card-hover {
+    padding-bottom: 0.5rem !important;
+  }
 }
 
 .product-card-hover {
   border: 1px solid !important;
   border-color: #fff !important;
+  padding-bottom: 2rem !important;
 }
 
 .product-card-hover:hover {

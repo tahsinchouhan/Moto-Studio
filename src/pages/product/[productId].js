@@ -42,13 +42,21 @@ function ProductDetail({ productData }) {
       <div className="all-product-heading">
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
           <div className="store-home">
-          <Link href={"/"}>
-            <span className="cursor-pointer">Home</span>
-          </Link>
-            <span>/ {productData?.category?.category_name}</span>
+            <Link href={"/"} passHref>
+              <span className="cursor-pointer">Home</span>
+            </Link>
+            <Link
+              // href={{
+              //   pathname: "/product",
+              //   query: `${productData?.category?._id}`,
+              // }}
+              passHref
+            >
+              <span>/ {productData?.category?.category_name}</span>
+            </Link>
             <span>/ {productData?.sub_category?.category_name}</span>
           </div>
-          
+
           <div className="products-header text-center">
             <h1 className="product-name-head-text">
               {productData?.title || "Product Name"}

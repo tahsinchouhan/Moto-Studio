@@ -11,10 +11,8 @@ import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import Skeleton from "../../components/Skeleton";
 
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-
-
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 function Products() {
   const router = useRouter();
@@ -75,7 +73,7 @@ function Products() {
               (data) => data.status === true
             );
             setCheckedState(new Array(filteredData.length).fill(false));
-            let newfilteredData = filteredData.filter((data,ind) => ind < 3)
+            let newfilteredData = filteredData.filter((data, ind) => ind < 3);
             setCategory(newfilteredData);
           }
         })
@@ -103,8 +101,8 @@ function Products() {
         return (query += `&category_id[]=` + category[index]._id);
       }
       return query;
-    }, "");  
-    if(price[0] !== 0 && price[0] !== 10000) {
+    }, "");
+    if (price[0] !== 0 && price[0] !== 10000) {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
     // if (query !== "") fetchData(query);
@@ -163,20 +161,20 @@ function Products() {
                       </div>
                     );
                   })}
-              </div> 
-              <Slider 
-                range 
-                allowCross={false} 
+              </div>
+              <Slider
+                range
+                allowCross={false}
                 defaultValue={price}
                 min={0}
                 max={10000}
                 marks={{
                   0: `₹ ${price[0]}`,
-                  10000: `₹ ${price[1]}`
+                  10000: `₹ ${price[1]}`,
                 }}
                 value={price}
                 onChange={(price) => setPrice(price)}
-                />          
+              />
             </div>
           </Col>
 
@@ -213,7 +211,14 @@ function Products() {
                 ? productData?.length &&
                   productData.map((product) => {
                     return (
-                      <Col lg={3} md={6} sm={8} xs={12} key={product?._id} style={{margin: "2em 0em"}}>
+                      <Col
+                        lg={3}
+                        md={6}
+                        sm={8}
+                        xs={12}
+                        key={product?._id}
+                        style={{ margin: "2em 0em" }}
+                      >
                         <div
                           className="p-lg-2 mx-auto product-card-hover cursor-pointer"
                           onClick={() =>
@@ -235,24 +240,26 @@ function Products() {
                             />
                           </div>
 
-                        <p className="product-card-text mt-2" 
-                        style={{
-                           whiteSpace: "nowrap",
-                           overflow: "hidden",
-                           textOverflow: "ellipsis",
-                           fontWeight: "400",
-                           size: "16px",
-                           marginBottom: "0px",
-                        }}>
-                          {product?.title}
-                        </p>
-                        {/* <p className="product-card-para w-100">
+                          <p
+                            className="product-card-text mt-2"
+                            style={{
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              fontWeight: "400",
+                              size: "16px",
+                              marginBottom: "0px",
+                            }}
+                          >
+                            {product?.title}
+                          </p>
+                          {/* <p className="product-card-para w-100">
                           {product?.sub_title}
                         </p> */}
-                        
-                        <p className="product-card-para w-100">
-                          {product?.description.slice(0,100).concat('...')}
-                        </p>
+
+                          <p className="product-card-para w-100">
+                            {product?.description.slice(0, 100).concat("...")}
+                          </p>
                           <div
                             className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                             // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
