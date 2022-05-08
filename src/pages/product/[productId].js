@@ -45,15 +45,17 @@ function ProductDetail({ productData }) {
             <Link href={"/"} passHref>
               <span className="cursor-pointer">Home</span>
             </Link>
+            {/*
             <Link
-              // href={{
+            // href={{
               //   pathname: "/product",
               //   query: `${productData?.category?._id}`,
               // }}
               passHref
-            >
+              >
               <span>/ {productData?.category?.category_name}</span>
-            </Link>
+              </Link>
+            */}
             <span>/ {productData?.sub_category?.category_name}</span>
           </div>
 
