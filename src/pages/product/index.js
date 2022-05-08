@@ -180,7 +180,7 @@ function Products() {
 
           <Col lg={9} md={9} xs={12}>
             <Row className="pt-3 px-lg-0 px-4">
-              <Col md={12}>
+              <Col md={12} className="pe-0">
                 {/* <div> */}
                 <div className="product-38">
                   <span className="product-38-product">
