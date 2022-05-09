@@ -267,3 +267,9 @@
     width: fit-content;
   }
 }
+
+@media screen and (min-width: 1500px) {
+  .product-card-para {
+    height: 46px;
+  }
+}

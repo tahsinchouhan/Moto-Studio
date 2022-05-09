@@ -167,7 +167,7 @@ function ProductDetail({ productData }) {
                       className="input-group-text cursor-pointer px-3"
                       onClick={() =>
                         setCount((prev) => {
-                          return prev + 1 > selectedWeight.count
+                          return prev + 1 > selectedWeight?.count
                             ? prev
                             : prev + 1;
                         })
@@ -183,17 +183,17 @@ function ProductDetail({ productData }) {
                   <span className="fs-2">
                     {Number(selectedWeight?.price * count) -
                       Number(
-                        selectedWeight.discount === "percentage"
+                        selectedWeight?.discount === "percentage"
                           ? selectedWeight?.price *
                               count *
-                              (selectedWeight.discount_value / 100)
-                          : selectedWeight.discount_value
+                              (selectedWeight?.discount_value / 100)
+                          : selectedWeight?.discount_value
                       )}
                   </span>
-                  {selectedWeight.discount_value && (
+                  {selectedWeight?.discount_value && (
                     <span className="text-muted fs-6 ms-3 text-decoration-line-through">
                       {" "}
-                      ₹ {selectedWeight.price * count || ""}
+                      ₹ {selectedWeight?.price * count || ""}
                     </span>
                   )}
                 </div>
