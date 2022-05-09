@@ -157,3 +157,9 @@
 .green {
   color: #338a27;
 }
+
+@media screen and (min-width: 1300px) {
+  .left-4 {
+    left: 24px !important;
+  }
+}

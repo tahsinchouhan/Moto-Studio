@@ -124,7 +124,7 @@ function HomeHeaderImg() {
                 width={1200}
                 height={800}
               />
-              <p className="bottom-left">Herbal Remedies</p>
+              <p className="bottom-left left-4">Herbal Remedies</p>
             </div>
           </Link>
         </Col>
