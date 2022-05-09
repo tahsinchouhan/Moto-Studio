@@ -41,9 +41,9 @@ function Header() {
   };
 
   useEffect(() => {
-    if(!searchText) {
-      setSearchData([])
-      return; 
+    if (!searchText) {
+      setSearchData([]);
+      return;
     }
     const fetchSearchData = async () => {
       const res = await fetch(
@@ -87,16 +87,18 @@ function Header() {
   return (
     <>
       {/* Destop-view */}
-      <div>
+      <div className="navbar-container">
         <Navbar
           className="main-header d-none d-md-block"
           collapseOnSelect
           bg="light"
           expanded={expand}
         >
-          <Container style={{
-            maxWidth: "1140px"
-            }}>
+          <Container
+            style={{
+              maxWidth: "1140px",
+            }}
+          >
             <Navbar.Brand href="/">
               <div>
                 <Image
@@ -134,10 +136,12 @@ function Header() {
                     CONNECT
                   </button>
                   {connectViewDropDown && (
-                    <ul className="dropdown-menu show position-absolute shadow rounded"
-                    style={{
-                      width: "16.5em"
-                    }}>
+                    <ul
+                      className="dropdown-menu show position-absolute shadow rounded"
+                      style={{
+                        width: "16.5em",
+                      }}
+                    >
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/consumerProgram">
                           <a className=" nav-link mx-3">
@@ -147,16 +151,12 @@ function Header() {
                       </li>
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/forestLover">
-                          <a className=" nav-link mx-3">
-                            FOREST LOVERS CLUB
-                          </a>
+                          <a className=" nav-link mx-3">FOREST LOVERS CLUB</a>
                         </Link>
                       </li>
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/successStory">
-                          <a className=" nav-link mx-3">
-                            SUCCESS STORIES
-                          </a>
+                          <a className=" nav-link mx-3">SUCCESS STORIES</a>
                         </Link>
                       </li>
                     </ul>
@@ -184,10 +184,12 @@ function Header() {
                           {session?.user?.name?.split(" ")[0] || "Profile"}
                         </button>
                         {viewDropDown && (
-                          <ul className="dropdown-menu show position-absolute shadow rounded"
-                          style={{
-                            width: "16.5em"
-                          }}>
+                          <ul
+                            className="dropdown-menu show position-absolute shadow rounded"
+                            style={{
+                              width: "16.5em",
+                            }}
+                          >
                             <li onClick={() => setViewDropDown(false)}>
                               <Link href="/auth/UserProfile?activeTab=0">
                                 <a className="dropdown-item text-black">
@@ -307,10 +309,12 @@ function Header() {
                       CONNECT
                     </button>
                     {connectViewDropDown && (
-                      <ul className="dropdown-menu show position-absolute shadow rounded"
-                      style={{
-                        width: "16.5em",
-                      }}>
+                      <ul
+                        className="dropdown-menu show position-absolute shadow rounded"
+                        style={{
+                          width: "16.5em",
+                        }}
+                      >
                         <li onClick={() => setConnectViewDropDown(false)}>
                           <Link href="/connect/consumerProgram">
                             <a className="dropdown-item text-black">
