@@ -1,102 +1,109 @@
-
-.collaborate-form-container{
-  margin-top: 98px !important;
+.collaborate-form {
+  background: #edf0f5;
+  padding-top: 98px !important;
 }
 
-.collaborats-form-container{
+.collaborats-form-container {
   width: 70% !important;
 }
 
 .collaborate-demo {
-    padding-top: 3%;
+  padding-top: 3%;
+}
+.collaborate-Us-heading {
+  font-family: "Lora";
+  font-size: 36px;
+  line-height: 51px;
+  text-align: center !important;
+  font-weight: 400;
+  color: #333333;
+}
+
+.collaborate-hr {
+  color: #c4c4c4 !important;
+  width: 84px !important;
+  height: 2px !important;
+  opacity: 100% !important;
+  margin: 0 auto;
+}
+
+.collaborate-Us-form {
+  padding: 0 15%;
+}
+.collaborate-Us-form-input {
+  height: 56px;
+  background-color: #ffffff;
+  border-radius: 0px !important;
+}
+.collaborate-sent-message {
+  padding: 2% 0px 8% 0px;
+}
+
+.collaborate-button {
+  color: #ffffff;
+  background: #bfb2ff !important;
+  flex: none;
+  flex-grow: 0;
+  margin: 8px 0px 0px 0px !important;
+  height: 44px;
+  border-radius: 0px !important;
+  white-space: nowrap;
+  width: 35%;
+  background-color: #bfb2ff;
+  border: none;
+}
+
+.collaborate-button:hover {
+  background-color: #7b61ff !important;
+  border-radius: 13px !important;
+  transition: 0.6s !important;
+}
+
+@media screen and (max-width: 767px) {
+  .collaborate-form {
+    padding-top: 50px !important;
   }
   .collaborate-Us-heading {
-    font-family: 'Lora';
-    font-size: 40px;
-    line-height: 51px;
+    width: 90% !important;
     text-align: left !important;
-    color: #333333;
   }
-
-  .collaborate-hr{
-    color: #065934 !important;
-    width: 84px !important;
-    height: 2px !important;
-    opacity: 100% !important;
+  .collaborate-hr {
+    margin: 0 !important;
   }
-
-  .collaborate-Us-form {
-    padding: 0 15%;
-  }
-  .collaborate-Us-form-input {
-    height: 56px;
-    background-color: #ffffff;
-    border-radius: 0px !important;
-  }
-  .collaborate-sent-message {
-    padding: 2% 0px 8% 0px;
-  }
-
-  
   .collaborate-button {
-    color: #ffffff;
-    background: #BFB2FF !important;
-    flex: none;
-    flex-grow: 0;
-    margin: 8px 0px 0px 0px !important;
+    width: 50% !important;
     height: 44px;
-    border-radius: 0px !important;
-    white-space: nowrap;
-    width: 35%;
-    background-color: #bfb2ff;
-    border: none;
   }
-  
-  .collaborate-button:hover {
-    background-color: #7b61ff !important;
-    border-radius: 13px !important;
-    transition: .6s !important;
+  .collaborats-form-container {
+    width: 75% !important;
+    margin-top: 32px !important;
   }
+}
 
-  @media screen and (max-width:767px){
-    .collaborate-button{
-      width: 50% !important;
-      height: 44px;
-    }
-    .collaborats-form-container{
-      width: 75% !important;
-    }
-    
+@media screen and (max-width: 520px) {
+  .collaborate-button {
+    width: 65% !important;
+    height: 40px;
   }
+  .collaborats-form-container {
+    width: 85% !important;
+  }
+}
 
-  @media screen and (max-width:520px){
-    .collaborate-button{
-      width: 65% !important;
-      height: 40px;
-    }
-    .collaborats-form-container{
-      width: 85% !important;
-    }
-    
+@media screen and (max-width: 460px) {
+  .collaborate-button {
+    width: 75% !important;
+    height: 39px;
   }
 
-  @media screen and (max-width:460px){
-    .collaborate-button{
-      width: 75% !important;
-      height: 39px;
-    }
-
-    .collaborats-form-container{
-      width: 90% !important;
-    }
-    
+  .collaborats-form-container {
+    width: 90% !important;
   }
+}
 
-  @media screen and (max-width:420px){
-    .collaborate-button{
-      width:100% !important;
-      height: 36px;
-    }
-    
+@media screen and (max-width: 420px) {
+  .collaborate-button {
+    width: 100% !important;
+    height: 36px;
   }
-
+}

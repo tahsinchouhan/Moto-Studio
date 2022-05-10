@@ -1,30 +1,27 @@
 .consumer-program-banner {
-  background-color: #c9e340;
-  color: #333;
+  background: url("../../assets/images/connect/consumerProgramBanner.svg")
+    no-repeat center center/cover;
+  color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   padding: 4rem 0 0;
 }
 
 @media screen and (min-width: 1200px) {
   .consumer-program-banner {
-    background-color: #c9e340;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 4rem 0 0;
     height: 650px;
   }
 }
 
 .consumer-program-banner .text {
-  width: 40%;
-  padding-left: 4rem;
+  /* width: 40%; */
+  /* padding-left: 4rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
-  margin-left: 3rem;
+  margin-left: 3rem; */
+  margin: 0 auto;
+  text-align: center;
 }
 
 .consumer-program-banner .img {
@@ -44,9 +41,9 @@
 }
 
 .consumer-program-banner .text h2 {
-  font-family: "Lora", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 11px;
   line-height: 51px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Row, Col, Container } from "react-bootstrap";
-import CollaborateForestImg from "../../assets/images/collaborate/collaborateForest.png";
+import CollaborateForestImg from "../../assets/images/collaborate/collaborateForest.svg";
 
 function CollaborateForestProduce() {
   return (
@@ -94,6 +94,15 @@ function CollaborateForestProduce() {
                   </p>
                 </Col>
               </Row>
+            </Col>
+            <Col md={8} lg={6} className="col-10">
+              <Image
+                src={CollaborateForestImg}
+                className="w-100 h-100  "
+                alt="CollaborateForestImg"
+                unoptimized={true}
+                loading="eager"
+              />
             </Col>
           </Row>
         </Container>

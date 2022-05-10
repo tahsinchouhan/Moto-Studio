@@ -28,8 +28,43 @@
   margin-right: 0 !important;
 }
 
+.extra-about-text {
+  margin: 3rem auto 0 !important;
+  width: 65% !important;
+}
+
+.extra-about-text h2 {
+  font-family: "Lato";
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: center;
+  color: #338a27;
+  margin-bottom: 1.2rem;
+}
+
+.extra-about-text p {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  text-align: center;
+  color: #333333;
+}
+
 @media screen and (max-width: 767px) {
   .parent {
     align-items: center;
+  }
+
+  .extra-about-text {
+    margin: 1rem auto 0 !important;
+    width: 83.33% !important;
+  }
+
+  .extra-about-text h2,
+  .extra-about-text p {
+    text-align: left !important;
   }
 }

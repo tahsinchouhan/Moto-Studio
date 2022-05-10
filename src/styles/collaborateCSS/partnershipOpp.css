@@ -1,0 +1,95 @@
+.partnership-opp {
+  margin: 100px 0;
+}
+
+.partnership-opp-wrapper {
+  text-align: center;
+}
+
+.partnership-opp-wrapper .text h2 {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  color: #666666;
+}
+
+.partnership-opp-wrapper .text hr {
+  background: #666666;
+  border: 1px solid #c4c4c4;
+  width: 48px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partnership-opp-wrapper .btns {
+  margin: 2rem 0;
+}
+
+.partnership-opp-wrapper .btns button {
+  padding: 1rem;
+  width: 238px;
+  background: #f3f3f3;
+  color: #333;
+  border-radius: 10px;
+  border: none;
+  text-transform: uppercase;
+  font-family: "Lato";
+  font-size: 0.8rem;
+  line-height: 17px;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+.partnership-opp-wrapper .btns button:active {
+  outline: none;
+}
+
+.partnership-opp-wrapper .btns .active {
+  background: #7b61ff;
+  color: #fff;
+}
+
+.partnership-opp-wrapper .btns button:focus {
+  outline: none;
+}
+
+.partnership-opp-wrapper .qr-code-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.partnership-opp-wrapper .qr-code-container h5 {
+  margin-bottom: 2.4rem;
+  text-transform: uppercase;
+}
+
+.partnership-opp-wrapper .qr-code-container p {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #666666 !important;
+  text-decoration: none;
+}
+
+.partnership-opp-wrapper .qr-code-container .link {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .partnership-opp {
+    margin-top: 50px !important;
+  }
+  .partnership-opp-wrapper .qr-code-container {
+    width: 100%;
+  }
+
+  .partnership-opp-wrapper .btns button {
+    margin: 0.8rem 0;
+  }
+}

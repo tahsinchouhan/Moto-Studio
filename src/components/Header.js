@@ -78,7 +78,7 @@ function Header() {
     { id: 1, title: "HOME", href: "/", icon: "" },
     { id: 2, title: "PRODUCTS", href: "/product" },
     { id: 3, title: "ABOUT", href: "/about" },
-    { id: 4, title: "CORPORATE", href: "/collaborate" },
+    { id: 4, title: "BUSINESS", href: "/collaborate" },
     { id: 5, title: "BLOGS", href: "/blogs" },
     { id: 6, title: "NEWS", href: "/news" },
     // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
@@ -143,7 +143,7 @@ function Header() {
                       }}
                     >
                       <li onClick={() => setConnectViewDropDown(false)}>
-                        <Link href="/connect/consumerProgram">
+                        <Link href="/connect/ConsumerProgram">
                           <a className=" nav-link mx-3">
                             CONSUMER CONNECT PROGRAM
                           </a>

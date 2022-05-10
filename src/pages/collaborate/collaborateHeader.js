@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "../../components/button/ButtonLight";
 import { Row, Col, Container } from "react-bootstrap";
-import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.png";
+import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.svg";
 import Link from "next/link";
 
 function CollaborateHeader() {
@@ -22,9 +22,9 @@ function CollaborateHeader() {
               <Row className="gutter-collaborate-fix">
                 <Col md={9} className="py-md-3 my-2 ">
                   <p className="collaborate-heads-head-mobile  mb-0 ">
-                    Collaborate
+                    Business
                   </p>
-                  <p className="collaborate-heads-head-mobile">with Us</p>
+                  <p className="collaborate-heads-head-mobile">Opportunities</p>
                   <p className="collaborate-heads-para-mobile ">
                     Far far away, behind the word mountains, far from the
                     countries Vokalia and Consonantia, there live the blind
@@ -54,7 +54,7 @@ function CollaborateHeader() {
 
       <div className="collaborate-header-img">
         <Container className="mt-4">
-          <Row className=" justify-content-md-end justify-content-center gutter-collaborate-fix">
+          <Row className=" gutter-collaborate-fix">
             <Col md={6} className="col-10">
               <Row className="gutter-collaborate-fix">
                 <Col md={10} className="py-md-4 my-2 ">
@@ -63,18 +63,36 @@ function CollaborateHeader() {
                       className="collaborate-heads-head  me-2 mb-0 text-center text-md-start"
                       style={{ marginLeft: "-.3rem" }}
                     >
-                      Collaborate
+                      Business
                     </p>
                     <p className="collaborate-heads-head  mb-0 text-center text-md-start">
-                      with Us
+                      Opportunities
                     </p>
 
                     <p className="collaborate-heads-para text-center text-md-start">
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts. Separated they live in Bookmarksgrove right at the
-                      coast of the Semantics, a large language ocean.
+                      ‘Chhattisgarh Herbals’ presents exciting business
+                      opportunities for individuals and businesses interested in
+                      partnering with an organization dedicated towards
+                      upliftment of tribals, empowerment of women and protection
+                      of environment. ‘Chhattisgarh Herbals’ offers the
+                      following opportunities for like- minded individuals and
+                      firms:
                     </p>
+                  </div>
+
+                  <div className="collaborate-badge">
+                    <div className="text-bg">
+                      <p>
+                        Organically Certified Raw & Processed Minor Forest
+                        Produce
+                      </p>
+                    </div>
+                    <div className="text-bg">
+                      <p>
+                        MFP based Herbal Ayurvedic, Food and Personal Care
+                        Products
+                      </p>
+                    </div>
                   </div>
 
                   <div className=" col-12">

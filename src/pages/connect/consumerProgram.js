@@ -1,87 +1,77 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import ConsumerProgramBanner from "../../assets/images/connect/consumerProgramBanner.png";
+import ConsumerProgramBanner from "../../assets/images/connect/consumerProgramBanner.svg";
 import { apipath } from "../api/apiPath";
 
-const consumerProgram = () => {
-
-  const [msg, setMsg] = useState('');
+const ConsumerProgram = () => {
+  const [msg, setMsg] = useState("");
   const [inputText, setInputText] = useState({
     first_name: "",
     last_name: "",
     email: "",
     mobile: "",
-    type:"volunteer"
+    type: "volunteer",
   });
-  
-  const {first_name, last_name, email, mobile} = inputText
 
-  const changeHandler = e => {
-    const { name, value } = e.target
-    setInputText(prev => {
+  const { first_name, last_name, email, mobile } = inputText;
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setInputText((prev) => {
       return {
         ...prev,
-        [name]: value
-      }
-    })
-  }
+        [name]: value,
+      };
+    });
+  };
 
   const submitEvent = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       if (first_name && last_name && email && mobile) {
-        const response = await fetch(apipath + '/api/v1/volunteer/create', {
+        const response = await fetch(apipath + "/api/v1/volunteer/create", {
           method: "post",
           headers: {
-            'Content-Type': "application/json",
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(inputText)
-        })
-        const jsonData = await response.json()
+          body: JSON.stringify(inputText),
+        });
+        const jsonData = await response.json();
         if (jsonData.data) {
-          setMsg("Your Query has been Sent Successfully")
+          setMsg("Your Query has been Sent Successfully");
           setInputText({
             first_name: "",
             last_name: "",
             email: "",
             mobile: "",
-          })
+          });
         }
       } else {
-        alert('All field is required')
+        alert("All field is required");
         return false;
-      }     
-    }
-    catch (error) {
+      }
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div>
       <div className="consumer-program-banner">
         <div className="text">
           <h2>Volunteer @ Van Dhan Vikas Kendras</h2>
-          <p>
-            TRIFED spearheads implementation of the Van Dhan programme in
-            Chhattisgarh in regions with with availability of MFPs and
-            significant forest dwelling tribal population. The program addresses
-            the formidable problems that the Tribals face such as possession of
-            land/house with no rights; restrictions in the collection of minor
-            forest produce; exploitation by middlemen; displacement from
-            national parks and wild sanctuaries, lack of development in forest
-            villages etc.
-          </p>
-          <button>Volunteer now</button>
         </div>
+        {/*
         <div className="img">
-          <Image
-            src={ConsumerProgramBanner}
-            alt="connect with us"
-            layout="fill"
-            className={"image"}
-          />
+
+        <Image
+        src={ConsumerProgramBanner}
+        alt="connect with us"
+        layout="fill"
+        className={"image"}
+        />
         </div>
+      */}
       </div>
       <div className="consumer-program-content">
         <h2>Volunteer Now</h2>
@@ -92,7 +82,9 @@ const consumerProgram = () => {
           Chhattisgarh
         </p>
       </div>
-      <div className="text-center text-success text-bold fw-bold my-3">{msg}</div>
+      <div className="text-center text-success text-bold fw-bold my-3">
+        {msg}
+      </div>
       <form className="consumer-program-form" onSubmit={submitEvent}>
         <div className="input-container">
           <div className="input-item">
@@ -146,4 +138,4 @@ const consumerProgram = () => {
   );
 };
 
-export default consumerProgram;
+export default ConsumerProgram;

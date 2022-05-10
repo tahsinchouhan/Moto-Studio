@@ -1,69 +1,72 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { apipath } from '../api/apiPath';
+import { apipath } from "../api/apiPath";
 
 function CollaborateForm() {
-
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState("");
   const [inputText, setInputText] = useState({
     name: "",
     email: "",
     phone: "",
     organization: "",
-    message: ""
+    message: "",
   });
-  
-  const {name, email, phone, organization, message} = inputText
 
-  const changeHandler = e => {
-    const { name, value } = e.target
-    setInputText(prev => {
+  const { name, email, phone, organization, message } = inputText;
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setInputText((prev) => {
       return {
         ...prev,
-        [name]: value
-      }
-    })
-  }
+        [name]: value,
+      };
+    });
+  };
 
   const submitEvent = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       if (name && phone && email && organization && message) {
-        const response = await fetch(apipath + '/api/v1/corporate/enquiry/create', {
-          method: "post",
-          headers: {
-            'Content-Type': "application/json",
-          },
-          body: JSON.stringify(inputText)
-        })
-        const jsonData = await response.json()
+        const response = await fetch(
+          apipath + "/api/v1/corporate/enquiry/create",
+          {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(inputText),
+          }
+        );
+        const jsonData = await response.json();
         console.log(jsonData);
         if (jsonData.data) {
-          setMsg("Your Query has been Sent Successfully")
+          setMsg("Your Query has been Sent Successfully");
           setInputText({
             name: "",
             phone: "",
             email: "",
             organization: "",
-            message: ""
-          })
+            message: "",
+          });
         }
       } else {
         return false;
-      }     
-    }
-    catch (error) {
+      }
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
-      <div>
+      <div className="collaborate-form">
         <div className="container-fluid collaborats-form-container collaborate-form-container">
           <Container className="collaborate-demo collaborate-Us-form">
             <div className="">
-              <h1 className="collaborate-Us-heading ">Business Enquiries</h1>
+              <h1 className="collaborate-Us-heading ">
+                Other Business Enquiries
+              </h1>
               <hr className="collaborate-hr mb-4 " />
             </div>
             <div className="text-center text-success text-bold">{msg}</div>
@@ -73,7 +76,7 @@ function CollaborateForm() {
                   <Form.Control
                     className=" collaborate-Us-form-input mb-3 "
                     placeholder="Name"
-                    name='name'
+                    name="name"
                     value={name}
                     onChange={changeHandler}
                   />
@@ -82,7 +85,7 @@ function CollaborateForm() {
                   <Form.Control
                     className="collaborate-Us-form-input mb-3 "
                     placeholder="Email"
-                    name='email'
+                    name="email"
                     value={email}
                     onChange={changeHandler}
                   />
@@ -93,7 +96,7 @@ function CollaborateForm() {
                   <Form.Control
                     className=" collaborate-Us-form-input mb-3 "
                     placeholder="Phone"
-                    name='phone'
+                    name="phone"
                     value={phone}
                     onChange={changeHandler}
                   />
@@ -102,7 +105,7 @@ function CollaborateForm() {
                   <Form.Control
                     className=" collaborate-Us-form-input mb-3 "
                     placeholder="Organization"
-                    name='organization'
+                    name="organization"
                     value={organization}
                     onChange={changeHandler}
                   />
@@ -114,7 +117,7 @@ function CollaborateForm() {
                     as="textarea"
                     className=" collaborate-Us-form-input  "
                     placeholder="Message"
-                    name='message'
+                    name="message"
                     value={message}
                     onChange={changeHandler}
                     style={{ height: "181px" }}
@@ -122,7 +125,9 @@ function CollaborateForm() {
                 </Col>
               </Row>
               <div className="collaborate-sent-message text-center ">
-                <button onClick={submitEvent} className="collaborate-button">SEND MESSAGE</button>
+                <button onClick={submitEvent} className="collaborate-button">
+                  SEND MESSAGE
+                </button>
               </div>
             </Form>
           </Container>

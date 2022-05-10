@@ -56,6 +56,20 @@ function WhoWeAre() {
                     <hr className="about-who-first-hr " />
                     <p className="about-second-para">{row.description}</p>
                   </Col>
+                  <div className="extra-about-text">
+                    <h2>
+                      The CGMFP Federation is one of the largest employment
+                      generation efforts of the Govt. of Chhattisgarh with
+                      approximately 13.5 Lakh Sangrahaks (MFP Gatherers) earning
+                      livelihood from collection of Minor Forest Produce.{" "}
+                    </h2>
+                    <p>
+                      More than 6,000 Women Self Help Groups with 71,000+
+                      members, engaged in the process of Collection, Procurement
+                      and Processing makes the Federation, one of the largest
+                      Women empowerment efforts in the world.
+                    </p>
+                  </div>
                 </Row>
               );
             } else {
@@ -103,6 +117,25 @@ function WhoWeAre() {
               );
             }
           })}
+        <div className="extra-about-text">
+          <h2>
+            The CGMFP Federation also sells ‘Organically Certified’ raw and
+            processed minor forest produce to manufacturers, traders and
+            exporters. The CGMFP Fed procures almost 75% of all the minor forest
+            produce collected in the country under Minimum Support Price.
+          </h2>
+          <p className="">
+            ‘Chhattisgarh Herbals’ products’ retail reach has expanded rapidly
+            in Chhattisgarh. From 30 exclusive ‘Sanjeevani’ retail stores
+            ‘Chhattisgarh Herbals’ now available at more than 1500 retail stores
+            and counting. Chhattisgarh Herbals has presence on leading ‘e-
+            Commerce’ platforms such as AMAZON and FLIPKART and is gaining
+            recognition and accessibility in the countrywide market. The CGMFP
+            federation has further taken various initiatives to expand the
+            market reach from domestic market to international markets for
+            promoting sale of ‘Chhattisgarh Herbals’ products.
+          </p>
+        </div>
       </Container>
     </>
   );

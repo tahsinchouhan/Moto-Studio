@@ -1,16 +1,17 @@
 .about-happy-customer {
   background: url(../../assets/images/about/RectangleDesk.png);
   background-size: 100% 100% !important;
+  margin-top: 3rem;
 }
 
 .about-happy-customer-para {
-    color: #ffffff;
-    text-align: center !important;
-    margin-bottom: 0!important;
+  color: #ffffff;
+  text-align: center !important;
+  margin-bottom: 0 !important;
 }
 
 .about-happy-customer-head {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: bold;
   font-size: 40px;
   text-align: center !important;
@@ -18,25 +19,24 @@
   margin-bottom: 0.2rem !important;
 }
 
+@media screen and (max-width: 767px) {
+  .about-happy-customer {
+    background: url(../../assets/images/about/RectangelMobile.png);
+    background-size: 100% 100% !important;
+  }
 
-@media screen and (max-width:767px) {
-    .about-happy-customer {
-        background: url(../../assets/images/about/RectangelMobile.png);
-        background-size: 100% 100% !important;
-      }
-      
-      .about-happy-customer-para {
-        color: #ffffff;
-        text-align: center !important;
-        margin-bottom: 0!important;
-        font-size: 30px;
-    }
-    
-    .about-happy-customer-head {
-      font-family: 'Lato';
-      font-weight: bold;
-      font-size: 45px;
-      text-align: center !important;
-      color: #ffffff;
-    }
+  .about-happy-customer-para {
+    color: #ffffff;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    font-size: 30px;
+  }
+
+  .about-happy-customer-head {
+    font-family: "Lato";
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center !important;
+    color: #ffffff;
+  }
 }
