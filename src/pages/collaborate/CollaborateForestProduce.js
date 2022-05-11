@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Row, Col, Container } from "react-bootstrap";
-import CollaborateForestImg from "../../assets/images/collaborate/collaborateForest.svg";
+import CollaborateForestImg from "../../assets/images/collaborate/CollaborateForest.svg";
 
 function CollaborateForestProduce() {
   return (
