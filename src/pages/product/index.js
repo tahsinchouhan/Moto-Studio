@@ -72,9 +72,10 @@ function Products() {
             const filteredData = objData?.data.filter(
               (data) => data.status === true
             );
+            console.log(filteredData);
             setCheckedState(new Array(filteredData.length).fill(false));
             let newfilteredData = filteredData.filter((data, ind) => ind < 3);
-            setCategory(newfilteredData);
+            setCategory([...newfilteredData].reverse());
           }
         })
         .catch((error) => console.log(error));

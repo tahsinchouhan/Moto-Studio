@@ -52,7 +52,7 @@ function FeaturedProducts({ category }) {
         <div className="image-div1">
           <Slider {...settings}>
             {categories?.length &&
-              categories?.map((cat) => {
+              [...categories]?.reverse().map((cat) => {
                 return (
                   <div
                     className="image-div"

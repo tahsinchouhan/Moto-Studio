@@ -72,7 +72,7 @@ function SubHeader() {
                   </li>
                   {menuData.length &&
                     menuData[1].length &&
-                    [...menuData[1]].map((menu, index) => {
+                    [...menuData[1]].reverse().map((menu, index) => {
                       return (
                         <li
                           key={menu._id}
