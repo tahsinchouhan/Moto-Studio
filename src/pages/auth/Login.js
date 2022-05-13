@@ -15,8 +15,15 @@ export default function Login() {
   const [message, setMessage] = useState(null);
   const [providers, setProviders] = useState(null);
   const router = useRouter();
-  // console.log("providers :>> ", providers);  
-  const { authenticating, isLogin, loginRequest, loginSuccess, loginFailure, fetchCartData } = useContext(CardContext);
+  console.log("providers :>> ", providers);
+  const {
+    authenticating,
+    isLogin,
+    loginRequest,
+    loginSuccess,
+    loginFailure,
+    fetchCartData,
+  } = useContext(CardContext);
 
   useEffect(() => {
     if (isLogin) {
@@ -24,14 +31,12 @@ export default function Login() {
     }
   }, []);
 
-
   useEffect(() => {
     (async () => {
       const res = await getProviders();
       setProviders(res);
     })();
   }, []);
-
 
   const initialValues = {
     email: "",
@@ -45,19 +50,23 @@ export default function Login() {
 
   const onSubmit = async (values, onSubmitProps) => {
     try {
-      loginRequest()
-      const options = {redirect: false, email:values.email, password:values.password}
-      const result  = await signIn('credentials', options)
+      loginRequest();
+      const options = {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+      };
+      const result = await signIn("credentials", options);
       // console.log('login', result)
-      if(!result?.error){
+      if (!result?.error) {
         const session = await getSession();
-        loginSuccess(session)
-        fetchCartData(session)
+        loginSuccess(session);
+        fetchCartData(session);
         localStorage.setItem("cg-herbal-userData", JSON.stringify(session));
-        router.replace(`/`)
+        router.replace(`/`);
       } else {
-        loginFailure(result.error)
-        setMessage(result.error)
+        loginFailure(result.error);
+        setMessage(result.error);
       }
 
       // const response = await fetch(apipath + `/api/v1/users/signin`, {
@@ -83,18 +92,24 @@ export default function Login() {
   };
 
   const formControl = {
-      borderColor: '#e5e5e5 !important',
-      color: '#666666',
-      outline: 'none',
-      boxShadow: 'none',
-      borderRadius:0,
-      fontSize:16
-  }
+    borderColor: "#e5e5e5 !important",
+    color: "#666666",
+    outline: "none",
+    boxShadow: "none",
+    borderRadius: 0,
+    fontSize: 16,
+  };
 
   return (
     <div>
-    <div className="all-product-heading">
-        <div style={{ paddingTop: "26px", paddingBottom: "30px", fontFamily:'Lora' }}>
+      <div className="all-product-heading">
+        <div
+          style={{
+            paddingTop: "26px",
+            paddingBottom: "30px",
+            fontFamily: "Lora",
+          }}
+        >
           <div className="store-home">
             <span>Home &gt; </span>
           </div>
@@ -105,7 +120,7 @@ export default function Login() {
       </div>
       <div className="container-fluid">
         <div className="login_main">
-          <div>           
+          <div>
             <div className="login_div">
               <Formik
                 initialValues={initialValues}
@@ -146,9 +161,13 @@ export default function Login() {
                       </div>
 
                       <div className="text-center">
-                        <button  type="submit" className="btn btn-success w-100 py-2 rounded-0"  disabled={authenticating}>
-                        {authenticating ? 'Authenticating...' : 'LOGIN'}
-                        </button>                      
+                        <button
+                          type="submit"
+                          className="btn btn-success w-100 py-2 rounded-0"
+                          disabled={authenticating}
+                        >
+                          {authenticating ? "Authenticating..." : "LOGIN"}
+                        </button>
                         {/* <ButtonDark
                          type="submit" 
                           text={authenticating ? 'Authenticating...' : 'Login'}
@@ -163,26 +182,67 @@ export default function Login() {
                         </Link>
                       </div>
 
-                      <div className="divider position-relative mt-5" style={{height:50}}>
+                      <div
+                        className="divider position-relative mt-5"
+                        style={{ height: 50 }}
+                      >
                         <hr />
-                        <span className="position-absolute" style={{width:50, height:50, lineHeight: '50px', textAlign: 'center', top: '-50%', left:'50%', transform: 'translate(-50%, 0%)', background:'#ffffff'}}>OR</span>
+                        <span
+                          className="position-absolute"
+                          style={{
+                            width: 50,
+                            height: 50,
+                            lineHeight: "50px",
+                            textAlign: "center",
+                            top: "-50%",
+                            left: "50%",
+                            transform: "translate(-50%, 0%)",
+                            background: "#ffffff",
+                          }}
+                        >
+                          OR
+                        </span>
                       </div>
-                    
-                      {providers && <div className="social-login-btn d-flex justify-content-center">
-                        {Object?.values(providers).map((provider) => {
-                          if(provider.id === 'credentials') return false
-                          return <div key={provider.id} className="shadow w-100 py-3">
-                            <button 
-                              type="button" 
-                              className="border-0 w-100 fw-bold bg-transparent rounded-0" 
-                              style={{fontFamily:'Lora', fontSize:16, display:"flex", justifyContent:"center", alignItems:"center0", gap:"2rem",outline:'none'}}
-                              onClick={() => signIn(provider.id, {callbackUrl: "/auth/UserProfile"})}>
-                              <Image src="/google.png" width={30} height={30} />
-                              Login with {provider.name}
-                            </button>
-                          </div>
-                        })}
-                      </div> }
+
+                      {providers && (
+                        <div className="social-login-btn d-flex justify-content-center">
+                          {Object?.values(providers).map((provider) => {
+                            if (provider.id === "credentials") return false;
+                            return (
+                              <div
+                                key={provider.id}
+                                className="shadow w-100 py-3"
+                              >
+                                <button
+                                  type="button"
+                                  className="border-0 w-100 fw-bold bg-transparent rounded-0"
+                                  style={{
+                                    fontFamily: "Lora",
+                                    fontSize: 16,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center0",
+                                    gap: "2rem",
+                                    outline: "none",
+                                  }}
+                                  onClick={() =>
+                                    signIn(provider.id, {
+                                      callbackUrl: "/auth/UserProfile",
+                                    })
+                                  }
+                                >
+                                  <Image
+                                    src="/google.png"
+                                    width={30}
+                                    height={30}
+                                  />
+                                  Login with {provider.name}
+                                </button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
 
                       <div className="forgot-div text-center fw-bold mt-5">
                         <span>
@@ -208,7 +268,7 @@ export default function Login() {
                 }}
               </Formik>
             </div>
-          </div>                  
+          </div>
         </div>
       </div>
     </div>

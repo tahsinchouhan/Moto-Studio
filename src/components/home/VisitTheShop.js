@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 
 function VisitTheShop({ categoryId }) {
   const [featured, setFeatured] = useState([]);
-  console.log("feturedData :>> ", featured[0]?.products_id?.weight[0]?.price);
+  // console.log("feturedData :>> ", featured[0]?.products_id?.weight[0]?.price);
   const router = useRouter();
 
   useEffect(() => {
