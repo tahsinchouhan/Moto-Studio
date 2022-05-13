@@ -143,7 +143,7 @@ function Header() {
                       }}
                     >
                       <li onClick={() => setConnectViewDropDown(false)}>
-                        <Link href="/connect/ConsumerProgram">
+                        <Link href="/connect/consumerProgram">
                           <a className=" nav-link mx-3">
                             CONSUMER CONNECT PROGRAM
                           </a>

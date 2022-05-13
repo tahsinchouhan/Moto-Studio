@@ -81,7 +81,10 @@ function SubHeader() {
                           }
                         >
                           <Link href={`/product?activeTab=${index}`}>
-                            <a className="sub-nav-link mx-3">
+                            <a
+                              className="sub-nav-link mx-3"
+                              style={{ width: "fitContent" }}
+                            >
                               {menu?.menu_name || menu}
                             </a>
                           </Link>

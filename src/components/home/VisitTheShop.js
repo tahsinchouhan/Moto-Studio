@@ -14,11 +14,11 @@ import { useRouter } from "next/router";
 
 function VisitTheShop({ categoryId }) {
   const [featured, setFeatured] = useState([]);
-  // console.log('feturedData :>> ', feturedData.data);
+  console.log("feturedData :>> ", featured[0]?.products_id?.weight[0]?.price);
   const router = useRouter();
 
   useEffect(() => {
-    if(!categoryId) return false;
+    if (!categoryId) return false;
     const fetchData = async () => {
       try {
         const res = await fetch(
@@ -159,7 +159,7 @@ function VisitTheShop({ categoryId }) {
                           ?.weight_gram || 0}
                       </Card.Text>
                       <Card.Text className="visit-card-weight">
-                        ₹ {featured[0]?.products_id?.price || 0}
+                        ₹ {featured[0]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
                   </Card.Body>
@@ -209,7 +209,7 @@ function VisitTheShop({ categoryId }) {
                           ?.weight_gram || 0}
                       </Card.Text>
                       <Card.Text className="visit-card-weight">
-                        ₹ {featured[1]?.products_id?.price || 0}
+                        ₹ {featured[1]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
                   </Card.Body>
@@ -266,7 +266,7 @@ function VisitTheShop({ categoryId }) {
                           ?.weight_gram || 0}
                       </Card.Text>
                       <Card.Text className="visit-card-weight">
-                        ₹ {featured[2]?.products_id?.price || 0}
+                        ₹ {featured[2]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
                   </Card.Body>
@@ -319,7 +319,7 @@ function VisitTheShop({ categoryId }) {
                           ?.weight_gram || 0}
                       </Card.Text>
                       <Card.Text className="visit-card-weight">
-                        ₹ {featured[3]?.products_id?.price || 0}
+                        ₹ {featured[3]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
                   </Card.Body>
@@ -367,7 +367,7 @@ function VisitTheShop({ categoryId }) {
                           ?.weight_gram || 0}
                       </Card.Text>
                       <Card.Text className="visit-card-weight">
-                        ₹ {featured[4]?.products_id?.price || 0}
+                        ₹ {featured[4]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
                   </Card.Body>
