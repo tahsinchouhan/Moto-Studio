@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "../../components/button/ButtonLight";
 import { Row, Col, Container } from "react-bootstrap";
-import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.svg";
+import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.png";
 import Link from "next/link";
 
 function CollaborateHeader() {
