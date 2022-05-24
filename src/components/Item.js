@@ -14,9 +14,23 @@ const Item = ({
   product_weight,
   weight_type,
 }) => {
-  const { user, removeItem, increament, decreament } = useContext(CardContext);
+  const { user, removeItem, increament, decreament, isLogin, item } = useContext(CardContext);
 
   const deleteItem = (product_id, weight_type, id) => {
+    if(!isLogin) {
+      const localCartData = localStorage.getItem("cg-herbal-cartData");
+      if (localCartData) {
+        localCartData = JSON.parse(localCartData);
+        const result = localCartData.filter(data => data.product._id !== product_id && data.product.weight_type !== weight_type )
+        localStorage.setItem(
+          "cg-herbal-cartData",
+          JSON.stringify(result)
+        );
+        removeItem(product_id);
+      }
+      return false;
+    }
+
     fetch(apipath + `/api/v1/cart/remove-items`, {
       method: "POST",
       headers: {

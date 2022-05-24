@@ -84,6 +84,9 @@ export const reducer = (state, action) => {
     return {
         ...state,
         item:state.item.filter((curElem)=>{
+            if(!state.isLogin) {
+                return curElem.product._id !== action.payload
+            }
             return curElem._id !== action.payload
         })
     }
