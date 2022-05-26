@@ -10,6 +10,10 @@ import { useSession } from "next-auth/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
 import * as Yup from "yup";
+import sha512 from 'js-sha512';
+import { getDomainLocale } from "next/dist/shared/lib/router/router";
+import Head from "next/head";
+import Script from "next/script";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -108,6 +112,8 @@ function Shopping() {
   };
 
   const displayRazorpay = async (data) => {
+    
+    const form = document.getElementById('payUform');
     if (!user) {
       router.push("/auth/Login");
       return;
@@ -119,13 +125,13 @@ function Shopping() {
       return;
     }
 
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-    if (!res) {
-      alert("Razorpay SDK failed to load . Are you online!");
-      return;
-    }
+    // const res = await loadScript(
+    //   "https://checkout.razorpay.com/v1/checkout.js"
+    // );
+    // if (!res) {
+    //   alert("Razorpay SDK failed to load . Are you online!");
+    //   return;
+    // }
 
     let result = [];
     let products_id = [];
@@ -148,6 +154,27 @@ function Shopping() {
       alert("Amount exceeds the limit rs.40000 for per Transaction");
       return false;
     }
+
+    const hashPayload = {
+      key: 'oZ7oo9',
+      txnid: Date.now().toString(),
+      amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0),
+      productinfo: result,
+      firstname: user?.full_Name,
+      email: user?.email,
+      SALT: 'UkojH5TS'
+    }
+    const hash = sha512(`${hashPayload.key}|${hashPayload.txnid}|${hashPayload.amount}|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${hashPayload.email}|||||||||||${hashPayload.SALT}`);
+    form.key.value = hashPayload.key
+    form.txnid.value = hashPayload.txnid
+    form.productinfo.value = hashPayload.productinfo.toString()
+    form.amount.value = hashPayload.amount
+    form.email.value = hashPayload.email
+    form.phone.value = user?.mobile
+    form.firstname.value = hashPayload.firstname
+    form.hash.value = hash   
+    form.submit();
+    return
 
     // const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
     //   products: result,
@@ -250,9 +277,23 @@ function Shopping() {
     fontSize: 16
   };
 
+  const payUform =  <form action='https://test.payu.in/_payment' method='post' id="payUform">
+    <input type="hidden" name="key" />
+    <input type="hidden" name="txnid"/>
+    <input type="hidden" name="productinfo"/>
+    <input type="hidden" name="amount"/>
+    <input type="hidden" name="email" />
+    <input type="hidden" name="firstname" />
+    <input type="hidden" name="surl" value="http://localhost:3000/order/OrderConfirmed" />
+    <input type="hidden" name="furl" value="https://apiplayground-response.herokuapp.com/" />
+    <input type="hidden" name="phone" />
+    <input type="hidden" name="hash" />
+  </form>
+
   return (
-    <div>
+    <div>     
       <Container className="shopping-container">
+      {payUform}
         <Row className="p-3">
           {step === 0 && (
             <Col lg={8} md={12} className="mb-4 text-center">
