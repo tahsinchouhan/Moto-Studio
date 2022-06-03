@@ -82,7 +82,7 @@ export default NextAuth({
           body:JSON.stringify(payload)
         })
         const result = await res.json()
-        console.log('result :>> ', result);
+        // console.log('result :>> ', result);
         if(result && result.user) {
           token.user = result.user
           token.user.name = result.user.name
