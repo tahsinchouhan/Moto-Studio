@@ -69,3 +69,11 @@ svg {
     object-fit: contain !important;
   }
 }
+
+.popup-modal-main ul {
+  list-style-type: none;
+}
+
+.popup-modal-main ul li {
+  white-space: pre-wrap;
+}

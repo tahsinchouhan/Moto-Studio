@@ -47,7 +47,7 @@ function CommunityPage() {
         products: { title: "Premium Cashews" },
       },
       {
-        _id: "627d0fe6a03b3776b610de64",
+        _id: "62a329a477e961a1d08fc40e",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_3_lixc7e.png",
