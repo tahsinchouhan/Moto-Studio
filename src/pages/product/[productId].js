@@ -293,7 +293,7 @@ function ProductDetail({ productData }) {
                         className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
                         onClick={(e) => {
                           e.stopPropagation();
-                          setShowPopUp(true);
+                          // setShowPopUp(true);
                         }}
                       >
                         <div>
