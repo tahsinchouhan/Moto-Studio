@@ -71,7 +71,11 @@ function ProductDetail({ productData }) {
       <div className="my-lg-5 d-flex">
         <div className="container popup-div mx-auto p-0">
           <Row className="popup-modal-main p-0 justify-content-center">
-            <Col md={5} className="popup-modal-img">
+            <Col
+              md={5}
+              className="popup-modal-img"
+              style={{ position: "sticky !importatn" }}
+            >
               <Image
                 src={
                   productData?.images?.length
@@ -120,7 +124,7 @@ function ProductDetail({ productData }) {
                                 >
                                   {wt.weight_type?.weight_gram.replace(
                                     "grms",
-                                    "gm"
+                                    "grams"
                                   )}
                                 </label>
                               </div>

@@ -28,6 +28,7 @@ function Header() {
   const [searchSideBar, setSearchSideBar] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [isShrunk, setShrunk] = useState(false);
   const usermenuRef = useRef();
   const connectmenuRef = useRef();
 
@@ -84,12 +85,45 @@ function Header() {
     // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
     // {id:7,title:'CONTACT',href:'/contact'}
   ];
+
+  useEffect(() => {
+    const handler = () => {
+      setShrunk((isShrunk) => {
+        if (
+          !isShrunk &&
+          (document.body.scrollTop > 40 ||
+            document.documentElement.scrollTop > 40)
+        ) {
+          return true;
+        }
+
+        if (
+          isShrunk &&
+          document.body.scrollTop < 4 &&
+          document.documentElement.scrollTop < 4
+        ) {
+          return false;
+        }
+
+        return isShrunk;
+      });
+    };
+
+    // Previous logic.
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // console.log(isShrunk);
+
   return (
     <>
       {/* Destop-view */}
       <div className="navbar-container">
         <Navbar
-          className="main-header d-none d-md-block"
+          className={`main-header d-none d-md-block ${
+            isShrunk ? "main-header-shrunk" : ""
+          }`}
           collapseOnSelect
           bg="light"
           expanded={expand}
@@ -103,8 +137,8 @@ function Header() {
               <div>
                 <Image
                   src={logo}
-                  width={160}
-                  height={80}
+                  width={isShrunk ? 100 : 160}
+                  height={isShrunk ? 46 : 80}
                   alt="logo"
                   unoptimized={true}
                   loading="eager"
@@ -219,25 +253,26 @@ function Header() {
                     </>
                   ) : (
                     <>
-                      <Link href="/auth/Login">
+                      {/*<Link href="/auth/Login">
                         <a className="nav-Login text-black login me-3">Login</a>
-                      </Link>
-                      <Link href="/auth/Register">
+                       </Link>*/}
+                      <Link href="/auth/Login">
                         <a className="nav-Login btn btn-success btn-sm ms-2 py-2 px-3 signup-btn">
-                          Sign Up
+                          LOGIN
                         </a>
                       </Link>
                     </>
                   )}
                   <BsSearch
-                    size="1.2em"
+                    size="14px"
                     className="ms-3 cursor-pointer"
+                    style={{ marginTop: "5px" }}
                     onClick={() => setSearchSideBar(true)}
                   />
                   <Link href="/shopping/Shopping" onClick={iconHandler}>
                     <a className="cg-header-a-tag ps-3 position-relative">
                       <BsFillCartFill
-                        size="1.2em"
+                        size="16px"
                         className={`${
                           activeIcon ? "ch-header-cart-icon" : "cg-header-a-tag"
                         }`}
@@ -461,6 +496,10 @@ function Header() {
         .signup-btn {
           background-color: #065934 !important;
           font-family: "Lora";
+          padding: 0.5rem 2rem !important;
+          border-radius: 0 !important;
+          font-size: 13px !important;
+      }
         }
 
         .login {

@@ -135,6 +135,7 @@ function VisitTheShop({ categoryId }) {
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
+                    quality={100}
                   />
                   <div className="content-for-overlay">
                     <div className="text">SHOP NOW</div>
@@ -190,6 +191,7 @@ function VisitTheShop({ categoryId }) {
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
+                    quality={100}
                   />
                   <div className="content-for-overlay">
                     <div className="text">SHOP NOW</div>
@@ -250,6 +252,7 @@ function VisitTheShop({ categoryId }) {
                       unoptimized={true}
                       loading="eager"
                       className="featured-card-image-for-overlay"
+                      quality={100}
                     />
                     <div className="content-for-overlay content-for-overlay-big">
                       <div className="text">SHOP NOW</div>
@@ -307,6 +310,7 @@ function VisitTheShop({ categoryId }) {
                     loading="lazy"
                     objectFit="cover"
                     className="featured-card-image-for-overlay"
+                    quality={100}
                   />
                   <div className="content-for-overlay">
                     <div className="text">SHOP NOW</div>
@@ -360,6 +364,7 @@ function VisitTheShop({ categoryId }) {
                     loading="lazy"
                     objectFit="cover"
                     className="featured-card-image-for-overlay"
+                    quality={100}
                   />
                   <div className="content-for-overlay">
                     <div className="text">SHOP NOW</div>

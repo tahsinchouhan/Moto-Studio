@@ -27,6 +27,10 @@ function WhoWeAre() {
       <Container fluid>
         {aboutData.length &&
           aboutData.map((row, index) => {
+            if (index === 2) {
+              return "";
+            }
+
             if (index % 2 === 0) {
               return (
                 <Row className="justify-content-center my-5" key={row._id}>
@@ -56,20 +60,23 @@ function WhoWeAre() {
                     <hr className="about-who-first-hr " />
                     <p className="about-second-para">{row.description}</p>
                   </Col>
-                  <div className="extra-about-text">
-                    <h2>
-                      The CGMFP Federation is one of the largest employment
-                      generation efforts of the Govt. of Chhattisgarh with
-                      approximately 13.5 Lakh Sangrahaks (MFP Gatherers) earning
-                      livelihood from collection of Minor Forest Produce.{" "}
-                    </h2>
-                    <p>
-                      More than 6,000 Women Self Help Groups with 71,000+
-                      members, engaged in the process of Collection, Procurement
-                      and Processing makes the Federation, one of the largest
-                      Women empowerment efforts in the world.
-                    </p>
-                  </div>
+                  {index === 0 && (
+                    <div className="extra-about-text">
+                      <h2>
+                        The CGMFP Federation is one of the largest employment
+                        generation efforts of the Govt. of Chhattisgarh with
+                        approximately 13.5 Lakh Sangrahaks (MFP Gatherers)
+                        earning livelihood from collection of Minor Forest
+                        Produce.{" "}
+                      </h2>
+                      <p>
+                        More than 6,000 Women Self Help Groups with 71,000+
+                        members, engaged in the process of Collection,
+                        Procurement and Processing makes the Federation, one of
+                        the largest Women empowerment efforts in the world.
+                      </p>
+                    </div>
+                  )}
                 </Row>
               );
             } else {
@@ -117,7 +124,7 @@ function WhoWeAre() {
               );
             }
           })}
-        <div className="extra-about-text">
+        <div className="extra-about-text pt-3">
           <h2>
             The CGMFP Federation also sells ‘Organically Certified’ raw and
             processed minor forest produce to manufacturers, traders and

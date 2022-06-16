@@ -59,6 +59,16 @@ function BlogPost({ blogData, blogList }) {
             })}
           </p>
 
+          <p className="source">
+            Source:{" "}
+            <a
+              href={"www.honeyoftheworld.com/howisitmade"}
+              style={{ color: "blue !important" }}
+            >
+              www.honeyoftheworld.com/howisitmade
+            </a>
+          </p>
+
           <p className="blog-post-blogPara">{blogData.content}</p>
 
           {/* <div className="blog-post-img-two mt-5">

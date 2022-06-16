@@ -33,8 +33,8 @@ function About() {
         <p>
           Chhattisgarh Herbals is a premium product brand that works towards
           empowering tribal women.
-          <br />
-          <br />
+        </p>
+        <p>
           All products are powered by Chhattisgarh Minor Forest Produce
           Cooperative Federation, an institution dedicated to uplifting more
           than 1.2 million forest dwellers of Chhattisgarh state.

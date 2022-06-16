@@ -116,6 +116,37 @@ function Products() {
     );
     setCheckedState(updatedCheckedState);
   };
+
+  const handleSortBy = (value) => {
+    console.log(value, productData);
+
+    if (value === "0") {
+      setLoading(true);
+      fetchData();
+    }
+
+    if (value === "1") {
+      setLoading(true);
+      const newProductData = productData.sort(
+        (a, b) => a.weight[0].price - b.weight[0].price
+      );
+
+      console.log(newProductData);
+
+      setProductData([...newProductData]);
+      setLoading(false);
+    } else if (value === "2") {
+      setLoading(true);
+      const newProductData = productData.sort(
+        (a, b) => b.weight[0].price - a.weight[0].price
+      );
+
+      console.log(newProductData);
+      setProductData([...newProductData]);
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="all-product-heading">
@@ -163,7 +194,7 @@ function Products() {
                     );
                   })}
               </div>
-              <div>
+              {/*<div>
                 <h6 className="product-category-text">REMEDY</h6>
                 <div className="form-check mb-3 ps-4 cursor-pointer">
                   <input
@@ -171,7 +202,7 @@ function Products() {
                     type="checkbox"
                     value={0}
                     checked={0}
-                    onChange={() => handleOnChange(index)}
+                    // onChange={() => handleOnChange(index)}
                   />
                   <label
                     className="form-check-product-item cursor-pointer"
@@ -186,7 +217,7 @@ function Products() {
                     type="checkbox"
                     value={1}
                     checked={0}
-                    onChange={() => handleOnChange(index)}
+                    // onChange={() => handleOnChange(index)}
                   />
                   <label
                     className="form-check-product-item cursor-pointer"
@@ -201,7 +232,7 @@ function Products() {
                     type="checkbox"
                     value={2}
                     checked={0}
-                    onChange={() => handleOnChange(index)}
+                    // onChange={() => handleOnChange(index)}
                   />
                   <label
                     className="form-check-product-item cursor-pointer"
@@ -216,7 +247,7 @@ function Products() {
                     type="checkbox"
                     value={3}
                     checked={0}
-                    onChange={() => handleOnChange(index)}
+                    // onChange={() => handleOnChange(index)}
                   />
                   <label
                     className="form-check-product-item cursor-pointer"
@@ -225,7 +256,7 @@ function Products() {
                     {"Hair Problems"}
                   </label>
                 </div>
-              </div>
+              </div>*/}
               <Slider
                 range
                 allowCross={false}
@@ -257,11 +288,12 @@ function Products() {
                         defaultValue={""}
                         className="product-select"
                         aria-label="Default select example"
+                        onChange={(e) => handleSortBy(e.target.value)}
                       >
-                        <option value="">Featured</option>
+                        <option value="0">Featured</option>
                         <option value="1">Price Low to High</option>
                         <option value="2">Price High to Low</option>
-                        <option value="3">Customer Rating</option>
+                        {/** <option value="3">Customer Rating</option>*/}
                       </select>
                     </div>
                   </div>

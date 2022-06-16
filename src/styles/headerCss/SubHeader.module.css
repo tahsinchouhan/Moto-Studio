@@ -1,58 +1,59 @@
-.sub-header-container{
-    padding: 0% 0% 0% 4.4%!important;
+.sub-header-container {
+  padding: 0% 0% 0% 4.4% !important;
 }
 
-.sub-nav-link{
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: #DBF8E6;
+.sub-nav-link {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  color: #dbf8e6;
+  text-transform: uppercase;
 }
-.sub-haeder{
-     height: 50px;
-     background: #065934 !important;
-     color: #FFFFFF;
-}
-
-.sub-header-padding-fix{
-    padding-top: 0.2rem !important;
+.sub-haeder {
+  height: 50px;
+  background: #065934 !important;
+  color: #ffffff;
 }
 
-.sub-header-gift-box{
-    margin-bottom: 7px!important;
-    padding-right: 6.6% !important
+.sub-header-padding-fix {
+  padding-top: 0.2rem !important;
 }
 
-.sub-nav-link:hover{
-    color: #FFFFFF;
+.sub-header-gift-box {
+  margin-bottom: 7px !important;
+  padding-right: 6.6% !important;
+}
+
+.sub-nav-link:hover {
+  color: #ffffff;
 }
 a {
-    /* color: #FFFFFF !important; */
-    text-decoration:none !important;
+  /* color: #FFFFFF !important; */
+  text-decoration: none !important;
 }
-.sub-nav-new{
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    color: yellow;
+.sub-nav-new {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: yellow;
 }
 
-.sub-nav-new:hover{
-    color: yellow !important;
+.sub-nav-new:hover {
+  color: yellow !important;
 }
-.all-shop-list{
-    display: flex;
-    justify-content: center;
+.all-shop-list {
+  display: flex;
+  justify-content: center;
 }
-@media screen and (max-width:1200px){
-    .sub-header-gift-box{
+@media screen and (max-width: 1200px) {
+  .sub-header-gift-box {
     padding-right: 0% !important;
-    }
-    .sub-header-container{
-        padding: 0% 0% 0% 0.4%!important;
-    }
+  }
+  .sub-header-container {
+    padding: 0% 0% 0% 0.4% !important;
+  }
 }

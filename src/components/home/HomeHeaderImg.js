@@ -5,17 +5,18 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import HerbalRemedies from "../../../public/Image/HerbalRemedies.svg";
-import GreenCare from "../../../public/Image/GreenCare.svg";
-import SummerCoolers from "../../../public/Image/SummerCoolers.svg";
+import HerbalRemedies from "../../../public/Image/HerbalRemedies.png";
+import GreenCare from "../../../public/Image/GreenCare.png";
+import SummerCoolers from "../../../public/Image/SummerCoolers.png";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({
     bannerImg: HomeHeader,
-    bannerTitle: "Banner Title",
-    bannerDesc: "Banner Description",
+    bannerTitle: "Purity that is Priceless",
+    bannerDesc:
+      "The forest grows and the forest provides . The women of the forest procure and create. Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.",
   });
 
   useEffect(() => {
@@ -25,8 +26,10 @@ function HomeHeaderImg() {
         const objData = await res.json();
         setBanner({
           bannerImg: objData.data[0]?.images[0]?.img || HomeHeader,
-          bannerTitle: objData.data[0]?.title || "Banner Title",
-          bannerDesc: objData.data[0]?.description || "Banner Description",
+          bannerTitle: objData.data[0]?.title || "Purity that is Priceless",
+          bannerDesc:
+            objData.data[0]?.description ||
+            "The forest grows and the forest provides . The women of the forest procure and create. Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.",
         });
       } catch (error) {
         console.log(error);

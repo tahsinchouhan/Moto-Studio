@@ -15,6 +15,7 @@ function SubHeader() {
   const [gourmet, setGourmet] = useState();
   const [menuData, setMenuData] = useState([]);
   const [subMenu, setSubMenu] = useState([]);
+  const [isShrunk, setShrunk] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +41,36 @@ function SubHeader() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handler = () => {
+      setShrunk((isShrunk) => {
+        if (
+          !isShrunk &&
+          (document.body.scrollTop > 40 ||
+            document.documentElement.scrollTop > 40)
+        ) {
+          return true;
+        }
+
+        if (
+          isShrunk &&
+          document.body.scrollTop < 10 &&
+          document.documentElement.scrollTop < 10
+        ) {
+          return false;
+        }
+
+        return isShrunk;
+      });
+    };
+
+    // Previous logic.
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // console.log(isShrunk);
+
   const shopHandler = (index, menu_data) => {
     setSubMenu(menu_data);
     setShowShopAll(index);
@@ -52,7 +83,14 @@ function SubHeader() {
 
   return (
     <>
-      <div onMouseLeave={() => shopHandler()}>
+      <div
+        onMouseLeave={() => shopHandler()}
+        style={{
+          position: "sticky",
+          zIndex: "1000",
+          top: `${isShrunk ? "78px" : "100px"}`,
+        }}
+      >
         <Navbar
           className="sub-haeder sub-header-padding-fix d-none d-lg-block"
           collapseOnSelect
