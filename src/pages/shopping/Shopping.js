@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
 import * as Yup from "yup";
-import sha512 from 'js-sha512';
+import sha512 from "js-sha512";
 import { getDomainLocale } from "next/dist/shared/lib/router/router";
 import Head from "next/head";
 import Script from "next/script";
@@ -112,8 +112,7 @@ function Shopping() {
   };
 
   const displayRazorpay = async (data) => {
-    
-    const form = document.getElementById('payUform');
+    const form = document.getElementById("payUform");
     if (!user) {
       router.push("/auth/Login");
       return;
@@ -156,25 +155,33 @@ function Shopping() {
     }
 
     const hashPayload = {
-      key: 'gtKFFx', 
+      key: "gtKFFx",
       txnid: Date.now().toString(),
-      amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) - (promoValue?.value || 0),
+      amount:
+        data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+        (promoValue?.value || 0),
       productinfo: result,
       firstname: user?.full_Name,
       email: user?.email,
-      SALT: 'wia56q6O'
-    }
-    const hash = sha512(`${hashPayload.key}|${hashPayload.txnid}|${hashPayload.amount}|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${hashPayload.email}|||||||||||${hashPayload.SALT}`);
-    form.key.value = hashPayload.key
-    form.txnid.value = hashPayload.txnid
-    form.productinfo.value = hashPayload.productinfo.toString()
-    form.amount.value = hashPayload.amount
-    form.email.value = hashPayload.email
-    form.phone.value = user?.mobile
-    form.firstname.value = hashPayload.firstname
-    form.hash.value = hash   
+      SALT: "wia56q6O",
+    };
+    const hash = sha512(
+      `${hashPayload.key}|${hashPayload.txnid}|${
+        hashPayload.amount
+      }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+        hashPayload.email
+      }|||||||||||${hashPayload.SALT}`
+    );
+    form.key.value = hashPayload.key;
+    form.txnid.value = hashPayload.txnid;
+    form.productinfo.value = hashPayload.productinfo.toString();
+    form.amount.value = hashPayload.amount;
+    form.email.value = hashPayload.email;
+    form.phone.value = user?.mobile;
+    form.firstname.value = hashPayload.firstname;
+    form.hash.value = hash;
     form.submit();
-    return
+    return;
 
     // const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
     //   products: result,
@@ -274,26 +281,36 @@ function Shopping() {
     outline: "none",
     boxShadow: "none",
     borderRadius: 0,
-    fontSize: 16
+    fontSize: 16,
   };
 
-  const payUform =  <form action='https://test.payu.in/_payment' method='post' id="payUform">
-    <input type="hidden" name="key" />
-    <input type="hidden" name="txnid"/>
-    <input type="hidden" name="productinfo"/>
-    <input type="hidden" name="amount"/>
-    <input type="hidden" name="email" />
-    <input type="hidden" name="firstname" />
-    <input type="hidden" name="surl" value="http://localhost:3000/order/OrderConfirmed" />
-    <input type="hidden" name="furl" value="https://apiplayground-response.herokuapp.com/" />
-    <input type="hidden" name="phone" />
-    <input type="hidden" name="hash" />
-  </form>
+  const payUform = (
+    <form action="https://test.payu.in/_payment" method="post" id="payUform">
+      <input type="hidden" name="key" />
+      <input type="hidden" name="txnid" />
+      <input type="hidden" name="productinfo" />
+      <input type="hidden" name="amount" />
+      <input type="hidden" name="email" />
+      <input type="hidden" name="firstname" />
+      <input
+        type="hidden"
+        name="surl"
+        value="http://localhost:3000/order/OrderConfirmed"
+      />
+      <input
+        type="hidden"
+        name="furl"
+        value="https://apiplayground-response.herokuapp.com/"
+      />
+      <input type="hidden" name="phone" />
+      <input type="hidden" name="hash" />
+    </form>
+  );
 
   return (
-    <div>     
+    <div>
       <Container className="shopping-container">
-      {payUform}
+        {payUform}
         <Row className="p-3">
           {step === 0 && (
             <Col lg={8} md={12} className="mb-4 text-center">
@@ -407,7 +424,7 @@ function Shopping() {
                                   className="Contact-Us-form-input form-control"
                                   type="text"
                                   name="area"
-                                  placeholder="Localaty / Area (Optional)"
+                                  placeholder="Locality / Area (Optional)"
                                   style={formControl}
                                 />
                               </div>
@@ -496,7 +513,7 @@ function Shopping() {
                           <strong>Recipient: </strong>
                           {shippingAddress.full_name}
                         </p>
-                        <p>
+                        <p className="address-details-p">
                           <strong>Address: </strong>
                           {shippingAddress.address} {shippingAddress.city},{" "}
                           {shippingAddress.state} - {shippingAddress.pincode}
@@ -525,27 +542,31 @@ function Shopping() {
           )}
 
           <Col lg={4} md={12}>
-            <div className="order-summary-card p-4">
+            <div className="order-summary-card p-4 pb-2">
               <h6 className="fw-bold order-summary-text">ORDER SUMMARY</h6>
               <hr className="my-4" />
 
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="order-summary-p1">ITEMS-{totalItem}</p>
+                  <p className="order-summary-p1">{totalItem} x Items</p>
                 </div>
                 <div>
                   <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                 </div>
               </div>
               <p className="order-summary-p1">SHIPPING</p>
-              <div className="free-home-delivery-div">
-                {" "}
-                <p className=" m-0 px-2 pt-1 free-home-delivery-p">
-                  FREE HOME DELIVERY{" "}
-                  <span className="fw-bold free-home-delivery-p2 ">₹0.00</span>
-                </p>
-              </div>
-              <hr className="my-4" />
+              {
+                <div className="free-home-delivery-div">
+                  {" "}
+                  <p className=" m-0 px-2 pt-1 free-home-delivery-p">
+                    <span>APPLIED PROMO CODE </span>
+                    <span className="fw-bold free-home-delivery-p2 ">
+                      CODE50
+                    </span>
+                  </p>
+                </div>
+              }
+              <hr className="mt-2" />
               {promoValue && (
                 <div className="d-flex justify-content-between">
                   <div>
@@ -579,7 +600,7 @@ function Shopping() {
                   onClick={() => displayRazorpay(item)}
                 >
                   {" "}
-                  <ButtonDark type="button" text="CHECKOUT" />
+                  <ButtonDark type="button" text="PLACE ORDER" />
                 </div>
               </div>
               <p

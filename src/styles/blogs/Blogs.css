@@ -69,7 +69,7 @@
 }
 
 .herbal-blogs-card-text {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -78,6 +78,53 @@
   text-align: justify !important;
 }
 
-.blog-card-padding{
-    padding: 0rem !important;
+.blog-card-padding {
+  padding: 0rem !important;
+}
+
+.blog-nav {
+  margin: 3rem 0 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: "Montserrat";
+  line-height: 24px;
+  color: #626060;
+}
+
+.blog-nav .blog-next .blog-arrow-icon {
+  color: #626060;
+  font-size: 10px;
+}
+
+.blog-nav .blog-prev,
+.blog-nav .blog-next {
+  display: flex;
+  cursor: pointer;
+}
+
+.blog-nav .blog-prev .blog-arrow-icon {
+  color: #626060;
+  font-size: 10px;
+}
+
+.arrow-container {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-container .arrow {
+  border-bottom: 1px solid #626060;
+  width: 68px;
+  height: 1px;
+}
+
+.blog-nav .blog-prev .arrow-container .arrow {
+  transform: translate(-5px, 0px);
+}
+
+.blog-nav .blog-next .arrow-container .arrow {
+  transform: translate(5px, 0px);
 }

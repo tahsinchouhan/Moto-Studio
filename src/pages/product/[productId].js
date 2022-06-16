@@ -32,6 +32,7 @@ function ProductDetail({ productData }) {
     }
   };
 
+  console.log(productData);
   useEffect(() => {
     fetchListData(productData.category._id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +83,7 @@ function ProductDetail({ productData }) {
                 alt={productData?.title}
                 unoptimized={true}
                 loading="eager"
-                objectFit="cover"
+                objectFit="scale-down"
               />
             </Col>
             <Col xs={12} md={5}>
@@ -93,18 +94,6 @@ function ProductDetail({ productData }) {
                 <p className="popup-paragraph1">
                   {productData?.sub_title || "sub_title"}
                 </p>
-                <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
-                <ul className="popup-ul mb-4 p-0 ps-3">
-                  {productData?.description.split("•").map((item, index) => {
-                    if (item) return <li key={index}>{item}</li>;
-                  }) || "description"}
-                </ul>
-                {/* <ul className="popup-ul fw-bold">
-                  <li>Tea Variety Green</li>
-                  <li>Unflavoured Loose Leaves</li>
-                  <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
-                  <li>Units : 100.0 gram</li>
-                </ul> */}
 
                 <div className="mb-4">
                   <p className="popup-paragraph2 fw-bold">
@@ -129,7 +118,10 @@ function ProductDetail({ productData }) {
                                   className="form-check-label ps-1 productName-kg cursor-pointer"
                                   htmlFor={wt?._id}
                                 >
-                                  {wt.weight_type?.weight_gram}
+                                  {wt.weight_type?.weight_gram.replace(
+                                    "grms",
+                                    "gm"
+                                  )}
                                 </label>
                               </div>
                             </div>
@@ -241,10 +233,29 @@ function ProductDetail({ productData }) {
                   </Row>
                 </div>
 
-                <p className="productName-shipping-para py-2">
-                  <MdLocalShipping className="me-1" /> Free shipping across
-                  India, and a risk-free quality guarantee!
+                <p
+                  className="productName-shipping-para py-2"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <MdLocalShipping
+                    className="me-1"
+                    style={{ fontSize: "16px" }}
+                  />{" "}
+                  Free shipping across India, and a risk-free quality guarantee!
                 </p>
+
+                <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
+                <ul className="popup-ul mb-4 p-0 ps-3">
+                  {productData?.description.split("•").map((item, index) => {
+                    if (item) return <li key={index}>{item}</li>;
+                  }) || "description"}
+                </ul>
+                {/* <ul className="popup-ul fw-bold">
+                  <li>Tea Variety Green</li>
+                  <li>Unflavoured Loose Leaves</li>
+                  <li>Package Dimensions (LxWxH) : 20 x 20 x 20 Centimeters</li>
+                  <li>Units : 100.0 gram</li>
+                </ul> */}
               </div>
             </Col>
           </Row>

@@ -89,11 +89,13 @@
   font-family: "Lato";
 }
 .order-summary-p2 {
-  font-size: 13px;
+  font-size: 15px;
+  margin: 0;
   font-family: "Lato";
   color: #333333;
 }
 .free-home-delivery-div {
+  margin-top: 3rem;
   height: 27px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
@@ -107,6 +109,9 @@
 .free-home-delivery-p {
   font-size: 12px;
   font-family: "Lato";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .free-home-delivery-p1 {
   font-size: 13px;
@@ -114,7 +119,6 @@
 }
 
 .free-home-delivery-p2 {
-  padding-left: 25%;
   font-family: "Lato";
   font-style: normal;
   font-weight: bold;
@@ -166,8 +170,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  /* .shopping-container {
-    margin: 0 !important;
-    width: 100% !important;
-  } */
+  .address-details-p {
+    line-height: 20px !important;
+  }
 }

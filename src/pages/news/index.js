@@ -11,6 +11,10 @@ function IntoNewsroom() {
     fetchData(month);
   };
 
+  const resetFilter = () => {
+    fetchData();
+  };
+
   const fetchData = async (month = "") => {
     let endpoint = "";
     if (month !== "") {
@@ -69,6 +73,16 @@ function IntoNewsroom() {
                   </div>
                   <div className="News-Articles-div">
                     <hr className="News-Articles" />
+                  </div>
+                  <div
+                    className="view-all"
+                    style={{ padding: "6px 12px", cursor: "pointer" }}
+                    onClick={() => resetFilter()}
+                  >
+                    <span>
+                      <BsFillCaretRightFill className="blogs-calender-arrow" />
+                    </span>
+                    View All
                   </div>
                   <div>
                     {dateList.length > 0 &&

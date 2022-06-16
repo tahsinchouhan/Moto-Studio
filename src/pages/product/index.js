@@ -163,6 +163,69 @@ function Products() {
                     );
                   })}
               </div>
+              <div>
+                <h6 className="product-category-text">REMEDY</h6>
+                <div className="form-check mb-3 ps-4 cursor-pointer">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={0}
+                    checked={0}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label
+                    className="form-check-product-item cursor-pointer"
+                    htmlFor={0}
+                  >
+                    {"Diabetes"}
+                  </label>
+                </div>
+                <div className="form-check mb-3 ps-4 cursor-pointer">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={1}
+                    checked={0}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label
+                    className="form-check-product-item cursor-pointer"
+                    htmlFor={1}
+                  >
+                    {"Acidity"}
+                  </label>
+                </div>
+                <div className="form-check mb-3 ps-4 cursor-pointer">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={2}
+                    checked={0}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label
+                    className="form-check-product-item cursor-pointer"
+                    htmlFor={2}
+                  >
+                    {"Digestives"}
+                  </label>
+                </div>
+                <div className="form-check mb-3 ps-4 cursor-pointer">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={3}
+                    checked={0}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label
+                    className="form-check-product-item cursor-pointer"
+                    htmlFor={3}
+                  >
+                    {"Hair Problems"}
+                  </label>
+                </div>
+              </div>
               <Slider
                 range
                 allowCross={false}
