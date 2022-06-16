@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react'
-import Button from "../button/ButtonLight"
-import { apipath } from '../../pages/api/apiPath';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import Button from "../button/ButtonLight";
+import { apipath } from "../../pages/api/apiPath";
+import { useRouter } from "next/router";
 
 function HomeEmpower() {
   const [impoweredData, setImpoweredData] = useState({
-    backgroundImg: '',
-    title: 'Title',
-    desc: 'Description'
+    backgroundImg: "",
+    title: "Title",
+    desc: "Description",
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     // setImpoweredData({
@@ -25,38 +25,40 @@ function HomeEmpower() {
         const objData = await res.json();
         if (objData.length) {
           setImpoweredData({
-            backgroundImg: objData[0]?.images[0]?.img || '',
-            title: objData[0]?.title || 'Title',
-            desc: objData[0]?.description || 'Description'
-          })
+            backgroundImg: objData[0]?.images[0]?.img || "",
+            title: objData[0]?.title || "Title",
+            desc: objData[0]?.description || "Description",
+          });
         }
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <>
-      <div className="home-empower-img">      
+      <div className="home-empower-img">
         <div className="home-empower-img-distance">
           <p className="home-empower-img-para d-block">
             {/* From the heart of Chhattisgarh */}
-            { impoweredData?.desc || 'From the heart of Chhattisgarh' }
+            {impoweredData?.desc || "From the heart of Chhattisgarh"}
           </p>
-          <p className="home-empower-img-text">{impoweredData?.title || 'Title'}</p>
+          <p className="home-empower-img-text">
+            {impoweredData?.title || "Title"}
+          </p>
           <div className="d-flex">
-           <div className="mx-auto" onClick={() => router.push('/collaborate')}>
-            <Button text="KNOW MORE" className="home-empower-button" />
-           </div>
+            <div className="mx-auto" onClick={() => router.push("/about")}>
+              <Button text="KNOW MORE" className="home-empower-button" />
+            </div>
           </div>
         </div>
       </div>
       <style jsx>{`
         .home-empower-img {
           background-image: url(${impoweredData?.backgroundImg});
-          background-size:cover
+          background-size: cover;
         }
       `}</style>
     </>

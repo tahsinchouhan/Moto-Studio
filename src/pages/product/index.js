@@ -19,7 +19,7 @@ function Products() {
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext);
 
-  const [price, setPrice] = useState([0, 100000]);
+  const [price, setPrice] = useState([0, 9999]);
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -168,10 +168,10 @@ function Products() {
                 allowCross={false}
                 defaultValue={price}
                 min={0}
-                max={10000}
+                max={9999}
                 marks={{
                   0: `₹ ${price[0]}`,
-                  10000: `₹ ${price[1]}`,
+                  9999: `₹ ${price[1]}`,
                 }}
                 value={price}
                 onChange={(price) => setPrice(price)}
@@ -196,9 +196,9 @@ function Products() {
                         aria-label="Default select example"
                       >
                         <option value="">Featured</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">Price Low to High</option>
+                        <option value="2">Price High to Low</option>
+                        <option value="3">Customer Rating</option>
                       </select>
                     </div>
                   </div>

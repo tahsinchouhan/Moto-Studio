@@ -116,3 +116,7 @@ a {
     text-align: center;
   }
 }
+
+.rc-slider-mark-text {
+  width: fit-content;
+}

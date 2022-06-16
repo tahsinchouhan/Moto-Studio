@@ -9,12 +9,11 @@ function About() {
       <div className="d-none d-lg-block about-header-img">
         <div className="about-header-text">
           <h2>
-            About <br /> CG Herbals
+            About <br /> Chhattisgarh Herbals
           </h2>
           <p>
             Chhattisgarh Herbals is a premium product brand that works towards
             empowering tribal women.
-            <br />
             <br />
             All products are powered by Chhattisgarh Minor Forest Produce
             Cooperative Federation, an institution dedicated to uplifting more
@@ -52,20 +51,20 @@ function About() {
         <Container>
           <Row className="py-5">
             <Col lg={3} md={6} className="py-4">
+              <p className="about-happy-customer-head">71000+</p>
+              <p className="about-happy-customer-para">MEMBERS</p>
+            </Col>
+            <Col lg={3} md={6} className="py-4">
               <p className="about-happy-customer-head">6000+</p>
-              <p className="about-happy-customer-para">HAPPY CUSTOMERS</p>
+              <p className="about-happy-customer-para">WOMEN SELF HELP GROUP</p>
             </Col>
             <Col lg={3} md={6} className="py-4">
               <p className="about-happy-customer-head">1500+</p>
-              <p className="about-happy-customer-para">TRIBAL FAMILIES</p>
+              <p className="about-happy-customer-para">RETAIL STORES</p>
             </Col>
             <Col lg={3} md={6} className="py-4">
               <p className="about-happy-customer-head">65</p>
-              <p className="about-happy-customer-para">PRODUCTS IN STORE</p>
-            </Col>
-            <Col lg={3} md={6} className="py-4">
-              <p className="about-happy-customer-head">9</p>
-              <p className="about-happy-customer-para">YEARS OF EXPERIENCE</p>
+              <p className="about-happy-customer-para">SPECIES OF PRODUCE</p>
             </Col>
           </Row>
         </Container>

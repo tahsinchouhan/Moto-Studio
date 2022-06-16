@@ -88,12 +88,36 @@
   /* float: left; */
   display: inline-block;
   width: 200px !important;
+  overflow: hidden;
 }
 .overflow-style {
   /* overflow-x: auto; */
   text-align: center;
 }
+
+.zoom-in-img-wrapper > span {
+  overflow: hidden;
+  border-radius: 50% !important;
+}
+
+.hover1 {
+  overflow: hidden;
+}
+
+.hover1 {
+  transition: 0.3s all ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -ms-transform: translateZ(0); /* IE 9 */
+  -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+  transform: translateZ(0);
+}
+
 .hover1:hover {
+  transform: scale(1.1);
+}
+
+.hover1.active {
   box-sizing: content-box !important;
   outline: 10px solid #5abf6b;
   outline-offset: -10px;
@@ -102,5 +126,60 @@
 @media screen and (max-width: 800px) {
   .feature-products-text {
     font-size: 32px;
+  }
+}
+
+.featured-card-image-for-overlay {
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.content-for-overlay {
+  opacity: 0;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: calc(100% - 88px);
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -o-transition: all 400ms ease-out;
+  -ms-transition: all 400ms ease-out;
+  transition: all 400ms ease-out;
+  text-align: center;
+  cursor: pointer;
+}
+
+.content-for-overlay:hover {
+  opacity: 1;
+}
+
+.content-for-overlay .text {
+  height: 0;
+  opacity: 1;
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+}
+
+.content-for-overlay:hover .text {
+  opacity: 1;
+  transform: translateY(70px);
+  -webkit-transform: translateY(70px);
+}
+
+.content-for-overlay-big:hover .text {
+  opacity: 1;
+  transform: translateY(230px);
+  -webkit-transform: translateY(230px);
+}
+
+@media screen and (max-width: 1000px) {
+  .content-for-overlay {
+    height: calc(100% - 80px);
   }
 }

@@ -12,6 +12,7 @@ import { apipath } from "../../pages/api/apiPath";
 function FeaturedProducts({ category }) {
   const list = category?.length > 0 ? category[2]._id : null || null;
   const [categoryId, setCategoryId] = useState(list);
+  const [selectedCat, setSelected] = useState();
   const getCategoryId = (id) => setCategoryId(id);
 
   let categories = category?.filter((cat, index) => index < 3);
@@ -59,14 +60,17 @@ function FeaturedProducts({ category }) {
                     key={cat._id}
                     onClick={() => getCategoryId(cat?._id)}
                   >
-                    <div className="rounded-circle">
+                    <div className="rounded-circle zoom-in-img-wrapper">
                       <Image
                         src={cat?.images[0]?.img || emptyImage}
                         alt="GourmetFoods"
-                        className="rounded-circle hover1"
+                        className={`rounded-circle hover1 ${
+                          selectedCat === cat._id ? "active" : ""
+                        }`}
                         width={160}
                         height={160}
                         loading="lazy"
+                        onClick={() => setSelected(cat._id)}
                         // unoptimized={true}
                         // loading="eager"
                       />

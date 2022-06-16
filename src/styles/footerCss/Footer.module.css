@@ -125,3 +125,29 @@
     padding: 30px 0px 0px 30px !important;
   }
 }
+
+.footer-logo {
+  width: 135px !important;
+  height: 64px !important;
+}
+
+.amazon-wrapper.footer-logo-img {
+  padding-top: 1.5rem;
+}
+
+.amazon-wrapper.footer-logo-img.flipkart {
+  padding-top: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper-mobile-fix {
+    width: 50%;
+  }
+
+  .amazon-wrapper.logo {
+    padding-top: 0;
+  }
+  .amazon-product {
+    padding-bottom: 0;
+  }
+}

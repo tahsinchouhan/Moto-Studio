@@ -165,11 +165,6 @@ function Header() {
               </Nav>
               <Nav>
                 <div className="pt-1 d-flex align-items-center">
-                  <BsSearch
-                    size="1.2em"
-                    className="me-3 cursor-pointer"
-                    onClick={() => setSearchSideBar(true)}
-                  />
                   {session ? (
                     <>
                       <div
@@ -234,6 +229,11 @@ function Header() {
                       </Link>
                     </>
                   )}
+                  <BsSearch
+                    size="1.2em"
+                    className="ms-3 cursor-pointer"
+                    onClick={() => setSearchSideBar(true)}
+                  />
                   <Link href="/shopping/Shopping" onClick={iconHandler}>
                     <a className="cg-header-a-tag ps-3 position-relative">
                       <BsFillCartFill

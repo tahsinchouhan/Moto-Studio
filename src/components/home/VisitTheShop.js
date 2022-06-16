@@ -134,7 +134,11 @@ function VisitTheShop({ categoryId }) {
                     objectFit="cover"
                     unoptimized={true}
                     loading="eager"
+                    className="featured-card-image-for-overlay"
                   />
+                  <div className="content-for-overlay">
+                    <div className="text">SHOP NOW</div>
+                  </div>
                   <div className=" row hover-div bg-light">
                     <Row>
                       <Col xs={4}>
@@ -185,7 +189,11 @@ function VisitTheShop({ categoryId }) {
                     objectFit="cover"
                     unoptimized={true}
                     loading="eager"
+                    className="featured-card-image-for-overlay"
                   />
+                  <div className="content-for-overlay">
+                    <div className="text">SHOP NOW</div>
+                  </div>
                   <div className=" row hover-div bg-light">
                     <Row>
                       <Col xs={4}>
@@ -236,12 +244,16 @@ function VisitTheShop({ categoryId }) {
                       alt="WildforestHoney"
                       width={580}
                       height={460}
-                      loading="lazy"
+                      // loading="lazy"
                       // layout="fill"
                       // objectFit="contain"
-                      // unoptimized={true}
-                      // loading="eager"
+                      unoptimized={true}
+                      loading="eager"
+                      className="featured-card-image-for-overlay"
                     />
+                    <div className="content-for-overlay content-for-overlay-big">
+                      <div className="text">SHOP NOW</div>
+                    </div>
                     <div className=" row hover-div bg-light">
                       <Row>
                         <Col xs={4}>
@@ -294,7 +306,11 @@ function VisitTheShop({ categoryId }) {
                     height={180}
                     loading="lazy"
                     objectFit="cover"
+                    className="featured-card-image-for-overlay"
                   />
+                  <div className="content-for-overlay">
+                    <div className="text">SHOP NOW</div>
+                  </div>
                   <div className=" row hover-div bg-light">
                     <Row>
                       <Col xs={4}>
@@ -343,7 +359,11 @@ function VisitTheShop({ categoryId }) {
                     height={180}
                     loading="lazy"
                     objectFit="cover"
+                    className="featured-card-image-for-overlay"
                   />
+                  <div className="content-for-overlay">
+                    <div className="text">SHOP NOW</div>
+                  </div>
                   <div className=" row hover-div bg-light">
                     <Row>
                       <Col xs={4}>
