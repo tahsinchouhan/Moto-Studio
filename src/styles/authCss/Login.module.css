@@ -9,13 +9,29 @@
   /* background: rgb(236, 234, 238); */
   margin: 0 auto;
   padding: 50px 78px;
-  font-family: 'Lora';
+  font-family: "Lora";
 }
+
+.login_div input {
+  font-family: "Mulish";
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.7rem 0;
+}
+
+.login_div .login-btn:hover,
+.login_div .login-btn:active,
+.login_div .login-btn:hover,
+.login_div .login-btn:active {
+  background-color: #5abf6b;
+  color: #fff;
+}
+
 .btn-submit {
   width: 205px;
   height: 56px;
   color: #fff !important;
-  background-color: #49DBC9!important;
+  background-color: #49dbc9 !important;
   border-radius: 0rem !important;
   padding: 16px 30px !important;
 }
@@ -25,7 +41,7 @@
   font-weight: bold;
   /* font-size: 20px; */
   /* line-height: 28px; */
-  color: #065934 !important;
+  color: #000 !important;
   /* padding: 4%; */
   cursor: pointer;
 }
@@ -42,7 +58,7 @@
 .forgot-div {
   padding-bottom: 6%;
 }
-a{
+a {
   color: #fff !important;
 }
 @media (min-width: 320px) and (max-width: 768px) {
@@ -53,10 +69,9 @@ a{
     padding: 25px 25px 51px 25px;
     white-space: nowrap;
   }
- 
 }
 
-@media only screen and (max-width:450px){
+@media only screen and (max-width: 450px) {
   .login_div {
     padding: 66px 34px !important;
   }
@@ -72,6 +87,14 @@ a{
   }
   .login_div {
     padding: 66px 33px !important;
+  }
 }
 
+.login-into-ur-acc {
+  font-family: "Lora";
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  color: #333333;
+  text-align: center;
 }

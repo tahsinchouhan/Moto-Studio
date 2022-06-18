@@ -114,10 +114,16 @@ export default function Login() {
             <span>Home &gt; </span>
           </div>
           <div className="products-header text-center">
-            <h1>Login Here</h1>
+            <h1>Login</h1>
           </div>
         </div>
       </div>
+
+      <div className="login-into-ur-acc pt-5">
+        <h1>Login into your account</h1>
+        <hr style={{ width: "3rem", margin: "2rem auto 1rem" }} />
+      </div>
+
       <div className="container-fluid">
         <div className="login_main">
           <div>
@@ -142,7 +148,7 @@ export default function Login() {
                           className="form-control form-control-lg px-2"
                           type="text"
                           name="email"
-                          placeholder="Enter Email / Mobile"
+                          placeholder="Enter email / mobile"
                           autoComplete="off"
                           style={formControl}
                         />
@@ -160,14 +166,20 @@ export default function Login() {
                         <ErrorMessage name="password" component={TextError} />
                       </div>
 
-                      <div className="text-center">
+                      <div className="text-center d-flex align-items-center justify-content-center">
                         <button
                           type="submit"
-                          className="btn btn-success w-100 py-2 rounded-0"
+                          className="btn visit-the-shop-button w-30 py-2 rounded-0"
                           disabled={authenticating}
                         >
                           {authenticating ? "Authenticating..." : "LOGIN"}
                         </button>
+                        <p style={{ margin: "0 1rem 0" }}>
+                          or{" "}
+                          <span style={{ textDecoration: "underline" }}>
+                            login via OTP
+                          </span>
+                        </p>
                         {/* <ButtonDark
                          type="submit" 
                           text={authenticating ? 'Authenticating...' : 'Login'}
@@ -176,9 +188,11 @@ export default function Login() {
                         /> */}
                       </div>
 
-                      <div className="text-end mt-3">
+                      <div className="text-center mt-3">
                         <Link href="/auth/ForgotPassword">
-                          <a className="login-forgot">Forgot Password ?</a>
+                          <a className="login-forgot">
+                            Forgot Password? Click here
+                          </a>
                         </Link>
                       </div>
 
@@ -186,7 +200,7 @@ export default function Login() {
                         className="divider position-relative mt-5"
                         style={{ height: 50 }}
                       >
-                        <hr />
+                        <hr style={{ color: "#000" }} />
                         <span
                           className="position-absolute"
                           style={{
@@ -212,18 +226,22 @@ export default function Login() {
                               <div
                                 key={provider.id}
                                 className="shadow w-100 py-3"
+                                style={{
+                                  backgroundColor: "#E88069",
+                                }}
                               >
                                 <button
                                   type="button"
                                   className="border-0 w-100 fw-bold bg-transparent rounded-0"
                                   style={{
                                     fontFamily: "Lora",
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center0",
                                     gap: "2rem",
                                     outline: "none",
+                                    color: "#fff",
                                   }}
                                   onClick={() =>
                                     signIn(provider.id, {
@@ -235,6 +253,7 @@ export default function Login() {
                                     src="/google.png"
                                     width={30}
                                     height={30}
+                                    alt="cgherbals"
                                   />
                                   Login with {provider.name}
                                 </button>
@@ -246,9 +265,14 @@ export default function Login() {
 
                       <div className="forgot-div text-center fw-bold mt-5">
                         <span>
-                          Don’t have Account? &nbsp;
+                          Don’t have an Account? &nbsp;
                           <Link href="/auth/Register">
-                            <a className="text-success">SIGNUP NOW</a>
+                            <a
+                              className="fw-bold text-black"
+                              style={{ textDecoration: "underline !important" }}
+                            >
+                              SIGN UP here
+                            </a>
                           </Link>
                         </span>
                       </div>
