@@ -174,12 +174,12 @@ export default function Login() {
                         >
                           {authenticating ? "Authenticating..." : "LOGIN"}
                         </button>
-                        <p style={{ margin: "0 1rem 0" }}>
+                        {/*<p style={{ margin: "0 1rem 0" }}>
                           or{" "}
                           <span style={{ textDecoration: "underline" }}>
                             login via OTP
                           </span>
-                        </p>
+                      </p>*/}
                         {/* <ButtonDark
                          type="submit" 
                           text={authenticating ? 'Authenticating...' : 'Login'}
