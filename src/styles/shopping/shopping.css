@@ -19,8 +19,8 @@
 
 .shop-product-img {
   position: relative;
-  width: 130px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 
@@ -166,7 +166,13 @@
 
   .margin-shop-toggle {
     padding-left: 12px;
+
   }
+}
+.lableFontWeight{
+  font-family: Georgia;
+  color: #000000;
+  padding-bottom: 5px;
 }
 
 @media screen and (max-width: 720px) {

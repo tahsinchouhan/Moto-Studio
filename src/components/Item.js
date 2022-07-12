@@ -55,7 +55,7 @@ const Item = ({
 
   return (
     <>
-      <Row className="mx-0" style={{ textAlign: "center" }}>
+      <Row className="mx-0 py-2" style={{ textAlign: "center" }}>
         <Col lg="6">
           <Row className="san">
             <Col lg="6" md="12" sm="12">
@@ -77,7 +77,7 @@ const Item = ({
             </Col>
             <Col className="margin-shop-toggle" lg="6" md="12">
               <p className="fw-bold shopping-p2-size">{product?.title || ""}</p>
-              <p className="shopping-p3-size">
+              <p className="shopping-p3-size py-lg-4">
                 Quantity &nbsp;{" "}
                 <span className="fw-bold ">{product_weight || ""}</span>
               </p>
@@ -85,9 +85,9 @@ const Item = ({
                 Product Code &nbsp;{" "}
                 <span className="fw-bold ">{SKU_Number || ""}</span>
               </p>
-              <span className={stockQty === 0 ? `text-danget` : `text-success`}>
+              {/* <span className={stockQty === 0 ? `text-danget` : `text-success`}>
                 {stockQty > 0 ? `${stockQty} stock left` : "out of stock"}
-              </span>
+              </span> */}
             </Col>
           </Row>
         </Col>
@@ -112,9 +112,9 @@ const Item = ({
               +{" "}
             </button>
           </div>
-          <p className=" shop-remove shopping-p3-size text-start text-lg-center">
+          <p className=" shop-remove shopping-p3-size text-start text-lg-start">
             <span
-              className="fw-bold text-danger"
+              className="fw-bold text-danger text-decoration-underline "
               onClick={() => deleteItem(product?._id, weight_type, _id)}
             >
               REMOVE
@@ -122,16 +122,16 @@ const Item = ({
           </p>
         </Col>
 
-        <Col lg="2" className="mt-0 mt-lg-5 text-start text-lg-center">
+        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">PRICE</span>
           <p className="fw-bold shopping-p4-size">₹ {price}</p>
         </Col>
-        <Col lg="2" className="mt-0 mt-lg-5 text-start text-lg-center">
+        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           <p className="fw-bold shopping-p4-size">₹ {quantity * price}</p>
-          {/* <div className="shopping-edit-text mt-5">
+          <div className="shopping-edit-text mt-5 pt-5 cursor-pointer">
             <p1> EDIT</p1>
-          </div> */}
+          </div>
         </Col>
       </Row>
       <hr />

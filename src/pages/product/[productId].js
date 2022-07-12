@@ -95,11 +95,11 @@ function ProductDetail({ productData }) {
                 <h1 className="product-name-text">
                   {productData?.title || "Product Name"}
                 </h1>
-                <p className="popup-paragraph1">
+                {/* <p className="popup-paragraph1">
                   {productData?.sub_title || "sub_title"}
-                </p>
+                </p> */}
 
-                <div className="mb-4">
+                <div className="mb-3 pt-lg-3">
                   <p className="popup-paragraph2 fw-bold">
                     CHOOSE YOUR QUANTITY
                   </p>
@@ -138,7 +138,7 @@ function ProductDetail({ productData }) {
                   <div className="input-group">
                     <input
                       type="text"
-                      className="form-control bg-white rounded-0 fs-6"
+                      className="form-control bg-white rounded-0 fs-10"
                       placeholder="Select No. of units"
                       readOnly
                     />
@@ -174,9 +174,9 @@ function ProductDetail({ productData }) {
                   </div>
                 </div>
                 <br />
-                <div className="product-Price-1 w-100">
-                  <span className="fs-2">₹ </span>
-                  <span className="fs-2">
+                {/* <div className="product-Price-1 w-100"> */}
+                  {/* <span className="fs-2">₹ </span> */}
+                  {/* <span className="fs-2">
                     {Number(selectedWeight?.price * count) -
                       Number(
                         selectedWeight?.discount === "percentage"
@@ -185,15 +185,15 @@ function ProductDetail({ productData }) {
                               (selectedWeight?.discount_value / 100)
                           : selectedWeight?.discount_value
                       )}
-                  </span>
-                  {selectedWeight?.discount_value && (
+                  </span> */}
+                  {/* {selectedWeight?.discount_value && (
                     <span className="text-muted fs-6 ms-3 text-decoration-line-through">
                       {" "}
                       ₹ {selectedWeight?.price * count || ""}
                     </span>
-                  )}
-                </div>
-                <div className="mt-3">
+                  )} */}
+                {/* </div> */}
+                <div className="mt-0">
                   <Row>
                     {selectedWeight?.count > 0 ? (
                       item.some((el) => el.product === productData?._id) ||
@@ -207,7 +207,7 @@ function ProductDetail({ productData }) {
                             className="mt-2"
                             onClick={() => router.push(`/shopping/Shopping`)}
                           >
-                            <ButtonDark text="VIEW CART" className="active" />
+                            <ButtonDark text="VIEW CART" className="active"  />
                           </div>
                         </Col>
                       ) : (
@@ -221,7 +221,7 @@ function ProductDetail({ productData }) {
                             );
                           }}
                         >
-                          <ButtonDark text="ADD TO CART" />
+                          <ButtonDark text="ADD TO CART"/>
                         </Col>
                       )
                     ) : (
@@ -249,9 +249,10 @@ function ProductDetail({ productData }) {
                 </p>
 
                 <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>
+                {/* <ul className="popup-ul mb-4 p-0 ps-3" style={{listStyleType:"square"}}> */}
                 <ul className="popup-ul mb-4 p-0 ps-3">
                   {productData?.description.split("•").map((item, index) => {
-                    if (item) return <li key={index}>{item}</li>;
+                    if (item) return <li key={index}>{item}</li>
                   }) || "description"}
                 </ul>
                 {/* <ul className="popup-ul fw-bold">
@@ -277,6 +278,7 @@ function ProductDetail({ productData }) {
                     <div
                       className="p-lg-5 mx-auto product-card-hover cursor-pointer"
                       onClick={() => router.push(`./${product?._id}`)}
+                      style={{backgroundColor:"#F8F8F8"}}
                     >
                       <div className="w-100 product-card-img">
                         <Image
@@ -320,7 +322,7 @@ function ProductDetail({ productData }) {
                           {/* {showPopuUp && (
                             <Popup data={product} setShowPopUp={setShowPopUp} />
                           )} */}
-                          <span className="product-card-details">
+                          <span className="product-card-details ms-lg-2">
                             Product Details
                           </span>
                         </div>
@@ -336,11 +338,11 @@ function ProductDetail({ productData }) {
                                 : product?.weight[0].discount_value
                             )}
                         </span>
-                        {product?.weight[0].discount_value && (
+                        {/* {product?.weight[0].discount_value && (
                           <span className="fs-6 text-muted ms-2 text-decoration-line-through">
                             ₹ {product?.weight[0]?.price}
                           </span>
-                        )}
+                        )} */}
                       </span>
 
                       {product?.weight[0]?.count > 0 ? (

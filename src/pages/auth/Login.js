@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 // import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-// import { apipath } from "../api/apiPath";
+import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
@@ -15,7 +15,6 @@ export default function Login() {
   const [message, setMessage] = useState(null);
   const [providers, setProviders] = useState(null);
   const router = useRouter();
-  console.log("providers :>> ", providers);
   const {
     authenticating,
     isLogin,
@@ -24,6 +23,7 @@ export default function Login() {
     loginFailure,
     fetchCartData,
   } = useContext(CardContext);
+  console.log("providers :>> ", CardContext);
 
   useEffect(() => {
     if (isLogin) {
@@ -34,6 +34,7 @@ export default function Login() {
   useEffect(() => {
     (async () => {
       const res = await getProviders();
+      console.log(res)
       setProviders(res);
     })();
   }, []);
@@ -84,6 +85,32 @@ export default function Login() {
       //   router.reload("/auth/UserProfile");
       // }
       // if (result.error) setMessage(result.message);
+      // const response = await fetch(apipath+`/api/v1/users/signin`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     email: values.email,
+      //     password: values.password,
+      //   }),
+      // });
+      
+      // const userSignin = async()=>{
+      //   try {
+      //     const result = await response.json();
+      //     console.log(result)
+      //     if(result.user && result.token) {
+      //       console.log("login complete and is isLogin "+isLogin+" isAuthenticated "+authenticating)
+      //       localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
+      //       router.push('/auth/UserProfile');
+      //     // router.reload("/auth/UserProfile");
+      //     }
+      //     if (result.error) setMessage(result.message);
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // }
+      // userSignin()
+
     } catch (error) {
       console.log(error);
       setMessage(error.response.data.message);

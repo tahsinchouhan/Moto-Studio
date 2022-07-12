@@ -2,7 +2,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import AboutNewsroom from "../../components/about/AboutNewsroom";
 import EmpoweredGroup from "../../components/about/EmpoweredGroup";
 import WhoWeAre from "../../components/about/WhoWeAre";
-
 function About() {
   return (
     <>
@@ -51,6 +50,10 @@ function About() {
         <Container>
           <Row className="py-5">
             <Col lg={3} md={6} className="py-4">
+              <p className="about-happy-customer-head">6 lakh+</p>
+              <p className="about-happy-customer-para">GATHERER FAMILIES BENEFITED</p>
+            </Col>
+            <Col lg={3} md={6} className="py-4">
               <p className="about-happy-customer-head">71000+</p>
               <p className="about-happy-customer-para">MEMBERS</p>
             </Col>
@@ -61,10 +64,6 @@ function About() {
             <Col lg={3} md={6} className="py-4">
               <p className="about-happy-customer-head">1500+</p>
               <p className="about-happy-customer-para">RETAIL STORES</p>
-            </Col>
-            <Col lg={3} md={6} className="py-4">
-              <p className="about-happy-customer-head">65</p>
-              <p className="about-happy-customer-para">SPECIES OF PRODUCE</p>
             </Col>
           </Row>
         </Container>

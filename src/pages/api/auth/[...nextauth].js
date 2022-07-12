@@ -14,6 +14,7 @@ export default NextAuth({
       name: 'Credentials',
       async authorize(credentials, req) {
         const { email, password } = credentials
+        console.log("credentials",credentials);
         const response = await fetch(apipath + `/api/v1/users/signin`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },

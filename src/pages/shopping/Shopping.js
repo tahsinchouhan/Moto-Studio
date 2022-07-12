@@ -113,10 +113,10 @@ function Shopping() {
 
   const displayRazorpay = async (data) => {
     const form = document.getElementById("payUform");
-    if (!user) {
-      router.push("/auth/Login");
-      return;
-    }
+    // if (!user) {
+    //   router.push("/auth/Login");
+    //   return;
+    // }
     if (data.length === 0) return false;
 
     if (!shippingAddress || !addressList) {
@@ -314,11 +314,11 @@ function Shopping() {
         <Row className="p-3">
           {step === 0 && (
             <Col lg={8} md={12} className="mb-4 text-center">
-              <h1 className="shopping-cart-heading mb-4">Shopping Cart</h1>
+              <h1 className="shopping-cart-heading mb-4 text-start">Shopping Cart</h1>
               <hr className="d-none d-lg-flex" />
               <Row className="d-none d-lg-flex">
                 <Col>
-                  <p className="m-0 shopping-p-size">PRODUCT DETAILS</p>
+                  <p className="m-0 ms-3 shopping-p-size text-start">PRODUCT DETAILS</p>
                 </Col>
                 <Col lg="2">
                   <p className="m-0 shopping-p-size">QUANTITY</p>
@@ -339,19 +339,22 @@ function Shopping() {
                   item.map((elem) => {
                     return <Item key={elem._id} {...elem} />;
                   })}
+                <div className="text-start text-uppercase fw-lighter mt-lg-4">
                 <span
                   className="text-decoration-underline cursor-pointer"
                   onClick={() => router.push("/product")}
                 >
                   Continue Shopping
                 </span>
+                </div>
               </div>
             </Col>
           )}
           {step === 1 && (
             <Col lg={8} md={12} className="mb-4 ">
-              <h1 className="shopping-cart-heading mb-4">Shipping Address</h1>
+              <h1 className="shopping-cart-heading mb-4">Delivery Details</h1>
               {/* <hr /> */}
+              <p style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}}>BILLING DETAILS</p>
               <div className="card-container card-div">
                 {!addressList ? (
                   <Formik
@@ -365,12 +368,12 @@ function Shopping() {
                           <Row>
                             <Col>
                               <div className="form-group user-field mb-4">
-                                {/* <label htmlFor="name">Name</label> */}
+                                <label className="lableFontWeight" htmlFor="full_name">First Name <span class="text-danger">*</span></label>
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="text"
                                   name="full_name"
-                                  placeholder="Full name"
+                                  placeholder="Enter your first name here"
                                   autoComplete="off"
                                   style={formControl}
                                 />
@@ -381,13 +384,50 @@ function Shopping() {
                               </div>
                             </Col>
                             <Col>
+                              <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="full_name">Last Name <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="full_name"
+                                  placeholder="Enter your last name here"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="full_name"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="email">Email Address <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="email"
+                                  name="email"
+                                  placeholder="Enter your email address here"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="email"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
                               <div className="col-md-12">
                                 <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="mobile">Mobile Number <span class="text-danger">*</span></label>
                                   <Field
                                     className="Contact-Us-form-input form-control"
                                     type="number"
                                     name="mobile"
-                                    placeholder="Mobile Number"
+                                    placeholder="Enter your mobile number here"
                                     style={formControl}
                                   />
                                   <ErrorMessage
@@ -398,15 +438,15 @@ function Shopping() {
                               </div>
                             </Col>
                           </Row>
-
                           <Row>
                             <Col>
                               <div className="form-group user-field mb-4">
+                              <label className="lableFontWeight" htmlFor="address">Street Address <span class="text-danger">*</span></label>
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="text"
                                   name="address"
-                                  placeholder="Address"
+                                  // placeholder=""
                                   style={formControl}
                                 />
                                 <ErrorMessage
@@ -420,25 +460,29 @@ function Shopping() {
                           <Row>
                             <Col>
                               <div className="form-group user-field  mb-4">
+                              <label className="lableFontWeight" htmlFor="city">City <span class="text-danger">*</span></label>
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="text"
-                                  name="area"
-                                  placeholder="Locality / Area (Optional)"
+                                  name="city"
+                                  // placeholder="Locality / Area (Optional)"
                                   style={formControl}
                                 />
                               </div>
                             </Col>
 
                             <Col>
+                            <div className="form-group user-field  mb-4">
+                            <label className="lableFontWeight" htmlFor="state">State/Province <span class="text-danger">*</span></label>
                               <div className="form-group user-field  mb-4">
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="text"
-                                  name="landmark"
-                                  placeholder="Landmark (Optional)"
+                                  name="state"
+                                  // placeholder="Landmark (Optional)"
                                   style={formControl}
                                 />
+                              </div>
                               </div>
                             </Col>
                           </Row>
@@ -446,11 +490,12 @@ function Shopping() {
                           <Row>
                             <Col>
                               <div className="form-group user-field  mb-4">
+                                <label className="lableFontWeight" htmlFor="pincode">Pincode <span class="text-danger">*</span></label>
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="number"
                                   name="pincode"
-                                  placeholder="Pincode"
+                                  // placeholder="Pincode"
                                   style={formControl}
                                 />
                                 <ErrorMessage
@@ -461,42 +506,210 @@ function Shopping() {
                             </Col>
                             <Col>
                               <div className="form-group user-field  mb-4">
+                                <label className="lableFontWeight" htmlFor="country">Country <span class="text-danger">*</span></label>
                                 <Field
                                   className="Contact-Us-form-input form-control"
                                   type="text"
-                                  name="city"
-                                  placeholder="City"
+                                  name="country"
+                                  // placeholder="Pincode"
                                   style={formControl}
                                 />
                                 <ErrorMessage
-                                  name="city"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="state"
-                                  placeholder="State"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="state"
+                                  name="country"
                                   component={TextError}
                                 />
                               </div>
                             </Col>
                           </Row>
 
-                          <div className="col-md-4">
+                          <p style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}} className="mt-3">IS THIS ORDER A GIFT?</p>
+                          <Row className="w-25 ms-2">
+                            <Col className="d-flex mb-1">
+                            <div class="form-check">
+                              <input 
+                              class="form-check-input" 
+                              type="checkbox" value="" 
+                              id="flexCheckCheckedYes"/>
+                              <label class="form-check-label" for="flexCheckCheckedYes">
+                                YES
+                              </label>
+                            </div>
+                            </Col>
+                            <Col className="d-flex">
+                            <div class="form-check">
+                              <input 
+                              class="form-check-input" 
+                              type="checkbox" value="" 
+                              id="flexCheckCheckedNo"/>
+                              <label class="form-check-label" for="flexCheckCheckedNo">
+                                No
+                              </label>
+                            </div>
+                            </Col>
+                          </Row>
+                          <p className="mt-4 lableFontWeight fs-5">Enter the details of the recipient:</p>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="full_name">First Name <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="full_name"
+                                  placeholder="Enter your first name here"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="full_name"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="full_name">Last Name <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="full_name"
+                                  placeholder="Enter your last name here"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="full_name"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="email">Email Address <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="email"
+                                  name="email"
+                                  placeholder="Enter your email address here"
+                                  autoComplete="off"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="email"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
+                              <div className="col-md-12">
+                                <div className="form-group user-field mb-4">
+                                <label className="lableFontWeight" htmlFor="mobile">Mobile Number <span class="text-danger">*</span></label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="number"
+                                    name="mobile"
+                                    placeholder="Enter your mobile number here"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="mobile"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </div>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field mb-4">
+                              <label className="lableFontWeight" htmlFor="address">Street Address <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="address"
+                                  // placeholder=""
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="address"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
+
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                              <label className="lableFontWeight" htmlFor="city">City <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="city"
+                                  // placeholder="Locality / Area (Optional)"
+                                  style={formControl}
+                                />
+                              </div>
+                            </Col>
+
+                            <Col>
+                            <div className="form-group user-field  mb-4">
+                            <label className="lableFontWeight" htmlFor="state">State/Province <span class="text-danger">*</span></label>
+                              <div className="form-group user-field  mb-4">
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="state"
+                                  // placeholder="Landmark (Optional)"
+                                  style={formControl}
+                                />
+                              </div>
+                              </div>
+                            </Col>
+                          </Row>
+
+                          <Row>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <label className="lableFontWeight" htmlFor="pincode">Pincode <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="number"
+                                  name="pincode"
+                                  // placeholder="Pincode"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="pincode"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                            <Col>
+                              <div className="form-group user-field  mb-4">
+                                <label className="lableFontWeight" htmlFor="country">Country <span class="text-danger">*</span></label>
+                                <Field
+                                  className="Contact-Us-form-input form-control"
+                                  type="text"
+                                  name="country"
+                                  // placeholder="Pincode"
+                                  style={formControl}
+                                />
+                                <ErrorMessage
+                                  name="country"
+                                  component={TextError}
+                                />
+                              </div>
+                            </Col>
+                          </Row>
+
+                          {/* <div className="col-md-4">
                             <div className="form-group user-field my-4">
                               <ButtonDark type="submit" text="SAVE ADDRESS" />
                             </div>
-                          </div>
+                          </div> */}
                         </Form>
                       );
                     }}
@@ -548,18 +761,20 @@ function Shopping() {
 
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="order-summary-p1">{totalItem} x Items</p>
+                  <p className="order-summary-p1 text-uppercase">{totalItem} x Items</p>
                 </div>
                 <div>
                   <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                 </div>
               </div>
-              <p className="order-summary-p1">SHIPPING</p>
+             <div className="d-flex align-items-center justify-content-between">
+             <p className="order-summary-p1">SHIPPING</p>
+              <span style={{fontSize:"13px"}}>₹0.00</span>
+             </div>
               {
                 <div className="free-home-delivery-div">
-                  {" "}
                   <p className=" m-0 px-2 pt-1 free-home-delivery-p">
-                    <span>APPLIED PROMO CODE </span>
+                    <span>APPLIED PROMO CODE</span>
                     <span className="fw-bold free-home-delivery-p2 ">
                       CODE50
                     </span>
@@ -603,12 +818,24 @@ function Shopping() {
                   <ButtonDark type="button" text="PLACE ORDER" />
                 </div>
               </div>
+              {/* <div className="text-center">
+                <div
+                  className="w-100 border-0 checkout-button"
+                  onClick={() => displayRazorpay(item)}
+                >
+                  {" "}
+                  <ButtonDark type="button" text="CHECKOUT" />
+                </div>
+              </div> */}
+              <div className="d-flex align-items-center justify-content-between cursor-pointer">
               <p
                 className="order-summary-p1 mt-3 hover"
                 onClick={() => setShow(true)}
               >
                 ADD PROMO CODE
               </p>
+              <span>+</span>
+              </div>
             </div>
           </Col>
         </Row>

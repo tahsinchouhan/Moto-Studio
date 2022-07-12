@@ -22,6 +22,7 @@ function Products() {
   const [price, setPrice] = useState([0, 9999]);
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
+  const [remedy, setRemedy] = useState([]);
   const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -29,6 +30,9 @@ function Products() {
 
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
+  );
+  const [checkedStateRemedy, setCheckedStateRemedy] = useState(
+    new Array(remedy.length).fill(false)
   );
 
   // const createSliderWithTooltip = Slider.createSliderWithTooltip;
@@ -62,6 +66,20 @@ function Products() {
       console.log(error);
     }
   };
+  const fetchDataRemedy = async (query = "") => {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `${apipath}/api/v1/product/list?${query.substring(1)}`
+      );
+      const objData = await res.json();
+      setLoading(false);
+      setTotalPages(Math.ceil(objData.all_pages));
+      setProductData(objData?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const fetchCategory = () => {
@@ -72,7 +90,6 @@ function Products() {
             const filteredData = objData?.data.filter(
               (data) => data.status === true
             );
-            console.log(filteredData);
             setCheckedState(new Array(filteredData.length).fill(false));
             let newfilteredData = filteredData.filter((data, ind) => ind < 3);
             setCategory([...newfilteredData].reverse());
@@ -80,12 +97,28 @@ function Products() {
         })
         .catch((error) => console.log(error));
     };
-
+    const fetchRemedy = () => {
+      fetch(`${apipath}/api/v1/remedy/list`)
+        .then((response) => response.json())
+        .then((objData) => {
+          if (objData?.data?.length) {
+            const filteredData = objData?.data.filter(
+              (data) => data.status === true
+            );
+            setCheckedStateRemedy(new Array(filteredData.length).fill(false));
+            let newfilteredData = filteredData.filter((data, ind) => ind < filteredData.length);
+            setRemedy([...newfilteredData].reverse());
+          }
+        })
+        .catch((error) => console.log(error));
+    };
     fetchCategory();
+    fetchRemedy();
     fetchData();
   }, []);
 
   useEffect(() => {
+    console.log(activeTab)
     if (activeTab) {
       const activeCategory = checkedState.map(
         (item, index) => index === Number(activeTab)
@@ -97,18 +130,44 @@ function Products() {
   }, [category, activeTab]);
 
   useEffect(() => {
+    if(activeTab){
+      const activeRemedy = checkedStateRemedy.map(
+        (item, index) => index === Number(activeTab)
+      );
+      setCheckedStateRemedy(activeRemedy);
+    }
+  }, [remedy, activeTab]);
+
+  useEffect(() => {
     const query = checkedState.reduce((query, currentState, index) => {
       if (currentState === true) {
-        return (query += `&category_id[]=` + category[index]._id);
+        return (query +=`&category_id[]=` + category[index]._id);
       }
       return query;
     }, "");
+
     if (price[0] !== 0 && price[0] !== 10000) {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
+    console.log(`category query is: ${query}`);
     // if (query !== "") fetchData(query);
     fetchData(query);
   }, [checkedState, category, price]);
+
+  useEffect(() => {
+    const query = checkedStateRemedy.reduce((query, currentState, index) => {
+      if (currentState === true) {
+        return (query += `&remedy_id[]=` + remedy[index]._id);
+      }
+      return query;
+    }, "");
+    console.log(`query is: ${query}`);
+    if (price[0] !== 0 && price[0] !== 10000) {
+      query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+    }
+    fetchDataRemedy(query);
+
+  }, [checkedStateRemedy, remedy, price]);
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -117,8 +176,15 @@ function Products() {
     setCheckedState(updatedCheckedState);
   };
 
+  const handleOnChangeRemedy = (position) => {
+    const updatedCheckedState = checkedStateRemedy.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedStateRemedy(updatedCheckedState);
+  };
+
   const handleSortBy = (value) => {
-    console.log(value, productData);
+    // console.log(value, productData);
 
     if (value === "0") {
       setLoading(true);
@@ -131,7 +197,7 @@ function Products() {
         (a, b) => a.weight[0].price - b.weight[0].price
       );
 
-      console.log(newProductData);
+      // console.log(newProductData);
 
       setProductData([...newProductData]);
       setLoading(false);
@@ -141,7 +207,7 @@ function Products() {
         (a, b) => b.weight[0].price - a.weight[0].price
       );
 
-      console.log(newProductData);
+      // console.log(newProductData);
       setProductData([...newProductData]);
       setLoading(false);
     }
@@ -194,7 +260,7 @@ function Products() {
                     );
                   })}
               </div>
-              {/*<div>
+              {/* <div>
                 <h6 className="product-category-text">REMEDY</h6>
                 <div className="form-check mb-3 ps-4 cursor-pointer">
                   <input
@@ -202,7 +268,7 @@ function Products() {
                     type="checkbox"
                     value={0}
                     checked={0}
-                    // onChange={() => handleOnChange(index)}
+                    onChange={() => handleOnChange(index)}
                   />
                   <label
                     className="form-check-product-item cursor-pointer"
@@ -256,7 +322,36 @@ function Products() {
                     {"Hair Problems"}
                   </label>
                 </div>
-              </div>*/}
+              </div> */}
+              <div>
+                <h6 className="product-category-text">REMEDY</h6>
+              </div>
+              {
+                remedy.length &&
+                  remedy.map((rem, index) => {
+                    return (
+                      <div
+                        className="form-check mb-3 ps-4 cursor-pointer"
+                        key={rem._id}
+                      >
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id={rem?._id}
+                          value={rem._id}
+                          checked={checkedStateRemedy[index]}
+                          onChange={() => handleOnChangeRemedy(index)}
+                        />
+                        <label
+                          className="form-check-product-item cursor-pointer"
+                          htmlFor={rem?._id}
+                        >
+                          {rem?.remedy_name || "Remedy Name"}
+                        </label>
+                      </div>
+                    );
+                  })
+              }
               <Slider
                 range
                 allowCross={false}
@@ -275,6 +370,7 @@ function Products() {
 
           <Col lg={9} md={9} xs={12}>
             <Row className="pt-3 px-lg-0 px-4">
+            
               <Col md={12} className="pe-0">
                 {/* <div> */}
                 <div className="product-38">
@@ -301,7 +397,7 @@ function Products() {
                 <hr />
               </Col>
             </Row>
-
+            
             <Row className="justify-content-center justify-content-lg-start">
               {!loading
                 ? productData?.length &&
