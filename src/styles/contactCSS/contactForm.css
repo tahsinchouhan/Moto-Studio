@@ -55,3 +55,21 @@
     white-space: nowrap;
     width: 35%;
   }
+  
+  .shiftToNeutralForm {
+    transform: translateX(0%) translateY(-100%);
+  }
+  .shiftToLeft {
+    transform: translateX(100%);
+  }
+  .maxheight{
+    max-height: 600px;
+    overflow: hidden
+  }
+  @media screen and (max-width:800px) {
+    .maxheight{
+      max-height: 780px;
+      overflow: hidden
+    }
+  }
+  

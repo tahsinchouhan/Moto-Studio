@@ -834,7 +834,7 @@ function Shopping() {
               >
                 ADD PROMO CODE
               </p>
-              <span>+</span>
+              <span onClick={() => setShow(true)}>+</span>
               </div>
             </div>
           </Col>
