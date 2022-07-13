@@ -101,13 +101,13 @@ function EmpoweredGroup() {
                       src={shaheed}
                       className="about-empower-carousel-padding" 
                       alt= "Images" 
-                      width={400} height={400} 
+                      width={600} height={440} 
                       objectFit="cover"
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4" style={{marginTop:"-20px"}}>
-                    <b>SHAHEED MAHENDRA KARMASOCIAL SECURITY SCHEME:</b>
+                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
+                    <b>SHAHEED MAHENDRA KARMA <br /> SOCIAL SECURITY SCHEME:</b>
                     <br />
                     <b>FY: 2020-21</b> | Beneficiaries: 355 | 
                     <br />
@@ -125,12 +125,12 @@ function EmpoweredGroup() {
                       src={scholarships}
                       className="about-empower-carousel-padding" 
                       alt= "Images" 
-                      width={400} height={400} 
+                      width={600} height={440} 
                       objectFit="cover"
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4" style={{marginTop:"-20px"}}>
+                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
                     <b>SCHOLARSHIPS FOR CHILDREN OF COOPERATIVE MEMBERS:</b>
                     <br />
                     <b>FY: 2020-21</b> | Beneficiaries: 8451 | 
@@ -150,12 +150,12 @@ function EmpoweredGroup() {
                       src={crop}
                       className="about-empower-carousel-padding" 
                       alt= "Images" 
-                      width={400} height={400} 
+                      width={600} height={440} 
                       objectFit="cover"
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4" style={{marginTop:"-20px"}}>
+                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
                     <b>CROP INSURANCE AND LOAN WITH SUBSIDISED INTEREST SCHEME FOR LAC GROWERS</b>
                     </p>
                   </div>
