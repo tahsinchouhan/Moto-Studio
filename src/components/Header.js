@@ -349,6 +349,7 @@ function Header() {
                         className="dropdown-menu show position-absolute shadow rounded"
                         style={{
                           width: "16.5em",
+                          zIndex: 100,
                         }}
                       >
                         <li onClick={() => setConnectViewDropDown(false)}>
