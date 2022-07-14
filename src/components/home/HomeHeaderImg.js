@@ -127,7 +127,7 @@ function HomeHeaderImg() {
                 width={1200}
                 height={800}
               />
-              <p className="bottom-left left-4">Herbal Remedies</p>
+              <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
@@ -142,7 +142,7 @@ function HomeHeaderImg() {
                 width={1200}
                 height={800}
               />
-              <p className="bottom-left green">Green Care</p>
+              <p className="bottom-left green"></p>
             </div>
           </Link>
         </Col>
@@ -157,7 +157,7 @@ function HomeHeaderImg() {
                 width={1200}
                 height={800}
               />
-              <p className="bottom-left">Summer Coolers</p>
+              <p className="bottom-left"></p>
             </div>
           </Link>
         </Col>
