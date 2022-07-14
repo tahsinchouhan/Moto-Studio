@@ -87,7 +87,7 @@ function SubHeader() {
         onMouseLeave={() => shopHandler()}
         style={{
           position: "sticky",
-          zIndex: "1000",
+          zIndex: "10",
           top: `${isShrunk ? "78px" : "100px"}`,
         }}
       >
