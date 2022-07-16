@@ -23,7 +23,7 @@ export default function Login() {
     loginFailure,
     fetchCartData,
   } = useContext(CardContext);
-  console.log("providers :>> ", CardContext);
+
 
   useEffect(() => {
     if (isLogin) {
@@ -34,7 +34,6 @@ export default function Login() {
   useEffect(() => {
     (async () => {
       const res = await getProviders();
-      console.log(res)
       setProviders(res);
     })();
   }, []);

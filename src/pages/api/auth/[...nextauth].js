@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
+// import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials"
 import { apipath } from "../apiPath";
 
@@ -14,7 +14,6 @@ export default NextAuth({
       name: 'Credentials',
       async authorize(credentials, req) {
         const { email, password } = credentials
-        console.log("credentials",credentials);
         const response = await fetch(apipath + `/api/v1/users/signin`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -94,7 +93,7 @@ export default NextAuth({
       return token;
     },
     async session({ session, token }) {
-      // console.log('token :>> ', token);
+      // console.log('token', token)
       if(token) {
         session.user = token.user
         session.token = token.token
