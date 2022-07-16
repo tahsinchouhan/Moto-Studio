@@ -49,6 +49,12 @@ a {
   display: flex;
   justify-content: center;
 }
+.categoryItemImageHover{
+  transition: transform 0.7s ease-in-out;
+}
+.categoryItemImageHover:hover{
+  transform: scale(1.1);
+}
 @media screen and (max-width: 1200px) {
   .sub-header-gift-box {
     padding-right: 0% !important;

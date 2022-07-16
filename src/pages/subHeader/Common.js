@@ -127,7 +127,7 @@ function Common({ menuData }) {
                     </div>
                   </Col>
                   <Col md={4} lg={4}>
-                    <div className="">
+                    <div className="categoryItemImageHover">
                     <Image
                         src={
                           menu?.images?.length
@@ -135,8 +135,8 @@ function Common({ menuData }) {
                             : BrahmiChurna
                         }
                         alt={menu?.title || ""}
-                        width={350}
-                        height={180}
+                        width={330}
+                        height={160}
                       />
                     </div>
                 </Col>
