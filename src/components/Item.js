@@ -130,7 +130,7 @@ const Item = ({
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           <p className="fw-bold shopping-p4-size">₹ {quantity * price}</p>
           <div className="shopping-edit-text mt-5 pt-5 cursor-pointer">
-            <p1> EDIT</p1>
+            <p>EDIT</p>
           </div>
         </Col>
       </Row>

@@ -158,7 +158,7 @@ function ContactForm() {
     setGrievance(event.target.value);
   };
 
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const handleChangeNum = (event) => {
     setIndex(event.target.value);
     if(event.target.value===1){
@@ -171,31 +171,37 @@ function ContactForm() {
   return <>
          <div className="contact-container">
           <div className="container-fluid">
-          <Container className="demo1 ">
-              <div className="text-center">
-                <FormControl className="text-center">
-                <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={index}
-                label="Num"
-                onChange={handleChangeNum}
-                >
-                <MenuItem value={1}>About us</MenuItem>
-                <MenuItem value={2}>Grievance</MenuItem>
-              </Select>
-                </FormControl>
+          <Container className="demo1">
+              <div>
+                <div className="my-4">
+                  <p className="about-empowered-heading">How can we help?</p>
+                  <hr className="about-empowered-top-hr mx-auto mt-3"></hr>
+                </div>
 
-                {/* <h1 className="Contact-Us-heading ">Contact Us</h1>
-                <hr className="contact-form-hr mx-auto mb-4" /> */}
+                <div className="text-center">
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      value={index}
+                      label="number"
+                      onChange={handleChangeNum}
+                      className="py-0 text-start px-3 contact-text-family select_box select-button-width"
+                      >
+                      <MenuItem value={0}>Select an Option</MenuItem>
+                      <MenuItem value={1}>About us</MenuItem>
+                      <MenuItem value={2}>Grievance</MenuItem>
+                    </Select>
+                </div>
+                <h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>
+                <hr className="contact-form-hr mx-auto mb-4" />
                 <p className="contact-para mt-4">
                   If you have any questions, or are looking to collaborate, we are all
                   ears!
                 </p>
               </div>
+              
               <div className="text-center text-success text-bold fw-bold my-3">{msg}</div>
               <div className="maxheight">
-              <Form className="Contact-Us-form pt-5" ref={ContactUsTab} >
+              <Form className="Contact-Us-form pt-4 mt-1" ref={ContactUsTab} >
                 <Row>
                   <Col md={12} lg={6}>
                     <Form.Label className=" fw-bold ">First name</Form.Label>

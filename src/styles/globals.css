@@ -81,6 +81,10 @@ a {
     background-color: hsl(200, 20%, 95%);
   }
 }
+.reducefaqwidth{
+  width: 60%;
+  margin: 1vmax auto 4vmax;
+}
 
 @import "./headerCss/Header.module.css";
 @import "./headerCss/SubHeader.module.css";
@@ -114,6 +118,9 @@ a {
   }
   .Grocery-foods {
     text-align: center;
+  }
+  .reducefaqwidth{
+    width: 98%;
   }
 }
 

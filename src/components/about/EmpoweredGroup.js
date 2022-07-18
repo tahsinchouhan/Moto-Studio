@@ -106,17 +106,11 @@ function EmpoweredGroup() {
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
-                    <b>SHAHEED MAHENDRA KARMA <br /> SOCIAL SECURITY SCHEME:</b>
-                    <br />
-                    <b>FY: 2020-21</b> | Beneficiaries: 355 | 
-                    <br />
-                    Amount : Rs. 5.33 Cr
-                    <br />
-                    <b>FY: 2021-22</b> | Beneficiaries: 3472 | 
-                    <br />
-                    Amount: Rs. 52.19 Cr.
-                    </p>
+                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
+                      <b>SHAHEED MAHENDRA KARMA <br /> SOCIAL SECURITY SCHEME:</b>
+                      <p className="pt-1"><b>FY: 2020-21</b> | Beneficiaries: 355 | <br />Amount : Rs. 5.33 Cr</p> 
+                      <p style={{marginTop:"-10px"}}><b>FY: 2021-22 </b> | Beneficiaries: 3472 |<br /> Amount: Rs. 52.19 Cr.</p>
+                    </div>
                   </div>
                 </div>
                 <div className="text-center">
@@ -130,17 +124,11 @@ function EmpoweredGroup() {
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
-                    <b>SCHOLARSHIPS FOR CHILDREN OF COOPERATIVE MEMBERS:</b>
-                    <br />
-                    <b>FY: 2020-21</b> | Beneficiaries: 8451 | 
-                    <br />
-                    Amount : Rs. 9.29 Cr
-                    <br />
-                    <b>FY: 2021-22</b> | Beneficiaries: 3219 | 
-                    <br />
-                    Amount: Rs. 1.31 Cr.
-                    </p>
+                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
+                      <b>SCHOLARSHIPS FOR CHILDREN OF COOPERATIVE MEMBERS:</b>
+                      <p className="pt-1"><b>FY: 2020-21</b> | Beneficiaries: 8451 | <br /> Amount : Rs. 9.29 Cr</p>
+                      <p style={{marginTop:"-10px"}}><b>FY: 2021-22</b> | Beneficiaries: 3219 |<br />Amount: Rs. 1.31 Cr.</p>
+                    </div>
                   </div>
                 </div>
                 

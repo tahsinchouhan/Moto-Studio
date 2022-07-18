@@ -19,22 +19,27 @@ const faq = () => {
     };
     fetchFAQ();
   }, []);
-
   return (
-    <div className="m-5">
-      <Accordion>
-        {
-          faq.map((item, index) => {
-          return (
-            <Accordion.Item eventKey={index}>
-              <Accordion.Header>{item.question}</Accordion.Header>
-              <Accordion.Body>{item.answer}</Accordion.Body>
-            </Accordion.Item>
-          );
-        })
-        }
-      </Accordion>
-    </div>
+    <>
+      <div className="my-5">
+        <p className="about-empowered-heading">FAQ</p>
+        <hr className="about-empowered-top-hr mx-auto mt-3"></hr>
+      </div>
+      <div className="reducefaqwidth">
+        <Accordion>
+          {
+            faq.map((item, index) => {
+            return (
+              <Accordion.Item eventKey={index}>
+                <Accordion.Header>{item.question}</Accordion.Header>
+                <Accordion.Body>{item.answer}</Accordion.Body>
+              </Accordion.Item>
+            );
+          })
+          }
+        </Accordion>
+      </div>
+    </>
   );
 };
 
