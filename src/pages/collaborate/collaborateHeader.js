@@ -4,6 +4,7 @@ import Button from "../../components/button/ButtonLight";
 import { Row, Col, Container } from "react-bootstrap";
 import CollaborateHeaderImg from "../../assets/images/collaborate/CollaborateBanner.png";
 import Link from "next/link";
+import { lineHeight } from "@mui/system";
 
 function CollaborateHeader() {
   return (
@@ -20,7 +21,7 @@ function CollaborateHeader() {
           <Row className=" justify-content-md-start gutter-collaborate-fix justify-content-center">
             <Col md={8} lg={6} className="col-10">
               <Row className="gutter-collaborate-fix">
-                <Col md={9} className="py-md-3 my-2 ">
+                <Col md={9} className="py-md-3 my-2">
                   <p className="collaborate-heads-head-mobile  mb-0 ">
                     Business
                   </p>
@@ -53,11 +54,11 @@ function CollaborateHeader() {
       </div>
 
       <div className="collaborate-header-img">
-        <Container className="mt-4">
+        <Container>
           <Row className=" gutter-collaborate-fix">
-            <Col md={6} className="col-10">
-              <Row className="gutter-collaborate-fix">
-                <Col md={10} className="py-md-4 my-2 ">
+            <Col md={7} className="col-10">
+              <Row className="gutter-collaborate-fix ms-3">
+                <Col md={10}>
                   <div>
                     <p
                       className="collaborate-heads-head  me-2 mb-0 text-center text-md-start"
@@ -81,7 +82,7 @@ function CollaborateHeader() {
                   </div>
 
                   <div className="collaborate-badge">
-                    <div className="text-bg">
+                    <div className="text-bg px-3 py-2">
                       <p>
                         Organically Certified Raw & Processed Minor Forest
                         Produce
@@ -108,11 +109,11 @@ function CollaborateHeader() {
                     </span>
 
                     <span className="mb-lg-5 mt-md-4 mb-0 d-inline-block">
-                      <Link href={`/product`}>
+                      <Link href={`/tenders`}>
                         <a>
                           <Button
                             className="collaborate-header-shop-now-button"
-                            text="SHOP NOW &nbsp; &gt;"
+                            text="TENDERS &nbsp; &gt;"
                           />
                         </a>
                       </Link>

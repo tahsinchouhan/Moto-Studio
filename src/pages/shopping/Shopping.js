@@ -6,6 +6,7 @@ import Item from "../../components/Item";
 import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import axios from 'axios'
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
@@ -32,74 +33,86 @@ function loadScript(src) {
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
+    // console.log('user data is ',user);
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
   const [promoValue, setPromoValue] = useState(null);
   const [shippingAddress, setShippingAddress] = useState(null);
+  const [billingAddress, setBillingAddress] = useState(null);
   const [step, setStep] = useState(0);
   const [addressList, setAddressList] = useState(false);
 
-  // Shippin address configurations
-  const [msg, setMsg] = useState('');
-  const [shippingAdd, setShippingAdd] = useState({
-    first_name:"",
-    last_name:"",
-    email:"",
-    mobile:"",
-    address:"",
-    city:"",
-    state:"",
-    pincode:"",
-    country:"",
-  })
-  const [giftAdd, setGiftAdd] = useState({
-    gift_firstname:"",
-    gift_lastname:"",
-    gift_email:"",
-    gift_mobile:"",
-    gift_address:"",
-    gift_city:"",
-    gift_state:"",
-    gift_pincode:"",
-    gift_country:"",
-  })
-  const {first_name, last_name, email, mobile, address, city, state, pincode, country} = shippingAdd
-  const {gift_firstname, gift_lastname, gift_email, gift_mobile, gift_address, gift_city, gift_state, gift_pincode, gift_country} = giftAdd
   
-  const changeShippinAdd = e => {
-    const {name,value} = e.target
-    // setShippinAdd(prev => {
-    //   return {
-    //     ...prev,
-    //     [name]: value
-    //   }
-    // })
-    setShippingAdd({...shippingAdd,[name]:value})
-  }
-  const changeGiftAdd = e => {
-    const {name,value} = e.target
-    setGiftAdd({...giftAdd,[name]:value})
-  }
+  
+  
+  const { data: session, status } = useSession();
+  
+  const initialValues = {
+    full_name: billingAddress?.full_name || "",
+    first_name: billingAddress?.first_name || "",
+    last_name: billingAddress?.last_name || "",
+    email: billingAddress?.email || "",
+    mobile: billingAddress?.mobile || "",
+    pincode: billingAddress?.pincode || "",
+    address: billingAddress?.address || "",
+    country: billingAddress?.country || "",
+    city: billingAddress?.city || "",
+    state: billingAddress?.state || "",
+    gift_firstname: shippingAddress?.gift_firstname || "",
+    gift_lastname: shippingAddress?.gift_lastname || "",
+    gift_email: shippingAddress?.gift_email || "",
+    gift_mobile: shippingAddress?.gift_mobile || "",
+    gift_pincode: shippingAddress?.gift_pincode || "",
+    gift_address: shippingAddress?.gift_address || "",
+    gift_country: shippingAddress?.gift_country || "",
+    gift_city: shippingAddress?.gift_city || "",
+    gift_state: shippingAddress?.gift_state || "",
+  };
+  
+  const validationSchema = Yup.object({
+    first_name: Yup.string().required("This field is required"),
+    last_name: Yup.string().required("This field is required"),
+    email: Yup.string().required("This field is required"),
+    mobile: Yup.string().required("This field is required").min(10).max(10),
+    address: Yup.string().required("This field is required"),
+    city: Yup.string().required("This field is required"),
+    state: Yup.string().required("This field is required"),
+    pincode: Yup.string().required("This field is required").min(6).max(6),
+    country: Yup.string().required("This field is required"),
+    gift_firstname: Yup.string().required("This field is required"),
+    gift_lastname: Yup.string().required("This field is required"),
+    gift_email: Yup.string().required("This field is required"),
+    gift_mobile: Yup.string().required("This field is required").min(10).max(10),
+    gift_address: Yup.string().required("This field is required"),
+    gift_city: Yup.string().required("This field is required"),
+    gift_state: Yup.string().required("This field is required"),
+    gift_pincode: Yup.string().required("This field is required").min(6).max(6),
+    gift_country: Yup.string().required("This field is required"),
+  });
 
+  // Shipping address configurations
+  const [msg, setMsg] = useState('');
   const [giftMsg, setGiftMsg] = useState("")
-  const chackedGift = e => {
+
+  const gift_firstname = billingAddress?.first_name
+  const chackedGift = (e) => {
     if(e.target.id === "flexCheckCheckedNo"){
-      setGiftMsg("Sender Address and Recipient address will be same")
-      setGiftAdd({
-        gift_firstname:first_name,
-        gift_lastname:last_name,
-        gift_email: email,
-        gift_mobile: mobile,
-        gift_address: address,
-        gift_city: city,
-        gift_state: state,
-        gift_pincode: pincode,
-        gift_country: country,
+      console.log("Sender Address and Recipient address will be same")
+      setShippingAddress({
+        gift_firstname: billingAddress?.first_name,
+        gift_lastname: billingAddress?.last_name,
+        gift_email: billingAddress?.email,
+        gift_mobile: billingAddress?.mobile,
+        gift_pincode: billingAddress?.pincode,
+        gift_address: billingAddress?.address,
+        gift_country: billingAddress?.country,
+        gift_city: billingAddress?.city,
+        gift_state: billingAddress?.state,
       })
     }
     if(e.target.id === "flexCheckCheckedYes"){
-      setGiftAdd({
+      setShippingAddress({
         gift_firstname:"",
         gift_lastname:"",
         gift_email:"",
@@ -113,90 +126,34 @@ function Shopping() {
       setGiftMsg("")
     }
   }
-
-
-
-
-  const submitShippingAdd = async (e) => {
-    e.preventDefault()
-    try {
-      if (first_name && last_name && email && mobile && address && city && state && pincode && country) {
-        let merged = {...shippingAdd, ...giftAdd};
-        const response = await fetch(apipath +'/api/v1/order/shipping-address/create',{
-          method: "post",
-          headers: {
-            'Content-Type': "application/json",
-          },
-          body: JSON.stringify(merged)
-        })
-        const jsonData = await response.json()
-        if (jsonData.data) {
-          setMsg("Your Query has been Sent Successfully")
-          setShippingAdd({
-            first_name:"",
-            last_name:"",
-            email:"",
-            mobile:"",
-            address:"",
-            city:"",
-            state:"",
-            pincode:"",
-            country:"",
-          })
-          setGiftAdd({
-            gift_firstname:"",
-            gift_lastname:"",
-            gift_email:"",
-            gift_mobile:"",
-            gift_address:"",
-            gift_city:"",
-            gift_state:"",
-            gift_pincode:"",
-            gift_country:"",
-          })
-        }
-      } else {
-        alert('All field is required')
-        return false;
-      }     
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
+// End shipping Address
   
-
-
-
-
-  const { data: session, status } = useSession();
-
-  const initialValues = {
-    first_name: shippingAdd?.first_name || "",
-    last_name: shippingAdd?.last_name || "",
-    email: shippingAdd?.email || "",
-    mobile: shippingAdd?.mobile || "",
-    address: shippingAdd?.address || "",
-    city: shippingAdd?.city || "",
-    state: shippingAdd?.state || "",
-    pincode: shippingAdd?.pincode || "",
-    country: shippingAdd?.country || "",
-  };
-
-  const validationSchema = Yup.object({
-    first_name: Yup.string().required("This field is required"),
-    last_name: Yup.string().required("This field is required"),
-    email: Yup.string().required("This field is required"),
-    mobile: Yup.string().required("This field is required").min(10).max(10),
-    address: Yup.string().required("This field is required"),
-    city: Yup.string().required("This field is required"),
-    state: Yup.string().required("This field is required"),
-    pincode: Yup.string().required("This field is required").min(6).max(6),
-    country: Yup.string().required("This field is required"),
-  });
-
   const onSubmit = async (values, onSubmitProps) => {
-    setShippingAddress(values);
+    setShippingAddress({
+      gift_firstname: values?.gift_firstname || "",
+      gift_lastname: values?.gift_lastname || "",
+      gift_email: values?.gift_email || "",
+      gift_mobile: values?.gift_mobile || "",
+      gift_pincode: values?.gift_pincode || "",
+      gift_address: values?.gift_address || "",
+      gift_country: values?.gift_country || "",
+      gift_city: values?.gift_city || "",
+      gift_state: values?.gift_state || "",
+    });
+    setBillingAddress({
+      full_name: values?.first_name+" "+values?.last_name || "",
+      first_name: values?.first_name || "",
+      last_name: values?.last_name || "",
+      email: values?.email || "",
+      mobile: values?.mobile || "",
+      pincode: values?.pincode || "",
+      address: values?.address || "",
+      // area: values?.area || "",
+      // landmark: values?.landmark || "",
+      country: values?.country || "",
+      city: values?.city || "",
+      state: values?.state || "",
+    })
     setAddressList(true);
   };
 
@@ -247,13 +204,13 @@ function Shopping() {
 
   const displayRazorpay = async (data) => {
     const form = document.getElementById("payUform");
-    // if (!user) {
-    //   router.push("/auth/Login");
-    //   return;
-    // }
+    if (!user) {
+      router.push("/auth/Login");
+      return;
+    }
     if (data.length === 0) return false;
 
-    if (!shippingAddress || !addressList) {
+    if (!shippingAddress || !billingAddress) {
       setStep(1);
       return;
     }
@@ -262,10 +219,12 @@ function Shopping() {
     //   "https://checkout.razorpay.com/v1/checkout.js"
     // );
     // if (!res) {
-    //   alert("Razorpay SDK failed to load . Are you online!");
-    //   return;
-    // }
-
+      //   alert("Razorpay SDK failed to load . Are you online!");
+      //   return;
+      // }
+      
+      
+    
     let result = [];
     let products_id = [];
 
@@ -279,52 +238,57 @@ function Shopping() {
       products_id.push(val.product?._id);
     });
 
-    if (
-      data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-        (promoValue?.value || 0) >
-      40000
-    ) {
-      alert("Amount exceeds the limit rs.40000 for per Transaction");
-      return false;
-    }
+    // if (
+    //   data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+    //     (promoValue?.value || 0) >
+    //   40000
+    // ) {
+    //   alert("Amount exceeds the limit rs.40000 for per Transaction");
+    //   return false;
+    // }
+    const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
+      products: result,
+      total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+      total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
+      total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
+      user_id: user._id,
+      address:'Raipur', 
+      billingAddress, shippingAddress
+    })
+    console.log(createOrder);
 
-    const hashPayload = {
-      key: "gtKFFx",
-      txnid: Date.now().toString(),
-      amount:
-        data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-        (promoValue?.value || 0),
-      productinfo: result,
-      firstname: user?.first_Name,
-      email: user?.email,
-      SALT: "wia56q6O",
-    };
-    const hash = sha512(
-      `${hashPayload.key}|${hashPayload.txnid}|${
-        hashPayload.amount
-      }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-        hashPayload.email
-      }|||||||||||${hashPayload.SALT}`
-    );
-    form.key.value = hashPayload.key;
-    form.txnid.value = hashPayload.txnid;
-    form.productinfo.value = hashPayload.productinfo.toString();
-    form.amount.value = hashPayload.amount;
-    form.email.value = hashPayload.email;
-    form.phone.value = user?.mobile;
-    form.firstname.value = hashPayload.firstname;
-    form.hash.value = hash;
-    form.submit();
+    // if(createOrder.data){
+    //   const hashPayload = {
+    //     key: "gtKFFx",
+    //     txnid: Date.now().toString(),
+    //     amount:
+    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+    //       (promoValue?.value || 0),
+    //     productinfo: result,
+    //     firstname: user?.first_Name,
+    //     email: user?.email,
+    //     SALT: "wia56q6O",
+    //   };
+    //   const hash = sha512(
+    //     `${hashPayload.key}|${hashPayload.txnid}|${
+    //       hashPayload.amount
+    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+    //       hashPayload.email
+    //     }|||||||||||${hashPayload.SALT}`
+    //   );
+    //   form.key.value = hashPayload.key;
+    //   form.txnid.value = hashPayload.txnid;
+    //   form.productinfo.value = hashPayload.productinfo.toString();
+    //   form.amount.value = hashPayload.amount;
+    //   form.email.value = hashPayload.email;
+    //   form.phone.value = user?.mobile;
+    //   form.firstname.value = hashPayload.firstname;
+    //   form.hash.value = hash;
+    //   form.submit();
+    // }
+    
     return;
 
-    // const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
-    //   products: result,
-    //   total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
-    //   total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
-    //   total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
-    //   customer_id: userData.user._id,
-    //   address:'Raipur'
-    // })
 
     const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
       method: "POST",
@@ -511,13 +475,11 @@ function Shopping() {
                                   placeholder="Enter your first name here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={first_name}
-                                  onChange={changeShippinAdd}
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="first_name"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -530,13 +492,11 @@ function Shopping() {
                                   placeholder="Enter your last name here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={last_name}
-                                  onChange={changeShippinAdd}
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="last_name"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
@@ -551,13 +511,11 @@ function Shopping() {
                                   placeholder="Enter your email address here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={email}
-                                  onChange={changeShippinAdd}
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="email"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -570,13 +528,12 @@ function Shopping() {
                                     name="mobile"
                                     placeholder="Enter your mobile number here"
                                     style={formControl}
-                                    value={mobile}
-                                  onChange={changeShippinAdd}
+                                    
                                   />
-                                  {/* <ErrorMessage
+                                  <ErrorMessage
                                     name="mobile"
                                     component={TextError}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                             </Col>
@@ -591,13 +548,12 @@ function Shopping() {
                                   name="address"
                                   // placeholder=""
                                   style={formControl}
-                                  value={address}
-                                  onChange={changeShippinAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="address"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
@@ -611,13 +567,12 @@ function Shopping() {
                                   name="city"
                                   // placeholder="Locality / Area (Optional)"
                                   style={formControl}
-                                  value={city}
-                                  onChange={changeShippinAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="city"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
 
@@ -631,13 +586,12 @@ function Shopping() {
                                   name="state"
                                   // placeholder="Landmark (Optional)"
                                   style={formControl}
-                                  value={state}
-                                  onChange={changeShippinAdd}
+                                 
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="state"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                               </div>
                             </Col>
@@ -651,13 +605,12 @@ function Shopping() {
                                   type="number"
                                   name="pincode"
                                   style={formControl}
-                                  value={pincode}
-                                  onChange={changeShippinAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="pincode"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -668,18 +621,18 @@ function Shopping() {
                                   type="text"
                                   name="country"
                                   style={formControl}
-                                  value={country}
-                                  onChange={changeShippinAdd}
+                                 
                                 />
-                                {/* <ErrorMessage
+                                <ErrorMessage
                                   name="country"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
 
                           <p style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}} className="mt-3">IS THIS ORDER A GIFT?</p>
+                          
                           <Row className="w-25 ms-2">
                             <Col className="d-flex mb-1">
                             <div className="form-check">
@@ -687,7 +640,7 @@ function Shopping() {
                                 className="form-check-input" 
                                 type="radio" 
                                 id="flexCheckCheckedYes"
-                                name="giftorder"
+                                name="giftaddressorder"
                                 onClick={chackedGift}
                                 />
                               <label className="form-check-label" htmlFor="flexCheckCheckedYes">
@@ -698,10 +651,10 @@ function Shopping() {
                             <Col className="d-flex">
                             <div className="form-check">
                               <input 
+                                className="form-check-input" 
                                 type="radio" 
                                 id="flexCheckCheckedNo"
-                                name="giftorder"
-                                className="form-check-input" 
+                                name="giftaddressorder"
                                 onClick={chackedGift}
                               />
                               <label className="form-check-label" htmlFor="flexCheckCheckedNo">
@@ -710,7 +663,7 @@ function Shopping() {
                             </div>
                             </Col>
                           </Row>
-                          <div className="text-start text-success text-bold my-3 fs-4">{giftMsg}</div>
+
                           <p className="mt-4 lableFontWeight fs-5">Enter the details of the recipient:</p>
                           
                           <Row>
@@ -724,13 +677,11 @@ function Shopping() {
                                   placeholder="Enter your first name here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={gift_firstname}
-                                  onChange={changeGiftAdd}
                                 />
-                                {/* <ErrorMessage
-                                  name="f_name"
+                                <ErrorMessage
+                                  name="gift_firstname"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -743,13 +694,12 @@ function Shopping() {
                                   placeholder="Enter your last name here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={gift_lastname}
-                                  onChange={changeGiftAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
-                                  name="l_name"
+                                <ErrorMessage
+                                  name="gift_lastname"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
@@ -764,13 +714,12 @@ function Shopping() {
                                   placeholder="Enter your email address here"
                                   autoComplete="off"
                                   style={formControl}
-                                  value={gift_email}
-                                  onChange={changeGiftAdd}
+                                 
                                 />
-                                {/* <ErrorMessage
-                                  name="email"
+                                <ErrorMessage
+                                  name="gift_email"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -783,13 +732,12 @@ function Shopping() {
                                     name="gift_mobile"
                                     placeholder="Enter your mobile number here"
                                     style={formControl}
-                                    value={gift_mobile}
-                                    onChange={changeGiftAdd}
+                                    
                                   />
-                                  {/* <ErrorMessage
-                                    name="mobile"
+                                  <ErrorMessage
+                                    name="gift_mobile"
                                     component={TextError}
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                             </Col>
@@ -804,13 +752,12 @@ function Shopping() {
                                   name="gift_address"
                                   // placeholder=""
                                   style={formControl}
-                                  value={gift_address}
-                                  onChange={changeGiftAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
-                                  name="address"
+                                <ErrorMessage
+                                  name="gift_address"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
@@ -824,8 +771,10 @@ function Shopping() {
                                   name="gift_city"
                                   // placeholder="Locality / Area (Optional)"
                                   style={formControl}
-                                  value={gift_city}
-                                  onChange={changeGiftAdd}
+                                />
+                                <ErrorMessage
+                                  name="gift_city"
+                                  component={TextError}
                                 />
                               </div>
                             </Col>
@@ -840,8 +789,10 @@ function Shopping() {
                                   name="gift_state"
                                   // placeholder="Landmark (Optional)"
                                   style={formControl}
-                                  value={gift_state}
-                                  onChange={changeGiftAdd}
+                                />
+                                <ErrorMessage
+                                  name="gift_state"
+                                  component={TextError}
                                 />
                               </div>
                               </div>
@@ -857,13 +808,12 @@ function Shopping() {
                                   name="gift_pincode"
                                   // placeholder="Pincode"
                                   style={formControl}
-                                  value={gift_pincode}
-                                  onChange={changeGiftAdd}
+                                 
                                 />
-                                {/* <ErrorMessage
-                                  name="pincode"
+                                <ErrorMessage
+                                  name="gift_pincode"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                             <Col>
@@ -875,30 +825,28 @@ function Shopping() {
                                   name="gift_country"
                                   // placeholder="Pincode"
                                   style={formControl}
-                                  value={gift_country}
-                                  onChange={changeGiftAdd}
+                                  
                                 />
-                                {/* <ErrorMessage
-                                  name="country"
+                                <ErrorMessage
+                                  name="gift_country"
                                   component={TextError}
-                                /> */}
+                                />
                               </div>
                             </Col>
                           </Row>
 
                           <div className="col-md-4">
-                            <div className="form-group user-field my-4" onClick={submitShippingAdd}>
-                              <ButtonDark type="submit" text="SAVE ADDRESS" onClick={submitShippingAdd} />
+                            <div className="form-group user-field my-4" onClick={() => displayRazorpay(item)}>
+                              <ButtonDark type="submit" text="SAVE ADDRESS" />
                             </div>
                           </div>
-                          {/* <button type="submit" onClick={submitShippingAdd}>Submit Address</button> */}
                         </Form>
                       );
                     }}
                   </Formik>
                 ) : (
                   <div className="shipping-address">
-                    <h5 className="mb-3">Shipping to</h5>
+                    <h5 className="mb-3" style={{fontFamily:"serif"}}>Billing to</h5>
                     <div className="d-flex justify-content-between">
                       <div
                         className="address-details"
@@ -906,16 +854,49 @@ function Shopping() {
                       >
                         <p>
                           <strong>Recipient: </strong>
-                          {shippingAddress.first_name} {shippingAddress.last_name}
+                          {billingAddress.first_name} {billingAddress.last_name}
                         </p>
                         <p className="address-details-p">
                           <strong>Address: </strong>
-                          {shippingAddress.address} {shippingAddress.city},{" "}
-                          {shippingAddress.state} - {shippingAddress.pincode}
+                          {billingAddress.address} {billingAddress.city},{" "}
+                          {billingAddress.state} - {billingAddress.pincode}
                         </p>
                         <p>
                           <strong>Mobile: </strong>
-                          {shippingAddress.mobile}
+                          {billingAddress.mobile}
+                        </p>
+                      </div>
+                      <div>
+                        <button
+                          className="btn btn-success rounded-0"
+                          onClick={() => {
+                            setStep(1);
+                            setAddressList(false);
+                          }}
+                        >
+                          Change
+                        </button>
+                      </div>
+                    </div>
+                    <h6 className="mt-3" style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}}>SHIPPING DETAILS</h6>
+                    <h5 className="mb-3" style={{fontFamily:"serif"}}>Shipping to</h5>
+                    <div className="d-flex justify-content-between">
+                      <div
+                        className="address-details"
+                        style={{ lineHeight: 0.3 }}
+                      >
+                        <p>
+                          <strong>Recipient: </strong>
+                          {shippingAddress.gift_firstname} {shippingAddress.gift_lastname}
+                        </p>
+                        <p className="address-details-p">
+                          <strong>Address: </strong>
+                          {shippingAddress.gift_address} {shippingAddress.gift_city},{" "}
+                          {shippingAddress.gift_state} - {shippingAddress.gift_pincode}
+                        </p>
+                        <p>
+                          <strong>Mobile: </strong>
+                          {shippingAddress.gift_mobile}
                         </p>
                       </div>
                       <div>
@@ -991,7 +972,7 @@ function Shopping() {
                   )}
                 </div>
               </div>
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div
                   className="w-100 border-0 checkout-button"
                   onClick={() => displayRazorpay(item)}
@@ -999,8 +980,8 @@ function Shopping() {
                   {" "}
                   <ButtonDark type="button" text="PLACE ORDER" />
                 </div>
-              </div>
-              {/* <div className="text-center">
+              </div> */}
+              <div className="text-center">
                 <div
                   className="w-100 border-0 checkout-button"
                   onClick={() => displayRazorpay(item)}
@@ -1008,7 +989,7 @@ function Shopping() {
                   {" "}
                   <ButtonDark type="button" text="CHECKOUT" />
                 </div>
-              </div> */}
+              </div>
               <div className="d-flex align-items-center justify-content-between cursor-pointer">
               <p
                 className="order-summary-p1 mt-3 hover"
@@ -1047,6 +1028,7 @@ function Shopping() {
             </ul>
           </Modal.Body>
         </Modal>
+
       </Container>
     </div>
   );

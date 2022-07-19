@@ -80,6 +80,49 @@
 .partnership-opp-wrapper .qr-code-container .link {
   font-weight: 700;
 }
+/* .service-card-marginright{
+  width: 240px !important;
+} */
+.service-card-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+  background: #F3F3F3;
+  font-size: 14px !important;
+  width: 240px !important;
+  height: 7vmin;
+  margin: -16px 0 0 -17px !important;
+}
+.service-card-text{
+  width: 247px;
+  height: 148px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  color: #666666;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: justify;
+  margin: 14px 0 0 -16.5px !important;
+}
+.service-cart-button-div{
+  margin: 0 0 -16.5px -16px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 240px !important;
+  height: 43px;
+  background: #DBF8E6 !important;
+  font-family: 'Lato' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  color: #065934 !important;
+  outline: none !important;
+  border: none !important
+}
 
 @media screen and (max-width: 767px) {
   .partnership-opp {
@@ -91,5 +134,45 @@
 
   .partnership-opp-wrapper .btns button {
     margin: 0.8rem 0;
+  }
+  .service-card-display-configuration{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+  }
+  .service-card-marginright{
+    margin-right: 0px !important;
+    margin-bottom: 50px;
+  }
+  .service-card-title{
+    width: 240px !important;
+    height: 45px;
+  }
+  .service-card-text{
+    width: 247px;
+    height: auto;
+  }
+  .service-cart-button-div{
+    width: 240px !important;
+    height: 43px;
+    margin-top: 10px !important;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1192px) {
+  .service-card-title{
+    width: 20vw !important;
+    height: 6vmin;
+  }
+  .service-card-text{
+    width: 20vw !important;
+    height: 193px !important;
+    margin-bottom: 10px !important;
+  }
+  .service-cart-button-div{
+    width: 20vw !important;
+    font-size: 12px !important;
   }
 }
