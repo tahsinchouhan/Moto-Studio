@@ -6,7 +6,7 @@ import Item from "../../components/Item";
 import { apipath } from "../api/apiPath";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import axios from 'axios'
+import axios from "axios";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../../components/TextError";
@@ -33,7 +33,7 @@ function loadScript(src) {
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
-    // console.log('user data is ',user);
+  // console.log('user data is ',user);
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
@@ -42,12 +42,57 @@ function Shopping() {
   const [billingAddress, setBillingAddress] = useState(null);
   const [step, setStep] = useState(0);
   const [addressList, setAddressList] = useState(false);
-
-  
-  
-  
   const { data: session, status } = useSession();
-  
+
+  // Shipping address configurations
+  const [msg, setMsg] = useState("");
+  const [giftMsg, setGiftMsg] = useState("");
+
+  // const {gift_firstname, gift_lastname, gift_email, gift_mobile, gift_pincode,
+  //         gift_address, gift_country, gift_city, gift_state } = shippingAddress
+
+
+  const chackedGift = (e, values) => {
+    if (e.target.id === "flexCheckCheckedNo") {
+      setGiftMsg("Sender Address and Recipient address will be same");
+      setShippingAddress({
+        gift_firstname: values?.first_name,
+        gift_lastname: values?.last_name,
+        gift_email: values?.email,
+        gift_mobile: values?.mobile,
+        gift_pincode: values?.pincode,
+        gift_address: values?.address,
+        gift_country: values?.country,
+        gift_city: values?.city,
+        gift_state: values?.state,
+      });
+      values.gift_firstname = values.first_name
+      values.gift_lastname = values.last_name
+      values.gift_email = values.email
+      values.gift_mobile = values.mobile
+      values.gift_address = values.address
+      values.gift_city = values.city
+      values.gift_state = values.state
+      values.gift_pincode = values.pincode
+      values.gift_country = values.country
+    }
+    if (e.target.id === "flexCheckCheckedYes") {
+        // setShippingAddress({
+        //   gift_firstname: "",
+        //   gift_lastname: "",
+        //   gift_email: "",
+        //   gift_mobile: "",
+        //   gift_address: "",
+        //   gift_city: "",
+        //   gift_state: "",
+        //   gift_pincode: "",
+        //   gift_country: "",
+        // });
+      setGiftMsg("");
+    }
+  };
+  // End shipping Address
+
   const initialValues = {
     full_name: billingAddress?.full_name || "",
     first_name: billingAddress?.first_name || "",
@@ -69,7 +114,7 @@ function Shopping() {
     gift_city: shippingAddress?.gift_city || "",
     gift_state: shippingAddress?.gift_state || "",
   };
-  
+
   const validationSchema = Yup.object({
     first_name: Yup.string().required("This field is required"),
     last_name: Yup.string().required("This field is required"),
@@ -83,7 +128,10 @@ function Shopping() {
     gift_firstname: Yup.string().required("This field is required"),
     gift_lastname: Yup.string().required("This field is required"),
     gift_email: Yup.string().required("This field is required"),
-    gift_mobile: Yup.string().required("This field is required").min(10).max(10),
+    gift_mobile: Yup.string()
+      .required("This field is required")
+      .min(10)
+      .max(10),
     gift_address: Yup.string().required("This field is required"),
     gift_city: Yup.string().required("This field is required"),
     gift_state: Yup.string().required("This field is required"),
@@ -91,44 +139,10 @@ function Shopping() {
     gift_country: Yup.string().required("This field is required"),
   });
 
-  // Shipping address configurations
-  const [msg, setMsg] = useState('');
-  const [giftMsg, setGiftMsg] = useState("")
-
-  const gift_firstname = billingAddress?.first_name
-  const chackedGift = (e) => {
-    if(e.target.id === "flexCheckCheckedNo"){
-      console.log("Sender Address and Recipient address will be same")
-      setShippingAddress({
-        gift_firstname: billingAddress?.first_name,
-        gift_lastname: billingAddress?.last_name,
-        gift_email: billingAddress?.email,
-        gift_mobile: billingAddress?.mobile,
-        gift_pincode: billingAddress?.pincode,
-        gift_address: billingAddress?.address,
-        gift_country: billingAddress?.country,
-        gift_city: billingAddress?.city,
-        gift_state: billingAddress?.state,
-      })
-    }
-    if(e.target.id === "flexCheckCheckedYes"){
-      setShippingAddress({
-        gift_firstname:"",
-        gift_lastname:"",
-        gift_email:"",
-        gift_mobile:"",
-        gift_address:"",
-        gift_city:"",
-        gift_state:"",
-        gift_pincode:"",
-        gift_country:"",
-      })
-      setGiftMsg("")
-    }
-  }
-// End shipping Address
   
+
   const onSubmit = async (values, onSubmitProps) => {
+    console.log('Hello jhamlal')
     setShippingAddress({
       gift_firstname: values?.gift_firstname || "",
       gift_lastname: values?.gift_lastname || "",
@@ -141,7 +155,7 @@ function Shopping() {
       gift_state: values?.gift_state || "",
     });
     setBillingAddress({
-      full_name: values?.first_name+" "+values?.last_name || "",
+      full_name: values?.first_name + " " + values?.last_name || "",
       first_name: values?.first_name || "",
       last_name: values?.last_name || "",
       email: values?.email || "",
@@ -153,8 +167,9 @@ function Shopping() {
       country: values?.country || "",
       city: values?.city || "",
       state: values?.state || "",
-    })
+    });
     setAddressList(true);
+    displayRazorpay(item)
   };
 
   const fetchPromoList = async () => {
@@ -214,17 +229,19 @@ function Shopping() {
       setStep(1);
       return;
     }
+    // if (step === 0) {
+    //   setStep(1);
+    //   return;
+    // }
 
     // const res = await loadScript(
     //   "https://checkout.razorpay.com/v1/checkout.js"
     // );
     // if (!res) {
-      //   alert("Razorpay SDK failed to load . Are you online!");
-      //   return;
-      // }
-      
-      
-    
+    //   alert("Razorpay SDK failed to load . Are you online!");
+    //   return;
+    // }
+
     let result = [];
     let products_id = [];
 
@@ -252,43 +269,43 @@ function Shopping() {
       total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
       total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
       user_id: user._id,
-      address:'Raipur', 
-      billingAddress, shippingAddress
-    })
+      address: "Raipur",
+      billingAddress,
+      shippingAddress,
+    });
     console.log(createOrder);
 
-    // if(createOrder.data){
-    //   const hashPayload = {
-    //     key: "gtKFFx",
-    //     txnid: Date.now().toString(),
-    //     amount:
-    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-    //       (promoValue?.value || 0),
-    //     productinfo: result,
-    //     firstname: user?.first_Name,
-    //     email: user?.email,
-    //     SALT: "wia56q6O",
-    //   };
-    //   const hash = sha512(
-    //     `${hashPayload.key}|${hashPayload.txnid}|${
-    //       hashPayload.amount
-    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-    //       hashPayload.email
-    //     }|||||||||||${hashPayload.SALT}`
-    //   );
-    //   form.key.value = hashPayload.key;
-    //   form.txnid.value = hashPayload.txnid;
-    //   form.productinfo.value = hashPayload.productinfo.toString();
-    //   form.amount.value = hashPayload.amount;
-    //   form.email.value = hashPayload.email;
-    //   form.phone.value = user?.mobile;
-    //   form.firstname.value = hashPayload.firstname;
-    //   form.hash.value = hash;
-    //   form.submit();
-    // }
-    
-    return;
+    if (createOrder.data) {
+      const hashPayload = {
+        key: "gtKFFx",
+        txnid: Date.now().toString(),
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+          (promoValue?.value || 0),
+        productinfo: result,
+        firstname: user?.first_Name,
+        email: user?.email,
+        SALT: "wia56q6O",
+      };
+      const hash = sha512(
+        `${hashPayload.key}|${hashPayload.txnid}|${
+          hashPayload.amount
+        }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+          hashPayload.email
+        }|||||||||||${hashPayload.SALT}`
+      );
+      form.key.value = hashPayload.key;
+      form.txnid.value = hashPayload.txnid;
+      form.productinfo.value = hashPayload.productinfo.toString();
+      form.amount.value = hashPayload.amount;
+      form.email.value = hashPayload.email;
+      form.phone.value = user?.mobile;
+      form.firstname.value = hashPayload.firstname;
+      form.hash.value = hash;
+      form.submit();
+    }
 
+    return;
 
     const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
       method: "POST",
@@ -409,531 +426,821 @@ function Shopping() {
     <div>
       <Container className="shopping-container">
         {payUform}
-        <Row className="p-3">
-          {step === 0 && (
-            <Col lg={8} md={12} className="mb-4 text-center">
-              <h1 className="shopping-cart-heading mb-4 text-start">Shopping Cart</h1>
-              <hr className="d-none d-lg-flex" />
-              <Row className="d-none d-lg-flex">
-                <Col>
-                  <p className="m-0 ms-3 shopping-p-size text-start">PRODUCT DETAILS</p>
-                </Col>
-                <Col lg="2">
-                  <p className="m-0 shopping-p-size">QUANTITY</p>
-                </Col>
-                <Col lg="2">
-                  <p className="m-0 shopping-p-size">PRICE</p>
-                </Col>
-                <Col lg="2">
-                  <p className="m-0 shopping-p-size">TOTAL</p>
-                </Col>
-              </Row>
-              <hr />
-              <div
-                className="card-container card-div"
-                style={{ height: "450px", overflow: "auto" }}
-              >
-                {item?.length > 0 &&
-                  item.map((elem) => {
-                    return <Item key={elem._id} {...elem} />;
-                  })}
-                <div className="text-start text-uppercase fw-lighter mt-lg-4">
-                <span
-                  className="text-decoration-underline cursor-pointer"
-                  onClick={() => router.push("/product")}
-                >
-                  Continue Shopping
-                </span>
-                </div>
-              </div>
-            </Col>
-          )}
-          {step === 1 && (
-            <Col lg={8} md={12} className="mb-4 ">
-              <h1 className="shopping-cart-heading mb-4">Delivery Details</h1>
-              {/* <hr /> */}
-              <div className="text-center text-success text-bold my-3 fs-4" style={{fontFamily:"Georgia"}}>{msg}</div>
-              <p style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}}>BILLING DETAILS</p>
-              <div className="card-container card-div">
-                {!addressList ? (
-                  <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={onSubmit}
-                  >
-                    {(formik) => {
-                      return (
-                        <Form>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="first_name">First Name <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="first_name"
-                                  placeholder="Enter your first name here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="first_name"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="last_name">Last Name <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="last_name"
-                                  placeholder="Enter your last name here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="last_name"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="email">Email Address <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="email"
-                                  name="email"
-                                  placeholder="Enter your email address here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="email"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="col-md-12">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {(formik) => {
+            return (
+              <Form>
+                <Row className="p-3">
+                  {step === 0 && (
+                    <Col lg={8} md={12} className="mb-4 text-center">
+                      <h1 className="shopping-cart-heading mb-4 text-start">
+                        Shopping Cart
+                      </h1>
+                      <hr className="d-none d-lg-flex" />
+                      <Row className="d-none d-lg-flex">
+                        <Col>
+                          <p className="m-0 ms-3 shopping-p-size text-start">
+                            PRODUCT DETAILS
+                          </p>
+                        </Col>
+                        <Col lg="2">
+                          <p className="m-0 shopping-p-size">QUANTITY</p>
+                        </Col>
+                        <Col lg="2">
+                          <p className="m-0 shopping-p-size">PRICE</p>
+                        </Col>
+                        <Col lg="2">
+                          <p className="m-0 shopping-p-size">TOTAL</p>
+                        </Col>
+                      </Row>
+                      <hr />
+                      <div
+                        className="card-container card-div"
+                        style={{ height: "450px", overflow: "auto" }}
+                      >
+                        {item?.length > 0 &&
+                          item.map((elem) => {
+                            return <Item key={elem._id} {...elem} />;
+                          })}
+                        <div className="text-start text-uppercase fw-lighter mt-lg-4">
+                          <span
+                            className="text-decoration-underline cursor-pointer"
+                            onClick={() => router.push("/product")}
+                          >
+                            Continue Shopping
+                          </span>
+                        </div>
+                      </div>
+                    </Col>
+                  )}
+                  {step === 1 && (
+                    <Col lg={8} md={12} className="mb-4 ">
+                      <h1 className="shopping-cart-heading mb-4">
+                        Delivery Details
+                      </h1>
+                      <div
+                        className="text-center text-success text-bold my-3 fs-4"
+                        style={{ fontFamily: "Georgia" }}
+                      >
+                        {msg}
+                      </div>
+                      <p
+                        style={{
+                          color: "#5ABF77",
+                          fontWeight: "bold",
+                          fontFamily: "serif",
+                        }}
+                      >
+                        BILLING DETAILS
+                      </p>
+                      <div className="card-container card-div">
+                        {!addressList ? (
+                          <>
+                            <Row>
+                              <Col>
                                 <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="mobile">Mobile Number <span className="text-danger">*</span></label>
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="first_name"
+                                  >
+                                    First Name{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
                                   <Field
                                     className="Contact-Us-form-input form-control"
-                                    type="number"
-                                    name="mobile"
-                                    placeholder="Enter your mobile number here"
+                                    type="text"
+                                    name="first_name"
+                                    placeholder="Enter your first name here"
+                                    autoComplete="off"
                                     style={formControl}
-                                    
                                   />
                                   <ErrorMessage
-                                    name="mobile"
+                                    name="first_name"
                                     component={TextError}
                                   />
                                 </div>
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                              <label className="lableFontWeight" htmlFor="address">Street Address <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="address"
-                                  // placeholder=""
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="address"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                              <label className="lableFontWeight" htmlFor="city">City <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="city"
-                                  // placeholder="Locality / Area (Optional)"
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="city"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-
-                            <Col>
-                            <div className="form-group user-field  mb-4">
-                            <label className="lableFontWeight" htmlFor="state">State/Province <span className="text-danger">*</span></label>
-                              <div className="form-group user-field  mb-4">
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="state"
-                                  // placeholder="Landmark (Optional)"
-                                  style={formControl}
-                                 
-                                />
-                                <ErrorMessage
-                                  name="state"
-                                  component={TextError}
-                                />
-                              </div>
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                                <label className="lableFontWeight" htmlFor="pincode">Pincode <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="number"
-                                  name="pincode"
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="pincode"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                                <label className="lableFontWeight" htmlFor="country">Country <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="country"
-                                  style={formControl}
-                                 
-                                />
-                                <ErrorMessage
-                                  name="country"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-
-                          <p style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}} className="mt-3">IS THIS ORDER A GIFT?</p>
-                          
-                          <Row className="w-25 ms-2">
-                            <Col className="d-flex mb-1">
-                            <div className="form-check">
-                              <input 
-                                className="form-check-input" 
-                                type="radio" 
-                                id="flexCheckCheckedYes"
-                                name="giftaddressorder"
-                                onClick={chackedGift}
-                                />
-                              <label className="form-check-label" htmlFor="flexCheckCheckedYes">
-                                YES
-                              </label>
-                            </div>
-                            </Col>
-                            <Col className="d-flex">
-                            <div className="form-check">
-                              <input 
-                                className="form-check-input" 
-                                type="radio" 
-                                id="flexCheckCheckedNo"
-                                name="giftaddressorder"
-                                onClick={chackedGift}
-                              />
-                              <label className="form-check-label" htmlFor="flexCheckCheckedNo">
-                                No
-                              </label>
-                            </div>
-                            </Col>
-                          </Row>
-
-                          <p className="mt-4 lableFontWeight fs-5">Enter the details of the recipient:</p>
-                          
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_firstname">First Name <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_firstname"
-                                  placeholder="Enter your first name here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="gift_firstname"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_lastname">Last Name <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_lastname"
-                                  placeholder="Enter your last name here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="gift_lastname"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_email">Email Address <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="email"
-                                  name="gift_email"
-                                  placeholder="Enter your email address here"
-                                  autoComplete="off"
-                                  style={formControl}
-                                 
-                                />
-                                <ErrorMessage
-                                  name="gift_email"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="col-md-12">
+                              </Col>
+                              <Col>
                                 <div className="form-group user-field mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_mobile">Mobile Number <span className="text-danger">*</span></label>
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="last_name"
+                                  >
+                                    Last Name{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
                                   <Field
                                     className="Contact-Us-form-input form-control"
-                                    type="number"
-                                    name="gift_mobile"
-                                    placeholder="Enter your mobile number here"
+                                    type="text"
+                                    name="last_name"
+                                    placeholder="Enter your last name here"
+                                    autoComplete="off"
                                     style={formControl}
-                                    
                                   />
                                   <ErrorMessage
-                                    name="gift_mobile"
+                                    name="last_name"
                                     component={TextError}
                                   />
                                 </div>
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field mb-4">
-                              <label className="lableFontWeight" htmlFor="gift_address">Street Address <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_address"
-                                  // placeholder=""
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="gift_address"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                              <label className="lableFontWeight" htmlFor="gift_city">City <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_city"
-                                  // placeholder="Locality / Area (Optional)"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="gift_city"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
+                              </Col>
+                            </Row>
+                            
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="email"
+                                  >
+                                    Email Address{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter your email address here"
+                                    autoComplete="off"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="email"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                              <Col>
+                                <div className="col-md-12">
+                                  <div className="form-group user-field mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="mobile"
+                                    >
+                                      Mobile Number{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="number"
+                                      name="mobile"
+                                      placeholder="Enter your mobile number here"
+                                      style={formControl}
+                                    />
+                                    <ErrorMessage
+                                      name="mobile"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="address"
+                                  >
+                                    Street Address{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="address"
+                                    // placeholder=""
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="address"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="city"
+                                  >
+                                    City <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="city"
+                                    // placeholder="Locality / Area (Optional)"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="city"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
 
-                            <Col>
-                            <div className="form-group user-field  mb-4">
-                            <label className="lableFontWeight" htmlFor="gift_state">State/Province <span className="text-danger">*</span></label>
-                              <div className="form-group user-field  mb-4">
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_state"
-                                  // placeholder="Landmark (Optional)"
-                                  style={formControl}
-                                />
-                                <ErrorMessage
-                                  name="gift_state"
-                                  component={TextError}
-                                />
-                              </div>
-                              </div>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_pincode">Pincode <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="number"
-                                  name="gift_pincode"
-                                  // placeholder="Pincode"
-                                  style={formControl}
-                                 
-                                />
-                                <ErrorMessage
-                                  name="gift_pincode"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                            <Col>
-                              <div className="form-group user-field  mb-4">
-                                <label className="lableFontWeight" htmlFor="gift_country">Country <span className="text-danger">*</span></label>
-                                <Field
-                                  className="Contact-Us-form-input form-control"
-                                  type="text"
-                                  name="gift_country"
-                                  // placeholder="Pincode"
-                                  style={formControl}
-                                  
-                                />
-                                <ErrorMessage
-                                  name="gift_country"
-                                  component={TextError}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="state"
+                                  >
+                                    State/Province{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <div className="form-group user-field  mb-4">
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="state"
+                                      // placeholder="Landmark (Optional)"
+                                      style={formControl}
+                                    />
+                                    <ErrorMessage
+                                      name="state"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="pincode"
+                                  >
+                                    Pincode{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="number"
+                                    name="pincode"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="pincode"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="country"
+                                  >
+                                    Country{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="country"
+                                    style={formControl}
+                                  />
+                                  <ErrorMessage
+                                    name="country"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
 
-                          <div className="col-md-4">
-                            <div className="form-group user-field my-4" onClick={() => displayRazorpay(item)}>
+                            <p
+                              style={{
+                                color: "#5ABF77",
+                                fontWeight: "bold",
+                                fontFamily: "serif",
+                              }}
+                              className="mt-3"
+                            >
+                              IS THIS ORDER A GIFT?
+                            </p>
+
+                            <Row className="w-25 ms-2">
+                              <Col className="d-flex mb-1">
+                                <div className="form-check">
+                                  <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    id="flexCheckCheckedYes"
+                                    name="giftaddressorder"
+                                    onClick={(e) =>
+                                      chackedGift(e, formik.values)
+                                    }
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="flexCheckCheckedYes"
+                                  >
+                                    YES
+                                  </label>
+                                </div>
+                              </Col>
+                              <Col className="d-flex">
+                                <div className="form-check">
+                                  <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    id="flexCheckCheckedNo"
+                                    name="giftaddressorder"
+                                    onClick={(e) =>
+                                      chackedGift(e, formik.values)
+                                    }
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor="flexCheckCheckedNo"
+                                  >
+                                    No
+                                  </label>
+                                </div>
+                              </Col>
+                            </Row>
+                            <div
+                              className="text-center text-success text-bold my-3 fs-4"
+                              style={{ fontFamily: "Georgia" }}
+                            >
+                              {giftMsg}
+                            </div>
+                            <p className="mt-4 lableFontWeight fs-5">
+                              Enter the details of the recipient:
+                            </p>
+
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_firstname"
+                                  >
+                                    First Name{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="gift_firstname"
+                                    placeholder="Enter your first name here"
+                                    autoComplete="off"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_firstname}
+                                  />
+                                  <ErrorMessage
+                                    name="gift_firstname"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_lastname"
+                                  >
+                                    Last Name{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="gift_lastname"
+                                    placeholder="Enter your last name here"
+                                    autoComplete="off"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_lastname}
+
+                                  />
+                                  <ErrorMessage
+                                    name="gift_lastname"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_email"
+                                  >
+                                    Email Address{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="email"
+                                    name="gift_email"
+                                    placeholder="Enter your email address here"
+                                    autoComplete="off"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_email}
+
+                                  />
+                                  <ErrorMessage
+                                    name="gift_email"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                              <Col>
+                                <div className="col-md-12">
+                                  <div className="form-group user-field mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_mobile"
+                                    >
+                                      Mobile Number{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="number"
+                                      name="gift_mobile"
+                                      placeholder="Enter your mobile number here"
+                                      style={formControl}
+                                    value={shippingAddress?.gift_mobile}
+
+                                    />
+                                    <ErrorMessage
+                                      name="gift_mobile"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_address"
+                                  >
+                                    Street Address{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="gift_address"
+                                    // placeholder=""
+                                    style={formControl}
+                                    value={shippingAddress?.gift_address}
+
+                                  />
+                                  <ErrorMessage
+                                    name="gift_address"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_city"
+                                  >
+                                    City <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="gift_city"
+                                    // placeholder="Locality / Area (Optional)"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_city}
+
+                                  />
+                                  <ErrorMessage
+                                    name="gift_city"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_state"
+                                  >
+                                    State/Province{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <div className="form-group user-field  mb-4">
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="gift_state"
+                                      // placeholder="Landmark (Optional)"
+                                      style={formControl}
+                                    value={shippingAddress?.gift_state}
+
+                                    />
+                                    <ErrorMessage
+                                      name="gift_state"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_pincode"
+                                  >
+                                    Pincode{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="number"
+                                    name="gift_pincode"
+                                    // placeholder="Pincode"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_pincode}
+
+                                  />
+                                  <ErrorMessage
+                                    name="gift_pincode"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                              <Col>
+                                <div className="form-group user-field  mb-4">
+                                  <label
+                                    className="lableFontWeight"
+                                    htmlFor="gift_country"
+                                  >
+                                    Country{" "}
+                                    <span className="text-danger">*</span>
+                                  </label>
+                                  <Field
+                                    className="Contact-Us-form-input form-control"
+                                    type="text"
+                                    name="gift_country"
+                                    // placeholder="Pincode"
+                                    style={formControl}
+                                    value={shippingAddress?.gift_country}
+                                  />
+                                  <ErrorMessage
+                                    name="gift_country"
+                                    component={TextError}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+
+                            {/* <div className="col-md-4">
+                            <div className="form-group user-field my-4">
                               <ButtonDark type="submit" text="SAVE ADDRESS" />
                             </div>
-                          </div>
-                        </Form>
-                      );
-                    }}
-                  </Formik>
-                ) : (
-                  <div className="shipping-address">
-                    <h5 className="mb-3" style={{fontFamily:"serif"}}>Billing to</h5>
-                    <div className="d-flex justify-content-between">
-                      <div
-                        className="address-details"
-                        style={{ lineHeight: 0.3 }}
-                      >
-                        <p>
-                          <strong>Recipient: </strong>
-                          {billingAddress.first_name} {billingAddress.last_name}
-                        </p>
-                        <p className="address-details-p">
-                          <strong>Address: </strong>
-                          {billingAddress.address} {billingAddress.city},{" "}
-                          {billingAddress.state} - {billingAddress.pincode}
-                        </p>
-                        <p>
-                          <strong>Mobile: </strong>
-                          {billingAddress.mobile}
-                        </p>
-                      </div>
-                      <div>
-                        <button
-                          className="btn btn-success rounded-0"
-                          onClick={() => {
-                            setStep(1);
-                            setAddressList(false);
-                          }}
-                        >
-                          Change
-                        </button>
-                      </div>
-                    </div>
-                    <h6 className="mt-3" style={{color:"#5ABF77",fontWeight:"bold",fontFamily:"serif"}}>SHIPPING DETAILS</h6>
-                    <h5 className="mb-3" style={{fontFamily:"serif"}}>Shipping to</h5>
-                    <div className="d-flex justify-content-between">
-                      <div
-                        className="address-details"
-                        style={{ lineHeight: 0.3 }}
-                      >
-                        <p>
-                          <strong>Recipient: </strong>
-                          {shippingAddress.gift_firstname} {shippingAddress.gift_lastname}
-                        </p>
-                        <p className="address-details-p">
-                          <strong>Address: </strong>
-                          {shippingAddress.gift_address} {shippingAddress.gift_city},{" "}
-                          {shippingAddress.gift_state} - {shippingAddress.gift_pincode}
-                        </p>
-                        <p>
-                          <strong>Mobile: </strong>
-                          {shippingAddress.gift_mobile}
-                        </p>
-                      </div>
-                      <div>
-                        <button
-                          className="btn btn-success rounded-0"
-                          onClick={() => {
-                            setStep(1);
-                            setAddressList(false);
-                          }}
-                        >
-                          Change
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </Col>
-          )}
+                          </div> */}
 
-          <Col lg={4} md={12}>
+                          </>
+                        ) : (
+                          <div className="shipping-address">
+                            <h5
+                              className="mb-3"
+                              style={{ fontFamily: "serif" }}
+                            >
+                              Billing to
+                            </h5>
+                            <div className="d-flex justify-content-between">
+                              <div
+                                className="address-details"
+                                style={{ lineHeight: 0.3 }}
+                              >
+                                <p>
+                                  <strong>Recipient: </strong>
+                                  {billingAddress.first_name}{" "}
+                                  {billingAddress.last_name}
+                                </p>
+                                <p className="address-details-p">
+                                  <strong>Address: </strong>
+                                  {billingAddress.address} {billingAddress.city}
+                                  , {billingAddress.state} -{" "}
+                                  {billingAddress.pincode}
+                                </p>
+                                <p>
+                                  <strong>Mobile: </strong>
+                                  {billingAddress.mobile}
+                                </p>
+                              </div>
+                              <div>
+                                <button
+                                  className="btn btn-success rounded-0"
+                                  onClick={() => {
+                                    setStep(1);
+                                    setAddressList(false);
+                                  }}
+                                >
+                                  Change
+                                </button>
+                              </div>
+                            </div>
+                            <h6
+                              className="mt-3"
+                              style={{
+                                color: "#5ABF77",
+                                fontWeight: "bold",
+                                fontFamily: "serif",
+                              }}
+                            >
+                              SHIPPING DETAILS
+                            </h6>
+                            <h5
+                              className="mb-3"
+                              style={{ fontFamily: "serif" }}
+                            >
+                              Shipping to
+                            </h5>
+                            <div className="d-flex justify-content-between">
+                              <div
+                                className="address-details"
+                                style={{ lineHeight: 0.3 }}
+                              >
+                                <p>
+                                  <strong>Recipient: </strong>
+                                  {shippingAddress.gift_firstname}{" "}
+                                  {shippingAddress.gift_lastname}
+                                </p>
+                                <p className="address-details-p">
+                                  <strong>Address: </strong>
+                                  {shippingAddress.gift_address}{" "}
+                                  {shippingAddress.gift_city},{" "}
+                                  {shippingAddress.gift_state} -{" "}
+                                  {shippingAddress.gift_pincode}
+                                </p>
+                                <p>
+                                  <strong>Mobile: </strong>
+                                  {shippingAddress.gift_mobile}
+                                </p>
+                              </div>
+                              {/* <div>
+                                <button
+                                  className="btn btn-success rounded-0"
+                                  onClick={() => {
+                                    setStep(1);
+                                    setAddressList(false);
+                                  }}
+                                >
+                                  Change
+                                </button>
+                              </div> */}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </Col>
+                  )}
+                  <Col lg={4} md={12}>
+                    <div className="order-summary-card p-4 pb-2">
+                      <h6 className="fw-bold order-summary-text">
+                        ORDER SUMMARY
+                      </h6>
+                      <hr className="my-4" />
+
+                      <div className="d-flex justify-content-between">
+                        <div>
+                          <p className="order-summary-p1 text-uppercase">
+                            {totalItem} x Items
+                          </p>
+                        </div>
+                        <div>
+                          <p className="fw-bold order-summary-p2">
+                            {" "}
+                            ₹ {totalAmount}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <p className="order-summary-p1">SHIPPING</p>
+                        <span style={{ fontSize: "13px" }}>₹0.00</span>
+                      </div>
+                      {
+                        <div className="free-home-delivery-div">
+                          <p className=" m-0 px-2 pt-1 free-home-delivery-p">
+                            <span>APPLIED PROMO CODE</span>
+                            <span className="fw-bold free-home-delivery-p2 ">
+                              CODE50
+                            </span>
+                          </p>
+                        </div>
+                      }
+                      <hr className="mt-2" />
+                      {promoValue && (
+                        <div className="d-flex justify-content-between">
+                          <div>
+                            <p className="order-summary-p1">
+                              APPLIED PROMO CODE
+                            </p>
+                          </div>
+                          <div>
+                            <p className="fw-bold order-summary-p2">
+                              ₹ {promoValue.value}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      <div className="d-flex justify-content-between">
+                        <div>
+                          <p className="order-summary-p1">TOTAL COST</p>
+                        </div>
+                        <div>
+                          {promoValue ? (
+                            <p className="fw-bold order-summary-p2">
+                              {" "}
+                              ₹ {totalAmount - promoValue.value}
+                            </p>
+                          ) : (
+                            <p className="fw-bold order-summary-p2">
+                              {" "}
+                              ₹ {totalAmount}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="text-center">
+                        <div className="w-100 border-0 checkout-button">
+                        {
+                          step===0?(
+                            <div className="w-100 border-0 checkout-button">
+                              <button type="button" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0" onClick={()=>{setStep(1)}}>PLACE ORDER</button>
+                            </div>
+                          ):(
+                            <div className="w-100 border-0 checkout-button">
+                              <button type="submit" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0">CHECKOUT</button>
+                            </div>
+                          )
+                        }
+                          {/* <ButtonDark type="submit" text="CHECKOUT" onClick={()=>{
+                            console.log('checkout working')
+                          }} /> */}
+                          
+                        </div>
+                        {/* <div
+                          className="w-100 border-0 checkout-button"
+                          onClick={() => displayRazorpay(item)}
+                        >
+                          {" "}
+                          <ButtonDark type="button" text="CHECKOUT" />
+                        </div> */}
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between cursor-pointer">
+                        <p
+                          className="order-summary-p1 mt-3 hover"
+                          onClick={() => setShow(true)}
+                        >
+                          ADD PROMO CODE
+                        </p>
+                        <span onClick={() => setShow(true)}>+</span>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Form>
+            );
+          }}
+        </Formik>
+
+        {/* <Col lg={4} md={12}>
             <div className="order-summary-card p-4 pb-2">
               <h6 className="fw-bold order-summary-text">ORDER SUMMARY</h6>
               <hr className="my-4" />
 
               <div className="d-flex justify-content-between">
                 <div>
-                  <p className="order-summary-p1 text-uppercase">{totalItem} x Items</p>
+                  <p className="order-summary-p1 text-uppercase">
+                    {totalItem} x Items
+                  </p>
                 </div>
                 <div>
                   <p className="fw-bold order-summary-p2"> ₹ {totalAmount}</p>
                 </div>
               </div>
-             <div className="d-flex align-items-center justify-content-between">
-             <p className="order-summary-p1">SHIPPING</p>
-              <span style={{fontSize:"13px"}}>₹0.00</span>
-             </div>
+              <div className="d-flex align-items-center justify-content-between">
+                <p className="order-summary-p1">SHIPPING</p>
+                <span style={{ fontSize: "13px" }}>₹0.00</span>
+              </div>
               {
                 <div className="free-home-delivery-div">
                   <p className=" m-0 px-2 pt-1 free-home-delivery-p">
@@ -972,15 +1279,7 @@ function Shopping() {
                   )}
                 </div>
               </div>
-              {/* <div className="text-center">
-                <div
-                  className="w-100 border-0 checkout-button"
-                  onClick={() => displayRazorpay(item)}
-                >
-                  {" "}
-                  <ButtonDark type="button" text="PLACE ORDER" />
-                </div>
-              </div> */}
+              
               <div className="text-center">
                 <div
                   className="w-100 border-0 checkout-button"
@@ -991,17 +1290,16 @@ function Shopping() {
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-between cursor-pointer">
-              <p
-                className="order-summary-p1 mt-3 hover"
-                onClick={() => setShow(true)}
-              >
-                ADD PROMO CODE
-              </p>
-              <span onClick={() => setShow(true)}>+</span>
+                <p
+                  className="order-summary-p1 mt-3 hover"
+                  onClick={() => setShow(true)}
+                >
+                  ADD PROMO CODE
+                </p>
+                <span onClick={() => setShow(true)}>+</span>
               </div>
             </div>
-          </Col>
-        </Row>
+          </Col> */}
 
         <Modal show={show} onHide={() => setShow(false)} centered>
           <Modal.Body className="py-5">
@@ -1028,7 +1326,6 @@ function Shopping() {
             </ul>
           </Modal.Body>
         </Modal>
-
       </Container>
     </div>
   );
