@@ -84,7 +84,9 @@ function Header() {
     { id: 6, title: "NEWS", href: "/news",  },
     // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
     // {id:7,title:'CONTACT',href:'/contact'}
-    { id: 8, title: 'FAQ',href:'/faq'}
+    { id: 7, title: 'FAQ',href:'/faq'},
+    {id:8,title:'CONTACT',href:'/contact'}
+
   ];
 
   useEffect(() => {

@@ -15,7 +15,9 @@ function FeaturedProducts({ category }) {
   const [selectedCat, setSelected] = useState();
   const getCategoryId = (id) => setCategoryId(id);
 
-  let categories = category?.filter((cat, index) => index < 3);
+  // let categories = category?.filter((cat, index) => index < 3);
+  let categories = category
+
   const settings = {
     dots: false,
     infinite: false,

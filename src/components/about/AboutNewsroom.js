@@ -4,6 +4,8 @@ import Image from "next/image";
 import Button from "../button/ButtonLight"
 import Microenterprises from "../../assets/images/about/microenterprises.png";
 import { apipath } from '../../pages/api/apiPath';
+import Link from 'next/link';
+import IntoNewsroom from '../../pages/news';
 
 function AboutNewsroom() {
   const [newsData, setNewsData] = useState([]);
@@ -20,13 +22,13 @@ function AboutNewsroom() {
     }
     fetchData();
   }, [])
-// console.log(newsData);
+console.log('news data is: ',newsData);
 
   return (
     <>
       <div className="about-newsroom-container">
         <Row className="d-flex about-newsroom-gutter justify-content-center">
-          <Col xs={12} className="mx-auto px-0">
+          <Col xs={12} className="mx-auto px-0" style={{marginTop:"-26px"}}>
             <p className="about-newsroom-heading">Newsroom</p>
             <hr className="about-newsroom-hr mt-3" />
           </Col>
@@ -53,7 +55,17 @@ function AboutNewsroom() {
                     <h5 className="card-title">{news.title}</h5>
                     <small className="about-newsroom-date">{new Date(news.date).toDateString()}</small>
                     <p className="card-text about-newsroom-card-para mt-3">{news.content}</p>
-                    <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
+                    {/* <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" /> */}
+                    {/* <Link href={news.url_customize}>
+                    <a >
+                      <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
+                    </a>
+                    </Link> */}
+                    <Link href={`about/${news._id}`}>
+                    <a >
+                      <Button className="mb-2 mt-3 about-newsroom-button" text="READ MORE" />
+                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

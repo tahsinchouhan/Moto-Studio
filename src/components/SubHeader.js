@@ -27,7 +27,7 @@ function SubHeader() {
         newobj = JSON.parse(newobj);
 
         newobj[0].menu_data = newobj[0].menu_data.filter((ele, ind) => ind < 3);
-        newobj[1] = newobj[1].filter((ele, ind) => ind < 3);
+        newobj[1] = newobj[1].filter((ele, ind) => ind < 4);
 
         // console.log('old',objData.data)
         // console.log('new',newobj)

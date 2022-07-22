@@ -93,7 +93,7 @@ function EmpoweredGroup() {
           <p className="about-empowered-heading">Social Upliftment</p>
           <hr className="about-empowered-top-hr mx-auto mt-3"></hr>
         </div>
-        <div className="container about-carousel-conatiner mt-5 mb-5">
+        <div className="container about-carousel-conatiner" style={{marginBottom:"-40px"}}>
           <Slider {...settings}>
           <div className="text-center">
                   <div className="text-center">
@@ -152,7 +152,6 @@ function EmpoweredGroup() {
                 
           </Slider>
         </div>
-
       </Container>
       <div> 
       <hr className="about-empower-hr mx-auto "  />

@@ -1135,16 +1135,18 @@ function Shopping() {
                         <p className="order-summary-p1">SHIPPING</p>
                         <span style={{ fontSize: "13px" }}>₹0.00</span>
                       </div>
-                      {
-                        <div className="free-home-delivery-div">
-                          <p className=" m-0 px-2 pt-1 free-home-delivery-p">
+                          {promoValue ? (
+                            <div className="free-home-delivery-div">
+                            <p className=" m-0 px-2 pt-1 free-home-delivery-p">
                             <span>APPLIED PROMO CODE</span>
                             <span className="fw-bold free-home-delivery-p2 ">
-                              CODE50
+                            {promoValue.code}
                             </span>
                           </p>
-                        </div>
-                      }
+                          </div>
+                          ):(
+                            <p>{""}</p>
+                        )}
                       <hr className="mt-2" />
                       {promoValue && (
                         <div className="d-flex justify-content-between">
@@ -1170,6 +1172,7 @@ function Shopping() {
                               {" "}
                               ₹ {totalAmount - promoValue.value}
                             </p>
+                            
                           ) : (
                             <p className="fw-bold order-summary-p2">
                               {" "}

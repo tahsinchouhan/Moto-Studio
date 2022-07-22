@@ -1,10 +1,17 @@
 import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import BrahmiChurna from "../../../public/images/bramkumari.png";
+
+// import BrahmiChurna from "../../../public/images/bramkumari.png"
+import Gourment_food from "../../../public/images/subheadermenuitems/Gourment_food.svg";
+import Personal_care from "../../../public/images/subheadermenuitems/Personal_care.svg";
+import Ayush_product from "../../../public/images/subheadermenuitems/Ayush_product.svg";
+import Home_care from "../../../public/images/subheadermenuitems/Home_care.svg";
+// import Home_care from "../../../public/images/subheadermenuitems/home care.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
 function Common({ menuData }) {
+  console.log('menuData ',menuData);
   return (
     <Container fluid>
       <Container>
@@ -126,9 +133,11 @@ function Common({ menuData }) {
                       </div>
                     </div>
                   </Col>
+
+
                   <Col md={4} lg={4}>
                     <div className="categoryItemImageHover">
-                    <Image
+                    {/* <Image
                         src={
                           menu?.images?.length
                             ? menu.images[0]?.img || BrahmiChurna
@@ -137,7 +146,39 @@ function Common({ menuData }) {
                         alt={menu?.title || ""}
                         width={330}
                         height={160}
+                      /> */}
+                      {menu.category_name === "Massage Oils" ? (
+                        <Image
+                        src={Ayush_product}
+                        alt={menu?.title || ""}
+                        width={330}
+                        height={160}
                       />
+                      ):( menu.category_name==="Skin Care"?(
+                        <Image
+                        src={Personal_care}
+                        alt={menu?.title || ""}
+                        width={330}
+                        height={160}
+                      />
+                      ):( menu.category_name === "Sweets" ? (
+                        <Image
+                        src={Gourment_food}
+                        alt={menu?.title || ""}
+                        width={330}
+                        height={160}
+                      />
+                      ):(
+                        <Image
+                        src={Home_care}
+                        alt={menu?.title || ""}
+                        width={330}
+                        height={160}
+                      />
+                      )
+                      )
+                      )}
+                      
                     </div>
                 </Col>
                   </div>
