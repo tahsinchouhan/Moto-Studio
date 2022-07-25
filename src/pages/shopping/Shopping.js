@@ -33,7 +33,7 @@ function loadScript(src) {
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
-  // console.log('user data is ',user);
+  console.log('user data info is: ',user);
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
@@ -47,9 +47,6 @@ function Shopping() {
   // Shipping address configurations
   const [msg, setMsg] = useState("");
   const [giftMsg, setGiftMsg] = useState("");
-
-  // const {gift_firstname, gift_lastname, gift_email, gift_mobile, gift_pincode,
-  //         gift_address, gift_country, gift_city, gift_state } = shippingAddress
 
 
   const chackedGift = (e, values) => {
@@ -94,16 +91,16 @@ function Shopping() {
   // End shipping Address
 
   const initialValues = {
-    full_name: billingAddress?.full_name || "",
-    first_name: billingAddress?.first_name || "",
-    last_name: billingAddress?.last_name || "",
-    email: billingAddress?.email || "",
-    mobile: billingAddress?.mobile || "",
-    pincode: billingAddress?.pincode || "",
-    address: billingAddress?.address || "",
-    country: billingAddress?.country || "",
-    city: billingAddress?.city || "",
-    state: billingAddress?.state || "",
+    full_name: billingAddress?.full_name || '',
+    first_name:billingAddress?.first_name || user?.billingAddress[0].first_name || '',
+    last_name: billingAddress?.last_name || user?.billingAddress[0].last_name || '',
+    email: billingAddress?.email || user?.billingAddress[0].email || "",
+    mobile: billingAddress?.mobile || user?.billingAddress[0].mobile || "",
+    pincode: billingAddress?.pincode || user?.billingAddress[0].pincode || "",
+    address: billingAddress?.address || user?.billingAddress[0].address || "",
+    country: billingAddress?.country ||user?.billingAddress[0].country || "",
+    city: billingAddress?.city ||user?.billingAddress[0].city || "",
+    state: billingAddress?.state || user?.billingAddress[0].state || "",
     gift_firstname: shippingAddress?.gift_firstname || "",
     gift_lastname: shippingAddress?.gift_lastname || "",
     gift_email: shippingAddress?.gift_email || "",
@@ -142,7 +139,68 @@ function Shopping() {
   
 
   const onSubmit = async (values, onSubmitProps) => {
+
     console.log('Hello jhamlal')
+
+    try {
+      await fetch(apipath + `/api/v1/users/update/${user?._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          billingAddress:[{
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email,
+            mobile: values.mobile,
+            pincode: values.pincode,
+            address: values.address,
+            country: values.country,
+            city: values.city,
+            state: values.state,
+          }],
+          shippingAddress:[{
+            firstname: values.gift_firstname,
+            lastname: values.gift_lastname,
+            email: values.gift_email,
+            mobile: values.gift_mobile,
+            pincode: values.gift_pincode,
+            address: values.gift_address,
+            country: values.gift_country,
+            city: values.gift_city,
+            state: values.gift_state,
+          }],
+          address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
+        }),
+      });
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+
+    user.billingAddress = [{
+      full_name: values?.first_name + " " + values?.last_name || "",
+      first_name: values?.first_name || "",
+      last_name: values?.last_name || "",
+      email: values?.email || "",
+      mobile: values?.mobile || "",
+      pincode: values?.pincode || "",
+      address: values?.address || "",
+      country: values?.country || "",
+      city: values?.city || "",
+      state: values?.state || "",
+    }]
+    user.shippingAddress = [{
+      firstname: values?.gift_firstname || "",
+      lastname: values?.gift_lastname || "",
+      email: values?.gift_email || "",
+      mobile: values?.gift_mobile || "",
+      pincode: values?.gift_pincode || "",
+      address: values?.gift_address || "",
+      country: values?.gift_country || "",
+      city: values?.gift_city || "",
+      state: values?.gift_state || "",
+    }]
+    user.address =  values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode
+
     setShippingAddress({
       gift_firstname: values?.gift_firstname || "",
       gift_lastname: values?.gift_lastname || "",
@@ -275,35 +333,35 @@ function Shopping() {
     });
     console.log(createOrder);
 
-    if (createOrder.data) {
-      const hashPayload = {
-        key: "gtKFFx",
-        txnid: Date.now().toString(),
-        amount:
-          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-          (promoValue?.value || 0),
-        productinfo: result,
-        firstname: user?.first_Name,
-        email: user?.email,
-        SALT: "wia56q6O",
-      };
-      const hash = sha512(
-        `${hashPayload.key}|${hashPayload.txnid}|${
-          hashPayload.amount
-        }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-          hashPayload.email
-        }|||||||||||${hashPayload.SALT}`
-      );
-      form.key.value = hashPayload.key;
-      form.txnid.value = hashPayload.txnid;
-      form.productinfo.value = hashPayload.productinfo.toString();
-      form.amount.value = hashPayload.amount;
-      form.email.value = hashPayload.email;
-      form.phone.value = user?.mobile;
-      form.firstname.value = hashPayload.firstname;
-      form.hash.value = hash;
-      form.submit();
-    }
+    // if (createOrder.data) {
+    //   const hashPayload = {
+    //     key: "gtKFFx",
+    //     txnid: Date.now().toString(),
+    //     amount:
+    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+    //       (promoValue?.value || 0),
+    //     productinfo: result,
+    //     firstname: user?.first_Name,
+    //     email: user?.email,
+    //     SALT: "wia56q6O",
+    //   };
+    //   const hash = sha512(
+    //     `${hashPayload.key}|${hashPayload.txnid}|${
+    //       hashPayload.amount
+    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+    //       hashPayload.email
+    //     }|||||||||||${hashPayload.SALT}`
+    //   );
+    //   form.key.value = hashPayload.key;
+    //   form.txnid.value = hashPayload.txnid;
+    //   form.productinfo.value = hashPayload.productinfo.toString();
+    //   form.amount.value = hashPayload.amount;
+    //   form.email.value = hashPayload.email;
+    //   form.phone.value = user?.mobile;
+    //   form.firstname.value = hashPayload.firstname;
+    //   form.hash.value = hash;
+    //   form.submit();
+    // }
 
     return;
 
@@ -463,8 +521,8 @@ function Shopping() {
                         style={{ height: "450px", overflow: "auto" }}
                       >
                         {item?.length > 0 &&
-                          item.map((elem) => {
-                            return <Item key={elem._id} {...elem} />;
+                          item.map((elem,index) => {
+                            return <Item key={index} {...elem} />;
                           })}
                         <div className="text-start text-uppercase fw-lighter mt-lg-4">
                           <span
@@ -767,12 +825,12 @@ function Shopping() {
                               </Col>
                             </Row>
                             <div
-                              className="text-center text-success text-bold my-3 fs-4"
+                              className="text-success text-bold mt-2 fs-6"
                               style={{ fontFamily: "Georgia" }}
                             >
                               {giftMsg}
                             </div>
-                            <p className="mt-4 lableFontWeight fs-5">
+                            <p className="mt-2 lableFontWeight fs-5">
                               Enter the details of the recipient:
                             </p>
 
@@ -1215,7 +1273,9 @@ function Shopping() {
                         >
                           ADD PROMO CODE
                         </p>
-                        <span onClick={() => setShow(true)}>+</span>
+                        <span onClick={() => setShow(true)}>
+                          +
+                        </span>
                       </div>
                     </div>
                   </Col>

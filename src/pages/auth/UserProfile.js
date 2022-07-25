@@ -20,7 +20,7 @@ function UserProfile() {
   const [message, setMessage] = useState('');
   const { user, loading } = useContext(CardContext);
   const { data: session } = useSession();
-  
+  console.log('user informaton is: ',user);
 
   useEffect(() => {
     if (!session) {
@@ -354,6 +354,7 @@ function UserProfile() {
                                 </div>
                               </div>
                             </div>
+
                             <div className="text-center mb-4">
                               <ButtonDark
                                 type="submit"
