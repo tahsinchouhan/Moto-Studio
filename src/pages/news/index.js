@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Dropdown, Card, Button } from "react-bootstrap";
 import { BsFillCaretRightFill } from "react-icons/bs";
@@ -6,6 +7,7 @@ import { apipath } from "../api/apiPath";
 function IntoNewsroom() {
   const [newsData, setNewsData] = useState([]);
   const [dateList, setDateList] = useState([]);
+  const router = useRouter();
 
   const filterNews = (month) => {
     fetchData(month);
@@ -52,7 +54,7 @@ function IntoNewsroom() {
           <div className="row">
             <div className="col-lg-12">
               <h1 className="newsroom-header mt-4 text-center">
-                Into the Newsroom
+                Into the Newsroom 
               </h1>
               <div>
                 <div className="news-header-div">
@@ -157,7 +159,7 @@ function IntoNewsroom() {
                                   {news?.content}
                                 </p>
                               </Card.Text>
-                              <Button className="news-card-btn">
+                              <Button className="news-card-btn" onClick={() => router.push(`/news/${news._id}`)}>
                                 <span className="news-read-more">
                                   READ MORE
                                 </span>

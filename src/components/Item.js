@@ -15,7 +15,6 @@ const Item = ({
   weight_type,
 }) => {
   const { user, removeItem, increament, decreament, isLogin, item } = useContext(CardContext);
-
   const deleteItem = (product_id, weight_type, id) => {
     if(!isLogin) {
       const localCartData = localStorage.getItem("cg-herbal-cartData");
@@ -96,7 +95,7 @@ const Item = ({
           <div className="d-flex">
             <button
               className="btn-shopping-counter"
-              onClick={() => decreament(_id)}
+              onClick={() => decreament(product._id)}
             >
               {" "}
               -{" "}
@@ -106,7 +105,7 @@ const Item = ({
             </div>
             <button
               className="btn-shopping-counter"
-              onClick={() => stockQty > quantity && increament(_id)}
+              onClick={() => stockQty > quantity && increament(product._id)}
             >
               {" "}
               +{" "}

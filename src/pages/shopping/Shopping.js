@@ -333,35 +333,35 @@ function Shopping() {
     });
     console.log(createOrder);
 
-    // if (createOrder.data) {
-    //   const hashPayload = {
-    //     key: "gtKFFx",
-    //     txnid: Date.now().toString(),
-    //     amount:
-    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-    //       (promoValue?.value || 0),
-    //     productinfo: result,
-    //     firstname: user?.first_Name,
-    //     email: user?.email,
-    //     SALT: "wia56q6O",
-    //   };
-    //   const hash = sha512(
-    //     `${hashPayload.key}|${hashPayload.txnid}|${
-    //       hashPayload.amount
-    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-    //       hashPayload.email
-    //     }|||||||||||${hashPayload.SALT}`
-    //   );
-    //   form.key.value = hashPayload.key;
-    //   form.txnid.value = hashPayload.txnid;
-    //   form.productinfo.value = hashPayload.productinfo.toString();
-    //   form.amount.value = hashPayload.amount;
-    //   form.email.value = hashPayload.email;
-    //   form.phone.value = user?.mobile;
-    //   form.firstname.value = hashPayload.firstname;
-    //   form.hash.value = hash;
-    //   form.submit();
-    // }
+    if (createOrder.data) {
+      const hashPayload = {
+        key: "gtKFFx",
+        txnid: Date.now().toString(),
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+          (promoValue?.value || 0),
+        productinfo: result,
+        firstname: user?.first_Name,
+        email: user?.email,
+        SALT: "wia56q6O",
+      };
+      const hash = sha512(
+        `${hashPayload.key}|${hashPayload.txnid}|${
+          hashPayload.amount
+        }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+          hashPayload.email
+        }|||||||||||${hashPayload.SALT}`
+      );
+      form.key.value = hashPayload.key;
+      form.txnid.value = hashPayload.txnid;
+      form.productinfo.value = hashPayload.productinfo.toString();
+      form.amount.value = hashPayload.amount;
+      form.email.value = hashPayload.email;
+      form.phone.value = user?.mobile;
+      form.firstname.value = hashPayload.firstname;
+      form.hash.value = hash;
+      form.submit();
+    }
 
     return;
 

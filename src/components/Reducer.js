@@ -103,7 +103,7 @@ export const reducer = (state, action) => {
       return {
           ...state,
           item:state.item.map((curElem)=>{
-              if(curElem._id === action.payload){
+              if(curElem.product._id === action.payload){
                   return {...curElem, quantity:curElem.quantity+1}
               }            
               return curElem
@@ -115,7 +115,7 @@ export const reducer = (state, action) => {
       return {
           ...state,
           item:state.item.map((curElem)=>{
-              if(curElem._id === action.payload && curElem.quantity > 1){
+              if(curElem.product._id === action.payload && curElem.quantity > 1){
                   return {...curElem, quantity:curElem.quantity-1}
               }            
               return curElem
