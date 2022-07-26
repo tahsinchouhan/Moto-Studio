@@ -74,17 +74,6 @@ function Shopping() {
       values.gift_country = values.country
     }
     if (e.target.id === "flexCheckCheckedYes") {
-        // setShippingAddress({
-        //   gift_firstname: "",
-        //   gift_lastname: "",
-        //   gift_email: "",
-        //   gift_mobile: "",
-        //   gift_address: "",
-        //   gift_city: "",
-        //   gift_state: "",
-        //   gift_pincode: "",
-        //   gift_country: "",
-        // });
       setGiftMsg("");
     }
   };
@@ -92,15 +81,15 @@ function Shopping() {
 
   const initialValues = {
     full_name: billingAddress?.full_name || '',
-    first_name:billingAddress?.first_name || user?.billingAddress[0].first_name || '',
-    last_name: billingAddress?.last_name || user?.billingAddress[0].last_name || '',
-    email: billingAddress?.email || user?.billingAddress[0].email || "",
-    mobile: billingAddress?.mobile || user?.billingAddress[0].mobile || "",
-    pincode: billingAddress?.pincode || user?.billingAddress[0].pincode || "",
-    address: billingAddress?.address || user?.billingAddress[0].address || "",
-    country: billingAddress?.country ||user?.billingAddress[0].country || "",
-    city: billingAddress?.city ||user?.billingAddress[0].city || "",
-    state: billingAddress?.state || user?.billingAddress[0].state || "",
+    first_name:billingAddress?.first_name || user?.billingAddress[0]?.first_name || '',
+    last_name: billingAddress?.last_name || user?.billingAddress[0]?.last_name || '',
+    email: billingAddress?.email || user?.billingAddress[0]?.email || "",
+    mobile: billingAddress?.mobile || user?.billingAddress[0]?.mobile || "",
+    pincode: billingAddress?.pincode || user?.billingAddress[0]?.pincode || "",
+    address: billingAddress?.address || user?.billingAddress[0]?.address || "",
+    country: billingAddress?.country || user?.billingAddress[0]?.country || "",
+    city: billingAddress?.city || user?.billingAddress[0]?.city || "",
+    state: billingAddress?.state || user?.billingAddress[0]?.state || "",
     gift_firstname: shippingAddress?.gift_firstname || "",
     gift_lastname: shippingAddress?.gift_lastname || "",
     gift_email: shippingAddress?.gift_email || "",
@@ -169,6 +158,17 @@ function Shopping() {
             city: values.gift_city,
             state: values.gift_state,
           }],
+          // shippingAddress:[{
+          //   firstname: 'jhamlal',
+          //   lastname: 'chelse',
+          //   email: 'j@g.in',
+          //   mobile: 5675456787,
+          //   pincode: 678765,
+          //   address: 'sec-29',
+          //   country: 'india',
+          //   city: 'naya raipur',
+          //   state: 'cg',
+          // }],
           address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
         }),
       });
