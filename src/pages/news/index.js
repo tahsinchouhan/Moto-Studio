@@ -148,21 +148,21 @@ function IntoNewsroom() {
                             />
                             <Card.Body>
                               <Card.Title className="news-card-title">
-                                Lac Cultivation and Processing
                                 {news?.title || "title"}
                               </Card.Title>
                               <Card.Text>
                                 <span className="news-date-title">
                                   {new Date(news.date).toDateString()}
                                 </span>
-                                <p className="news-card-para">
+                                <br className="mb-1" />
+                                {/* <h6 className="news-card-para"> */}
                                   {news?.content}
-                                </p>
+                                {/* </h6> */}
                               </Card.Text>
-                              <Button className="news-card-btn" onClick={() => router.push(`/news/${news._id}`)}>
-                                <span className="news-read-more">
+                              <Button className="news-card-btn text-dark" onClick={() => router.push(`/news/${news._id}`)}>
+                                {/* <span className="news-read-more"> */}
                                   READ MORE
-                                </span>
+                                {/* </span> */}
                               </Button>
                             </Card.Body>
                           </Card>
