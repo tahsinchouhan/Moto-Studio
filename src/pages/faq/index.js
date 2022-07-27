@@ -1,24 +1,8 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import { Accordion } from "react-bootstrap";
 import { apipath } from "../api/apiPath";
 
-const faq = () => {
-  const [faq, setFAQ] = useState([]);
-  useEffect(() => {
-    const fetchFAQ = () => {
-      fetch(`${apipath}/api/v1/faq/faqs`)
-        .then((response) => response.json())
-        .then((objData) => {
-          if (objData?.FAQs?.length) {
-            const filteredData = objData?.FAQs;
-            console.log(filteredData);
-            setFAQ(filteredData);
-          }
-        })
-        .catch((error) => console.log(error));
-    };
-    fetchFAQ();
-  }, []);
+const faq = ({faqList}) => {
   return (
     <>
       <div className="my-5">
@@ -28,9 +12,9 @@ const faq = () => {
       <div className="reducefaqwidth">
         <Accordion>
           {
-            faq.map((item, index) => {
+            faqList.map((item, index) => {
             return (
-              <Accordion.Item eventKey={index}>
+              <Accordion.Item eventKey={index} key={index}>
                 <Accordion.Header>{item.question}</Accordion.Header>
                 <Accordion.Body>{item.answer}</Accordion.Body>
               </Accordion.Item>
@@ -44,3 +28,9 @@ const faq = () => {
 };
 
 export default faq;
+
+export async function getServerSideProps() {
+  const response = await fetch(`${apipath}/api/v1/faq/faqs`);
+  const result = await response.json();
+  return { props: {faqList: result.FAQs} };
+}
