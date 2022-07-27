@@ -384,7 +384,7 @@ function ProductDetail({ productData }) {
                           </span>
                         </div>
                       )}
-                      <div className="mt-3">
+                      {/* <div className="mt-3">
                           <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
                               <span>Buy it on</span>
                               <Image 
@@ -408,7 +408,7 @@ function ProductDetail({ productData }) {
                               background: #eee;
                             }
                             `}</style>
-                        </div>
+                        </div> */}
                     </div>
                   </Col>
                 );
