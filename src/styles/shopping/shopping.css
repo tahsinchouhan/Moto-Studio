@@ -145,6 +145,16 @@
   background: #edf2f5;
   border: none;
 }
+/* hidd gift address */
+.giftaddressForm{
+  visibility: hidden;
+}
+.hiddGiftAddress{
+  visibility: hidden !important;
+}
+.visibleGiftAddress{
+  visibility:visible !important;
+}
 
 @media screen and (max-width: 1145px) {
   .shopping-container {

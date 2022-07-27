@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import ButtonDark from "../../components/button/ButtonDark";
 import { Col, Container, Row, Modal, Button } from "react-bootstrap";
 import { CardContext } from "../../components/Layout";
@@ -34,6 +34,8 @@ function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
   console.log('user data info is: ',user);
+  const giftAddress = useRef(null)
+
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [promoList, setPromoList] = useState([]);
@@ -45,23 +47,25 @@ function Shopping() {
   const { data: session, status } = useSession();
 
   // Shipping address configurations
-  const [msg, setMsg] = useState("");
   const [giftMsg, setGiftMsg] = useState("");
-
+  // const handleOnChange = (event) => {
+  //   setShippingAddress({ ...shippingAddress, [event.target.name]: event.target.value })
+  //   };
 
   const chackedGift = (e, values) => {
     if (e.target.id === "flexCheckCheckedNo") {
-      setGiftMsg("Sender Address and Recipient address will be same");
+      giftAddress.current.classList.add("hiddGiftAddress");
+      giftAddress.current.classList.remove("visibleGiftAddress");
       setShippingAddress({
-        gift_firstname: values?.first_name,
-        gift_lastname: values?.last_name,
-        gift_email: values?.email,
-        gift_mobile: values?.mobile,
-        gift_pincode: values?.pincode,
-        gift_address: values?.address,
-        gift_country: values?.country,
-        gift_city: values?.city,
-        gift_state: values?.state,
+        gift_firstname: values?.first_name || '',
+        gift_lastname: values?.last_name || '',
+        gift_email: values?.email || '',
+        gift_mobile: values?.mobile || '',
+        gift_pincode: values?.pincode || '',
+        gift_address: values?.address || '',
+        gift_country: values?.country || '',
+        gift_city: values?.city || '',
+        gift_state: values?.state || '',
       });
       values.gift_firstname = values.first_name
       values.gift_lastname = values.last_name
@@ -72,8 +76,31 @@ function Shopping() {
       values.gift_state = values.state
       values.gift_pincode = values.pincode
       values.gift_country = values.country
+      setGiftMsg("Sender Address and Recipient address will be same");
     }
     if (e.target.id === "flexCheckCheckedYes") {
+      giftAddress.current.classList.remove("hiddGiftAddress");
+      giftAddress.current.classList.add("visibleGiftAddress");
+      // setShippingAddress({
+      //   gift_firstname: '',
+      //   gift_lastname: '',
+      //   gift_email: '',
+      //   gift_mobile: '',
+      //   gift_pincode:  '',
+      //   gift_address:  '',
+      //   gift_country:  '',
+      //   gift_city: '',
+      //   gift_state: '',
+      // });
+      // values.gift_firstname = ''
+      // values.gift_lastname = ''
+      // values.gift_email = ''
+      // values.gift_mobile = ''
+      // values.gift_address = ''
+      // values.gift_city = ''
+      // values.gift_state = ''
+      // values.gift_pincode = ''
+      // values.gift_country = ''
       setGiftMsg("");
     }
   };
@@ -128,9 +155,6 @@ function Shopping() {
   
 
   const onSubmit = async (values, onSubmitProps) => {
-
-    console.log('Hello jhamlal')
-
     try {
       await fetch(apipath + `/api/v1/users/update/${user?._id}`, {
         method: "PUT",
@@ -158,17 +182,6 @@ function Shopping() {
             city: values.gift_city,
             state: values.gift_state,
           }],
-          // shippingAddress:[{
-          //   firstname: 'jhamlal',
-          //   lastname: 'chelse',
-          //   email: 'j@g.in',
-          //   mobile: 5675456787,
-          //   pincode: 678765,
-          //   address: 'sec-29',
-          //   country: 'india',
-          //   city: 'naya raipur',
-          //   state: 'cg',
-          // }],
           address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
         }),
       });
@@ -537,25 +550,24 @@ function Shopping() {
                   )}
                   {step === 1 && (
                     <Col lg={8} md={12} className="mb-4 ">
-                      <h1 className="shopping-cart-heading mb-4">
+                      <h1 className="shopping-cart-heading mb-3">
                         Delivery Details
                       </h1>
-                      <div
-                        className="text-center text-success text-bold my-3 fs-4"
-                        style={{ fontFamily: "Georgia" }}
-                      >
-                        {msg}
-                      </div>
                       <p
                         style={{
                           color: "#5ABF77",
                           fontWeight: "bold",
                           fontFamily: "serif",
+                          marginBottom: "3px"
                         }}
                       >
                         BILLING DETAILS
                       </p>
                       <div className="card-container card-div">
+                      <div className="text-primary mb-2 text-center"
+                        style={{ fontFamily: "Georgia", fontSize:"18px" }} >
+                        {giftMsg}
+                      </div>
                         {!addressList ? (
                           <>
                             <Row>
@@ -824,16 +836,12 @@ function Shopping() {
                                 </div>
                               </Col>
                             </Row>
-                            <div
-                              className="text-success text-bold mt-2 fs-6"
-                              style={{ fontFamily: "Georgia" }}
-                            >
-                              {giftMsg}
-                            </div>
+                            
+
+                            <div ref={giftAddress} className="giftaddressForm">
                             <p className="mt-2 lableFontWeight fs-5">
                               Enter the details of the recipient:
                             </p>
-
                             <Row>
                               <Col>
                                 <div className="form-group user-field mb-4">
@@ -876,7 +884,6 @@ function Shopping() {
                                     autoComplete="off"
                                     style={formControl}
                                     value={shippingAddress?.gift_lastname}
-
                                   />
                                   <ErrorMessage
                                     name="gift_lastname"
@@ -1057,6 +1064,7 @@ function Shopping() {
                                     // placeholder="Pincode"
                                     style={formControl}
                                     value={shippingAddress?.gift_country}
+
                                   />
                                   <ErrorMessage
                                     name="gift_country"
@@ -1065,6 +1073,7 @@ function Shopping() {
                                 </div>
                               </Col>
                             </Row>
+                            </div>
 
                             {/* <div className="col-md-4">
                             <div className="form-group user-field my-4">

@@ -40,7 +40,11 @@ function UserProfile() {
   const validationSchema = Yup.object({
     full_Name: Yup.string().required("This field is required"),
     email: Yup.string().required("This field is required"),
-    address: Yup.string().required("This field is required"),
+    // address: Yup.string().required("This field is required"),
+    city: Yup.string().required("This field is required"),
+    state: Yup.string().required("This field is required"),
+    pincode: Yup.string().required("This field is required").min(6).max(6),
+    country: Yup.string().required("This field is required"),
   });
 
   let initialValues = {}
@@ -54,6 +58,10 @@ function UserProfile() {
       dob: user?.dob || '',
       gender: user?.gender || '',
       address: user?.address || '',
+      city: user?.billingAddress[0]?.city || '',
+      state: user?.billingAddress[0]?.state || '',
+      pincode: user?.billingAddress[0]?.pincode || '',
+      country: user?.billingAddress[0]?.country || '',
     };
   }
 
@@ -69,15 +77,52 @@ function UserProfile() {
           dob: values.dob,
           gender: values.gender,
           address: values.address,
+          billingAddress:[{
+            first_name: user?.billingAddress[0]?.first_name || '',
+            last_name: user?.billingAddress[0]?.last_name || '',
+            email: user?.billingAddress[0]?.email || '',
+            mobile: user?.billingAddress[0]?.mobile || '',
+            address: user?.billingAddress[0]?.address || '',
+            pincode: values.pincode,
+            country: values.country,
+            city: values.city,
+            state: values.state,
+          }],
         }),
       });
       const result = await res.json();
       if(result) {
         setMessage('Update Successfully!')
       }
+      user.billingAddress = [{
+        first_name: user?.billingAddress[0]?.first_name || "",
+        last_name: user?.billingAddress[0]?.last_name || "",
+        email: user?.billingAddress[0]?.email || "",
+        mobile: user?.billingAddress[0]?.mobile || "",
+        address: user?.billingAddress[0]?.address || "",
+        pincode: values?.pincode || "",
+        country: values?.country || "",
+        city: values?.city || "",
+        state: values?.state || "",
+      }]
+
+
+
     } catch (error) {
       console.log('error :>> ', error);
     }
+    
+
+
+  };
+
+  const formControl = {
+    borderColor: "#e5e5e5 !important",
+    color: "#666666",
+    outline: "none",
+    boxShadow: "none",
+    borderRadius: 0,
+    fontSize: 16,
   };
 
   return (
@@ -187,7 +232,7 @@ function UserProfile() {
                                   <div className="card bg-light">
                                     <div className="card-body p-4">
                                       <div className="card-heading d-flex justify-content-between">
-                                        <h4 className=" mb-2">User Details</h4>
+                                        <h4 className=" mb-2">User Details</h4>     
                                       </div>
                                       <div className="form-group user-field">
                                         <label htmlFor="name">Name</label>
@@ -329,7 +374,7 @@ function UserProfile() {
                               </div>
                             </div>
 
-                            <div className="form-div pt-4">
+                            {/* <div className="form-div pt-4">
                               <div className="row">
                                 <div className="col-md-12">
                                   <div className="userprofile-card bg-light">
@@ -349,6 +394,115 @@ function UserProfile() {
                                         />
                                          <ErrorMessage name="address" component={TextError} />
                                       </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> */}
+
+
+                            <div className="form-div pt-4">
+                              <div className="row">
+                                <div className="col-md-12">
+                                  <div className="userprofile-card bg-light">
+                                    <div className="card-body p-4" >
+                                      <div className="card-heading">
+                                        <h4 className="pb-2">
+                                          Billing Address
+                                        </h4>
+                                      </div>
+                                      {/* add billing addresss */}
+                                      <Row>
+                                        <Col>
+                                          <div className="form-group user-field  mb-4">
+                                            <label
+                                              className="lableFontWeight"
+                                              htmlFor="city"
+                                            >
+                                              City <span className="text-danger">*</span>
+                                            </label>
+                                            <Field
+                                              className="form-control"
+                                              type="text"
+                                              name="city"
+                                              style={formControl}
+                                            />
+                                            <ErrorMessage
+                                              name="city"
+                                              component={TextError}
+                                            />
+                                          </div>
+                                        </Col>
+
+                                        <Col>
+                                          <div className="form-group user-field  mb-4">
+                                            <label
+                                              className="lableFontWeight"
+                                              htmlFor="state"
+                                            >
+                                              State/Province{" "}
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <div className="form-group user-field  mb-4">
+                                              <Field
+                                                className="form-control"
+                                                type="text"
+                                                name="state"
+                                                style={formControl}
+                                              />
+                                              <ErrorMessage
+                                                name="state"
+                                                component={TextError}
+                                              />
+                                            </div>
+                                          </div>
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col>
+                                          <div className="form-group user-field  mb-4">
+                                            <label
+                                              className="lableFontWeight"
+                                              htmlFor="pincode"
+                                            >
+                                              Pincode{" "}
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <Field
+                                              className="form-control"
+                                              type="number"
+                                              name="pincode"
+                                              style={formControl}
+                                            />
+                                            <ErrorMessage
+                                              name="pincode"
+                                              component={TextError}
+                                            />
+                                          </div>
+                                        </Col>
+                                        <Col>
+                                          <div className="form-group user-field  mb-4">
+                                            <label
+                                              className="lableFontWeight"
+                                              htmlFor="country"
+                                            >
+                                              Country{" "}
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <Field
+                                              className="form-control"
+                                              type="text"
+                                              name="country"
+                                              style={formControl}
+                                            />
+                                            <ErrorMessage
+                                              name="country"
+                                              component={TextError}
+                                            />
+                                          </div>
+                                        </Col>
+                                      </Row>
+                                      {/* end billing add */}
                                     </div>
                                   </div>
                                 </div>
