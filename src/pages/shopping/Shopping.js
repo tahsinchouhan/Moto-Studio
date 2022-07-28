@@ -1254,7 +1254,11 @@ function Shopping() {
                         {
                           step===0?(
                             <div className="w-100 border-0 checkout-button">
-                              <button type="button" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0" onClick={()=>{setStep(1)}}>PLACE ORDER</button>
+                              <button type="button" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0" onClick={()=>{
+                                if(!user) {
+                                  router.push("/auth/Login");
+                                }
+                                setStep(1)}}>PLACE ORDER</button>
                             </div>
                           ):(
                             <div className="w-100 border-0 checkout-button">
