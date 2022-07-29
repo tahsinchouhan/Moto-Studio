@@ -128,9 +128,9 @@ const Item = ({
         <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           <p className="fw-bold shopping-p4-size">₹ {quantity * price}</p>
-          <div className="shopping-edit-text mt-5 pt-5 cursor-pointer">
+          {/* <div className="shopping-edit-text mt-5 pt-5 cursor-pointer">
             <p>EDIT</p>
-          </div>
+          </div> */}
         </Col>
       </Row>
       <hr />

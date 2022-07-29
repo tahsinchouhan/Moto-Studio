@@ -67,7 +67,7 @@
 }
 
 .image-div1 {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto !important;
   /* display: inline-block; */
   /* overflow-x: auto; */
@@ -92,7 +92,7 @@
 }
 .overflow-style {
   /* overflow-x: auto; */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .zoom-in-img-wrapper > span {
