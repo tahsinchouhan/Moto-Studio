@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import AboutNewsroom from "../../components/about/AboutNewsroom";
 import EmpoweredGroup from "../../components/about/EmpoweredGroup";
+import Initiative from "../../components/about/Initiative";
 import WhoWeAre from "../../components/about/WhoWeAre";
 function About() {
   return (
@@ -8,16 +9,21 @@ function About() {
       <div className="d-none d-lg-block about-header-img">
         <div className="about-header-text">
           <h2>
-            About <br /> Chhattisgarh Herbals
+            About <br /> Chhattisgarh <br /> Herbals
           </h2>
-          <p>
+          {/* <p>
             Chhattisgarh Herbals is a premium product brand that works towards
             empowering tribal women.
             <br />
             All products are powered by Chhattisgarh Minor Forest Produce
             Cooperative Federation, an institution dedicated to uplifting more
             than 1.2 million forest dwellers of Chhattisgarh state.
-          </p>
+          </p> */}
+          <div style={{color:"#EDF2F5"}}>
+            <p style={{marginBottom:"7px"}}>Chhattisgarh Herbals is a premium product brand that works towards empowering tribal women. </p>
+            <p>All products are powered by Chhattisgarh Minor Forest Produce Cooperative Federation, an institution dedicated to uplifting more than 1.2 million forest dwellers of Chhattisgarh state.
+            </p>
+          </div>
           {/*
           <div className="d-flex">
             <hr className="about-header-hr mx-auto" />
@@ -46,6 +52,7 @@ function About() {
       </div>
 
       <WhoWeAre />
+      <Initiative />
       <div className="about-happy-customer">
         <Container>
           <Row className="py-5">

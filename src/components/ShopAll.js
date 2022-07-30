@@ -10,7 +10,7 @@ function ShopAll({menu_data}) {
           <div className="all-shop-list-change py-3">
             <Row>
               {
-                menu_data?.length > 0 ? menu_data.map((sub_menu,index) => {
+                menu_data?.length > 0 ? [...menu_data].reverse().map((sub_menu,index) => {
                   return <Col md={3} lg={3} key={sub_menu?._id}>
                     <div className="grocery-gourmet-foods">
                       <h6 className="Grocery-foods">{sub_menu?.menu_name}</h6>

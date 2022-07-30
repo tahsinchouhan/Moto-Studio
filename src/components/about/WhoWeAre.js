@@ -33,32 +33,31 @@ function WhoWeAre() {
 
             if (index % 2 === 0) {
               return (
-                <Row className="justify-content-center my-5" key={row._id}>
-                  <Col xxl={4} lg={5} md={6} sm={8} xs={10} className="">
+                <Row className="justify-content-center text-center" key={row._id}>
+                  <Col xxl={4} lg={5} md={6} sm={8} xs={10}>
                     <Image
                       src={row?.images[0]?.img || aboutWhoFirst}
                       className="w-100"
                       alt=""
-                      width={550}
-                      height={400}
+                      width={432}
+                      height={365}
                       unoptimized={true}
                       loading="eager"
                     />
                   </Col>
-
                   <Col
                     xxl={4}
                     lg={5}
                     md={6}
                     sm={8}
                     xs={10}
-                    className="text-md-start  text-start"
+                    className="text-md-start text-start"
                   >
-                    <p className="about-second-heading mt-lg-4 mt-md-2">
-                      {row.title}
+                    <p className="about-second-heading">
+                    The Essence of <br /> Chhattisgarh Herbals
                     </p>
                     <hr className="about-who-first-hr " />
-                    <p className="about-second-para">{row.description}</p>
+                    <p className="about-second-para col-lg-11" style={{textAlign:"justify"}}>‘Chhattisgarh Herbals’ brand is owned by Chhattisgarh State Minor Forest Produce (Trading & Development) Co-operative Federation Ltd. (CGMFP Federation), Nava Raipur. CGMFP Fed is a three tier Co-operative organization created with an objective to promote the trade and development of Minor Forest Produce in the interest of forest dwelling gatherers, on co-operative pattern.</p>
                   </Col>
                   {index === 0 && (
                     <div className="extra-about-text">
@@ -91,14 +90,14 @@ function WhoWeAre() {
                     md={6}
                     sm={8}
                     xs={10}
-                    className="text-md-end"
+                    className="text-md-end me-5"
                   >
-                    <p className="about-second-heading mt-lg-4 mt-md-2">
-                      {row.title || "Title"}
+                    <p className="about-second-heading">
+                    We make tribal <br /> lives better
                     </p>
                     <hr className="about-who-first-hr ms-md-auto " />
-                    <p className="about-second-para">
-                      {row.description || "Description"}
+                    <p className="about-second-para col-lg-10 ms-md-auto"  style={{textAlign:"justify"}}>
+                      The Federation procures 65 species of minor forest produce at Minimum Support Prices and processes them into more than 130 value added products and sells them under the brand “Chhattisgarh Herbals” across the State. ‘Chhattisgarh Herbals’ products are being manufactured in production units run by women SHG members across different locations in the State of Chhattisgarh. Many of them situated in remote corners of the state, but close to the tribal population centres.
                     </p>
                   </Col>
 
@@ -114,8 +113,8 @@ function WhoWeAre() {
                       src={row?.images[0]?.img || aboutWhoSecond}
                       className="w-100"
                       alt=""
-                      width={550}
-                      height={400}
+                      width={435}
+                      height={381}
                       unoptimized={true}
                       loading="eager"
                     />

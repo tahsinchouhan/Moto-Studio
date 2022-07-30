@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Common({ menuData }) {
-  console.log('menuData ',menuData);
+  console.log('menuData ',[...menuData].reverse());
   return (
     <Container fluid>
       <Container>
@@ -110,11 +110,11 @@ function Common({ menuData }) {
                   <Col md={4} lg={4} className="mt-2">
                     <div className="ms-5">
                       <h6 className="Grocery-foods">
-                        {menu?.category_name || ""}
+                        Other Products
                       </h6>
                       <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
-                        {menu?.products_data?.length &&
-                          menu?.products_data?.map((product, idx) => {
+                        {menuData?.length &&
+                          menuData[menuData.length-1]?.products_data?.map((product, idx) => {
                             if (idx > 7) return;
                             return (
                               <Link

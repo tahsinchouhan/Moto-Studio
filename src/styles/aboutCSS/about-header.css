@@ -1,11 +1,13 @@
 .about-header-img {
-  background: url(../../assets/images/about/aboutHeaderDesk.svg);
+  background: url(../../assets/images/about/about-page-image.svg);
   background-repeat: no-repeat !important;
-  background-size: cover;
+  background-size: 100% auto;
   background-position: center;
-  margin-bottom: 6%;
+  margin-bottom: 4%;
   position: relative;
-  height: 600px;
+  height: 604px;
+  max-width: 100%;
+
 }
 
 /* @media screen and (min-width: 1200px) {
@@ -18,7 +20,7 @@
   top: 50%;
   left: 20%;
   transform: translate(-20%, -50%);
-  width: 39%;
+  width: 410px;
 }
 
 .about-header-text h2 {

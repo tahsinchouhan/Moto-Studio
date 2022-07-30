@@ -7,26 +7,36 @@ const privacyPolicy = () => {
           <div className="store-home">
             <span>Store Home &gt; </span>
           </div>
-          <div className="products-header text-center">
+          {/* <div className="products-header text-center">
             <h1 className="product-name-head-text">
              Privacy Policy
             </h1>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="container py-5">
         <h1 className="text-center mb-4">Privacy Policy</h1>
 
-        – Date of Effect <br />
-        – Information We Collect <br />
+        {/* – Information We Collect <br />
         – How We Use Your Personally Identifiable Information <br />
         – Technologies that Allow Us to Customise Your Experience on CHHATTISGARH HERBALS <br />
         – Information We Share and Who We Share With <br />
         – How We Protect Personal Information <br />
         – Updates to Our Privacy Policy <br />
         – Comments<br />
-        – Concerning Facebook <br /><br /><br /><br />
+        – Concerning Facebook <br /><br /><br /><br /> */}
+        <ul>
+          <li>Date of Effect</li>
+          <li>Information We Collect</li>
+          <li>How We Use Your Personally Identifiable Information</li>
+          <li>Technologies that Allow Us to Customise Your Experience on CHHATTISGARH HERBALS</li>
+          <li>Information We Share and Who We Share With</li>
+          <li>How We Protect Personal Information</li>
+          <li>Updates to Our Privacy Policy</li>
+          <li>Comments</li>
+          <li>Concerning Facebook </li>
+        </ul>
 
         <section>        
           <h5>DATE OF EFFECT:</h5>

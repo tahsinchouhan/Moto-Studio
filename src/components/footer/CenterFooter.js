@@ -49,6 +49,7 @@ function CenterFooter() {
                       <div className="d-flex flex-column">
                         {category.length
                           ? category.map((cat, index) => (
+                            index>3 ? '':
                               <Link
                                 href={`/product?activeTab=${index}`}
                                 key={cat._id}

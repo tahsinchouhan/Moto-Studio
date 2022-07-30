@@ -97,7 +97,7 @@ function EmpoweredGroup() {
           <Slider {...settings}>
           <div className="text-center">
                   <div className="text-center">
-                    <Image 
+                     <Image 
                       src={shaheed}
                       className="about-empower-carousel-padding" 
                       alt= "Images" 
@@ -106,10 +106,10 @@ function EmpoweredGroup() {
                       unoptimized={true}
                       loading="eager"
                     />
-                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
-                      <b>SHAHEED MAHENDRA KARMA <br /> SOCIAL SECURITY SCHEME:</b>
-                      <p className="pt-1"><b>FY: 2020-21</b> | Beneficiaries: 355 | <br />Amount : Rs. 5.33 Cr</p> 
-                      <p style={{marginTop:"-10px"}}><b>FY: 2021-22 </b> | Beneficiaries: 3472 |<br /> Amount: Rs. 52.19 Cr.</p>
+                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px", fontFamily:"Lato"}}>
+                      <b style={{fontWeight:"700"}}>SHAHEED MAHENDRA KARMA <br /> SOCIAL SECURITY SCHEME:</b>
+                      <p className="pt-1"><b style={{fontWeight:"700"}}>FY: 2020-21</b> | Beneficiaries: 355 | <br />Amount : Rs. 5.33 Cr</p> 
+                      <p style={{marginTop:"-10px"}}><b style={{fontWeight:"700"}}>FY: 2021-22 </b> | Beneficiaries: 3472 |<br /> Amount: Rs. 52.19 Cr.</p>
                     </div>
                   </div>
                 </div>
@@ -124,10 +124,10 @@ function EmpoweredGroup() {
                       unoptimized={true}
                       loading="eager"
                     />
-                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
-                      <b>SCHOLARSHIPS FOR CHILDREN OF COOPERATIVE MEMBERS:</b>
-                      <p className="pt-1"><b>FY: 2020-21</b> | Beneficiaries: 8451 | <br /> Amount : Rs. 9.29 Cr</p>
-                      <p style={{marginTop:"-10px"}}><b>FY: 2021-22</b> | Beneficiaries: 3219 |<br />Amount: Rs. 1.31 Cr.</p>
+                    <div className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px", fontFamily:"Lato"}}>
+                      <b style={{fontWeight:"700"}}>SCHOLARSHIPS FOR CHILDREN OF COOPERATIVE MEMBERS:</b>
+                      <p className="pt-1"><b style={{fontWeight:"700"}} >FY: 2020-21</b> | Beneficiaries: 8451 | <br /> Amount : Rs. 9.29 Cr</p>
+                      <p style={{marginTop:"-10px"}}><b style={{fontWeight:"700"}}>FY: 2021-22</b> | Beneficiaries: 3219 |<br />Amount: Rs. 1.31 Cr.</p>
                     </div>
                   </div>
                 </div>
@@ -143,8 +143,8 @@ function EmpoweredGroup() {
                       unoptimized={true}
                       loading="eager"
                     />
-                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px"}}>
-                    <b>CROP INSURANCE AND LOAN WITH SUBSIDISED INTEREST SCHEME FOR LAC GROWERS</b>
+                    <p className="empowered-carousel-text text-start ms-4 ps-2" style={{marginTop:"-20px", fontFamily:"Lato"}}>
+                    <b style={{fontWeight:"700"}}>CROP INSURANCE AND LOAN WITH SUBSIDISED INTEREST SCHEME FOR LAC GROWERS</b>
                     </p>
                   </div>
                 </div>
