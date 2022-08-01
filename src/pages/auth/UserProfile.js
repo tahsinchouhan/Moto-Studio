@@ -40,7 +40,7 @@ function UserProfile() {
   const validationSchema = Yup.object({
     full_Name: Yup.string().required("This field is required"),
     email: Yup.string().required("This field is required"),
-    // address: Yup.string().required("This field is required"),
+    address: Yup.string().required("This field is required"),
     city: Yup.string().required("This field is required"),
     state: Yup.string().required("This field is required"),
     pincode: Yup.string().required("This field is required").min(6).max(6),
@@ -57,7 +57,7 @@ function UserProfile() {
       mobile: user?.mobile || '',
       dob: user?.dob || '',
       gender: user?.gender || '',
-      address: user?.address || '',
+      address: user?.billingAddress[0]?.address || '',
       city: user?.billingAddress[0]?.city || '',
       state: user?.billingAddress[0]?.state || '',
       pincode: user?.billingAddress[0]?.pincode || '',
@@ -82,7 +82,7 @@ function UserProfile() {
             last_name: user?.billingAddress[0]?.last_name || '',
             email: user?.billingAddress[0]?.email || '',
             mobile: user?.billingAddress[0]?.mobile || '',
-            address: user?.billingAddress[0]?.address || '',
+            address: values.address,
             pincode: values.pincode,
             country: values.country,
             city: values.city,
@@ -99,7 +99,7 @@ function UserProfile() {
         last_name: user?.billingAddress[0]?.last_name || "",
         email: user?.billingAddress[0]?.email || "",
         mobile: user?.billingAddress[0]?.mobile || "",
-        address: user?.billingAddress[0]?.address || "",
+        address: values?.address,
         pincode: values?.pincode || "",
         country: values?.country || "",
         city: values?.city || "",
@@ -412,6 +412,30 @@ function UserProfile() {
                                         </h4>
                                       </div>
                                       {/* add billing addresss */}
+
+                                      <Row>
+                                        <Col>
+                                          <div className="form-group user-field mb-4">
+                                            <label
+                                              className="lableFontWeight"
+                                              htmlFor="address"
+                                            >
+                                              Street Address{" "}
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <Field
+                                              className="form-control"
+                                              type="text"
+                                              name="address"
+                                              style={formControl}
+                                            />
+                                            <ErrorMessage
+                                              name="address"
+                                              component={TextError}
+                                            />
+                                          </div>
+                                        </Col>
+                                      </Row>
                                       <Row>
                                         <Col>
                                           <div className="form-group user-field  mb-4">
