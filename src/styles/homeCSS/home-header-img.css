@@ -5,6 +5,13 @@
   padding: 10% 0;
 }
 
+.home-eco-friendly {
+  color: #DBFF00;
+  margin-top: 30.35px;
+  margin-bottom: -24px;
+
+}
+
 @media screen and (min-width: 1200px) {
   .home-head-img {
     /* height: 480px; */
@@ -87,6 +94,9 @@
 
   .home-header-para {
     color: #2c2c2c;
+  }
+  .BannerBottomImages-media-query-mobile{
+    display: none !important;
   }
 }
 

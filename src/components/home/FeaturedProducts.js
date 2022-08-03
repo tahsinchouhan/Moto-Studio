@@ -15,12 +15,13 @@ function FeaturedProducts({ category }) {
   const [selectedCat, setSelected] = useState();
   const getCategoryId = (id) => setCategoryId(id);
 
-  // let categories = category?.filter((cat, index) => index < 3);
-  let categories = category
+  let categories = category?.filter((cat, index) => index < 4);
+  // let categories = category
 
   const settings = {
     dots: false,
     infinite: false,
+    arrows: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -35,7 +36,7 @@ function FeaturedProducts({ category }) {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.7,
           slidesToScroll: 1,
         },
       },
@@ -76,13 +77,30 @@ function FeaturedProducts({ category }) {
                         // unoptimized={true}
                         // loading="eager"
                       />
-                      <p className=" feature-products-texts p-1 ">
+                    </div>
+                      <p className="feature-products-texts">
                         {cat?.category_name || "Category Name"}
                       </p>
-                    </div>
                   </div>
                 );
               })}
+              {/* <div className="image-div">
+                    <div className="rounded-circle zoom-in-img-wrapper">
+                      <Image
+                        src={emptyImage}
+                        alt="GourmetFoods"
+                        className={`rounded-circle hover1 ${
+                          selectedCat === 3 ? "active" : ""
+                        }`}
+                        width={160}
+                        height={160}
+                        loading="lazy"
+                      />
+                      <p className="feature-products-texts">
+                        Primium Products
+                      </p>
+                    </div>
+                  </div> */}
           </Slider>
         </div>
       </div>

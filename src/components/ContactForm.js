@@ -187,8 +187,8 @@ function ContactForm() {
                       className="py-0 text-start px-3 contact-text-family select_box select-button-width"
                       >
                       <MenuItem value={0}>Select an Option</MenuItem>
-                      <MenuItem value={1}>About us</MenuItem>
-                      <MenuItem value={2}>Grievance</MenuItem>
+                      <MenuItem value={1}>Support & Feedback</MenuItem>
+                      <MenuItem value={2}>Grievances</MenuItem>
                     </Select>
                 </div>
                 <h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>

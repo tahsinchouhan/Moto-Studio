@@ -191,11 +191,11 @@ function Header() {
                           <a className=" nav-link mx-3">FOREST LOVERS CLUB</a>
                         </Link>
                       </li>
-                      <li onClick={() => setConnectViewDropDown(false)}>
+                      {/* <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/successStory">
                           <a className=" nav-link mx-3">SUCCESS STORIES</a>
                         </Link>
-                      </li>
+                      </li> */}
                     </ul>
                   )}
                 </div>

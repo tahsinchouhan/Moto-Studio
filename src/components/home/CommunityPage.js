@@ -94,15 +94,29 @@ function CommunityPage() {
               <h1 className="Text">The Community</h1>
               <hr className="my-4 Line " />
             </div>
-            <div className="para-divb pb-4">
-              <div className="d-flex">
-                <p className="content mx-auto" style={{ fontFamily: "Lato" }}>
-                  Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
-                  Separated they live in Bookmarksgrove right at the coast of
-                  the Semantics, a large language ocean. A small river named
-                  Duden flows by their place and supplies it with the necessary
-                  regelialia.
+            <div className="para-divb pb-5 communitypage-apply-media-query">
+              <div className="col-lg-9 mx-auto text-center home-community-p-mb" style={{ fontFamily: "Lato" }}>
+                <p>Chhattisgarh is home to several tribal castes with Gonds of Bastar being the prominent among them. 
+                  The Baiga, Korba, Abhuj Maria, BisonHorn Maria, Muria, Halbaa, Bhatra and Dhurvaa are other major tribes of the region. 
+                  </p>
+                  <p>
+                  Primarily dependent on the agriculture with minor forest produce as additional income. These forest dwellers are members of the cooperative called Chhattisgarh Minor Forest Produce Cooperative Federation (CGMFP).
+                  </p>
+                  <p>
+                  The CGMFP facilitates the entrepreneurial spirit of the members and helps them earn better from minor forest produce, by helping them in setting up processing units for minor forest produce like Tamarind, Honey, Cashew and 62 more such species.
+                  </p>
+                  <p>
+                  These units produce more than 120 products from the raw material collected from the forests. Value addition allows them to improve their returns by increasing shelf life and market value of the produce. The units are all owned and Operated by the women. 
+                  </p>
+                <p>
+                  The products are marketed by CGMFP under the brand name CHHATTISGARH HERBALS. Each product offers PURITY THAT IS PRICELESS, along with the purity of the forests these products also represent the priceless feeling of helping the Tribal Women earn self-respect and dignity in their communities.
+                </p>
+              </div>
+            </div>
+            <div className="para-divb pb-5 communitypage-apply-media-query-mobile">
+              <div className="col-lg-9 mx-auto home-community-p-mb" style={{ fontFamily: "Lato" }}>
+                <p>
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. 
                 </p>
               </div>
             </div>

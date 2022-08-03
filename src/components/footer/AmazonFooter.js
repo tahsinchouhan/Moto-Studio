@@ -9,10 +9,17 @@ function AmazonFooter() {
     <div className="amazon-div">
       <Container>
         <Row>
-          <Col sm={12} lg={8}>
+          <Col sm={12} lg={8} className="followus-media-query">
             <div className="amazon-wrapper">
               <p className="amazon-product">
                 Your favourite Chhattisgarh Herbals products also available on
+              </p>
+            </div>
+          </Col>
+          <Col className="followus-media-query-mobile col-11">
+            <div className="amazon-wrapper">
+              <p className="amazon-product">
+                Buy all your favourite products from the world’s largest online store
               </p>
             </div>
           </Col>
@@ -26,7 +33,7 @@ function AmazonFooter() {
               />
             </div>
           </Col>
-          <Col sm={5} lg={2} className="wrapper-mobile-fix">
+          <Col sm={5} lg={2} className="wrapper-mobile-fix followus-media-query">
             <div className="amazon-wrapper footer-logo-img flipkart">
               <Image
                 src={flipkartlogo}

@@ -16,6 +16,7 @@
   color: #333333;
   font-family: "Lora", sans-serif;
   font-weight: 400;
+  padding-left: 9px;
 }
 
 .featured-products-card-wrapper {
@@ -89,6 +90,7 @@
   display: inline-block;
   width: 200px !important;
   overflow: hidden;
+  text-align: center !important;
 }
 .overflow-style {
   /* overflow-x: auto; */
@@ -97,9 +99,8 @@
 
 .zoom-in-img-wrapper > span {
   overflow: hidden;
-  border-radius: 50% !important;
+  border-radius: 50%;
 }
-
 .hover1 {
   overflow: hidden;
 }
@@ -127,6 +128,23 @@
   .feature-products-text {
     font-size: 32px;
   }
+  .zoom-in-img-wrapper > span {
+    overflow: hidden;
+    height: 110px !important;
+    width: 110px !important;
+  }
+  .image-div {
+    /* display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; */
+    width: 189px !important;
+    overflow: hidden;
+    text-align: center;
+  }
+  .feature-products-texts {
+    font-size: 17px;
+  }
+  
 }
 
 .featured-card-image-for-overlay {

@@ -18,7 +18,12 @@
    font-size: 24px !important;
    margin-bottom: 3px;
  }
-  
+  .followus-media-query-mobile{
+    display: none;
+  }
+  .followus-media-query{
+    display: block;
+  }
   @media screen and (max-width: 480px) {
     .home-follow-us-img {
       /* background: url(../../assets/images/home/followMobile.png); */
@@ -28,6 +33,12 @@
   
     .home-follow-us-img-distance {
       padding: 19% 5%;
+    }
+    .followus-media-query-mobile{
+      display: block;
+    }
+    .followus-media-query{
+      display: none;
     }
   
   }
