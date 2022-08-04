@@ -13,6 +13,7 @@
 @import "../styles/blogPost/BlogPost.css";
 @import "../styles/productName/productName.css";
 @import "../styles/connectCSS/connect.css";
+@import "../styles/shopCss/FilterContainerMobile.css";
 
 a {
   color: inherit;
@@ -81,7 +82,7 @@ a {
     background-color: hsl(200, 20%, 95%);
   }
 }
-.reducefaqwidth{
+.reducefaqwidth {
   width: 60%;
   margin: 1vmax auto 4vmax;
 }
@@ -119,7 +120,7 @@ a {
   .Grocery-foods {
     text-align: center;
   }
-  .reducefaqwidth{
+  .reducefaqwidth {
     width: 98%;
   }
 }

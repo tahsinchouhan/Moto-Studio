@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
 import ButtonDark from "../../components/button/ButtonDark";
+import Button from "react-bootstrap/Button";
 import ButtonLight from "../../components/button/ButtonLight";
 import { AiFillPlusCircle } from "react-icons/ai";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
@@ -10,6 +11,8 @@ import { useRouter } from "next/router";
 import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import Skeleton from "../../components/Skeleton";
+import Modal from "react-bootstrap/Modal";
+import { GrSort } from "react-icons/gr";
 
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -106,7 +109,9 @@ function Products() {
               (data) => data.status === true
             );
             setCheckedStateRemedy(new Array(filteredData.length).fill(false));
-            let newfilteredData = filteredData.filter((data, ind) => ind < filteredData.length);
+            let newfilteredData = filteredData.filter(
+              (data, ind) => ind < filteredData.length
+            );
             setRemedy([...newfilteredData].reverse());
           }
         })
@@ -118,7 +123,7 @@ function Products() {
   }, []);
 
   useEffect(() => {
-    console.log(activeTab)
+    console.log(activeTab);
     if (activeTab) {
       const activeCategory = checkedState.map(
         (item, index) => index === Number(activeTab)
@@ -130,7 +135,7 @@ function Products() {
   }, [category, activeTab]);
 
   useEffect(() => {
-    if(activeTab){
+    if (activeTab) {
       const activeRemedy = checkedStateRemedy.map(
         (item, index) => index === Number(activeTab)
       );
@@ -141,7 +146,7 @@ function Products() {
   useEffect(() => {
     const query = checkedState.reduce((query, currentState, index) => {
       if (currentState === true) {
-        return (query +=`&category_id[]=` + category[index]._id);
+        return (query += `&category_id[]=` + category[index]._id);
       }
       return query;
     }, "");
@@ -166,7 +171,6 @@ function Products() {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
     fetchDataRemedy(query);
-
   }, [checkedStateRemedy, remedy, price]);
 
   const handleOnChange = (position) => {
@@ -213,6 +217,48 @@ function Products() {
     }
   };
 
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+  const [showFilterMobile, setShowFilterMobile] = useState(false);
+
+  // run only once
+  useEffect(() => {
+    window.onload = () => {
+      // console.log(window.innerWidth);
+      if (window.innerWidth < 790) {
+        setShowFilterMobile(true);
+      } else {
+        setShowFilterMobile(false);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // run when resize
+  useEffect(() => {
+    const onResize = () => {
+      // console.log(window.innerWidth);
+      if (window.innerWidth < 790) {
+        setShowFilterMobile(true);
+      } else {
+        setShowFilterMobile(false);
+      }
+    };
+
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  });
+
+  function handleShow() {
+    setFullscreen(true);
+    setShow(true);
+  }
+
+  const handleClose = () => setShow(false);
+
   return (
     <>
       <div className="all-product-heading">
@@ -225,9 +271,19 @@ function Products() {
           </div>
         </div>
       </div>
-      <Container fluid className="all-products-container">
-        <Row>
-          <Col lg={3} md={3} className="pt-4 px-5">
+
+      {/**  Filter Container Mobile **/}
+      <Modal
+        show={show}
+        fullscreen={fullscreen}
+        onHide={() => setShow(false)}
+        className="filter-container-mobile"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Filter By:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Col lg={3} md={3} className="pt-5 ps-4 pe-4">
             <div>
               <div className="pt-2">
                 <span className="product-filter ">FILTER BY</span>
@@ -260,74 +316,111 @@ function Products() {
                     );
                   })}
               </div>
-              {/* <div>
-                <h6 className="product-category-text">REMEDY</h6>
-                <div className="form-check mb-3 ps-4 cursor-pointer">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={0}
-                    checked={0}
-                    onChange={() => handleOnChange(index)}
-                  />
-                  <label
-                    className="form-check-product-item cursor-pointer"
-                    htmlFor={0}
-                  >
-                    {"Diabetes"}
-                  </label>
-                </div>
-                <div className="form-check mb-3 ps-4 cursor-pointer">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={1}
-                    checked={0}
-                    // onChange={() => handleOnChange(index)}
-                  />
-                  <label
-                    className="form-check-product-item cursor-pointer"
-                    htmlFor={1}
-                  >
-                    {"Acidity"}
-                  </label>
-                </div>
-                <div className="form-check mb-3 ps-4 cursor-pointer">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={2}
-                    checked={0}
-                    // onChange={() => handleOnChange(index)}
-                  />
-                  <label
-                    className="form-check-product-item cursor-pointer"
-                    htmlFor={2}
-                  >
-                    {"Digestives"}
-                  </label>
-                </div>
-                <div className="form-check mb-3 ps-4 cursor-pointer">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={3}
-                    checked={0}
-                    // onChange={() => handleOnChange(index)}
-                  />
-                  <label
-                    className="form-check-product-item cursor-pointer"
-                    htmlFor={3}
-                  >
-                    {"Hair Problems"}
-                  </label>
-                </div>
-              </div> */}
+
               <div>
                 <h6 className="product-category-text">REMEDY</h6>
               </div>
-              {
-                remedy.length &&
+              {remedy.length &&
+                remedy.map((rem, index) => {
+                  return (
+                    <div
+                      className="form-check mb-3 ps-4 cursor-pointer"
+                      key={rem._id}
+                    >
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id={rem?._id}
+                        value={rem._id}
+                        checked={checkedStateRemedy[index]}
+                        onChange={() => handleOnChangeRemedy(index)}
+                      />
+                      <label
+                        className="form-check-product-item cursor-pointer"
+                        htmlFor={rem?._id}
+                      >
+                        {rem?.remedy_name || "Remedy Name"}
+                      </label>
+                    </div>
+                  );
+                })}
+              <Slider
+                range
+                allowCross={false}
+                defaultValue={price}
+                min={0}
+                max={9999}
+                marks={{
+                  0: `₹ ${price[0]}`,
+                  9999: `₹ ${price[1]}`,
+                }}
+                value={price}
+                onChange={(price) => setPrice(price)}
+              />
+            </div>
+          </Col>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => handleClose()}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => handleClose()}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Container fluid className="all-products-container">
+        {showFilterMobile && (
+          <button
+            className="filter-item-mobile-btn"
+            onClick={() => handleShow()}
+          >
+            <GrSort className="icon" />
+            Filter
+          </button>
+        )}
+
+        <Row>
+          {!showFilterMobile && (
+            <Col lg={3} md={3} className="pt-4 px-5">
+              <div>
+                <div className="pt-2">
+                  <span className="product-filter ">FILTER BY</span>
+                  <hr className="product-filter-hr" />
+                </div>
+                <div>
+                  <h6 className="product-category-text">CATEGORY</h6>
+                  {category.length &&
+                    category.map((cat, index) => {
+                      return (
+                        <div
+                          className="form-check mb-3 ps-4 cursor-pointer"
+                          key={cat._id}
+                        >
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id={cat?._id}
+                            value={cat._id}
+                            checked={checkedState[index]}
+                            onChange={() => handleOnChange(index)}
+                          />
+                          <label
+                            className="form-check-product-item cursor-pointer"
+                            htmlFor={cat?._id}
+                          >
+                            {cat?.category_name || "Category Name"}
+                          </label>
+                        </div>
+                      );
+                    })}
+                </div>
+
+                <div>
+                  <h6 className="product-category-text">REMEDY</h6>
+                </div>
+                {remedy.length &&
                   remedy.map((rem, index) => {
                     return (
                       <div
@@ -350,27 +443,25 @@ function Products() {
                         </label>
                       </div>
                     );
-                  })
-              }
-              <Slider
-                range
-                allowCross={false}
-                defaultValue={price}
-                min={0}
-                max={9999}
-                marks={{
-                  0: `₹ ${price[0]}`,
-                  9999: `₹ ${price[1]}`,
-                }}
-                value={price}
-                onChange={(price) => setPrice(price)}
-              />
-            </div>
-          </Col>
-
+                  })}
+                <Slider
+                  range
+                  allowCross={false}
+                  defaultValue={price}
+                  min={0}
+                  max={9999}
+                  marks={{
+                    0: `₹ ${price[0]}`,
+                    9999: `₹ ${price[1]}`,
+                  }}
+                  value={price}
+                  onChange={(price) => setPrice(price)}
+                />
+              </div>
+            </Col>
+          )}
           <Col lg={9} md={9} xs={12}>
             <Row className="pt-3 px-lg-0 px-4">
-            
               <Col md={12} className="pe-0">
                 {/* <div> */}
                 <div className="product-38">
@@ -397,7 +488,7 @@ function Products() {
                 <hr />
               </Col>
             </Row>
-            
+
             <Row className="justify-content-center justify-content-lg-start">
               {!loading
                 ? productData?.length &&
