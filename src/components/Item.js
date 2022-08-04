@@ -94,6 +94,7 @@ const Item = ({
         <Col lg="2" className="mt-3">
           <div className="d-flex">
             <button
+              type="button"
               className="btn-shopping-counter"
               onClick={() => decreament(product._id)}
             >
@@ -104,6 +105,7 @@ const Item = ({
               {quantity}
             </div>
             <button
+              type="button"
               className="btn-shopping-counter"
               onClick={() => stockQty > quantity && increament(product._id)}
             >

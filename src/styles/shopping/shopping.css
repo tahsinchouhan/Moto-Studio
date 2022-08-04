@@ -148,12 +148,15 @@
 /* hidd gift address */
 .giftaddressForm{
   visibility: hidden;
+  display: none;
 }
 .hiddGiftAddress{
   visibility: hidden !important;
+  display: none;
 }
 .visibleGiftAddress{
   visibility:visible !important;
+  display: block;
 }
 
 @media screen and (max-width: 1145px) {

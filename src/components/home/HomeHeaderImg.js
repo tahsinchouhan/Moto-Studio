@@ -48,7 +48,7 @@ function HomeHeaderImg() {
         style={{
           backgroundImage: `url(${banner.bannerImg})`,
           backgroundSize: "cover",
-          height: 255,
+          height: "62vw",
         }}
       >
         {/* <Image src={banner?.bannerImg || HomeHeader} className="w-100" alt="ss" width={1200} height={800} /> */}
@@ -137,8 +137,8 @@ function HomeHeaderImg() {
               </Row>
             </Col>
           </Row> */}
-          <Row className=" justify-content-md-start justify-content-center">
-            <Col md={8} lg={6} className="col-10">
+          <Row className="justify-content-md-start justify-content-center">
+            <Col md={8} lg={7} className="col-10">
               <Row className="">
                 <Col md={12}>
                   <div>
@@ -147,8 +147,8 @@ function HomeHeaderImg() {
                     </p>
                   </div>
                   <div className="">
-                    <p className="home-eco-friendly col-lg-8">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
-                    <p className="home-header-para text-center text-md-start col-lg-8">
+                    <p className="home-eco-friendly col-lg-7">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
+                    <p className="home-header-para text-center text-md-start col-lg-7">
                       Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.
                     </p>
                   </div>
