@@ -84,13 +84,14 @@
 }
 .visit-card-weight {
   font-family: Lora;
-  font-size: 15px;
+  font-size: 14px;
   color: #666666;
+  padding-top: 10px;
 }
 
 .visit-card-title {
   font-family: Lora;
-  font-size: 18px;
+  font-size: 16px !important;
   color: #333333;
   font-weight: normal !important;
 }

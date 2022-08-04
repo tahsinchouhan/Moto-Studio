@@ -163,7 +163,7 @@ function VisitTheShop({ categoryId }) {
                         {featured[0]?.products_id?.weight[0]?.weight_type
                           ?.weight_gram || 0}
                       </Card.Text>
-                      <Card.Text className="visit-card-weight">
+                      <Card.Text className="visit-card-weight" style={{color:"#5ABF6B"}}>
                         ₹ {featured[0]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
@@ -218,7 +218,7 @@ function VisitTheShop({ categoryId }) {
                         {featured[1]?.products_id?.weight[0]?.weight_type
                           ?.weight_gram || 0}
                       </Card.Text>
-                      <Card.Text className="visit-card-weight">
+                      <Card.Text className="visit-card-weight" style={{color:"#5ABF6B"}}>
                         ₹ {featured[1]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
@@ -248,7 +248,7 @@ function VisitTheShop({ categoryId }) {
                       height={460}
                       // loading="lazy"
                       // layout="fill"
-                      // objectFit="contain"
+                      objectFit="cover"
                       unoptimized={true}
                       loading="eager"
                       className="featured-card-image-for-overlay"
@@ -280,7 +280,7 @@ function VisitTheShop({ categoryId }) {
                         {featured[2]?.products_id?.weight[0]?.weight_type
                           ?.weight_gram || 0}
                       </Card.Text>
-                      <Card.Text className="visit-card-weight">
+                      <Card.Text className="visit-card-weight" style={{color:"#5ABF6B"}}>
                         ₹ {featured[2]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
@@ -338,7 +338,7 @@ function VisitTheShop({ categoryId }) {
                         {featured[3]?.products_id?.weight[0]?.weight_type
                           ?.weight_gram || 0}
                       </Card.Text>
-                      <Card.Text className="visit-card-weight">
+                      <Card.Text className="visit-card-weight" style={{color:"#5ABF6B"}}>
                         ₹ {featured[3]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>
@@ -391,7 +391,7 @@ function VisitTheShop({ categoryId }) {
                         {featured[4]?.products_id?.weight[0]?.weight_type
                           ?.weight_gram || 0}
                       </Card.Text>
-                      <Card.Text className="visit-card-weight">
+                      <Card.Text className="visit-card-weight" style={{color:"#5ABF6B"}}>
                         ₹ {featured[4]?.products_id?.weight[0]?.price || 0}
                       </Card.Text>
                     </div>

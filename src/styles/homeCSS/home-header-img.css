@@ -50,9 +50,15 @@
 .home-header-para {
   font-family: "Lato";
   font-size: 16px;
-  line-height: 28px;
+  /* line-height: 28px; */
   color: #ffffff;
   margin: 2rem 0;
+}
+.home-header-para-desc {
+  font-family: "Lato";
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 2px;
 }
 
 @media screen and (max-width: 767px) {

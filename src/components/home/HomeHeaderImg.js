@@ -55,8 +55,8 @@ function HomeHeaderImg() {
       </div>
       <Container className="home-head-text-mobile">
         <Row className="justify-content-md-start justify-content-center">
-          <Col md={8} lg={6} className="col-10">
-            <Row className="">
+          <Col md={8} lg={6} className="col-12">
+            <Row className="mx-sm-auto">
               {/* <Col md={9} className="py-md-5 my-2 ">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
                   {banner.bannerTitle} 
@@ -74,21 +74,21 @@ function HomeHeaderImg() {
                   </div>
                 </div>
               </Col> */}
-              <Col md={9} className="py-md-5 my-2 ">
+              <Col md={9} className="py-md-5 my-2">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
-                  Purity that is Priceless 
+                  Purity <br /> that is <br /> Priceless 
                 </p>
-                <div className="col-10">
+                <div className="col-12 mt-3">
                   <p className="home-header-para-mobile">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                 </div>
-                <div className="col-10">
+                <div className="col-12">
                   <div
                     className="mb-md-5  mt-md-3 mb-0"
                     onClick={() => router.push("/product")}
                   >
                     <Button
                       className="home-header-button"
-                      text="SHOP NOW &nbsp; &nbsp; &gt;"
+                      text="JOIN THE ECO-REVOLUTION &nbsp; &nbsp; &gt;"
                     />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ function HomeHeaderImg() {
             </Col>
           </Row> */}
           <Row className="justify-content-md-start justify-content-center">
-            <Col md={8} lg={7} className="col-10">
+            <Col md={12} lg={8} className="col-10">
               <Row className="">
                 <Col md={12}>
                   <div>
@@ -147,9 +147,16 @@ function HomeHeaderImg() {
                     </p>
                   </div>
                   <div className="">
-                    <p className="home-eco-friendly col-lg-7">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
-                    <p className="home-header-para text-center text-md-start col-lg-7">
-                      Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.
+                    <p className="home-eco-friendly col-lg-12">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST</p> 
+                     <p className="home-eco-friendly col-lg-12">WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
+                    <p className="home-header-para-desc text-center text-md-start" style={{marginTop:"32px"}}>
+                      Each product is handcrafted with care and love by the
+                    </p>
+                    <p className="home-header-para-desc text-center text-md-start">
+                       empowered women of these forest areas, endowing each
+                    </p>
+                    <p className="home-header-para-desc text-center text-md-start pb-4">
+                        product with a purity that is truly priceless.
                     </p>
                   </div>
 
