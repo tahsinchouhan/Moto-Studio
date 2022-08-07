@@ -68,6 +68,10 @@
     display: block !important;
   }
 
+  .collaborate-header-img-mobile > span {
+    height: 225px !important;
+  }
+
   .collaborate-heads-head-mobile {
     font-family: "Red Hat Display";
     font-weight: bold;
@@ -110,4 +114,7 @@
   .collaborate-heads-head {
     font-size: 33px;
   }
+}
+.business-btn-mobile button {
+  width: 100% !important;
 }

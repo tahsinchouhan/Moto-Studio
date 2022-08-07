@@ -5,9 +5,10 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import HerbalRemedies from "../../../public/Image/HerbalRemedies.png";
-import GreenCare from "../../../public/Image/GreenCare.png";
-import SummerCoolers from "../../../public/Image/SummerCoolers.png";
+import TikhurPowder from "../../../public/Image/TikhurPowder.png";
+import TangyTamarind from "../../../public/Image/TangyTamarind.png";
+import TurmericPowder from "../../../public/Image/TurmericPowder.png";
+import ThikurSmall from "../../../public/Image/ThikurSmall.png";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -76,19 +77,22 @@ function HomeHeaderImg() {
               </Col> */}
               <Col md={9} className="py-md-5 my-2 ">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
-                  Purity that is Priceless 
+                  Purity that is Priceless
                 </p>
-                <div className="col-10">
-                  <p className="home-header-para-mobile">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                <div className="col-10 mt-3">
+                  <p className="home-header-para-mobile text-capitalize">
+                    Eco-friendly products from one of the largest women
+                    empowerment efforts in the world.
+                  </p>
                 </div>
-                <div className="col-10">
+                <div className="col-12">
                   <div
                     className="mb-md-5  mt-md-3 mb-0"
                     onClick={() => router.push("/product")}
                   >
                     <Button
                       className="home-header-button"
-                      text="SHOP NOW &nbsp; &nbsp; &gt;"
+                      text="JOIN THE ECO-REVOLUTION"
                     />
                   </div>
                 </div>
@@ -143,13 +147,13 @@ function HomeHeaderImg() {
                 <Col md={12}>
                   <div>
                     <p className="home-header-head text-center mb-0 text-md-start">
-                    Purity that <br /> is Priceless
+                      Purity that <br /> is Priceless
                     </p>
                   </div>
                   <div className="">
-                    <p className="home-eco-friendly col-lg-8">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
-                    <p className="home-header-para text-center text-md-start col-lg-8">
-                      Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.
+                    <p className="home-header-para text-center text-capitalize text-md-start col-lg-8">
+                      Eco-friendly products from one of the largest women
+                      empowerment efforts in the world.
                     </p>
                   </div>
 
@@ -169,11 +173,11 @@ function HomeHeaderImg() {
         </div>
       </div>
       <Row className="BannerBottomImagesRow my-3 mx-2 BannerBottomImages-media-query-mobile">
-      <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=0`}>
+        <Col md={8} lg={3} className="BannerBottomImages px-1">
+          <Link href={`/product?activeTab=0`} passHref>
             <div className="SubImageContainer">
               <Image
-                src={HerbalRemedies}
+                src={TangyTamarind}
                 className="w-100"
                 alt="ss"
                 width={1200}
@@ -184,11 +188,11 @@ function HomeHeaderImg() {
           </Link>
         </Col>
         <Col md={8} lg={3} className="BannerBottomImages  px-1">
-          <Link href={`/product?activeTab=1`}>
-            {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
+          <Link href={`/product?activeTab=1`} passHref>
+            {/* <Image src={TangyTamarind} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={GreenCare}
+                src={TurmericPowder}
                 className="w-100"
                 alt="ss"
                 width={1200}
@@ -199,11 +203,11 @@ function HomeHeaderImg() {
           </Link>
         </Col>
         <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=2`}>
-            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
+          <Link href={`/product?activeTab=2`} passHref>
+            {/* <Image src={TurmericPowder} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={SummerCoolers}
+                src={TikhurPowder}
                 className="w-100"
                 alt="ss"
                 width={1200}
@@ -214,10 +218,10 @@ function HomeHeaderImg() {
           </Link>
         </Col>
         <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=3`}>
+          <Link href={`/product?activeTab=3`} passHref>
             <div className="SubImageContainer">
               <Image
-                src={HerbalRemedies}
+                src={ThikurSmall}
                 className="w-100"
                 alt="ss"
                 width={1200}

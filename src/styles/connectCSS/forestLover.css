@@ -132,7 +132,8 @@
 @media screen and (max-width: 770px) {
   .forest-lover-banner {
     width: 100%;
-    height: 50vh;
+    /* height: 50vh; */
+    height: 225px;
   }
 
   .forest-lover-banner .text {

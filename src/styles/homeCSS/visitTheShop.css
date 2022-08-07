@@ -21,12 +21,13 @@
   height: 270px;
   margin: auto;
 }
+
 .WildforestHoney-card {
   height: auto;
   margin: auto;
 }
 
-.centered  span{
+.centered span {
   height: 29.3em !important;
 }
 
@@ -93,4 +94,15 @@
   font-size: 18px;
   color: #333333;
   font-weight: normal !important;
+}
+
+@media (max-width: 768px) {
+  .WildforestHoney-card .centered span {
+    height: unset !important;
+  }
+
+  .WildforestHoney-card .content-for-overlay-big:hover .text {
+    transform: translateY(162px);
+    -webkit-transform: translateY(162px);
+  }
 }

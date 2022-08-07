@@ -6,10 +6,9 @@
 }
 
 .home-eco-friendly {
-  color: #DBFF00;
+  color: #dbff00;
   margin-top: 30.35px;
   margin-bottom: -24px;
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -95,7 +94,7 @@
   .home-header-para {
     color: #2c2c2c;
   }
-  .BannerBottomImages-media-query-mobile{
+  .BannerBottomImages-media-query-mobile {
     display: none !important;
   }
 }
@@ -120,7 +119,7 @@
 }
 
 .BannerBottomImages img {
-  object-fit: cover;
+  object-fit: contain;
   transition: 0.3s all ease-in-out;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

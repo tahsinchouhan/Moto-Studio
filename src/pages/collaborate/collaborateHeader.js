@@ -32,16 +32,16 @@ function CollaborateHeader() {
                     texts. Separated they live in Bookmarksgrove right at the
                     coast of the Semantics, a large language ocean.
                   </p>
-                  <div className=" col-10 mt-4">
-                    <div className="mb-md-5  mt-md-3 mb-3 me-3">
+                  <div className=" col-12 mt-4">
+                    <div className="mb-md-5  mt-md-3 mb-3 me-3 business-btn-mobile">
                       <Button
-                        className="collaborate-header-contact-button"
+                        className="collaborate-header-contact-button w-100"
                         text="CONTACT US &nbsp; &gt;"
                       />
                     </div>
-                    <div className="mb-md-5  mt-md-3 mb-3 me-3">
+                    <div className="mb-md-5  mt-md-3 mb-3 me-3 business-btn-mobile">
                       <Button
-                        className="collaborate-header-shop-now-button"
+                        className="collaborate-header-shop-now-button w-100"
                         text="SHOP NOW &nbsp; &gt;"
                       />
                     </div>

@@ -6,7 +6,8 @@ function ButtonLight(prop) {
     <>
       <div className="">
         <Button className="visit-the-shop-button ">
-        {prop.icon}{prop.text}
+          {prop.icon}
+          {prop.text}
         </Button>
       </div>
     </>
