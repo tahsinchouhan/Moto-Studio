@@ -32,8 +32,8 @@ function loadScript(src) {
 
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
-    useContext(CardContext);
-  console.log('user data info is: ',user);
+  useContext(CardContext);
+  // console.log('cart2 user data is: ',user);
   const giftAddress = useRef(null)
 
   const router = useRouter();
@@ -46,27 +46,37 @@ function Shopping() {
   const [addressList, setAddressList] = useState(false);
   const { data: session, status } = useSession();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+};
+
   // Shipping address configurations
   const [giftMsg, setGiftMsg] = useState("");
-  // const handleOnChange = (event) => {
-  //   setShippingAddress({ ...shippingAddress, [event.target.name]: event.target.value })
-  //   };
+  const handleChange = (event,values) => {
+    // console.log('change field name: ',values)
+    setShippingAddress({ ...shippingAddress, [event.target.name]: event.target.value })
+    values[event.target.name] = event.target.value
+    
+    };
 
   const chackedGift = (e, values) => {
     if (e.target.id === "flexCheckCheckedNo") {
       giftAddress.current.classList.add("hiddGiftAddress");
       giftAddress.current.classList.remove("visibleGiftAddress");
-      setShippingAddress({
-        gift_firstname: values?.first_name || '',
-        gift_lastname: values?.last_name || '',
-        gift_email: values?.email || '',
-        gift_mobile: values?.mobile || '',
-        gift_pincode: values?.pincode || '',
-        gift_address: values?.address || '',
-        gift_country: values?.country || '',
-        gift_city: values?.city || '',
-        gift_state: values?.state || '',
-      });
+      // setShippingAddress({
+      //   gift_firstname: values?.first_name || '',
+      //   gift_lastname: values?.last_name || '',
+      //   gift_email: values?.email || '',
+      //   gift_mobile: values?.mobile || '',
+      //   gift_pincode: values?.pincode || '',
+      //   gift_address: values?.address || '',
+      //   gift_country: values?.country || '',
+      //   gift_city: values?.city || '',
+      //   gift_state: values?.state || '',
+      // });
       values.gift_firstname = values.first_name
       values.gift_lastname = values.last_name
       values.gift_email = values.email
@@ -81,26 +91,27 @@ function Shopping() {
     if (e.target.id === "flexCheckCheckedYes") {
       giftAddress.current.classList.remove("hiddGiftAddress");
       giftAddress.current.classList.add("visibleGiftAddress");
-      // setShippingAddress({
-      //   gift_firstname: '',
-      //   gift_lastname: '',
-      //   gift_email: '',
-      //   gift_mobile: '',
-      //   gift_pincode:  '',
-      //   gift_address:  '',
-      //   gift_country:  '',
-      //   gift_city: '',
-      //   gift_state: '',
-      // });
-      // values.gift_firstname = ''
-      // values.gift_lastname = ''
-      // values.gift_email = ''
-      // values.gift_mobile = ''
-      // values.gift_address = ''
-      // values.gift_city = ''
-      // values.gift_state = ''
-      // values.gift_pincode = ''
-      // values.gift_country = ''
+      values.gift_firstname = ''
+      values.gift_lastname = ''
+      values.gift_email = ''
+      values.gift_mobile = ''
+      values.gift_address = ''
+      values.gift_city = ''
+      values.gift_state = ''
+      values.gift_pincode = ''
+      values.gift_country = ''
+      setShippingAddress({
+        gift_firstname: '',
+        gift_lastname: '',
+        gift_email: '',
+        gift_mobile: '',
+        gift_pincode:  '',
+        gift_address:  '',
+        gift_country:  '',
+        gift_city: '',
+        gift_state: '',
+      });
+      console.log('cart2 shipping add values is: ',values);
       setGiftMsg("");
     }
   };
@@ -155,40 +166,6 @@ function Shopping() {
   
 
   const onSubmit = async (values, onSubmitProps) => {
-    try {
-      await fetch(apipath + `/api/v1/users/update/${user?._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          billingAddress:[{
-            first_name: values.first_name,
-            last_name: values.last_name,
-            email: values.email,
-            mobile: values.mobile,
-            pincode: values.pincode,
-            address: values.address,
-            country: values.country,
-            city: values.city,
-            state: values.state,
-          }],
-          shippingAddress:[{
-            firstname: values.gift_firstname,
-            lastname: values.gift_lastname,
-            email: values.gift_email,
-            mobile: values.gift_mobile,
-            pincode: values.gift_pincode,
-            address: values.gift_address,
-            country: values.gift_country,
-            city: values.gift_city,
-            state: values.gift_state,
-          }],
-          address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
-        }),
-      });
-    } catch (error) {
-      console.log('error :>> ', error);
-    }
-
     user.billingAddress = [{
       full_name: values?.first_name + " " + values?.last_name || "",
       first_name: values?.first_name || "",
@@ -239,8 +216,42 @@ function Shopping() {
       city: values?.city || "",
       state: values?.state || "",
     });
+    try {
+      await fetch(apipath + `/api/v1/users/update/${user?._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          billingAddress:[{
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email,
+            mobile: values.mobile,
+            pincode: values.pincode,
+            address: values.address,
+            country: values.country,
+            city: values.city,
+            state: values.state,
+          }],
+          shippingAddress:[{
+            firstname: values.gift_firstname,
+            lastname: values.gift_lastname,
+            email: values.gift_email,
+            mobile: values.gift_mobile,
+            pincode: values.gift_pincode,
+            address: values.gift_address,
+            country: values.gift_country,
+            city: values.gift_city,
+            state: values.gift_state,
+          }],
+          address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
+        }),
+      });
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
     setAddressList(true);
     displayRazorpay(item)
+    scrollToTop()
   };
 
   const fetchPromoList = async () => {
@@ -344,7 +355,8 @@ function Shopping() {
       billingAddress,
       shippingAddress,
     });
-    console.log(createOrder);
+    // console.log('createOrder is:',createOrder);
+    
 
     if (createOrder.data) {
       const hashPayload = {
@@ -553,6 +565,10 @@ function Shopping() {
                       <h1 className="shopping-cart-heading mb-3">
                         Delivery Details
                       </h1>
+                      <div className="text-primary mb-2 text-center"
+                        style={{ fontFamily: "Georgia", fontSize:"18px" }} >
+                        {giftMsg}
+                      </div>
                       <p
                         style={{
                           color: "#5ABF77",
@@ -564,10 +580,6 @@ function Shopping() {
                         BILLING DETAILS
                       </p>
                       <div className="card-container card-div">
-                      <div className="text-primary mb-2 text-center"
-                        style={{ fontFamily: "Georgia", fontSize:"18px" }} >
-                        {giftMsg}
-                      </div>
                         {!addressList ? (
                           <>
                             <Row>
@@ -859,7 +871,8 @@ function Shopping() {
                                     placeholder="Enter your first name here"
                                     autoComplete="off"
                                     style={formControl}
-                                    value={shippingAddress?.gift_firstname}
+                                    value={formik.values?.gift_firstname}
+                                    onChange={(event)=>handleChange(event,formik.values)}
                                   />
                                   <ErrorMessage
                                     name="gift_firstname"
@@ -883,7 +896,9 @@ function Shopping() {
                                     placeholder="Enter your last name here"
                                     autoComplete="off"
                                     style={formControl}
-                                    value={shippingAddress?.gift_lastname}
+                                    value={formik.values?.gift_lastname}
+                                    onChange={(event)=>handleChange(event,formik.values)}
+
                                   />
                                   <ErrorMessage
                                     name="gift_lastname"
@@ -909,8 +924,8 @@ function Shopping() {
                                     placeholder="Enter your email address here"
                                     autoComplete="off"
                                     style={formControl}
-                                    value={shippingAddress?.gift_email}
-
+                                    value={formik.values?.gift_email}
+                                    onChange={(event)=>handleChange(event,formik.values)}
                                   />
                                   <ErrorMessage
                                     name="gift_email"
@@ -934,7 +949,9 @@ function Shopping() {
                                       name="gift_mobile"
                                       placeholder="Enter your mobile number here"
                                       style={formControl}
-                                    value={shippingAddress?.gift_mobile}
+                                    value={formik.values?.gift_mobile}
+                                    onChange={(event)=>handleChange(event,formik.values)}
+
 
                                     />
                                     <ErrorMessage
@@ -961,7 +978,9 @@ function Shopping() {
                                     name="gift_address"
                                     // placeholder=""
                                     style={formControl}
-                                    value={shippingAddress?.gift_address}
+                                    value={formik.values?.gift_address}
+                                    onChange={(event)=>handleChange(event,formik.values)}
+
 
                                   />
                                   <ErrorMessage
@@ -986,7 +1005,8 @@ function Shopping() {
                                     name="gift_city"
                                     // placeholder="Locality / Area (Optional)"
                                     style={formControl}
-                                    value={shippingAddress?.gift_city}
+                                    value={formik.values?.gift_city}
+                                    onChange={(event)=>handleChange(event,formik.values)}
 
                                   />
                                   <ErrorMessage
@@ -1012,7 +1032,8 @@ function Shopping() {
                                       name="gift_state"
                                       // placeholder="Landmark (Optional)"
                                       style={formControl}
-                                    value={shippingAddress?.gift_state}
+                                    value={formik.values?.gift_state}
+                                    onChange={(event)=>handleChange(event,formik.values)}
 
                                     />
                                     <ErrorMessage
@@ -1039,7 +1060,8 @@ function Shopping() {
                                     name="gift_pincode"
                                     // placeholder="Pincode"
                                     style={formControl}
-                                    value={shippingAddress?.gift_pincode}
+                                    value={formik.values?.gift_pincode}
+                                    onChange={(event)=>handleChange(event,formik.values)}
 
                                   />
                                   <ErrorMessage
@@ -1063,7 +1085,8 @@ function Shopping() {
                                     name="gift_country"
                                     // placeholder="Pincode"
                                     style={formControl}
-                                    value={shippingAddress?.gift_country}
+                                    value={formik.values?.gift_country}
+                                    onChange={(event)=>handleChange(event,formik.values)}
 
                                   />
                                   <ErrorMessage
@@ -1258,7 +1281,9 @@ function Shopping() {
                                 if(!user) {
                                   router.push("/auth/Login");
                                 }
-                                setStep(1)}}>PLACE ORDER</button>
+                                setStep(1)
+                                scrollToTop()
+                                }}>PLACE ORDER</button>
                             </div>
                           ):(
                             <div className="w-100 border-0 checkout-button">

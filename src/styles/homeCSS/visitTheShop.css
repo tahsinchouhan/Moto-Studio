@@ -48,6 +48,9 @@
   .visit-the-shop-div {
     margin: 0 !important;
   }
+  .centered span {
+    height: 11.5em !important;
+  }
 }
 @media (min-width: 992px) and (max-width: 1399px) {
   .visit-the-shop-div {
@@ -85,13 +88,16 @@
 }
 .visit-card-weight {
   font-family: Lora;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
   color: #666666;
+  padding-top: 10px;
 }
 
 .visit-card-title {
   font-family: Lora;
-  font-size: 18px;
+  font-size: 16px !important;
   color: #333333;
   font-weight: normal !important;
 }

@@ -18,28 +18,24 @@
    font-size: 24px !important;
    margin-bottom: 3px;
  }
-  .followus-media-query-mobile{
-    display: none;
-  }
-  .followus-media-query{
-    display: block;
-  }
   @media screen and (max-width: 480px) {
     .home-follow-us-img {
       /* background: url(../../assets/images/home/followMobile.png); */
       background-repeat: no-repeat !important;
       background-size: 100% 100%;
     }
-  
     .home-follow-us-img-distance {
       padding: 19% 5%;
     }
-    .followus-media-query-mobile{
-      display: block;
+    .home-follow-button-mobile-media{
+      margin:-20px !important;
     }
-    .followus-media-query{
-      display: none;
+    .home-follow-button-mobile-media a Button{
+     font-size: 10px;
     }
-  
+    .home-follow-button-mobile-media a .home-follow-icon{
+      height: 20px !important;
+      width: 20px !important;
+     }
   }
   

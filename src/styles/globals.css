@@ -128,3 +128,10 @@ a {
 .rc-slider-mark-text {
   width: fit-content;
 }
+
+@media screen and (max-width: 780px) {
+  .marginX-auto-mobile {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

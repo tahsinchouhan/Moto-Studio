@@ -109,14 +109,16 @@ function CollaborateHeader() {
                     </span>
 
                     <span className="mb-lg-5 mt-md-4 mb-0 d-inline-block">
-                      <Link href={`/tenders`}>
-                        <a>
-                          <Button
-                            className="collaborate-header-shop-now-button"
-                            text="TENDERS &nbsp; &gt;"
-                          />
-                        </a>
-                      </Link>
+                      <a
+                        href="https://eproc.cgstate.gov.in/CHEPS/"
+                        target={"_blank"}
+                        rel="noreferrer"
+                      >
+                        <Button
+                          className="collaborate-header-shop-now-button"
+                          text="TENDERS &nbsp; &gt;"
+                        />
+                      </a>
                     </span>
                   </div>
                 </Col>

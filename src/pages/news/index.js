@@ -54,7 +54,7 @@ function IntoNewsroom() {
           <div className="row">
             <div className="col-lg-12">
               <h1 className="newsroom-header mt-4 text-center">
-                Into the Newsroom 
+                Into the Newsroom
               </h1>
               <div>
                 <div className="news-header-div">
@@ -156,12 +156,15 @@ function IntoNewsroom() {
                                 </span>
                                 <br className="mb-1" />
                                 {/* <h6 className="news-card-para"> */}
-                                  {news?.content}
+                                {news?.content}
                                 {/* </h6> */}
                               </Card.Text>
-                              <Button className="news-card-btn text-dark" onClick={() => router.push(`/news/${news._id}`)}>
+                              <Button
+                                className="news-card-btn text-dark"
+                                onClick={() => router.push(`/news/${news._id}`)}
+                              >
                                 {/* <span className="news-read-more"> */}
-                                  READ MORE
+                                READ MORE
                                 {/* </span> */}
                               </Button>
                             </Card.Body>

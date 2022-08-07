@@ -81,12 +81,11 @@ function Header() {
     { id: 3, title: "ABOUT", href: "/about" },
     { id: 4, title: "BUSINESS", href: "/collaborate" },
     { id: 5, title: "BLOGS", href: "/blogs" },
-    { id: 6, title: "NEWS", href: "/news",  },
+    { id: 6, title: "NEWS", href: "/news" },
     // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
     // {id:7,title:'CONTACT',href:'/contact'}
-    { id: 7, title: 'FAQ',href:'/faq'},
-    {id:8,title:'CONTACT',href:'/contact'}
-
+    { id: 7, title: "FAQ", href: "/faq" },
+    { id: 8, title: "CONTACT", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -151,11 +150,11 @@ function Header() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className=" mx-auto mb-2 mb-lg-0 ">
+              <Nav className=" mx-auto mb-2 mb-lg-0 responsive-navbar-nav-marginleft">
                 {menus.map((menu) => (
                   <Link href={menu.href} key={menu.id}>
                     <a
-                      className={`nav-link mx-3 ${
+                      className={`nav-link reduce-margin-gap-header ${
                         router.pathname == menu.href ? "active" : ""
                       }`}
                     >
@@ -167,7 +166,7 @@ function Header() {
 
                 <div className="position-relative" ref={connectmenuRef}>
                   <button
-                    className="bg-transparent border-0 nav-link"
+                    className="bg-transparent border-0 nav-link reduce-margin-gap-header"
                     onClick={() => setConnectViewDropDown(!connectViewDropDown)}
                   >
                     CONNECT
@@ -368,13 +367,16 @@ function Header() {
                             </a>
                           </Link>
                         </li>
-                        <li onClick={() => setConnectViewDropDown(false)}>
+                        {/*
+
+                          <li onClick={() => setConnectViewDropDown(false)}>
                           <Link href="/connect/successStory">
-                            <a className="dropdown-item text-black">
-                              SUCCESS STORIES
-                            </a>
+                          <a className="dropdown-item text-black">
+                          SUCCESS STORIES
+                          </a>
                           </Link>
-                        </li>
+                          </li>
+                        */}
                       </ul>
                     )}
                   </div>
@@ -500,9 +502,9 @@ function Header() {
         .signup-btn {
           background-color: #065934 !important;
           font-family: "Lora";
-          padding: 0.5rem 2rem !important;
+          padding: 0.3rem 1rem !important;
           border-radius: 0 !important;
-          font-size: 13px !important;
+          font-size: 13px;
       }
         }
 

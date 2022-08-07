@@ -117,11 +117,11 @@ function CenterFooter() {
                     DIGITAL PRESENCE
                   </h6>
                   <div className="footer-center-icon  text-lg-start text-center mt-4">
-                    <GrFacebook className="cg-footer-icon" /> &nbsp; &nbsp;
-                    &nbsp;
-                    <GrInstagram className="cg-footer-icon" /> &nbsp; &nbsp;
-                    &nbsp;
-                    <GrAmazon className="cg-footer-icon" />
+                   <a href="https://www.facebook.com/chhattisgarhherbals/" target="_blank" rel="noopener noreferrer"> <GrFacebook className="cg-footer-icon" /> &nbsp; &nbsp;
+                    &nbsp;</a>
+                    <a href="https:///www.instagram.com/cgherbals_/" target="_blank" rel="noopener noreferrer"><GrInstagram className="cg-footer-icon" /> &nbsp; &nbsp;
+                    &nbsp;</a>
+                    <a href="" target="_blank" rel="noopener noreferrer"><GrAmazon className="cg-footer-icon" /></a>
                   </div>
                 </div>
               </Col>

@@ -5,10 +5,13 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import TikhurPowder from "../../../public/Image/TikhurPowder.png";
-import TangyTamarind from "../../../public/Image/TangyTamarind.png";
-import TurmericPowder from "../../../public/Image/TurmericPowder.png";
-import ThikurSmall from "../../../public/Image/ThikurSmall.png";
+// import HerbalRemedies from "../../../public/Image/HerbalRemedies.png";
+// import GreenCare from "../../../public/Image/GreenCare.png";
+// import SummerCoolers from "../../../public/Image/SummerCoolers.png";
+import premium_product from "../../../public/Images/premium_product.svg";
+import Ayush_product from "../../../public/Images/Ayush_product.svg";
+import Gourment_product from "../../../public/Images/Gourment_product.svg";
+import Personal_care from "../../../public/Images/Personal_care.svg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -49,15 +52,17 @@ function HomeHeaderImg() {
         style={{
           backgroundImage: `url(${banner.bannerImg})`,
           backgroundSize: "cover",
-          height: 255,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "75% 100%",
+          height: "369px",
         }}
       >
         {/* <Image src={banner?.bannerImg || HomeHeader} className="w-100" alt="ss" width={1200} height={800} /> */}
       </div>
       <Container className="home-head-text-mobile">
         <Row className="justify-content-md-start justify-content-center">
-          <Col md={8} lg={6} className="col-10">
-            <Row className="">
+          <Col md={8} lg={6} className="col-12">
+            <Row className="mx-sm-auto">
               {/* <Col md={9} className="py-md-5 my-2 ">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
                   {banner.bannerTitle} 
@@ -75,24 +80,32 @@ function HomeHeaderImg() {
                   </div>
                 </div>
               </Col> */}
-              <Col md={9} className="py-md-5 my-2 ">
+              <Col md={9} className="py-md-5 my-2">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
-                  Purity that is Priceless
+                  Purity <br /> that is <br /> Priceless
                 </p>
-                <div className="col-10 mt-3">
-                  <p className="home-header-para-mobile text-capitalize">
-                    Eco-friendly products from one of the largest women
-                    empowerment efforts in the world.
+                {/* <div className="col-12 mt-3">
+                  <p className="home-header-para-mobile">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div> */}
+                <div className="">
+                  <p className="home-eco-friendly-mobile">
+                    ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN
+                    EMPOWERMENT EFFORTS IN THE WORLD{" "}
+                  </p>
+                  <p style={{ marginTop: "32px" }}>
+                    Each product is handcrafted with care and love by the
+                    empowered women of these forest areas, endowing each product
+                    with a purity that is truly priceless.
                   </p>
                 </div>
-                <div className="col-12">
+                <div className="col-12 ">
                   <div
-                    className="mb-md-5  mt-md-3 mb-0"
+                    className="mb-md-5  mt-md-3 mb-0 home-header-button-mobile"
                     onClick={() => router.push("/product")}
                   >
                     <Button
-                      className="home-header-button"
-                      text="JOIN THE ECO-REVOLUTION"
+                      className="home-header-button "
+                      text="JOIN THE ECO-REVOLUTION &nbsp; &nbsp; &gt;"
                     />
                   </div>
                 </div>
@@ -141,8 +154,8 @@ function HomeHeaderImg() {
               </Row>
             </Col>
           </Row> */}
-          <Row className=" justify-content-md-start justify-content-center">
-            <Col md={8} lg={6} className="col-10">
+          <Row className="justify-content-md-start justify-content-center">
+            <Col md={12} lg={8} className="col-10">
               <Row className="">
                 <Col md={12}>
                   <div>
@@ -151,9 +164,23 @@ function HomeHeaderImg() {
                     </p>
                   </div>
                   <div className="">
-                    <p className="home-header-para text-center text-capitalize text-md-start col-lg-8">
-                      Eco-friendly products from one of the largest women
-                      empowerment efforts in the world.
+                    <p className="home-eco-friendly col-lg-12">
+                      ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST
+                    </p>
+                    <p className="home-eco-friendly col-lg-12">
+                      WOMEN EMPOWERMENT EFFORTS IN THE WORLD{" "}
+                    </p>
+                    <p
+                      className="home-header-para-desc text-center text-md-start"
+                      style={{ marginTop: "32px" }}
+                    >
+                      Each product is handcrafted with care and love by the
+                    </p>
+                    <p className="home-header-para-desc text-center text-md-start">
+                      empowered women of these forest areas, endowing each
+                    </p>
+                    <p className="home-header-para-desc text-center text-md-start pb-4">
+                      product with a purity that is truly priceless.
                     </p>
                   </div>
 
@@ -172,60 +199,77 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
-      <Row className="BannerBottomImagesRow my-3 mx-2 BannerBottomImages-media-query-mobile">
-        <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=0`} passHref>
+      <Row className="BannerBottomImagesRow mx-2 ">
+        <Col
+          md={6}
+          className="BannerBottomImages px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
+        >
+          <Link passHref href={`/product?activeTab=0`}>
             <div className="SubImageContainer">
               <Image
-                src={TangyTamarind}
-                className="w-100"
+                src={Ayush_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
               <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages  px-1">
-          <Link href={`/product?activeTab=1`} passHref>
-            {/* <Image src={TangyTamarind} className="w-100" alt="ss" width={1200} height={800} /> */}
+        <Col
+          md={6}
+          className="BannerBottomImages  px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
+        >
+          <Link passHref href={`/product?activeTab=1`}>
+            {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={TurmericPowder}
-                className="w-100"
+                src={Personal_care}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
-              <p className="bottom-left green"></p>
+              <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=2`} passHref>
-            {/* <Image src={TurmericPowder} className="w-100" alt="ss" width={1200} height={800} /> */}
+        <Col
+          md={6}
+          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
+        >
+          <Link passHref href={`/product?activeTab=2`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={TikhurPowder}
-                className="w-100"
+                src={Gourment_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
-              <p className="bottom-left"></p>
+              <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=3`} passHref>
+        <Col
+          md={6}
+          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile"
+        >
+          <Link passHref href={`/product?activeTab=2`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={ThikurSmall}
-                className="w-100"
+                src={premium_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
               <p className="bottom-left left-4"></p>
             </div>

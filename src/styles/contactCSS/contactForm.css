@@ -1,109 +1,112 @@
 .demo1 {
-    padding-top: 3%;
-  }
+  padding-top: 3%;
+}
 
-.contact-container{
+.contact-container {
   margin: 57px 0px !important;
 }
 
 .Contact-Us-heading {
-    font-family: 'Lora';
-    font-size: 40px;
-    line-height: 51px;
-    text-align: center !important;
-    color: #333333;
+  font-family: "Lora";
+  font-size: 40px;
+  line-height: 51px;
+  text-align: center !important;
+  color: #333333;
+}
+
+.contact-form-hr {
+  color: #c4c4c4;
+  opacity: 100% !important;
+  width: 48px;
+  height: 2px;
+}
+
+.contact-para {
+  font-family: "Lora";
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  color: #333333;
+}
+
+.Contact-Us-form {
+  padding: 0 15%;
+}
+.Contact-Us-form-input {
+  height: 56px;
+  background-color: #ffffff;
+  border-radius: 0px !important;
+}
+.contac-sent-message {
+  padding: 2% 0px 0 0px;
+}
+.btn-contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background: #5abf6b !important;
+  flex: none;
+  flex-grow: 0;
+  margin: 36px 0px 0px 0px;
+  height: 54px;
+  border-radius: 0px !important;
+  white-space: nowrap;
+  width: 35%;
+}
+
+.shiftToNeutralForm {
+  transform: translateX(0%) translateY(-100%);
+}
+.shiftToLeft {
+  transform: translateX(100%);
+}
+.maxheight {
+  max-height: 600px;
+  overflow: hidden;
+}
+.contact-text-family {
+  font-family: "Times";
+  font-size: 20px;
+  border-radius: 2px;
+}
+.select_box::after {
+  width: 16px;
+  height: 16px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #5abf6b;
+  position: absolute;
+  top: 45%;
+  right: 12px;
+  content: "";
+  z-index: 98;
+}
+.select-button-width {
+  width: 28vw;
+}
+@media screen and (max-width: 998px) {
+  .maxheight {
+    max-height: 800px;
+    overflow: hidden;
   }
-  
-  .contact-form-hr {
-    color: #c4c4c4;
-    opacity: 100% !important;
-    width: 48px;
-    height: 2px;
+}
+@media screen and (max-width: 830px) {
+  .maxheight {
+    max-height: 780px;
+    overflow: hidden;
   }
-  
-  .contact-para {
-    font-family: 'Lora';
-    font-size: 18px;
-    line-height: 23px;
-    text-align: center;
-    color: #333333;
+  .select-button-width {
+    width: 60%;
   }
-  
+
   .Contact-Us-form {
-    padding: 0 15%;
+    padding: 0;
   }
-  .Contact-Us-form-input {
-    height: 56px;
-    background-color: #ffffff;
-    border-radius: 0px !important;
+}
+@media screen and (max-width: 400px) {
+  .select-button-width {
+    width: 80%;
   }
-  .contac-sent-message {
-    padding: 2% 0px 0 0px;
-  }
-  .btn-contact {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    background: #5abf6b !important;
-    flex: none;
-    flex-grow: 0;
-    margin: 36px 0px 0px 0px;
-    height: 54px;
-    border-radius: 0px !important;
-    white-space: nowrap;
-    width: 35%;
-  }
-  
-  .shiftToNeutralForm {
-    transform: translateX(0%) translateY(-100%);
-  }
-  .shiftToLeft {
-    transform: translateX(100%);
-  }
-  .maxheight{
-    max-height: 600px;
-    overflow: hidden
-  }
-  .contact-text-family{
-    font-family: 'Times';
-    font-size: 20px;
-    border-radius: 2px;
-  }
-  .select_box::after{
-    width: 16px;
-    height: 16px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #5ABF6B;
-    position: absolute;
-    top: 45%;
-    right: 12px;
-    content: "";
-    z-index: 98;
-   }
-   .select-button-width{
-    width: 28vw;
-   }
-  @media screen and (max-width:998px) {
-    .maxheight{
-      max-height: 800px;
-      overflow: hidden
-    }
-  }
-  @media screen and (max-width:830px) {
-    .maxheight{
-      max-height: 780px;
-      overflow: hidden
-    }
-    .select-button-width{
-      width: 60%;
-     }
-  }
-  @media screen and (max-width:400px) {
-    .select-button-width{
-      width: 80%;
-     }
-  }
-  
+}

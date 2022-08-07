@@ -12,11 +12,11 @@
 }
 
 .feature-products-texts {
-  font-size: 19px;
+  font-size: 16px;
   color: #333333;
   font-family: "Lora", sans-serif;
   font-weight: 400;
-  padding-left: 9px;
+  padding-left: 5px;
 }
 
 .featured-products-card-wrapper {
@@ -200,4 +200,25 @@
   .content-for-overlay {
     height: calc(100% - 80px);
   }
+}
+
+@media screen and (max-width:440px) {
+  .feature-products-texts-media{
+    width: 50%;
+    margin: 0 auto !important;
+  }
+  
+}
+@media screen and (max-width:320px) {
+  .feature-products-texts-media{
+    font-size: 14px;
+    margin-left: 15px !important;
+  }
+  .zoom-in-img-wrapper > span {
+    overflow: hidden;
+    height: 80px !important;
+    width: 80px !important;
+    margin-left: -55px !important;
+  }
+  
 }

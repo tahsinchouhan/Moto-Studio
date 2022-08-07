@@ -131,3 +131,9 @@
 .news-icon {
   color: #ffc24c;
 }
+
+@media screen and (max-width: 720px) {
+  .into-newsroom-container .cg-herbal-container {
+    width: 90% !important;
+  }
+}
