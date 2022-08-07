@@ -45,7 +45,7 @@ function FeaturedProducts({ category }) {
 
   return (
     <>
-      <h1 className="text-center mb-2 mt-5 feature-products-text">
+      <h1 className="text-center mb-2 mt-md-5 mt-sm-5 feature-products-text feature-product-margin-top-media">
         Featured Products
       </h1>
       <div className="text-center">
@@ -78,7 +78,7 @@ function FeaturedProducts({ category }) {
                         // loading="eager"
                       />
                     </div>
-                      <p className="feature-products-texts">
+                      <p className="feature-products-texts feature-products-texts-media">
                         {cat?.category_name || "Category Name"}
                       </p>
                   </div>

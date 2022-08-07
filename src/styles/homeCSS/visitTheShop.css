@@ -47,6 +47,9 @@
   .visit-the-shop-div {
     margin: 0 !important;
   }
+  .centered  span{
+    height: 11.5em !important;
+  }
 }
 @media (min-width: 992px) and (max-width: 1399px) {
   .visit-the-shop-div {

@@ -7,16 +7,16 @@ import { FaFacebook } from "react-icons/fa";
 function HomeFollowUs() {
   return (
     <>
-      <div className="home-follow-us-img followus-media-query">
+      <div className="home-follow-us-img">
         <div className="home-follow-us-img-distance">
           <div className="d-flex justify-content-center">
             {/* <button className="mx-auto">READ MORE</button> */}
-           <div className="me-5">
+           <div className="me-5 home-follow-button-mobile-media">
             <a href="https://www.instagram.com/cgherbals_/" target="_blank" rel="noopener noreferrer">
            <Button className="home-follow-button" icon={<FaInstagram className="home-follow-icon" />} text="&nbsp; INSTAGRAM" />
            </a>
            </div>
-           <div className="">
+           <div className="home-follow-button-mobile-media">
             <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/chhattisgarhherbals/">
               <Button className="home-follow-button" icon={<FaFacebook className="home-follow-icon" />} text="&nbsp; FACEBOOK" />
             </a>
@@ -25,10 +25,9 @@ function HomeFollowUs() {
         </div>
       </div>
       {/* apply media query in mobile */}
-      <div className="home-follow-us-img followus-media-query-mobile">
+      {/* <div className="home-follow-us-img followus-media-query-mobile">
         <div className="home-follow-us-img-distance">
           <div className="d-flex justify-content-center">
-            {/* <button className="mx-auto">READ MORE</button> */}
            <div className="me-lg-5">
             <a href="https://www.instagram.com/cgherbals_/">
            <Button className="home-follow-button" icon={<FaInstagram className="home-follow-icon" />} text="&nbsp; FOLLOW US" />
@@ -36,7 +35,7 @@ function HomeFollowUs() {
            </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

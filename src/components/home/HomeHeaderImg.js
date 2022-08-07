@@ -8,6 +8,10 @@ import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 import HerbalRemedies from "../../../public/Image/HerbalRemedies.png";
 import GreenCare from "../../../public/Image/GreenCare.png";
 import SummerCoolers from "../../../public/Image/SummerCoolers.png";
+import premium_product from "../../../public/Images/premium_product.svg";
+import Ayush_product from "../../../public/Images/Ayush_product.svg";
+import Gourment_product from "../../../public/Images/Gourment_product.svg";
+import Personal_care from "../../../public/Images/Personal_care.svg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -78,16 +82,25 @@ function HomeHeaderImg() {
                 <p className="home-header-head-mobile mt-md-5 mt-4">
                   Purity <br /> that is <br /> Priceless 
                 </p>
-                <div className="col-12 mt-3">
+                {/* <div className="col-12 mt-3">
                   <p className="home-header-para-mobile">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                </div>
-                <div className="col-12">
+                </div> */}
+                <div className="">
+                    <p className="home-eco-friendly-mobile">ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST 
+                    WOMEN EMPOWERMENT EFFORTS IN THE WORLD </p> 
+                    <p style={{marginTop:"32px"}}>
+                      Each product is handcrafted with care and love by the
+                      empowered women of these forest areas, endowing each
+                      product with a purity that is truly priceless.
+                    </p>
+                  </div>
+                <div className="col-12 ">
                   <div
-                    className="mb-md-5  mt-md-3 mb-0"
+                    className="mb-md-5  mt-md-3 mb-0 home-header-button-mobile"
                     onClick={() => router.push("/product")}
                   >
                     <Button
-                      className="home-header-button"
+                      className="home-header-button "
                       text="JOIN THE ECO-REVOLUTION &nbsp; &nbsp; &gt;"
                     />
                   </div>
@@ -175,60 +188,65 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
-      <Row className="BannerBottomImagesRow my-3 mx-2 BannerBottomImages-media-query-mobile">
-      <Col md={8} lg={3} className="BannerBottomImages px-1">
+      <Row className="BannerBottomImagesRow mx-2 ">
+      <Col md={6} className="BannerBottomImages px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile">
           <Link href={`/product?activeTab=0`}>
             <div className="SubImageContainer">
               <Image
-                src={HerbalRemedies}
-                className="w-100"
+                src={Ayush_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
               <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages  px-1">
+        <Col md={6} className="BannerBottomImages  px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav ">
           <Link href={`/product?activeTab=1`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={GreenCare}
-                className="w-100"
+                src={Personal_care}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
-              <p className="bottom-left green"></p>
+              <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages px-1">
+        <Col md={6} className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile-tnav">
           <Link href={`/product?activeTab=2`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={SummerCoolers}
-                className="w-100"
+                src={Gourment_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
-              <p className="bottom-left"></p>
+              <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col md={8} lg={3} className="BannerBottomImages px-1">
-          <Link href={`/product?activeTab=3`}>
+        <Col md={6} className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile">
+          <Link href={`/product?activeTab=2`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={HerbalRemedies}
-                className="w-100"
+                src={premium_product}
+                className=""
                 alt="ss"
                 width={1200}
-                height={800}
+                height={500}
+                objectFit="fill"
               />
               <p className="bottom-left left-4"></p>
             </div>

@@ -12,7 +12,7 @@
   font-family: "Lora";
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 17px;
   /* identical to box height */
   color: #666666;
@@ -49,6 +49,35 @@
 }
 .product-select {
   background-color: transparent !important;
+}
+.reduce-margin-gap-header{
+  margin: 0 8px;
+  font-size: 13px;
+}
+
+@media screen and  (max-width: 1500px) and (min-width: 910px)  {
+  .reduce-margin-gap-header{
+    margin: 0 -.2vmax !important;
+    font-size: 13px;
+    margin-top: 10px !important;
+
+  }
+  .reduce-margin-gap-header-marginleft{
+    margin-left: 45px !important;
+  }
+}
+
+@media screen and  (max-width: 940px) and (min-width: 767px)  {
+  .reduce-margin-gap-header{
+    margin: 0 -.3vmax !important;
+    font-size: 1.2vmax;
+    margin-top: 15px !important;
+  }
+  
+  .signup-btn{
+    padding: 0rem 0rem !important;
+    font-size: 9px !important;
+  }
 }
 
 /* mobile-view */

@@ -102,12 +102,6 @@
     height: 91.5% !important;
   }
 } */
-.communitypage-apply-media-query{
-  display: block;
-}
-.communitypage-apply-media-query-mobile{
-  display: none;
-}
 @media (max-width: 444px) {
   .content {
     width: 95% !important;
@@ -123,15 +117,10 @@
   .Line {
     margin: 0 0 0 3px !important;
   }
-  .communitypage-apply-media-query{
-    display: none;
+  .communitypage-apply-media-query p{
+    text-align: start !important;
   }
-  .communitypage-apply-media-query-mobile{
-    display: block;
-    line-height: 30px;
-    text-align: start;
-    font-size: 18px;
-  }
+
 }
 
 .Text-name {

@@ -16,13 +16,13 @@ function AmazonFooter() {
               </p>
             </div>
           </Col>
-          <Col className="followus-media-query-mobile col-11">
+          {/* <Col className="followus-media-query-mobile col-11">
             <div className="amazon-wrapper">
               <p className="amazon-product">
                 Buy all your favourite products from the world’s largest online store
               </p>
             </div>
-          </Col>
+          </Col> */}
 
           <Col sm={5} lg={2} className="wrapper-mobile-fix">
             <div className="amazon-wrapper footer-logo-img">

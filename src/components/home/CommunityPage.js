@@ -113,13 +113,13 @@ function CommunityPage() {
                 </p>
               </div>
             </div>
-            <div className="para-divb pb-5 communitypage-apply-media-query-mobile">
+            {/* <div className="para-divb pb-5 communitypage-apply-media-query-mobile">
               <div className="col-lg-9 mx-auto home-community-p-mb" style={{ fontFamily: "Lato" }}>
                 <p>
                 Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. 
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <Row className="m-0">
