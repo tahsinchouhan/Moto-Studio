@@ -5,13 +5,6 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-// import HerbalRemedies from "../../../public/Image/HerbalRemedies.png";
-// import GreenCare from "../../../public/Image/GreenCare.png";
-// import SummerCoolers from "../../../public/Image/SummerCoolers.png";
-import premium_product from "../../../public/Images/premium_product.svg";
-import Ayush_product from "../../../public/Images/Ayush_product.svg";
-import Gourment_product from "../../../public/Images/Gourment_product.svg";
-import Personal_care from "../../../public/Images/Personal_care.svg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 
@@ -207,7 +200,7 @@ function HomeHeaderImg() {
           <Link passHref href={`/product?activeTab=0`}>
             <div className="SubImageContainer">
               <Image
-                src={Ayush_product}
+                src="/Images/Ayush_product.svg"
                 className=""
                 alt="ss"
                 width={1200}
@@ -226,7 +219,7 @@ function HomeHeaderImg() {
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={Personal_care}
+                src='/Images/Personal_care.svg'
                 className=""
                 alt="ss"
                 width={1200}
@@ -245,7 +238,7 @@ function HomeHeaderImg() {
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={Gourment_product}
+                src="/Images/Gourment_product.svg"
                 className=""
                 alt="ss"
                 width={1200}
@@ -264,7 +257,7 @@ function HomeHeaderImg() {
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={premium_product}
+                src="/Images/premium_product.svg"
                 className=""
                 alt="ss"
                 width={1200}
