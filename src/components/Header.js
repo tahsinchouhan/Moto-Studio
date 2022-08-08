@@ -173,14 +173,14 @@ function Header() {
                   </button>
                   {connectViewDropDown && (
                     <ul
-                      className="dropdown-menu show position-absolute shadow rounded"
+                      className="dropdown-menu show position-absolute shadow rounded connect-dropdown-responsive"
                       style={{
                         width: "16.5em",
                       }}
                     >
                       <li onClick={() => setConnectViewDropDown(false)}>
                         <Link href="/connect/consumerProgram">
-                          <a className=" nav-link mx-3">
+                          <a className=" nav-link mx-3 connect-dropdown-responsive-list">
                             CONSUMER CONNECT PROGRAM
                           </a>
                         </Link>

@@ -21,7 +21,7 @@ function Products() {
   const router = useRouter();
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext);
-
+  
   const [price, setPrice] = useState([0, 9999]);
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
@@ -37,6 +37,8 @@ function Products() {
   const [checkedStateRemedy, setCheckedStateRemedy] = useState(
     new Array(remedy.length).fill(false)
   );
+
+  console.log('product data is: ', productData);
 
   // const createSliderWithTooltip = Slider.createSliderWithTooltip;
   // const Range = createSliderWithTooltip(Slider.Range);
@@ -154,7 +156,7 @@ function Products() {
     if (price[0] !== 0 && price[0] !== 10000) {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
-    console.log(`category query is: ${query}`);
+    // console.log(`category query is: ${query}`);
     // if (query !== "") fetchData(query);
     fetchData(query);
   }, [checkedState, category, price]);
@@ -166,7 +168,7 @@ function Products() {
       }
       return query;
     }, "");
-    console.log(`query is: ${query}`);
+    // console.log(`query is: ${query}`);
     if (price[0] !== 0 && price[0] !== 10000) {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
@@ -500,13 +502,14 @@ function Products() {
                         sm={8}
                         xs={12}
                         key={product?._id}
-                        style={{ margin: "2em 0em" }}
+                        style={{ margin: "2em 0em"}}
                       >
                         <div
                           className="p-lg-2 mx-auto product-card-hover cursor-pointer"
                           onClick={() =>
                             router.push(`./product/${product?._id}`)
                           }
+                          style={{backgroundColor:"#F9F9F9"}}
                         >
                           <div className="w-100 product-card-img">
                             <Image

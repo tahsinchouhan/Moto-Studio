@@ -10,6 +10,9 @@ import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 
 function ProductDetail({ productData }) {
   // const [showPopuUp, setShowPopUp] = useState(false);
@@ -19,6 +22,9 @@ function ProductDetail({ productData }) {
   const router = useRouter();
 
   const { addProductToCart, item } = useContext(CardContext);
+
+  const productIm̥ages = productData?.images.filter((item,ind)=> ind<5)
+  // console.log("🚀 ~ file: [productId].js ~ line 27 ~ ProductDetail ~ productIm̥ages", productIm̥ages)
 
   const fetchListData = async (category_id) => {
     try {
@@ -32,7 +38,6 @@ function ProductDetail({ productData }) {
     }
   };
 
-  console.log(productData);
   useEffect(() => {
     fetchListData(productData.category._id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,25 +76,62 @@ function ProductDetail({ productData }) {
       <div className="my-lg-5 d-flex">
         <div className="container popup-div mx-auto p-0">
           <Row className="popup-modal-main p-0 justify-content-center">
+
+
+            {/* add multiple images */}
             <Col
-              md={5}
-              className="popup-modal-img"
+              className="popup-modal-img mt-3"
               style={{ position: "sticky !importatn" }}
             >
-              <Image
-                src={
-                  productData?.images?.length
-                    ? productData?.images[0]?.img || image1
-                    : image1
-                }
-                width={500}
-                height={500}
-                alt={productData?.title}
-                unoptimized={true}
-                loading="eager"
-                objectFit="scale-down"
-              />
+              {/* <Row>
+                <Col className="col-9"> */}
+            <Carousel
+              showIndicators={false}
+              showStatus={false}
+              swipeable={true}
+              infiniteLoop={true}
+              axis="horizontal"
+              autoPlay="true"
+              dynamicHeight="true"
+              // showArrows={false}
+              >
+              {
+                productIm̥ages.map((image, idx) => {
+                  return(
+                    <div key={idx}>
+                    <img src={image.img} alt="product images"/>
+                    </div>
+                  )
+                })
+              }
+              
+            </Carousel>
+            {/* </Col>
+            <Col className="col-3" >
+            {
+               productData?.images?.length && productData?.images.map((image,index)=>{
+               return(
+                <div key={index}>
+                  <Image
+                  src={image.img}
+                  width={100}
+                  height={100}
+                  alt={productData?.title}
+                  unoptimized={true}
+                  loading="eager"
+                  objectFit="scale-down"
+                  style={{margin:"-15px 0"}}
+               />
+                </div>
+               )
+               }) 
+              }
             </Col>
+              </Row> */}
+            </Col>
+            {/* end  add mult img */}
+
+
             <Col xs={12} md={5}>
               <div className="p-3 p-md-2">
                 <h1 className="product-name-text">
@@ -134,8 +176,8 @@ function ProductDetail({ productData }) {
                       })}
                   </Row>
                 </div>
-                <div className="">
-                  <div className="input-group">
+                <div>
+                  <div className="input-group" style={{width:"343px"}}>
                     <input
                       type="text"
                       className="form-control bg-white rounded-0 fs-10"

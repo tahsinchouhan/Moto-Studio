@@ -65,9 +65,16 @@
   .reduce-margin-gap-header-marginleft{
     margin-left: 45px !important;
   }
+  .connect-dropdown-responsive{
+    width: fit-content !important;
+  }
+  .connect-dropdown-responsive li a{
+    font-size: 0.8vmax !important;
+    margin: -1vmax -0.2vmax !important;
+  }
 }
 
-@media screen and  (max-width: 940px) and (min-width: 767px)  {
+@media screen and  (max-width: 940px) and (min-width: 820px)  {
   .reduce-margin-gap-header{
     margin: 0 -.3vmax !important;
     font-size: 1.2vmax;
@@ -78,6 +85,54 @@
     padding: 0rem 0rem !important;
     font-size: 9px !important;
   }
+  .connect-dropdown-responsive{
+    width: fit-content !important;
+  }
+  .connect-dropdown-responsive li a{
+    font-size: 0.7vmax !important;
+    margin: -1.6vmax -0.2vmax !important;
+  }
+}
+
+@media screen and  (max-width: 821px) and (min-width: 768px)  {
+  .reduce-margin-gap-header{
+    margin: 0 -.5vmax !important;
+    font-size: 1vmax;
+    margin-top: 15px !important;
+  }
+  
+  .signup-btn{
+    padding: 0rem 0rem !important;
+    font-size: 9px !important;
+  }
+  .connect-dropdown-responsive{
+    width: min-content !important;
+  }
+  .connect-dropdown-responsive li a{
+    font-size: 0.8vmax !important;
+    margin: -1vmax 0vmax !important;
+  }
+}
+@media screen and (width:768px){
+  .reduce-margin-gap-header{
+    margin: 0 -.4vmax !important;
+    font-size: 1vmax !important;
+    margin-top: 15px !important;
+  }
+  
+  .signup-btn{
+    padding: 0rem 0rem !important;
+    font-size: 4px !important;
+  }
+  .connect-dropdown-responsive{
+    width: min-content !important;
+  }
+  .connect-dropdown-responsive li a{
+    font-size: 0.8vmax !important;
+    margin: -2vmax 0vmax !important;
+    padding: 1.5vmax 1vmax !important;
+  }
+  
 }
 
 /* mobile-view */

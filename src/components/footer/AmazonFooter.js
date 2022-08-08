@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
-import amazonlogo from "../../../public/images/amazon.png";
+// import amazonlogo from "images/amazon_footer.png";
 import flipkartlogo from "../../../public/images/flipkart.png";
 
 function AmazonFooter() {
@@ -24,12 +24,14 @@ function AmazonFooter() {
             </div>
           </Col> */}
 
-          <Col sm={5} lg={2} className="wrapper-mobile-fix">
-            <div className="amazon-wrapper footer-logo-img">
+          <Col sm={5} lg={2} className="wrapper-mobile-fix ">
+            <div className="amazon-wrapper footer-logo-img mt-lg-3">
               <Image
-                src={amazonlogo}
+                src= "/images/amazon_footer.png"
                 alt="amazonlogo"
                 className="footer-logo"
+                width={159}
+                height={52}
               />
             </div>
           </Col>
@@ -37,7 +39,7 @@ function AmazonFooter() {
             <div className="amazon-wrapper footer-logo-img flipkart">
               <Image
                 src={flipkartlogo}
-                alt="amazonlogo"
+                alt="flipkartlogo"
                 className="footer-logo"
               />
             </div>

@@ -33,7 +33,7 @@ function loadScript(src) {
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
   useContext(CardContext);
-  // console.log('cart2 user data is: ',user);
+  console.log('cart2 item data is: ',item);
   const giftAddress = useRef(null)
 
   const router = useRouter();
