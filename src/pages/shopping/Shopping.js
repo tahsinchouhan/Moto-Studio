@@ -33,7 +33,6 @@ function loadScript(src) {
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
   useContext(CardContext);
-  console.log('cart2 item data is: ',item);
   const giftAddress = useRef(null)
 
   const router = useRouter();
@@ -533,10 +532,16 @@ function Shopping() {
                         <Col lg="2">
                           <p className="m-0 shopping-p-size">QUANTITY</p>
                         </Col>
-                        <Col lg="2">
+                        <Col lg="1">
                           <p className="m-0 shopping-p-size">PRICE</p>
                         </Col>
-                        <Col lg="2">
+                        <Col lg="1">
+                          <p className="m-0 shopping-p-size">GST</p>
+                        </Col>
+                        <Col lg="1">
+                          <p className="m-0 shopping-p-size">TAXABLE</p>
+                        </Col>
+                        <Col lg="1">
                           <p className="m-0 shopping-p-size">TOTAL</p>
                         </Col>
                       </Row>
