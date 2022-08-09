@@ -80,11 +80,11 @@ function ProductDetail({ productData }) {
 
             {/* add multiple images */}
             <Col
-              className="popup-modal-img mt-3"
+              className="popup-modal-img mt-3 product-slider-image-col"
               style={{ position: "sticky !importatn" }}
             >
-              {/* <Row>
-                <Col className="col-9"> */}
+            <div className="slider-img">
+            <div className="mult-img-slider-div">            
             <Carousel
               showIndicators={false}
               showStatus={false}
@@ -98,7 +98,7 @@ function ProductDetail({ productData }) {
               {
                 productIm̥ages.map((image, idx) => {
                   return(
-                    <div key={idx}>
+                    <div key={idx} className="product-slider-image-div">
                     <img src={image.img} alt="product images"/>
                     </div>
                   )
@@ -106,28 +106,8 @@ function ProductDetail({ productData }) {
               }
               
             </Carousel>
-            {/* </Col>
-            <Col className="col-3" >
-            {
-               productData?.images?.length && productData?.images.map((image,index)=>{
-               return(
-                <div key={index}>
-                  <Image
-                  src={image.img}
-                  width={100}
-                  height={100}
-                  alt={productData?.title}
-                  unoptimized={true}
-                  loading="eager"
-                  objectFit="scale-down"
-                  style={{margin:"-15px 0"}}
-               />
-                </div>
-               )
-               }) 
-              }
-            </Col>
-              </Row> */}
+            </div>
+            </div>
             </Col>
             {/* end  add mult img */}
 
@@ -177,7 +157,7 @@ function ProductDetail({ productData }) {
                   </Row>
                 </div>
                 <div>
-                  <div className="input-group" style={{width:"343px"}}>
+                  <div className="input-group width-of-select-input-unit">
                     <input
                       type="text"
                       className="form-control bg-white rounded-0 fs-10"

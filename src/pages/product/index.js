@@ -146,7 +146,7 @@ function Products() {
   }, [remedy, activeTab]);
 
   useEffect(() => {
-    const query = checkedState.reduce((query, currentState, index) => {
+    let query = checkedState.reduce((query, currentState, index) => {
       if (currentState === true) {
         return (query += `&category_id[]=` + category[index]._id);
       }
@@ -162,7 +162,7 @@ function Products() {
   }, [checkedState, category, price]);
 
   useEffect(() => {
-    const query = checkedStateRemedy.reduce((query, currentState, index) => {
+    let query = checkedStateRemedy.reduce((query, currentState, index) => {
       if (currentState === true) {
         return (query += `&remedy_id[]=` + remedy[index]._id);
       }
