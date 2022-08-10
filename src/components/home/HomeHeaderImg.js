@@ -7,6 +7,10 @@ import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
+import Tangy from '../../assets/img/TangyTamarind.png'
+import TermaricP from '../../assets/img/TurmericPowder.png'
+import Tikhur from '../../assets/img/TikhurPowder.png'
+import ThikurS from '../../assets/img/ThikurSmall.png'
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({
@@ -195,12 +199,12 @@ function HomeHeaderImg() {
       <Row className="BannerBottomImagesRow mx-2 ">
         <Col
           md={6}
-          className="BannerBottomImages px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
+          className="BannerBottomImages p-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=0`}>
             <div className="SubImageContainer">
               <Image
-                src="/Images/Ayush_product.svg"
+                src={Tangy}
                 className=""
                 alt="ss"
                 width={1200}
@@ -213,13 +217,13 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages  px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
+          className="BannerBottomImages  p-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
           <Link passHref href={`/product?activeTab=1`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src='/Images/Personal_care.svg'
+                src={TermaricP}
                 className=""
                 alt="ss"
                 width={1200}
@@ -232,13 +236,13 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
+          className="BannerBottomImages p-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
           <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src="/Images/Gourment_product.svg"
+                src={Tikhur}
                 className=""
                 alt="ss"
                 width={1200}
@@ -251,13 +255,13 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile"
+          className="BannerBottomImages p-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src="/Images/premium_product.svg"
+                src={ThikurS}
                 className=""
                 alt="ss"
                 width={1200}
