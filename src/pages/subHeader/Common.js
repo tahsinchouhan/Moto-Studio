@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Common({ menuData }) {
-  console.log('menuData ',[...menuData].reverse());
+  // console.log('menuData ',[...menuData].reverse());
   return (
     <Container fluid>
       <Container>
@@ -74,70 +74,80 @@ function Common({ menuData }) {
               );
             })}
         </Row> */}
-          <div className="all-shop-list-change py-3">
-            <Row>
-            {menuData?.length &&
+        <div className="all-shop-list-change py-3">
+          <Row>
+            {menuData &&
+              menuData?.length &&
               menuData.map((menu, index) => {
-              if (index > 0) return;
-              return (
-                  <div className="d-flex flex-row alternative-div" key={menu._id}> 
-                  <Col md={4} lg={4} className="mt-2">
-                    <div className="grocery-gourmet-foods">
-                      <h6 className="Grocery-foods">
-                        {menu?.category_name || ""}
-                      </h6>
-                      <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
-                        {menu?.products_data?.length &&
-                          menu?.products_data?.map((product, idx) => {
-                            if (idx > 7) return;
-                            return (
-                              <Link
-                                href={`/product/${product._id}`}
-                                key={product._id}
-                              >
-                                <a
-                                  style={{ width: "fitContent" }}
-                                  className="Wildforest cursor-pointer text-muted"
+                if (index > 0) return;
+                return (
+                  <div
+                    className="d-flex flex-row alternative-div"
+                    key={menu._id}
+                  >
+                    <Col md={4} lg={4} className="mt-2">
+                      <div className="grocery-gourmet-foods">
+                        <h6 className="Grocery-foods">
+                          {menu?.category_name || ""}
+                        </h6>
+                        <div
+                          className="d-flex flex-column gap-2 flex-wrap text-start"
+                          style={{ height: "100px" }}
+                        >
+                          {menu?.products_data?.length &&
+                            menu?.products_data?.map((product, idx) => {
+                              if (idx > 7) return;
+                              return (
+                                <Link
+                                  href={`/product/${product._id}`}
+                                  key={product._id}
                                 >
-                                  {product?.title || ""}
-                                </a>
-                              </Link>
-                            );
-                          })}
+                                  <a
+                                    style={{ width: "fitContent" }}
+                                    className="Wildforest cursor-pointer text-muted"
+                                  >
+                                    {product?.title || ""}
+                                  </a>
+                                </Link>
+                              );
+                            })}
+                        </div>
                       </div>
-                    </div>
-                  </Col>
-                  <Col md={4} lg={4} className="mt-2">
-                    <div className="ms-5">
-                      <h6 className="Grocery-foods">
-                        Other Products
-                      </h6>
-                      <div className="d-flex flex-column gap-2 flex-wrap text-start" style={{height:'100px'}}>
-                        {menuData?.length &&
-                          menuData[menuData.length-1]?.products_data?.map((product, idx) => {
-                            if (idx > 7) return;
-                            return (
-                              <Link
-                                href={`/product/${product._id}`}
-                                key={product._id}
-                              >
-                                <a
-                                  style={{ width: "fitContent" }}
-                                  className="Wildforest cursor-pointer text-muted"
-                                >
-                                  {product?.title || ""}
-                                </a>
-                              </Link>
-                            );
-                          })}
+                    </Col>
+                    <Col md={4} lg={4} className="mt-2">
+                      <div className="ms-5">
+                        <h6 className="Grocery-foods">Other Products</h6>
+                        <div
+                          className="d-flex flex-column gap-2 flex-wrap text-start"
+                          style={{ height: "100px" }}
+                        >
+                          {menuData &&
+                            menuData?.length &&
+                            menuData[menuData.length - 1]?.products_data?.map(
+                              (product, idx) => {
+                                if (idx > 7) return;
+                                return (
+                                  <Link
+                                    href={`/product/${product._id}`}
+                                    key={product._id}
+                                  >
+                                    <a
+                                      style={{ width: "fitContent" }}
+                                      className="Wildforest cursor-pointer text-muted"
+                                    >
+                                      {product?.title || ""}
+                                    </a>
+                                  </Link>
+                                );
+                              }
+                            )}
+                        </div>
                       </div>
-                    </div>
-                  </Col>
+                    </Col>
 
-
-                  <Col md={4} lg={4}>
-                    <div className="categoryItemImageHover">
-                    {/* <Image
+                    <Col md={4} lg={4}>
+                      <div className="categoryItemImageHover">
+                        {/* <Image
                         src={
                           menu?.images?.length
                             ? menu.images[0]?.img || BrahmiChurna
@@ -147,44 +157,42 @@ function Common({ menuData }) {
                         width={330}
                         height={160}
                       /> */}
-                      {menu.category_name === "Massage Oils" ? (
-                        <Image
-                        src={Ayush_product}
-                        alt={menu?.title || ""}
-                        width={330}
-                        height={160}
-                      />
-                      ):( menu.category_name==="Skin Care"?(
-                        <Image
-                        src={Personal_care}
-                        alt={menu?.title || ""}
-                        width={330}
-                        height={160}
-                      />
-                      ):( menu.category_name === "Sweets" ? (
-                        <Image
-                        src={Gourment_food}
-                        alt={menu?.title || ""}
-                        width={330}
-                        height={160}
-                      />
-                      ):(
-                        <Image
-                        src={Home_care}
-                        alt={menu?.title || ""}
-                        width={330}
-                        height={160}
-                      />
-                      )
-                      )
-                      )}
-                      
-                    </div>
-                </Col>
+                        {menu.category_name === "Massage Oils" ? (
+                          <Image
+                            src={Ayush_product}
+                            alt={menu?.title || ""}
+                            width={330}
+                            height={160}
+                          />
+                        ) : menu.category_name === "Skin Care" ? (
+                          <Image
+                            src={Personal_care}
+                            alt={menu?.title || ""}
+                            width={330}
+                            height={160}
+                          />
+                        ) : menu.category_name === "Sweets" ? (
+                          <Image
+                            src={Gourment_food}
+                            alt={menu?.title || ""}
+                            width={330}
+                            height={160}
+                          />
+                        ) : (
+                          <Image
+                            src={Home_care}
+                            alt={menu?.title || ""}
+                            width={330}
+                            height={160}
+                          />
+                        )}
+                      </div>
+                    </Col>
                   </div>
-              )})}
-            </Row>
-          </div>
+                );
+              })}
+          </Row>
+        </div>
       </Container>
     </Container>
   );
