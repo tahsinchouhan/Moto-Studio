@@ -154,7 +154,7 @@ function Header() {
                 {menus.map((menu) => (
                   <Link href={menu.href} key={menu.id}>
                     <a
-                      className={`nav-link reduce-margin-gap-header ${
+                      className={`nav-link reduce-margin-gap-header px-3 ${
                         router.pathname == menu.href ? "active" : ""
                       }`}
                     >

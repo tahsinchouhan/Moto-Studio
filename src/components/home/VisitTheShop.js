@@ -129,8 +129,8 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="AmlaMurabba"
-                    width={100}
-                    height={180}
+                    width={'300px'}
+                    height={'300px'}
                     objectFit="cover"
                     unoptimized={true}
                     loading="eager"
@@ -185,8 +185,8 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="MahuaLaddu"
-                    width={100}
-                    height={180}
+                    width={'300px'}
+                    height={'300px'}
                     objectFit="cover"
                     unoptimized={true}
                     loading="eager"
@@ -305,10 +305,10 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="AmlaMurabba"
-                    width={100}
-                    height={180}
-                    loading="lazy"
+                    width={'300px'}
+                    height={'300px'}
                     objectFit="cover"
+                    loading="lazy"
                     className="featured-card-image-for-overlay"
                     quality={100}
                   />
@@ -359,10 +359,10 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="MahuaLaddu"
-                    width={100}
-                    height={180}
-                    loading="lazy"
+                    width={'300px'}
+                    height={'300px'}
                     objectFit="cover"
+                    loading="lazy"
                     className="featured-card-image-for-overlay"
                     quality={100}
                   />

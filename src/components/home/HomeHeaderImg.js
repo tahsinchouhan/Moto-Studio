@@ -78,7 +78,7 @@ function HomeHeaderImg() {
                 </div>
               </Col> */}
               <Col md={9} className="py-md-5 my-2">
-                <p className="home-header-head-mobile mt-md-5 mt-4">
+                <p className="home-header-head-mobile mt-md-5 mt-4"> 
                   Purity <br /> that is <br /> Priceless
                 </p>
                 {/* <div className="col-12 mt-3">
@@ -86,8 +86,10 @@ function HomeHeaderImg() {
                 </div> */}
                 <div className="">
                   <p className="home-eco-friendly-mobile">
-                    ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN
-                    EMPOWERMENT EFFORTS IN THE WORLD{" "}
+                    Eco-friendly products from one of the largest women
+                    empowerment efforts in the world{" "}
+                    {/* ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN
+                    EMPOWERMENT EFFORTS IN THE WORLD{" "} */}
                   </p>
                   <p style={{ marginTop: "32px" }}>
                     Each product is handcrafted with care and love by the
@@ -196,10 +198,10 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
-      <Row className="BannerBottomImagesRow mx-2 ">
+      <Row className="BannerBottomImagesRow mx-2" style={{marginTop:'-5px'}}>
         <Col
           md={6}
-          className="BannerBottomImages p-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
+          className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=0`}>
             <div className="SubImageContainer">
@@ -207,9 +209,7 @@ function HomeHeaderImg() {
                 src={Tangy}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -217,7 +217,7 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages  p-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
+          className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
           <Link passHref href={`/product?activeTab=1`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
@@ -226,9 +226,7 @@ function HomeHeaderImg() {
                 src={TermaricP}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -236,7 +234,7 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages p-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
+          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
           <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
@@ -245,9 +243,7 @@ function HomeHeaderImg() {
                 src={Tikhur}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -255,7 +251,7 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages p-2 col-lg-3 BannerBottomImages-media-query-mobile"
+          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
@@ -264,9 +260,7 @@ function HomeHeaderImg() {
                 src={ThikurS}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
