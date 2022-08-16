@@ -6,8 +6,8 @@ top: 30px;
 border: 1px solid #E5E5E5;
 }
 .Grocery-foods{
-    text-align: start;
-    padding-bottom: 5px;
+text-align: start;
+padding-bottom: 5px;
 font-style: normal;
 font-weight: 500;
 font-size: 16px;
@@ -23,7 +23,7 @@ color: #000000;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 16.8px;
     color: #666666;
 }
 .shop-page{

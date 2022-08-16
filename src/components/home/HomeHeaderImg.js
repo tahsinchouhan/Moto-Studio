@@ -203,7 +203,7 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link passHref href={`/product?activeTab=0`}>
+          <Link passHref href={`/product?activeTab=1`}>
             <div className="SubImageContainer">
               <Image
                 src={Tangy}
@@ -219,7 +219,7 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
-          <Link passHref href={`/product?activeTab=1`}>
+          <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
@@ -236,7 +236,7 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
-          <Link passHref href={`/product?activeTab=2`}>
+          <Link passHref href={`/product?activeTab=3`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
@@ -253,7 +253,7 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link passHref href={`/product?activeTab=2`}>
+          <Link passHref href={`/product?activeTab=0`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
