@@ -33,33 +33,30 @@ function Products() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
-
+  
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
-  );
-  const [checkedStateRemedy, setCheckedStateRemedy] = useState(
-    new Array(remedy.length).fill(false)
-  );
-
-  console.log('product data is: ', productData);
-
-  // const createSliderWithTooltip = Slider.createSliderWithTooltip;
-  // const Range = createSliderWithTooltip(Slider.Range);
-
-  const fetchMoreData = () => {
-    setLoading(true);
-    fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
-      .then((res) => res.json())
-      .then((jsonData) => {
-        if (jsonData?.data?.length) {
-          setLoading(false);
-          setProductData((prevState) => [...prevState, ...jsonData?.data]);
-          setPageNumber((prevNum) => prevNum + 1);
-        }
-      })
-      .catch((error) => console.log(error));
-  };
-
+    );
+    const [checkedStateRemedy, setCheckedStateRemedy] = useState(
+      new Array(remedy.length).fill(false)
+      );
+      
+      // const createSliderWithTooltip = Slider.createSliderWithTooltip;
+      // const Range = createSliderWithTooltip(Slider.Range);
+      
+      const fetchMoreData = () => {
+        setLoading(true);
+        fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
+        .then((res) => res.json())
+        .then((jsonData) => {
+          if (jsonData?.data?.length) {
+            setLoading(false);
+            setProductData((prevState) => [...prevState, ...jsonData?.data]);
+            setPageNumber((prevNum) => prevNum + 1);
+          }
+        })
+        .catch((error) => console.log(error));
+      };
   const fetchData = async (query = "") => {
     setLoading(true);
     try {
@@ -99,7 +96,7 @@ function Products() {
               (data) => data.status === true
             );
             setCheckedState(new Array(filteredData.length).fill(false));
-            let newfilteredData = filteredData.filter((data, ind) => ind < 3);
+            let newfilteredData = filteredData.filter((data, ind) => ind < 4);
             setCategory([...newfilteredData].reverse());
           }
         })
