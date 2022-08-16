@@ -132,7 +132,7 @@ const Item = ({
         <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">GST Amount</span>
             {
-              product.weight ? (
+              product?.weight ? (
                 <p className="fw-bold shopping-p4-size">₹ {product?.weight[0]?.gst_amount || 0}</p>
               ) : (
                 <p className="fw-bold shopping-p4-size">₹ {0} </p>
@@ -143,7 +143,7 @@ const Item = ({
         <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">Taxable Amount</span>
           {
-              product.weight ? (
+              product?.weight ? (
                 <p className="fw-bold shopping-p4-size">₹ {product?.weight[0]?.taxable_amount || 0 }</p>
               ) : (
                 <p className="fw-bold shopping-p4-size">₹ {0} </p>
@@ -155,7 +155,7 @@ const Item = ({
         <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           {
-              product.weight ? (
+              product?.weight ? (
                 <p className="fw-bold shopping-p4-size">₹ {quantity * (price + (product.weight[0].gst_amount || 0) + (product?.weight[0].taxable_amount || 0) )}</p>
               ) : (
                 <p className="fw-bold shopping-p4-size">₹ {price} </p>
