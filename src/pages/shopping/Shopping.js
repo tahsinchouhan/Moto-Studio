@@ -353,6 +353,7 @@ function Shopping() {
       address: "Raipur",
       billingAddress,
       shippingAddress,
+      email: user.email,
     });
     // console.log('createOrder is:',createOrder);
     
