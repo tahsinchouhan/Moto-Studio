@@ -40,8 +40,8 @@ const privacyPolicy = () => {
 
         <section>        
           <h5>DATE OF EFFECT:</h5>
-          This Privacy Policy comes into effect from May 1 2022 <br />
-          Thank you for visiting CG Herbals’ Online Store which is currently located at www.cgherbals.org <br />
+          This Privacy Policy comes into effect from August 1 2022 <br />
+          Thank you for visiting CG Herbals’ Online Store which is currently located at http://chhattisgarhherbals.in <br />
           Your visit to this website is subject to this Privacy Policy and our Terms and Conditions. <br />
           We at CHHATTISGARH HERBALS are committed to protecting and safeguarding your privacy.<br />
 

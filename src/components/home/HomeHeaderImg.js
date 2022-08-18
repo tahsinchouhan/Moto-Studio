@@ -5,12 +5,18 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
+import HomeHeaderMobile from "../../assets/images/home/HomepageMobile.jpg";
+import HomeHeaderDesktop from "../../assets/images/home/HomepageDesktop.jpg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
 import Tangy from '../../assets/img/TangyTamarind.png'
 import TermaricP from '../../assets/img/TurmericPowder.png'
 import Tikhur from '../../assets/img/TikhurPowder.png'
 import ThikurS from '../../assets/img/ThikurSmall.png'
+import Ayush from '../../assets/img/AYUSH Products - Small Banner.jpg'
+import Gourment from '../../assets/img/Gourmet Foods - Small Banner.jpg'
+import Personal from '../../assets/img/Personal Care Products - Small Banner.jpg'
+import Premium from '../../assets/img/Premium Products - Small Banner.jpg'
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({
@@ -199,6 +205,23 @@ function HomeHeaderImg() {
         </div>
       </div>
       <Row className="BannerBottomImagesRow mx-2" style={{marginTop:'-5px'}}>
+      <Col
+          md={6}
+          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
+        >
+          <Link passHref href={`/product?activeTab=0`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
+            <div className="SubImageContainer">
+              <Image
+                src={Premium}
+                className=""
+                alt="ss"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+              />
+              <p className="bottom-left left-4"></p>
+            </div>
+          </Link>
+        </Col>
         <Col
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
@@ -206,7 +229,7 @@ function HomeHeaderImg() {
           <Link passHref href={`/product?activeTab=1`}>
             <div className="SubImageContainer">
               <Image
-                src={Tangy}
+                src={Ayush}
                 className=""
                 alt="ss"
                 style={{width:'349px', height:'190px', objectFit: 'cover'}}
@@ -223,7 +246,7 @@ function HomeHeaderImg() {
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={TermaricP}
+                src={Personal}
                 className=""
                 alt="ss"
                 style={{width:'349px', height:'190px', objectFit: 'cover'}}
@@ -240,7 +263,7 @@ function HomeHeaderImg() {
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src={Tikhur}
+                src={Gourment}
                 className=""
                 alt="ss"
                 style={{width:'349px', height:'190px', objectFit: 'cover'}}
@@ -249,23 +272,7 @@ function HomeHeaderImg() {
             </div>
           </Link>
         </Col>
-        <Col
-          md={6}
-          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
-        >
-          <Link passHref href={`/product?activeTab=0`}>
-            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
-            <div className="SubImageContainer">
-              <Image
-                src={ThikurS}
-                className=""
-                alt="ss"
-                style={{width:'349px', height:'190px', objectFit: 'cover'}}
-              />
-              <p className="bottom-left left-4"></p>
-            </div>
-          </Link>
-        </Col>
+        
       </Row>
     </>
   );

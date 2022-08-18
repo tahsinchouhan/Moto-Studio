@@ -171,7 +171,7 @@ const termsOfService = () => {
         
         <h4>SECTION 20 - CONTACT INFORMATION</h4>
         <section>
-          Questions about the Terms of Service should be sent to us at info@cgherbals.org.
+          Questions about the Terms of Service should be sent to us at http://chhattisgarhherbals.in.
         </section>
       </div>
 
