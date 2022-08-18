@@ -6,6 +6,10 @@ import Gourment_food from "../../../public/images/subheadermenuitems/Gourment_fo
 import Personal_care from "../../../public/images/subheadermenuitems/Personal_care.svg";
 import Ayush_product from "../../../public/images/subheadermenuitems/Ayush_product.svg";
 import Home_care from "../../../public/images/subheadermenuitems/Home_care.svg";
+import Ayush from '../../assets/img/AYUSH Products - Small Banner.jpg'
+import Gourment from '../../assets/img/Gourmet Foods - Small Banner.jpg'
+import Personal from '../../assets/img/Personal Care Products - Small Banner.jpg'
+import Premium from '../../assets/img/Premium Products - Small Banner.jpg'
 // import Home_care from "../../../public/images/subheadermenuitems/home care.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -157,30 +161,30 @@ function Common({ menuData }) {
                         width={330}
                         height={160}
                       /> */}
-                        {menu.category_name === "Massage Oils" ? (
+                        {menu.category_name === "Churna" ? (
                           <Image
-                            src={Ayush_product}
+                            src={Ayush}
                             alt={menu?.title || ""}
                             width={330}
                             height={160}
                           />
-                        ) : menu.category_name === "Skin Care" ? (
+                        ) : menu.category_name === "Herbal Soaps" ? (
                           <Image
-                            src={Personal_care}
+                            src={Personal}
                             alt={menu?.title || ""}
                             width={330}
                             height={160}
                           />
                         ) : menu.category_name === "Sweets" ? (
                           <Image
-                            src={Gourment_food}
+                            src={Gourment}
                             alt={menu?.title || ""}
                             width={330}
                             height={160}
                           />
                         ) : (
                           <Image
-                            src={Home_care}
+                            src={Premium}
                             alt={menu?.title || ""}
                             width={330}
                             height={160}

@@ -129,9 +129,9 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="AmlaMurabba"
-                    width={100}
-                    height={180}
-                    objectFit="cover"
+                    width={'300px'}
+                    height={'300px'}
+                    objectFit="fill"
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
@@ -185,9 +185,9 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="MahuaLaddu"
-                    width={100}
-                    height={180}
-                    objectFit="cover"
+                    width={'300px'}
+                    height={'300px'}
+                    objectFit="fill"
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
@@ -248,7 +248,7 @@ function VisitTheShop({ categoryId }) {
                       height={460}
                       // loading="lazy"
                       // layout="fill"
-                      objectFit="cover"
+                      objectFit="fill"
                       unoptimized={true}
                       loading="eager"
                       className="featured-card-image-for-overlay"
@@ -305,10 +305,10 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="AmlaMurabba"
-                    width={100}
-                    height={180}
+                    width={'300px'}
+                    height={'300px'}
+                    objectFit="fill"
                     loading="lazy"
-                    objectFit="cover"
                     className="featured-card-image-for-overlay"
                     quality={100}
                   />
@@ -359,10 +359,10 @@ function VisitTheShop({ categoryId }) {
                         : emptyImage
                     }
                     alt="MahuaLaddu"
-                    width={100}
-                    height={180}
+                    width={'300px'}
+                    height={'300px'}
+                    objectFit="fill"
                     loading="lazy"
-                    objectFit="cover"
                     className="featured-card-image-for-overlay"
                     quality={100}
                   />

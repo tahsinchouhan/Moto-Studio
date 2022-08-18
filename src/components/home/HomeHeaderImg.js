@@ -5,8 +5,18 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "../button/ButtonLight";
 import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
+import HomeHeaderMobile from "../../assets/images/home/HomepageMobile.jpg";
+import HomeHeaderDesktop from "../../assets/images/home/HomepageDesktop.jpg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
+import Tangy from '../../assets/img/TangyTamarind.png'
+import TermaricP from '../../assets/img/TurmericPowder.png'
+import Tikhur from '../../assets/img/TikhurPowder.png'
+import ThikurS from '../../assets/img/ThikurSmall.png'
+import Ayush from '../../assets/img/AYUSH Products - Small Banner.jpg'
+import Gourment from '../../assets/img/Gourmet Foods - Small Banner.jpg'
+import Personal from '../../assets/img/Personal Care Products - Small Banner.jpg'
+import Premium from '../../assets/img/Premium Products - Small Banner.jpg'
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({
@@ -74,7 +84,7 @@ function HomeHeaderImg() {
                 </div>
               </Col> */}
               <Col md={9} className="py-md-5 my-2">
-                <p className="home-header-head-mobile mt-md-5 mt-4">
+                <p className="home-header-head-mobile mt-md-5 mt-4"> 
                   Purity <br /> that is <br /> Priceless
                 </p>
                 {/* <div className="col-12 mt-3">
@@ -82,8 +92,10 @@ function HomeHeaderImg() {
                 </div> */}
                 <div className="">
                   <p className="home-eco-friendly-mobile">
-                    ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN
-                    EMPOWERMENT EFFORTS IN THE WORLD{" "}
+                    Eco-friendly products from one of the largest women
+                    empowerment efforts in the world{" "}
+                    {/* ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST WOMEN
+                    EMPOWERMENT EFFORTS IN THE WORLD{" "} */}
                   </p>
                   <p style={{ marginTop: "32px" }}>
                     Each product is handcrafted with care and love by the
@@ -192,20 +204,19 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
-      <Row className="BannerBottomImagesRow mx-2 ">
-        <Col
+      <Row className="BannerBottomImagesRow mx-2" style={{marginTop:'-5px'}}>
+      <Col
           md={6}
-          className="BannerBottomImages px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
+          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=0`}>
+            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src="/Images/Ayush_product.svg"
+                src={Premium}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -213,18 +224,32 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages  px-1 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
+          className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link passHref href={`/product?activeTab=1`}>
+            <div className="SubImageContainer">
+              <Image
+                src={Ayush}
+                className=""
+                alt="ss"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+              />
+              <p className="bottom-left left-4"></p>
+            </div>
+          </Link>
+        </Col>
+        <Col
+          md={6}
+          className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
+        >
+          <Link passHref href={`/product?activeTab=2`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src='/Images/Personal_care.svg'
+                src={Personal}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -232,42 +257,22 @@ function HomeHeaderImg() {
         </Col>
         <Col
           md={6}
-          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
+          className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
-          <Link passHref href={`/product?activeTab=2`}>
+          <Link passHref href={`/product?activeTab=3`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
-                src="/Images/Gourment_product.svg"
+                src={Gourment}
                 className=""
                 alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
+                style={{width:'349px', height:'190px', objectFit: 'cover'}}
               />
               <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        <Col
-          md={6}
-          className="BannerBottomImages px-1 col-lg-3 BannerBottomImages-media-query-mobile"
-        >
-          <Link passHref href={`/product?activeTab=2`}>
-            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
-            <div className="SubImageContainer">
-              <Image
-                src="/Images/premium_product.svg"
-                className=""
-                alt="ss"
-                width={1200}
-                height={500}
-                objectFit="fill"
-              />
-              <p className="bottom-left left-4"></p>
-            </div>
-          </Link>
-        </Col>
+        
       </Row>
     </>
   );

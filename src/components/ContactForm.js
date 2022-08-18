@@ -208,7 +208,11 @@ function ContactForm() {
                   <MenuItem value={2}>Grievances</MenuItem>
                 </Select>
               </div>
-              <h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>
+              {
+                index === 1 ? (<h1 className="Contact-Us-heading mt-5 fs-2 ">Support & Feedback</h1>):
+                (index === 2 ? (<h1 className="Contact-Us-heading mt-5 fs-2 ">Grievances</h1>):
+                (<h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>))
+              }
               <hr className="contact-form-hr mx-auto mb-4" />
               <p className="contact-para mt-4">
                 If you have any questions, or are looking to collaborate, we are

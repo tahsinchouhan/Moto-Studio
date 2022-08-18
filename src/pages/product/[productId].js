@@ -23,7 +23,7 @@ function ProductDetail({ productData }) {
 
   const { addProductToCart, item } = useContext(CardContext);
 
-  const productIm̥ages = productData?.images.filter((item,ind)=> ind<5)
+  const productIm̥ages = productData?.images.filter((item, ind) => ind < 5)
   // console.log("🚀 ~ file: [productId].js ~ line 27 ~ ProductDetail ~ productIm̥ages", productIm̥ages)
 
   const fetchListData = async (category_id) => {
@@ -75,44 +75,41 @@ function ProductDetail({ productData }) {
 
       <div className="my-lg-5 d-flex">
         <div className="container popup-div mx-auto p-0">
+          {/* <Row className="popup-modal-main p-0 justify-content-center"> */}
           <Row className="popup-modal-main p-0 justify-content-center">
 
 
             {/* add multiple images */}
-            <Col
-              className="popup-modal-img mt-3 product-slider-image-col"
-              style={{ position: "sticky !importatn" }}
-            >
-            <div className="slider-img">
-            <div className="mult-img-slider-div">            
-            <Carousel
-              showIndicators={false}
-              showStatus={false}
-              swipeable={true}
-              infiniteLoop={true}
-              axis="horizontal"
-              autoPlay="true"
-              dynamicHeight="true"
-              // showArrows={false}
-              >
-              {
-                productIm̥ages.map((image, idx) => {
-                  return(
-                    <div key={idx} className="product-slider-image-div">
-                    <img src={image.img} alt="product images"/>
-                    </div>
-                  )
-                })
-              }
-              
-            </Carousel>
-            </div>
-            </div>
+            <Col md={6} style={{ position: "sticky !importatn" }}>
+              <div className="slider-img">
+                <div className="mult-img-slider-div">
+                  <Carousel
+                    showIndicators={false}
+                    showStatus={false}
+                    swipeable={true}
+                    infiniteLoop={true}
+                    axis="horizontal"
+                    autoPlay="true"
+                    dynamicHeight="true"
+                  // showArrows={false}
+                  >
+                    {
+                      productIm̥ages.map((image, idx) => {
+                        return (
+                          <div key={idx}>
+                            <img src={image.img} alt="product images" className="productImage"/>
+                          </div>
+                        )
+                      })
+                    }
+                  </Carousel>
+                </div>
+              </div>
             </Col>
             {/* end  add mult img */}
 
 
-            <Col xs={12} md={5}>
+            <Col xs={12} md={6}>
               <div className="p-3 p-md-2">
                 <h1 className="product-name-text">
                   {productData?.title || "Product Name"}
@@ -197,8 +194,8 @@ function ProductDetail({ productData }) {
                 </div>
                 <br />
                 {/* <div className="product-Price-1 w-100"> */}
-                  {/* <span className="fs-2">₹ </span> */}
-                  {/* <span className="fs-2">
+                {/* <span className="fs-2">₹ </span> */}
+                {/* <span className="fs-2">
                     {Number(selectedWeight?.price * count) -
                       Number(
                         selectedWeight?.discount === "percentage"
@@ -208,7 +205,7 @@ function ProductDetail({ productData }) {
                           : selectedWeight?.discount_value
                       )}
                   </span> */}
-                  {/* {selectedWeight?.discount_value && (
+                {/* {selectedWeight?.discount_value && (
                     <span className="text-muted fs-6 ms-3 text-decoration-line-through">
                       {" "}
                       ₹ {selectedWeight?.price * count || ""}
@@ -219,17 +216,17 @@ function ProductDetail({ productData }) {
                   <Row>
                     {selectedWeight?.count > 0 ? (
                       item.some((el) => el.product === productData?._id) ||
-                      item.some(
-                        (el) =>
-                          el.product?._id === productData?._id &&
-                          el.weight_type === selectedWeight?.weight_type?._id
-                      ) ? (
+                        item.some(
+                          (el) =>
+                            el.product?._id === productData?._id &&
+                            el.weight_type === selectedWeight?.weight_type?._id
+                        ) ? (
                         <Col xs={6}>
                           <div
                             className="mt-2"
                             onClick={() => router.push(`/shopping/Shopping`)}
                           >
-                            <ButtonDark text="VIEW CART" className="active"  />
+                            <ButtonDark text="VIEW CART" className="active" />
                           </div>
                         </Col>
                       ) : (
@@ -243,7 +240,7 @@ function ProductDetail({ productData }) {
                             );
                           }}
                         >
-                          <ButtonDark text="ADD TO CART"/>
+                          <ButtonDark text="ADD TO CART" />
                         </Col>
                       )
                     ) : (
@@ -300,7 +297,7 @@ function ProductDetail({ productData }) {
                     <div
                       className="p-lg-5 mx-auto product-card-hover cursor-pointer"
                       onClick={() => router.push(`./${product?._id}`)}
-                      style={{backgroundColor:"#F8F8F8"}}
+                      style={{ backgroundColor: "#F8F8F8" }}
                     >
                       <div className="w-100 product-card-img">
                         <Image
@@ -356,7 +353,7 @@ function ProductDetail({ productData }) {
                             Number(
                               product?.weight[0].discount === "percentage"
                                 ? product?.weight[0]?.price *
-                                    (product?.weight[0].discount_value / 100)
+                                (product?.weight[0].discount_value / 100)
                                 : product?.weight[0].discount_value
                             )}
                         </span>
@@ -369,7 +366,7 @@ function ProductDetail({ productData }) {
 
                       {product?.weight[0]?.count > 0 ? (
                         item.some((el) => el.product === productData?._id) ||
-                        item.some((el) => el.product?._id === product?._id) ? (
+                          item.some((el) => el.product?._id === product?._id) ? (
                           <div className="mt-2">
                             <ButtonDark
                               type="submit"

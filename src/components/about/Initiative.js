@@ -29,7 +29,7 @@ const Initiative = () => {
             Tribal Development And Forest Resource Conservation through
             Sustainable Harvesting of Minor Forest Produce. With 74% Forest
             Cover of the country, CGMFP Federation accounts for 72% of the Minor
-            Forest Produce procured across India.{" "}
+            Forest Produce procured across India.{" "} The ecommerce store - is  managed. By Avani Ayurved Pvt Lt- Authorised distributor of Chhattisgarh Herbals
           </p>
         </Col>
         <Col></Col>

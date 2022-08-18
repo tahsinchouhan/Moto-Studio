@@ -353,6 +353,7 @@ function Shopping() {
       address: "Raipur",
       billingAddress,
       shippingAddress,
+      email: user.email,
     });
     // console.log('createOrder is:',createOrder);
     
@@ -492,7 +493,7 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value="http://localhost:3000/order/OrderConfirmed"
+        value="http://localhost:3018/order/OrderConfirmed"
       />
       <input
         type="hidden"
