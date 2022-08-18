@@ -18,6 +18,7 @@ const shippingPolicy = () => {
       <div className="container py-5">
         <h1 className="text-center mb-4">Shipping Policy</h1>
         <section>
+        The ecommerce store - is  managed. By Avani Ayurved Pvt Lt- Authorised distributor of Chhattisgarh Herbals. <br />
         Cash on delivery is available on select Indian pin-codes. COD is applicable on orders above ₹375/-. /<br />
         Shipping charges of ₹50 for COD orders below ₹500. <br/>
         Purchases are shipped from our warehouse in Mohali, Punjab by courier. Please allow following number of  days from receipt of your order.

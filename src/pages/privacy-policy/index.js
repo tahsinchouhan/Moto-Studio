@@ -41,7 +41,8 @@ const privacyPolicy = () => {
         <section>        
           <h5>DATE OF EFFECT:</h5>
           This Privacy Policy comes into effect from August 1 2022 <br />
-          Thank you for visiting CG Herbals’ Online Store which is currently located at http://chhattisgarhherbals.in <br />
+          The ecommerce store - is  managed. By Avani Ayurved Pvt Lt- Authorised distributor of Chhattisgarh Herbals. <br />
+          Thank you for visiting CG Herbals’ Online Store which is currently located at http://chhattisgarhherbals.org <br />
           Your visit to this website is subject to this Privacy Policy and our Terms and Conditions. <br />
           We at CHHATTISGARH HERBALS are committed to protecting and safeguarding your privacy.<br />
 

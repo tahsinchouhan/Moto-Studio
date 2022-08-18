@@ -18,6 +18,7 @@ const refundPolicy = () => {
       <div className="container py-5">
         <h1 className="text-center mb-4">Refund Policy</h1>
         <section>
+        The ecommerce store - is  managed. By Avani Ayurved Pvt Lt- Authorised distributor of Chhattisgarh Herbals. 
         Returns Policy
         We do not offer refunds or exchanges for opened products due to hygiene concerns. However, we do offer replacements purely on a case by case basis and it is always our endeavour to help our customers to the best of our ability as the case may be. The genuine cases of damage, leakage, missing product(s), wrong delivery of product(s) will be taken into consideration.
         The customer shall bring the same to our notice within 7 working days from the date of receiving the product(s).
