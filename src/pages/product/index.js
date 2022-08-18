@@ -522,7 +522,7 @@ function Products() {
                             className="w-100"
                             width={'300px'}
                             height={'300px'}
-                            objectFit="cover"
+                            objectFit="fill"
                           />
                         </div>
 

@@ -97,7 +97,7 @@ function ProductDetail({ productData }) {
                       productIm̥ages.map((image, idx) => {
                         return (
                           <div key={idx}>
-                            <img src={image.img} alt="product images" className="productImage" />
+                            <img src={image.img} alt="product images" className="productImage"/>
                           </div>
                         )
                       })

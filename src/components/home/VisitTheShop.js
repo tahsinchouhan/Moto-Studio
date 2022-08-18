@@ -131,7 +131,7 @@ function VisitTheShop({ categoryId }) {
                     alt="AmlaMurabba"
                     width={'300px'}
                     height={'300px'}
-                    objectFit="cover"
+                    objectFit="fill"
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
@@ -187,7 +187,7 @@ function VisitTheShop({ categoryId }) {
                     alt="MahuaLaddu"
                     width={'300px'}
                     height={'300px'}
-                    objectFit="cover"
+                    objectFit="fill"
                     unoptimized={true}
                     loading="eager"
                     className="featured-card-image-for-overlay"
@@ -248,7 +248,7 @@ function VisitTheShop({ categoryId }) {
                       height={460}
                       // loading="lazy"
                       // layout="fill"
-                      objectFit="cover"
+                      objectFit="fill"
                       unoptimized={true}
                       loading="eager"
                       className="featured-card-image-for-overlay"
@@ -307,7 +307,7 @@ function VisitTheShop({ categoryId }) {
                     alt="AmlaMurabba"
                     width={'300px'}
                     height={'300px'}
-                    objectFit="cover"
+                    objectFit="fill"
                     loading="lazy"
                     className="featured-card-image-for-overlay"
                     quality={100}
@@ -361,7 +361,7 @@ function VisitTheShop({ categoryId }) {
                     alt="MahuaLaddu"
                     width={'300px'}
                     height={'300px'}
-                    objectFit="cover"
+                    objectFit="fill"
                     loading="lazy"
                     className="featured-card-image-for-overlay"
                     quality={100}
