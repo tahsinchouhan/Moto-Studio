@@ -146,16 +146,16 @@
   border: none;
 }
 /* hidd gift address */
-.giftaddressForm{
+.giftaddressForm {
   visibility: hidden;
   display: none;
 }
-.hiddGiftAddress{
+.hiddGiftAddress {
   visibility: hidden !important;
   display: none;
 }
-.visibleGiftAddress{
-  visibility:visible !important;
+.visibleGiftAddress {
+  visibility: visible !important;
   display: block;
 }
 
@@ -169,7 +169,8 @@
 @media screen and (max-width: 991px) {
   .order-summary-card {
     margin: 0 auto !important;
-    max-width: 290px;
+    /* max-width: 290px; */
+    width: 100%;
   }
 
   .shop-product-img {
@@ -179,44 +180,43 @@
 
   .margin-shop-toggle {
     padding-left: 12px;
-
   }
 
-  .tablet-btn-shopping-image{
-    width:70%;
+  .tablet-btn-shopping-image {
+    width: 70%;
   }
-  .mobile-shopping-p2-size{
+  .mobile-shopping-p2-size {
     margin-top: 20px;
     font-size: 2.4vmax;
     text-align: center;
   }
-  .mobile-shopping-p2-weight{
+  .mobile-shopping-p2-weight {
     margin-top: 20px;
     font-size: 2vmax;
     text-align: center;
   }
-  .mobile-shopping-p2-quantity{
+  .mobile-shopping-p2-quantity {
     font-size: large;
     justify-content: space-evenly;
     padding: 0 20vmax;
   }
-  .mobile-btn-shopping-counter{
+  .mobile-btn-shopping-counter {
     width: 100%;
   }
-  .mobile-btn-shopping-remove{
+  .mobile-btn-shopping-remove {
     font-size: 18px;
     text-align: center;
   }
-  .mobile-btn-shopping-price{
+  .mobile-btn-shopping-price {
     font-size: 16px;
     text-align: center;
   }
-  .mobile-btn-shopping-total{
+  .mobile-btn-shopping-total {
     font-size: 16px;
     text-align: center;
   }
 }
-.lableFontWeight{
+.lableFontWeight {
   font-family: Georgia;
   color: #000000;
   padding-bottom: 5px;
@@ -226,36 +226,35 @@
   .address-details-p {
     line-height: 20px !important;
   }
-  .tablet-btn-shopping-image{
-    width:90%;
+  .tablet-btn-shopping-image {
+    width: 90%;
   }
-  .mobile-shopping-p2-size{
+  .mobile-shopping-p2-size {
     font-size: 2.6vmax;
     text-align: center;
   }
-  .mobile-shopping-p2-weight{
+  .mobile-shopping-p2-weight {
     font-size: 2vmax;
     text-align: center;
   }
-  .mobile-shopping-p2-quantity{
+  .mobile-shopping-p2-quantity {
     font-size: large;
     justify-content: space-evenly;
     padding: 0 6vmax;
   }
-  .mobile-btn-shopping-counter{
+  .mobile-btn-shopping-counter {
     width: 100%;
   }
-  .mobile-btn-shopping-remove{
+  .mobile-btn-shopping-remove {
     font-size: 18px;
     text-align: center;
   }
-  .mobile-btn-shopping-price{
+  .mobile-btn-shopping-price {
     font-size: 16px;
     text-align: center;
   }
-  .mobile-btn-shopping-total{
+  .mobile-btn-shopping-total {
     font-size: 16px;
     text-align: center;
   }
 }
-
