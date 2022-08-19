@@ -351,10 +351,10 @@ function ProductDetail({ productData }) {
                           ₹{" "}
                           {Number(product?.weight[0]?.price) -
                             Number(
-                              product?.weight[0].discount === "percentage"
+                              product?.weight[0]?.discount === "percentage"
                                 ? product?.weight[0]?.price *
-                                (product?.weight[0].discount_value / 100)
-                                : product?.weight[0].discount_value
+                                (product?.weight[0]?.discount_value / 100)
+                                : product?.weight[0]?.discount_value
                             )}
                         </span>
                         {/* {product?.weight[0].discount_value && (

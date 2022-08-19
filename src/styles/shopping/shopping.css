@@ -181,6 +181,40 @@
     padding-left: 12px;
 
   }
+
+  .tablet-btn-shopping-image{
+    width:70%;
+  }
+  .mobile-shopping-p2-size{
+    margin-top: 20px;
+    font-size: 2.4vmax;
+    text-align: center;
+  }
+  .mobile-shopping-p2-weight{
+    margin-top: 20px;
+    font-size: 2vmax;
+    text-align: center;
+  }
+  .mobile-shopping-p2-quantity{
+    font-size: large;
+    justify-content: space-evenly;
+    padding: 0 20vmax;
+  }
+  .mobile-btn-shopping-counter{
+    width: 100%;
+  }
+  .mobile-btn-shopping-remove{
+    font-size: 18px;
+    text-align: center;
+  }
+  .mobile-btn-shopping-price{
+    font-size: 16px;
+    text-align: center;
+  }
+  .mobile-btn-shopping-total{
+    font-size: 16px;
+    text-align: center;
+  }
 }
 .lableFontWeight{
   font-family: Georgia;
@@ -192,4 +226,36 @@
   .address-details-p {
     line-height: 20px !important;
   }
+  .tablet-btn-shopping-image{
+    width:90%;
+  }
+  .mobile-shopping-p2-size{
+    font-size: 2.6vmax;
+    text-align: center;
+  }
+  .mobile-shopping-p2-weight{
+    font-size: 2vmax;
+    text-align: center;
+  }
+  .mobile-shopping-p2-quantity{
+    font-size: large;
+    justify-content: space-evenly;
+    padding: 0 6vmax;
+  }
+  .mobile-btn-shopping-counter{
+    width: 100%;
+  }
+  .mobile-btn-shopping-remove{
+    font-size: 18px;
+    text-align: center;
+  }
+  .mobile-btn-shopping-price{
+    font-size: 16px;
+    text-align: center;
+  }
+  .mobile-btn-shopping-total{
+    font-size: 16px;
+    text-align: center;
+  }
 }
+

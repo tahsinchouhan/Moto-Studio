@@ -58,7 +58,7 @@ const Item = ({
         <Col lg="6">
           <Row className="san">
             <Col lg="6" md="12" sm="12">
-              <div className="shop-product-img">
+              <div className="shop-product-img tablet-btn-shopping-image">
                 <Image
                   src={
                     product?.images?.length > 0
@@ -70,17 +70,17 @@ const Item = ({
                   className="img-fluid"
                   unoptimized={true}
                   loading="eager"
-                  objectFit="cover"
+                  objectFit="fill"
                 />
               </div>
             </Col>
             <Col className="margin-shop-toggle" lg="6" md="12">
-              <p className="fw-bold shopping-p2-size">{product?.title || ""}</p>
-              <p className="shopping-p3-size py-lg-4">
+              <p className="fw-bold shopping-p2-size mobile-shopping-p2-size ">{product?.title || ""}</p>
+              <p className="shopping-p3-size py-lg-4 mobile-shopping-p2-weight">
                 Quantity &nbsp;{" "}
                 <span className="fw-bold ">{product_weight || ""}</span>
               </p>
-              <p className="shopping-p3-size">
+              <p className="shopping-p3-size mobile-shopping-p2-weight">
                 Product Code &nbsp;{" "}
                 <span className="fw-bold ">{SKU_Number || ""}</span>
               </p>
@@ -92,30 +92,30 @@ const Item = ({
         </Col>
 
         <Col lg="2" className="mt-3">
-          <div className="d-flex">
+          <div className="d-flex mobile-shopping-p2-quantity">
             <button
               type="button"
-              className="btn-shopping-counter"
+              className="btn-shopping-counter mobile-btn-shopping-counter"
               onClick={() => decreament(product._id)}
             >
               {" "}
               -{" "}
             </button>
-            <div className="shopping-counter" id="counter">
+            <div className="shopping-counter mobile-btn-shopping-counter" id="counter">
               {quantity}
             </div>
             <button
               type="button"
-              className="btn-shopping-counter"
+              className="btn-shopping-counter mobile-btn-shopping-counter"
               onClick={() => stockQty > quantity && increament(product._id)}
             >
               {" "}
               +{" "}
             </button>
           </div>
-          <p className=" shop-remove shopping-p3-size text-start text-lg-start">
+          <p className=" shop-remove shopping-p3-size text-lg-start text-lg-start">
             <span
-              className="fw-bold text-danger text-decoration-underline "
+              className="fw-bold text-danger text-decoration-underline mobile-btn-shopping-remove"
               onClick={() => deleteItem(product?._id, weight_type, _id)}
             >
               REMOVE
@@ -123,13 +123,18 @@ const Item = ({
           </p>
         </Col>
 
-        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
-          <span className="m-0 d-block d-lg-none shopping-p-size">PRICE</span>
-          <p className="fw-bold shopping-p4-size">₹ {price}</p>
+        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-price">PRICE</span>
+          <p className="fw-bold shopping-p4-size mobile-btn-shopping-price">₹ {price}</p>
+        </Col>
+        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-total">TOTAL</span>
+          <p className="fw-bold shopping-p4-size mobile-btn-shopping-total">₹ {quantity * price}</p>
         </Col>
 
-        {/* price changes column */}
-        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
+        {/* add gst and taxable amount code */}
+
+        {/* <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">GST Amount</span>
             {
               product?.weight ? (
@@ -149,10 +154,9 @@ const Item = ({
                 <p className="fw-bold shopping-p4-size">₹ {0} </p>
               )
           }
-        </Col>
-        {/* end changes */}
+        </Col> */}
 
-        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
+        {/* <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>
           {
               product?.weight ? (
@@ -161,10 +165,10 @@ const Item = ({
                 <p className="fw-bold shopping-p4-size">₹ {price} </p>
               )
           }
-          {/* <div className="shopping-edit-text mt-5 pt-5 cursor-pointer">
-            <p>EDIT</p>
-          </div> */}
-        </Col>
+        </Col> */}
+        {/* end changes */}
+
+        
       </Row>
       <hr />
     </>

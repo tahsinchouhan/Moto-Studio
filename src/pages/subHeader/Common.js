@@ -15,7 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Common({ menuData }) {
-  // console.log('menuData ',[...menuData].reverse());
+  // console.log('menuData ',menuData);
   return (
     <Container fluid>
       <Container>
@@ -83,6 +83,8 @@ function Common({ menuData }) {
             {menuData &&
               menuData?.length &&
               menuData.map((menu, index) => {
+                // console.log('menu data is:',menu);
+                // console.log('menuData data is:',menuData);
                 if (index > 0) return;
                 return (
                   <div
@@ -175,7 +177,7 @@ function Common({ menuData }) {
                             width={330}
                             height={160}
                           />
-                        ) : menu.category_name === "Sweets" ? (
+                        ) : menu.category_name === "Gourmet" ? (
                           <Image
                             src={Gourment}
                             alt={menu?.title || ""}
