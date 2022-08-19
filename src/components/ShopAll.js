@@ -3,6 +3,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 function ShopAll({ menu_data }) {
+  menu_data = menu_data.filter((i,index) => index<4)
   return (
     <div>
       <div className="container-fluid">

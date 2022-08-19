@@ -533,16 +533,16 @@ function Shopping() {
                         <Col lg="2">
                           <p className="m-0 shopping-p-size">QUANTITY</p>
                         </Col>
-                        <Col lg="1">
+                        <Col lg="2">
                           <p className="m-0 shopping-p-size">PRICE</p>
                         </Col>
-                        <Col lg="1">
+                        {/* <Col lg="1">
                           <p className="m-0 shopping-p-size">GST</p>
                         </Col>
                         <Col lg="1">
                           <p className="m-0 shopping-p-size">TAXABLE</p>
-                        </Col>
-                        <Col lg="1">
+                        </Col> */}
+                        <Col lg="2">
                           <p className="m-0 shopping-p-size">TOTAL</p>
                         </Col>
                       </Row>
@@ -1208,7 +1208,7 @@ function Shopping() {
                     </Col>
                   )}
                   <Col lg={4} md={12}>
-                    <div className="order-summary-card p-4 pb-2">
+                    <div className="order-summary-card p-4 pb-3">
                       <h6 className="fw-bold order-summary-text">
                         ORDER SUMMARY
                       </h6>
@@ -1227,10 +1227,10 @@ function Shopping() {
                           </p>
                         </div>
                       </div>
-                      <div className="d-flex align-items-center justify-content-between">
+                      {/* <div className="d-flex align-items-center justify-content-between">
                         <p className="order-summary-p1">SHIPPING</p>
                         <span style={{ fontSize: "13px" }}>₹0.00</span>
-                      </div>
+                      </div> */}
                           {promoValue ? (
                             <div className="free-home-delivery-div">
                             <p className=" m-0 px-2 pt-1 free-home-delivery-p">
@@ -1310,7 +1310,7 @@ function Shopping() {
                           <ButtonDark type="button" text="CHECKOUT" />
                         </div> */}
                       </div>
-                      <div className="d-flex align-items-center justify-content-between cursor-pointer">
+                      {/* <div className="d-flex align-items-center justify-content-between cursor-pointer">
                         <p
                           className="order-summary-p1 mt-3 hover"
                           onClick={() => setShow(true)}
@@ -1320,7 +1320,7 @@ function Shopping() {
                         <span onClick={() => setShow(true)}>
                           +
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                   </Col>
                 </Row>

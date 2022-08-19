@@ -10,7 +10,7 @@ import Slider from "react-slick/lib/slider";
 import { apipath } from "../../pages/api/apiPath";
 
 function FeaturedProducts({ category }) {
-  const list = category?.length > 0 ? category[2]._id : null || null;
+  const list = category?.length > 0 ? category[3]._id : null || null;
   const [categoryId, setCategoryId] = useState(list);
   const [selectedCat, setSelected] = useState();
   const getCategoryId = (id) => setCategoryId(id);
