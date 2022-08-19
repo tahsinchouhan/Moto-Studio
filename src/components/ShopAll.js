@@ -3,7 +3,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 function ShopAll({ menu_data }) {
-  menu_data = menu_data.filter((i,index) => index<4)
+  const change_menu_data = menu_data.filter((i,index) => index<4)
   return (
     <div>
       <div className="container-fluid">
@@ -11,7 +11,7 @@ function ShopAll({ menu_data }) {
           <div className="all-shop-list-change py-4 mb-3">
             <Row>
               {
-                menu_data?.length > 0 ? [...menu_data].reverse().map((sub_menu, index) => {
+                change_menu_data?.length > 0 ? [...change_menu_data].reverse().map((sub_menu, index) => {
                   return <Col md={3} lg={3} key={sub_menu?._id}>
                     <div className="grocery-gourmet-foods">
                       <h6 className="Grocery-foods">{sub_menu?.menu_name}</h6>
