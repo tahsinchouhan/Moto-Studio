@@ -115,7 +115,7 @@ const Item = ({
           </div>
           <p className=" shop-remove shopping-p3-size text-lg-start text-lg-start">
             <span
-              className="fw-bold text-danger text-decoration-underline mobile-btn-shopping-remove"
+              className="fw-bold text-danger text-decoration-underline mobile-btn-shopping-remove cursor-pointer"
               onClick={() => deleteItem(product?._id, weight_type, _id)}
             >
               REMOVE
