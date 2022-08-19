@@ -28,7 +28,7 @@ function CommunityPage() {
 
     setCommunity([
       {
-        _id: "627d0ce8a03b3776b610ddd7",
+        _id: "62fe695aed912cacd179f470",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_1_oab2j3.png",
@@ -38,7 +38,7 @@ function CommunityPage() {
         products: { title: "Pure Wildforest Honey" },
       },
       {
-        _id: "6256b2e0e150e5b74cce9dff",
+        _id: "62fdeac8ed912cacd179a1e0",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_2_vo1ixi.png",
@@ -47,34 +47,34 @@ function CommunityPage() {
         products: { title: "Premium Cashews" },
       },
       {
-        _id: "62a329a477e961a1d08fc40e",
+        _id: "62a5dd9477e961a1d08fdc49",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_3_lixc7e.png",
           },
         ],
-        products: { title: "Chyawan Prash" },
+        products: { title: "Churna" },
       },
       {
-        _id: "620e609e3d3e6fe4d14acd02",
+        _id: "62ff23daed912cacd179fbfa",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041705/cgherbal/about/Product_4_xr4vvh.png",
           },
         ],
-        products: { title: "Mahua Laddu" },
+        products: { title: "Mahua Jam" },
       },
       {
-        _id: "6256b32ee150e5b74cce9eb3",
+        _id: "62fb2a64ed912cacd17947b0",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041704/cgherbal/about/Product_5_ha2qn1.png",
           },
         ],
-        products: { title: "Mahua Cookies" },
+        products: { title: "Kodo Cookies" },
       },
       {
-        _id: "620e5e023d3e6fe4d14acca2",
+        _id: "62fb2cdced912cacd17949e1",
         images: [
           {
             img: "https://res.cloudinary.com/cgherbals/image/upload/v1651041704/cgherbal/about/Product_6_nbmoas.png",
@@ -95,21 +95,42 @@ function CommunityPage() {
               <hr className="my-4 Line " />
             </div>
             <div className="para-divb pb-5 communitypage-apply-media-query">
-              <div className="col-lg-9 mx-auto text-center home-community-p-mb" style={{ fontFamily: "Lato" }}>
-                <p>Chhattisgarh is home to several tribal castes with Gonds of Bastar being the prominent among them. 
-                  The Baiga, Korba, Abhuj Maria, BisonHorn Maria, Muria, Halbaa, Bhatra and Dhurvaa are other major tribes of the region. 
-                  </p>
-                  <p>
-                  Primarily dependent on the agriculture with minor forest produce as additional income. These forest dwellers are members of the cooperative called Chhattisgarh Minor Forest Produce Cooperative Federation (CGMFP).
-                  </p>
-                  <p>
-                  The CGMFP facilitates the entrepreneurial spirit of the members and helps them earn better from minor forest produce, by helping them in setting up processing units for minor forest produce like Tamarind, Honey, Cashew and 62 more such species.
-                  </p>
-                  <p>
-                  These units produce more than 120 products from the raw material collected from the forests. Value addition allows them to improve their returns by increasing shelf life and market value of the produce. The units are all owned and Operated by the women. 
-                  </p>
+              <div
+                className="col-lg-9 mx-auto text-center home-community-p-mb"
+                style={{ fontFamily: "Lato" }}
+              >
                 <p>
-                  The products are marketed by CGMFP under the brand name CHHATTISGARH HERBALS. Each product offers PURITY THAT IS PRICELESS, along with the purity of the forests these products also represent the priceless feeling of helping the Tribal Women earn self-respect and dignity in their communities.
+                  Chhattisgarh is home to several tribal castes with Gonds of
+                  Bastar being the prominent among them. The Baiga, Korba, Abhuj
+                  Maria, BisonHorn Maria, Muria, Halbaa, Bhatra and Dhurvaa are
+                  other major tribes of the region.
+                </p>
+                <p>
+                  Primarily dependent on the agriculture with minor forest
+                  produce as additional income. These forest dwellers are
+                  members of the cooperative called Chhattisgarh Minor Forest
+                  Produce Cooperative Federation (CGMFP).
+                </p>
+                <p>
+                  The CGMFP facilitates the entrepreneurial spirit of the
+                  members and helps them earn better from minor forest produce,
+                  by helping them in setting up processing units for minor
+                  forest produce like Tamarind, Honey, Cashew and 62 more such
+                  species.
+                </p>
+                <p>
+                  These units produce more than 120 products from the raw
+                  material collected from the forests. Value addition allows
+                  them to improve their returns by increasing shelf life and
+                  market value of the produce. The units are all owned and
+                  Operated by the women.
+                </p>
+                <p>
+                  The products are marketed by CGMFP under the brand name
+                  CHHATTISGARH HERBALS. Each product offers PURITY THAT IS
+                  PRICELESS, along with the purity of the forests these products
+                  also represent the priceless feeling of helping the Tribal
+                  Women earn self-respect and dignity in their communities.
                 </p>
               </div>
             </div>
