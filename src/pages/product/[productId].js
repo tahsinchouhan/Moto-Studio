@@ -13,7 +13,6 @@ import Link from "next/link";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-
 function ProductDetail({ productData }) {
   // const [showPopuUp, setShowPopUp] = useState(false);
   const [selectedWeight, setSelectedWeight] = useState(productData.weight[0]);
@@ -23,7 +22,7 @@ function ProductDetail({ productData }) {
 
   const { addProductToCart, item } = useContext(CardContext);
 
-  const productIm̥ages = productData?.images.filter((item, ind) => ind < 5)
+  const productIm̥ages = productData?.images.filter((item, ind) => ind < 5);
   // console.log("🚀 ~ file: [productId].js ~ line 27 ~ ProductDetail ~ productIm̥ages", productIm̥ages)
 
   const fetchListData = async (category_id) => {
@@ -77,8 +76,6 @@ function ProductDetail({ productData }) {
         <div className="container popup-div mx-auto p-0">
           {/* <Row className="popup-modal-main p-0 justify-content-center"> */}
           <Row className="popup-modal-main p-0 justify-content-center">
-
-
             {/* add multiple images */}
             <Col md={6} style={{ position: "sticky !importatn" }}>
               <div className="slider-img">
@@ -91,23 +88,24 @@ function ProductDetail({ productData }) {
                     axis="horizontal"
                     autoPlay="true"
                     dynamicHeight="true"
-                  // showArrows={false}
+                    // showArrows={false}
                   >
-                    {
-                      productIm̥ages.map((image, idx) => {
-                        return (
-                          <div key={idx}>
-                            <img src={image.img} alt="product images" className="productImage"/>
-                          </div>
-                        )
-                      })
-                    }
+                    {productIm̥ages.map((image, idx) => {
+                      return (
+                        <div key={idx}>
+                          <img
+                            src={image.img}
+                            alt="product images"
+                            className="productImage"
+                          />
+                        </div>
+                      );
+                    })}
                   </Carousel>
                 </div>
               </div>
             </Col>
             {/* end  add mult img */}
-
 
             <Col xs={12} md={6}>
               <div className="p-3 p-md-2">
@@ -193,9 +191,9 @@ function ProductDetail({ productData }) {
                   </div>
                 </div>
                 <br />
-                {/* <div className="product-Price-1 w-100"> */}
-                {/* <span className="fs-2">₹ </span> */}
-                {/* <span className="fs-2">
+                <div className="product-Price-1 w-100">
+                  <span className="fs-2">₹ </span>
+                  <span className="fs-2">
                     {Number(selectedWeight?.price * count) -
                       Number(
                         selectedWeight?.discount === "percentage"
@@ -204,23 +202,23 @@ function ProductDetail({ productData }) {
                               (selectedWeight?.discount_value / 100)
                           : selectedWeight?.discount_value
                       )}
-                  </span> */}
-                {/* {selectedWeight?.discount_value && (
+                  </span>
+                  {selectedWeight?.discount_value && (
                     <span className="text-muted fs-6 ms-3 text-decoration-line-through">
                       {" "}
                       ₹ {selectedWeight?.price * count || ""}
                     </span>
-                  )} */}
-                {/* </div> */}
+                  )}
+                </div>
                 <div className="mt-0">
                   <Row>
                     {selectedWeight?.count > 0 ? (
                       item.some((el) => el.product === productData?._id) ||
-                        item.some(
-                          (el) =>
-                            el.product?._id === productData?._id &&
-                            el.weight_type === selectedWeight?.weight_type?._id
-                        ) ? (
+                      item.some(
+                        (el) =>
+                          el.product?._id === productData?._id &&
+                          el.weight_type === selectedWeight?.weight_type?._id
+                      ) ? (
                         <Col xs={6}>
                           <div
                             className="mt-2"
@@ -271,7 +269,7 @@ function ProductDetail({ productData }) {
                 {/* <ul className="popup-ul mb-4 p-0 ps-3" style={{listStyleType:"square"}}> */}
                 <ul className="popup-ul mb-4 p-0 ps-3">
                   {productData?.description.split("•").map((item, index) => {
-                    if (item) return <li key={index}>{item}</li>
+                    if (item) return <li key={index}>{item}</li>;
                   }) || "description"}
                 </ul>
                 {/* <ul className="popup-ul fw-bold">
@@ -353,7 +351,7 @@ function ProductDetail({ productData }) {
                             Number(
                               product?.weight[0]?.discount === "percentage"
                                 ? product?.weight[0]?.price *
-                                (product?.weight[0]?.discount_value / 100)
+                                    (product?.weight[0]?.discount_value / 100)
                                 : product?.weight[0]?.discount_value
                             )}
                         </span>
@@ -366,7 +364,7 @@ function ProductDetail({ productData }) {
 
                       {product?.weight[0]?.count > 0 ? (
                         item.some((el) => el.product === productData?._id) ||
-                          item.some((el) => el.product?._id === product?._id) ? (
+                        item.some((el) => el.product?._id === product?._id) ? (
                           <div className="mt-2">
                             <ButtonDark
                               type="submit"
