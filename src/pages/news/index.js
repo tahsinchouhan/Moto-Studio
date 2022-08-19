@@ -135,47 +135,47 @@ function IntoNewsroom() {
               </Col>
               <Col xs={12} sm={12} lg={8}>
                 <Row className="g-4">
-                  {newsData.length ? (
-                    newsData.map((news) => {
-                      return (
-                        // <div className="news-room-card" key={news._id}>
-                        <Col key={news._id} xs={12} md={6} className="mt-5">
-                          <Card style={{ width: "100% !important" }}>
-                            <Card.Img
-                              variant="top"
-                              src={news?.images[0]?.img || ""}
-                              style={{ height: "300px" }}
-                            />
-                            <Card.Body>
-                              <Card.Title className="news-card-title">
-                                {news?.title || "title"}
-                              </Card.Title>
-                              <Card.Text>
-                                <span className="news-date-title">
-                                  {new Date(news.date).toDateString()}
-                                </span>
-                                <br className="mb-1" />
-                                {/* <h6 className="news-card-para"> */}
-                                {news?.content}
-                                {/* </h6> */}
-                              </Card.Text>
-                              <Button
-                                className="news-card-btn text-dark"
-                                onClick={() => router.push(`/news/${news._id}`)}
-                              >
-                                {/* <span className="news-read-more"> */}
-                                READ MORE
-                                {/* </span> */}
-                              </Button>
-                            </Card.Body>
-                          </Card>
-                          {/* </div> */}
-                        </Col>
-                      );
-                    })
-                  ) : (
-                    <h1>Data Not Found</h1>
-                  )}
+                  {newsData.length
+                    ? newsData.map((news) => {
+                        return (
+                          // <div className="news-room-card" key={news._id}>
+                          <Col key={news._id} xs={12} md={6} className="mt-5">
+                            <Card style={{ width: "100% !important" }}>
+                              <Card.Img
+                                variant="top"
+                                src={news?.images[0]?.img || ""}
+                                style={{ height: "300px" }}
+                              />
+                              <Card.Body>
+                                <Card.Title className="news-card-title">
+                                  {news?.title || "title"}
+                                </Card.Title>
+                                <Card.Text>
+                                  <span className="news-date-title">
+                                    {new Date(news.date).toDateString()}
+                                  </span>
+                                  <br className="mb-1" />
+                                  {/* <h6 className="news-card-para"> */}
+                                  {news?.content}
+                                  {/* </h6> */}
+                                </Card.Text>
+                                <Button
+                                  className="news-card-btn text-dark"
+                                  onClick={() =>
+                                    router.push(`/news/${news._id}`)
+                                  }
+                                >
+                                  {/* <span className="news-read-more"> */}
+                                  READ MORE
+                                  {/* </span> */}
+                                </Button>
+                              </Card.Body>
+                            </Card>
+                            {/* </div> */}
+                          </Col>
+                        );
+                      })
+                    : ""}
                   {/* <div className="news-room-card"> */}
                   {/**
                 <Col xs={12} md={6} className="mt-5">
