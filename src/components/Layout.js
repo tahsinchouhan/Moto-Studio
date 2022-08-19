@@ -328,6 +328,10 @@ function Layout({ children }) {
       <div>
         <Head>
           <link rel="icon" href="/favicon.png" />
+          <title>
+            Chhattisgarh Herbals | Official Website of Chhattisgarh Minor Forest
+            Produce Cooperative Federation
+          </title>
         </Head>
 
         <Header />
