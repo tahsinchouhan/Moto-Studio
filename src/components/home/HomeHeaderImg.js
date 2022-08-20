@@ -9,14 +9,14 @@ import HomeHeaderMobile from "../../assets/images/home/HomepageMobile.jpg";
 import HomeHeaderDesktop from "../../assets/images/home/HomepageDesktop.jpg";
 import { useRouter } from "next/router";
 import { apipath } from "../../pages/api/apiPath";
-import Tangy from '../../assets/img/TangyTamarind.png'
-import TermaricP from '../../assets/img/TurmericPowder.png'
-import Tikhur from '../../assets/img/TikhurPowder.png'
-import ThikurS from '../../assets/img/ThikurSmall.png'
-import Ayush from '../../assets/img/AYUSH Products - Small Banner.jpg'
-import Gourment from '../../assets/img/Gourmet Foods - Small Banner.jpg'
-import Personal from '../../assets/img/Personal Care Products - Small Banner.jpg'
-import Premium from '../../assets/img/Premium Products - Small Banner.jpg'
+import Tangy from "../../assets/img/TangyTamarind.png";
+import TermaricP from "../../assets/img/TurmericPowder.png";
+import Tikhur from "../../assets/img/TikhurPowder.png";
+import ThikurS from "../../assets/img/ThikurSmall.png";
+import Ayush from "../../assets/img/AYUSH Products - Small Banner.jpg";
+import Gourment from "../../assets/img/Gourmet Foods - Small Banner.jpg";
+import Personal from "../../assets/img/Personal Care Products - Small Banner.jpg";
+import Premium from "../../assets/img/Premium Products - Small Banner.jpg";
 
 function HomeHeaderImg() {
   const [banner, setBanner] = useState({
@@ -84,7 +84,7 @@ function HomeHeaderImg() {
                 </div>
               </Col> */}
               <Col md={9} className="py-md-5 my-2">
-                <p className="home-header-head-mobile mt-md-5 mt-4"> 
+                <p className="home-header-head-mobile mt-md-5 mt-4">
                   Purity <br /> that is <br /> Priceless
                 </p>
                 {/* <div className="col-12 mt-3">
@@ -204,19 +204,19 @@ function HomeHeaderImg() {
           </Row>
         </div>
       </div>
-      <Row className="BannerBottomImagesRow mx-2" style={{marginTop:'-5px'}}>
-      <Col
+      <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
+        <Col
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link passHref href={`/product?activeTab=0`}>
+          <Link href={`/product?activeTab=0`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
                 src={Premium}
                 className=""
                 alt="ss"
-                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+                style={{ width: "349px", height: "190px", objectFit: "cover" }}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -226,13 +226,13 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link passHref href={`/product?activeTab=1`}>
+          <Link href={`/product?activeTab=1`}>
             <div className="SubImageContainer">
               <Image
                 src={Ayush}
                 className=""
                 alt="ss"
-                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+                style={{ width: "349px", height: "190px", objectFit: "cover" }}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -242,14 +242,14 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
-          <Link passHref href={`/product?activeTab=2`}>
+          <Link href={`/product?activeTab=2`}>
             {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
                 src={Personal}
                 className=""
                 alt="ss"
-                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+                style={{ width: "349px", height: "190px", objectFit: "cover" }}
               />
               <p className="bottom-left left-4"></p>
             </div>
@@ -259,20 +259,19 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
-          <Link passHref href={`/product?activeTab=3`}>
+          <Link href={`/product?activeTab=3`}>
             {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
                 src={Gourment}
                 className=""
                 alt="ss"
-                style={{width:'349px', height:'190px', objectFit: 'cover'}}
+                style={{ width: "349px", height: "190px", objectFit: "cover" }}
               />
               <p className="bottom-left left-4"></p>
             </div>
           </Link>
         </Col>
-        
       </Row>
     </>
   );

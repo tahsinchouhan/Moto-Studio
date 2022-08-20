@@ -32,7 +32,7 @@ function SubHeader() {
 
         // setMenuData(objData.data)
         setMenuData(newobj);
-        setShopall(newobj[1])
+        setShopall(newobj[1]);
       } catch (error) {
         console.log(error);
       }
@@ -82,16 +82,31 @@ function SubHeader() {
 
   return (
     <>
-      <div onMouseLeave={() => shopHandler()} style={{ position: "sticky", zIndex: "10", top: `${isShrunk ? "78px" : "100px"}` }}>
-        <Navbar className="sub-haeder sub-header-padding-fix d-none d-lg-block" collapseOnSelect expand="lg" bg="" variant="dark">
+      <div
+        onMouseLeave={() => shopHandler()}
+        style={{
+          position: "sticky",
+          zIndex: "10",
+          top: `${isShrunk ? "78px" : "100px"}`,
+        }}
+      >
+        <Navbar
+          className="sub-haeder sub-header-padding-fix d-none d-lg-block"
+          collapseOnSelect
+          expand="lg"
+          bg=""
+          variant="dark"
+        >
           <Container className="sub-header-container">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto me-auto mb-2 mb-lg-0 ">
                 <ul className="nav-list">
-                  <li onMouseOver={() => {
-                    shopHandler(1, menuData[0]);
-                  }}>
+                  <li
+                    onMouseOver={() => {
+                      shopHandler(1, menuData[0]);
+                    }}
+                  >
                     <Link href="/">
                       <a className="sub-nav-link mx-4">Shop All</a>
                     </Link>
@@ -101,9 +116,17 @@ function SubHeader() {
                     menuData[1].length &&
                     [...menuData[1]].reverse().map((menu, index) => {
                       return (
-                        <li key={menu._id} onMouseOver={() => shopHandler(2 + index, menu.menu_data)}>
-                          <Link href={`/product?activeTab=${index - 1}`}>
-                            <a className="sub-nav-link mx-3" style={{ width: "fitContent" }}>
+                        <li
+                          key={menu._id}
+                          onMouseOver={() =>
+                            shopHandler(2 + index, menu.menu_data)
+                          }
+                        >
+                          <Link href={`/product?activeTab=${index}`}>
+                            <a
+                              className="sub-nav-link mx-3"
+                              style={{ width: "fitContent" }}
+                            >
                               {menu?.menu_name || menu}
                             </a>
                           </Link>

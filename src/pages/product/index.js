@@ -13,7 +13,7 @@ import { CardContext } from "../../components/Layout";
 import Skeleton from "../../components/Skeleton";
 import Modal from "react-bootstrap/Modal";
 import { GrSort } from "react-icons/gr";
-import filterlogo from '../../assets/img/filter.png'
+import filterlogo from "../../assets/img/filter.png";
 import useWindowSize from "../../hooks/useWindowSize";
 
 import Slider from "rc-slider";
@@ -21,7 +21,7 @@ import "rc-slider/assets/index.css";
 
 function Products() {
   const router = useRouter();
-  const { width } = useWindowSize()
+  const { width } = useWindowSize();
   const { activeTab } = router.query;
   const { addProductToCart, item } = useContext(CardContext);
 
@@ -33,31 +33,33 @@ function Products() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
-  
+
   const [checkedState, setCheckedState] = useState(
     new Array(category.length).fill(false)
-    );
-    const [checkedStateRemedy, setCheckedStateRemedy] = useState(
-      new Array(remedy.length).fill(false)
-      );
-      
-      // const createSliderWithTooltip = Slider.createSliderWithTooltip;
-      // const Range = createSliderWithTooltip(Slider.Range);
-      
-      const fetchMoreData = () => {
-        setLoading(true);
-        fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
-        .then((res) => res.json())
-        .then((jsonData) => {
-          if (jsonData?.data?.length) {
-            setLoading(false);
-            setProductData((prevState) => [...prevState, ...jsonData?.data]);
-            setPageNumber((prevNum) => prevNum + 1);
-          }
-        })
-        .catch((error) => console.log(error));
-      };
+  );
+  const [checkedStateRemedy, setCheckedStateRemedy] = useState(
+    new Array(remedy.length).fill(false)
+  );
+
+  // const createSliderWithTooltip = Slider.createSliderWithTooltip;
+  // const Range = createSliderWithTooltip(Slider.Range);
+
+  const fetchMoreData = () => {
+    setLoading(true);
+    fetch(apipath + `/api/v1/product/list?page=${pageNumber}`)
+      .then((res) => res.json())
+      .then((jsonData) => {
+        if (jsonData?.data?.length) {
+          setLoading(false);
+          setProductData((prevState) => [...prevState, ...jsonData?.data]);
+          setPageNumber((prevNum) => prevNum + 1);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   const fetchData = async (query = "") => {
+    console.log(query, `rezwan`);
     setLoading(true);
     try {
       const res = await fetch(
@@ -71,6 +73,7 @@ function Products() {
       console.log(error);
     }
   };
+
   const fetchDataRemedy = async (query = "") => {
     setLoading(true);
     try {
@@ -127,23 +130,26 @@ function Products() {
   useEffect(() => {
     console.log(activeTab);
     if (activeTab) {
+      console.log(checkedState, "xiausd");
       const activeCategory = checkedState.map(
         (item, index) => index === Number(activeTab)
       );
+      console.log(activeCategory, "pik");
       setCheckedState(activeCategory);
     }
     // react-hooks/exhaustive-deps
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, activeTab]);
 
-  useEffect(() => {
-    if (activeTab) {
-      const activeRemedy = checkedStateRemedy.map(
-        (item, index) => index === Number(activeTab)
-      );
-      setCheckedStateRemedy(activeRemedy);
-    }
-  }, [remedy, activeTab]);
+  // useEffect(() => {
+  //   if (activeTab) {
+  //     const activeRemedy = checkedStateRemedy.map(
+  //       (item, index) => index === Number(activeTab)
+  //     );
+  //     console.log(activeRemedy);
+  //     setCheckedStateRemedy(activeRemedy);
+  //   }
+  // }, [remedy, activeTab]);
 
   useEffect(() => {
     let query = checkedState.reduce((query, currentState, index) => {
@@ -157,8 +163,9 @@ function Products() {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
     // console.log(`category query is: ${query}`);
-    // if (query !== "") fetchData(query);
-    fetchData(query);
+    if (query !== "") fetchData(query);
+
+    // fetchData(query);
   }, [checkedState, category, price]);
 
   useEffect(() => {
@@ -378,7 +385,7 @@ function Products() {
             className="filter-item-mobile-btn"
             onClick={() => handleShow()}
           >
-            <Image src={filterlogo} alt="filter" width='16px' height='16px' />
+            <Image src={filterlogo} alt="filter" width="16px" height="16px" />
             <span className="filterlogo">Filter</span>
           </button>
         ) : null}
@@ -494,145 +501,145 @@ function Products() {
             <Row className="justify-content-center justify-content-lg-start">
               {!loading
                 ? productData?.length &&
-                productData.map((product) => {
-                  return (
-                    <Col
-                      lg={3}
-                      md={6}
-                      sm={8}
-                      xs={12}
-                      key={product?._id}
-                      style={{ margin: "2em 0em" }}
-                    >
-                      <div
-                        className="p-lg-2 mx-auto product-card-hover cursor-pointer"
-                        onClick={() =>
-                          router.push(`./product/${product?._id}`)
-                        }
-                        style={{ backgroundColor: "#F9F9F9" }}
+                  productData.map((product) => {
+                    return (
+                      <Col
+                        lg={3}
+                        md={6}
+                        sm={8}
+                        xs={12}
+                        key={product?._id}
+                        style={{ margin: "2em 0em" }}
                       >
-                        <div className="w-100 product-card-img">
-                          <Image
-                            src={
-                              product?.images.length
-                                ? product?.images[0]?.img || ProductImageOne
-                                : ProductImageOne
-                            }
-                            alt="Picture of the author"
-                            className="w-100"
-                            width={'300px'}
-                            height={'300px'}
-                            objectFit="fill"
-                          />
-                        </div>
-
-                        <p
-                          className="product-card-text mt-2"
-                          style={{
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            fontWeight: "400",
-                            size: "16px",
-                            marginBottom: "0px",
-                          }}
+                        <div
+                          className="p-lg-2 mx-auto product-card-hover cursor-pointer"
+                          onClick={() =>
+                            router.push(`./product/${product?._id}`)
+                          }
+                          style={{ backgroundColor: "#F9F9F9" }}
                         >
-                          {product?.title}
-                        </p>
-                        {/* <p className="product-card-para w-100">
+                          <div className="w-100 product-card-img">
+                            <Image
+                              src={
+                                product?.images.length
+                                  ? product?.images[0]?.img || ProductImageOne
+                                  : ProductImageOne
+                              }
+                              alt="Picture of the author"
+                              className="w-100"
+                              width={"300px"}
+                              height={"300px"}
+                              objectFit="fill"
+                            />
+                          </div>
+
+                          <p
+                            className="product-card-text mt-2"
+                            style={{
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              fontWeight: "400",
+                              size: "16px",
+                              marginBottom: "0px",
+                            }}
+                          >
+                            {product?.title}
+                          </p>
+                          {/* <p className="product-card-para w-100">
                           {product?.sub_title}
                         </p> */}
 
-                        <p className="product-card-para w-100">
-                          {product?.description.slice(0, 100).concat("...")}
-                        </p>
-                        <div
-                          className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
-                        // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
-                        >
-                          <div>
-                            <span className="icon pe-2">
-                              <AiFillPlusCircle />
-                            </span>
+                          <p className="product-card-para w-100">
+                            {product?.description.slice(0, 100).concat("...")}
+                          </p>
+                          <div
+                            className="mt-2 mb-2 product-card-text1 d-flex cursor-pointer"
+                            // onClick={(e) =>{e.stopPropagation();setShowPopUp(true)}}
+                          >
+                            <div>
+                              <span className="icon pe-2">
+                                <AiFillPlusCircle />
+                              </span>
+                            </div>
+                            {/* { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> } */}
+                            <div>
+                              <span className="product-card-details">
+                                Product Details
+                              </span>
+                            </div>
                           </div>
-                          {/* { showPopuUp && <Popup data={product} setShowPopUp={setShowPopUp}/> } */}
-                          <div>
-                            <span className="product-card-details">
-                              Product Details
+                          <span className="product-Price">
+                            <span style={{ fontSize: "22px" }}>
+                              ₹
+                              {Number(product?.weight[0]?.price) -
+                                Number(
+                                  product?.weight[0]?.discount === "percentage"
+                                    ? product?.weight[0]?.price *
+                                        (product?.weight[0]?.discount_value /
+                                          100)
+                                    : product?.weight[0]?.discount_value
+                                )}
                             </span>
-                          </div>
-                        </div>
-                        <span className="product-Price">
-                          <span style={{ fontSize: "22px" }}>
-                            ₹
-                            {Number(product?.weight[0]?.price) -
-                              Number(
-                                product?.weight[0]?.discount === "percentage"
-                                  ? product?.weight[0]?.price *
-                                  (product?.weight[0]?.discount_value /
-                                    100)
-                                  : product?.weight[0]?.discount_value
-                              )}
+                            {product?.weight[0]?.discount_value && (
+                              <span className="fs-5 text-muted ms-2 text-decoration-line-through">
+                                ₹ {product?.weight[0]?.price}
+                              </span>
+                            )}
                           </span>
-                          {product?.weight[0]?.discount_value && (
-                            <span className="fs-5 text-muted ms-2 text-decoration-line-through">
-                              ₹ {product?.weight[0]?.price}
-                            </span>
-                          )}
-                        </span>
-                        {product?.weight[0]?.count > 0 ? (
-                          item.some((el) => el.product === product?._id) ||
+                          {product?.weight[0]?.count > 0 ? (
+                            item.some((el) => el.product === product?._id) ||
                             item.some(
                               (el) => el.product?._id === product?._id
                             ) ? (
-                            <div
-                              className="mt-3"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                router.push("/shopping/Shopping");
-                              }}
-                            >
-                              <ButtonDark
-                                type="submit"
-                                className="active"
-                                text="PRODUCT ADDED"
-                              />
-                            </div>
+                              <div
+                                className="mt-3"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  router.push("/shopping/Shopping");
+                                }}
+                              >
+                                <ButtonDark
+                                  type="submit"
+                                  className="active"
+                                  text="PRODUCT ADDED"
+                                />
+                              </div>
+                            ) : (
+                              <div
+                                className="mt-3"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  addProductToCart(product, product?.weight[0]);
+                                }}
+                              >
+                                <ButtonDark
+                                  type="button"
+                                  className="Add-to-cart-button"
+                                  text="ADD TO CART"
+                                />
+                              </div>
+                            )
                           ) : (
-                            <div
-                              className="mt-3"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                addProductToCart(product, product?.weight[0]);
-                              }}
-                            >
-                              <ButtonDark
-                                type="button"
-                                className="Add-to-cart-button"
-                                text="ADD TO CART"
-                              />
+                            <div className="mt-3">
+                              <span
+                                style={{
+                                  color: "#065934",
+                                  textAlign: "center",
+                                  display: "block",
+                                }}
+                              >
+                                <ButtonDark
+                                  type="button"
+                                  className="Add-to-cart-button disabled"
+                                  text="OUT OF STOCK"
+                                  disabled={true}
+                                />
+                              </span>
                             </div>
-                          )
-                        ) : (
-                          <div className="mt-3">
-                            <span
-                              style={{
-                                color: "#065934",
-                                textAlign: "center",
-                                display: "block",
-                              }}
-                            >
-                              <ButtonDark
-                                type="button"
-                                className="Add-to-cart-button disabled"
-                                text="OUT OF STOCK"
-                                disabled={true}
-                              />
-                            </span>
-                          </div>
-                        )}
+                          )}
 
-                        {/* <div className="mt-3">
+                          {/* <div className="mt-3">
                               <button className="btn amazon-btn border w-100 rounded-0 d-flex align-items-center justify-content-center gap-2">
                                   <span>Buy it on</span>
                                   <Image 
@@ -657,15 +664,15 @@ function Products() {
                                 }
                                 `}</style>
                             </div> */}
-                      </div>
-                    </Col>
-                  );
-                })
+                        </div>
+                      </Col>
+                    );
+                  })
                 : ["1", "2", "3", "4", "5", "6", "7"].map((ele) => (
-                  <Col key={ele} lg={3} md={6} sm={8} xs={12}>
-                    <Skeleton />
-                  </Col>
-                ))}
+                    <Col key={ele} lg={3} md={6} sm={8} xs={12}>
+                      <Skeleton />
+                    </Col>
+                  ))}
 
               {/* <Col lg={3} md={6} sm={8} xs={12}>
                 <div className="p-md-3 p-5 mx-auto product-card-hover">
