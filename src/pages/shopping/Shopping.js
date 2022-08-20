@@ -32,8 +32,8 @@ function loadScript(src) {
 
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
-  useContext(CardContext);
-  const giftAddress = useRef(null)
+    useContext(CardContext);
+  const giftAddress = useRef(null);
 
   const router = useRouter();
   const [show, setShow] = useState(false);
@@ -47,19 +47,21 @@ function Shopping() {
 
   const scrollToTop = () => {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth",
+      top: 0,
+      behavior: "smooth",
     });
-};
+  };
 
   // Shipping address configurations
   const [giftMsg, setGiftMsg] = useState("");
-  const handleChange = (event,values) => {
+  const handleChange = (event, values) => {
     // console.log('change field name: ',values)
-    setShippingAddress({ ...shippingAddress, [event.target.name]: event.target.value })
-    values[event.target.name] = event.target.value
-    
-    };
+    setShippingAddress({
+      ...shippingAddress,
+      [event.target.name]: event.target.value,
+    });
+    values[event.target.name] = event.target.value;
+  };
 
   const chackedGift = (e, values) => {
     if (e.target.id === "flexCheckCheckedNo") {
@@ -76,50 +78,52 @@ function Shopping() {
       //   gift_city: values?.city || '',
       //   gift_state: values?.state || '',
       // });
-      values.gift_firstname = values.first_name
-      values.gift_lastname = values.last_name
-      values.gift_email = values.email
-      values.gift_mobile = values.mobile
-      values.gift_address = values.address
-      values.gift_city = values.city
-      values.gift_state = values.state
-      values.gift_pincode = values.pincode
-      values.gift_country = values.country
+      values.gift_firstname = values.first_name;
+      values.gift_lastname = values.last_name;
+      values.gift_email = values.email;
+      values.gift_mobile = values.mobile;
+      values.gift_address = values.address;
+      values.gift_city = values.city;
+      values.gift_state = values.state;
+      values.gift_pincode = values.pincode;
+      values.gift_country = values.country;
       setGiftMsg("Sender Address and Recipient address will be same");
     }
     if (e.target.id === "flexCheckCheckedYes") {
       giftAddress.current.classList.remove("hiddGiftAddress");
       giftAddress.current.classList.add("visibleGiftAddress");
-      values.gift_firstname = ''
-      values.gift_lastname = ''
-      values.gift_email = ''
-      values.gift_mobile = ''
-      values.gift_address = ''
-      values.gift_city = ''
-      values.gift_state = ''
-      values.gift_pincode = ''
-      values.gift_country = ''
+      values.gift_firstname = "";
+      values.gift_lastname = "";
+      values.gift_email = "";
+      values.gift_mobile = "";
+      values.gift_address = "";
+      values.gift_city = "";
+      values.gift_state = "";
+      values.gift_pincode = "";
+      values.gift_country = "";
       setShippingAddress({
-        gift_firstname: '',
-        gift_lastname: '',
-        gift_email: '',
-        gift_mobile: '',
-        gift_pincode:  '',
-        gift_address:  '',
-        gift_country:  '',
-        gift_city: '',
-        gift_state: '',
+        gift_firstname: "",
+        gift_lastname: "",
+        gift_email: "",
+        gift_mobile: "",
+        gift_pincode: "",
+        gift_address: "",
+        gift_country: "",
+        gift_city: "",
+        gift_state: "",
       });
-      console.log('cart2 shipping add values is: ',values);
+      console.log("cart2 shipping add values is: ", values);
       setGiftMsg("");
     }
   };
   // End shipping Address
 
   const initialValues = {
-    full_name: billingAddress?.full_name || '',
-    first_name:billingAddress?.first_name || user?.billingAddress[0]?.first_name || '',
-    last_name: billingAddress?.last_name || user?.billingAddress[0]?.last_name || '',
+    full_name: billingAddress?.full_name || "",
+    first_name:
+      billingAddress?.first_name || user?.billingAddress[0]?.first_name || "",
+    last_name:
+      billingAddress?.last_name || user?.billingAddress[0]?.last_name || "",
     email: billingAddress?.email || user?.billingAddress[0]?.email || "",
     mobile: billingAddress?.mobile || user?.billingAddress[0]?.mobile || "",
     pincode: billingAddress?.pincode || user?.billingAddress[0]?.pincode || "",
@@ -162,33 +166,42 @@ function Shopping() {
     gift_country: Yup.string().required("This field is required"),
   });
 
-  
-
   const onSubmit = async (values, onSubmitProps) => {
-    user.billingAddress = [{
-      full_name: values?.first_name + " " + values?.last_name || "",
-      first_name: values?.first_name || "",
-      last_name: values?.last_name || "",
-      email: values?.email || "",
-      mobile: values?.mobile || "",
-      pincode: values?.pincode || "",
-      address: values?.address || "",
-      country: values?.country || "",
-      city: values?.city || "",
-      state: values?.state || "",
-    }]
-    user.shippingAddress = [{
-      firstname: values?.gift_firstname || "",
-      lastname: values?.gift_lastname || "",
-      email: values?.gift_email || "",
-      mobile: values?.gift_mobile || "",
-      pincode: values?.gift_pincode || "",
-      address: values?.gift_address || "",
-      country: values?.gift_country || "",
-      city: values?.gift_city || "",
-      state: values?.gift_state || "",
-    }]
-    user.address =  values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode
+    user.billingAddress = [
+      {
+        full_name: values?.first_name + " " + values?.last_name || "",
+        first_name: values?.first_name || "",
+        last_name: values?.last_name || "",
+        email: values?.email || "",
+        mobile: values?.mobile || "",
+        pincode: values?.pincode || "",
+        address: values?.address || "",
+        country: values?.country || "",
+        city: values?.city || "",
+        state: values?.state || "",
+      },
+    ];
+    user.shippingAddress = [
+      {
+        firstname: values?.gift_firstname || "",
+        lastname: values?.gift_lastname || "",
+        email: values?.gift_email || "",
+        mobile: values?.gift_mobile || "",
+        pincode: values?.gift_pincode || "",
+        address: values?.gift_address || "",
+        country: values?.gift_country || "",
+        city: values?.gift_city || "",
+        state: values?.gift_state || "",
+      },
+    ];
+    user.address =
+      values.gift_address +
+      " " +
+      values.gift_city +
+      " " +
+      values.gift_state +
+      " " +
+      values.gift_pincode;
 
     setShippingAddress({
       gift_firstname: values?.gift_firstname || "",
@@ -220,37 +233,48 @@ function Shopping() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          billingAddress:[{
-            first_name: values.first_name,
-            last_name: values.last_name,
-            email: values.email,
-            mobile: values.mobile,
-            pincode: values.pincode,
-            address: values.address,
-            country: values.country,
-            city: values.city,
-            state: values.state,
-          }],
-          shippingAddress:[{
-            firstname: values.gift_firstname,
-            lastname: values.gift_lastname,
-            email: values.gift_email,
-            mobile: values.gift_mobile,
-            pincode: values.gift_pincode,
-            address: values.gift_address,
-            country: values.gift_country,
-            city: values.gift_city,
-            state: values.gift_state,
-          }],
-          address: values.gift_address+ " "+values.gift_city + " "+values.gift_state + " "+values.gift_pincode,
+          billingAddress: [
+            {
+              first_name: values.first_name,
+              last_name: values.last_name,
+              email: values.email,
+              mobile: values.mobile,
+              pincode: values.pincode,
+              address: values.address,
+              country: values.country,
+              city: values.city,
+              state: values.state,
+            },
+          ],
+          shippingAddress: [
+            {
+              firstname: values.gift_firstname,
+              lastname: values.gift_lastname,
+              email: values.gift_email,
+              mobile: values.gift_mobile,
+              pincode: values.gift_pincode,
+              address: values.gift_address,
+              country: values.gift_country,
+              city: values.gift_city,
+              state: values.gift_state,
+            },
+          ],
+          address:
+            values.gift_address +
+            " " +
+            values.gift_city +
+            " " +
+            values.gift_state +
+            " " +
+            values.gift_pincode,
         }),
       });
     } catch (error) {
-      console.log('error :>> ', error);
+      console.log("error :>> ", error);
     }
     setAddressList(true);
-    displayRazorpay(item)
-    scrollToTop()
+    displayRazorpay(item);
+    scrollToTop();
   };
 
   const fetchPromoList = async () => {
@@ -356,7 +380,6 @@ function Shopping() {
       email: user.email,
     });
     // console.log('createOrder is:',createOrder);
-    
 
     if (createOrder.data) {
       const hashPayload = {
@@ -493,7 +516,7 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value="http://localhost:3018/order/OrderConfirmed"
+        value="https://www.chhattisgarhherbals.org/order/OrderConfirmed"
       />
       <input
         type="hidden"
@@ -552,7 +575,7 @@ function Shopping() {
                         style={{ height: "450px", overflow: "auto" }}
                       >
                         {item?.length > 0 &&
-                          item.map((elem,index) => {
+                          item.map((elem, index) => {
                             return <Item key={index} {...elem} />;
                           })}
                         <div className="text-start text-uppercase fw-lighter mt-lg-4">
@@ -571,8 +594,10 @@ function Shopping() {
                       <h1 className="shopping-cart-heading mb-3">
                         Delivery Details
                       </h1>
-                      <div className="text-primary mb-2 text-center"
-                        style={{ fontFamily: "Georgia", fontSize:"18px" }} >
+                      <div
+                        className="text-primary mb-2 text-center"
+                        style={{ fontFamily: "Georgia", fontSize: "18px" }}
+                      >
                         {giftMsg}
                       </div>
                       <p
@@ -580,7 +605,7 @@ function Shopping() {
                           color: "#5ABF77",
                           fontWeight: "bold",
                           fontFamily: "serif",
-                          marginBottom: "3px"
+                          marginBottom: "3px",
                         }}
                       >
                         BILLING DETAILS
@@ -636,7 +661,7 @@ function Shopping() {
                                 </div>
                               </Col>
                             </Row>
-                            
+
                             <Row>
                               <Col>
                                 <div className="form-group user-field mb-4">
@@ -854,254 +879,263 @@ function Shopping() {
                                 </div>
                               </Col>
                             </Row>
-                            
 
                             <div ref={giftAddress} className="giftaddressForm">
-                            <p className="mt-2 lableFontWeight fs-5">
-                              Enter the details of the recipient:
-                            </p>
-                            <Row>
-                              <Col>
-                                <div className="form-group user-field mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_firstname"
-                                  >
-                                    First Name{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="text"
-                                    name="gift_firstname"
-                                    placeholder="Enter your first name here"
-                                    autoComplete="off"
-                                    style={formControl}
-                                    value={formik.values?.gift_firstname}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-                                  />
-                                  <ErrorMessage
-                                    name="gift_firstname"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                              <Col>
-                                <div className="form-group user-field mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_lastname"
-                                  >
-                                    Last Name{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="text"
-                                    name="gift_lastname"
-                                    placeholder="Enter your last name here"
-                                    autoComplete="off"
-                                    style={formControl}
-                                    value={formik.values?.gift_lastname}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-                                  />
-                                  <ErrorMessage
-                                    name="gift_lastname"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="form-group user-field mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_email"
-                                  >
-                                    Email Address{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="email"
-                                    name="gift_email"
-                                    placeholder="Enter your email address here"
-                                    autoComplete="off"
-                                    style={formControl}
-                                    value={formik.values?.gift_email}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-                                  />
-                                  <ErrorMessage
-                                    name="gift_email"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                              <Col>
-                                <div className="col-md-12">
+                              <p className="mt-2 lableFontWeight fs-5">
+                                Enter the details of the recipient:
+                              </p>
+                              <Row>
+                                <Col>
                                   <div className="form-group user-field mb-4">
                                     <label
                                       className="lableFontWeight"
-                                      htmlFor="gift_mobile"
+                                      htmlFor="gift_firstname"
                                     >
-                                      Mobile Number{" "}
+                                      First Name{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="gift_firstname"
+                                      placeholder="Enter your first name here"
+                                      autoComplete="off"
+                                      style={formControl}
+                                      value={formik.values?.gift_firstname}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
+                                    />
+                                    <ErrorMessage
+                                      name="gift_firstname"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </Col>
+                                <Col>
+                                  <div className="form-group user-field mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_lastname"
+                                    >
+                                      Last Name{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="gift_lastname"
+                                      placeholder="Enter your last name here"
+                                      autoComplete="off"
+                                      style={formControl}
+                                      value={formik.values?.gift_lastname}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
+                                    />
+                                    <ErrorMessage
+                                      name="gift_lastname"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <div className="form-group user-field mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_email"
+                                    >
+                                      Email Address{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="email"
+                                      name="gift_email"
+                                      placeholder="Enter your email address here"
+                                      autoComplete="off"
+                                      style={formControl}
+                                      value={formik.values?.gift_email}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
+                                    />
+                                    <ErrorMessage
+                                      name="gift_email"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </Col>
+                                <Col>
+                                  <div className="col-md-12">
+                                    <div className="form-group user-field mb-4">
+                                      <label
+                                        className="lableFontWeight"
+                                        htmlFor="gift_mobile"
+                                      >
+                                        Mobile Number{" "}
+                                        <span className="text-danger">*</span>
+                                      </label>
+                                      <Field
+                                        className="Contact-Us-form-input form-control"
+                                        type="number"
+                                        name="gift_mobile"
+                                        placeholder="Enter your mobile number here"
+                                        style={formControl}
+                                        value={formik.values?.gift_mobile}
+                                        onChange={(event) =>
+                                          handleChange(event, formik.values)
+                                        }
+                                      />
+                                      <ErrorMessage
+                                        name="gift_mobile"
+                                        component={TextError}
+                                      />
+                                    </div>
+                                  </div>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <div className="form-group user-field mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_address"
+                                    >
+                                      Street Address{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="gift_address"
+                                      // placeholder=""
+                                      style={formControl}
+                                      value={formik.values?.gift_address}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
+                                    />
+                                    <ErrorMessage
+                                      name="gift_address"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <div className="form-group user-field  mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_city"
+                                    >
+                                      City{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <Field
+                                      className="Contact-Us-form-input form-control"
+                                      type="text"
+                                      name="gift_city"
+                                      // placeholder="Locality / Area (Optional)"
+                                      style={formControl}
+                                      value={formik.values?.gift_city}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
+                                    />
+                                    <ErrorMessage
+                                      name="gift_city"
+                                      component={TextError}
+                                    />
+                                  </div>
+                                </Col>
+
+                                <Col>
+                                  <div className="form-group user-field  mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_state"
+                                    >
+                                      State/Province{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
+                                    <div className="form-group user-field  mb-4">
+                                      <Field
+                                        className="Contact-Us-form-input form-control"
+                                        type="text"
+                                        name="gift_state"
+                                        // placeholder="Landmark (Optional)"
+                                        style={formControl}
+                                        value={formik.values?.gift_state}
+                                        onChange={(event) =>
+                                          handleChange(event, formik.values)
+                                        }
+                                      />
+                                      <ErrorMessage
+                                        name="gift_state"
+                                        component={TextError}
+                                      />
+                                    </div>
+                                  </div>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <div className="form-group user-field  mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_pincode"
+                                    >
+                                      Pincode{" "}
                                       <span className="text-danger">*</span>
                                     </label>
                                     <Field
                                       className="Contact-Us-form-input form-control"
                                       type="number"
-                                      name="gift_mobile"
-                                      placeholder="Enter your mobile number here"
+                                      name="gift_pincode"
+                                      // placeholder="Pincode"
                                       style={formControl}
-                                    value={formik.values?.gift_mobile}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-
+                                      value={formik.values?.gift_pincode}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
                                     />
                                     <ErrorMessage
-                                      name="gift_mobile"
+                                      name="gift_pincode"
                                       component={TextError}
                                     />
                                   </div>
-                                </div>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="form-group user-field mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_address"
-                                  >
-                                    Street Address{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="text"
-                                    name="gift_address"
-                                    // placeholder=""
-                                    style={formControl}
-                                    value={formik.values?.gift_address}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-
-                                  />
-                                  <ErrorMessage
-                                    name="gift_address"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="form-group user-field  mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_city"
-                                  >
-                                    City <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="text"
-                                    name="gift_city"
-                                    // placeholder="Locality / Area (Optional)"
-                                    style={formControl}
-                                    value={formik.values?.gift_city}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-                                  />
-                                  <ErrorMessage
-                                    name="gift_city"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-
-                              <Col>
-                                <div className="form-group user-field  mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_state"
-                                  >
-                                    State/Province{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
+                                </Col>
+                                <Col>
                                   <div className="form-group user-field  mb-4">
+                                    <label
+                                      className="lableFontWeight"
+                                      htmlFor="gift_country"
+                                    >
+                                      Country{" "}
+                                      <span className="text-danger">*</span>
+                                    </label>
                                     <Field
                                       className="Contact-Us-form-input form-control"
                                       type="text"
-                                      name="gift_state"
-                                      // placeholder="Landmark (Optional)"
+                                      name="gift_country"
+                                      // placeholder="Pincode"
                                       style={formControl}
-                                    value={formik.values?.gift_state}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
+                                      value={formik.values?.gift_country}
+                                      onChange={(event) =>
+                                        handleChange(event, formik.values)
+                                      }
                                     />
                                     <ErrorMessage
-                                      name="gift_state"
+                                      name="gift_country"
                                       component={TextError}
                                     />
                                   </div>
-                                </div>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="form-group user-field  mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_pincode"
-                                  >
-                                    Pincode{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="number"
-                                    name="gift_pincode"
-                                    // placeholder="Pincode"
-                                    style={formControl}
-                                    value={formik.values?.gift_pincode}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-                                  />
-                                  <ErrorMessage
-                                    name="gift_pincode"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                              <Col>
-                                <div className="form-group user-field  mb-4">
-                                  <label
-                                    className="lableFontWeight"
-                                    htmlFor="gift_country"
-                                  >
-                                    Country{" "}
-                                    <span className="text-danger">*</span>
-                                  </label>
-                                  <Field
-                                    className="Contact-Us-form-input form-control"
-                                    type="text"
-                                    name="gift_country"
-                                    // placeholder="Pincode"
-                                    style={formControl}
-                                    value={formik.values?.gift_country}
-                                    onChange={(event)=>handleChange(event,formik.values)}
-
-                                  />
-                                  <ErrorMessage
-                                    name="gift_country"
-                                    component={TextError}
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
+                                </Col>
+                              </Row>
                             </div>
 
                             {/* <div className="col-md-4">
@@ -1109,7 +1143,6 @@ function Shopping() {
                               <ButtonDark type="submit" text="SAVE ADDRESS" />
                             </div>
                           </div> */}
-
                           </>
                         ) : (
                           <div className="shipping-address">
@@ -1231,18 +1264,18 @@ function Shopping() {
                         <p className="order-summary-p1">SHIPPING</p>
                         <span style={{ fontSize: "13px" }}>₹0.00</span>
                       </div> */}
-                          {promoValue ? (
-                            <div className="free-home-delivery-div">
-                            <p className=" m-0 px-2 pt-1 free-home-delivery-p">
+                      {promoValue ? (
+                        <div className="free-home-delivery-div">
+                          <p className=" m-0 px-2 pt-1 free-home-delivery-p">
                             <span>APPLIED PROMO CODE</span>
                             <span className="fw-bold free-home-delivery-p2 ">
-                            {promoValue.code}
+                              {promoValue.code}
                             </span>
                           </p>
-                          </div>
-                          ):(
-                            <p>{""}</p>
-                        )}
+                        </div>
+                      ) : (
+                        <p>{""}</p>
+                      )}
                       <hr className="mt-2" />
                       {promoValue && (
                         <div className="d-flex justify-content-between">
@@ -1268,7 +1301,6 @@ function Shopping() {
                               {" "}
                               ₹ {totalAmount - promoValue.value}
                             </p>
-                            
                           ) : (
                             <p className="fw-bold order-summary-p2">
                               {" "}
@@ -1280,27 +1312,37 @@ function Shopping() {
 
                       <div className="text-center">
                         <div className="w-100 border-0 checkout-button">
-                        {
-                          step===0?(
+                          {step === 0 ? (
                             <div className="w-100 border-0 checkout-button">
-                              <button type="button" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0" onClick={()=>{
-                                if(!user) {
-                                  router.push("/auth/Login");
-                                }
-                                setStep(1)
-                                scrollToTop()
-                                }}>PLACE ORDER</button>
+                              <button
+                                type="button"
+                                style={{ backgroundColor: "#5ABF6B" }}
+                                className="w-100 py-2 text-white border-0"
+                                onClick={() => {
+                                  if (!user) {
+                                    router.push("/auth/Login");
+                                  }
+                                  setStep(1);
+                                  scrollToTop();
+                                }}
+                              >
+                                PLACE ORDER
+                              </button>
                             </div>
-                          ):(
+                          ) : (
                             <div className="w-100 border-0 checkout-button">
-                              <button type="submit" style={{backgroundColor:"#5ABF6B"}} className="w-100 py-2 text-white border-0">CHECKOUT</button>
+                              <button
+                                type="submit"
+                                style={{ backgroundColor: "#5ABF6B" }}
+                                className="w-100 py-2 text-white border-0"
+                              >
+                                CHECKOUT
+                              </button>
                             </div>
-                          )
-                        }
+                          )}
                           {/* <ButtonDark type="submit" text="CHECKOUT" onClick={()=>{
                             console.log('checkout working')
                           }} /> */}
-                          
                         </div>
                         {/* <div
                           className="w-100 border-0 checkout-button"
