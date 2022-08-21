@@ -517,12 +517,12 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value={`${window.location.origin}/order/OrderConfirmed`}
+        value={`${process.env.NEXTAUTH_URL}/order/OrderConfirmed`}
       />
       <input
         type="hidden"
         name="furl"
-        value={`${window.location.origin}/order/paymentFailed`}
+        value={`${process.env.NEXTAUTH_URL}/order/paymentFailed`}
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />
