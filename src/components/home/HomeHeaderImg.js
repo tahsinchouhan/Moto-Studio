@@ -205,13 +205,12 @@ function HomeHeaderImg() {
         </div>
       </div>
       
-      <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
+      {/* <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
         <Col
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
           <Link href={`/product?activeTab=0`}>
-            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
                 src={Premium}
@@ -244,7 +243,6 @@ function HomeHeaderImg() {
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
           <Link href={`/product?activeTab=2`}>
-            {/* <Image src={GreenCare} className="w-100" alt="ss" width={1200} height={800} /> /} */}
             <div className="SubImageContainer">
               <Image
                 src={Personal}
@@ -261,7 +259,6 @@ function HomeHeaderImg() {
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
           <Link href={`/product?activeTab=3`}>
-            {/* <Image src={SummerCoolers} className="w-100" alt="ss" width={1200} height={800} /> */}
             <div className="SubImageContainer">
               <Image
                 src={Gourment}
@@ -273,7 +270,7 @@ function HomeHeaderImg() {
             </div>
           </Link>
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 }
