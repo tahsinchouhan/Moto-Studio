@@ -10,7 +10,8 @@ module.exports = {
     SECRET:'ksjkddskfhsjkdvhskjvbcxnvkjsadajdsbcnb',
     FACEBOOK_CLIENT_ID:'335557988510070',
     FACEBOOK_CLIENT_SECRET:'be4a34a7467ff38344fb08d31abb24d1',
-    NEXTAUTH_URL:'https://cgherbals.shop'
+    NEXTAUTH_URL:'https://www.chhattisgarhherbals.org',
+    // NEXTAUTH_URL:'http://localhost:3000'
   },
   // distDir: '.next',
   // swcMinify: false,

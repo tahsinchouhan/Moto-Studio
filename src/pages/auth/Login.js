@@ -63,7 +63,7 @@ export default function Login() {
         loginSuccess(session);
         fetchCartData(session);
         localStorage.setItem("cg-herbal-userData", JSON.stringify(session));
-        router.replace(`/`);
+        router.replace(`/product`);
       } else {
         loginFailure(result.error);
         setMessage(result.error);
@@ -271,7 +271,7 @@ export default function Login() {
                                   }}
                                   onClick={() =>
                                     signIn(provider.id, {
-                                      callbackUrl: "/auth/UserProfile",
+                                      callbackUrl: "/product",
                                     })
                                   }
                                 >

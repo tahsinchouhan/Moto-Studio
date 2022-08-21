@@ -16,19 +16,19 @@ import { getDomainLocale } from "next/dist/shared/lib/router/router";
 import Head from "next/head";
 import Script from "next/script";
 
-function loadScript(src) {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
-    document.body.appendChild(script);
-  });
-}
+// function loadScript(src) {
+//   return new Promise((resolve) => {
+//     const script = document.createElement("script");
+//     script.src = src;
+//     script.onload = () => {
+//       resolve(true);
+//     };
+//     script.onerror = () => {
+//       resolve(false);
+//     };
+//     document.body.appendChild(script);
+//   });
+// }
 
 function Shopping() {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
@@ -163,7 +163,6 @@ function Shopping() {
   });
 
   
-
   const onSubmit = async (values, onSubmitProps) => {
     user.billingAddress = [{
       full_name: values?.first_name + " " + values?.last_name || "",
@@ -360,7 +359,7 @@ function Shopping() {
 
     if (createOrder.data) {
       const hashPayload = {
-        key: "gtKFFx",
+        key: "fkU5mt", //"gtKFFx",
         txnid: Date.now().toString(),
         amount:
           data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
@@ -368,7 +367,7 @@ function Shopping() {
         productinfo: result,
         firstname: user?.first_Name,
         email: user?.email,
-        SALT: "wia56q6O",
+        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"wia56q6O",
       };
       const hash = sha512(
         `${hashPayload.key}|${hashPayload.txnid}|${
@@ -390,87 +389,87 @@ function Shopping() {
 
     return;
 
-    const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        amount:
-          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-          (promoValue?.value || 0),
-      }),
-      // { amount: createOrder.data.data.total_amount }
-    });
-    const orderResponse = await orderPost.json();
+    // const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     amount:
+    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+    //       (promoValue?.value || 0),
+    //   }),
+    //   // { amount: createOrder.data.data.total_amount }
+    // });
+    // const orderResponse = await orderPost.json();
 
-    const options = {
-      key: "rzp_test_i3mv91RQEsOYo6",
-      currency: orderResponse?.currency || "INR",
-      amount: orderResponse?.amount?.toString() || "",
-      order_id: orderResponse?.id || "",
-      name: "CG HERBAL",
-      description: "",
-      image: "/images/CGHerbalsLogo.png",
-      handler: function (response) {
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-          response;
+    // const options = {
+    //   key: "rzp_test_i3mv91RQEsOYo6",
+    //   currency: orderResponse?.currency || "INR",
+    //   amount: orderResponse?.amount?.toString() || "",
+    //   order_id: orderResponse?.id || "",
+    //   name: "CG HERBAL",
+    //   description: "",
+    //   image: "/images/CGHerbalsLogo.png",
+    //   handler: function (response) {
+    //     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    //       response;
 
-        fetch(`${apipath}/api/v1/order/create`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user_id: user._id,
-            email: user.email,
-            products: result,
-            promocode: promoValue
-              ? {
-                  promocode_id: promoValue?.promocode_id || "",
-                  value: promoValue?.value || 0,
-                  code: promoValue?.code || "",
-                }
-              : null,
-            address: user.address,
-            shippingAddress: shippingAddress,
-            total_amount:
-              data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-              (promoValue?.value || 0),
-            total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
-          }),
-        })
-          .then((res) => res.json())
-          .then((createOrder) => {
-            console.log("createOrder :>> ", createOrder);
-            if (!createOrder.error) {
-              varifyPayment({
-                razorpay_order_id,
-                razorpay_payment_id,
-                razorpay_signature,
-                order_id: createOrder.data._id,
-                products_id,
-                user: user._id,
-              });
-            }
-          })
-          .catch((err) => {
-            console.log("err :>> ", err);
-          });
-      },
-      prefill: {
-        name: user?.first_Name || "",
-        email: user?.email || "",
-        contact: user?.mobile || "",
-      },
-    };
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.on("payment.failed", function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
-    });
-    paymentObject.open();
+    //     fetch(`${apipath}/api/v1/order/create`, {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({
+    //         user_id: user._id,
+    //         email: user.email,
+    //         products: result,
+    //         promocode: promoValue
+    //           ? {
+    //               promocode_id: promoValue?.promocode_id || "",
+    //               value: promoValue?.value || 0,
+    //               code: promoValue?.code || "",
+    //             }
+    //           : null,
+    //         address: user.address,
+    //         shippingAddress: shippingAddress,
+    //         total_amount:
+    //           data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
+    //           (promoValue?.value || 0),
+    //         total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
+    //       }),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((createOrder) => {
+    //         console.log("createOrder :>> ", createOrder);
+    //         if (!createOrder.error) {
+    //           varifyPayment({
+    //             razorpay_order_id,
+    //             razorpay_payment_id,
+    //             razorpay_signature,
+    //             order_id: createOrder.data._id,
+    //             products_id,
+    //             user: user._id,
+    //           });
+    //         }
+    //       })
+    //       .catch((err) => {
+    //         console.log("err :>> ", err);
+    //       });
+    //   },
+    //   prefill: {
+    //     name: user?.first_Name || "",
+    //     email: user?.email || "",
+    //     contact: user?.mobile || "",
+    //   },
+    // };
+    // const paymentObject = new window.Razorpay(options);
+    // paymentObject.on("payment.failed", function (response) {
+    //   alert(response.error.code);
+    //   alert(response.error.description);
+    //   alert(response.error.source);
+    //   alert(response.error.step);
+    //   alert(response.error.reason);
+    //   alert(response.error.metadata.order_id);
+    //   alert(response.error.metadata.payment_id);
+    // });
+    // paymentObject.open();
   };
 
   const formControl = {
@@ -483,7 +482,7 @@ function Shopping() {
   };
 
   const payUform = (
-    <form action="https://test.payu.in/_payment" method="post" id="payUform">
+    <form action="https://secure.payu.in/_payment" method="post" id="payUform">
       <input type="hidden" name="key" />
       <input type="hidden" name="txnid" />
       <input type="hidden" name="productinfo" />
@@ -493,18 +492,17 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value="http://localhost:3018/order/OrderConfirmed"
+        value={`${window.location.origin}/order/OrderConfirmed`}
       />
       <input
         type="hidden"
         name="furl"
-        value="https://apiplayground-response.herokuapp.com/"
+        value={`${window.location.origin}/order/paymentFailed`}
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />
     </form>
   );
-
   return (
     <div>
       <Container className="shopping-container">

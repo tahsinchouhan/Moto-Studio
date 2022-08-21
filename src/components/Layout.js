@@ -305,6 +305,30 @@ function Layout({ children }) {
     });
   }, [state.item]);
 
+  useEffect(() => {
+    if (!state.isLogin && session) {
+      localStorage.setItem("cg-herbal-userData", JSON.stringify(session));
+
+      // fetch(`${apipath}/api/v1/users/social`, {
+      //   method:"POST",
+      //   headers: {
+      //     'Content-Type':'application/json'
+      //   },
+      //   body:JSON.stringify({email:session?.user?.email})
+      // })
+      // .then(res => res.json())
+      // .then((result) => {
+      //   if (result.user && result.token) {
+      //     localStorage.setItem("cg-herbal-userData", JSON.stringify(result));
+      //     // router.push("/auth/UserProfile");
+      //   }
+      // }).catch((err) => {
+      //   console.log('err :>> ', err);
+      // });
+    }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.isLogin, session]);
+
   // console.log('state.item :>> ', state);
   return (
     <CardContext.Provider
