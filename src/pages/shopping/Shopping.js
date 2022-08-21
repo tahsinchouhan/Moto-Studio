@@ -390,7 +390,7 @@ function Shopping() {
           data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
           (promoValue?.value || 0),
         productinfo: result,
-        firstname: user?.first_Name,
+        firstname: user?.first_Name || user?.full_Name,
         email: user?.email,
         SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"wia56q6O",
       };
@@ -406,7 +406,7 @@ function Shopping() {
       form.productinfo.value = hashPayload.productinfo.toString();
       form.amount.value = hashPayload.amount;
       form.email.value = hashPayload.email;
-      form.phone.value = user?.mobile;
+      form.phone.value = user?.mobile || billingAddress?.mobile;
       form.firstname.value = hashPayload.firstname;
       form.hash.value = hash;
       form.submit();
