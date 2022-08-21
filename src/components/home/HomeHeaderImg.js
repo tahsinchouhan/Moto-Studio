@@ -18,7 +18,7 @@ import Gourment from "../../assets/img/Gourmet Foods - Small Banner.jpg";
 import Personal from "../../assets/img/Personal Care Products - Small Banner.jpg";
 import Premium from "../../assets/img/Premium Products - Small Banner.jpg";
 
-function HomeHeaderImg() {
+function HomeHeaderImg({category} ) {
   const [banner, setBanner] = useState({
     bannerImg: HomeHeader,
     bannerTitle: "Purity that is Priceless",
@@ -46,6 +46,8 @@ function HomeHeaderImg() {
   }, []);
 
   const router = useRouter();
+
+  let categories = category?.filter((cat, index) => index < 4);
 
   return (
     <>
@@ -159,6 +161,7 @@ function HomeHeaderImg() {
               </Row>
             </Col>
           </Row> */}
+
           <Row className="justify-content-md-start justify-content-center">
             <Col md={12} lg={8} className="col-10">
               <Row className="">
@@ -205,12 +208,12 @@ function HomeHeaderImg() {
         </div>
       </div>
       
-      {/* <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
+      <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
         <Col
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link href={`/product?activeTab=0`}>
+          <Link href={`/product/category/${categories[0]?._id}`}>
             <div className="SubImageContainer">
               <Image
                 src={Premium}
@@ -226,7 +229,7 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link href={`/product?activeTab=1`}>
+          <Link href={`/product/category/${categories[1]?._id}`}>
             <div className="SubImageContainer">
               <Image
                 src={Ayush}
@@ -242,7 +245,8 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
-          <Link href={`/product?activeTab=2`}>
+          <Link href={`/product/category/${categories[2]?._id}`}>
+
             <div className="SubImageContainer">
               <Image
                 src={Personal}
@@ -258,7 +262,8 @@ function HomeHeaderImg() {
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
-          <Link href={`/product?activeTab=3`}>
+          <Link href={`/product/category/${categories[3]?._id}`}>
+
             <div className="SubImageContainer">
               <Image
                 src={Gourment}
@@ -270,7 +275,7 @@ function HomeHeaderImg() {
             </div>
           </Link>
         </Col>
-      </Row> */}
+      </Row>
     </>
   );
 }

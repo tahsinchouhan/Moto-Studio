@@ -40,7 +40,7 @@ function Home({ category }) {
 
   return (
     <div>
-      <HomeHeaderImg />
+      <HomeHeaderImg category={category}  />
       <FeaturedProducts category={category} />
       {/* <VisitTheShop /> */}
 
