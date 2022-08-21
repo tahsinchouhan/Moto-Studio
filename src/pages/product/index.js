@@ -475,7 +475,7 @@ function Products() {
                 {/* <div> */}
                 <div className="product-38">
                   <span className="product-38-product">
-                    {productData?.length} Products
+                   First {productData?.length} Products
                   </span>
                   <div className="product-sort-select">
                     <span className="product-sort-by">SORT BY</span>

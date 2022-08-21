@@ -122,7 +122,8 @@ function SubHeader() {
                             shopHandler(2 + index, menu.menu_data)
                           }
                         >
-                          <Link href={`/product?activeTab=${index}`}>
+                          {/* <Link href={`/product?activeTab=${index}`}> */}
+                          <Link href={`/product/category/${menu?._id}`}>
                             <a
                               className="sub-nav-link mx-3"
                               style={{ width: "fitContent" }}

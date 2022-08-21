@@ -18,7 +18,7 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-function ProductsCategory({ categoryData, pData }) {
+function ProductsCategory({ categoryId, categoryData }) {
   const router = useRouter();
   const { width } = useWindowSize();
   const { activeTab } = router.query;
@@ -28,9 +28,9 @@ function ProductsCategory({ categoryData, pData }) {
   const [showPopuUp, setShowPopUp] = useState(false);
   const [category, setCategory] = useState([]);
   const [remedy, setRemedy] = useState([]);
-  const [productData, setProductData] = useState(pData?.data || []);
+  const [productData, setProductData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [totalPages, setTotalPages] = useState(Math.ceil(pData.all_pages) || 0);
+  const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const [checkedStateRemedy, setCheckedStateRemedy] = useState(
@@ -91,6 +91,24 @@ function ProductsCategory({ categoryData, pData }) {
   }, []);
 
   useEffect(() => {
+    const fetchData = async (categoryId) => {
+      setLoading(true);
+      try {
+        console.log('categoryId', categoryId)
+        const res = await fetch(`${apipath}/api/v1/product/list?category_id[]=${categoryId}`);
+        const objData = await res.json();
+        setLoading(false);
+        setTotalPages(Math.ceil(objData.all_pages));
+        setProductData(objData?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData(categoryId);
+  }, [categoryId])
+  
+
+  useEffect(() => {
     let query = checkedStateRemedy.reduce((query, currentState, index) => {
       if (currentState === true) {
         return (query += `&remedy_id[]=` + remedy[index]._id);
@@ -101,7 +119,7 @@ function ProductsCategory({ categoryData, pData }) {
     if (price[0] !== 0 && price[0] !== 10000) {
       query += `&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     }
-    if(query) { fetchDataRemedy(query) } else { setProductData(pData?.data) }
+    if(query) { fetchDataRemedy(query) }
   }, [checkedStateRemedy, remedy, price]);
 
   const handleOnChange = (position) => {
@@ -195,7 +213,7 @@ function ProductsCategory({ categoryData, pData }) {
         <div style={{ paddingTop: "26px", paddingBottom: "40px" }}>
           <div className="store-home" onClick={() => router.push("/product")}>
             <span>Store Home &gt; </span>
-            <span>Product Category &gt; </span>
+            <span className="cursor-pointer">All Products &gt; </span>
           </div>
           <div className="products-header text-center">
             <h1>{categoryData}</h1>
@@ -369,7 +387,7 @@ function ProductsCategory({ categoryData, pData }) {
                 {/* <div> */}
                 <div className="product-38">
                   <span className="product-38-product">
-                    {productData?.length} Products
+                  First  {productData?.length} Products
                   </span>
                   <div className="product-sort-select">
                     <span className="product-sort-by">SORT BY</span>
@@ -408,7 +426,7 @@ function ProductsCategory({ categoryData, pData }) {
                         <div
                           className="p-lg-2 mx-auto product-card-hover cursor-pointer"
                           onClick={() =>
-                            router.push(`./product/${product?._id}`)
+                            router.push(`/product/${product?._id}`)
                           }
                           style={{ backgroundColor: "#F9F9F9" }}
                         >
@@ -569,9 +587,9 @@ export async function getServerSideProps(context) {
   const response = await fetch(`${apipath}/api/v1/category/${categoryId}`);
   const category = await response.json();
 
-  const res = await fetch(`${apipath}/api/v1/product/list?category_id[]=${categoryId}`);
-  const data = await res.json();
+  // const res = await fetch(`${apipath}/api/v1/product/list?category_id[]=${categoryId}`);
+  // const data = await res.json();
 
-  return { props: { categoryData: category.data.category_name, pData:data } };
+  return { props: { categoryId, categoryData: category.data.category_name} };
 }
 

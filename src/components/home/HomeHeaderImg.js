@@ -47,7 +47,7 @@ function HomeHeaderImg({category} ) {
 
   const router = useRouter();
 
-  let categories = category?.filter((cat, index) => index < 4);
+  // let categories = category?.filter((cat, index) => index < 4);
 
   return (
     <>
@@ -213,7 +213,7 @@ function HomeHeaderImg({category} ) {
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link href={`/product/category/${categories[0]?._id}`}>
+          <Link href={`/product/category/62eb7f05d7cf5491c3af7325`}>
             <div className="SubImageContainer">
               <Image
                 src={Premium}
@@ -229,7 +229,8 @@ function HomeHeaderImg({category} ) {
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-          <Link href={`/product/category/${categories[1]?._id}`}>
+        {/*  */}
+          <Link href={`/product/category/61effa6f1a880a62b8284270`}>
             <div className="SubImageContainer">
               <Image
                 src={Ayush}
@@ -245,7 +246,7 @@ function HomeHeaderImg({category} ) {
           md={6}
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
-          <Link href={`/product/category/${categories[2]?._id}`}>
+          <Link href={`/product/category/61effa8d1a880a62b8284272`}>
 
             <div className="SubImageContainer">
               <Image
@@ -258,11 +259,12 @@ function HomeHeaderImg({category} ) {
             </div>
           </Link>
         </Col>
+        {/*  */}
         <Col
           md={6}
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
-          <Link href={`/product/category/${categories[3]?._id}`}>
+          <Link href={`/product/category/61effaa01a880a62b8284274`}>
 
             <div className="SubImageContainer">
               <Image

@@ -517,12 +517,12 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value={`${process.env.NEXTAUTH_URL}/order/OrderConfirmed`}
+        value="https://www.chhattisgarhherbals.org/order/OrderConfirmed"
       />
       <input
         type="hidden"
         name="furl"
-        value={`${process.env.NEXTAUTH_URL}/order/paymentFailed`}
+        value="https://www.chhattisgarhherbals.org/order/paymentFailed"
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />

@@ -538,6 +538,11 @@ function Header() {
           z-index: 10;
         }
 
+        .sidebar-content {
+          z-index: 9999;
+          background:white;
+        }
+
         .form-control {
           padding-left: 2.2rem;
           width: 90%;
