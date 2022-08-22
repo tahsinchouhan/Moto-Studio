@@ -5,8 +5,8 @@ import Router from 'next/router';
 
 function OrderConfirmed() {
     return (
-        <div className="card m-auto m-5 p-5">
-            <div className="card-body text-center p-5 mb-5">
+        <div className="card m-auto m-5 p-0 p-sm-5">
+            <div className="card-body text-center p-0 p-sm-5 mb-5">
               <Image
                 src={tick}
                 alt="tick"
