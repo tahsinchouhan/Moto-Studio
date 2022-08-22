@@ -517,12 +517,12 @@ function Shopping() {
       <input
         type="hidden"
         name="surl"
-        value="https://chhattisgarhherbals.org/order/OrderConfirmed"
+        value="https://chhattisgarhherbals.org/api/order/OrderConfirmed"
       />
       <input
         type="hidden"
         name="furl"
-        value="https://chhattisgarhherbals.org/order/paymentFailed"
+        value="https://chhattisgarhherbals.org/api/order/paymentFailed"
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />

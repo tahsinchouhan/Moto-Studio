@@ -10,7 +10,7 @@ export const reducer = (state, action) => {
         return { 
             ...state,
             authenticating:false,
-            user:action.payload.user,
+            user:action.payload?.user,
             isLogin: true
         }
     }

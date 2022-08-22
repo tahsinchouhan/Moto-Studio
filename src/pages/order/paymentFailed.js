@@ -13,7 +13,7 @@ function paymentFailed() {
                 width={100}
                 height={100}
               />
-                <h2 className={'text-success fw-bold mt-4'}>Payment Failed</h2>
+                <h2 className={'text-danger fw-bold mt-4'}>Payment Failed</h2>
             </div>
             <style jsx>{`
              .card-body {
