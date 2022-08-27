@@ -306,23 +306,6 @@ function Shopping() {
     setShow(false);
   };
 
-  const varifyPayment = async (data) => {
-    try {
-      const response = await fetch(`${apipath}/api/v1/payments/verify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      if (response.status === 200 && result.message === "Payment Successfull!")
-        // clear cart data
-        clearCart();
-      router.push("/order/OrderConfirmed");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const displayRazorpay = async (data) => {
     const form = document.getElementById("payUform");
     if (!user) {
@@ -384,15 +367,15 @@ function Shopping() {
 
     if (createOrder.data) {
       const hashPayload = {
-        key: "fkU5mt", //"gtKFFx",
-        txnid: Date.now().toString(),
+        key: "fkU5mt", //"oZ7oo9", //"gtKFFx", 
+        txnid: 'txnid-'+ Date.now().toString()+'-'+ createOrder.data.data._id,
         amount:
           data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
           (promoValue?.value || 0),
         productinfo: result,
         firstname: user?.first_Name || user?.full_Name,
         email: user?.email,
-        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"wia56q6O",
+        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O", 
       };
       const hash = sha512(
         `${hashPayload.key}|${hashPayload.txnid}|${
@@ -407,94 +390,17 @@ function Shopping() {
       form.amount.value = hashPayload.amount;
       form.email.value = hashPayload.email;
       form.phone.value = user?.mobile || billingAddress?.mobile;
-      form.firstname.value = hashPayload.firstname;
+      form.firstname.value = hashPayload.firstname || billingAddress?.first_name;
+      form.lastname.value = billingAddress?.last_name;
+      form.city.value = billingAddress?.city;
+      form.state.value = billingAddress?.state;
+      form.country.value = billingAddress?.country;
+      form.zipcode.value = billingAddress?.pincode;
+      form.address1.value = JSON.stringify(billingAddress);
+      form.address2.value = JSON.stringify(shippingAddress);
       form.hash.value = hash;
       form.submit();
     }
-
-    return;
-
-    // const orderPost = await fetch(apipath + "/api/v1/payments/orders", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     amount:
-    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-    //       (promoValue?.value || 0),
-    //   }),
-    //   // { amount: createOrder.data.data.total_amount }
-    // });
-    // const orderResponse = await orderPost.json();
-
-    // const options = {
-    //   key: "rzp_test_i3mv91RQEsOYo6",
-    //   currency: orderResponse?.currency || "INR",
-    //   amount: orderResponse?.amount?.toString() || "",
-    //   order_id: orderResponse?.id || "",
-    //   name: "CG HERBAL",
-    //   description: "",
-    //   image: "/images/CGHerbalsLogo.png",
-    //   handler: function (response) {
-    //     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-    //       response;
-
-    //     fetch(`${apipath}/api/v1/order/create`, {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({
-    //         user_id: user._id,
-    //         email: user.email,
-    //         products: result,
-    //         promocode: promoValue
-    //           ? {
-    //               promocode_id: promoValue?.promocode_id || "",
-    //               value: promoValue?.value || 0,
-    //               code: promoValue?.code || "",
-    //             }
-    //           : null,
-    //         address: user.address,
-    //         shippingAddress: shippingAddress,
-    //         total_amount:
-    //           data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-    //           (promoValue?.value || 0),
-    //         total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
-    //       }),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((createOrder) => {
-    //         console.log("createOrder :>> ", createOrder);
-    //         if (!createOrder.error) {
-    //           varifyPayment({
-    //             razorpay_order_id,
-    //             razorpay_payment_id,
-    //             razorpay_signature,
-    //             order_id: createOrder.data._id,
-    //             products_id,
-    //             user: user._id,
-    //           });
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         console.log("err :>> ", err);
-    //       });
-    //   },
-    //   prefill: {
-    //     name: user?.first_Name || "",
-    //     email: user?.email || "",
-    //     contact: user?.mobile || "",
-    //   },
-    // };
-    // const paymentObject = new window.Razorpay(options);
-    // paymentObject.on("payment.failed", function (response) {
-    //   alert(response.error.code);
-    //   alert(response.error.description);
-    //   alert(response.error.source);
-    //   alert(response.error.step);
-    //   alert(response.error.reason);
-    //   alert(response.error.metadata.order_id);
-    //   alert(response.error.metadata.payment_id);
-    // });
-    // paymentObject.open();
   };
 
   const formControl = {
@@ -514,15 +420,23 @@ function Shopping() {
       <input type="hidden" name="amount" />
       <input type="hidden" name="email" />
       <input type="hidden" name="firstname" />
+      <input type="hidden" name="lastname" />
+      <input type="hidden" name="city" />
+      <input type="hidden" name="state" />
+      <input type="hidden" name="country" />
+      <input type="hidden" name="zipcode" />
+      <input type="hidden" name="address1" />
+      <input type="hidden" name="address2" />
       <input
         type="hidden"
         name="surl"
-        value="https://chhattisgarhherbals.org/api/order/OrderConfirmed"
+        value="https://www.chhattisgarhherbals.org/api/order/OrderConfirmed"
       />
       <input
         type="hidden"
         name="furl"
-        value="https://chhattisgarhherbals.org/api/order/paymentFailed"
+        value="https://www.chhattisgarhherbals.org/api/order/paymentFailed"
+
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />
