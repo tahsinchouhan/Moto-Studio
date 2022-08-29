@@ -13,24 +13,8 @@ import TextError from "../../components/TextError";
 import * as Yup from "yup";
 import sha512 from "js-sha512";
 import { getDomainLocale } from "next/dist/shared/lib/router/router";
-import Head from "next/head";
-import Script from "next/script";
 
-// function loadScript(src) {
-//   return new Promise((resolve) => {
-//     const script = document.createElement("script");
-//     script.src = src;
-//     script.onload = () => {
-//       resolve(true);
-//     };
-//     script.onerror = () => {
-//       resolve(false);
-//     };
-//     document.body.appendChild(script);
-//   });
-// }
-
-function Shopping() {
+function Shopping({weightData}) {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
   const giftAddress = useRef(null);
@@ -43,7 +27,24 @@ function Shopping() {
   const [billingAddress, setBillingAddress] = useState(null);
   const [step, setStep] = useState(0);
   const [addressList, setAddressList] = useState(false);
+  const [shippingCharge, setShippingCharge] = useState(0);
   const { data: session, status } = useSession();
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    if(item?.length > 0){
+      let data = []
+      let shipping = 0
+      for(let i = 0; i < item?.length; i++){
+        let filterData = weightData.filter(a => a._id === item[i]?.weight_type)
+        data.push({...item[i], shippingAmount: filterData[0].shipping_amount || 0})
+        shipping += Number(filterData[0].shipping_amount || 0) * (item[i]?.quantity || 0) 
+      }
+      setProducts(data)
+      setShippingCharge(shipping)
+    }
+  }, [item])
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -318,19 +319,7 @@ function Shopping() {
       setStep(1);
       return;
     }
-    // if (step === 0) {
-    //   setStep(1);
-    //   return;
-    // }
-
-    // const res = await loadScript(
-    //   "https://checkout.razorpay.com/v1/checkout.js"
-    // );
-    // if (!res) {
-    //   alert("Razorpay SDK failed to load . Are you online!");
-    //   return;
-    // }
-
+  
     let result = [];
     let products_id = [];
 
@@ -354,9 +343,10 @@ function Shopping() {
     // }
     const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
       products: result,
-      total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0),
+      total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) + shippingCharge,
       total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
       total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
+      total_shippingAmount: shippingCharge,
       user_id: user._id,
       address: "Raipur",
       billingAddress,
@@ -369,9 +359,7 @@ function Shopping() {
       const hashPayload = {
         key: "fkU5mt", //"oZ7oo9", //"gtKFFx", 
         txnid: 'txnid-'+ Date.now().toString()+'-'+ createOrder.data.data._id,
-        amount:
-          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-          (promoValue?.value || 0),
+        amount:data.reduce((a, v) => (a = a + v.price * v.quantity), 0) + shippingCharge - (promoValue?.value || 0),
         productinfo: result,
         firstname: user?.first_Name || user?.full_Name,
         email: user?.email,
@@ -488,9 +476,9 @@ function Shopping() {
                         className="card-container card-div"
                         style={{ height: "450px", overflow: "auto" }}
                       >
-                        {item?.length > 0 &&
-                          item.map((elem, index) => {
-                            return <Item key={index} {...elem} />;
+                        {products?.length > 0 &&
+                          products.map((elem, index) => {
+                            return <Item key={index} {...elem}/>;
                           })}
                         <div className="text-start text-uppercase fw-lighter mt-lg-4">
                           <span
@@ -1174,10 +1162,19 @@ function Shopping() {
                           </p>
                         </div>
                       </div>
-                      {/* <div className="d-flex align-items-center justify-content-between">
-                        <p className="order-summary-p1">SHIPPING</p>
-                        <span style={{ fontSize: "13px" }}>₹0.00</span>
-                      </div> */}
+                      <div className="d-flex justify-content-between">
+                        <div>
+                          <p className="order-summary-p1 text-uppercase">
+                            SHIPPING  
+                          </p>
+                        </div>
+                        <div>
+                          <p className="fw-bold order-summary-p2">
+                            {" "}
+                            ₹ {shippingCharge}
+                          </p>
+                        </div>
+                      </div>
                       {promoValue ? (
                         <div className="free-home-delivery-div">
                           <p className=" m-0 px-2 pt-1 free-home-delivery-p">
@@ -1213,12 +1210,12 @@ function Shopping() {
                           {promoValue ? (
                             <p className="fw-bold order-summary-p2">
                               {" "}
-                              ₹ {totalAmount - promoValue.value}
+                              ₹ {totalAmount + shippingCharge - promoValue.value}
                             </p>
                           ) : (
                             <p className="fw-bold order-summary-p2">
                               {" "}
-                              ₹ {totalAmount}
+                              ₹ {totalAmount + shippingCharge}
                             </p>
                           )}
                         </div>
@@ -1395,3 +1392,11 @@ function Shopping() {
 }
 
 export default Shopping;
+
+
+export async function getServerSideProps(context) {
+  const response = await fetch(`${apipath}/api/v1/units/weight/list`);
+  const result = await response.json();
+
+  return { props: { weightData: result.data } };
+}

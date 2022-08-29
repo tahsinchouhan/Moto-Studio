@@ -14,13 +14,14 @@ export default async function handler(req, res) {
         body: JSON.stringify({order_id, email, mode, mihpayid}),
       });
       const jsonData = await response.json()
-
+      console.log('payment verified----------------->')
       const paymentresponse = await fetch(apipath + "/api/v1/payments/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({amount, order_id, user_id:jsonData.data.user_id, products:jsonData.data.products_}),
       });
       await paymentresponse.json();
+      console.log('Payment & Cart Updated----------------->')
       res.writeHead(302, { Location: endpoint.replace("api/", "") }).end()
     }
   } else {

@@ -12,7 +12,7 @@ const Item = ({
   price,
   SKU_Number,
   product_weight,
-  weight_type,
+  weight_type
 }) => {
   const { user, removeItem, increament, decreament, isLogin, item } = useContext(CardContext);
   const deleteItem = (product_id, weight_type, id) => {
