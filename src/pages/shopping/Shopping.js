@@ -43,6 +43,8 @@ function Shopping({weightData}) {
       }
       setProducts(data)
       setShippingCharge(shipping)
+    } else {
+      setProducts([])
     }
   }, [item])
 
@@ -52,6 +54,9 @@ function Shopping({weightData}) {
       behavior: "smooth",
     });
   };
+
+  const giftCheckBoxYes = useRef(null);
+  const giftCheckBoxNo = useRef(null);
 
   // Shipping address configurations
   const [giftMsg, setGiftMsg] = useState("");
@@ -275,7 +280,7 @@ function Shopping({weightData}) {
       console.log("error :>> ", error);
     }
     setAddressList(true);
-    displayRazorpay(item);
+    PaymentPayU(item);
     scrollToTop();
   };
 
@@ -307,7 +312,7 @@ function Shopping({weightData}) {
     setShow(false);
   };
 
-  const displayRazorpay = async (data) => {
+  const PaymentPayU = async (data) => {
     const form = document.getElementById("payUform");
     if (!user) {
       router.push("/auth/Login");
@@ -329,10 +334,12 @@ function Shopping({weightData}) {
         weight_type: val.weight_type,
         quantity: val.quantity,
         price: val.price,
+        discount_value: val.discount,
+        gst_amount: val.gst_amount * val.quantity,
+        taxable_amount: val.taxable_amount * val.quantity
       });
       products_id.push(val.product?._id);
     });
-
     // if (
     //   data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
     //     (promoValue?.value || 0) >
@@ -345,10 +352,10 @@ function Shopping({weightData}) {
       products: result,
       total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) + shippingCharge,
       total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
-      total_items: data.reduce((a, v) => (a = a + v.quantity), 0),
+      total_items: data?.length || 1,
       total_shippingAmount: shippingCharge,
       user_id: user._id,
-      address: "Raipur",
+      address: "",
       billingAddress,
       shippingAddress,
       email: user.email,
@@ -458,16 +465,16 @@ function Shopping({weightData}) {
                         <Col lg="2">
                           <p className="m-0 shopping-p-size">QUANTITY</p>
                         </Col>
-                        <Col lg="2">
+                        <Col lg="1">
                           <p className="m-0 shopping-p-size">PRICE</p>
                         </Col>
-                        {/* <Col lg="1">
+                        <Col lg="1">
                           <p className="m-0 shopping-p-size">GST</p>
                         </Col>
                         <Col lg="1">
                           <p className="m-0 shopping-p-size">TAXABLE</p>
-                        </Col> */}
-                        <Col lg="2">
+                        </Col>
+                        <Col lg="1">
                           <p className="m-0 shopping-p-size">TOTAL</p>
                         </Col>
                       </Row>
@@ -476,8 +483,7 @@ function Shopping({weightData}) {
                         className="card-container card-div"
                         style={{ height: "450px", overflow: "auto" }}
                       >
-                        {products?.length > 0 &&
-                          products.map((elem, index) => {
+                         {products.map((elem, index) => {
                             return <Item key={index} {...elem}/>;
                           })}
                         <div className="text-start text-uppercase fw-lighter mt-lg-4">
@@ -752,6 +758,7 @@ function Shopping({weightData}) {
                                     onClick={(e) =>
                                       chackedGift(e, formik.values)
                                     }
+                                    ref={giftCheckBoxYes}
                                   />
                                   <label
                                     className="form-check-label"
@@ -771,6 +778,7 @@ function Shopping({weightData}) {
                                     onClick={(e) =>
                                       chackedGift(e, formik.values)
                                     }
+                                    ref={giftCheckBoxNo}
                                   />
                                   <label
                                     className="form-check-label"
@@ -1246,6 +1254,15 @@ function Shopping({weightData}) {
                                 type="submit"
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
+                                onClick={()=>{
+                                  let checkeddNO = giftCheckBoxNo?.current?.checked
+                                  let checkeddYES = giftCheckBoxYes?.current?.checked
+                                  if(!checkeddNO && !addressList){
+                                    if (!checkeddYES) {
+                                      alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
+                                    }
+                                  }
+                                }}
                               >
                                 CHECKOUT
                               </button>
@@ -1257,7 +1274,7 @@ function Shopping({weightData}) {
                         </div>
                         {/* <div
                           className="w-100 border-0 checkout-button"
-                          onClick={() => displayRazorpay(item)}
+                          onClick={() => PaymentPayU(item)}
                         >
                           {" "}
                           <ButtonDark type="button" text="CHECKOUT" />
@@ -1343,7 +1360,7 @@ function Shopping({weightData}) {
               <div className="text-center">
                 <div
                   className="w-100 border-0 checkout-button"
-                  onClick={() => displayRazorpay(item)}
+                  onClick={() => PaymentPayU(item)}
                 >
                   {" "}
                   <ButtonDark type="button" text="CHECKOUT" />

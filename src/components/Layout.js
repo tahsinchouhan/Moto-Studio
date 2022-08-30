@@ -112,6 +112,8 @@ function Layout({ children }) {
               price: selectedWeight.price,
               discount: selectedWeight.discount,
               discount_value: selectedWeight.discount_value,
+              gst_amount: selectedWeight.gst_amount,
+              taxable_amount: selectedWeight.taxable_amount
             },
           ],
         },
@@ -119,6 +121,8 @@ function Layout({ children }) {
         product_weight: selectedWeight?.weight_type?.weight_gram || "",
         weight_type: selectedWeight?.weight_type?._id,
         quantity: quantity,
+        gst_amount: selectedWeight.gst_amount,
+        taxable_amount: selectedWeight.taxable_amount,
         price:
           Number(selectedWeight?.price) -
             Number(
@@ -171,6 +175,8 @@ function Layout({ children }) {
         product_weight: selectedWeight?.weight_type?.weight_gram || "",
         weight_type: selectedWeight?.weight_type?._id,
         quantity: quantity,
+        gst_amount: selectedWeight.gst_amount,
+        taxable_amount: selectedWeight.taxable_amount,
         price:
           Number(selectedWeight?.price) -
             Number(

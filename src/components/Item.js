@@ -12,7 +12,9 @@ const Item = ({
   price,
   SKU_Number,
   product_weight,
-  weight_type
+  weight_type,
+  gst_amount,
+  taxable_amount
 }) => {
   const { user, removeItem, increament, decreament, isLogin, item } = useContext(CardContext);
   const deleteItem = (product_id, weight_type, id) => {
@@ -48,9 +50,7 @@ const Item = ({
       });
   };
 
-  const stockQty = product?.weight?.filter(
-    (wt) => wt.weight_type === weight_type
-  )[0].count;
+  const stockQty = product?.weight?.filter((wt) => wt.weight_type === weight_type)[0].count;
 
   return (
     <>
@@ -123,38 +123,25 @@ const Item = ({
           </p>
         </Col>
 
-        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
+        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-price">PRICE</span>
-          <p className="fw-bold shopping-p4-size mobile-btn-shopping-price">₹ {price}</p>
+          <p className="fw-bold shopping-p4-size mobile-btn-shopping-price">{price}</p>
         </Col>
-        <Col lg="2" className="mt-0 mt-lg-4 text-start text-lg-center">
+
+        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-price">GST Amount</span>
+          <p className="fw-bold shopping-p4-size mobile-btn-shopping-price">{gst_amount * quantity}</p>
+        </Col>
+
+        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
+          <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-price">TAXABLE Amount</span>
+          <p className="fw-bold shopping-p4-size mobile-btn-shopping-price">{taxable_amount * quantity}</p>
+        </Col>
+
+        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size mobile-btn-shopping-total">TOTAL</span>
           <p className="fw-bold shopping-p4-size mobile-btn-shopping-total">₹ {quantity * price}</p>
         </Col>
-
-        {/* add gst and taxable amount code */}
-
-        {/* <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
-          <span className="m-0 d-block d-lg-none shopping-p-size">GST Amount</span>
-            {
-              product?.weight ? (
-                <p className="fw-bold shopping-p4-size">₹ {product?.weight[0]?.gst_amount || 0}</p>
-              ) : (
-                <p className="fw-bold shopping-p4-size">₹ {0} </p>
-              )
-            }
-          
-        </Col>
-        <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
-          <span className="m-0 d-block d-lg-none shopping-p-size">Taxable Amount</span>
-          {
-              product?.weight ? (
-                <p className="fw-bold shopping-p4-size">₹ {product?.weight[0]?.taxable_amount || 0 }</p>
-              ) : (
-                <p className="fw-bold shopping-p4-size">₹ {0} </p>
-              )
-          }
-        </Col> */}
 
         {/* <Col lg="1" className="mt-0 mt-lg-4 text-start text-lg-center">
           <span className="m-0 d-block d-lg-none shopping-p-size">TOTAL</span>

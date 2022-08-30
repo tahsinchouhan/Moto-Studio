@@ -42,6 +42,10 @@ function ProductDetail({ productData }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setSelectedWeight(productData.weight[0])
+  }, [productData])
+
   return (
     <>
       <div className="all-product-heading">
