@@ -1257,10 +1257,8 @@ function Shopping({weightData}) {
                                 onClick={()=>{
                                   let checkeddNO = giftCheckBoxNo?.current?.checked
                                   let checkeddYES = giftCheckBoxYes?.current?.checked
-                                  if(!checkeddNO && !addressList){
-                                    if (!checkeddYES) {
-                                      alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
-                                    }
+                                  if(!checkeddNO && !checkeddYES){
+                                    alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
                                   }
                                 }}
                               >
