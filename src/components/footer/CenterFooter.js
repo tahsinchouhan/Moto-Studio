@@ -48,10 +48,10 @@ function CenterFooter() {
                       <h6 className="footer-center-header ">SHOP</h6>
                       <div className="d-flex flex-column">
                         {category.length
-                          ? category.map((cat, index) => (
+                          ? [...category].reverse().slice(1,5).map((cat, index) => (
                             index>3 ? '':
                               <Link
-                                href={`/product?activeTab=${index}`}
+                                href={`/product/category/${cat._id}`}
                                 key={cat._id}
                               >
                                 <a className="footer-cg-para">
