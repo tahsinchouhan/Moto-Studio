@@ -75,29 +75,29 @@ function Shopping({ weightData }) {
 
   const chackedGift = (e, values) => {
     // if (e.target.id === "flexCheckCheckedNo") {
-      giftAddress.current.classList.add("hiddGiftAddress");
-      giftAddress.current.classList.remove("visibleGiftAddress");
-      // setShippingAddress({
-      //   gift_firstname: values?.first_name || '',
-      //   gift_lastname: values?.last_name || '',
-      //   gift_email: values?.email || '',
-      //   gift_mobile: values?.mobile || '',
-      //   gift_pincode: values?.pincode || '',
-      //   gift_address: values?.address || '',
-      //   gift_country: values?.country || '',
-      //   gift_city: values?.city || '',
-      //   gift_state: values?.state || '',
-      // });
-      values.gift_firstname = values.first_name;
-      values.gift_lastname = values.last_name;
-      values.gift_email = values.email;
-      values.gift_mobile = values.mobile;
-      values.gift_address = values.address;
-      values.gift_city = values.city;
-      values.gift_state = values.state;
-      values.gift_pincode = values.pincode;
-      values.gift_country = values.country;
-      setGiftMsg("Sender Address and Recipient address will be same");
+    giftAddress.current.classList.add("hiddGiftAddress");
+    giftAddress.current.classList.remove("visibleGiftAddress");
+    // setShippingAddress({
+    //   gift_firstname: values?.first_name || '',
+    //   gift_lastname: values?.last_name || '',
+    //   gift_email: values?.email || '',
+    //   gift_mobile: values?.mobile || '',
+    //   gift_pincode: values?.pincode || '',
+    //   gift_address: values?.address || '',
+    //   gift_country: values?.country || '',
+    //   gift_city: values?.city || '',
+    //   gift_state: values?.state || '',
+    // });
+    values.gift_firstname = values.first_name;
+    values.gift_lastname = values.last_name;
+    values.gift_email = values.email;
+    values.gift_mobile = values.mobile;
+    values.gift_address = values.address;
+    values.gift_city = values.city;
+    values.gift_state = values.state;
+    values.gift_pincode = values.pincode;
+    values.gift_country = values.country;
+    setGiftMsg("Sender Address and Recipient address will be same");
     // }
     // if (e.target.id === "flexCheckCheckedYes") {
     //   giftAddress.current.classList.remove("hiddGiftAddress");
@@ -1270,8 +1270,9 @@ function Shopping({ weightData }) {
                                   let checkeddYES =
                                     giftCheckBoxYes?.current?.checked;
                                   if (!checkeddNO && !checkeddYES) {
-                                     giftCheckBoxNo.current.checked = true;
-                                    chackedGift(e, formik.values);
+                                    document
+                                      .getElementById("flexCheckCheckedNo")
+                                      .click();
                                     // alert(
                                     //   "PLEASE CHECK IS THIS ORDER A GIFT? "
                                     // );
