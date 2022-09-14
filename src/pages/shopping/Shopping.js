@@ -1272,6 +1272,7 @@ function Shopping({ weightData }) {
                                   if (!checkeddNO && !checkeddYES) {
                                     // if both are not checked select no  by default
                                     giftCheckBoxNo.current.checked = true;
+                                    chackedGift(e, formik.values);
                                     // alert(
                                     //   "PLEASE CHECK IS THIS ORDER A GIFT? "
                                     // );
