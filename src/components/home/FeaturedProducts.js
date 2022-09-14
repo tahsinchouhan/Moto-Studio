@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 // import BeautyProducts from "../../assets/images/home/1 (1).png";
 // import AlternativeMedicine from "../../assets/images/home/1 (2).png";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
+import Slider from "react-slick/lib/slider";
 import emptyImage from "../../assets/images/product/placeholder.png";
 import VisitTheShop from "./VisitTheShop";
-import Slider from "react-slick/lib/slider";
-import { apipath } from "../../pages/api/apiPath";
 
 function FeaturedProducts({ category }) {
   const list = category?.length > 0 ? category[3]._id : null || null;
@@ -57,6 +56,7 @@ function FeaturedProducts({ category }) {
           <Slider {...settings}>
             {categories?.length &&
               [...categories]?.reverse().map((cat) => {
+                console.log("cat :>> ", cat);
                 return (
                   <div
                     className="image-div"
@@ -78,13 +78,13 @@ function FeaturedProducts({ category }) {
                         // loading="eager"
                       />
                     </div>
-                      <p className="feature-products-texts feature-products-texts-media">
-                        {cat?.category_name || "Category Name"}
-                      </p>
+                    <p className="feature-products-texts feature-products-texts-media">
+                      {cat?.category_name || "Category Name"}
+                    </p>
                   </div>
                 );
               })}
-              {/* <div className="image-div">
+            {/* <div className="image-div">
                     <div className="rounded-circle zoom-in-img-wrapper">
                       <Image
                         src={emptyImage}

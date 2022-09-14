@@ -2,16 +2,16 @@
 // import { useSession } from "next-auth/react";
 // import { useRouter } from "next/router";
 import CommunityPage from "../../components/home/CommunityPage";
-import HomeHeaderImg from "../../components/home/HomeHeaderImg";
 import FeaturedProducts from "../../components/home/FeaturedProducts";
-import HomeFollowUs from "../../components/home/HomeFollowUs";
 import HomeEmpower from "../../components/home/HomeEmpower";
+import HomeFollowUs from "../../components/home/HomeFollowUs";
+import HomeHeaderImg from "../../components/home/HomeHeaderImg";
 // import VisitTheShop from "../../components/home/VisitTheShop";
 // import { CardContext } from "../../components/Layout";
 // import {apipath} from '../api/apiPath'
 
 function Home({ category }) {
-
+  console.log(category);
   // const { data: session } = useSession();
   // const { isLogin } = useContext(CardContext);
   // const router = useRouter();
@@ -40,7 +40,7 @@ function Home({ category }) {
 
   return (
     <div>
-      <HomeHeaderImg category={category}  />
+      <HomeHeaderImg category={category} />
       <FeaturedProducts category={category} />
       {/* <VisitTheShop /> */}
 
