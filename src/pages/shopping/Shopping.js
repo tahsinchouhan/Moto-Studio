@@ -1,18 +1,16 @@
-import { useState, useEffect, useContext, useRef } from "react";
-import ButtonDark from "../../components/button/ButtonDark";
-import { Col, Container, Row, Modal, Button } from "react-bootstrap";
-import { CardContext } from "../../components/Layout";
-import Item from "../../components/Item";
-import { apipath } from "../api/apiPath";
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Col, Container, Modal, Row } from "react-bootstrap";
+import Item from "../../components/Item";
+import { CardContext } from "../../components/Layout";
+import { apipath } from "../api/apiPath";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import TextError from "../../components/TextError";
-import * as Yup from "yup";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import sha512 from "js-sha512";
-import { getDomainLocale } from "next/dist/shared/lib/router/router";
+import * as Yup from "yup";
+import TextError from "../../components/TextError";
 
 function Shopping({weightData}) {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
@@ -747,7 +745,7 @@ function Shopping({weightData}) {
                               IS THIS ORDER A GIFT?
                             </p>
 
-                            <Row className="w-25 ms-2">
+                            {/* <Row className="w-25 ms-2">
                               <Col className="d-flex mb-1">
                                 <div className="form-check">
                                   <input
@@ -788,7 +786,7 @@ function Shopping({weightData}) {
                                   </label>
                                 </div>
                               </Col>
-                            </Row>
+                            </Row> */}
 
                             <div ref={giftAddress} className="giftaddressForm">
                               <p className="mt-2 lableFontWeight fs-5">
@@ -1254,13 +1252,13 @@ function Shopping({weightData}) {
                                 type="submit"
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
-                                onClick={()=>{
-                                  let checkeddNO = giftCheckBoxNo?.current?.checked
-                                  let checkeddYES = giftCheckBoxYes?.current?.checked
-                                  if(!checkeddNO && !checkeddYES){
-                                    alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
-                                  }
-                                }}
+                                // onClick={()=>{
+                                //   let checkeddNO = giftCheckBoxNo?.current?.checked
+                                //   let checkeddYES = giftCheckBoxYes?.current?.checked
+                                //   if(!checkeddNO && !checkeddYES){
+                                //     alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
+                                //   }
+                                // }}
                               >
                                 CHECKOUT
                               </button>
