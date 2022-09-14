@@ -1270,9 +1270,11 @@ function Shopping({ weightData }) {
                                   let checkeddYES =
                                     giftCheckBoxYes?.current?.checked;
                                   if (!checkeddNO && !checkeddYES) {
-                                    alert(
-                                      "PLEASE CHECK IS THIS ORDER A GIFT? "
-                                    );
+                                    // if both are not checked select no  by default
+                                    giftCheckBoxNo.current.checked = true;
+                                    // alert(
+                                    //   "PLEASE CHECK IS THIS ORDER A GIFT? "
+                                    // );
                                   }
                                 }}
                               >
