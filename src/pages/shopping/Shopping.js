@@ -74,57 +74,57 @@ function Shopping({ weightData }) {
   };
 
   const chackedGift = (e, values) => {
-    // if (e.target.id === "flexCheckCheckedNo") {
-    giftAddress.current.classList.add("hiddGiftAddress");
-    giftAddress.current.classList.remove("visibleGiftAddress");
-    // setShippingAddress({
-    //   gift_firstname: values?.first_name || '',
-    //   gift_lastname: values?.last_name || '',
-    //   gift_email: values?.email || '',
-    //   gift_mobile: values?.mobile || '',
-    //   gift_pincode: values?.pincode || '',
-    //   gift_address: values?.address || '',
-    //   gift_country: values?.country || '',
-    //   gift_city: values?.city || '',
-    //   gift_state: values?.state || '',
-    // });
-    values.gift_firstname = values.first_name;
-    values.gift_lastname = values.last_name;
-    values.gift_email = values.email;
-    values.gift_mobile = values.mobile;
-    values.gift_address = values.address;
-    values.gift_city = values.city;
-    values.gift_state = values.state;
-    values.gift_pincode = values.pincode;
-    values.gift_country = values.country;
-    setGiftMsg("Sender Address and Recipient address will be same");
-    // }
-    // if (e.target.id === "flexCheckCheckedYes") {
-    //   giftAddress.current.classList.remove("hiddGiftAddress");
-    //   giftAddress.current.classList.add("visibleGiftAddress");
-    //   values.gift_firstname = "";
-    //   values.gift_lastname = "";
-    //   values.gift_email = "";
-    //   values.gift_mobile = "";
-    //   values.gift_address = "";
-    //   values.gift_city = "";
-    //   values.gift_state = "";
-    //   values.gift_pincode = "";
-    //   values.gift_country = "";
-    //   setShippingAddress({
-    //     gift_firstname: "",
-    //     gift_lastname: "",
-    //     gift_email: "",
-    //     gift_mobile: "",
-    //     gift_pincode: "",
-    //     gift_address: "",
-    //     gift_country: "",
-    //     gift_city: "",
-    //     gift_state: "",
-    //   });
-    //   console.log("cart2 shipping add values is: ", values);
-    //   setGiftMsg("");
-    // }
+    if (e.target.id === "flexCheckCheckedNo") {
+      giftAddress.current.classList.add("hiddGiftAddress");
+      giftAddress.current.classList.remove("visibleGiftAddress");
+      // setShippingAddress({
+      //   gift_firstname: values?.first_name || '',
+      //   gift_lastname: values?.last_name || '',
+      //   gift_email: values?.email || '',
+      //   gift_mobile: values?.mobile || '',
+      //   gift_pincode: values?.pincode || '',
+      //   gift_address: values?.address || '',
+      //   gift_country: values?.country || '',
+      //   gift_city: values?.city || '',
+      //   gift_state: values?.state || '',
+      // });
+      values.gift_firstname = values.first_name;
+      values.gift_lastname = values.last_name;
+      values.gift_email = values.email;
+      values.gift_mobile = values.mobile;
+      values.gift_address = values.address;
+      values.gift_city = values.city;
+      values.gift_state = values.state;
+      values.gift_pincode = values.pincode;
+      values.gift_country = values.country;
+      setGiftMsg("Sender Address and Recipient address will be same");
+    }
+    if (e.target.id === "flexCheckCheckedYes") {
+      giftAddress.current.classList.remove("hiddGiftAddress");
+      giftAddress.current.classList.add("visibleGiftAddress");
+      values.gift_firstname = "";
+      values.gift_lastname = "";
+      values.gift_email = "";
+      values.gift_mobile = "";
+      values.gift_address = "";
+      values.gift_city = "";
+      values.gift_state = "";
+      values.gift_pincode = "";
+      values.gift_country = "";
+      setShippingAddress({
+        gift_firstname: "",
+        gift_lastname: "",
+        gift_email: "",
+        gift_mobile: "",
+        gift_pincode: "",
+        gift_address: "",
+        gift_country: "",
+        gift_city: "",
+        gift_state: "",
+      });
+      console.log("cart2 shipping add values is: ", values);
+      setGiftMsg("");
+    }
   };
   // End shipping Address
 
@@ -177,7 +177,6 @@ function Shopping({ weightData }) {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    console.log("cart2 shipping add values is: ", values);
     user.billingAddress = [
       {
         full_name: values?.first_name + " " + values?.last_name || "",
@@ -746,7 +745,7 @@ function Shopping({ weightData }) {
                               </Col>
                             </Row>
 
-                            {/* <p
+                            <p
                               style={{
                                 color: "#5ABF77",
                                 fontWeight: "bold",
@@ -755,9 +754,9 @@ function Shopping({ weightData }) {
                               className="mt-3"
                             >
                               IS THIS ORDER A GIFT?
-                            </p> */}
+                            </p>
 
-                            <Row className="w-25 ms-2 hidden">
+                            <Row className="w-25 ms-2">
                               <Col className="d-flex mb-1">
                                 <div className="form-check">
                                   <input
@@ -1266,16 +1265,15 @@ function Shopping({ weightData }) {
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
                                 onClick={() => {
-                                  chackedGift(e, formik.values);
-                                  // let checkeddNO =
-                                  //   giftCheckBoxNo?.current?.checked;
-                                  // let checkeddYES =
-                                  //   giftCheckBoxYes?.current?.checked;
-                                  // if (!checkeddNO && !checkeddYES) {
-                                  //   alert(
-                                  //     "PLEASE CHECK IS THIS ORDER A GIFT? "
-                                  //   );
-                                  // }
+                                  let checkeddNO =
+                                    giftCheckBoxNo?.current?.checked;
+                                  let checkeddYES =
+                                    giftCheckBoxYes?.current?.checked;
+                                  if (!checkeddNO && !checkeddYES) {
+                                    alert(
+                                      "PLEASE CHECK IS THIS ORDER A GIFT? "
+                                    );
+                                  }
                                 }}
                               >
                                 CHECKOUT
