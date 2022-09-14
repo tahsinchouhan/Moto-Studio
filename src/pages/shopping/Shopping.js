@@ -74,7 +74,7 @@ function Shopping({ weightData }) {
   };
 
   const chackedGift = (e, values) => {
-    if (e.target.id === "flexCheckCheckedNo") {
+    // if (e.target.id === "flexCheckCheckedNo") {
       giftAddress.current.classList.add("hiddGiftAddress");
       giftAddress.current.classList.remove("visibleGiftAddress");
       // setShippingAddress({
@@ -98,33 +98,33 @@ function Shopping({ weightData }) {
       values.gift_pincode = values.pincode;
       values.gift_country = values.country;
       setGiftMsg("Sender Address and Recipient address will be same");
-    }
-    if (e.target.id === "flexCheckCheckedYes") {
-      giftAddress.current.classList.remove("hiddGiftAddress");
-      giftAddress.current.classList.add("visibleGiftAddress");
-      values.gift_firstname = "";
-      values.gift_lastname = "";
-      values.gift_email = "";
-      values.gift_mobile = "";
-      values.gift_address = "";
-      values.gift_city = "";
-      values.gift_state = "";
-      values.gift_pincode = "";
-      values.gift_country = "";
-      setShippingAddress({
-        gift_firstname: "",
-        gift_lastname: "",
-        gift_email: "",
-        gift_mobile: "",
-        gift_pincode: "",
-        gift_address: "",
-        gift_country: "",
-        gift_city: "",
-        gift_state: "",
-      });
-      console.log("cart2 shipping add values is: ", values);
-      setGiftMsg("");
-    }
+    // }
+    // if (e.target.id === "flexCheckCheckedYes") {
+    //   giftAddress.current.classList.remove("hiddGiftAddress");
+    //   giftAddress.current.classList.add("visibleGiftAddress");
+    //   values.gift_firstname = "";
+    //   values.gift_lastname = "";
+    //   values.gift_email = "";
+    //   values.gift_mobile = "";
+    //   values.gift_address = "";
+    //   values.gift_city = "";
+    //   values.gift_state = "";
+    //   values.gift_pincode = "";
+    //   values.gift_country = "";
+    //   setShippingAddress({
+    //     gift_firstname: "",
+    //     gift_lastname: "",
+    //     gift_email: "",
+    //     gift_mobile: "",
+    //     gift_pincode: "",
+    //     gift_address: "",
+    //     gift_country: "",
+    //     gift_city: "",
+    //     gift_state: "",
+    //   });
+    //   console.log("cart2 shipping add values is: ", values);
+    //   setGiftMsg("");
+    // }
   };
   // End shipping Address
 
@@ -1270,8 +1270,7 @@ function Shopping({ weightData }) {
                                   let checkeddYES =
                                     giftCheckBoxYes?.current?.checked;
                                   if (!checkeddNO && !checkeddYES) {
-                                    // if both are not checked select no  by default
-                                    giftCheckBoxNo.current.checked = true;
+                                     giftCheckBoxNo.current.checked = true;
                                     chackedGift(e, formik.values);
                                     // alert(
                                     //   "PLEASE CHECK IS THIS ORDER A GIFT? "
