@@ -12,7 +12,7 @@ import sha512 from "js-sha512";
 import * as Yup from "yup";
 import TextError from "../../components/TextError";
 
-function Shopping({weightData}) {
+function Shopping({ weightData }) {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
   const giftAddress = useRef(null);
@@ -28,23 +28,29 @@ function Shopping({weightData}) {
   const [shippingCharge, setShippingCharge] = useState(0);
   const { data: session, status } = useSession();
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if(item?.length > 0){
-      let data = []
-      let shipping = 0
-      for(let i = 0; i < item?.length; i++){
-        let filterData = weightData.filter(a => a._id === item[i]?.weight_type)
-        data.push({...item[i], shippingAmount: filterData[0].shipping_amount || 0})
-        shipping += Number(filterData[0].shipping_amount || 0) * (item[i]?.quantity || 0) 
+    if (item?.length > 0) {
+      let data = [];
+      let shipping = 0;
+      for (let i = 0; i < item?.length; i++) {
+        let filterData = weightData.filter(
+          (a) => a._id === item[i]?.weight_type
+        );
+        data.push({
+          ...item[i],
+          shippingAmount: filterData[0].shipping_amount || 0,
+        });
+        shipping +=
+          Number(filterData[0].shipping_amount || 0) * (item[i]?.quantity || 0);
       }
-      setProducts(data)
-      setShippingCharge(shipping)
+      setProducts(data);
+      setShippingCharge(shipping);
     } else {
-      setProducts([])
+      setProducts([]);
     }
-  }, [item])
+  }, [item]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -68,57 +74,57 @@ function Shopping({weightData}) {
   };
 
   const chackedGift = (e, values) => {
-    if (e.target.id === "flexCheckCheckedNo") {
-      giftAddress.current.classList.add("hiddGiftAddress");
-      giftAddress.current.classList.remove("visibleGiftAddress");
-      // setShippingAddress({
-      //   gift_firstname: values?.first_name || '',
-      //   gift_lastname: values?.last_name || '',
-      //   gift_email: values?.email || '',
-      //   gift_mobile: values?.mobile || '',
-      //   gift_pincode: values?.pincode || '',
-      //   gift_address: values?.address || '',
-      //   gift_country: values?.country || '',
-      //   gift_city: values?.city || '',
-      //   gift_state: values?.state || '',
-      // });
-      values.gift_firstname = values.first_name;
-      values.gift_lastname = values.last_name;
-      values.gift_email = values.email;
-      values.gift_mobile = values.mobile;
-      values.gift_address = values.address;
-      values.gift_city = values.city;
-      values.gift_state = values.state;
-      values.gift_pincode = values.pincode;
-      values.gift_country = values.country;
-      setGiftMsg("Sender Address and Recipient address will be same");
-    }
-    if (e.target.id === "flexCheckCheckedYes") {
-      giftAddress.current.classList.remove("hiddGiftAddress");
-      giftAddress.current.classList.add("visibleGiftAddress");
-      values.gift_firstname = "";
-      values.gift_lastname = "";
-      values.gift_email = "";
-      values.gift_mobile = "";
-      values.gift_address = "";
-      values.gift_city = "";
-      values.gift_state = "";
-      values.gift_pincode = "";
-      values.gift_country = "";
-      setShippingAddress({
-        gift_firstname: "",
-        gift_lastname: "",
-        gift_email: "",
-        gift_mobile: "",
-        gift_pincode: "",
-        gift_address: "",
-        gift_country: "",
-        gift_city: "",
-        gift_state: "",
-      });
-      console.log("cart2 shipping add values is: ", values);
-      setGiftMsg("");
-    }
+    // if (e.target.id === "flexCheckCheckedNo") {
+    giftAddress.current.classList.add("hiddGiftAddress");
+    giftAddress.current.classList.remove("visibleGiftAddress");
+    // setShippingAddress({
+    //   gift_firstname: values?.first_name || '',
+    //   gift_lastname: values?.last_name || '',
+    //   gift_email: values?.email || '',
+    //   gift_mobile: values?.mobile || '',
+    //   gift_pincode: values?.pincode || '',
+    //   gift_address: values?.address || '',
+    //   gift_country: values?.country || '',
+    //   gift_city: values?.city || '',
+    //   gift_state: values?.state || '',
+    // });
+    values.gift_firstname = values.first_name;
+    values.gift_lastname = values.last_name;
+    values.gift_email = values.email;
+    values.gift_mobile = values.mobile;
+    values.gift_address = values.address;
+    values.gift_city = values.city;
+    values.gift_state = values.state;
+    values.gift_pincode = values.pincode;
+    values.gift_country = values.country;
+    setGiftMsg("Sender Address and Recipient address will be same");
+    // }
+    // if (e.target.id === "flexCheckCheckedYes") {
+    //   giftAddress.current.classList.remove("hiddGiftAddress");
+    //   giftAddress.current.classList.add("visibleGiftAddress");
+    //   values.gift_firstname = "";
+    //   values.gift_lastname = "";
+    //   values.gift_email = "";
+    //   values.gift_mobile = "";
+    //   values.gift_address = "";
+    //   values.gift_city = "";
+    //   values.gift_state = "";
+    //   values.gift_pincode = "";
+    //   values.gift_country = "";
+    //   setShippingAddress({
+    //     gift_firstname: "",
+    //     gift_lastname: "",
+    //     gift_email: "",
+    //     gift_mobile: "",
+    //     gift_pincode: "",
+    //     gift_address: "",
+    //     gift_country: "",
+    //     gift_city: "",
+    //     gift_state: "",
+    //   });
+    //   console.log("cart2 shipping add values is: ", values);
+    //   setGiftMsg("");
+    // }
   };
   // End shipping Address
 
@@ -170,8 +176,8 @@ function Shopping({weightData}) {
     gift_country: Yup.string().required("This field is required"),
   });
 
-  
   const onSubmit = async (values, onSubmitProps) => {
+    console.log("cart2 shipping add values is: ", values);
     user.billingAddress = [
       {
         full_name: values?.first_name + " " + values?.last_name || "",
@@ -322,7 +328,7 @@ function Shopping({weightData}) {
       setStep(1);
       return;
     }
-  
+
     let result = [];
     let products_id = [];
 
@@ -334,7 +340,7 @@ function Shopping({weightData}) {
         price: val.price,
         discount_value: val.discount,
         gst_amount: val.gst_amount * val.quantity,
-        taxable_amount: val.taxable_amount * val.quantity
+        taxable_amount: val.taxable_amount * val.quantity,
       });
       products_id.push(val.product?._id);
     });
@@ -348,7 +354,9 @@ function Shopping({weightData}) {
     // }
     const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
       products: result,
-      total_amount: data.reduce((a, v) => (a = a + v.price * v.quantity), 0) + shippingCharge,
+      total_amount:
+        data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+        shippingCharge,
       total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
       total_items: data?.length || 1,
       total_shippingAmount: shippingCharge,
@@ -362,13 +370,17 @@ function Shopping({weightData}) {
 
     if (createOrder.data) {
       const hashPayload = {
-        key: "fkU5mt", //"oZ7oo9", //"gtKFFx", 
-        txnid: 'txnid-'+ Date.now().toString()+'-'+ createOrder.data.data._id,
-        amount:data.reduce((a, v) => (a = a + v.price * v.quantity), 0) + shippingCharge - (promoValue?.value || 0),
+        key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
+        txnid:
+          "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+          shippingCharge -
+          (promoValue?.value || 0),
         productinfo: result,
         firstname: user?.first_Name || user?.full_Name,
         email: user?.email,
-        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O", 
+        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O",
       };
       const hash = sha512(
         `${hashPayload.key}|${hashPayload.txnid}|${
@@ -383,7 +395,8 @@ function Shopping({weightData}) {
       form.amount.value = hashPayload.amount;
       form.email.value = hashPayload.email;
       form.phone.value = user?.mobile || billingAddress?.mobile;
-      form.firstname.value = hashPayload.firstname || billingAddress?.first_name;
+      form.firstname.value =
+        hashPayload.firstname || billingAddress?.first_name;
       form.lastname.value = billingAddress?.last_name;
       form.city.value = billingAddress?.city;
       form.state.value = billingAddress?.state;
@@ -429,7 +442,6 @@ function Shopping({weightData}) {
         type="hidden"
         name="furl"
         value="https://www.chhattisgarhherbals.org/api/order/paymentFailed"
-
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />
@@ -481,9 +493,9 @@ function Shopping({weightData}) {
                         className="card-container card-div"
                         style={{ height: "450px", overflow: "auto" }}
                       >
-                         {products.map((elem, index) => {
-                            return <Item key={index} {...elem}/>;
-                          })}
+                        {products.map((elem, index) => {
+                          return <Item key={index} {...elem} />;
+                        })}
                         <div className="text-start text-uppercase fw-lighter mt-lg-4">
                           <span
                             className="text-decoration-underline cursor-pointer"
@@ -734,7 +746,7 @@ function Shopping({weightData}) {
                               </Col>
                             </Row>
 
-                            <p
+                            {/* <p
                               style={{
                                 color: "#5ABF77",
                                 fontWeight: "bold",
@@ -743,9 +755,9 @@ function Shopping({weightData}) {
                               className="mt-3"
                             >
                               IS THIS ORDER A GIFT?
-                            </p>
+                            </p> */}
 
-                            {/* <Row className="w-25 ms-2">
+                            <Row className="w-25 ms-2 hidden">
                               <Col className="d-flex mb-1">
                                 <div className="form-check">
                                   <input
@@ -786,7 +798,7 @@ function Shopping({weightData}) {
                                   </label>
                                 </div>
                               </Col>
-                            </Row> */}
+                            </Row>
 
                             <div ref={giftAddress} className="giftaddressForm">
                               <p className="mt-2 lableFontWeight fs-5">
@@ -1171,7 +1183,7 @@ function Shopping({weightData}) {
                       <div className="d-flex justify-content-between">
                         <div>
                           <p className="order-summary-p1 text-uppercase">
-                            SHIPPING  
+                            SHIPPING
                           </p>
                         </div>
                         <div>
@@ -1216,7 +1228,8 @@ function Shopping({weightData}) {
                           {promoValue ? (
                             <p className="fw-bold order-summary-p2">
                               {" "}
-                              ₹ {totalAmount + shippingCharge - promoValue.value}
+                              ₹{" "}
+                              {totalAmount + shippingCharge - promoValue.value}
                             </p>
                           ) : (
                             <p className="fw-bold order-summary-p2">
@@ -1252,13 +1265,18 @@ function Shopping({weightData}) {
                                 type="submit"
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
-                                // onClick={()=>{
-                                //   let checkeddNO = giftCheckBoxNo?.current?.checked
-                                //   let checkeddYES = giftCheckBoxYes?.current?.checked
-                                //   if(!checkeddNO && !checkeddYES){
-                                //     alert("PLEASE CHECK IS THIS ORDER A GIFT? ")
-                                //   }
-                                // }}
+                                onClick={() => {
+                                  chackedGift(e, formik.values);
+                                  // let checkeddNO =
+                                  //   giftCheckBoxNo?.current?.checked;
+                                  // let checkeddYES =
+                                  //   giftCheckBoxYes?.current?.checked;
+                                  // if (!checkeddNO && !checkeddYES) {
+                                  //   alert(
+                                  //     "PLEASE CHECK IS THIS ORDER A GIFT? "
+                                  //   );
+                                  // }
+                                }}
                               >
                                 CHECKOUT
                               </button>
@@ -1405,7 +1423,6 @@ function Shopping({weightData}) {
 }
 
 export default Shopping;
-
 
 export async function getServerSideProps(context) {
   const response = await fetch(`${apipath}/api/v1/units/weight/list`);
