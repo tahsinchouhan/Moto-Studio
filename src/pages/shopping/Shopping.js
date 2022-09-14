@@ -745,7 +745,7 @@ function Shopping({ weightData }) {
                               </Col>
                             </Row>
 
-                            <p
+                            {/* <p
                               style={{
                                 color: "#5ABF77",
                                 fontWeight: "bold",
@@ -754,11 +754,11 @@ function Shopping({ weightData }) {
                               className="mt-3"
                             >
                               IS THIS ORDER A GIFT?
-                            </p>
+                            </p> */}
 
-                            <Row className="w-25 ms-2">
+                            <Row className="w-25 ms-2 invisible">
                               <Col className="d-flex mb-1">
-                                <div className="form-check">
+                                <div className="form-check invisible">
                                   <input
                                     className="form-check-input"
                                     type="radio"
@@ -778,7 +778,7 @@ function Shopping({ weightData }) {
                                 </div>
                               </Col>
                               <Col className="d-flex">
-                                <div className="form-check">
+                                <div className="form-check invisible">
                                   <input
                                     className="form-check-input"
                                     type="radio"
