@@ -176,6 +176,30 @@ function Shopping({ weightData }) {
     gift_country: Yup.string().required("This field is required"),
   });
 
+  const token = async () => {
+    try {
+      const res = await fetch(
+        "https://apiv2.shiprocket.in/v1/external/auth/login",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: "bd.bhuwnesh@gmail.com",
+            password: "123456",
+          }),
+        }
+      );
+
+      const data = await res?.json();
+      localStorage.setItem("ship-token", data.token);
+      return data.token;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const onSubmit = async (values, onSubmitProps) => {
     user.billingAddress = [
       {
@@ -416,27 +440,11 @@ function Shopping({ weightData }) {
 
   // login to https://apiv2.shiprocket.in/v1/external/auth/login with email bd.bhuwnesh@gmail.com and pasword 123456 and get token
 
-  const token = async () => {
-    const res = await fetch(
-      "https://apiv2.shiprocket.in/v1/external/auth/login",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "bd.bhuwnesh@gmail.com",
-          password: "123456",
-        }),
-      }
-    );
-    const data = await res.json();
-    localStorage.setItem("ship-token", data.token);
-  };
   const ShipRocket = async (createOrder) => {
     const data = createOrder.data.data;
-    const token = localStorage.getItem("ship-token");
+    // const token = localStorage.getItem("ship-token");
+    const token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzYwNjE4LCJleHAiOjE2NjUyMjQ2MTgsIm5iZiI6MTY2NDM2MDYxOCwianRpIjoiMUZNaTJKclVLanlOc0lJRSJ9.PA-SO18YxuZnNnQwPwttfjKED81ZAIo_JUl4s-Y6to4";
     await fetch(
       "https://apiv2.shiprocket.in/v1/external/orders/create/adhoc",
 
@@ -1345,7 +1353,6 @@ function Shopping({ weightData }) {
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
                                 onClick={() => {
-                                  token();
                                   if (!user) {
                                     router.push("/auth/Login");
                                   }
