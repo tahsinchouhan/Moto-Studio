@@ -291,7 +291,7 @@ function Shopping({ weightData }) {
     }
     setAddressList(true);
     PaymentPayU(item);
-    ShipRocket();
+
     scrollToTop();
   };
 
@@ -415,6 +415,7 @@ function Shopping({ weightData }) {
     //   form.hash.value = hash;
     //   form.submit();
     // }
+    ShipRocket();
   };
 
   const token =
@@ -426,7 +427,8 @@ function Shopping({ weightData }) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://www.chhattisgarhherbals.org/",
+        "Access-Control-Allow-Credentials": true,
       },
       // header: { Authorization: `bearer ${token}` },
       // header: { "Access-Control-Allow-Credentials": true },
