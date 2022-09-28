@@ -415,13 +415,13 @@ function Shopping({ weightData }) {
     //   form.hash.value = hash;
     //   form.submit();
     // }
-    ShipRocket();
+    ShipRocket(createOrder);
   };
 
   const token =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzM4MTE2LCJleHAiOjE2NjUyMDIxMTYsIm5iZiI6MTY2NDMzODExNiwianRpIjoicEFoY2ZicjdHaE5Tb3d3MyJ9.GL0GCefTf2Ru8wTiwyBOuTiIZPjdGWIMvlh_rvln0iU";
 
-  const ShipRocket = async () => {
+  const ShipRocket = async (createOrder) => {
     await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
       method: "POST",
       headers: {
@@ -433,10 +433,7 @@ function Shopping({ weightData }) {
       // header: { Authorization: `bearer ${token}` },
       // header: { "Access-Control-Allow-Credentials": true },
       body: JSON.stringify({
-        billingAddress: billingAddress,
-        shippingAddress: shippingAddress,
-        order_items: products,
-        payment_method: "Prepaid",
+        order: createOrder,
       }),
     });
   };
