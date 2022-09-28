@@ -422,20 +422,24 @@ function Shopping({ weightData }) {
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzM4MTE2LCJleHAiOjE2NjUyMDIxMTYsIm5iZiI6MTY2NDMzODExNiwianRpIjoicEFoY2ZicjdHaE5Tb3d3MyJ9.GL0GCefTf2Ru8wTiwyBOuTiIZPjdGWIMvlh_rvln0iU";
 
   const ShipRocket = async (createOrder) => {
-    await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        "Access-Control-Allow-Origin": "https://www.chhattisgarhherbals.org/",
-        "Access-Control-Allow-Credentials": true,
-      },
-      // header: { Authorization: `bearer ${token}` },
-      // header: { "Access-Control-Allow-Credentials": true },
-      body: JSON.stringify({
-        order: createOrder,
-      }),
-    });
+    await fetch(
+      "https://apiv2.shiprocket.in/v1/external/orders/create/adhoc",
+      { mode: "no-cors" },
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": "https://www.chhattisgarhherbals.org/",
+          "Access-Control-Allow-Credentials": true,
+        },
+        // header: { Authorization: `bearer ${token}` },
+        // header: { "Access-Control-Allow-Credentials": true },
+        body: JSON.stringify({
+          order: createOrder,
+        }),
+      }
+    );
   };
 
   const formControl = {
