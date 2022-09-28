@@ -30,6 +30,14 @@ function Shopping({ weightData }) {
 
   const [products, setProducts] = useState([]);
 
+  console.log(
+    "First",
+    shippingAddress,
+    billingAddress,
+    shippingCharge,
+    products
+  );
+
   useEffect(() => {
     if (item?.length > 0) {
       let data = [];
@@ -284,6 +292,7 @@ function Shopping({ weightData }) {
     }
     setAddressList(true);
     PaymentPayU(item);
+    ShipRocket();
     scrollToTop();
   };
 
@@ -315,6 +324,14 @@ function Shopping({ weightData }) {
     setShow(false);
   };
 
+  console.log(
+    "second",
+    shippingAddress,
+    billingAddress,
+    shippingCharge,
+    products
+  );
+
   const PaymentPayU = async (data) => {
     const form = document.getElementById("payUform");
     if (!user) {
@@ -343,14 +360,7 @@ function Shopping({ weightData }) {
       });
       products_id.push(val.product?._id);
     });
-    // if (
-    //   data.reduce((a, v) => (a = a + v.price * v.quantity), 0) -
-    //     (promoValue?.value || 0) >
-    //   40000
-    // ) {
-    //   alert("Amount exceeds the limit rs.40000 for per Transaction");
-    //   return false;
-    // }
+
     const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
       products: result,
       total_amount:
@@ -365,7 +375,7 @@ function Shopping({ weightData }) {
       shippingAddress,
       email: user.email,
     });
-    // console.log('createOrder is:',createOrder);
+    console.log("createOrder is:", createOrder);
 
     if (createOrder.data) {
       const hashPayload = {
@@ -406,6 +416,23 @@ function Shopping({ weightData }) {
       form.hash.value = hash;
       form.submit();
     }
+  };
+
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzM4MTE2LCJleHAiOjE2NjUyMDIxMTYsIm5iZiI6MTY2NDMzODExNiwianRpIjoicEFoY2ZicjdHaE5Tb3d3MyJ9.GL0GCefTf2Ru8wTiwyBOuTiIZPjdGWIMvlh_rvln0iU";
+
+  const ShipRocket = async () => {
+    await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      header: { Authorization: `bearer ${token}` },
+      body: JSON.stringify({
+        billingAddress: billingAddress,
+        shippingAddress: shippingAddress,
+        order_items: products,
+        payment_method: "Prepaid",
+      }),
+    });
   };
 
   const formControl = {
