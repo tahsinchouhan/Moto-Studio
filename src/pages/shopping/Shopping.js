@@ -8,7 +8,6 @@ import { CardContext } from "../../components/Layout";
 import { apipath } from "../api/apiPath";
 
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import sha512 from "js-sha512";
 import * as Yup from "yup";
 import TextError from "../../components/TextError";
 
@@ -377,45 +376,45 @@ function Shopping({ weightData }) {
     });
     console.log("createOrder is:", createOrder);
 
-    if (createOrder.data) {
-      const hashPayload = {
-        key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
-        txnid:
-          "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
-        amount:
-          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
-          shippingCharge -
-          (promoValue?.value || 0),
-        productinfo: result,
-        firstname: user?.first_Name || user?.full_Name,
-        email: user?.email,
-        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O",
-      };
-      const hash = sha512(
-        `${hashPayload.key}|${hashPayload.txnid}|${
-          hashPayload.amount
-        }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-          hashPayload.email
-        }|||||||||||${hashPayload.SALT}`
-      );
-      form.key.value = hashPayload.key;
-      form.txnid.value = hashPayload.txnid;
-      form.productinfo.value = hashPayload.productinfo.toString();
-      form.amount.value = hashPayload.amount;
-      form.email.value = hashPayload.email;
-      form.phone.value = user?.mobile || billingAddress?.mobile;
-      form.firstname.value =
-        hashPayload.firstname || billingAddress?.first_name;
-      form.lastname.value = billingAddress?.last_name;
-      form.city.value = billingAddress?.city;
-      form.state.value = billingAddress?.state;
-      form.country.value = billingAddress?.country;
-      form.zipcode.value = billingAddress?.pincode;
-      form.address1.value = JSON.stringify(billingAddress);
-      form.address2.value = JSON.stringify(shippingAddress);
-      form.hash.value = hash;
-      form.submit();
-    }
+    // if (createOrder.data) {
+    //   const hashPayload = {
+    //     key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
+    //     txnid:
+    //       "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
+    //     amount:
+    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+    //       shippingCharge -
+    //       (promoValue?.value || 0),
+    //     productinfo: result,
+    //     firstname: user?.first_Name || user?.full_Name,
+    //     email: user?.email,
+    //     SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O",
+    //   };
+    //   const hash = sha512(
+    //     `${hashPayload.key}|${hashPayload.txnid}|${
+    //       hashPayload.amount
+    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+    //       hashPayload.email
+    //     }|||||||||||${hashPayload.SALT}`
+    //   );
+    //   form.key.value = hashPayload.key;
+    //   form.txnid.value = hashPayload.txnid;
+    //   form.productinfo.value = hashPayload.productinfo.toString();
+    //   form.amount.value = hashPayload.amount;
+    //   form.email.value = hashPayload.email;
+    //   form.phone.value = user?.mobile || billingAddress?.mobile;
+    //   form.firstname.value =
+    //     hashPayload.firstname || billingAddress?.first_name;
+    //   form.lastname.value = billingAddress?.last_name;
+    //   form.city.value = billingAddress?.city;
+    //   form.state.value = billingAddress?.state;
+    //   form.country.value = billingAddress?.country;
+    //   form.zipcode.value = billingAddress?.pincode;
+    //   form.address1.value = JSON.stringify(billingAddress);
+    //   form.address2.value = JSON.stringify(shippingAddress);
+    //   form.hash.value = hash;
+    //   form.submit();
+    // }
   };
 
   const token =
@@ -424,9 +423,13 @@ function Shopping({ weightData }) {
   const ShipRocket = async () => {
     await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      header: { Authorization: `bearer ${token}` },
-      header: { "Access-Control-Allow-Credentials": true },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
+      },
+      // header: { Authorization: `bearer ${token}` },
+      // header: { "Access-Control-Allow-Credentials": true },
       body: JSON.stringify({
         billingAddress: billingAddress,
         shippingAddress: shippingAddress,
