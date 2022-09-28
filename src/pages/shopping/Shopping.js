@@ -181,8 +181,8 @@ function Shopping({ weightData }) {
       const res = await fetch(
         "https://apiv2.shiprocket.in/v1/external/auth/login",
         {
+          credentials: "include",
           method: "POST",
-          mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
           },
