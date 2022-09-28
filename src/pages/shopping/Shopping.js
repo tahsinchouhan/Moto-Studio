@@ -426,6 +426,7 @@ function Shopping({ weightData }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       header: { Authorization: `bearer ${token}` },
+      header: { "Access-Control-Allow-Credentials": true },
       body: JSON.stringify({
         billingAddress: billingAddress,
         shippingAddress: shippingAddress,
