@@ -424,8 +424,9 @@ function Shopping({ weightData }) {
   const ShipRocket = async (createOrder) => {
     await fetch(
       "https://apiv2.shiprocket.in/v1/external/orders/create/adhoc",
-      { mode: "no-cors" },
+
       {
+        mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -433,6 +434,7 @@ function Shopping({ weightData }) {
           "Access-Control-Allow-Origin": "https://www.chhattisgarhherbals.org/",
           "Access-Control-Allow-Credentials": true,
         },
+
         // header: { Authorization: `bearer ${token}` },
         // header: { "Access-Control-Allow-Credentials": true },
         body: JSON.stringify({
