@@ -441,6 +441,7 @@ function Shopping({ weightData }) {
   // login to https://apiv2.shiprocket.in/v1/external/auth/login with email bd.bhuwnesh@gmail.com and pasword 123456 and get token
 
   const ShipRocket = async (createOrder) => {
+    console.log("createOrder is:", createOrder);
     const data = createOrder.data.data;
     // const token = localStorage.getItem("ship-token");
     const token =
@@ -511,6 +512,7 @@ function Shopping({ weightData }) {
         }),
       }
     );
+    console.log("shiprocket data is:", data);
   };
 
   const formControl = {
