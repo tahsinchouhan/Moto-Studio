@@ -176,7 +176,7 @@ function Shopping({ weightData }) {
     gift_country: Yup.string().required("This field is required"),
   });
 
-  const token = async () => {
+  const getToken = async () => {
     try {
       const res = await fetch(
         "https://apiv2.shiprocket.in/v1/external/auth/login",
@@ -444,9 +444,8 @@ function Shopping({ weightData }) {
   const ShipRocket = async (createOrder) => {
     console.log("createOrder is:", createOrder);
     const data = createOrder.data.data;
-    const token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzYwNjE4LCJleHAiOjE2NjUyMjQ2MTgsIm5iZiI6MTY2NDM2MDYxOCwianRpIjoiMUZNaTJKclVLanlOc0lJRSJ9.PA-SO18YxuZnNnQwPwttfjKED81ZAIo_JUl4s-Y6to4";
-
+    const token = await getToken();
+    console.log("token is:", token);
     await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
       method: "POST",
       headers: {
