@@ -461,6 +461,9 @@ function Shopping({ weightData }) {
         },
 
         header: { Authorization: `bearer ${token}` },
+        header: {
+          mode: "no-cors",
+        },
         // header: { "Access-Control-Allow-Credentials": true },
         body: JSON.stringify({
           order_id: data.order_id,
