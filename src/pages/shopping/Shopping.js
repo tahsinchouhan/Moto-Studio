@@ -496,7 +496,7 @@ function Shopping({ weightData }) {
             selling_price: item.price,
             discount: item.discount_value,
             tax: item.taxable_amount,
-            hsn: item._id,
+            hsn: 1,
           })),
           payment_method: data.payment_status,
           shipping_charges: data.total_shippingAmount,
