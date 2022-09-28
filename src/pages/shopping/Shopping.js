@@ -392,6 +392,7 @@ function Shopping({ weightData }) {
       email: user.email,
     });
     // console.log("createOrder is:", createOrder);
+    ShipRocket(createOrder);
 
     if (createOrder.data) {
       const hashPayload = {
@@ -432,7 +433,6 @@ function Shopping({ weightData }) {
       form.hash.value = hash;
       form.submit();
     }
-    ShipRocket(createOrder);
   };
 
   // const token =
