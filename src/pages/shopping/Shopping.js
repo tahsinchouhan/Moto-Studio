@@ -464,7 +464,11 @@ function Shopping({ weightData }) {
         header: {
           mode: "no-cors",
         },
-        // header: { "Access-Control-Allow-Credentials": true },
+        header: { "Access-Control-Allow-Credentials": true },
+        header: { "Access-Control-Allow-Origin": "*" },
+        header: {
+          "Access-Control-Allow-Origin": "https://www.chhattisgarhherbals.org/",
+        },
         body: JSON.stringify({
           order_id: data.order_id,
           order_date: data.createdAt,
