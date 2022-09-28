@@ -1,4 +1,5 @@
 import axios from "axios";
+import sha512 from "js-sha512";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -28,14 +29,6 @@ function Shopping({ weightData }) {
   const { data: session, status } = useSession();
 
   const [products, setProducts] = useState([]);
-
-  // console.log(
-  //   "First",
-  //   shippingAddress,
-  //   billingAddress,
-  //   shippingCharge,
-  //   products
-  // );
 
   useEffect(() => {
     if (item?.length > 0) {
