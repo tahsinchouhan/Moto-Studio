@@ -1,17 +1,17 @@
-import { useState, useEffect, useContext } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
-import ButtonDark from "../../components/button/ButtonDark";
+import { useContext, useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import image1 from "../../assets/images/product/placeholder.png";
+import ButtonDark from "../../components/button/ButtonDark";
 // import Popup from "./PopUp";
-import { MdLocalShipping } from "react-icons/md";
-import { AiFillPlusCircle } from "react-icons/ai";
-import { apipath } from "../api/apiPath";
-import { CardContext } from "../../components/Layout";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { MdLocalShipping } from "react-icons/md";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { CardContext } from "../../components/Layout";
+import { apipath } from "../api/apiPath";
 
 function ProductDetail({ productData }) {
   // const [showPopuUp, setShowPopUp] = useState(false);
@@ -43,8 +43,8 @@ function ProductDetail({ productData }) {
   }, []);
 
   useEffect(() => {
-    setSelectedWeight(productData.weight[0])
-  }, [productData])
+    setSelectedWeight(productData.weight[0]);
+  }, [productData]);
 
   return (
     <>
@@ -266,7 +266,7 @@ function ProductDetail({ productData }) {
                     className="me-1"
                     style={{ fontSize: "16px" }}
                   />{" "}
-                  Free shipping across India, and a risk-free quality guarantee!
+                  Shipping Charges : 60 Rs for 500g
                 </p>
 
                 <p className="popup-paragraph2 fw-bold">PRODUCT INFORMATION</p>

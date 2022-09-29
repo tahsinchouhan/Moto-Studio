@@ -1,20 +1,18 @@
-import { useState, useEffect, useContext } from "react";
-import { Row, Col, Container } from "react-bootstrap";
 import Image from "next/image";
-import ButtonDark from "../../components/button/ButtonDark";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import ButtonLight from "../../components/button/ButtonLight";
+import Modal from "react-bootstrap/Modal";
 import { AiFillPlusCircle } from "react-icons/ai";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
-import Popup from "./PopUp";
-import { useRouter } from "next/router";
-import { apipath } from "../api/apiPath";
+import filterlogo from "../../assets/img/filter.png";
+import ButtonDark from "../../components/button/ButtonDark";
+import ButtonLight from "../../components/button/ButtonLight";
 import { CardContext } from "../../components/Layout";
 import Skeleton from "../../components/Skeleton";
-import Modal from "react-bootstrap/Modal";
-import { GrSort } from "react-icons/gr";
-import filterlogo from "../../assets/img/filter.png";
 import useWindowSize from "../../hooks/useWindowSize";
+import { apipath } from "../api/apiPath";
 
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -475,7 +473,7 @@ function Products() {
                 {/* <div> */}
                 <div className="product-38">
                   <span className="product-38-product">
-                   First {productData?.length} Products
+                    First {productData?.length} Products
                   </span>
                   <div className="product-sort-select">
                     <span className="product-sort-by">SORT BY</span>
@@ -529,7 +527,7 @@ function Products() {
                               className="w-100"
                               width={"300px"}
                               height={"300px"}
-                              objectFit="fill"
+                              objectFit="cover"
                             />
                           </div>
 
