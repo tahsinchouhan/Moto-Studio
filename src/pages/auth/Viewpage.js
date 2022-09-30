@@ -5,11 +5,8 @@ import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
 
 function Viewpage({ productData }) {
-  console.log("productData", productData);
-
   const { user } = useContext(CardContext);
   const id = productData?._id || "";
-  console.log("id", id);
   const CancelOrder = async () => {
     try {
       const response = await fetch(
@@ -23,7 +20,7 @@ function Viewpage({ productData }) {
         }
       );
       const result = await response.json();
-      console.log("result", result);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +39,7 @@ function Viewpage({ productData }) {
         }
       );
       const result = await response.json();
-      console.log("result", result);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -132,6 +129,7 @@ function Viewpage({ productData }) {
             mobile: {productData?.shippingAddress?.mobile || user?.mobile}{" "}
             <br />
             <strong>Payment Status: {productData?.payment_status || ""}</strong>
+            <br />
             <strong>
               Order Status: {productData?.order_status?.status || ""}
             </strong>

@@ -32,7 +32,6 @@ function OrderHistory() {
     getOrderHistory();
   }, [user_id]);
 
-  console.log("orderList", orderList);
   const toggleExpander = (id) => {
     fetch(apipath + `/api/v1/order/${id}`)
       .then((res) => res.json())
