@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import Viewpage from "./Viewpage";
-import { apipath } from "../api/apiPath";
 import { CardContext } from "../../components/Layout";
+import { apipath } from "../api/apiPath";
+import Viewpage from "./Viewpage";
 // import ButtonDark from "../../components/button/ButtonDark"
 
 function OrderHistory() {
@@ -13,7 +13,7 @@ function OrderHistory() {
   const [orderList, setOrderList] = useState(null);
 
   const { user } = useContext(CardContext);
-  const user_id = user?._id || '';
+  const user_id = user?._id || "";
 
   useEffect(() => {
     const getOrderHistory = async () => {
@@ -32,6 +32,7 @@ function OrderHistory() {
     getOrderHistory();
   }, [user_id]);
 
+  console.log("orderList", orderList);
   const toggleExpander = (id) => {
     fetch(apipath + `/api/v1/order/${id}`)
       .then((res) => res.json())
@@ -42,7 +43,8 @@ function OrderHistory() {
         } else {
           setExpanded({ expandedId: id, status: false });
         }
-      }).catch(error => console.log(error))
+      })
+      .catch((error) => console.log(error));
   };
 
   const orderViewHandler = () => {
@@ -80,7 +82,7 @@ function OrderHistory() {
           </div>
           <hr />
           {orderList?.length > 0 &&
-            orderList.map((order) => {              
+            orderList.map((order) => {
               return [
                 <div className="row mb-1 " key={order._id}>
                   <div className="col col-md-3 col-lg-3 col-xl-3">
@@ -112,8 +114,10 @@ function OrderHistory() {
                     </div>
                   </div>
                 </div>,
-                expanded.status && expanded.expandedId === order._id && (<Viewpage key={`detail`} productData = {viewDetail} />)
-              ]
+                expanded.status && expanded.expandedId === order._id && (
+                  <Viewpage key={`detail`} productData={viewDetail} />
+                ),
+              ];
             })}
 
           <hr />

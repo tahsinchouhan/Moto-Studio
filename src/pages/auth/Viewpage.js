@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
 import Image from "next/image";
-import flower from "../../../public/images/flower.png";
+import Link from "next/link";
+import React, { useContext } from "react";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
-import Link from "next/link";
 
 function Viewpage({ productData }) {
+  console.log("productData", productData);
 
   const { user } = useContext(CardContext);
 
@@ -30,55 +30,92 @@ function Viewpage({ productData }) {
       </div>
       <hr />
       {productData?.products_?.map((product) => {
-        return <div key={product?._id}>
-          <div className="row">
-            <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
-              <div className="d-flex p-1">              
+        return (
+          <div key={product?._id}>
+            <div className="row">
+              <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div className="d-flex p-1">
+                  <div>
+                    <Image
+                      src={
+                        product.product_id?.images?.length > 0
+                          ? product.product_id?.images[0]?.img ||
+                            ProductImageOne
+                          : ProductImageOne
+                      }
+                      alt=""
+                      width={136}
+                      height={130}
+                    />
+                  </div>
+                  <div className="p-3">
+                    <span>{product?.product_id?.title || ""}</span>
+                    <p className="dreaming-midnight-x1">
+                      {product?.product_id?.category?.category_name}
+                    </p>
+                    <p className="dreaming-midnight-x1">
+                      {product?.product_id?.SKU_Number}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col col-sm-12 col-md-3 col-lg-3 col-xl-3">
                 <div>
-                  <Image src={product.product_id?.images?.length > 0 ? product.product_id?.images[0]?.img || ProductImageOne : ProductImageOne} alt="" width={136} height={130} />
-                </div>
-                <div className="p-3">
-                  <span>{product?.product_id?.title || ''}</span>
-                  <p className="dreaming-midnight-x1">{product?.product_id?.category?.category_name}</p>
-                  <p className="dreaming-midnight-x1">{product?.product_id?.SKU_Number}</p>
+                  <span>{product?.quantity || ""}</span>
                 </div>
               </div>
-            </div>
-            <div className="col col-sm-12 col-md-3 col-lg-3 col-xl-3">
-              <div>
-                <span>{product?.quantity || ''}</span>
+              <div className="col col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div>
+                  <span>₹ {product?.price || ""}</span>
+                </div>
               </div>
             </div>
-            <div className="col col-sm-12 col-md-3 col-lg-3 col-xl-3">
-              <div>
-                <span>₹ {product?.price || ''}</span>
-              </div>
-            </div>
-        </div>
-        <hr/>
-        </div>
+            <hr />
+          </div>
+        );
       })}
 
       <div className="shipping-details border-bottom border-secondary pt-3 text-muted">
         <h4 className="fw-bold">Shipping Details:</h4>
         <div className="d-flex justify-content-between align-items-center flex-wrap">
           <div>
-            <strong>Recipient:</strong><br/>
-            Name: {productData?.shippingAddress.full_name || user?.full_Name} <br/>                         
-            address: {productData?.shippingAddress?.address || user?.address || ''} {productData?.shippingAddress?.city || ''}, {productData?.shippingAddress?.state || ''} - {productData?.shippingAddress?.pincode || ''}<br/>              
-            mobile: {productData?.shippingAddress?.mobile || user?.mobile} <br/>
-            <strong>Payment Status: {productData?.payment_status || ''}</strong>
+            <strong>Recipient:</strong>
+            <br />
+            Name: {productData?.shippingAddress.full_name ||
+              user?.full_Name}{" "}
+            <br />
+            address:{" "}
+            {productData?.shippingAddress?.address || user?.address || ""}{" "}
+            {productData?.shippingAddress?.city || ""},{" "}
+            {productData?.shippingAddress?.state || ""} -{" "}
+            {productData?.shippingAddress?.pincode || ""}
+            <br />
+            mobile: {productData?.shippingAddress?.mobile || user?.mobile}{" "}
+            <br />
+            <strong>Payment Status: {productData?.payment_status || ""}</strong>
           </div>
+          {
+            <div>
+              <strong>Cancel Order</strong>
+              <br />
+              <Link href="/cancel-order">
+                <a className="btn btn-danger">Cancel Order</a>
+              </Link>
+            </div>
+            
+          }
           {productData?.tracking.length > 0 ? (
             <div>
-              
-            <p>
-              Tracking Code: {productData?.tracking[0]?.code || ''} <br/>
-              <Link href={productData?.tracking[0]?.url || ''}>
-                <a className="btn btn-info btn-sm text-white" target="_blank">Track Order</a>
-              </Link>
-            </p>
-            </div>) : null }
+              <p>
+                Tracking Code: {productData?.tracking[0]?.code || ""} <br />
+                <Link href={productData?.tracking[0]?.url || ""}>
+                  <a className="btn btn-info btn-sm text-white" target="_blank">
+                    Track Order
+                  </a>
+                </Link>
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
