@@ -144,6 +144,16 @@ function Viewpage({ productData }) {
           ) : (
             ""
           )}
+          {productData?.order_status?.status == "Processing" ? (
+            <div>
+              <br />
+              <button onClick={CancelOrder} className="btn btn-danger">
+                Cancel Order
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
 
           {productData?.order_status?.status == "Delevired" ? (
             <div>
