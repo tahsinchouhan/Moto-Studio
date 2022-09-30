@@ -6,11 +6,11 @@ import { CardContext } from "../../components/Layout";
 
 function Viewpage({ productData }) {
   const { user } = useContext(CardContext);
+  const id = productData?._id || "";
+
   const [retunIssue, setReturnIssue] = useState("");
 
   console.log(retunIssue);
-
-  const id = productData?._id || "";
   const CancelOrder = async () => {
     try {
       const response = await fetch(
@@ -151,9 +151,21 @@ function Viewpage({ productData }) {
           )}
           {productData?.order_status?.status == "Processing" ? (
             <div>
+              <br />
+              <button onClick={CancelOrder} className="btn btn-danger">
+                Cancel Order
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+
+          {productData?.order_status?.status == "Delevired" ? (
+            <div>
               <select
                 onChange={(e) => {
                   setReturnIssue(e.target.value);
+                  ReturnOrder();
                 }}
                 name="return_reason"
                 id=""
@@ -165,17 +177,6 @@ function Viewpage({ productData }) {
                 <option value="WrongProduct">Wrong Product</option>
                 <option value="Other">Other</option>
               </select>
-            </div>
-          ) : (
-            ""
-          )}
-
-          {productData?.order_status?.status == "Delevired" ? (
-            <div>
-              <br />
-              <button onClick={ReturnOrder} className="btn btn-danger">
-                Return Order
-              </button>
             </div>
           ) : (
             ""
