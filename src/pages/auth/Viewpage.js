@@ -169,7 +169,7 @@ function Viewpage({ productData }) {
                 }}
                 name="return_reason"
                 id=""
-                className="btn btn-primary"
+                className="btn"
               >
                 <option defaultValue>Cancel Order</option>
                 <option value="Damaged">Product Damaged </option>
