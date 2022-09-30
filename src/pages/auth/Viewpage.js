@@ -8,6 +8,45 @@ function Viewpage({ productData }) {
   console.log("productData", productData);
 
   const { user } = useContext(CardContext);
+  const id = productData?._id || "";
+  console.log("id", id);
+  const CancelOrder = async () => {
+    try {
+      const response = await fetch(
+        `https://api.cgherbals.shop/api/v1/order/update/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            order_status: "633707861e92d82174a69159",
+          }),
+        }
+      );
+      const result = await response.json();
+      console.log("result", result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const ReturnOrder = async () => {
+    try {
+      const response = await fetch(
+        `https://api.cgherbals.shop/api/v1/order/update/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            order_status: "63370b741e92d82174a69191",
+          }),
+        }
+      );
+      const result = await response.json();
+      console.log("result", result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -93,17 +132,31 @@ function Viewpage({ productData }) {
             mobile: {productData?.shippingAddress?.mobile || user?.mobile}{" "}
             <br />
             <strong>Payment Status: {productData?.payment_status || ""}</strong>
+            <strong>
+              Order Status: {productData?.order_status?.status || ""}
+            </strong>
           </div>
-          {
+          {productData?.order_status?.status == "Placed" ? (
             <div>
-              <strong>Cancel Order</strong>
               <br />
-              <Link href="/cancel-order">
-                <a className="btn btn-danger">Cancel Order</a>
-              </Link>
+              <button onClick={CancelOrder} className="btn btn-danger">
+                Cancel Order
+              </button>
             </div>
-            
-          }
+          ) : (
+            ""
+          )}
+
+          {productData?.order_status?.status == "Delevired" ? (
+            <div>
+              <br />
+              <button onClick={ReturnOrder} className="btn btn-danger">
+                Return Order
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
           {productData?.tracking.length > 0 ? (
             <div>
               <p>
