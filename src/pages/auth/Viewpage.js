@@ -1,11 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
 
 function Viewpage({ productData }) {
   const { user } = useContext(CardContext);
+  const [retunIssue, setReturnIssue] = useState("");
+
+  console.log(retunIssue);
+
   const id = productData?._id || "";
   const CancelOrder = async () => {
     try {
@@ -35,6 +39,7 @@ function Viewpage({ productData }) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             order_status: "63370b741e92d82174a69191",
+            return_reason: retunIssue,
           }),
         }
       );
@@ -146,10 +151,20 @@ function Viewpage({ productData }) {
           )}
           {productData?.order_status?.status == "Processing" ? (
             <div>
-              <br />
-              <button onClick={CancelOrder} className="btn btn-danger">
-                Cancel Order
-              </button>
+              <select
+                onChange={(e) => {
+                  setReturnIssue(e.target.value);
+                }}
+                name="return_reason"
+                id=""
+                className="btn btn-danger"
+              >
+                <option defaultValue>Cancel Order</option>
+                <option value="Damaged">Product Damaged </option>
+                <option value="Defective">Quality Issue </option>
+                <option value="WrongProduct">Wrong Product</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
           ) : (
             ""
