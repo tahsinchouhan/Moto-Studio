@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
+import { apipath } from "../api/apiPath";
 
 function Viewpage({ productData }) {
   const { user } = useContext(CardContext);
@@ -15,16 +16,13 @@ function Viewpage({ productData }) {
   console.log(retunIssue);
   const CancelOrder = async () => {
     try {
-      const response = await fetch(
-        `https://api.cgherbals.shop/api/v1/order/update/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            order_status: "633707861e92d82174a69159",
-          }),
-        }
-      );
+      const response = await fetch(apipath + `/api/v1/order/update/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          order_status: "633707861e92d82174a69159",
+        }),
+      });
       const result = await response.json();
       window.location.reload();
     } catch (error) {
@@ -34,17 +32,14 @@ function Viewpage({ productData }) {
 
   const ReturnOrder = async () => {
     try {
-      const response = await fetch(
-        `https://api.cgherbals.shop/api/v1/order/update/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            order_status: "63370b741e92d82174a69191",
-            return_reason: retunIssue,
-          }),
-        }
-      );
+      const response = await fetch(apipath + `/api/v1/order/update/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          order_status: "63370b741e92d82174a69191",
+          return_reason: retunIssue,
+        }),
+      });
       const result = await response.json();
       toast("Email Send To Support Successfully");
       window.location.reload();
