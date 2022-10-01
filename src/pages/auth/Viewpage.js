@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
 
@@ -44,6 +46,7 @@ function Viewpage({ productData }) {
         }
       );
       const result = await response.json();
+      toast("Email Send To Support Successfully");
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -53,6 +56,8 @@ function Viewpage({ productData }) {
   return (
     <div>
       <div className="row">
+        <ToastContainer />
+
         <div className="col col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <div>
             <span className="cart-detail-title">ORDER NO.</span>

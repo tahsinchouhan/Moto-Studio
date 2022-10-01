@@ -368,24 +368,24 @@ function Shopping({ weightData }) {
         product_id: val.product?._id,
         weight_type: val.weight_type,
         quantity: val.quantity,
-        // price: val.price,
-        // discount_value: val.discount,
-        // gst_amount: val.gst_amount * val.quantity,
-        // taxable_amount: val.taxable_amount * val.quantity,
-        price: "1",
-        discount_value: "1",
-        gst_amount: "1",
-        taxable_amount: "1",
+        price: val.price,
+        discount_value: val.discount,
+        gst_amount: val.gst_amount * val.quantity,
+        taxable_amount: val.taxable_amount * val.quantity,
+        // price: "1",
+        // discount_value: "1",
+        // gst_amount: "1",
+        // taxable_amount: "1",
       });
       products_id.push(val.product?._id);
     });
 
     const createOrder = await axios.post(`${apipath}/api/v1/order/create`, {
       products: result,
-      // total_amount:
-      //   data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
-      //   shippingCharge,
-      total_amount: "1",
+      total_amount:
+        data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+        shippingCharge,
+      // total_amount: "1",
       total_quantity: data.reduce((a, v) => (a = a + v.quantity), 0),
       total_items: data?.length || 1,
       total_shippingAmount: shippingCharge,
@@ -403,11 +403,11 @@ function Shopping({ weightData }) {
         key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
         txnid:
           "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
-        // amount:
-        //   data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
-        //   shippingCharge -
-        //   (promoValue?.value || 0),\
-        amount: "1",
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+          shippingCharge -
+          (promoValue?.value || 0),
+        // amount: "1",
         productinfo: result,
         firstname: user?.first_Name || user?.full_Name,
         email: user?.email,
