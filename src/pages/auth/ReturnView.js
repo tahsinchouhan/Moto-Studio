@@ -6,7 +6,7 @@ import ProductImageOne from "../../assets/images/product/placeholder.png";
 import { CardContext } from "../../components/Layout";
 import { apipath } from "../api/apiPath";
 
-function Viewpage({ productData }) {
+function ReturnView({ productData }) {
   const { user } = useContext(CardContext);
   const id = productData?._id || "";
 
@@ -47,6 +47,12 @@ function Viewpage({ productData }) {
     }
   };
 
+  // filter product data by payment_status
+  const filterData = productData?.order_items.filter(
+    (item) => item.payment_status === "success"
+  );
+
+  console.log(filterData);
   return (
     <div>
       <div className="row">
@@ -69,7 +75,7 @@ function Viewpage({ productData }) {
         </div>
       </div>
       <hr />
-      {productData?.products_?.map((product) => {
+      {filterData?.products_?.map((product) => {
         return (
           <div key={product?._id}>
             <div className="row">
@@ -121,48 +127,24 @@ function Viewpage({ productData }) {
           <div>
             <strong>Recipient:</strong>
             <br />
-            Name: {productData?.shippingAddress.full_name ||
+            Name: {filterData?.shippingAddress.full_name ||
               user?.full_Name}{" "}
             <br />
             address:{" "}
-            {productData?.shippingAddress?.address || user?.address || ""}{" "}
-            {productData?.shippingAddress?.city || ""},{" "}
-            {productData?.shippingAddress?.state || ""} -{" "}
-            {productData?.shippingAddress?.pincode || ""}
+            {filterData?.shippingAddress?.address || user?.address || ""}{" "}
+            {filterData?.shippingAddress?.city || ""},{" "}
+            {filterData?.shippingAddress?.state || ""} -{" "}
+            {filterData?.shippingAddress?.pincode || ""}
             <br />
-            mobile: {productData?.shippingAddress?.mobile || user?.mobile}{" "}
-            <br />
-            <strong>Payment Status: {productData?.payment_status || ""}</strong>
+            mobile: {filterData?.shippingAddress?.mobile || user?.mobile} <br />
+            <strong>Payment Status: {filterData?.payment_status || ""}</strong>
             <br />
             <strong>
-              Order Status: {productData?.order_status?.status || ""}
+              Order Status: {filterData?.order_status?.status || ""}
             </strong>
           </div>
-          {productData?.order_status?.status == "Placed" &&
-          productData?.payment_status == "Success" ? (
-            <div>
-              <br />
-              <button onClick={CancelOrder} className="btn btn-danger">
-                Cancel Order
-              </button>
-            </div>
-          ) : (
-            ""
-          )}
 
-          {productData?.order_status?.status == "Processing" &&
-          productData?.payment_status == "Success" ? (
-            <div>
-              <br />
-              <button onClick={CancelOrder} className="btn btn-danger">
-                Cancel Order
-              </button>
-            </div>
-          ) : (
-            ""
-          )}
-
-          {/* {productData?.order_status?.status == "Delevired" ? (
+          {filterData?.order_status?.status == "Delevired" ? (
             <div>
               <select
                 onChange={(e) => {
@@ -172,6 +154,9 @@ function Viewpage({ productData }) {
                 name="return_reason"
                 id=""
                 className="btn"
+                style={{
+                  border: "2px solid gray",
+                }}
               >
                 <option defaultValue>Cancel Order</option>
                 <option value="Damaged">Product Damaged </option>
@@ -183,24 +168,10 @@ function Viewpage({ productData }) {
           ) : (
             ""
           )}
-
-
-          {productData?.tracking.length > 0 ? (
-            <div>
-              <p>
-                Tracking Code: {productData?.tracking[0]?.code || ""} <br />
-                <Link href={productData?.tracking[0]?.url || ""}>
-                  <a className="btn btn-info btn-sm text-white" target="_blank">
-                    Track Order
-                  </a>
-                </Link>
-              </p>
-            </div>
-          ) : null} */}
         </div>
       </div>
     </div>
   );
 }
 
-export default Viewpage;
+export default ReturnView;

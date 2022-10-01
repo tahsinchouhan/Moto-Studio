@@ -11,6 +11,7 @@ import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
 import TextError from "../../components/TextError";
 import { apipath } from "../api/apiPath";
+import OrderReturn from "./OrderReturn";
 
 function UserProfile() {
   const router = useRouter();
@@ -156,24 +157,6 @@ function UserProfile() {
                     <div className="user-Hr d-none d-md-block">
                       <hr />
                     </div>
-                    {/* <Row>
-                      <Col>
-                        <div
-                          className={
-                            profileActive == 1 ? "active-color" : "User-Profile"
-                          }
-                          onClick={() => setProfileActive(1)}
-                        >
-                          <span className="user-payment-methods">
-                            Payment Methods
-                          </span>
-                          <BsChevronRight />
-                        </div>
-                      </Col>
-                    </Row> */}
-                    {/* <div className="user-Hr">
-                      <hr />
-                    </div> */}
 
                     <Row className="py-2">
                       <Col>
@@ -191,7 +174,7 @@ function UserProfile() {
                     <div className="user-Hr d-none d-md-block">
                       <hr />
                     </div>
-                    {/*                     
+
                     <Row>
                       <Col>
                         <div
@@ -200,11 +183,11 @@ function UserProfile() {
                           }
                           onClick={() => setProfileActive(3)}
                         >
-                          <span>Support</span>
+                          <span>Return Order</span>
                           <BsChevronRight />
                         </div>
                       </Col>
-                    </Row> */}
+                    </Row>
                   </div>
                 </div>
               </Col>
@@ -591,7 +574,7 @@ function UserProfile() {
                 )}
                 {/* {profileActive == 1 ?  <><PaymentMethods/></>:"" } */}
                 {profileActive == 2 ? <OrderHistory /> : ""}
-                {/* {profileActive == 3 ? "o3hrpqi3hfnkwa" : ""} */}
+                {profileActive == 3 ? <OrderReturn /> : ""}
               </Col>
             </Row>
           </div>
