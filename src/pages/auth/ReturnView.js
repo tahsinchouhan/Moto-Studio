@@ -163,10 +163,13 @@ function ReturnView({ productData }) {
                 id=""
                 className="btn"
                 style={{
-                  border: "2px solid gray",
+                  border: "1px solid gray",
+                  padding: "0 2px",
                 }}
               >
-                <option defaultValue>Cancel Order</option>
+                <option defaultValue disabled>
+                  Return Order
+                </option>
                 <option value="Damaged">Product Damaged </option>
                 <option value="Defective">Quality Issue </option>
                 <option value="WrongProduct">Wrong Product</option>
