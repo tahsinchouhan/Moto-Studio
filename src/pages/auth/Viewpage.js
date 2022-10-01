@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -197,6 +198,18 @@ function Viewpage({ productData }) {
               </p>
             </div>
           ) : null} */}
+          {productData?.tracking.length > 0 ? (
+            <div>
+              <p>
+                Tracking Code: {productData?.tracking[0]?.code || ""} <br />
+                <Link href={productData?.tracking[0]?.url || ""}>
+                  <a className="btn btn-info btn-sm text-white" target="_blank">
+                    Track Order
+                  </a>
+                </Link>
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
