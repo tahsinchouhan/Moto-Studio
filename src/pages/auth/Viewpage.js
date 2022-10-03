@@ -161,7 +161,7 @@ function Viewpage({ productData }) {
             ""
           )}
 
-          {/* {productData?.order_status?.status == "Delevired" ? (
+          {productData?.order_status?.status == "Delevired" ? (
             <div>
               <select
                 onChange={(e) => {
@@ -183,19 +183,6 @@ function Viewpage({ productData }) {
             ""
           )}
 
-
-          {productData?.tracking.length > 0 ? (
-            <div>
-              <p>
-                Tracking Code: {productData?.tracking[0]?.code || ""} <br />
-                <Link href={productData?.tracking[0]?.url || ""}>
-                  <a className="btn btn-info btn-sm text-white" target="_blank">
-                    Track Order
-                  </a>
-                </Link>
-              </p>
-            </div>
-          ) : null} */}
           {productData?.tracking.length > 0 ? (
             <div>
               <p>
@@ -208,6 +195,18 @@ function Viewpage({ productData }) {
               </p>
             </div>
           ) : null}
+          {/* {productData?.tracking.length > 0 ? (
+            <div>
+              <p>
+                Tracking Code: {productData?.tracking[0]?.code || ""} <br />
+                <Link href={productData?.tracking[0]?.url || ""}>
+                  <a className="btn btn-info btn-sm text-white" target="_blank">
+                    Track Order
+                  </a>
+                </Link>
+              </p>
+            </div>
+          ) : null} */}
         </div>
       </div>
     </div>
