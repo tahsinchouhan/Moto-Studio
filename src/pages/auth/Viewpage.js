@@ -139,8 +139,7 @@ function Viewpage({ productData }) {
               Order Status: {productData?.order_status?.status || ""}
             </strong>
           </div>
-          {productData?.order_status?.status == "Placed" &&
-          productData?.payment_status == "Success" ? (
+          {productData?.order_status?.status == "Placed" ? (
             <div>
               <br />
               <button onClick={CancelOrder} className="btn btn-danger">
@@ -151,8 +150,7 @@ function Viewpage({ productData }) {
             ""
           )}
 
-          {productData?.order_status?.status == "Processing" &&
-          productData?.payment_status == "Success" ? (
+          {productData?.order_status?.status == "Processing" ? (
             <div>
               <br />
               <button onClick={CancelOrder} className="btn btn-danger">
