@@ -141,6 +141,7 @@ function ReturnView({ productData }) {
               Order Status: {productData?.order_status?.status || ""}
             </strong>
           </div>
+
           {productData?.tracking.length > 0 ? (
             <div>
               <p>
@@ -154,7 +155,7 @@ function ReturnView({ productData }) {
             </div>
           ) : null}
 
-          {productData?.order_status?.status == "Delevired" ? (
+          {productData?.order_status?.status == "Delivered" ? (
             <div>
               <select
                 onChange={(e) => {
