@@ -152,33 +152,29 @@ function ReturnView({ productData }) {
             </div>
           ) : null}
 
-          {productData?.order_status?.status == "Delevired" ? (
-            <div>
-              <select
-                onChange={(e) => {
-                  setReturnIssue(e.target.value);
-                  ReturnOrder();
-                }}
-                name="return_reason"
-                id=""
-                className="btn"
-                style={{
-                  border: "1px solid gray",
-                  padding: "0 2px",
-                }}
-              >
-                <option defaultValue disabled>
-                  Return Order
-                </option>
-                <option value="Damaged">Product Damaged </option>
-                <option value="Defective">Quality Issue </option>
-                <option value="WrongProduct">Wrong Product</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          ) : (
-            ""
-          )}
+          <div>
+            <select
+              onChange={(e) => {
+                setReturnIssue(e.target.value);
+                ReturnOrder();
+              }}
+              name="return_reason"
+              id=""
+              className="btn"
+              style={{
+                border: "1px solid gray",
+                padding: "0 2px",
+              }}
+            >
+              <option defaultValue disabled>
+                Return Order
+              </option>
+              <option value="Damaged">Product Damaged </option>
+              <option value="Defective">Quality Issue </option>
+              <option value="WrongProduct">Wrong Product</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
