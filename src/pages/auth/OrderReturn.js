@@ -51,9 +51,6 @@ function OrderReturn() {
     console.log("orderViewHandler...");
   };
 
-  const filter = orderList.filter((order) => order.payment_status === "sucess");
-  console.log(filter);
-
   return (
     <div>
       <Container>

@@ -139,6 +139,7 @@ function Viewpage({ productData }) {
               Order Status: {productData?.order_status?.status || ""}
             </strong>
           </div>
+
           {productData?.order_status?.status == "Placed" ? (
             <div>
               <br />
@@ -161,7 +162,7 @@ function Viewpage({ productData }) {
             ""
           )}
 
-          {productData?.order_status?.status == "Delevired" ? (
+          {/* {productData?.order_status?.status == "Delevired" ? (
             <div>
               <select
                 onChange={(e) => {
@@ -181,7 +182,7 @@ function Viewpage({ productData }) {
             </div>
           ) : (
             ""
-          )}
+          )} */}
 
           {productData?.tracking.length > 0 ? (
             <div>
