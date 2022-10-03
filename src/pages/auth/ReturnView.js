@@ -48,6 +48,8 @@ function ReturnView({ productData }) {
     }
   };
 
+  console.log(productData);
+
   return (
     <div>
       <div className="row">
