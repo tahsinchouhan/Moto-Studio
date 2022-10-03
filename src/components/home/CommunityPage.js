@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
-import Imageone from "../../assets/images/home/444.png";
+import { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 // import Imagetwo from "../../assets/images/home/Imagetwo.png";
 // import Imagethree from "../../assets/images/home/Imagethree.png";
 // import Imagefour from "../../assets/images/home/Imagefour.png";
@@ -145,7 +144,7 @@ function CommunityPage() {
 
           <Row className="m-0">
             {community.length &&
-              community.map((row) => {
+              community.map((row, index) => {
                 return (
                   <Col lg={4} md={6} className="image1 Gallery" key={row?._id}>
                     <div
@@ -159,9 +158,10 @@ function CommunityPage() {
                     >
                       <Image
                         src={
-                          row?.images?.length
-                            ? row?.images[0]?.img || Imageone
-                            : Imageone
+                          // row?.images?.length
+                          //   ? row?.images[0]?.img || Imageone
+                          //   : Imageone
+                          `/images/${index}.jpg`
                         }
                         alt="Picture of the author"
                         // className="w-100"
