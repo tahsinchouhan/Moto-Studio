@@ -534,12 +534,12 @@ function Shopping({ weightData }) {
       <input
         type="hidden"
         name="surl"
-        value="https://www.chhattisgarhherbals.org/api/order/OrderConfirmed"
+        value="https://www.chhattisgarhherbal.com/api/order/OrderConfirmed"
       />
       <input
         type="hidden"
         name="furl"
-        value="https://www.chhattisgarhherbals.org/api/order/paymentFailed"
+        value="https://www.chhattisgarhherbal.com/api/order/paymentFailed"
       />
       <input type="hidden" name="phone" />
       <input type="hidden" name="hash" />
