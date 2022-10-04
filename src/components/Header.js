@@ -1,21 +1,15 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
-import Link from "next/link";
-import { BsSearch, BsFillCartFill, BsX } from "react-icons/bs";
 import Image from "next/image";
+import Link from "next/link";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { BsFillCartFill, BsSearch, BsX } from "react-icons/bs";
 // import logo from "/public/images/CGHerbalsLogo.png";
 import logo from "/public/images/logo.png";
 // import menubar from "../../public/images/MenuBurger.png";
-import { CardContext } from "../components/Layout";
-import { useSession, signOut } from "next-auth/react";
-import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { AiOutlineClose, AiOutlineMenuFold } from "react-icons/ai";
+import { CardContext } from "../components/Layout";
 import { apipath } from "../pages/api/apiPath";
 
 function Header() {
@@ -439,7 +433,15 @@ function Header() {
                     }`}
                   />{" "}
                   {totalItem ? (
-                    <span className="total-cart-item">{totalItem || ""}</span>
+                    <span
+                      className="total-cart-item"
+                      style={{
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {totalItem || ""}
+                    </span>
                   ) : null}
                 </a>
               </Link>
