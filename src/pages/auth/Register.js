@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { getProviders, signIn } from "next-auth/react";
-import Image from "next/image";
+import { getProviders } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -20,6 +19,7 @@ function Register() {
   const [message, setMessage] = useState(null);
   const router = useRouter();
 
+  console.log("providers", providers);
   useEffect(() => {
     (async () => {
       const res = await getProviders();
@@ -213,14 +213,6 @@ function Register() {
                               </button>
                             </div>
                           </div>
-                          <div className="col-md-12 d-flex align-items-center mt-4">
-                            <span className="fw-bold">
-                              Already Register? &nbsp;
-                              <Link href="/auth/Login">
-                                <a className="text-success">LOGIN NOW</a>
-                              </Link>
-                            </span>
-                          </div>
                         </div>
                       </div>
                     </Col>
@@ -230,15 +222,15 @@ function Register() {
                     <Col md={4}>
                       <div
                         className="divider position-relative mt-5"
-                        style={{ height: 50 }}
+                        style={{ height: 20 }}
                       >
                         <hr />
                         <span
                           className="position-absolute"
                           style={{
                             width: 50,
-                            height: 50,
-                            lineHeight: "50px",
+                            height: 20,
+                            lineHeight: "20px",
                             textAlign: "center",
                             top: "-50%",
                             left: "50%",
@@ -249,8 +241,15 @@ function Register() {
                           OR
                         </span>
                       </div>
-
-                      {providers && (
+                      <div className="col-md-12 d-flex align-items-center mt-4">
+                        <span className="fw-bold">
+                          Already Register? &nbsp;
+                          <Link href="/auth/Login">
+                            <a className="text-success">LOGIN NOW</a>
+                          </Link>
+                        </span>
+                      </div>
+                      {/* {providers && (
                         <div className="social-login-btn d-flex justify-content-center">
                           {Object?.values(providers).map((provider) => {
                             if (provider.id === "credentials") return false;
@@ -288,7 +287,7 @@ function Register() {
                             );
                           })}
                         </div>
-                      )}
+                      )} */}
                     </Col>
                   </Row>
                 </Form>

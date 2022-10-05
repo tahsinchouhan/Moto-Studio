@@ -1,15 +1,12 @@
-import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 // import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { apipath } from "../api/apiPath";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { getProviders, getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import TextError from "../../components/TextError";
 import * as Yup from "yup";
-import ButtonDark from "../../components/button/ButtonDark";
 import { CardContext } from "../../components/Layout";
-import { signIn, getProviders, getSession } from "next-auth/react";
-import Image from "next/image";
+import TextError from "../../components/TextError";
 
 export default function Login() {
   const [message, setMessage] = useState(null);
@@ -23,7 +20,6 @@ export default function Login() {
     loginFailure,
     fetchCartData,
   } = useContext(CardContext);
-
 
   useEffect(() => {
     if (isLogin) {
@@ -92,7 +88,7 @@ export default function Login() {
       //     password: values.password,
       //   }),
       // });
-      
+
       // const userSignin = async()=>{
       //   try {
       //     const result = await response.json();
@@ -109,7 +105,6 @@ export default function Login() {
       //   }
       // }
       // userSignin()
-
     } catch (error) {
       console.log(error);
       setMessage(error.response.data.message);
@@ -224,15 +219,15 @@ export default function Login() {
 
                       <div
                         className="divider position-relative mt-5"
-                        style={{ height: 50 }}
+                        style={{ height: 20 }}
                       >
                         <hr style={{ color: "#000" }} />
                         <span
                           className="position-absolute"
                           style={{
                             width: 50,
-                            height: 50,
-                            lineHeight: "50px",
+                            height: 20,
+                            lineHeight: "20px",
                             textAlign: "center",
                             top: "-50%",
                             left: "50%",
@@ -244,7 +239,7 @@ export default function Login() {
                         </span>
                       </div>
 
-                      {providers && (
+                      {/* {providers && (
                         <div className="social-login-btn d-flex justify-content-center">
                           {Object?.values(providers).map((provider) => {
                             if (provider.id === "credentials") return false;
@@ -287,14 +282,14 @@ export default function Login() {
                             );
                           })}
                         </div>
-                      )}
+                      )} */}
 
                       <div className="forgot-div text-center fw-bold mt-5">
                         <span>
                           Don’t have an Account? &nbsp;
                           <Link href="/auth/Register">
                             <a
-                              className="fw-bold text-black"
+                              className="fw-bold text-black "
                               style={{ textDecoration: "underline !important" }}
                             >
                               SIGN UP here
