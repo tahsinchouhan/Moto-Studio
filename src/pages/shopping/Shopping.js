@@ -470,7 +470,6 @@ function Shopping({ weightData }) {
             Authorization: `Bearer ${Token}`,
           },
           body: JSON.stringify({
-            token: Token,
             order_id: data.order_id,
             order_date: data.createdAt,
             pickup_location: "Sundar Nagar",
