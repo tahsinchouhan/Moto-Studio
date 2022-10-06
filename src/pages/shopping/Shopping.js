@@ -8,9 +8,9 @@ import { CardContext } from "../../components/Layout";
 import { apipath } from "../api/apiPath";
 // import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import sha512 from "js-sha512";
 import * as Yup from "yup";
 import TextError from "../../components/TextError";
-
 function Shopping({ weightData }) {
   const { user, item, totalAmount, totalItem, fetchCartData, clearCart } =
     useContext(CardContext);
