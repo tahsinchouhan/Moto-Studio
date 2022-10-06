@@ -178,9 +178,7 @@ function Shopping({ weightData }) {
   const getToken = async () => {
     try {
       // const res = await fetch(apipath + `/api/v1/order/shiprocket/token`);
-      const res = await fetch(
-        `http://localhost:3019/api/v1/order/shiprocket/token`
-      );
+      const res = await fetch(apipath + `/api/v1/order/shiprocket/token`);
       const data = await res.json();
       setToken(data.data.token);
       localStorage.setItem("ship-token", data.data.token);
@@ -189,25 +187,6 @@ function Shopping({ weightData }) {
     }
   };
 
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       email: "bd.bhuwnesh@gmail.com",
-  //       password: "123456",
-  //     }),
-  //   }
-  // );
-
-  //     const data = await res?.json();
-  //     localStorage.setItem("ship-token", data.token);
-  //     return data.token;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   const onSubmit = async (values, onSubmitProps) => {
     user.billingAddress = [
       {
@@ -348,14 +327,6 @@ function Shopping({ weightData }) {
     setShow(false);
   };
 
-  // console.log(
-  //   "second",
-  //   shippingAddress,
-  //   billingAddress,
-  //   shippingCharge,
-  //   products
-  // );
-
   const PaymentPayU = async (data) => {
     const form = document.getElementById("payUform");
     if (!user) {
@@ -405,119 +376,110 @@ function Shopping({ weightData }) {
       email: user.email,
     });
     console.log("createOrder is:", createOrder);
+
+    if (createOrder.data) {
+      const hashPayload = {
+        key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
+        txnid:
+          "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
+        amount:
+          data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
+          shippingCharge -
+          (promoValue?.value || 0),
+        // amount: "1",
+        productinfo: result,
+        firstname: user?.first_Name || user?.full_Name,
+        email: user?.email,
+        SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O",
+      };
+      const hash = sha512(
+        `${hashPayload.key}|${hashPayload.txnid}|${
+          hashPayload.amount
+        }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
+          hashPayload.email
+        }|||||||||||${hashPayload.SALT}`
+      );
+      form.key.value = hashPayload.key;
+      form.txnid.value = hashPayload.txnid;
+      form.productinfo.value = hashPayload.productinfo.toString();
+      form.amount.value = hashPayload.amount;
+      form.email.value = hashPayload.email;
+      form.phone.value = user?.mobile || billingAddress?.mobile;
+      form.firstname.value =
+        hashPayload.firstname || billingAddress?.first_name;
+      form.lastname.value = billingAddress?.last_name;
+      form.city.value = billingAddress?.city;
+      form.state.value = billingAddress?.state;
+      form.country.value = billingAddress?.country;
+      form.zipcode.value = billingAddress?.pincode;
+      form.address1.value = JSON.stringify(billingAddress);
+      form.address2.value = JSON.stringify(shippingAddress);
+      form.hash.value = hash;
+      form.submit();
+    }
+
     ShipRocket(createOrder);
-
-    // if (createOrder.data) {
-    //   const hashPayload = {
-    //     key: "fkU5mt", //"oZ7oo9", //"gtKFFx",
-    //     txnid:
-    //       "txnid-" + Date.now().toString() + "-" + createOrder.data.data._id,
-    //     amount:
-    //       data.reduce((a, v) => (a = a + v.price * v.quantity), 0) +
-    //       shippingCharge -
-    //       (promoValue?.value || 0),
-    //     // amount: "1",
-    //     productinfo: result,
-    //     firstname: user?.first_Name || user?.full_Name,
-    //     email: user?.email,
-    //     SALT: "ePEMLITZqPois1PMk19WjPiWTZ4k3l1Q", //"UkojH5TS", //"wia56q6O",
-    //   };
-    //   const hash = sha512(
-    //     `${hashPayload.key}|${hashPayload.txnid}|${
-    //       hashPayload.amount
-    //     }|${hashPayload.productinfo.toString()}|${hashPayload.firstname}|${
-    //       hashPayload.email
-    //     }|||||||||||${hashPayload.SALT}`
-    //   );
-    //   form.key.value = hashPayload.key;
-    //   form.txnid.value = hashPayload.txnid;
-    //   form.productinfo.value = hashPayload.productinfo.toString();
-    //   form.amount.value = hashPayload.amount;
-    //   form.email.value = hashPayload.email;
-    //   form.phone.value = user?.mobile || billingAddress?.mobile;
-    //   form.firstname.value =
-    //     hashPayload.firstname || billingAddress?.first_name;
-    //   form.lastname.value = billingAddress?.last_name;
-    //   form.city.value = billingAddress?.city;
-    //   form.state.value = billingAddress?.state;
-    //   form.country.value = billingAddress?.country;
-    //   form.zipcode.value = billingAddress?.pincode;
-    //   form.address1.value = JSON.stringify(billingAddress);
-    //   form.address2.value = JSON.stringify(shippingAddress);
-    //   form.hash.value = hash;
-    //   form.submit();
-    // }
   };
-
-  // const token =
-  //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MTU2MjQsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjY0MzM4MTE2LCJleHAiOjE2NjUyMDIxMTYsIm5iZiI6MTY2NDMzODExNiwianRpIjoicEFoY2ZicjdHaE5Tb3d3MyJ9.GL0GCefTf2Ru8wTiwyBOuTiIZPjdGWIMvlh_rvln0iU";
-
-  // login to https://apiv2.shiprocket.in/v1/external/auth/login with email bd.bhuwnesh@gmail.com and pasword 123456 and get token
 
   const ShipRocket = async (createOrder) => {
     console.log("createOrder is:", createOrder);
     const data = createOrder.data.data;
     const token = await getToken();
-    console.log("Token is:", Token);
     try {
-      // const res =  await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
-      const res = await fetch(
-        "http://localhost:3019/api/v1/order/shiprocket/order",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${Token}`,
-          },
-          body: JSON.stringify({
-            order_id: data.order_id,
-            order_date: data.createdAt,
-            pickup_location: "Sundar Nagar",
-            channel_id: "2939322",
-            comment: "",
-            billing_customer_name: data.billingAddress?.first_name,
-            billing_last_name: data.billingAddress?.last_name,
-            billing_address: data.billingAddress?.address,
-            billing_address_2: data.billingAddress?.address,
-            billing_city: data.billingAddress?.city,
-            billing_pincode: data.billingAddress?.pincode,
-            billing_state: data.billingAddress?.state,
-            billing_country: data.billingAddress?.country,
-            billing_email: data.billingAddress?.email,
-            billing_phone: data.billingAddress?.mobile,
-            shipping_is_billing: true,
-            shipping_customer_name: data.shippingAddress?.gift_firstname,
-            shipping_last_name: data.shippingAddress?.gift_lastname,
-            shipping_address: data.shippingAddress?.gift_address,
-            shipping_address_2: data.shippingAddress?.gift_address,
-            shipping_city: data.shippingAddress?.gift_city,
-            shipping_pincode: data.shippingAddress?.gift_pincode,
-            shipping_country: data.shippingAddress?.gift_country,
-            shipping_state: data.shippingAddress?.gift_state,
-            shipping_email: data.shippingAddress?.gift_email,
-            shipping_phone: data.shippingAddress?.gift_mobile,
-            order_items: data.products_.map((item) => ({
-              name: item.product_id,
-              sku: item._id,
-              units: item.quantity,
-              selling_price: item.price,
-              discount: item.discount_value,
-              tax: item.taxable_amount,
-              hsn: 1,
-            })),
-            payment_method: data.payment_status,
-            shipping_charges: data.total_shippingAmount,
-            giftwrap_charges: 0,
-            transaction_charges: 0,
-            total_discount: 0,
-            sub_total: data.total_amount,
-            length: 10,
-            breadth: 15,
-            height: 20,
-            weight: 2.5,
-          }),
-        }
-      );
+      const res = await fetch(`${apipath}/api/v1/order/shiprocket/order`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Token}`,
+        },
+        body: JSON.stringify({
+          order_id: data.order_id,
+          order_date: data.createdAt,
+          pickup_location: "Sundar Nagar",
+          channel_id: "2939322",
+          comment: "",
+          billing_customer_name: data.billingAddress?.first_name,
+          billing_last_name: data.billingAddress?.last_name,
+          billing_address: data.billingAddress?.address,
+          billing_address_2: data.billingAddress?.address,
+          billing_city: data.billingAddress?.city,
+          billing_pincode: data.billingAddress?.pincode,
+          billing_state: data.billingAddress?.state,
+          billing_country: data.billingAddress?.country,
+          billing_email: data.billingAddress?.email,
+          billing_phone: data.billingAddress?.mobile,
+          shipping_is_billing: true,
+          shipping_customer_name: data.shippingAddress?.gift_firstname,
+          shipping_last_name: data.shippingAddress?.gift_lastname,
+          shipping_address: data.shippingAddress?.gift_address,
+          shipping_address_2: data.shippingAddress?.gift_address,
+          shipping_city: data.shippingAddress?.gift_city,
+          shipping_pincode: data.shippingAddress?.gift_pincode,
+          shipping_country: data.shippingAddress?.gift_country,
+          shipping_state: data.shippingAddress?.gift_state,
+          shipping_email: data.shippingAddress?.gift_email,
+          shipping_phone: data.shippingAddress?.gift_mobile,
+          order_items: data.products_.map((item) => ({
+            name: item.product_id,
+            sku: item._id,
+            units: item.quantity,
+            selling_price: item.price,
+            discount: item.discount_value,
+            tax: item.taxable_amount,
+            hsn: 1,
+          })),
+          payment_method: data.payment_status,
+          shipping_charges: data.total_shippingAmount,
+          giftwrap_charges: 0,
+          transaction_charges: 0,
+          total_discount: 0,
+          sub_total: data.total_amount,
+          length: 10,
+          breadth: 15,
+          height: 20,
+          weight: 2.5,
+        }),
+      });
       const result = await res.json();
       console.log("shiprocket result is:", result);
     } catch (error) {
