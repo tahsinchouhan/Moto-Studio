@@ -57,7 +57,6 @@ function Products() {
   };
 
   const fetchData = async (query = "") => {
-    console.log(query, `rezwan`);
     setLoading(true);
     try {
       const res = await fetch(
