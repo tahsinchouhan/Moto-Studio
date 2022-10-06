@@ -27,7 +27,7 @@ function Shopping({ weightData }) {
   const [addressList, setAddressList] = useState(false);
   const [shippingCharge, setShippingCharge] = useState(0);
   const { data: session, status } = useSession();
-
+  const [Token, setToken] = useState("");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -178,27 +178,37 @@ function Shopping({ weightData }) {
 
   const getToken = async () => {
     try {
+      // const res = await fetch(apipath + `/api/v1/order/shiprocket/token`);
       const res = await fetch(
-        "https://apiv2.shiprocket.in/v1/external/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: "bd.bhuwnesh@gmail.com",
-            password: "123456",
-          }),
-        }
+        `http://localhost:3019/api/v1/order/shiprocket/token`
       );
-
-      const data = await res?.json();
-      localStorage.setItem("ship-token", data.token);
-      return data.token;
+      const data = await res.json();
+      setToken(data.data.token);
+      localStorage.setItem("ship-token", data.data.token);
     } catch (error) {
-      console.log(error);
+      console.log("error is: ", error);
     }
   };
+
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: "bd.bhuwnesh@gmail.com",
+  //       password: "123456",
+  //     }),
+  //   }
+  // );
+
+  //     const data = await res?.json();
+  //     localStorage.setItem("ship-token", data.token);
+  //     return data.token;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const onSubmit = async (values, onSubmitProps) => {
     user.billingAddress = [
       {
@@ -450,11 +460,12 @@ function Shopping({ weightData }) {
     const data = createOrder.data.data;
     const token = await getToken();
     console.log("token is:", token);
+    console.log("Token is:", Token);
     await fetch("https://apiv2.shiprocket.in/v1/external/orders/create/adhoc", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${Token}`,
       },
       body: JSON.stringify({
         order_id: data.order_id,
@@ -545,6 +556,7 @@ function Shopping({ weightData }) {
       <input type="hidden" name="hash" />
     </form>
   );
+
   return (
     <div>
       <Container className="shopping-container">
@@ -1347,6 +1359,7 @@ function Shopping({ weightData }) {
                                 style={{ backgroundColor: "#5ABF6B" }}
                                 className="w-100 py-2 text-white border-0"
                                 onClick={() => {
+                                  // getTokens();
                                   if (!user) {
                                     router.push("/auth/Login");
                                   }
