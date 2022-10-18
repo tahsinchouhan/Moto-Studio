@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Button from "../button/ButtonLight";
-import { apipath } from "../../pages/api/apiPath";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { apipath } from "../../pages/api/apiPath";
+import Button from "../button/ButtonLight";
 
 function HomeEmpower() {
   const [impoweredData, setImpoweredData] = useState({
@@ -57,7 +57,7 @@ function HomeEmpower() {
       </div>
       <style jsx>{`
         .home-empower-img {
-          background-image: url(${impoweredData?.backgroundImg});
+          background-image: url(/Picture/empower.png);
           background-size: cover;
         }
       `}</style>

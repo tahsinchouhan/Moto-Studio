@@ -5,7 +5,6 @@ import { useState } from "react";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
 import Slider from "react-slick/lib/slider";
-import emptyImage from "../../assets/images/product/placeholder.png";
 import VisitTheShop from "./VisitTheShop";
 
 function FeaturedProducts({ category }) {
@@ -55,8 +54,8 @@ function FeaturedProducts({ category }) {
         <div className="image-div1">
           <Slider {...settings}>
             {categories?.length &&
-              [...categories]?.reverse().map((cat) => {
-                console.log("cat :>> ", cat);
+              [...categories]?.reverse().map((cat, index) => {
+                console.log("cat :>> ", index);
                 return (
                   <div
                     className="image-div"
@@ -65,7 +64,7 @@ function FeaturedProducts({ category }) {
                   >
                     <div className="rounded-circle zoom-in-img-wrapper">
                       <Image
-                        src={cat?.images[0]?.img || emptyImage}
+                        src={`/Picture/${index + 1}.jpeg`}
                         alt="GourmetFoods"
                         className={`rounded-circle hover1 ${
                           selectedCat === cat._id ? "active" : ""

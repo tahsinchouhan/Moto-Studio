@@ -6,11 +6,8 @@ export default function index({ category }) {
   return (
     <>
       <Head>
-        <title>
-          Chhattisgarh Herbals | Official Website of Chhattisgarh Minor Forest
-          Produce Cooperative Federation
-        </title>
-        <meta property="og:title" content="cg herbal" key="title" />
+        <title>Moto Studio | Complete Car Care</title>
+        <meta property="og:title" content="Moto Studio" key="title" />
       </Head>
       <Home category={category} />
     </>

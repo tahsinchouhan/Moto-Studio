@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import Button from "../button/ButtonLight";
-import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
-import HomeHeaderMobile from "../../assets/images/home/HomepageMobile.jpg";
-import HomeHeaderDesktop from "../../assets/images/home/HomepageDesktop.jpg";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import HomeHeader from "../../assets/images/home/homeHeaderMobile.png";
 import { apipath } from "../../pages/api/apiPath";
-import Tangy from "../../assets/img/TangyTamarind.png";
-import TermaricP from "../../assets/img/TurmericPowder.png";
-import Tikhur from "../../assets/img/TikhurPowder.png";
-import ThikurS from "../../assets/img/ThikurSmall.png";
-import Ayush from "../../assets/img/AYUSH Products - Small Banner.jpg";
-import Gourment from "../../assets/img/Gourmet Foods - Small Banner.jpg";
-import Personal from "../../assets/img/Personal Care Products - Small Banner.jpg";
-import Premium from "../../assets/img/Premium Products - Small Banner.jpg";
+import Button from "../button/ButtonLight";
 
-function HomeHeaderImg({category} ) {
+function HomeHeaderImg({ category }) {
   const [banner, setBanner] = useState({
     bannerImg: HomeHeader,
     bannerTitle: "Purity that is Priceless",
@@ -55,7 +44,8 @@ function HomeHeaderImg({category} ) {
       <div
         className="home-head-img-mobile"
         style={{
-          backgroundImage: `url(${banner.bannerImg})`,
+          // backgroundImage: `url(${banner.bannerImg})`,
+          backgroundImage: `/public/images/carbanner.jpg`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "75% 100%",
@@ -126,7 +116,7 @@ function HomeHeaderImg({category} ) {
       <div
         className="home-head-img"
         style={{
-          backgroundImage: `url(${banner.bannerImg})`,
+          backgroundImage: `url(/images/carbanner.jpg)`,
           backgroundSize: "cover",
           imageRendering: "-webkit-optimize-contrast",
           imageRendering: "crisp-edges",
@@ -207,7 +197,7 @@ function HomeHeaderImg({category} ) {
           </Row>
         </div>
       </div>
-      
+
       <Row className="BannerBottomImagesRow mx-2" style={{ marginTop: "-5px" }}>
         <Col
           md={6}
@@ -216,7 +206,9 @@ function HomeHeaderImg({category} ) {
           <Link href={`/product/category/62eb7f05d7cf5491c3af7325`}>
             <div className="SubImageContainer">
               <Image
-                src={Premium}
+                src={"/Picture/1.jpeg"}
+                width={349}
+                height={190}
                 className=""
                 alt="ss"
                 style={{ width: "349px", height: "190px", objectFit: "cover" }}
@@ -229,11 +221,13 @@ function HomeHeaderImg({category} ) {
           md={6}
           className="BannerBottomImages px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile"
         >
-        {/*  */}
+          {/*  */}
           <Link href={`/product/category/61effa6f1a880a62b8284270`}>
             <div className="SubImageContainer">
               <Image
-                src={Ayush}
+                src={"/Picture/2.jpeg"}
+                width={349}
+                height={190}
                 className=""
                 alt="ss"
                 style={{ width: "349px", height: "190px", objectFit: "cover" }}
@@ -247,10 +241,11 @@ function HomeHeaderImg({category} ) {
           className="BannerBottomImages  px-2 mb-2 col-lg-3 BannerBottomImages-media-query-mobile-snav "
         >
           <Link href={`/product/category/61effa8d1a880a62b8284272`}>
-
             <div className="SubImageContainer">
               <Image
-                src={Personal}
+                src={"/Picture/3.jpeg"}
+                width={349}
+                height={190}
                 className=""
                 alt="ss"
                 style={{ width: "349px", height: "190px", objectFit: "cover" }}
@@ -265,10 +260,11 @@ function HomeHeaderImg({category} ) {
           className="BannerBottomImages px-2 col-lg-3 BannerBottomImages-media-query-mobile-tnav"
         >
           <Link href={`/product/category/61effaa01a880a62b8284274`}>
-
             <div className="SubImageContainer">
               <Image
-                src={Gourment}
+                src={"/Picture/4.jpeg"}
+                width={349}
+                height={190}
                 className=""
                 alt="ss"
                 style={{ width: "349px", height: "190px", objectFit: "cover" }}

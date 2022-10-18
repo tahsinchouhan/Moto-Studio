@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
-import Image from "next/image";
-import footerlogo from "../../../public/images/footerlogo.png";
-import { GrFacebook, GrInstagram, GrAmazon } from "react-icons/gr";
-import LastFooter from "./LastFooter";
-import { apipath } from "../../pages/api/apiPath";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { GrAmazon, GrFacebook, GrInstagram } from "react-icons/gr";
+import footerlogo from "../../../public/images/logo.png";
+import { apipath } from "../../pages/api/apiPath";
+import LastFooter from "./LastFooter";
 
 function CenterFooter() {
   const [category, setCategory] = useState([]);
@@ -48,17 +48,23 @@ function CenterFooter() {
                       <h6 className="footer-center-header ">SHOP</h6>
                       <div className="d-flex flex-column">
                         {category.length
-                          ? [...category].reverse().slice(1,5).map((cat, index) => (
-                            index>3 ? '':
-                              <Link
-                                href={`/product/category/${cat._id}`}
-                                key={cat._id}
-                              >
-                                <a className="footer-cg-para">
-                                  {cat.category_name}
-                                </a>
-                              </Link>
-                            ))
+                          ? [...category]
+                              .reverse()
+                              .slice(1, 5)
+                              .map((cat, index) =>
+                                index > 3 ? (
+                                  ""
+                                ) : (
+                                  <Link
+                                    href={`/product/category/${cat._id}`}
+                                    key={cat._id}
+                                  >
+                                    <a className="footer-cg-para">
+                                      {cat.category_name}
+                                    </a>
+                                  </Link>
+                                )
+                              )
                           : null}
                       </div>
                     </div>
@@ -117,11 +123,26 @@ function CenterFooter() {
                     DIGITAL PRESENCE
                   </h6>
                   <div className="footer-center-icon  text-lg-start text-center mt-4">
-                   <a href="https://www.facebook.com/chhattisgarhherbals/" target="_blank" rel="noopener noreferrer"> <GrFacebook className="cg-footer-icon" /> &nbsp; &nbsp;
-                    &nbsp;</a>
-                    <a href="https:///www.instagram.com/cgherbals_/" target="_blank" rel="noopener noreferrer"><GrInstagram className="cg-footer-icon" /> &nbsp; &nbsp;
-                    &nbsp;</a>
-                    <a href="" target="_blank" rel="noopener noreferrer"><GrAmazon className="cg-footer-icon" /></a>
+                    <a
+                      href="https://www.facebook.com/chhattisgarhherbals/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <GrFacebook className="cg-footer-icon" /> &nbsp; &nbsp;
+                      &nbsp;
+                    </a>
+                    <a
+                      href="https:///www.instagram.com/cgherbals_/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GrInstagram className="cg-footer-icon" /> &nbsp; &nbsp;
+                      &nbsp;
+                    </a>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                      <GrAmazon className="cg-footer-icon" />
+                    </a>
                   </div>
                 </div>
               </Col>

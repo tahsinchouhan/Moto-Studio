@@ -1,6 +1,6 @@
-import React from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 // import amazonlogo from "images/amazon_footer.png";
 import flipkartlogo from "../../../public/images/flipkart.png";
 
@@ -12,7 +12,7 @@ function AmazonFooter() {
           <Col sm={12} lg={8} className="followus-media-query">
             <div className="amazon-wrapper">
               <p className="amazon-product">
-                Your favourite Chhattisgarh Herbals products also available on
+                Your favourite Moto Studio products also available on
               </p>
             </div>
           </Col>
@@ -27,7 +27,7 @@ function AmazonFooter() {
           <Col sm={5} lg={2} className="wrapper-mobile-fix ">
             <div className="amazon-wrapper footer-logo-img mt-lg-3">
               <Image
-                src= "/images/amazon_footer.png"
+                src="/images/amazon_footer.png"
                 alt="amazonlogo"
                 className="footer-logo"
                 width={159}
@@ -35,7 +35,11 @@ function AmazonFooter() {
               />
             </div>
           </Col>
-          <Col sm={5} lg={2} className="wrapper-mobile-fix followus-media-query">
+          <Col
+            sm={5}
+            lg={2}
+            className="wrapper-mobile-fix followus-media-query"
+          >
             <div className="amazon-wrapper footer-logo-img flipkart">
               <Image
                 src={flipkartlogo}
