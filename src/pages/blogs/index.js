@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { Container, Row, Col, Dropdown, Card } from "react-bootstrap";
+import { Card, Col, Container, Dropdown, Row } from "react-bootstrap";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import Honey from "../../assets/images/blogs/Honey.png";
 import { apipath } from "../api/apiPath";
@@ -41,7 +41,7 @@ function Blogs({ blogList }) {
       <div id="blogs-page">
         {/* -----------blogs-header------------ */}
         <div className="my-3">
-          <p className="blogs-heading-para">The CG Herbals Blog</p>
+          <p className="blogs-heading-para">The Moto Studio Blog</p>
           <hr className="blogs-heading-hr" />
         </div>
 

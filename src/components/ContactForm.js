@@ -1,16 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import React from "react";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import ButtonLight from "./button/ButtonLight";
 import { apipath } from "../pages/api/apiPath";
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  NativeSelect,
-  Select,
-} from "@mui/material";
+import ButtonLight from "./button/ButtonLight";
 
 function ContactForm() {
   const [msg, setMsg] = useState("");
@@ -190,12 +182,12 @@ function ContactForm() {
         <div className="container-fluid">
           <Container className="demo1">
             <div>
-              <div className="my-4">
+              {/* <div className="my-4">
                 <p className="about-empowered-heading">How can we help?</p>
                 <hr className="about-empowered-top-hr mx-auto mt-3"></hr>
-              </div>
+              </div> */}
 
-              <div className="text-center">
+              {/* <div className="text-center">
                 <Select
                   labelId="demo-simple-select-helper-label"
                   value={index}
@@ -207,12 +199,16 @@ function ContactForm() {
                   <MenuItem value={1}>Support & Feedback</MenuItem>
                   <MenuItem value={2}>Grievances</MenuItem>
                 </Select>
-              </div>
-              {
-                index === 1 ? (<h1 className="Contact-Us-heading mt-5 fs-2 ">Support & Feedback</h1>):
-                (index === 2 ? (<h1 className="Contact-Us-heading mt-5 fs-2 ">Grievances</h1>):
-                (<h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>))
-              }
+              </div> */}
+              {index === 1 ? (
+                <h1 className="Contact-Us-heading mt-5 fs-2 ">
+                  Support & Feedback
+                </h1>
+              ) : index === 2 ? (
+                <h1 className="Contact-Us-heading mt-5 fs-2 ">Grievances</h1>
+              ) : (
+                <h1 className="Contact-Us-heading mt-5 fs-2 ">Contact Us</h1>
+              )}
               <hr className="contact-form-hr mx-auto mb-4" />
               <p className="contact-para mt-4">
                 If you have any questions, or are looking to collaborate, we are

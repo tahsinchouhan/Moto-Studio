@@ -72,14 +72,8 @@ function Header() {
   const menus = [
     { id: 1, title: "HOME", href: "/", icon: "" },
     { id: 2, title: "PRODUCTS", href: "/product" },
-    { id: 3, title: "ABOUT", href: "/about" },
-    { id: 4, title: "BUSINESS", href: "/collaborate" },
-    { id: 5, title: "BLOGS", href: "/blogs" },
-    { id: 6, title: "NEWS", href: "/news" },
-    // { id: 7, title: "CONNECT", href: "/connect/consumerProgram" },
-    // {id:7,title:'CONTACT',href:'/contact'}
-    { id: 7, title: "FAQ", href: "/faq" },
-    { id: 8, title: "CONTACT", href: "/contact" },
+    { id: 3, title: "BLOGS", href: "/blogs" },
+    { id: 4, title: "CONTACT", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -158,7 +152,7 @@ function Header() {
                 ))}
                 {/* eslint-disable-next-line  */}
 
-                <div className="position-relative" ref={connectmenuRef}>
+                {/* <div className="position-relative" ref={connectmenuRef}>
                   <button
                     className="bg-transparent border-0 nav-link reduce-margin-gap-header"
                     onClick={() => setConnectViewDropDown(!connectViewDropDown)}
@@ -184,16 +178,12 @@ function Header() {
                           <a className=" nav-link mx-3">FOREST LOVERS CLUB</a>
                         </Link>
                       </li>
-                      {/* <li onClick={() => setConnectViewDropDown(false)}>
-                        <Link href="/connect/successStory">
-                          <a className=" nav-link mx-3">SUCCESS STORIES</a>
-                        </Link>
-                      </li> */}
+                      
                     </ul>
                   )}
-                </div>
+                </div> */}
               </Nav>
-              <Nav>
+              {/* <Nav>
                 <div className="pt-1 d-flex align-items-center">
                   {session ? (
                     <>
@@ -205,7 +195,6 @@ function Header() {
                           className="btn border-0"
                           onClick={() => setViewDropDown(!viewDropDown)}
                         >
-                          {/* <MdAccountCircle style={{fontSize:24}} className="cursor-pointer" /> */}
                           {session?.user?.name?.split(" ")[0] || "Profile"}
                         </button>
                         {viewDropDown && (
@@ -249,9 +238,6 @@ function Header() {
                     </>
                   ) : (
                     <>
-                      {/*<Link href="/auth/Login">
-                        <a className="nav-Login text-black login me-3">Login</a>
-                       </Link>*/}
                       <Link href="/auth/Login">
                         <a className="nav-Login btn btn-success btn-sm ms-2 py-2 px-3 signup-btn">
                           LOGIN
@@ -281,7 +267,7 @@ function Header() {
                     </a>
                   </Link>
                 </div>
-              </Nav>
+              </Nav> */}
             </Navbar.Collapse>
           </Container>
         </Navbar>
@@ -424,7 +410,7 @@ function Header() {
                 <BsSearch style={{ width: 30, fontSize: "22px" }} />
               </span>
 
-              <Link href="/shopping/Shopping" onClick={iconHandler}>
+              <Link href="/" onClick={iconHandler}>
                 <a className="mobile-cart-icon">
                   <BsFillCartFill
                     style={{ width: 30, fontSize: "22px" }}
@@ -502,7 +488,7 @@ function Header() {
       </div>
       <style jsx>{`
         .signup-btn {
-          background-color: #065934 !important;
+          background-color: #000 !important;
           font-family: "Lora";
           padding: 0.3rem 1rem !important;
           border-radius: 0 !important;
@@ -525,7 +511,7 @@ function Header() {
           text-align: center;
           top: -15px;
           left: 30px;
-          background: #065934 !important;
+          background: #000 !important;
           color: white;
         }
 

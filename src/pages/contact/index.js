@@ -1,15 +1,14 @@
-import ContactForm from '../../components/ContactForm'
-import HomeFollowUs from '../../components/home/HomeFollowUs'
-import CollaborateForestProduce from '../collaborate/CollaborateForestProduce'
+import ContactForm from "../../components/ContactForm";
+import HomeFollowUs from "../../components/home/HomeFollowUs";
 
 function Contact() {
-    return (
-        <div>
-            <HomeFollowUs/>
-            <ContactForm />
-            <CollaborateForestProduce/>
-        </div>
-    )
+  return (
+    <div>
+      <HomeFollowUs />
+      <ContactForm />
+      {/* <CollaborateForestProduce/> */}
+    </div>
+  );
 }
 
-export default Contact
+export default Contact;

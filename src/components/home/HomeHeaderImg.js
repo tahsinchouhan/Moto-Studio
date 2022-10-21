@@ -10,7 +10,7 @@ import Button from "../button/ButtonLight";
 function HomeHeaderImg({ category }) {
   const [banner, setBanner] = useState({
     bannerImg: HomeHeader,
-    bannerTitle: "Purity that is Priceless",
+    bannerTitle: "Detailing is not a skill, It's an Attitude!",
     bannerDesc:
       "The forest grows and the forest provides . The women of the forest procure and create. Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.",
   });
@@ -22,7 +22,9 @@ function HomeHeaderImg({ category }) {
         const objData = await res.json();
         setBanner({
           bannerImg: objData.data[0]?.images[0]?.img || HomeHeader,
-          bannerTitle: objData.data[0]?.title || "Purity that is Priceless",
+          bannerTitle:
+            objData.data[0]?.titles ||
+            " Detailing is not a skill, It's an Attitude!",
           bannerDesc:
             objData.data[0]?.description ||
             "The forest grows and the forest provides . The women of the forest procure and create. Each product is handcrafted with care and love by the empowered women of these forest areas, endowing each product with a purity that is truly priceless.",
@@ -73,11 +75,15 @@ function HomeHeaderImg({ category }) {
                       text="SHOP NOW &nbsp; &nbsp; &gt;"
                     />
                   </div>
+                  “Detailing is not a skill,
+It's an Attitude!”
+
                 </div>
               </Col> */}
               <Col md={9} className="py-md-5 my-2">
                 <p className="home-header-head-mobile mt-md-5 mt-4">
-                  Purity <br /> that is <br /> Priceless
+                  Detailing <br />
+                  is not <br /> a skill
                 </p>
                 {/* <div className="col-12 mt-3">
                   <p className="home-header-para-mobile">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
@@ -158,27 +164,31 @@ function HomeHeaderImg({ category }) {
                 <Col md={12}>
                   <div>
                     <p className="home-header-head text-center mb-0 text-md-start">
-                      Purity that <br /> is Priceless
+                      Detailing is not a skill
+                      <br /> It's an Attitude!
                     </p>
                   </div>
                   <div className="">
                     <p className="home-eco-friendly col-lg-12">
-                      ECO-FRIENDLY PRODUCTS FROM ONE OF THE LARGEST
+                      Welcome to The Detailing Mafia: One-Stop Solution to All
+                      Your Car Care Problems.
                     </p>
                     <p className="home-eco-friendly col-lg-12">
-                      WOMEN EMPOWERMENT EFFORTS IN THE WORLD{" "}
+                      “Perfection is in the Detail”, this is what we believe in
                     </p>
                     <p
                       className="home-header-para-desc text-center text-md-start"
                       style={{ marginTop: "32px" }}
                     >
-                      Each product is handcrafted with care and love by the
+                      We are called “The King of the Detailing World” by the
+                      Automotive
                     </p>
                     <p className="home-header-para-desc text-center text-md-start">
-                      empowered women of these forest areas, endowing each
+                      Detailing Industry. Our skilled and trained personnel have
+                      turned
                     </p>
                     <p className="home-header-para-desc text-center text-md-start pb-4">
-                      product with a purity that is truly priceless.
+                      ordinary looking cars into Fabulous-looking Ones.
                     </p>
                   </div>
 

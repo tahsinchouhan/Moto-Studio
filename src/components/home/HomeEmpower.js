@@ -43,10 +43,10 @@ function HomeEmpower() {
         <div className="home-empower-img-distance">
           <p className="home-empower-img-para d-block">
             {/* From the heart of Chhattisgarh */}
-            {impoweredData?.desc || "From the heart of Chhattisgarh"}
+            {impoweredData?.desc || "From our Hearts"}
           </p>
           <p className="home-empower-img-text">
-            {impoweredData?.title || "Title"}
+            {impoweredData?.titles || "Our Exclusive Brands"}
           </p>
           <div className="d-flex">
             <div className="mx-auto" onClick={() => router.push("/about")}>
@@ -57,7 +57,7 @@ function HomeEmpower() {
       </div>
       <style jsx>{`
         .home-empower-img {
-          background-image: url(/Picture/empower.png);
+          background-image: url(/Picture/car3.jpg);
           background-size: cover;
         }
       `}</style>

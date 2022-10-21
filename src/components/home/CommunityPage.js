@@ -99,37 +99,29 @@ function CommunityPage() {
                 style={{ fontFamily: "Lato" }}
               >
                 <p>
-                  Chhattisgarh is home to several tribal castes with Gonds of
-                  Bastar being the prominent among them. The Baiga, Korba, Abhuj
-                  Maria, BisonHorn Maria, Muria, Halbaa, Bhatra and Dhurvaa are
-                  other major tribes of the region.
+                  At The Detailing Mafia, we are determined in getting the car
+                  to look like, ‘what you thought was Good’ to ‘Is this really
+                  my Car?’
                 </p>
                 <p>
-                  Primarily dependent on the agriculture with minor forest
-                  produce as additional income. These forest dwellers are
-                  members of the cooperative called Chhattisgarh Minor Forest
-                  Produce Cooperative Federation (CGMFP).
+                  We do not compromise on quality and offer our professional
+                  opinion to what the customer should get. Just drop off your
+                  car at our outlet and wait for our trained technicians to
+                  perform the Magic. Our trained staff takes care of every tiny
+                  detail and does away with all the minute scars to give that
+                  stunning look to your vehicle.
+                </p>
+                <p>Give your Neighbours Something to Talk About!</p>
+                <p>
+                  Have a passion for car detailing? But want a platform that
+                  adds wings to your career and helps you fly high? Then, the
+                  detailing mafia is the right choice for you. Join the Mafia’s
+                  family today and become an entrepreneur in the automotive
+                  detailing industry.
                 </p>
                 <p>
-                  The CGMFP facilitates the entrepreneurial spirit of the
-                  members and helps them earn better from minor forest produce,
-                  by helping them in setting up processing units for minor
-                  forest produce like Tamarind, Honey, Cashew and 62 more such
-                  species.
-                </p>
-                <p>
-                  These units produce more than 120 products from the raw
-                  material collected from the forests. Value addition allows
-                  them to improve their returns by increasing shelf life and
-                  market value of the produce. The units are all owned and
-                  Operated by the women.
-                </p>
-                <p>
-                  The products are marketed by CGMFP under the brand name
-                  CHHATTISGARH HERBALS. Each product offers PURITY THAT IS
-                  PRICELESS, along with the purity of the forests these products
-                  also represent the priceless feeling of helping the Tribal
-                  Women earn self-respect and dignity in their communities.
+                  SAME-DREAM The Mafia always stays true to its words. For any
+                  queries and assistance, Call Us
                 </p>
               </div>
             </div>
@@ -161,7 +153,7 @@ function CommunityPage() {
                           // row?.images?.length
                           //   ? row?.images[0]?.img || Imageone
                           //   : Imageone
-                          `/images/${index}.jpg`
+                          `/Picture/car${index + 1}.jpg`
                         }
                         alt="Picture of the author"
                         // className="w-100"
