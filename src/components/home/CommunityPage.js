@@ -164,11 +164,11 @@ function CommunityPage() {
                         // unoptimized={true}
                         // loading="eager"
                       />
-                      <div className="overlay">
+                      {/* <div className="overlay">
                         <p className="Text-name">
                           {row?.products?.title || ""}
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </Col>
                 );

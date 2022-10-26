@@ -5,7 +5,6 @@ import { useState } from "react";
 // import HealthPersonalCare from "../../assets/images/home/1 (3).png";
 // import GourmetFoods from "../../assets/images/home/1 (4).png";
 import Slider from "react-slick/lib/slider";
-import VisitTheShop from "./VisitTheShop";
 
 function FeaturedProducts({ category }) {
   const list = category?.length > 0 ? category[3]._id : null || null;
@@ -104,7 +103,7 @@ function FeaturedProducts({ category }) {
         </div>
       </div>
 
-      <VisitTheShop categoryId={categoryId || "61effaa01a880a62b8284274"} />
+      {/* <VisitTheShop categoryId={categoryId || "61effaa01a880a62b8284274"} /> */}
     </>
   );
 }
